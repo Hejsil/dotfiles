@@ -8,3 +8,7 @@ for dotfile in $(find "$SCRIPTPATH" -maxdepth 1 -name ".?*"); do
         ln -s "$dotfile" "$HOME/"
     fi
 done
+
+# Setup global git ignore
+ln -s "$SCRIPTPATH/global-gitignore" "$HOME/.gitignore"
+git config --global core.excludesfile "$HOME/.gitignore"
