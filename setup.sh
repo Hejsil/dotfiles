@@ -3,12 +3,19 @@
 SCRIPT=$(readlink -f "$0")
 SCRIPTPATH=$(dirname "$SCRIPT")
 
-sudo pacman -S pacaur
-pacaur -S zsh
-pacaur -S oh-my-zsh-git
-pacaur -S zsh-pure-prompt
-pacaur -S zsh-fast-syntax-highlighting-git
-pacaur -S zsh-autosuggestions
+mkdir build
+cd build
+curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=yay
+makepkg -i PKGBUILD --noconfirm
+cd ..
+rm -r build
+
+yay -S yay
+yay -S zsh
+yay -S oh-my-zsh-git
+yay -S zsh-pure-prompt
+yay -S zsh-fast-syntax-highlighting-git
+yay -S zsh-autosuggestions
 
 chsh -s /usr/bin/zsh
 
