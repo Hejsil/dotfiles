@@ -24,3 +24,8 @@ bindkey "^[[1;5D" backward-word
 bindkey "^[[1;5C" forward-word
 bindkey "^[[A" up-line-or-beginning-search
 bindkey "^[[B" down-line-or-beginning-search
+
+function calc() {
+	local answer="$(($@))"
+	printf "%d (%#x)\n" "$answer" "$answer"
+}
