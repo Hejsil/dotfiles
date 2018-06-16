@@ -12,6 +12,7 @@ cd ..
 rm -r build
 
 yay -S yay
+yay -S gnu-netcat
 yay -S zsh
 yay -S oh-my-zsh-git
 yay -S zsh-pure-prompt
