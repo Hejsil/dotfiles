@@ -31,6 +31,10 @@ yay -S --noconfirm thefuck
 # Gui tools
 yay -S --noconfirm visual-studio-code-bin
 
+# Other
+yay -S dmenu
+yay -S keynav
+
 chsh -s /usr/bin/zsh
 
 "$SCRIPTPATH/link-up.sh"

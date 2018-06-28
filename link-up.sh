@@ -4,9 +4,26 @@ SCRIPT=$(readlink -f "$0")
 SCRIPTPATH=$(dirname "$SCRIPT")
 SYMLINK="symlink."
 
-for dotfile in $(find "$SCRIPTPATH" -maxdepth 1 -name "$SYMLINK.*"); do
-    NAME=$(basename "$dotfile")
-    ln -s "$dotfile" "$HOME/${NAME#$SYMLINK}"
-done
+link() {
+    INFOLDER=$1
+    OUTFOLDER=$2
+
+    for FILE in $(find "$SCRIPTPATH/$INFOLDER" -maxdepth 1 -name "$SYMLINK*"); do
+        NAME=$(basename "$FILE")
+        OUT="$OUTFOLDER/${NAME#$SYMLINK}"
+        echo "$OUT"
+
+
+        ln -si "$FILE" "$OUT" || \
+            case "$(printf "yes\\nno\\n" | dmenu -b -l 2 -p "Could not create symlink '$OUT'. Sudo?")" in
+                "yes")
+                    sudo ln -si "$FILE" "$OUT"
+                    ;;
+            esac
+    done
+}
+
+link "home" "$HOME"
+link "systemd" "/etc/systemd/system"
 
 git config --global core.excludesfile "$HOME/.gitignore"

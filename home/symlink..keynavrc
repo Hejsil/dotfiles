@@ -1,0 +1,20 @@
+clear
+Escape end
+
+r record ~/.keynav_macros
+
+space warp,click 1,end
+Return warp,click 1,end
+1 warp,click 1
+2 warp,click 2
+3 warp,click 3
+
+ctrl+Up cut-up
+ctrl+Down cut-down
+ctrl+Left cut-left
+ctrl+Right cut-right
+Up move-up
+Down move-down
+Left move-left
+Right move-right
+ctrl+space start
