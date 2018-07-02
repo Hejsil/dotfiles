@@ -24,6 +24,5 @@ link() {
 }
 
 link "home" "$HOME"
-link "systemd" "/etc/systemd/system"
 
 git config --global core.excludesfile "$HOME/.gitignore"

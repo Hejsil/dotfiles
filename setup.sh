@@ -32,8 +32,8 @@ yay -S --noconfirm thefuck
 yay -S --noconfirm visual-studio-code-bin
 
 # Other
-yay -S dmenu
-yay -S keynav
+yay -S --noconfirm dmenu
+yay -S --noconfirm keynav
 
 chsh -s /usr/bin/zsh
 
