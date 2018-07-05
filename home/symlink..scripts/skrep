@@ -1,2 +1,2 @@
 #!/bin/sh
-sk --ansi -i -c "rg --no-ignore-vcs --vimgrep --color ansi '{}'" --preview "preview {}"
+sk --ansi -i -c "rg --no-ignore-vcs --vimgrep --color ansi '{}'" --preview "preview {}" | cut -f1-3 -d ':'

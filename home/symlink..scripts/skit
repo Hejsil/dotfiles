@@ -1,4 +1,10 @@
 #!/bin/sh
-# TODO: Be able to search diffs of each commit instead of just the message
-RES=$(sk --ansi -i -c "git reflog --all | rg '{}'" --preview 'git show $(echo {} | cut -f 1 -d " " )')
-echo $RES | cut -f 1 -d " "
+TMP=$(mktemp -d)
+trap '{ kill $(jobs -p); wait; rm -rf -- "$TMP"; }' INT TERM HUP EXIT
+
+git log --pretty=format:"%h" | while read -r in; do
+    git show "$in" > "$TMP/$in"
+done &
+
+cd "$TMP" || exit 1
+skrep | cut -f 1 -d ":"
