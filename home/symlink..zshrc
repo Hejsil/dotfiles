@@ -29,4 +29,5 @@ bindkey "^[[A" up-line-or-beginning-search
 bindkey "^[[B" down-line-or-beginning-search
 
 alias update="yay -Syu --noconfirm"
-alias termbin="nc termbin.com 9999"
+
+eval "$(thefuck --alias)"
