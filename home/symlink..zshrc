@@ -1,5 +1,8 @@
+#!/bin/sh
 export ZSH=/usr/share/oh-my-zsh
 export LANG=en_DK.UTF-8
+
+export PATH="$PATH:$HOME/.scripts"
 
 ZSH_THEME="refined"
 CASE_SENSITIVE="true"
@@ -27,8 +30,3 @@ bindkey "^[[B" down-line-or-beginning-search
 
 alias update="yay -Syu --noconfirm"
 alias termbin="nc termbin.com 9999"
-
-function calc() {
-	local answer="$(($@))"
-	printf "%d (%#x)\n" "$answer" "$answer"
-}

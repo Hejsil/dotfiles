@@ -1,0 +1,2 @@
+#!/bin/sh
+sk --ansi -i -c "rg --no-ignore-vcs --vimgrep --color ansi '{}'" --preview "preview {}"
