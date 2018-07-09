@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if [ -z "$1" ]; then
-    cat "$1" | nc termbin.com 9999
-else
     nc termbin.com 9999
+else
+    cat "$1" | nc termbin.com 9999
 fi
