@@ -3,5 +3,5 @@
 if [ -z "$1" ]; then
     nc termbin.com 9999
 else
-    cat "$1" | nc termbin.com 9999
+    nc termbin.com 9999 < "$1"
 fi
