@@ -29,5 +29,3 @@ bindkey "^[[A" up-line-or-beginning-search
 bindkey "^[[B" down-line-or-beginning-search
 
 alias update="yay -Syu --noconfirm"
-
-eval "$(thefuck --alias)"

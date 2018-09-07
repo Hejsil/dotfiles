@@ -26,14 +26,7 @@ yay -S --noconfirm skim
 yay -S --noconfirm ripgrep
 yay -S --noconfirm fd
 yay -S --noconfirm hex
-yay -S --noconfirm thefuck
-
-# Gui tools
-yay -S --noconfirm visual-studio-code-bin
-
-# Other
-yay -S --noconfirm dmenu
-yay -S --noconfirm keynav
+yay -S --noconfirm lazygit
 
 chsh -s /usr/bin/zsh
 
