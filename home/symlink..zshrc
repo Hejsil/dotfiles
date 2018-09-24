@@ -3,6 +3,7 @@ export ZSH=/usr/share/oh-my-zsh
 export LANG=en_DK.UTF-8
 
 export PATH="$PATH:$HOME/.scripts"
+export PATH="$PATH:$HOME/.bin"
 
 ZSH_THEME="refined"
 CASE_SENSITIVE="true"

@@ -30,4 +30,5 @@ yay -S --noconfirm lazygit
 
 chsh -s /usr/bin/zsh
 
+mkdir "$HOME/.bin"
 "$SCRIPTPATH/link-up.sh"
