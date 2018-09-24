@@ -14,10 +14,10 @@ link() {
         echo "$OUT"
 
 
-        ln -si "$FILE" "$OUT" || \
+        ln -sni "$FILE" "$OUT" || \
             case "$(printf "yes\\nno\\n" | dmenu -b -l 2 -p "Could not create symlink '$OUT'. Sudo?")" in
                 "yes")
-                    sudo ln -si "$FILE" "$OUT"
+                    sudo ln -sni "$FILE" "$OUT"
                     ;;
             esac
     done
