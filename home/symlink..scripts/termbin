@@ -1,7 +1,0 @@
-#!/bin/sh
-
-if [ -z "$1" ]; then
-    nc termbin.com 9999
-else
-    nc termbin.com 9999 < "$1"
-fi
