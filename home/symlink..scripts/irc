@@ -1,0 +1,27 @@
+#!/bin/sh
+USER=""
+NICK=""
+PASSWRD=""
+FOLDER="$(pwd)"
+
+while getopts "u:n:p:f:" o; do
+    case "${o}" in
+        u) USER="${OPTARG}";;
+        n) NICK="${OPTARG}";;
+        p) PASSWRD="${OPTARG}";;
+        f) FOLDER="${OPTARG}";;
+    esac
+done
+
+mkdir -p "$FOLDER"
+cd "$FOLDER"
+ii -s irc.freenode.net -n "$USER" -i "$FOLDER" &
+sleep 5
+echo "identify $PASSWRD" > irc.freenode.net/nickserv/in
+sleep 2
+echo "/j #zig" > irc.freenode.net/in
+tmux new-session -s irc -d
+tmux split-window -v
+tmux send -t irc.0 "tail -f $FOLDER/irc.freenode.net/\#zig/out" ENTER
+tmux send -t irc.1 "cat > $FOLDER/irc.freenode.net/#zig/in" ENTER
+tmux -2 attach-session -d

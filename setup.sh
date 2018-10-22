@@ -14,19 +14,14 @@ SCRIPTPATH=$(dirname "$SCRIPT")
 yay -S --noconfirm yay
 
 # zsh stuff
-yay -S --noconfirm zsh
-yay -S --noconfirm oh-my-zsh-git
-yay -S --noconfirm zsh-pure-prompt
-yay -S --noconfirm zsh-fast-syntax-highlighting-git
-yay -S --noconfirm zsh-autosuggestions
+yay -S --noconfirm \
+    zsh oh-my-zsh-git zsh-pure-prompt
+    zsh-fast-syntax-highlighting-git
+    zsh-autosuggestions
 
 # Term tools
-yay -S --noconfirm gnu-netcat
-yay -S --noconfirm skim
-yay -S --noconfirm ripgrep
-yay -S --noconfirm fd
-yay -S --noconfirm hex
-yay -S --noconfirm lazygit
+yay -S --noconfirm \
+    skim ripgrep fd hex lazygit ii
 
 chsh -s /usr/bin/zsh
 
