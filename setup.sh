@@ -14,7 +14,7 @@ mkdir "$HOME/repo"
 yay -S --noconfirm                    \
     gdm gnome gnome-tweaks            \
     visual-studio-code-bin            \
-    chromium                          \
+    chromium xclip                    \
     ttf-liberation                    \
     numix-frost-themes                \
     numix-icon-theme-pack-git         \
