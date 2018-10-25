@@ -16,7 +16,7 @@ yay -S --noconfirm                    \
     visual-studio-code-bin            \
     chromium xclip nvidia             \
     ttf-liberation htop discord       \
-    numix-frost-themes                \
+    numix-frost-themes llvm clang     \
     numix-icon-theme-pack-git         \
     zsh oh-my-zsh-git zsh-pure-prompt \
     zsh-fast-syntax-highlighting-git  \
