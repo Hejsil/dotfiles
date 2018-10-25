@@ -23,6 +23,8 @@ yay -S --noconfirm                    \
     zsh-autosuggestions yay jq        \
     skim ripgrep fd hex lazygit
 
+code --install-extension shan.code-settings-sync
+
 sudo systemctl enable gdm.service
 
 chsh -s /usr/bin/zsh
