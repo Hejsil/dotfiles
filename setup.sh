@@ -13,7 +13,8 @@ mkdir "$HOME/repo"
 
 yay -S --noconfirm                    \
     gdm gnome gnome-tweaks            \
-    visual-studio-code-bin            \
+    visual-studio-code-bin deluge     \
+    python2-gobject2 pygtk            \
     chromium xclip nvidia syncplay    \
     ttf-liberation htop discord       \
     numix-frost-themes llvm clang     \
