@@ -12,7 +12,7 @@ mkdir "$HOME/repo"
 )
 
 yay -S --noconfirm                    \
-    gdm gnome gnome-tweaks            \
+    gdm openbox thunderbird nitrogen  \
     visual-studio-code-bin deluge     \
     python2-gobject2 pygtk sakura     \
     chromium xclip nvidia syncplay    \
@@ -22,7 +22,7 @@ yay -S --noconfirm                    \
     zsh oh-my-zsh-git zsh-pure-prompt \
     zsh-fast-syntax-highlighting-git  \
     zsh-autosuggestions yay           \
-    skim ripgrep fd
+    skim ripgrep fd alsa-utils        \
 
 code --install-extension shan.code-settings-sync
 

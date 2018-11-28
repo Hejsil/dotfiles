@@ -2,15 +2,15 @@
 
 SCRIPT=$(readlink -f "$0")
 SCRIPTPATH=$(dirname "$SCRIPT")
-SYMLINK="symlink."
 
 link() {
     INFOLDER=$1
     OUTFOLDER=$2
 
-    for FILE in $(find "$SCRIPTPATH/$INFOLDER" -maxdepth 1 -name "$SYMLINK*"); do
+    for FILE in $(find "$SCRIPTPATH/$INFOLDER" -mindepth 1 -maxdepth 1); do
         NAME=$(basename "$FILE")
         OUT="$OUTFOLDER/${NAME#$SYMLINK}"
+        echo "$FILE"
         echo "$OUT"
 
 
@@ -23,6 +23,7 @@ link() {
     done
 }
 
-link "home" "$HOME"
+link "symlink/home/" "$HOME"
+link "symlink/.config/" "$HOME/.config"
 
 git config --global core.excludesfile "$HOME/.gitignore"
