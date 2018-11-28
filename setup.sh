@@ -22,7 +22,7 @@ yay -S --noconfirm                    \
     zsh oh-my-zsh-git zsh-pure-prompt \
     zsh-fast-syntax-highlighting-git  \
     zsh-autosuggestions yay feh       \
-    skim ripgrep fd alsa-utils        \
+    skim ripgrep fd alsa-utils dunst  \
 
 code --install-extension shan.code-settings-sync
 
