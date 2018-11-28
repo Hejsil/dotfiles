@@ -21,7 +21,7 @@ yay -S --noconfirm                    \
     numix-icon-theme-pack-git         \
     zsh oh-my-zsh-git zsh-pure-prompt \
     zsh-fast-syntax-highlighting-git  \
-    zsh-autosuggestions yay           \
+    zsh-autosuggestions yay feh       \
     skim ripgrep fd alsa-utils        \
 
 code --install-extension shan.code-settings-sync

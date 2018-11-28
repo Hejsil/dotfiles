@@ -22,3 +22,9 @@ setxkbmap -layout "dk" &
 xrandr --output HDMI-0 --primary --left-of DVI-I-0 &
 thunderbird &
 discord &
+(
+    while true; do
+        feh --randomize --bg-center ~/MEGA/Pictures/Wallpapers
+        sleep 30
+    done
+) &
