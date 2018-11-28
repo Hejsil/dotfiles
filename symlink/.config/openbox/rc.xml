@@ -253,12 +253,12 @@
     </keybind>
     <keybind key="XF86AudioLowerVolume">
       <action name="Execute">
-        <command>amixer -q sset Master 3%-</command>
+        <command>volume-down</command>
       </action>
     </keybind>
     <keybind key="XF86AudioRaiseVolume">
       <action name="Execute">
-        <command>amixer -q sset Master 3%+</command>
+        <command>volume-up</command>
       </action>
     </keybind>
   </keyboard>

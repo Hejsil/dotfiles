@@ -1,0 +1,3 @@
+#!/bin/sh
+amixer -q sset Master 3%+
+notify-send 'Volume up' "$(amixer sget Master | grep 'Front \w*:')"
