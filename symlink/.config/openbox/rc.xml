@@ -219,12 +219,12 @@
         <height>50%</height>
       </action>
     </keybind>
-    <keybind key="w-Left">
+    <keybind key="W-Left">
       <action name="MoveResizeTo">
         <monitor>prev</monitor>
       </action>
     </keybind>
-    <keybind key="w-Right">
+    <keybind key="W-Right">
       <action name="MoveResizeTo">
         <monitor>next</monitor>
       </action>
@@ -259,6 +259,11 @@
     <keybind key="XF86AudioRaiseVolume">
       <action name="Execute">
         <command>volume-up</command>
+      </action>
+    </keybind>
+    <keybind key="Print">
+      <action name="Execute">
+        <command>screenshot ~/MEGA/Pictures/Screenshots</command>
       </action>
     </keybind>
   </keyboard>
