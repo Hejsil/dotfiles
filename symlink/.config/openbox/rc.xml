@@ -183,7 +183,7 @@
       <action name="Close"/>
     </keybind>
     <!-- Keybindings for window switching with the arrow keys -->
-    <keybind key="C-A-Left">
+    <keybind key="W-Left">
       <action name="ToggleMaximize">
         <direction>horizontal</direction>
       </action>
@@ -192,7 +192,7 @@
         <width>50%</width>
       </action>
     </keybind>
-    <keybind key="C-A-Right">
+    <keybind key="W-Right">
       <action name="ToggleMaximize">
         <direction>horizontal</direction>
       </action>
@@ -201,7 +201,7 @@
         <width>50%</width>
       </action>
     </keybind>
-    <keybind key="C-A-Up">
+    <keybind key="W-Up">
       <action name="ToggleMaximize">
         <direction>vertical</direction>
       </action>
@@ -210,7 +210,7 @@
         <height>50%</height>
       </action>
     </keybind>
-    <keybind key="C-A-Down">
+    <keybind key="W-Down">
       <action name="ToggleMaximize">
         <direction>vertical</direction>
       </action>
@@ -219,20 +219,20 @@
         <height>50%</height>
       </action>
     </keybind>
-    <keybind key="W-Left">
+    <keybind key="W-S-Left">
       <action name="MoveResizeTo">
         <monitor>prev</monitor>
       </action>
     </keybind>
-    <keybind key="W-Right">
+    <keybind key="W-S-Right">
       <action name="MoveResizeTo">
         <monitor>next</monitor>
       </action>
     </keybind>
-    <keybind key="W-Up">
+    <keybind key="W-S-Up">
       <action name="ToggleMaximize"/>
     </keybind>
-    <keybind key="W-Down">
+    <keybind key="W-S-Down">
       <action name="Iconify"/>
     </keybind>
     <!-- Keybindings for running applications -->
