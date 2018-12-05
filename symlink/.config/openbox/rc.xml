@@ -236,7 +236,7 @@
       <action name="Iconify"/>
     </keybind>
     <!-- Keybindings for running applications -->
-    <keybind key="C-space">
+    <keybind key="W-Tab">
       <action name="Execute">
         <command>rofi -show run</command>
       </action>
