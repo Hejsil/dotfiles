@@ -19,13 +19,13 @@
 
 nitrogen --restore &
 setxkbmap -layout "dk" &
-xrandr --output HDMI-0 --primary --left-of DVI-I-0 &
+xrandr --output DP-0 --primary --left-of HDMI-0 &
 thunderbird &
 discord &
 dunst &
 (
     while true; do
-        feh --randomize --bg-center ~/MEGA/Pictures/Wallpapers
+        feh --randomize --bg-fill ~/MEGA/Pictures/Wallpapers
         sleep 30
     done
 ) &
