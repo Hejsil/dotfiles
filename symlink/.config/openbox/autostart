@@ -19,7 +19,7 @@
 
 nitrogen --restore &
 setxkbmap -layout "dk" &
-xrandr --output DP-0 --primary --left-of HDMI-0 &
+xrandr --output DP-0 --mode 2560x1440 --rate 165 --primary --left-of HDMI-0 &
 thunderbird &
 discord &
 dunst &
