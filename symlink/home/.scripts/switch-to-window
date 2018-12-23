@@ -1,0 +1,2 @@
+#!/bin/sh
+wmctrl -ia $(wmctrl -l | cut -d " " -f 1,5- | dmenu -i -l 10 | cut -d " " -f 1)

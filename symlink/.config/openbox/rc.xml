@@ -238,12 +238,12 @@
     <!-- Keybindings for running applications -->
     <keybind key="W-Tab">
       <action name="Execute">
-        <command>rofi -show run</command>
+        <command>dmenu_run -i -l 10</command>
       </action>
     </keybind>
     <keybind key="A-Tab">
       <action name="Execute">
-        <command>rofi -show window</command>
+        <command>switch-to-window</command>
       </action>
     </keybind>
     <keybind key="F12">

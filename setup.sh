@@ -11,18 +11,19 @@ mkdir "$HOME/repo"
     rm -r "$(pwd)"
 )
 
-yay -S --noconfirm                    \
-    gdm openbox thunderbird nitrogen  \
-    visual-studio-code-bin deluge     \
-    python2-gobject2 pygtk sakura     \
-    chromium xclip nvidia syncplay    \
-    ttf-liberation htop discord       \
-    numix-frost-themes llvm clang     \
-    numix-icon-theme-pack-git         \
-    zsh oh-my-zsh-git zsh-pure-prompt \
-    zsh-fast-syntax-highlighting-git  \
-    zsh-autosuggestions yay feh maim  \
-    skim ripgrep fd alsa-utils dunst  \
+yay -S --noconfirm                     \
+    gdm openbox thunderbird nitrogen   \
+    visual-studio-code-bin deluge      \
+    python2-gobject2 pygtk sakura      \
+    chromium xclip nvidia syncplay     \
+    ttf-liberation htop discord        \
+    numix-frost-themes llvm clang      \
+    numix-icon-theme-pack-git megasync \
+    zsh oh-my-zsh-git zsh-pure-prompt  \
+    zsh-fast-syntax-highlighting-git   \
+    zsh-autosuggestions yay feh maim   \
+    skim ripgrep fd alsa-utils dunst   \
+    rofi dmenu openssh
 
 code --install-extension shan.code-settings-sync
 
