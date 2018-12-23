@@ -23,11 +23,12 @@ yay -S --noconfirm                     \
     zsh-fast-syntax-highlighting-git   \
     zsh-autosuggestions yay feh maim   \
     skim ripgrep fd alsa-utils dunst   \
-    rofi dmenu openssh
+    rofi dmenu openssh wmctrl
 
 code --install-extension shan.code-settings-sync
 
 sudo systemctl enable gdm.service
+sudo systemctl enable NetworkManager.service
 
 chsh -s /usr/bin/zsh
 ./link-up.sh
