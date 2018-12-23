@@ -1,5 +1,6 @@
 #!/bin/sh
-adduser -m hejsil
+useradd -m hejsil
+passwd hejsil
 
 ip l
 echo "Enter interface to run dhcpcd on."
