@@ -5,24 +5,40 @@ function volumed() {
     FILE="$1"
     echo > "$FILE" 
     while
-        echo "v $(amixer sget Master | tr '\n' ' ' | cut -d "[" -f 2 | cut -d "%" -f 1)"
+        echo "v:$(amixer sget Master | tr '\n' ' ' | cut -d "[" -f 2 | cut -d "%" -f 1)"
         inotifywait "$FILE"
     do :; done
 }
 
 function batteryd() {
     while
-        BATTERY=$(upower -i "/org/freedesktop/UPower/devices/battery_BAT0" \
-            | grep "percentage:" | sed -E "s/[^0-9]*([0-9]+)%/\1/")
-        echo "b $BATTERY"
+        echo "b:$(upower -i "/org/freedesktop/UPower/devices/battery_BAT0" \
+            | grep "percentage:" | sed -E "s/[^0-9]*([0-9]+)%/\1/")"
         sleep 60
     do :; done
 }
 
 function timed() {
     while
-        echo "d $(date '+%F %R')"
+        echo "d:$(date '+%F %R')"
         sleep 5
+    do :; done
+}
+
+function usage() {
+    grep 'cpu' /proc/stat | sed -E "s/[ ]+/ /g" | cut -d ' ' -f 2,4,5
+}
+
+function cpud() {
+    LAST=$(mktemp /tmp/cpu-last.XXXXXX)
+    CURR=$(mktemp /tmp/cpu-curr.XXXXXX)
+    usage > "$LAST"
+    while
+        usage > "$CURR"
+        echo "c:$(paste -d " " "$CURR" "$LAST" | awk '{printf "%d %d %d\n",($1-$4),($2-$5),($3-$6)}' |\
+            awk '{usage=($1+$2)*100/($1+$2+$3); printf " %3.0f",usage}')"
+        cat "$CURR" > "$LAST"
+        sleep 2
     do :; done
 }
 
@@ -30,11 +46,13 @@ function timed() {
     volumed "$HOME/.taskbar/volume-changed" &
     batteryd &
     timed &
-) | while read -r FIELD LINE; do
+    cpud &
+) | while IFS=':' read -r FIELD LINE; do
     case $FIELD in
         v) VOLUME="$LINE" ;;
         b) BATTERY="$LINE" ;;
         d) DATE="$LINE" ;;
+        c) CPU="$LINE" ;;
     esac
-    printf "%%{c}| b:%3d%%%% | v:%3d%%%% |%%{c}%%{r}$DATE%%{r}\n" "$BATTERY" "$VOLUME"
+    printf "%%{c}| b:%3d%%%% | v:%3d%%%% | c:$CPU |%%{c}%%{r}$DATE%%{r}\n" "$BATTERY" "$VOLUME"
 done | lemonbar -p
