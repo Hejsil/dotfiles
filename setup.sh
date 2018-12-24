@@ -23,7 +23,9 @@ yay -S --noconfirm                     \
     zsh-fast-syntax-highlighting-git   \
     zsh-autosuggestions yay feh maim   \
     skim ripgrep fd alsa-utils dunst   \
-    rofi dmenu openssh wmctrl
+    rofi dmenu openssh wmctrl wget     \
+    lemonbar-git inotify-tools lynx    \
+    uni2ascii ttf-unifont
 
 code --install-extension shan.code-settings-sync
 

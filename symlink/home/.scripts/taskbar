@@ -1,0 +1,40 @@
+#!/bin/sh
+mkdir -p "$HOME/.taskbar/"
+
+function volumed() {
+    FILE="$1"
+    echo > "$FILE" 
+    while
+        echo "v $(amixer sget Master | tr '\n' ' ' | cut -d "[" -f 2 | cut -d "%" -f 1)"
+        inotifywait "$FILE"
+    do :; done
+}
+
+function batteryd() {
+    while
+        BATTERY=$(upower -i "/org/freedesktop/UPower/devices/battery_BAT0" \
+            | grep "percentage:" | sed -E "s/[^0-9]*([0-9]+)%/\1/")
+        echo "b $BATTERY"
+        sleep 60
+    do :; done
+}
+
+function timed() {
+    while
+        echo "d $(date '+%F %R')"
+        sleep 5
+    do :; done
+}
+
+(
+    volumed "$HOME/.taskbar/volume-changed" &
+    batteryd &
+    timed &
+) | while read -r FIELD LINE; do
+    case $FIELD in
+        v) VOLUME="$LINE" ;;
+        b) BATTERY="$LINE" ;;
+        d) DATE="$LINE" ;;
+    esac
+    printf "%%{c}| b:%3d%%%% | v:%3d%%%% |%%{c}%%{r}$DATE%%{r}\n" "$BATTERY" "$VOLUME"
+done | lemonbar -p
