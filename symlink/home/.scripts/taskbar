@@ -42,17 +42,26 @@ function cpud() {
     do :; done
 }
 
+function memd() {
+    while
+        echo "m:$(cat /proc/meminfo | grep -E "Mem" | sed "s/[^0-9]//g" | tr '\n' ' ' | awk '{printf "%d",(($1-$3)/$1)*100}')"
+        sleep 2
+    do :; done
+}
+
 (
     volumed "$HOME/.taskbar/volume-changed" &
     batteryd &
     timed &
     cpud &
+    memd &
 ) | while IFS=':' read -r FIELD LINE; do
     case $FIELD in
         v) VOLUME="$LINE" ;;
         b) BATTERY="$LINE" ;;
         d) DATE="$LINE" ;;
         c) CPU="$LINE" ;;
+        m) MEM="$LINE"
     esac
-    printf "%%{c}| b:%3d%%%% | v:%3d%%%% | c:$CPU |%%{c}%%{r}$DATE%%{r}\n" "$BATTERY" "$VOLUME"
+    printf "%%{c}| b:%3d%%%% | v:%3d%%%% | m: $MEM%%%% | c:$CPU |%%{c}%%{r}$DATE%%{r}\n" "$BATTERY" "$VOLUME"
 done | lemonbar -p
