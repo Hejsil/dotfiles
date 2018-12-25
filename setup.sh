@@ -27,7 +27,7 @@ yay -S --noconfirm                     \
     skim ripgrep fd alsa-utils dunst   \
     rofi dmenu openssh wmctrl wget     \
     lemonbar-git inotify-tools lynx    \
-    uni2ascii ttf-unifont
+    uni2ascii ttf-unifont imagemagick
 
 code --install-extension shan.code-settings-sync
 
