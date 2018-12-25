@@ -13,7 +13,7 @@ function volumed() {
 function batteryd() {
     while
         echo "b:$(upower -i "/org/freedesktop/UPower/devices/battery_BAT0" \
-            | grep "percentage:" | sed -E "s/[^0-9]*([0-9]+)%/\1/")"
+            | grep "percentage:" | sed -E "s/[^0-9]//g")"
         sleep 60
     do :; done
 }
@@ -44,7 +44,7 @@ function cpud() {
 
 function memd() {
     while
-        echo "m:$(cat /proc/meminfo | grep -E "Mem" | sed "s/[^0-9]//g" | tr '\n' ' ' | awk '{printf "%d",(($1-$3)/$1)*100}')"
+        echo "m:$(cat /proc/meminfo | grep -E "Mem" | sed "s/[^0-9]//g" | tr '\n' ' ' | awk '{printf "%d %d",($1-$3),$1}')"
         sleep 2
     do :; done
 }
@@ -63,5 +63,15 @@ function memd() {
         c) CPU="$LINE" ;;
         m) MEM="$LINE"
     esac
-    printf "%%{c}| b:%3d%%%% | v:%3d%%%% | m: $MEM%%%% | c:$CPU |%%{c}%%{r}$DATE%%{r}\n" "$BATTERY" "$VOLUME"
+    BAR="%{l}"
+    BAR+="%{l}"
+    BAR+="%{c}"
+    BAR+=$(echo "$VOLUME" | dbar -w 5 -l "vol")
+    BAR+=$(echo "$BATTERY" | dbar -w 5 -l " | bat")
+    BAR+=$(echo "$MEM" | dbar -w 5 -l " | mem")
+    BAR+="%{c}"
+    BAR+="%{r}"
+    BAR+="$DATE"
+    BAR+="%{r}"
+    echo "$BAR"
 done | lemonbar -p

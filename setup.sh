@@ -11,6 +11,8 @@ mkdir "$HOME/repo"
     rm -r "$(pwd)"
 )
 
+gcc "src/dbar.c" -o "$HOME/.bin/dbar"
+
 yay -S --noconfirm                     \
     gdm openbox thunderbird nitrogen   \
     visual-studio-code-bin deluge      \
