@@ -3,24 +3,29 @@ mkdir -p "$HOME/.taskbar/"
 
 function volumed() {
     FILE="$1"
-    echo > "$FILE" 
+    echo > "$FILE"
     while
-        echo "v:$(amixer sget Master | tr '\n' ' ' | cut -d "[" -f 2 | cut -d "%" -f 1)"
+        echo "vol:$(amixer sget Master | tr '\n' ' ' | cut -d "[" -f 2 | cut -d "%" -f 1)"
         inotifywait "$FILE"
     do :; done
 }
 
 function batteryd() {
+    BAT=""
     while
-        echo "b:$(upower -i "/org/freedesktop/UPower/devices/battery_BAT0" \
-            | grep "percentage:" | sed -E "s/[^0-9]//g")"
+        BAT2="$($(upower -i "/org/freedesktop/UPower/devices/battery_BAT0" \
+            | grep "percentage:" | sed -E "s/[^0-9]//g"))"
+        if [ "$BAT2" != "$BAT" ]; then
+            BAT="$BAT2"
+            echo "bat:$BAT"
+        fi
         sleep 60
     do :; done
 }
 
 function timed() {
     while
-        echo "d:$(date '+%F %R')"
+        echo "dat:$(date '+%F %R')"
         sleep 5
     do :; done
 }
@@ -35,7 +40,7 @@ function cpud() {
     usage > "$LAST"
     while
         usage > "$CURR"
-        echo "c:$(paste -d " " "$CURR" "$LAST" | awk '{printf "%d %d %d\n",($1-$4),($2-$5),($3-$6)}' |\
+        echo "cpu:$(paste -d " " "$CURR" "$LAST" | awk '{printf "%d %d %d\n",($1-$4),($2-$5),($3-$6)}' |\
             awk '{usage=($1+$2)*100/($1+$2+$3); printf " %3.0f",usage}')"
         cat "$CURR" > "$LAST"
         sleep 2
@@ -43,8 +48,20 @@ function cpud() {
 }
 
 function memd() {
+    MEM_CURR=""
+    MEM_MAX=""
     while
-        echo "m:$(cat /proc/meminfo | grep -E "Mem" | sed "s/[^0-9]//g" | tr '\n' ' ' | awk '{printf "%d %d",($1-$3),$1}')"
+        MEM="$(cat /proc/meminfo | grep -E "Mem" | sed "s/[^0-9]//g" | tr '\n' ' ')"
+        MEM_CURR2="$(echo "$MEM" | awk '{printf "%d",($1-$3)}')"
+        MEM_MAX2="$(echo "$MEM" | awk '{printf "%d",$1}')"
+        if [ "$MEM_CURR2" != "$MEM_CURR" ]; then
+            MEM_CURR="$MEM_CURR2"
+            echo "memc:$MEM_CURR"
+        fi
+        if [ "$MEM_MAX2" != "$MEM_MAX" ]; then
+            MEM_MAX="$MEM_MAX2"
+            echo "memm:$MEM_MAX"
+        fi
         sleep 2
     do :; done
 }
@@ -57,21 +74,24 @@ function memd() {
     memd &
 ) | while IFS=':' read -r FIELD LINE; do
     case $FIELD in
-        v) VOLUME="$LINE" ;;
-        b) BATTERY="$LINE" ;;
-        d) DATE="$LINE" ;;
-        c) CPU="$LINE" ;;
-        m) MEM="$LINE"
+        vol) VOLUME="$LINE" ;;
+        bat) BATTERY="$LINE" ;;
+        dat) DATE="$LINE" ;;
+        #cpu) CPU="$LINE" ;;
+        memc) MEM_CURR="$LINE" ;;
+        memm) MEM_MAX="$LINE" ;;
+        *) continue ;;
     esac
-    BAR="%{l}"
+    BAR=""
+    BAR+="%{l}"
     BAR+="%{l}"
     BAR+="%{c}"
-    BAR+=$(echo "$VOLUME" | dbar -w 5 -l "vol")
-    BAR+=$(echo "$BATTERY" | dbar -w 5 -l " | bat")
-    BAR+=$(echo "$MEM" | dbar -w 5 -l " | mem")
+    BAR+="vol [$(echo "$VOLUME" | sab -s ' -=' -l 5 )]"
+    BAR+=" | bat [$(echo "$BATTERY" | sab -s ' -=' -l 5)]"
+    BAR+=" | mem [$(echo "$MEM_CURR" | sab -s ' -=' -l 5 -M "$MEM_MAX")]"
     BAR+="%{c}"
     BAR+="%{r}"
     BAR+="$DATE"
     BAR+="%{r}"
     echo "$BAR"
-done | lemonbar -p
+done | lemonbar -p -b

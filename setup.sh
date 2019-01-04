@@ -11,8 +11,6 @@ mkdir "$HOME/repo"
     rm -r "$(pwd)"
 )
 
-gcc "src/dbar.c" -o "$HOME/.bin/dbar"
-
 yay -S --noconfirm                     \
     gdm openbox thunderbird nitrogen   \
     visual-studio-code-bin deluge      \
@@ -37,3 +35,4 @@ sudo systemctl enable NetworkManager.service
 
 chsh -s /usr/bin/zsh
 ./link-up.sh
+./clone.sh
