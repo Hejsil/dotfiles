@@ -123,7 +123,7 @@ function colorizeMemBar() {
 }
 
 function prettyBytes() {
-    while read B dummy; do
+    while read B; do
     [ $B -lt 1024 ] && echo "${B}B" && break
     KB=$(((B+512)/1024))
 
@@ -161,12 +161,12 @@ function prettyBytes() {
     esac
     BAR=''
     BAR+='%{l}'
+    BAR+=" $(printf '%6.6s' "$(echo "$NETR" | prettyBytes)")/s "
+    BAR+=' '
+    BAR+="$(printf '%6.6s' "$(echo "$NETT" | prettyBytes)")/s "
     BAR+='%{c}'
     # TODO Redo volume
     #BAR+="vol [$(echo "$VOLUME" | sab -s ' -=' -l 5 )]"
-    BAR+="$(printf '%7.7s' "$(echo "$NETR" | prettyBytes)")/s "
-    BAR+=' '
-    BAR+="$(printf '%7.7s' "$(echo "$NETT" | prettyBytes)")/s "
     BAR+="▕$(echo "$MEM_CURR" | sab -s ' ▏▎▍▌▋▊▉█' -l 5 -M "$MEM_MAX"| colorizeMemBar)▏"
     BAR+=' '
     if [ -z BATTERY ]; then
