@@ -31,7 +31,7 @@ function timed() {
 }
 
 function usage() {
-    grep 'cpu' /proc/stat | sed -E "s/[ ]+/ /g" | cut -d ' ' -f 2,4,5
+    grep 'cpu[0-9]' /proc/stat | sed -E "s/[ ]+/ /g" | cut -d ' ' -f 2,4,5
 }
 
 function cpud() {
@@ -41,10 +41,52 @@ function cpud() {
     while
         usage > "$CURR"
         echo "cpu:$(paste -d " " "$CURR" "$LAST" | awk '{printf "%d %d %d\n",($1-$4),($2-$5),($3-$6)}' |\
-            awk '{usage=($1+$2)*100/($1+$2+$3); printf " %3.0f",usage}')"
+            awk '{usage=($1+$2)/($1+$2+$3); printf "%d ",usage*100}')"
         cat "$CURR" > "$LAST"
         sleep 2
     do :; done
+}
+
+function colorizeCPUBars() {
+    while read; do
+        case "$REPLY" in
+            ▁) echo "%{F#4CAF50}$REPLY%{F-}" ;;
+            ▂) echo "%{F#8BC34A}$REPLY%{F-}" ;;
+            ▃) echo "%{F#CDDC39}$REPLY%{F-}" ;;
+            ▄) echo "%{F#FFEB3B}$REPLY%{F-}" ;;
+            ▅) echo "%{F#FFC107}$REPLY%{F-}" ;;
+            ▆) echo "%{F#FF9800}$REPLY%{F-}" ;;
+            ▇) echo "%{F#FF5722}$REPLY%{F-}" ;;
+            █) echo "%{F#F44336}$REPLY%{F-}" ;;
+            *) echo "%{F#F44336}$REPLY%{F-}" ;;
+        esac
+    done
+}
+
+function colorizeBattery() {
+    while read; do
+        case "$REPLY" in
+            ) echo "%{F#4CAF50}$REPLY%{F-}" ;;
+            ) echo "%{F#8BC34A}$REPLY%{F-}" ;;
+            ) echo "%{F#FFEB3B}$REPLY%{F-}" ;;
+            ) echo "%{F#FF9800}$REPLY%{F-}" ;;
+            ) echo "%{F#F44336}$REPLY%{F-}" ;;
+            *) echo "%{F#F44336}$REPLY%{F-}" ;;
+        esac
+    done
+}
+
+function colorizeMemBar() {
+    while read; do
+        case "$REPLY" in
+            █████*) echo "%{F#F44336}$REPLY%{F-}" ;;
+            ████*) echo "%{F#FF5722}$REPLY%{F-}" ;;
+            ███*) echo "%{F#FFC107}$REPLY%{F-}" ;;
+            ██*) echo "%{F#CDDC39}$REPLY%{F-}" ;;
+            █*) echo "%{F#8BC34A}$REPLY%{F-}" ;;
+            *) echo "%{F#4CAF50}$REPLY%{F-}" ;;
+        esac
+    done
 }
 
 function memd() {
@@ -77,21 +119,30 @@ function memd() {
         vol) VOLUME="$LINE" ;;
         bat) BATTERY="$LINE" ;;
         dat) DATE="$LINE" ;;
-        #cpu) CPU="$LINE" ;;
+        cpu) CPU="$LINE" ;;
         memc) MEM_CURR="$LINE" ;;
         memm) MEM_MAX="$LINE" ;;
         *) continue ;;
     esac
-    BAR=""
-    BAR+="%{l}"
-    BAR+="%{l}"
-    BAR+="%{c}"
-    BAR+="vol [$(echo "$VOLUME" | sab -s ' -=' -l 5 )]"
-    BAR+=" | bat [$(echo "$BATTERY" | sab -s ' -=' -l 5)]"
-    BAR+=" | mem [$(echo "$MEM_CURR" | sab -s ' -=' -l 5 -M "$MEM_MAX")]"
-    BAR+="%{c}"
-    BAR+="%{r}"
-    BAR+="$DATE"
-    BAR+="%{r}"
+    BAR=''
+    BAR+='%{l}'
+    BAR+='%{c}'
+    # TODO Redo volume
+    #BAR+="vol [$(echo "$VOLUME" | sab -s ' -=' -l 5 )]"
+    BAR+="▕$(echo "$MEM_CURR" | sab -s ' ▏▎▍▌▋▊▉█' -l 5 -M "$MEM_MAX"| colorizeMemBar)▏"
+    BAR+=' '
+    if [ -z BATTERY ]; then
+        BAR+="$BATTERY% $(echo "$BATTERY" | sab -s '' -l 1 -M 4 | colorizeBattery)"
+        BAR+=' '
+    fi
+    BAR+="▕$(echo "$CPU" | tr ' ' '\n' | awk 'NF' | sab -s '▁▂▃▄▅▆▇█' -l 1 | colorizeCPUBars | tr -d '\n')▏"
+
+
+    BAR+='%{r}'
+    BAR+="$DATE  "
     echo "$BAR"
-done | lemonbar -p -b
+done  | lemonbar -p  -f 'DejaVu Sans Mono:style=Book:size=15'\
+     -f 'Font Awesome 5 Brands:style=Regular:size=17'\
+     -f 'Font Awesome 5 Free:style=Regular:size=17'\
+     -f 'Font Awesome 5 Free:style=Solid:size=17'\
+     -g 'x24'

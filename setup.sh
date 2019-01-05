@@ -12,21 +12,23 @@ mkdir "$HOME/repo"
 )
 
 yay -S --noconfirm                     \
-    gdm openbox thunderbird nitrogen   \
+    gdm openbox thunderbird sxiv       \
     visual-studio-code-bin deluge      \
     python2-gobject2 pygtk sakura      \
     chromium xclip nvidia syncplay     \
-    ttf-liberation htop discord        \
+    htop discord lynx uni2ascii        \
     numix-frost-themes llvm clang      \
     numix-icon-theme-pack-git megasync \
     zsh oh-my-zsh-git zsh-pure-prompt  \
     zsh-fast-syntax-highlighting-git   \
-    zsh-autosuggestions yay feh maim   \
+    zsh-autosuggestions yay feh        \
     skim ripgrep fd alsa-utils dunst   \
-    rofi dmenu openssh wmctrl wget     \
-    lemonbar-git inotify-tools lynx    \
-    uni2ascii ttf-unifont imagemagick  \
-    photoqt
+    dmenu openssh wget wmctrl          \
+    lemonbar-xft-git inotify-tools     \
+    imagemagick maim xorg-xrandr       \
+    ttf-font-awesome ttf-dejavu        \
+    ttf-unifont ttf-liberation         \
+    powerline-fonts
 
 code --install-extension shan.code-settings-sync
 

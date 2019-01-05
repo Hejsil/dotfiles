@@ -17,12 +17,6 @@
 #xfce-mcs-manager &
 
 
-nitrogen --restore &
-setxkbmap -layout "dk" &
-xrandr --output DP-0 --mode 2560x1440 --rate 165 --primary --left-of HDMI-0 &
-thunderbird &
-discord &
-dunst &
 taskbar &
 (
     while true; do
@@ -30,3 +24,9 @@ taskbar &
         sleep 30
     done
 ) &
+
+xrandr --output DP-0 --mode 2560x1440 --rate 144 --primary --left-of HDMI-0 &
+setxkbmap -layout "dk" &
+thunderbird &
+discord &
+dunst &
