@@ -182,8 +182,9 @@
     <keybind key="A-F4">
       <action name="Close"/>
     </keybind>
+
     <!-- Keybindings for window switching with the arrow keys -->
-    <keybind key="W-Left">
+    <keybind key="KP_4">
       <action name="ToggleMaximize">
         <direction>horizontal</direction>
       </action>
@@ -192,7 +193,7 @@
         <width>50%</width>
       </action>
     </keybind>
-    <keybind key="W-Right">
+    <keybind key="KP_6">
       <action name="ToggleMaximize">
         <direction>horizontal</direction>
       </action>
@@ -201,7 +202,7 @@
         <width>50%</width>
       </action>
     </keybind>
-    <keybind key="W-Up">
+    <keybind key="KP_8">
       <action name="ToggleMaximize">
         <direction>vertical</direction>
       </action>
@@ -210,7 +211,7 @@
         <height>50%</height>
       </action>
     </keybind>
-    <keybind key="W-Down">
+    <keybind key="KP_2">
       <action name="ToggleMaximize">
         <direction>vertical</direction>
       </action>
@@ -219,21 +220,56 @@
         <height>50%</height>
       </action>
     </keybind>
-    <keybind key="W-S-Left">
+    <keybind key="KP_5">
+      <action name="ToggleMaximize"/>
+    </keybind>
+
+    <keybind key="KP_3">
+      <action name="Unmaximize"/>
+      <action name="MoveResizeTo">
+        <y>-0</y>
+        <x>-0</x>
+        <height>50%</height>
+        <width>50%</width>
+      </action>
+    </keybind>
+    <keybind key="KP_1">
+      <action name="Unmaximize"/>
+      <action name="MoveResizeTo">
+        <y>-0</y>
+        <x>0</x>
+        <height>50%</height>
+        <width>50%</width>
+      </action>
+    </keybind>
+    <keybind key="KP_7">
+      <action name="Unmaximize"/>
+      <action name="MoveResizeTo">
+        <y>0</y>
+        <x>0</x>
+        <height>50%</height>
+        <width>50%</width>
+      </action>
+    </keybind>
+    <keybind key="KP_9">
+      <action name="Unmaximize"/>
+      <action name="MoveResizeTo">
+        <y>0</y>
+        <x>-0</x>
+        <height>50%</height>
+        <width>50%</width>
+      </action>
+    </keybind>
+
+    <keybind key="S-KP_4">
       <action name="MoveResizeTo">
         <monitor>prev</monitor>
       </action>
     </keybind>
-    <keybind key="W-S-Right">
+    <keybind key="S-KP_6">
       <action name="MoveResizeTo">
         <monitor>next</monitor>
       </action>
-    </keybind>
-    <keybind key="W-S-Up">
-      <action name="ToggleMaximize"/>
-    </keybind>
-    <keybind key="W-S-Down">
-      <action name="Iconify"/>
     </keybind>
     <!-- Keybindings for running applications -->
     <keybind key="W-Tab">
