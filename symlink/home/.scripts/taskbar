@@ -38,13 +38,12 @@ function cpud() {
     LAST=$(mktemp /tmp/cpu-last.XXXXXX)
     CURR=$(mktemp /tmp/cpu-curr.XXXXXX)
     usage > "$LAST"
-    while
+    while sleep 2; do
         usage > "$CURR"
         echo "cpu:$(paste -d " " "$CURR" "$LAST" | awk '{printf "%d %d %d\n",($1-$4),($2-$5),($3-$6)}' |\
             awk '{usage=($1+$2)/($1+$2+$3); printf "%d ",usage*100}')"
         cat "$CURR" > "$LAST"
-        sleep 2
-    do :; done
+    done
 }
 
 function memd() {
@@ -54,13 +53,10 @@ function memd() {
         MEM="$(cat /proc/meminfo | grep -E "Mem" | sed "s/[^0-9]//g" | tr '\n' ' ')"
         MEM_CURR2="$(echo "$MEM" | awk '{printf "%d",($1-$3)}')"
         MEM_MAX2="$(echo "$MEM" | awk '{printf "%d",$1}')"
-        if [ "$MEM_CURR2" != "$MEM_CURR" ]; then
+        if [ "$MEM_CURR2" != "$MEM_CURR" ] || [ "$MEM_MAX2" != "$MEM_MAX" ]; then
             MEM_CURR="$MEM_CURR2"
-            echo "memc:$MEM_CURR"
-        fi
-        if [ "$MEM_MAX2" != "$MEM_MAX" ]; then
             MEM_MAX="$MEM_MAX2"
-            echo "memm:$MEM_MAX"
+            echo "mem:$MEM_CURR $MEM_MAX"
         fi
         sleep 2
     do :; done
@@ -148,39 +144,28 @@ function prettyBytes() {
 ) | while IFS=':' read -r FIELD LINE; do
     case $FIELD in
         vol) VOLUME="$LINE" ;;
-        bat) BATTERY="$LINE" ;;
-        dat) DATE="$LINE" ;;
-        cpu) CPU="$LINE" ;;
-        memc) MEM_CURR="$LINE" ;;
-        memm) MEM_MAX="$LINE" ;;
+        bat)
+            BATTERY="$LINE% $(echo "$LINE" | sab -s '' -l 1 -M 4 | colorizeBattery)"
+            ;;
+        dat)
+            DATE="$LINE "
+            ;;
+        cpu)
+            CPU="▕$(echo "$LINE" | tr ' ' '\n' | awk 'NF' | sab -s ' ▁▂▃▄▅▆▇█' -l 1 | colorizeCPUBars | tr -d '\n')▏"
+            ;;
+        mem)
+            MEM_CURR="$(echo "$LINE" | cut -d ' ' -f1)"
+            MEM_MAX="$(echo "$LINE" | cut -d ' ' -f2)"
+            MEM="▕$(echo "$MEM_CURR" | sab -s ' ▏▎▍▌▋▊▉█' -l 5 -M "$MEM_MAX"| colorizeMemBar)▏"
+            ;;
         net)
-            NETR="$(echo "$LINE" | cut -d ' ' -f1)"
-            NETT="$(echo "$LINE" | cut -d ' ' -f2)"
+            DOWNLOAD="$(echo "$LINE" | cut -d ' ' -f1 | prettyBytes)/s "
+            UPLOAD="$(echo "$LINE" | cut -d ' ' -f2 | prettyBytes)/s "
             ;;
         *) continue ;;
     esac
-    BAR=''
-    BAR+='%{l}'
-    BAR+=" $(printf '%6.6s' "$(echo "$NETR" | prettyBytes)")/s "
-    BAR+=' '
-    BAR+="$(printf '%6.6s' "$(echo "$NETT" | prettyBytes)")/s "
-    BAR+='%{c}'
-    # TODO Redo volume
-    #BAR+="vol [$(echo "$VOLUME" | sab -s ' -=' -l 5 )]"
-    BAR+="▕$(echo "$MEM_CURR" | sab -s ' ▏▎▍▌▋▊▉█' -l 5 -M "$MEM_MAX"| colorizeMemBar)▏"
-    BAR+=' '
-    if [ -z BATTERY ]; then
-        BAR+="$BATTERY% $(echo "$BATTERY" | sab -s '' -l 1 -M 4 | colorizeBattery)"
-        BAR+=' '
-    fi
-    BAR+="▕$(echo "$CPU" | tr ' ' '\n' | awk 'NF' | sab -s ' ▁▂▃▄▅▆▇█' -l 1 | colorizeCPUBars | tr -d '\n')▏"
-
-
-    BAR+='%{r}'
-    BAR+="$DATE  "
-    echo "$BAR"
-done  | lemonbar -p  -f 'DejaVu Sans Mono:style=Book:size=15'\
-     -f 'Font Awesome 5 Brands:style=Regular:size=17'\
-     -f 'Font Awesome 5 Free:style=Regular:size=17'\
-     -f 'Font Awesome 5 Free:style=Solid:size=17'\
-     -g 'x24'
+    echo "%{l} $(printf '%12.12s %12.12s' "$DOWNLOAD" "$UPLOAD")%{c}$MEM $CPU%{r}$DATE "
+done  | lemonbar -p -f 'DejaVu Sans Mono:style=Book'\
+     -f 'Font Awesome 5 Brands:style=Regular:size=14'\
+     -f 'Font Awesome 5 Free:style=Regular:size=14'\
+     -f 'Font Awesome 5 Free:style=Solid:size=14'
