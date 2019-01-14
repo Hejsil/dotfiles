@@ -1,0 +1,6 @@
+#!/bin/bash
+start=$(date +%N)
+(${@:2})
+end=$(date +%N)
+
+echo "$(expr "$end" - "$start")"
