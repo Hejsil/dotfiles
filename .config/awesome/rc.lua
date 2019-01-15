@@ -14,6 +14,9 @@ local hotkeys_popup = require("awful.hotkeys_popup").widget
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
+local volume = require("widget.volume")
+local mem = require("widget.mem")
+
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
 if awesome.startup_errors then
@@ -166,6 +169,8 @@ awful.screen.connect_for_each_screen(
             {
                 -- Right widgets
                 layout = wibox.layout.fixed.horizontal,
+                mem.new(),
+                volume.new(),
                 awful.widget.keyboardlayout(),
                 wibox.widget.systray(),
                 wibox.widget.textclock(),
@@ -184,6 +189,22 @@ globalkeys =
             awful.spawn(terminal)
         end,
         {description = "open a terminal", group = "launcher"}
+    ),
+    awful.key(
+        {},
+        "XF86AudioRaiseVolume",
+        function()
+            awful.spawn("volume-up")
+        end,
+        {description = "turn up volume", group = "launcher"}
+    ),
+    awful.key(
+        {},
+        "XF86AudioLowerVolume",
+        function()
+            awful.spawn("volume-down")
+        end,
+        {description = "turn down volume", group = "launcher"}
     ),
     awful.key(
         {},
