@@ -1,0 +1,6 @@
+#!/bin/sh
+setxkbmap -layout "dk" &
+while true; do
+    feh --randomize --bg-fill ~/MEGA/Pictures/Wallpapers
+    sleep 5
+done &
