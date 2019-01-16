@@ -57,7 +57,7 @@ end
 beautiful.init("~/.config/awesome/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "sakura"
+terminal = "alacritty"
 editor = "vis"
 editor_cmd = terminal .. " -e " .. editor
 
