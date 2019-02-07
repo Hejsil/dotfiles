@@ -6,8 +6,8 @@ local volume = {}
 function volume.new(args)
     local res = wibox.widget.textbox()
     local update = function()
-        local p = io.popen("volume", "r")
-        local vol = p:read("*l")
+        local p = io.popen("~/.scripts/volume", "r")
+        local vol = p:read("*l") or 0
         p:close()
 
         res:set_text(" vol: " .. vol .. "%")
