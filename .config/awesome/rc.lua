@@ -192,9 +192,17 @@ globalkeys =
     ),
     awful.key(
         {},
+        "F11",
+        function()
+            awful.spawn("sh -c '~/.scripts/web.sh'")
+        end,
+        {description = "open a site", group = "launcher"}
+    ),
+    awful.key(
+        {},
         "XF86AudioRaiseVolume",
         function()
-            awful.spawn("volume-up")
+            awful.spawn("sh -c '~/.scripts/volume-up'")
         end,
         {description = "turn up volume", group = "launcher"}
     ),
@@ -202,9 +210,25 @@ globalkeys =
         {},
         "XF86AudioLowerVolume",
         function()
-            awful.spawn("volume-down")
+            awful.spawn("sh -c '~/.scripts/volume-down'")
         end,
         {description = "turn down volume", group = "launcher"}
+    ),
+    awful.key(
+        {},
+        "KP_Add",
+        function()
+            awful.tag.incmwfact(0.05)
+        end,
+        {description = "increase master width factor", group = "layout"}
+    ),
+    awful.key(
+        {},
+        "KP_Subtract",
+        function()
+            awful.tag.incmwfact(-0.05)
+        end,
+        {description = "decrease master width factor", group = "layout"}
     ),
     awful.key(
         {},
@@ -333,11 +357,27 @@ clientkeys =
     gears.table.join(
     awful.key(
         {},
-        "KP_Subtract",
+        "KP_Multiply",
         function(c)
             c:kill()
         end,
         {description = "close", group = "client"}
+    ),
+    awful.key(
+        {"Control", "Shift"},
+        "KP_Right",
+        function(c)
+            c:move_to_screen(c.screen.index + 1)
+        end,
+        {description = "move client to next screen", group = "client"}
+    ),
+    awful.key(
+        {"Control", "Shift"},
+        "KP_Left",
+        function(c)
+            c:move_to_screen(c.screen.index - 1)
+        end,
+        {description = "move client to prev screen", group = "client"}
     ),
     awful.key(
         {},
