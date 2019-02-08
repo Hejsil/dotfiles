@@ -200,6 +200,14 @@ globalkeys =
     ),
     awful.key(
         {},
+        "Print",
+        function()
+            awful.spawn("sh -c '~/.scripts/screenshot ~/Pictures'")
+        end,
+        {description = "print screen", group = "launcher"}
+    ),
+    awful.key(
+        {},
         "XF86AudioRaiseVolume",
         function()
             awful.spawn("sh -c '~/.scripts/volume-up'")
