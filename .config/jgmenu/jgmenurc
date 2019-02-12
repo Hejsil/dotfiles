@@ -1,10 +1,11 @@
 tint2_look           = 0
 terminal_exec        = termite
 columns              = 2
+monitor              = 2
 
-menu_width           = 500
-menu_height_min      = 480
-menu_height_max      = 480
+menu_width           = 1280
+menu_height_min      = 720
+menu_height_max      = 720
 menu_padding_top     = 50
 menu_padding_right   = 40
 menu_padding_bottom  = 40
