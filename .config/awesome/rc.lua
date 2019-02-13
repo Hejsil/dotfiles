@@ -70,7 +70,7 @@ modkey = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
-    -- awful.layout.suit.floating,
+    awful.layout.suit.floating,
     awful.layout.suit.tile,
     awful.layout.suit.tile.left,
     awful.layout.suit.tile.bottom,
@@ -79,8 +79,8 @@ awful.layout.layouts = {
     awful.layout.suit.fair.horizontal,
     awful.layout.suit.spiral,
     awful.layout.suit.spiral.dwindle,
-    -- awful.layout.suit.max,
-    -- awful.layout.suit.max.fullscreen,
+    awful.layout.suit.max,
+    awful.layout.suit.max.fullscreen,
     awful.layout.suit.magnifier,
     awful.layout.suit.corner.nw,
     awful.layout.suit.corner.ne,
@@ -107,7 +107,7 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 awful.screen.connect_for_each_screen(
     function(s)
         -- Each screen has its own tag table.
-        awful.tag({"1", "2", "3", "4", "5", "6", "7", "8", "9"}, s, awful.layout.layouts[1])
+        awful.tag({"1", "2", "3", "4", "5", "6", "7", "8", "9"}, s, awful.layout.layouts[2])
 
         s.mypromptbox = awful.widget.prompt()
         s.mylayoutbox = awful.widget.layoutbox(s)
@@ -242,7 +242,7 @@ globalkeys =
         {},
         "KP_Enter",
         function()
-            awful.screen.focused().mypromptbox:run()
+            awful.spawn("rofi -show run")
         end,
         {description = "run prompt", group = "launcher"}
     ),

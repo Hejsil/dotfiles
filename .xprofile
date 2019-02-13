@@ -1,5 +1,6 @@
 #!/bin/sh
 setxkbmap -layout "dk" &
+compton &
 while true; do
     feh --randomize --bg-fill ~/MEGA/Pictures/Wallpapers
     sleep 5

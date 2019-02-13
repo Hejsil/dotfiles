@@ -2,8 +2,7 @@
 *.foreground:   #c5c8c6
 *.background:   #1d1f21
 *.cursorColor:  #c5c8c6
-dmenu.font:     monospace:size=10
-awesome.font:   monospace 10
+*.font:         monospace 10
 
 ! black
 *.color0:       #1d1f21
@@ -36,3 +35,24 @@ awesome.font:   monospace 10
 ! white
 *.color7:       #c5c8c6
 *.color15:      #ffffff
+
+! "Whether to load and show icons" Set from: Default
+rofi.show-icons:                     false
+
+! "Terminal to use" Set from: Default
+*.terminal:                       alacritty
+
+! "New style theme file" Set from: Default
+! rofi.theme:                          
+
+! "Color scheme for normal row" Set from: Default
+! rofi.color-normal:                   
+
+! "Color scheme for urgent row" Set from: Default
+! rofi.color-urgent:                   
+
+! "Color scheme for active row" Set from: Default
+! rofi.color-active:                   
+
+! "Color scheme window" Set from: Default
+! rofi.color-window:                   
