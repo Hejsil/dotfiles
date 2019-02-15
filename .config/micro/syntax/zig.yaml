@@ -1,0 +1,66 @@
+filetype: zig
+
+detect:
+    filename: "\\.zig$"
+
+rules:
+    - identifier: "\\b[a-z_][0-9a-zA-Z_]*\\b"
+    - type: "\\b[A-Z][0-9a-zA-Z_]*\\b"
+    - type.int: "\\b([ui][0-9]+|[ui]size|comptime_int|c_(short|ushort|int|uint|long|ulong|longlong|ulonglong))\\b" 
+    - type.float: "\\b(f(16|32|64|128)|comptime_float|c_longdouble)\\b" 
+    - type.bool: "\\b(bool)\\b"
+    - type.type: "\\b(type)\\b"
+    - type.void: "\\b(void)\\b"
+    - type.noreturn: "\\b(noreturn)\\b"
+    - type.anyerror: "\\b(anyerror)\\b"
+    - type.promise: "\\b(promise)\\b"
+    - statement.loop: "\\b(for|while)\\b"
+    - statement.flow: "\\b(if|else|switch|catch|orelse|or|and|defer|errdefer|return|try|break|continue)\\b"
+    - statement.async: "\\b(async|await|suspend|resume|cancel)\\b"
+    - statement.asm: "\\b(asm)\\b"
+    - statement.decl: "\\b(fn|struct|union|enum|error)\\b"
+    - statement.cc: "\\b(nakedcc|stdcallcc)\\b"
+    - statement.ptr.attr: "\\b(volatile|noalias)\\b"
+    - statement.mutability: "\\b(var|const)\\b"
+    - statement.section: "\\b(section)\\b"
+    - statement.align: "\\b(align)\\b"
+    - statement.extern: "\\b(extern)\\b"
+    - statement.inline: "\\b(inline)\\b"
+    - statement.packed: "\\b(packed)\\b"
+    - statement.comptime: "\\b(comptime)\\b"
+    - statement.use: "\\b(use)\\b"
+    - statement.test: "\\b(test)\\b"
+    - statement.visability: "\\b(pub|export)\\b"
+    #- symbol.operator: "([.:;,+*|=!\\%]|<|>|/|-|&)"
+    - symbol.brackets: "[(){}]|\\[|\\]"
+    - constant.bool: "\\b(true|false)\\b"
+    - constant.null: "\\b(null)\\b"
+    - constant.undefined: "\\b(undefined)\\b"
+    - constant.float: "\\b[0-9]+(\\.[0-9]+)?[eE][+-]?[0-9]+\\b"
+    - constant.float: "\\b[0-9]+(\\.[0-9]+)?([eE][+-]?[0-9]+)?\\b"
+    - constant.decimal: "\\b[0-9]+\\b"
+    - constant.hex: "\\b0x[a-fA-F0-9]+\\b"
+    - constant.octal: "\\b0o[0-7]+\\b"
+    - constant.binary: "\\b0b[01]+\\b"
+
+    - constant.string:
+        start: "\""
+        end: "\""
+        skip: "\\\\."
+        rules:
+            - constant.specialChar: "\\\\."
+
+    - constant.string:
+        start: "'"
+        end: "'"
+        skip: "\\\\."
+        rules:
+            - preproc: "..+"
+            - constant.specialChar: "\\\\."
+
+    - comment:
+        start: "//"
+        end: "$"
+        rules:
+            - todo: "(TODO|XXX|FIXME):?"
+            
