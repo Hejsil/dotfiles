@@ -1,3 +1,2 @@
 #!/bin/sh
-amixer -q sset Master 3%-
-echo > "$HOME/.taskbar/volume-changed"
+pactl set-sink-volume 2 -3%

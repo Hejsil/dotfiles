@@ -1,2 +1,0 @@
-#!/bin/sh
-wmctrl -ia $(wmctrl -l -x | awk '{printf $1"^"$3"^"; for (i=5; i<=NF; i++) printf $i" "; printf "\n";}' | column -t -s '^' | dmenu -i -l 10 | cut -d " " -f 1)
