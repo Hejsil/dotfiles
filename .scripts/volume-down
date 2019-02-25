@@ -1,2 +1,0 @@
-#!/bin/sh
-pactl set-sink-volume 2 -3%
