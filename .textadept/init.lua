@@ -1,0 +1,1 @@
+buffer:set_theme(not CURSES and 'dark' or 'term')
