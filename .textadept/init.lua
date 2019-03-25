@@ -1,1 +1,3 @@
-buffer:set_theme(not CURSES and 'dark' or 'term')
+--require('textadept')
+buffer:set_theme('xresources')
+textadept.file_types.extensions.zig = 'zig'

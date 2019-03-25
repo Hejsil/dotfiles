@@ -1,58 +1,53 @@
-! special
-*.foreground:   #c5c8c6
-*.background:   #1d1f21
-*.cursorColor:  #c5c8c6
+*foreground: #c5c8c6
+*background: #1d1f21
+*cursorColor: #c5c8c6
 *.font:         monospace 10
 
-! black
-*.color0:       #1d1f21
-*.color8:       #969896
+*color0: #1d1f21
+*color1: #CC342B
+*color2: #198844
+*color3: #FBA922
+*color4: #3971ED
+*color5: #A36AC7
+*color6: #3971ED
+*color7: #c5c8c6
 
-! red
-*.color1:       #cc342b
-*.color9:       #cc342b
+*color8: #969896
+*color9: #CC342B
+*color10: #198844
+*color11: #FBA922
+*color12: #3971ED
+*color13: #A36AC7
+*color14: #3971ED
+*color15: #ffffff
 
-! green
-*.color2:       #198844
-*.color10:      #198844
+! Note: colors beyond 15 might not be loaded (e.g., xterm, urxvt),
+! use 'shell' template to set these if necessary
+*color16: #F96A38
+*color17: #3971ED
+*color18: #282a2e
+*color19: #373b41
+*color20: #b4b7b4
+*color21: #e0e0e0
 
-! yellow
-*.color3:       #fba922
-*.color11:      #fba922
-
-! blue
-*.color4:       #3971ed
-*.color12:      #3971ed
-
-! magenta
-*.color5:       #a36ac7
-*.color13:      #a36ac7
-
-! cyan
-*.color6:       #3971ed
-*.color14:      #3971ed
-
-! white
-*.color7:       #c5c8c6
-*.color15:      #ffffff
 
 ! "Whether to load and show icons" Set from: Default
-rofi.show-icons:                     false
+rofi.show-icons: false
 
 ! "Terminal to use" Set from: Default
-*.terminal:                       alacritty
+*.terminal: alacritty
 
 ! "New style theme file" Set from: Default
-! rofi.theme:                          
+! rofi.theme:
 
 ! "Color scheme for normal row" Set from: Default
-! rofi.color-normal:                   
+! rofi.color-normal:
 
 ! "Color scheme for urgent row" Set from: Default
-! rofi.color-urgent:                   
+! rofi.color-urgent:
 
 ! "Color scheme for active row" Set from: Default
-! rofi.color-active:                   
+! rofi.color-active:
 
 ! "Color scheme window" Set from: Default
-! rofi.color-window:                   
+! rofi.color-window:
