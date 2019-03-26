@@ -27,4 +27,5 @@ bindkey "^[[1;5C" forward-word
 bindkey "^[[A" up-line-or-beginning-search
 bindkey "^[[B" down-line-or-beginning-search
 
-alias open="xdg-open \$(sk)"
+alias o="xdg-open"
+alias ta="textadept"
