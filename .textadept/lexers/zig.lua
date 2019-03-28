@@ -10,8 +10,7 @@ local hex = dec + R("af") + R("AF")
 
 -- Whitespace.
 lex:add_rule("whitespace", token(lexer.WHITESPACE, S("\n ") ^ 1))
-lex:add_rule("keywords", token(
-    lexer.KEYWORD,
+lex:add_rule("keywords", token(lexer.KEYWORD,
     lexer.word_match(
         [[ align and anyerror asm async await break cancel
            catch comptime const continue defer else enum
@@ -22,8 +21,7 @@ lex:add_rule("keywords", token(
            unreachable use var volatile while                  ]]
     )
 ))
-lex:add_rule("types", token(
-    lexer.TYPE,
+lex:add_rule("types", token(lexer.TYPE,
     lexer.upper * (lexer.alnum + "_")^0 +
     S("ui") * dec^1 +
     "f" * lexer.word_match("16 32 64 128") +
@@ -38,8 +36,7 @@ lex:add_rule("types", token(
 ))
 lex:add_rule("identifier", token(lexer.IDENTIFIER, lexer.word))
 lex:add_rule("builtins", token(lexer.PREPROCESSOR, "@" * lexer.word))
-lex:add_rule("number", token(
-    lexer.NUMBER,
+lex:add_rule("number", token(lexer.NUMBER,
     "0b" * bin^1 * "." * bin^1 * (S("eE") * S("-+")^-1 * bin^1)^-1 +
     "0o" * oct^1 * "." * oct^1 * (S("eE") * S("-+")^-1 * oct^1)^-1 +
     "0x" * hex^1 * "." * hex^1 * (S("pP") * S("-+")^-1 * hex^1)^-1 +
@@ -55,7 +52,11 @@ lex:add_rule("number", token(
     "0x" * hex^1 +
            dec^1
 ))
-lex:add_rule("string", token(lexer.STRING, lexer.delimited_range('"') + "\\" * lexer.nonnewline^0))
+lex:add_rule("string", token(lexer.STRING,
+    lexer.delimited_range("'") +
+    lexer.delimited_range('"') +
+    "\\" * lexer.nonnewline^0
+))
 lex:add_rule("comment", token(lexer.COMMENT, "//" * lexer.nonnewline^0))
 lex:add_rule("operators", token(lexer.OPERATOR, S("!%&()*+,-./:;<=>?[]^{|}~")))
 lex:add_rule("error", token(lexer.ERROR, lexer.any))
