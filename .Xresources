@@ -1,7 +1,7 @@
 *foreground: #c5c8c6
 *background: #1d1f21
 *cursorColor: #c5c8c6
-*.font:         monospace 10
+*.font: monospace 10
 
 *color0: #1d1f21
 *color1: #CC342B
@@ -31,11 +31,17 @@
 *color21: #e0e0e0
 
 
+! "Terminal to use" Set from: Default
+*.terminal: alacritty
+
 ! "Whether to load and show icons" Set from: Default
 rofi.show-icons: false
 
-! "Terminal to use" Set from: Default
-*.terminal: alacritty
+! "Set the matching algorithm. (normal, regex, glob, fuzzy)" Set from: Default
+rofi.matching: fuzzy
+
+! "Set case-sensitivity" Set from: Default
+rofi.case-sensitive: false
 
 ! "New style theme file" Set from: Default
 ! rofi.theme:

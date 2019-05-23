@@ -24,7 +24,7 @@ local globalkeys =
         {},
         "Print",
         function()
-            awful.spawn.with_shell("screenshot ~/Pictures")
+            awful.spawn.with_shell("~/.scripts/screenshot.sh ~/Pictures")
         end,
         {description = "print screen", group = "launcher"}
     ),
