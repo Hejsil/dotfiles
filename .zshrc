@@ -1,7 +1,8 @@
 #!/bin/sh
 export ZSH=/usr/share/oh-my-zsh
-export LANG=en_DK.UTF-8
 export PATH=~/bin:~/scripts:$PATH
+export LANG=en_DK.UTF-8
+export VISUAL=zte
 
 ZSH_THEME="refined"
 CASE_SENSITIVE="true"
