@@ -43,17 +43,16 @@ rofi.matching: fuzzy
 ! "Set case-sensitivity" Set from: Default
 rofi.case-sensitive: false
 
-! "New style theme file" Set from: Default
-! rofi.theme:
+! Enable the extended coloring options
+rofi.color-enabled: true
 
-! "Color scheme for normal row" Set from: Default
-! rofi.color-normal:
+! Property Name     BG       Border   Separator
+rofi.color-window:  #282a2e, #282a2e, #1d1f21
 
-! "Color scheme for urgent row" Set from: Default
-! rofi.color-urgent:
+! Property Name     BG       FG       BG-alt   Head-BG  Head-FG
+rofi.color-normal:  #282a2e, #c5c8c6, #282a2e, #282a2e, #ffffff
+rofi.color-active:  #282a2e, #3971ed, #282a2e, #282a2e, #3971ed
+rofi.color-urgent:  #282a2e, #cc342b, #282a2e, #282a2e, #cc342b
 
-! "Color scheme for active row" Set from: Default
-! rofi.color-active:
-
-! "Color scheme window" Set from: Default
-! rofi.color-window:
+! Set the desired separator style
+rofi.separator-style: solid
