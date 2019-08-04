@@ -1,5 +1,8 @@
 F12
-    alacritty
+    $TERMINAL
+
+F11
+    $TERMINAL -e nnn -d
 
 XF86Audio{Raise}Volume
     pactl set-sink-mute 0 0 && pactl set-sink-volume 0 +5%
