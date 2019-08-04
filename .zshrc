@@ -1,7 +1,7 @@
 #!/bin/sh
 export ZSH=/usr/share/oh-my-zsh
 export LANG=en_DK.UTF-8
-export PATH=~/.bin:~/.scripts:$PATH
+export PATH=~/bin:~/scripts:$PATH
 
 ZSH_THEME="refined"
 CASE_SENSITIVE="true"
@@ -27,5 +27,5 @@ bindkey "^[[1;5C" forward-word
 bindkey "^[[A" up-line-or-beginning-search
 bindkey "^[[B" down-line-or-beginning-search
 
-alias o="xdg-open"
+alias o="mimeo"
 alias ta="textadept"
