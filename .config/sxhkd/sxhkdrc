@@ -1,0 +1,16 @@
+F12
+    alacritty
+
+XF86Audio{Raise}Volume
+    pactl set-sink-mute 0 0 && pactl set-sink-volume 0 +5%
+
+XF86AudioLowerVolume
+    pactl set-sink-mute 0 0 && pactl set-sink-volume 0 -5%
+
+XF86AudioMute
+    pactl set-sink-mute 0 $(((pactl list sinks | grep -q Mute:.no > /dev/null) && echo 1) || echo 0)
+
+Print
+    ~/scripts/screenshot.sh ~/Pictures
+
+

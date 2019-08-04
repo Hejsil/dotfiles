@@ -14,46 +14,6 @@ local globalkeys =
     gears.table.join(
     awful.key(
         {},
-        "F12",
-        function()
-            awful.spawn(terminal)
-        end,
-        {description = "open a terminal", group = "launcher"}
-    ),
-    awful.key(
-        {},
-        "Print",
-        function()
-            awful.spawn.with_shell("~/.scripts/screenshot.sh ~/Pictures")
-        end,
-        {description = "print screen", group = "launcher"}
-    ),
-    awful.key(
-        {},
-        "XF86AudioRaiseVolume",
-        function()
-            awful.spawn.with_shell("pactl set-sink-mute 1 0 && pactl set-sink-volume 1 +5%", false)
-        end
-    ),
-    awful.key(
-        {},
-        "XF86AudioLowerVolume",
-        function()
-            awful.spawn.with_shell("pactl set-sink-volume 1 -5%", false)
-        end
-    ),
-    awful.key(
-        {},
-        "XF86AudioMute",
-        function()
-            awful.spawn.with_shell(
-                "pactl set-sink-mute 1 `((pactl list sinks | grep -q Mute:.no > /dev/null) && echo 1) || echo 0`",
-                false
-            )
-        end
-    ),
-    awful.key(
-        {},
         "KP_Add",
         function()
             awful.tag.incmwfact(0.05)
