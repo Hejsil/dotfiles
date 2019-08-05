@@ -1,8 +1,35 @@
-F12
+#
+# Programs
+#
+
+super + @space
+    rofi -show run
+
+super + Return
     $TERMINAL
 
-F11
+super + f
     $TERMINAL -e nnn -d
+
+#
+# bspwm
+#
+
+super + q
+    bspc node -c
+
+super + m
+    bspc desktop -l next
+
+super + {Left,Down,Up,Right}
+        bspc node -f {west,south,north,east}
+
+super + shift + {Left,Down,Up,Right}
+        bspc node -s {west,south,north,east}
+
+#
+# Sound
+#
 
 XF86Audio{Raise}Volume
     mute.sh 0 && volume.sh +5%
@@ -13,5 +40,11 @@ XF86AudioLowerVolume
 XF86AudioMute
     mute.sh $(((pactl list sinks | grep -q Mute:.no > /dev/null) && echo 1) || echo 0)
 
+#
+# Misc
+#
+
 Print
     ~/scripts/screenshot.sh ~/Pictures
+
+

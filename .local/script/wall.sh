@@ -1,9 +1,6 @@
 #!/bin/sh
-setxkbmap -layout "dk" &
-compton &
-megasync &
-sxhkd 2>/tmp/sxhkd.log &
+
 while true; do
     feh --randomize --bg-fill ~/MEGA/Pictures/Wallpapers
     sleep 5
-done &
+done
