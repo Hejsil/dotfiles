@@ -83,19 +83,14 @@ volume_d() {
 %{U$COLOR4}%{+u} $(printf "mem %3d" "$CPU")% %{-u} \
 \
 %{c}\
-%{U$COLOR21}%{+u} $DATE %{-u}\
+%{U$COLOR15}%{+u} $DATE %{-u}\
 \
 %{r}\
-%{U$COLOR5}%{+u} |$(echo "$VOLUME" | \
-    sab -l 11 -s ' -' | \
-    sed -E 's/(-*)(-)([ ]*)/\1|\3/' | \
-    sed 's/ /-/g' |\
-    sed -E "s/(-*)/%{F$COLOR4}\1%{F-}/g" |\
-    sed -E "s/(\|)/%{F$COLOR5}\1%{F-}/g" \
-)| $(printf "%4.4s" "$VOLUME% ") %{-u} \
+%{U$COLOR5}%{+u}▕$(echo "$VOLUME" | sab -l 10 -s ' ▏▎▍▌▋▊▉█')▏$(printf "%4s" "$VOLUME%") %{-u} \
 "
 
 done | lemonbar             \
     -f 'monospace:size=20'  \
     -B "$COLOR0"            \
+    -F "$COLOR15"           \
     -u '4'
