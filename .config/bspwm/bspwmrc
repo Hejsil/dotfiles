@@ -11,13 +11,22 @@ bspc config gapless_monocle      true
 
 setxkbmap -layout "dk"
 
+# programs we run on startup and never restart
 runonce.sh compton &
 runonce.sh megasync &
-runonce.sh wall.sh &
 runonce.sh sxhkd -r /tmp/sxhkd.log &
 
-# reload sxhkd config when it changes
-echo "$HOME/.config/sxhkd/sxhkdrc" | runonce.sh entr -p pkill -USR1 -x sxhkd &
+# programs we restart when we restart the wm
+# TODO: runone.sh does not work on runnable scripts. They have to be invoked by
+#       /bin/sh for it to work correctly
+runone.sh /bin/sh "$HOME/.local/script/wall.sh" &
+runone.sh /bin/sh "$HOME/.local/script/bar.sh" &
 
-# restart wm when its config changes
-echo "$HOME/.config/bspwm/bspwmrc" | runonce.sh entr -p bspc wm -r &
+# reload sxhkd config when it changes
+echo "$HOME/.config/sxhkd/sxhkdrc" | runone.sh entr -p pkill -USR1 -x sxhkd &
+
+# restart wm when certain configs changes
+(
+    echo "$HOME/.config/bspwm/bspwmrc"
+    echo "$HOME/.local/script/bar.sh"
+) | runone.sh entr -p bspc wm -r &
