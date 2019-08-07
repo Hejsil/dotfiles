@@ -79,8 +79,8 @@ volume_d() {
 %{l} \
 %{U$COLOR1}%{+u} $(printf "up %7s" "$(bytes.sh "$NET_UP")") %{-u} \
 %{U$COLOR2}%{+u} $(printf "down %7s" "$(bytes.sh "$NET_DOWN")") %{-u} \
-%{U$COLOR3}%{+u} $(printf "cpu %3d" "$MEM")% %{-u} \
-%{U$COLOR4}%{+u} $(printf "mem %3d" "$CPU")% %{-u} \
+%{U$COLOR3}%{+u} $(printf "cpu %3d" "$CPU")% %{-u} \
+%{U$COLOR4}%{+u} $(printf "mem %3d" "$MEM")% %{-u} \
 \
 %{c}\
 %{U$COLOR15}%{+u} $DATE %{-u}\
