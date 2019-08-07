@@ -90,7 +90,7 @@ volume_d() {
 "
 
 done | lemonbar             \
-    -f 'monospace:size=20'  \
+    -f 'monospace:size=17'  \
     -B "$COLOR0"            \
     -F "$COLOR15"           \
-    -u '4'
+    -u '3'
