@@ -65,12 +65,21 @@ volume_d() {
     done
 }
 
+news_d() {
+    echo "NEWS='0'"
+    while true; do
+        echo "NEWS='$(newsboat -x reload print-unread | cut -d ' ' -f1)'"
+        sleep 1h
+    done
+}
+
 (
     date_d &
     cpu_d &
     mem_d &
     net_d &
     volume_d &
+    news_d &
 ) | while read LINE; do
     echo "$LINE" >&2
     eval "$LINE"
@@ -86,7 +95,8 @@ volume_d() {
 %{U$COLOR15}%{+u} $DATE %{-u}\
 \
 %{r}\
-%{U$COLOR5}%{+u}▕$(echo "$VOLUME" | sab -l 10 -s ' ▏▎▍▌▋▊▉█')▏$(printf "%4s" "$VOLUME%") %{-u} \
+%{U$COLOR5}%{+u} $(printf "news %2d" "$NEWS") %{-u} \
+%{U$COLOR6}%{+u}▕$(echo "$VOLUME" | sab -l 10 -s ' ▏▎▍▌▋▊▉█')▏$(printf "%4s" "$VOLUME%") %{-u} \
 "
 
 done | lemonbar             \
