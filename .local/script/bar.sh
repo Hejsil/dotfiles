@@ -66,10 +66,13 @@ volume_d() {
 }
 
 news_d() {
-    echo "NEWS='0'"
     while true; do
-        echo "NEWS='$(newsboat -x reload print-unread | cut -d ' ' -f1)'"
+        newsboat -x reload
         sleep 1h
+    done &
+    while true; do
+        echo "NEWS='$(newsboat -x print-unread | cut -d ' ' -f1)'"
+        sleep 2s
     done
 }
 
