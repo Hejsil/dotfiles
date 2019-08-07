@@ -18,17 +18,17 @@ runonce.sh sxhkd -r /tmp/sxhkd.log &
 # programs we restart when we restart the wm
 # TODO: runone.sh does not work on runnable scripts. They have to be invoked by
 #       /bin/sh for it to work correctly
-runone.sh /bin/sh "$HOME/.local/script/wall.sh" &
-runone.sh /bin/sh "$HOME/.local/script/bar.sh" &
+restart.sh /bin/sh "$HOME/.local/script/wall.sh" &
+restart.sh /bin/sh "$HOME/.local/script/bar.sh" &
 
-runone.sh compton &
+restart.sh compton &
 
 # reload sxhkd config when it changes
-echo "$HOME/.config/sxhkd/sxhkdrc" | runone.sh entr -p pkill -USR1 -x sxhkd &
+echo "$HOME/.config/sxhkd/sxhkdrc" | restart.sh entr -p pkill -USR1 -x sxhkd &
 
 # restart wm when certain configs changes
 (
     echo "$HOME/.config/bspwm/bspwmrc"
     echo "$HOME/.config/compton/compton.conf"
     echo "$HOME/.local/script/bar.sh"
-) | runone.sh entr -p bspc wm -r &
+) | restart.sh entr -p bspc wm -r &
