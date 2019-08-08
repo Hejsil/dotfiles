@@ -11,6 +11,13 @@ bspc config gapless_monocle      true
 
 setxkbmap -layout "dk"
 
+# Generate themes. Having this here, allows us to hot reload themes which is nice
+SCHEME="$HOME/colors/dark.yaml"
+ALACRITTY_TEMPLATE="$HOME/templates/alacritty.yml"
+XRESOURCES_TEMPLATE="$HOME/templates/.Xresources"
+base16.sh "$SCHEME" "$ALACRITTY_TEMPLATE" "$HOME/.config/alacritty/alacritty.yml" &
+base16.sh "$SCHEME" "$XRESOURCES_TEMPLATE" "$HOME/.Xresources"
+
 # programs we run on startup and never restart
 runonce.sh megasync &
 runonce.sh sxhkd -r /tmp/sxhkd.log &
@@ -31,4 +38,8 @@ echo "$HOME/.config/sxhkd/sxhkdrc" | restart.sh entr -p pkill -USR1 -x sxhkd &
     echo "$HOME/.config/bspwm/bspwmrc"
     echo "$HOME/.config/compton/compton.conf"
     echo "$HOME/.local/script/bar.sh"
+    echo "$HOME/.local/script/base16.sh"
+    echo "$SCHEME"
+    echo "$ALACRITTY"
+    echo "$XRESOURCES"
 ) | restart.sh entr -p bspc wm -r &

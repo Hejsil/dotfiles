@@ -170,48 +170,46 @@ font:
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
 
-# Base16 Google Dark 256 - alacritty color config
-# Seth Wright (http://sethawright.com)
 colors:
   # Default colors
   primary:
-    background: '0x1d1f21'
-    foreground: '0xc5c8c6'
+    background: '0x{{base00-hex}}'
+    foreground: '0x{{base05-hex}}'
 
   # Colors the cursor will use if `custom_cursor_colors` is true
   cursor:
-    text: '0x1d1f21'
-    cursor: '0xc5c8c6'
+    text: '0x{{base00-hex}}'
+    cursor: '0x{{base05-hex}}'
 
   # Normal colors
   normal:
-    black:   '0x1d1f21'
-    red:     '0xcc342b'
-    green:   '0x198844'
-    yellow:  '0xfba922'
-    blue:    '0x3971ed'
-    magenta: '0xa36ac7'
-    cyan:    '0x3971ed'
-    white:   '0xc5c8c6'
+    black:   '0x{{base00-hex}}'
+    red:     '0x{{base08-hex}}'
+    green:   '0x{{base0B-hex}}'
+    yellow:  '0x{{base0A-hex}}'
+    blue:    '0x{{base0D-hex}}'
+    magenta: '0x{{base0E-hex}}'
+    cyan:    '0x{{base0C-hex}}'
+    white:   '0x{{base05-hex}}'
 
   # Bright colors
   bright:
-    black:   '0x969896'
-    red:     '0xcc342b'
-    green:   '0x198844'
-    yellow:  '0xfba922'
-    blue:    '0x3971ed'
-    magenta: '0xa36ac7'
-    cyan:    '0x3971ed'
-    white:   '0xffffff'
+    black:   '0x{{base03-hex}}'
+    red:     '0x{{base08-hex}}'
+    green:   '0x{{base0B-hex}}'
+    yellow:  '0x{{base0A-hex}}'
+    blue:    '0x{{base0D-hex}}'
+    magenta: '0x{{base0E-hex}}'
+    cyan:    '0x{{base0C-hex}}'
+    white:   '0x{{base07-hex}}'
 
   indexed_colors:
-    - { index: 16, color: '0xf96a38' }
-    - { index: 17, color: '0x3971ed' }
-    - { index: 18, color: '0x282a2e' }
-    - { index: 19, color: '0x373b41' }
-    - { index: 20, color: '0xb4b7b4' }
-    - { index: 21, color: '0xe0e0e0' }
+    - { index: 16, color: '0x{{base09-hex}}' }
+    - { index: 17, color: '0x{{base0F-hex}}' }
+    - { index: 18, color: '0x{{base01-hex}}' }
+    - { index: 19, color: '0x{{base02-hex}}' }
+    - { index: 20, color: '0x{{base04-hex}}' }
+    - { index: 21, color: '0x{{base06-hex}}' }
 
 # Visual Bell
 #

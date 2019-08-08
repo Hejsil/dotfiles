@@ -1,0 +1,56 @@
+*foreground:   #{{base05-hex}}
+*background:   #{{base00-hex}}
+*cursorColor:  #{{base05-hex}}
+
+*color0:       #{{base00-hex}}
+*color1:       #{{base08-hex}}
+*color2:       #{{base0B-hex}}
+*color3:       #{{base0A-hex}}
+*color4:       #{{base0D-hex}}
+*color5:       #{{base0E-hex}}
+*color6:       #{{base0C-hex}}
+*color7:       #{{base05-hex}}
+
+*color8:       #{{base03-hex}}
+*color9:       #{{base08-hex}}
+*color10:      #{{base0B-hex}}
+*color11:      #{{base0A-hex}}
+*color12:      #{{base0D-hex}}
+*color13:      #{{base0E-hex}}
+*color14:      #{{base0C-hex}}
+*color15:      #{{base07-hex}}
+
+! Note: colors beyond 15 might not be loaded (e.g., xterm, urxvt),
+! use 'shell' template to set these if necessary
+*color16:      #{{base09-hex}}
+*color17:      #{{base0F-hex}}
+*color18:      #{{base01-hex}}
+*color19:      #{{base02-hex}}
+*color20:      #{{base04-hex}}
+*color21:      #{{base06-hex}}
+
+! "Terminal to use" Set from: Default
+*.terminal: alacritty
+
+! "Whether to load and show icons" Set from: Default
+rofi.show-icons: false
+
+! "Set the matching algorithm. (normal, regex, glob, fuzzy)" Set from: Default
+rofi.matching: fuzzy
+
+! "Set case-sensitivity" Set from: Default
+rofi.case-sensitive: false
+
+! Enable the extended coloring options
+rofi.color-enabled: true
+
+! Property Name     BG       Border   Separator
+rofi.color-window:  #{{base01-hex}}, #{{base01-hex}}, #{{base00-hex}}
+
+! Property Name     BG       FG       BG-alt   Head-BG  Head-FG
+rofi.color-normal:  #{{base01-hex}}, #{{base05-hex}}, #{{base01-hex}}, #{{base01-hex}}, #{{base07-hex}}
+rofi.color-active:  #{{base01-hex}}, #{{base0D-hex}}, #{{base01-hex}}, #{{base01-hex}}, #{{base0D-hex}}
+rofi.color-urgent:  #{{base01-hex}}, #{{base08-hex}}, #{{base01-hex}}, #{{base01-hex}}, #{{base08-hex}}
+
+! Set the desired separator style
+rofi.separator-style: solid

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-eval "$(grep 'color[0-9]*: #' "$HOME/.Xresources" | sed -E 's/^\*color([0-9]*): (.*)$/COLOR\1="\2"/')"
+eval "$(grep 'color[0-9]*:[ ]*#' "$HOME/.Xresources" | sed -E 's/^\*color([0-9]*):[ ]*(.*)$/COLOR\1="\2"/')"
 
 date_d() {
     while true; do
@@ -89,21 +89,21 @@ news_d() {
 
     echo "\
 %{l} \
-%{U$COLOR1}%{+u} $(printf "up %7s" "$(bytes.sh "$NET_UP")") %{-u} \
-%{U$COLOR2}%{+u} $(printf "down %7s" "$(bytes.sh "$NET_DOWN")") %{-u} \
-%{U$COLOR3}%{+u} $(printf "cpu %3d" "$CPU")% %{-u} \
-%{U$COLOR4}%{+u} $(printf "mem %3d" "$MEM")% %{-u} \
+%{B$COLOR0}%{U$COLOR1}%{$COLOR1}%{+u} $(printf "up %7s" "$(bytes.sh "$NET_UP")") %{-u}%{B-} \
+%{B$COLOR0}%{U$COLOR2}%{+u} $(printf "down %7s" "$(bytes.sh "$NET_DOWN")") %{-u}%{B-} \
+%{B$COLOR0}%{U$COLOR3}%{+u} $(printf "cpu %3d" "$CPU")% %{-u}%{B-} \
+%{B$COLOR0}%{U$COLOR4}%{+u} $(printf "mem %3d" "$MEM")% %{-u}%{B-} \
 \
 %{c}\
-%{U$COLOR15}%{+u} $DATE %{-u}\
+%{B$COLOR0}%{U$COLOR15}%{+u} $DATE %{-u}%{B-}\
 \
 %{r}\
-%{U$COLOR5}%{+u} $(printf "news %2d" "$NEWS") %{-u} \
-%{U$COLOR6}%{+u}▕$(echo "$VOLUME" | sab -l 10 -s ' ▏▎▍▌▋▊▉█')▏$(printf "%4s" "$VOLUME%") %{-u} \
+%{B$COLOR0}%{U$COLOR5}%{+u} $(printf "news %2d" "$NEWS") %{-u}%{B-} \
+%{B$COLOR0}%{U$COLOR6}%{+u} %{F$COLOR0}%{B$COLOR15} $(echo "$VOLUME" | sab -l 10 -s ' ▏▎▍▌▋▊▉█') %{F-}%{B$COLOR0}$(printf "%4s" "$VOLUME%") %{-u}%{B-} \
 "
 
 done | lemonbar             \
     -f 'monospace:size=17'  \
-    -B "$COLOR0"            \
+    -B "#ffff"              \
     -F "$COLOR15"           \
     -u '3'
