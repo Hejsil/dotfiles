@@ -89,21 +89,22 @@ news_d() {
 
     echo "\
 %{l} \
-%{B$COLOR0}%{U$COLOR1}%{$COLOR1}%{+u} $(printf "up %7s" "$(bytes.sh "$NET_UP")") %{-u}%{B-} \
-%{B$COLOR0}%{U$COLOR2}%{+u} $(printf "down %7s" "$(bytes.sh "$NET_DOWN")") %{-u}%{B-} \
-%{B$COLOR0}%{U$COLOR3}%{+u} $(printf "cpu %3d" "$CPU")% %{-u}%{B-} \
-%{B$COLOR0}%{U$COLOR4}%{+u} $(printf "mem %3d" "$MEM")% %{-u}%{B-} \
+%{U$COLOR1}%{$COLOR1}%{+o} $(printf "up %7s" "$(bytes.sh "$NET_UP")") %{-o} \
+%{U$COLOR2}%{+o} $(printf "down %7s" "$(bytes.sh "$NET_DOWN")") %{-o} \
+%{U$COLOR3}%{+o} $(printf "cpu %3d" "$CPU")% %{-o} \
+%{U$COLOR4}%{+o} $(printf "mem %3d" "$MEM")% %{-o} \
 \
 %{c}\
-%{B$COLOR0}%{U$COLOR15}%{+u} $DATE %{-u}%{B-}\
+%{U$COLOR15}%{+o} $DATE %{-o}\
 \
 %{r}\
-%{B$COLOR0}%{U$COLOR5}%{+u} $(printf "news %2d" "$NEWS") %{-u}%{B-} \
-%{B$COLOR0}%{U$COLOR6}%{+u} %{F$COLOR0}%{B$COLOR15} $(echo "$VOLUME" | sab -l 10 -s ' ▏▎▍▌▋▊▉█') %{F-}%{B$COLOR0}$(printf "%4s" "$VOLUME%") %{-u}%{B-} \
+%{U$COLOR5}%{+o} $(printf "news %2d" "$NEWS") %{-o} \
+%{U$COLOR6}%{+o} $(echo "$VOLUME" | sab -l 10 -s ' ▏▎▍▌▋▊▉█') $(printf "%4s" "$VOLUME%") %{-o} \
 "
 
 done | lemonbar             \
     -f 'monospace:size=17'  \
-    -B "#ffff"              \
+    -B "$COLOR0"            \
     -F "$COLOR15"           \
-    -u '3'
+    -u '2'                  \
+    -o '1'
