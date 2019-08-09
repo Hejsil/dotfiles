@@ -45,6 +45,4 @@ XF86AudioMute
 #
 
 Print
-    ~/scripts/screenshot.sh ~/Pictures
-
-
+    screenshot.sh ~/Pictures
