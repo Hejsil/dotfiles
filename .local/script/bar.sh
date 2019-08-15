@@ -1,89 +1,64 @@
 #!/bin/sh
 
+CPU_LAST="$(mktemp /tmp/cpu-last.XXXXXX)"
+CPU_CURR="$(mktemp /tmp/cpu-curr.XXXXXX)"
+MEM_CURR=''
+MEM_MAX=''
+NET_RECEIVED='0'
+NET_TRANSMITTED='0'
+
+# Load theme from .Xresources
 eval "$(grep 'color[0-9]*:[ ]*#' "$HOME/.Xresources" | sed -E 's/^\*color([0-9]*):[ ]*(.*)$/COLOR\1="\2"/')"
 
-date_d() {
-    while true; do
-        echo "DATE='$(date '+%F %R')'"
-        sleep 1
-    done
-}
-
-usage() {
+cpu_usage() {
     grep -E 'cpu ' /proc/stat | sed -E "s/[ ]+/ /g" | cut -d ' ' -f 2,4,5
 }
 
-cpu_d() {
-    LAST=$(mktemp /tmp/cpu-last.XXXXXX)
-    CURR=$(mktemp /tmp/cpu-curr.XXXXXX)
-    usage | sed 's/[0-9]*/0/g' > "$LAST"
-    while true; do
-        usage > "$CURR"
-        echo "CPU='$(paste -d " " "$CURR" "$LAST" |\
-            awk '{printf "%d %d %d\n",($1-$4),($2-$5),($3-$6)}' |\
-            awk '{usage=($1+$2)/($1+$2+$3); printf "%d",usage*100}')'"
-        cp "$CURR" "$LAST"
-        sleep 2
-    done
-}
-
-mem_d() {
-    MEM_CURR=""
-    MEM_MAX=""
-    while true; do 
-        MEM="$(cat /proc/meminfo | grep -E "Mem" | sed "s/[^0-9]//g" | tr '\n' ' ')"
-        MEM_CURR2="$(echo "$MEM" | awk '{printf "%d",($1-$3)}')"
-        MEM_MAX2="$(echo "$MEM" | awk '{printf "%d",$1}')"
-        if [ "$MEM_CURR2" != "$MEM_CURR" ] || [ "$MEM_MAX2" != "$MEM_MAX" ]; then
-            MEM_CURR="$MEM_CURR2"
-            MEM_MAX="$MEM_MAX2"
-            echo "MEM='$(echo "$MEM_CURR $MEM_MAX" | awk '{ printf "%d",($1/$2)*100}')'"
-        fi
-        sleep 2
-    done
-}
-
-net_d() {
-    NET_RECEIVED="0"
-    NET_TRANSMITTED="0"
-    while true; do
-        NET=$(cat /proc/net/dev | tail -n +3 | sed -E 's/[ ]+/ /g' | cut -d ':' -f2 | cut -d ' ' -f 2,10)
-        NET_RECEIVED2=$(echo "$NET" | cut -d ' ' -f1 | awk '{sum+=$1} END {print sum}')
-        NET_TRANSMITTED2=$(echo "$NET" | cut -d ' ' -f2 | awk '{sum+=$1} END {print sum}')
-        echo "NET_DOWN='$(expr $NET_RECEIVED2 - $NET_RECEIVED)'"
-        echo "NET_UP='$(expr $NET_TRANSMITTED2 - $NET_TRANSMITTED)'"
-        NET_RECEIVED="$NET_RECEIVED2"
-        NET_TRANSMITTED="$NET_TRANSMITTED2"
-        sleep 2
-    done
-}
-
-volume_d() {
-    while true; do
-        echo "VOLUME='$(amixer sget Master | tr '\n' ' ' | cut -d "[" -f 2 | cut -d "%" -f 1)'"
-        sleep 1 # TODO: wait for volume to change
-    done
-}
-
-news_d() {
-    while true; do
-        newsboat -x reload
-        sleep 1h
-    done &
-    while true; do
-        echo "NEWS='$(newsboat -x print-unread | cut -d ' ' -f1)'"
-        sleep 2s
-    done
-}
+cpu_usage | sed 's/[0-9]*/0/g' >"$CPU_LAST"
 
 (
-    date_d &
-    cpu_d &
-    mem_d &
-    net_d &
-    volume_d &
-    news_d &
-) | while read LINE; do
+    seq 0 inf | while read -r I; do
+        printf "%s" "DATE='$(date '+%F %R')';"
+        printf "%s" "VOLUME='$(amixer sget Master | tr '\n' ' ' | cut -d "[" -f 2 | cut -d "%" -f 1)';"
+    
+        if [ $((I % 2)) = 0 ]; then
+            printf "%s" "NEWS='$(newsboat -x print-unread | cut -d ' ' -f1)';"
+    
+            NET=$(tail -n +3 /proc/net/dev | sed -E 's/[ ]+/ /g' | cut -d ':' -f2 | cut -d ' ' -f 2,10)
+            NET_RECEIVED2=$(echo "$NET" | cut -d ' ' -f1 | awk '{sum+=$1} END {print sum}')
+            NET_TRANSMITTED2=$(echo "$NET" | cut -d ' ' -f2 | awk '{sum+=$1} END {print sum}')
+            printf "%s" "NET_DOWN='$((NET_RECEIVED2 - NET_RECEIVED))';"
+            printf "%s" "NET_UP='$((NET_TRANSMITTED2 - NET_TRANSMITTED))';"
+            NET_RECEIVED="$NET_RECEIVED2"
+            NET_TRANSMITTED="$NET_TRANSMITTED2"
+    
+            MEMORY="$(grep -E "Mem" /proc/meminfo | sed "s/[^0-9]//g" | tr '\n' ' ')"
+            MEM_CURR2="$(echo "$MEMORY" | awk '{printf "%d",($1-$3)}')"
+            MEM_MAX2="$(echo "$MEMORY" | awk '{printf "%d",$1}')"
+            if [ "$MEM_CURR2" != "$MEM_CURR" ] || [ "$MEM_MAX2" != "$MEM_MAX" ]; then
+                MEM_CURR="$MEM_CURR2"
+                MEM_MAX="$MEM_MAX2"
+                printf "%s" "MEM='$(echo "$MEM_CURR $MEM_MAX" | awk '{ printf "%d",($1/$2)*100}')';"
+            fi
+    
+            cpu_usage >"$CPU_CURR"
+            printf "%s" "CPU='$(paste -d " " "$CPU_CURR" "$CPU_LAST" |
+                awk '{printf "%d %d %d\n",($1-$4),($2-$5),($3-$6)}' |
+                awk '{usage=($1+$2)/($1+$2+$3); printf "%d",usage*100}')';"
+            cp "$CPU_CURR" "$CPU_LAST"
+        fi
+    
+        # refresh newsboat every hour
+        if [ $((I % 60 * 60)) = 0 ]; then
+            newsboat -x reload >/dev/null &
+        fi
+    
+        echo ""
+        sleep 1
+    done &
+
+
+) | while read -r LINE; do
     echo "$LINE" >&2
     eval "$LINE"
 
