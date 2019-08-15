@@ -4,3 +4,5 @@ export EDITOR="zte"
 export TERMINAL="alacritty"
 export BROWSER="chromium"
 export READER="zathura"
+
+export NNN_OPENER="open.sh"

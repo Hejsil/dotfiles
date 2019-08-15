@@ -8,8 +8,8 @@ super + @space
 super + Return
     $TERMINAL
 
-super + f
-    $TERMINAL -e nnn -d
+super + shift + Return
+    $TERMINAL -e nnn -id
 
 #
 # bspwm
@@ -18,14 +18,11 @@ super + f
 super + q
     bspc node -c
 
-super + m
-    bspc desktop -l next
-
 super + {Left,Down,Up,Right}
-        bspc node -f {west,south,north,east}
+    bspc node -f {west,south,north,east}
 
 super + shift + {Left,Down,Up,Right}
-        bspc node -s {west,south,north,east}
+    bspc node -s {west,south,north,east}
 
 super + {t,shift + t,s,f}
     bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
