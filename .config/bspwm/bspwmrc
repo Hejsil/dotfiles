@@ -30,8 +30,6 @@ runonce.sh sxhkd -r /tmp/sxhkd.log &
 restart.sh /bin/sh "$HOME/.local/script/wall.sh" &
 restart.sh /bin/sh "$HOME/.local/script/bar.sh" &
 
-restart.sh compton &
-
 # reload sxhkd config when it changes
 echo "$HOME/.config/sxhkd/sxhkdrc" | restart.sh entr -p pkill -USR1 -x sxhkd &
 
