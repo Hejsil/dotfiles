@@ -27,6 +27,12 @@ super + {Left,Down,Up,Right}
 super + shift + {Left,Down,Up,Right}
         bspc node -s {west,south,north,east}
 
+super + {t,shift + t,s,f}
+    bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+super + {_,shift + } {1-9,0}
+    bspc {desktop -f,node -d} "focused:^{1-9,10}"
+
 #
 # Sound
 #
