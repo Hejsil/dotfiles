@@ -1,2 +1,2 @@
 #!/bin/sh
-cat $@ | curl -F 'clbin=<-' https://clbin.com
+cat "$@" | curl -F 'clbin=<-' https://clbin.com

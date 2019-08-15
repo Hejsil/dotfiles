@@ -1,3 +1,3 @@
 #!/bin/sh
-ARGS="$@"
+ARGS="$*"
 curl "cheat.sh/$ARGS"
