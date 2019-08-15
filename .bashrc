@@ -1,6 +1,4 @@
 #!/bin/sh
-[[ $- == *i* ]] && source $HOME/.local/script/ble-0.3.0/ble.sh --noattach
-
 HISTSIZE= HISTFILESIZE= 
 
 FG_BLACK="\[$(tput setaf 0)\]"
@@ -42,5 +40,3 @@ __bash_prompt_command() {
 }
 
 PROMPT_COMMAND="__bash_prompt_command"
-
-((_ble_bash)) && ble-attach
