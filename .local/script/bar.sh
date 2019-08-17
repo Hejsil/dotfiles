@@ -57,30 +57,25 @@ cpu_usage | sed 's/[0-9]*/0/g' >"$CPU_LAST"
         sleep 1
     done &
 
-
 ) | while read -r LINE; do
     echo "$LINE" >&2
     eval "$LINE"
 
-    # Lemonbar requires that the entire line is fed to it at once, instead of partially by
-    # multible printfs.
-    BAR=$(
-        for MONITOR in $(bspc query -M --names | nl -w1 -v0 | cut -f1); do
-            printf "%s" "%{S$MONITOR}%{l}"
-            printf "%s" " %{U$COLOR1}%{$COLOR1}%{+o} $(printf "up %7s" "$(bytes.sh "$NET_UP")") %{-o}"
-            printf "%s" " %{U$COLOR2}%{+o} $(printf "down %7s" "$(bytes.sh "$NET_DOWN")") %{-o}"
-            printf "%s" " %{U$COLOR3}%{+o} $(printf "cpu %3d" "$CPU")% %{-o} "
-            printf "%s" " %{U$COLOR4}%{+o} $(printf "mem %3d" "$MEM")% %{-o}"
+    for MONITOR in $(bspc query -M --names | nl -w1 -v0 | cut -f1); do
+        printf "%s" "%{S$MONITOR}%{l}"
+        printf "%s" " %{U$COLOR1}%{$COLOR1}%{+o} $(printf "up %7s" "$(bytes.sh "$NET_UP")") %{-o}"
+        printf "%s" " %{U$COLOR2}%{+o} $(printf "down %7s" "$(bytes.sh "$NET_DOWN")") %{-o}"
+        printf "%s" " %{U$COLOR3}%{+o} $(printf "cpu %3d" "$CPU")% %{-o} "
+        printf "%s" " %{U$COLOR4}%{+o} $(printf "mem %3d" "$MEM")% %{-o}"
 
-            printf "%s" "%{c}"
-            printf "%s" "%{U$COLOR15}%{+o} $DATE %{-o}"
+        printf "%s" "%{c}"
+        printf "%s" "%{U$COLOR15}%{+o} $DATE %{-o}"
 
-            printf "%s" "%{r}"
-            printf "%s" "%{U$COLOR5}%{+o} $(printf "news %2d" "$NEWS") %{-o} "
-            printf "%s" "%{U$COLOR6}%{+o} $(echo "$VOLUME" | sab -l 10 -s ' ▏▎▍▌▋▊▉█') $(printf "%4s" "$VOLUME%") %{-o} "
-        done
-    )
-    echo "$BAR"
+        printf "%s" "%{r}"
+        printf "%s" "%{U$COLOR5}%{+o} $(printf "news %2d" "$NEWS") %{-o} "
+        printf "%s" "%{U$COLOR6}%{+o} $(echo "$VOLUME" | sab -l 10 -s ' ▏▎▍▌▋▊▉█') $(printf "%4s" "$VOLUME%") %{-o} "
+    done
+    echo ""
 done | lemonbar             \
     -f 'monospace:size=17'  \
     -B "$COLOR0"            \
