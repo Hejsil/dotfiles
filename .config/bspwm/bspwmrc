@@ -12,6 +12,7 @@ bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
 setxkbmap -layout "dk"
+ln -s "$HOME/.local/script/open.sh" "$HOME/.local/script/xdg-open"
 
 # Generate themes. Having this here, allows us to hot reload themes which is nice
 SCHEME="$HOME/colors/dark.yaml"
