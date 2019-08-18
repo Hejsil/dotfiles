@@ -1,8 +1,11 @@
 #!/bin/sh
 
 SCHEME="$1"; [ -z "$SCHEME" ] && echo "No scheme" && exit 1
-TEMPLATE="$2"; [ -z "$TEMPLATE" ] && echo "No template" && exit 1
-OUT="$3"; [ -z "$OUT" ] && echo "No out" && exit 1
+TEMPLATE="$2"; [ -z "$TEMPLATE" ] && {
+    TEMPLATE_CONTENT="$(cat)"
+    TEMPLATE="$(mktemp "/tmp/template.XXXXXX")"
+    echo "$TEMPLATE_CONTENT" >"$TEMPLATE"
+}
 
 seq 0 15 | xargs -I{} printf "base0%X\n" {} | while read -r BASE; do
     HEX="$(grep "$BASE" "$SCHEME" | cut -d'"' -f2)"
@@ -27,4 +30,4 @@ seq 0 15 | xargs -I{} printf "base0%X\n" {} | while read -r BASE; do
     printf "%s" " -e s/{{$BASE-dec-r}}/$DEC_R/g"
     printf "%s" " -e s/{{$BASE-dec-g}}/$DEC_G/g"
     printf "%s" " -e s/{{$BASE-dec-b}}/$DEC_B/g"
-done | xargs sed "$TEMPLATE" > "$OUT"
+done | xargs sed "$TEMPLATE"
