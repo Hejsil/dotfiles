@@ -1,5 +1,0 @@
-mpv %U
-  ^https?://(www.)?youtube.com/watch\?.*v=
-
-mpv %U
-  ^https?://(www.)?youtu.be/.+
