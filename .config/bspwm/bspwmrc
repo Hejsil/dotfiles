@@ -43,6 +43,6 @@ echo "$HOME/.config/sxhkd/sxhkdrc" | restart.sh entr -p pkill -USR1 -x sxhkd &
     echo "$HOME/.local/script/bar.sh"
     echo "$HOME/.local/script/base16.sh"
     echo "$SCHEME"
-    echo "$ALACRITTY"
-    echo "$XRESOURCES"
+    echo "$ALACRITTY_TEMPLATE"
+    echo "$XRESOURCES_TEMPLATE"
 ) | restart.sh entr -p bspc wm -r &
