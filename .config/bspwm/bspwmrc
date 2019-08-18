@@ -40,6 +40,8 @@ echo "$HOME/.config/sxhkd/sxhkdrc" | restart.sh entr -p pkill -USR1 -x sxhkd &
 (
     echo "$HOME/.config/bspwm/bspwmrc"
     echo "$HOME/.config/compton/compton.conf"
+    echo "$HOME/.local/script/bar-info.sh"
+    echo "$HOME/.local/script/bar-mk.sh"
     echo "$HOME/.local/script/bar.sh"
     echo "$HOME/.local/script/base16.sh"
     echo "$SCHEME"
