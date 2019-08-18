@@ -10,7 +10,8 @@ bspc config top_padding "$BAR_HEIGHT"
 
 bar-info.sh | bar-mk.sh | lemonbar  \
     -g "x$BAR_HEIGHT"               \
-    -f 'monospace:size=17'          \
+    -f 'monospace-15'               \
+    -f 'fontello-17'                   \
     -B "$COLOR0"                    \
     -F "$COLOR15"                   \
     -u '2'                          \

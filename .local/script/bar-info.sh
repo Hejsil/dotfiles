@@ -1,5 +1,7 @@
 #!/bin/sh
 
+trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
+
 print_date() {
     printf "DATE='%s';" "$(date '+%F %R')"
 }
@@ -53,10 +55,17 @@ print_cpu() {
     cp "$CPU_CURR" "$CPU_LAST"
 }
 
+touch /tmp/volume-notify-file
+print_volume
+
+while inotifywait /tmp/volume-notify-file 2>/dev/null >/dev/null; do
+    print_volume
+    echo ""
+done &
+
 seq 0 inf | while read -r I; do
     # Things to run every second
     print_date
-    print_volume
 
     # Things to run every 2 seconds
     if [ $((I % 2)) = 0 ]; then
