@@ -22,19 +22,19 @@ base16.sh "$SCHEME" "$ALACRITTY_TEMPLATE" "$HOME/.config/alacritty/alacritty.yml
 base16.sh "$SCHEME" "$XRESOURCES_TEMPLATE" "$HOME/.Xresources"
 
 # programs we run on startup and never restart
-runonce.sh megasync &
-runonce.sh sxhkd -r /tmp/sxhkd.log &
+runonce.sh megasync
+runonce.sh sxhkd -r /tmp/sxhkd.log
 
 # programs we restart when we restart the wm
 # TODO: runone.sh does not work on runnable scripts. They have to be invoked by
 #       /bin/sh for it to work correctly
-restart.sh /bin/sh "$HOME/.local/script/wall.sh" &
-restart.sh /bin/sh "$HOME/.local/script/bar.sh" &
+restart.sh wall.sh
+restart.sh bar.sh
 
-restart.sh dunst &
+restart.sh dunst
 
 # reload sxhkd config when it changes
-echo "$HOME/.config/sxhkd/sxhkdrc" | restart.sh entr -p pkill -USR1 -x sxhkd &
+echo "$HOME/.config/sxhkd/sxhkdrc" | restart.sh entr -p pkill -USR1 -x sxhkd
 
 # restart wm when certain configs changes
 (
@@ -44,7 +44,9 @@ echo "$HOME/.config/sxhkd/sxhkdrc" | restart.sh entr -p pkill -USR1 -x sxhkd &
     echo "$HOME/.local/script/bar-mk.sh"
     echo "$HOME/.local/script/bar.sh"
     echo "$HOME/.local/script/base16.sh"
+    echo "$HOME/.local/script/restart.sh"
+    echo "$HOME/.local/script/runonce.sh"
     echo "$SCHEME"
     echo "$ALACRITTY_TEMPLATE"
     echo "$XRESOURCES_TEMPLATE"
-) | restart.sh entr -p bspc wm -r &
+) | restart.sh entr -p bspc wm -r
