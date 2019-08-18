@@ -1,11 +1,8 @@
 #!/bin/sh
 HERE="$(dirname "$(realpath "$0")")"
-cd "$HERE"
+cd "$HERE" || exit 1
 
-for FILE in $(find -type f\
-    -not -path './.git/*'\
-    -not -path './install.sh'\
-    ); do
+find . -type f -not -path './.git/*' -not -path './install.sh' | while read -r FILE; do
     mkdir -p "$HOME/$(dirname "$FILE")"
     ln -snf "$HERE/$FILE" "$HOME/$FILE"
 done
