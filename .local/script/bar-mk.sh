@@ -1,7 +1,6 @@
 #!/bin/sh
 
-# Load theme from .Xresources
-eval "$(grep 'color[0-9]*:[ ]*#' "$HOME/.Xresources" | sed -E 's/^\*color([0-9]*):[ ]*(.*)$/COLOR\1="\2"/')"
+eval "$(colors.sh)"
 
 ICON_CALENDER="$(printf "\u$(printf "%x" 59399)")"
 ICON_NEWSPAPER="$(printf "\u$(printf "%x" 61930)")"
@@ -29,15 +28,15 @@ while read -r LINE; do
         printf "%s" "%{S$MONITOR}%{l}"
 
         printf "%s" "%{c}"
-        printf "%s" "%{U$COLOR15}%{+o} $ICON_CALENDER $DATE %{-o}"
+        printf "%s" "%{U$COLOR7}%{+o} $ICON_CALENDER $DATE %{-o}"
 
         printf "%s" "%{r}"
-        printf "%s" "%{U$COLOR1}%{$COLOR1}%{+o} $(printf "%7s" "$(bytes.sh "$NET_UP")") $ICON_UPLOAD %{-o} "
-        printf "%s" "%{U$COLOR2}%{+o} $(printf "%7s" "$(bytes.sh "$NET_DOWN")") $ICON_DOWNLOAD %{-o} "
-        printf "%s" "%{U$COLOR3}%{+o} $(printf "%3d" "$CPU")% $ICON_SPEED %{-o} "
-        printf "%s" "%{U$COLOR4}%{+o} $(printf "%3d" "$MEM")% $ICON_CHIP %{-o} "
-        printf "%s" "%{U$COLOR5}%{+o} $(printf "%2d" "$NEWS") $ICON_RSS %{-o} "
-        printf "%s" "%{U$COLOR6}%{+o} $(printf "%4s" "$VOLUME%") $(echo "$VOLUME" | sab -l 1 -s "$ICON_VOLUME1$ICON_VOLUME2$ICON_VOLUME3") %{-o} "
+        printf "%s" "%{U$COLOR8}%{+o} $(printf "%7s" "$(bytes.sh "$NET_UP")") $ICON_UPLOAD %{-o} "
+        printf "%s" "%{U$COLOR9}%{+o} $(printf "%7s" "$(bytes.sh "$NET_DOWN")") $ICON_DOWNLOAD %{-o} "
+        printf "%s" "%{U$COLOR10}%{+o} $(printf "%3d" "$CPU")% $ICON_SPEED %{-o} "
+        printf "%s" "%{U$COLOR11}%{+o} $(printf "%3d" "$MEM")% $ICON_CHIP %{-o} "
+        printf "%s" "%{U$COLOR12}%{+o} $(printf "%2d" "$NEWS") $ICON_RSS %{-o} "
+        printf "%s" "%{U$COLOR13}%{+o} $(printf "%4s" "$VOLUME%") $(echo "$VOLUME" | sab -l 1 -s "$ICON_VOLUME1$ICON_VOLUME2$ICON_VOLUME3") %{-o} "
     done
     echo ""
 done
