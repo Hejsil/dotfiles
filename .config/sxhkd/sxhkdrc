@@ -48,4 +48,4 @@ XF86AudioMute
 #
 
 Print
-    screenshot.sh ~/Pictures
+    screenshot.sh "$HOME/MEGA/Pictures/Screenshots"
