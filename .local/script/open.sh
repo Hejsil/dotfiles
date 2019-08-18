@@ -6,16 +6,16 @@ name_match() {
     echo "$ARG" | grep -E "$1"
 }
 
-file_match() {
-    file "$ARG" | grep -E "$1"
+mime_match() {
+    file -i "$ARG" | grep -E "$1"
 }
 
-if file_match "JPEG|PNG|GIF"; then
+if mime_match "image/.*;"; then
     sxiv "$ARG"
-elif file_match "Matroska"; then
+elif mime_match "(audio|video)/.*;"; then
     mpv "$ARG"
-elif file_match "PDF"; then
-    zathura "$ARG"
+elif mime_match "application/pdf;"; then
+    "$READER" "$ARG"
 elif name_match "^(https?:\/\/)?(www\.)?youtu(\.be\/.*|be\.com\/watch\?.*v=.*)$"; then
     mpv "$ARG"
 else
