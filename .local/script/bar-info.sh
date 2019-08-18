@@ -9,7 +9,10 @@ print_volume() {
 }
 
 print_news() {
-    printf "NEWS='%s';" "$(newsboat -x print-unread | cut -d ' ' -f1)"
+    NEWS="$(newsboat -x print-unread | cut -d ' ' -f1)"
+    [ -z "$NEWS" ] && return
+
+    printf "NEWS='%s';" "$NEWS"
 }
 
 NET_RECEIVED='0'
