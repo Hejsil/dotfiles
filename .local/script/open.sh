@@ -12,7 +12,7 @@ mime_match() {
 
 if mime_match "application/pdf;"; then
     "$READER" "$ARG"
-elif mime_match "text/.*;"; then
+elif mime_match "text/.*;|application/json"; then
     "$EDITOR" "$ARG"
 elif mime_match "image/.*;"; then
     sxiv "$ARG"
