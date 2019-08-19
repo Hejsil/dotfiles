@@ -28,7 +28,7 @@ while read -r LINE; do
         printf "%s" "%{S$MONITOR}%{l}"
 
         printf "%s" "%{c}"
-        printf "%s" "%{U$COLOR7}%{+o} $ICON_CALENDER $DATE %{-o}"
+        printf "%s" "%{U$COLOR6}%{+o} $ICON_CALENDER $DATE %{-o}"
 
         printf "%s" "%{r}"
         printf "%s" "%{U$COLOR8}%{+o} $(printf "%7s" "$(bytes.sh "$NET_UP")") $ICON_UPLOAD %{-o} "

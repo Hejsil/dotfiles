@@ -12,7 +12,7 @@ bar-info.sh | bar-mk.sh | lemonbar  \
     -f 'monospace-15'               \
     -f 'fontello-17'                \
     -B "$COLOR0"                    \
-    -F "$COLOR7"                    \
+    -F "$COLOR5"                    \
     -u '2'                          \
     -o '1' &
 
