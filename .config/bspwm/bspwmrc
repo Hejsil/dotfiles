@@ -17,10 +17,12 @@ ln -s "$HOME/.local/script/open.sh" "$HOME/.local/script/xdg-open"
 # Generate themes. Having this here, allows us to hot reload themes which is nice
 SCHEME="$HOME/colors.yaml"
 ALACRITTY_TEMPLATE="$HOME/templates/alacritty.yml"
+ROFI_TEMPLATE="$HOME/templates/theme.rasi"
 VSCODIUM_TEMPLATE="$HOME/templates/settings.json"
 XRESOURCES_TEMPLATE="$HOME/templates/.Xresources"
 base16.sh "$SCHEME" "$ALACRITTY_TEMPLATE" > "$HOME/.config/alacritty/alacritty.yml" &
 base16.sh "$SCHEME" "$VSCODIUM_TEMPLATE" > "$HOME/.config/VSCodium/User/settings.json" &
+base16.sh "$SCHEME" "$ROFI_TEMPLATE" > "$HOME/.config/rofi/theme.rasi" &
 base16.sh "$SCHEME" "$XRESOURCES_TEMPLATE" > "$HOME/.Xresources"
 
 # programs we run on startup and never restart
@@ -41,7 +43,6 @@ echo "$HOME/.config/sxhkd/sxhkdrc" | restart.sh entr -p pkill -USR1 -x sxhkd
 # restart wm when certain configs changes
 (
     echo "$HOME/.config/bspwm/bspwmrc"
-    echo "$HOME/.config/compton/compton.conf"
     echo "$HOME/.local/script/bar-info.sh"
     echo "$HOME/.local/script/bar-mk.sh"
     echo "$HOME/.local/script/bar.sh"
@@ -51,5 +52,6 @@ echo "$HOME/.config/sxhkd/sxhkdrc" | restart.sh entr -p pkill -USR1 -x sxhkd
     echo "$SCHEME"
     echo "$ALACRITTY_TEMPLATE"
     echo "$VSCODIUM_TEMPLATE"
+    echo "$ROFI_TEMPLATE"
     echo "$XRESOURCES_TEMPLATE"
 ) | restart.sh entr -p bspc wm -r
