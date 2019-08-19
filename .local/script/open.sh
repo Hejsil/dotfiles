@@ -10,12 +10,14 @@ mime_match() {
     file -i "$ARG" | grep -E "$1"
 }
 
-if mime_match "image/.*;"; then
+if mime_match "application/pdf;"; then
+    "$READER" "$ARG"
+elif mime_match "text/.*;"; then
+    "$EDITOR" "$ARG"
+elif mime_match "image/.*;"; then
     sxiv "$ARG"
 elif mime_match "(audio|video)/.*;"; then
     mpv "$ARG"
-elif mime_match "application/pdf;"; then
-    "$READER" "$ARG"
 elif name_match "^(https?:\/\/)?(www\.)?youtu(\.be\/.*|be\.com\/watch\?.*v=.*)$"; then
     mpv "$ARG"
 else
