@@ -344,5 +344,5 @@
     "workbench.editor.closeOnFileDelete": true,
     "workbench.editor.enablePreview": false,
     "explorer.openEditors.visible": 0,
-    "files.autoSave": "afterDelay",
+    "files.autoSave": "onFocusChange"
  }
