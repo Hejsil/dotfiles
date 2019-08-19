@@ -35,6 +35,7 @@ base16.sh "$SCHEME" "$XRESOURCES_TEMPLATE" > "$HOME/.Xresources"
 
 # programs we run on startup and never restart
 runonce.sh megasync
+runonce.sh redshift
 runonce.sh sxhkd -r /tmp/sxhkd.log
 
 # programs we restart when we restart the wm
