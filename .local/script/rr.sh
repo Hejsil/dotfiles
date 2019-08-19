@@ -1,3 +1,3 @@
 #!/bin/sh
-rr record -n "$@"
+rr record "$@"
 rr replay
