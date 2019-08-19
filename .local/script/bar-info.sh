@@ -3,7 +3,8 @@
 set -e
 
 print_date() {
-    printf "DATE='%s';" "$(date '+%F %R')"
+    printf "DATE='%s';" "$(date '+%F')"
+    printf "TIME='%s';" "$(date '+%R')"
 }
 
 print_volume() {

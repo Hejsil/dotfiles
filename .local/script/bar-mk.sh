@@ -22,6 +22,13 @@ ICON_TEMP4="$(printf "\u$(printf "%x" 62151)")"
 ICON_SPEED="$(printf "\u$(printf "%x" 59392)")"
 ICON_RSS="$(printf "\u$(printf "%x" 61763)")"
 ICON_CHIP="$(printf "\u$(printf "%x" 62171)")"
+ICON_CLOCK="$(printf "\u$(printf "%x" 59402)")"
+
+block() {
+    printf "%s" "%{U$COLOR6}%{+o}"
+    printf "$@"
+    printf "%s" "%{-o}"
+}
 
 while read -r LINE; do
     eval "$LINE"
@@ -30,15 +37,18 @@ while read -r LINE; do
         printf "%s" "%{S$MONITOR}%{l}"
 
         printf "%s" "%{c}"
-        printf "%s" "%{U$COLOR6}%{+o} $ICON_CALENDER $DATE %{-o}"
 
         printf "%s" "%{r}"
-        printf "%s" "%{U$COLOR8}%{+o} $(printf "%7s" "$(bytes.sh "$NET_UP")") $ICON_UPLOAD %{-o} "
-        printf "%s" "%{U$COLOR9}%{+o} $(printf "%7s" "$(bytes.sh "$NET_DOWN")") $ICON_DOWNLOAD %{-o} "
-        printf "%s" "%{U$COLOR10}%{+o} $(printf "%3d" "$CPU")% $ICON_SPEED %{-o} "
-        printf "%s" "%{U$COLOR11}%{+o} $(printf "%3d" "$MEM")% $ICON_CHIP %{-o} "
-        printf "%s" "%{U$COLOR12}%{+o} $(printf "%2d" "$NEWS") $ICON_RSS %{-o} "
-        printf "%s" "%{U$COLOR13}%{+o} $(printf "%4s" "$VOLUME%") $(echo "$VOLUME" | sab -l 1 -s "$ICON_VOLUME1$ICON_VOLUME2$ICON_VOLUME3") %{-o} "
+        block " %3d%% %s " "$CPU" "$ICON_SPEED"
+        printf " "
+        block " %3d%% %s " "$MEM" "$ICON_CHIP"
+        printf " "
+        block " %3d %s " "$NEWS" "$ICON_RSS"
+        printf " "
+        block " %3d%% %s " "$VOLUME" "$(echo "$VOLUME" | sab -l 1 -s "$ICON_VOLUME1$ICON_VOLUME2$ICON_VOLUME3")"
+        printf " "
+        block " %s %s " "$TIME" "$ICON_CLOCK"
+        printf " "
     done
     echo ""
 done
