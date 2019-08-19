@@ -1,6 +1,6 @@
 #!/bin/sh
 
-trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
+set -e
 
 print_date() {
     printf "DATE='%s';" "$(date '+%F %R')"
@@ -62,6 +62,13 @@ while inotifywait /tmp/volume-notify-file 2>/dev/null >/dev/null; do
     print_volume
     echo ""
 done &
+trap "kill $!" INT TERM QUIT EXIT
+
+while true; do
+    newsboat -x reload >/dev/null
+    sleep 1h
+done &
+trap "kill $!" INT TERM QUIT EXIT
 
 seq 0 inf | while read -r I; do
     # Things to run every second
@@ -73,11 +80,6 @@ seq 0 inf | while read -r I; do
         print_net
         print_mem
         print_cpu
-    fi
-
-    # refresh newsboat every hour
-    if [ $((I % 60 * 60)) = 0 ]; then
-        newsboat -x reload >/dev/null &
     fi
 
     echo ""

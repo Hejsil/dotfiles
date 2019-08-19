@@ -30,8 +30,6 @@ runonce.sh megasync
 runonce.sh sxhkd -r /tmp/sxhkd.log
 
 # programs we restart when we restart the wm
-# TODO: runone.sh does not work on runnable scripts. They have to be invoked by
-#       /bin/sh for it to work correctly
 restart.sh wall.sh
 restart.sh bar.sh
 

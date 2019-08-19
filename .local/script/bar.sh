@@ -1,7 +1,5 @@
 #!/bin/sh
 
-trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
-
 eval "$(colors.sh)"
 
 BAR_HEIGHT="35"
@@ -15,5 +13,7 @@ bar-info.sh | bar-mk.sh | lemonbar  \
     -F "$COLOR5"                    \
     -u '2'                          \
     -o '1' &
+
+trap "kill $!" INT TERM EXIT
 
 wait

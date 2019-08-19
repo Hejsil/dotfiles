@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 eval "$(colors.sh)"
 
 ICON_CALENDER="$(printf "\u$(printf "%x" 59399)")"
