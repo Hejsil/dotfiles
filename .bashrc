@@ -9,4 +9,5 @@ __cd_alias() {
 
 alias cd='__cd_alias'
 alias o=open.sh
+alias fo=fuzz-open.sh
 eval "$(starship init "$0")"
