@@ -6,3 +6,5 @@ export BROWSER="chromium"
 export READER="zathura"
 
 export NNN_OPENER="open.sh"
+
+export SKIM_DEFAULT_COMMAND="fd --type f"
