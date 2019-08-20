@@ -20,6 +20,8 @@ elif mime_match "(audio|video)/.*;"; then
     mpv "$ARG"
 elif name_match "^(https?:\/\/)?(www\.)?youtu(\.be\/.*|be\.com\/watch\?.*v=.*)$"; then
     mpv "$ARG"
+elif name_match "^(https?:\/\/)|(www\.)"; then
+    "$BROWSER" "$ARG"
 else
     echo "No match"
     exit 1
