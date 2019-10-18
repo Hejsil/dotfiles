@@ -82,7 +82,7 @@ shift "$((OPTIND-1))"
 input=$1
 
 # Show help and exit if we have no input
-[ "$input" = "" ] || [ $show_help = "true" ] && show_help && exit
+[ -z "$input" ] || [ "$show_help" = "true" ] && show_help && exit
 
 # Check for ffmpeg before encoding
 type ffmpeg >/dev/null 2>&1 || {
@@ -91,7 +91,7 @@ type ffmpeg >/dev/null 2>&1 || {
 }
 
 # Set output if not specified
-if [ "$output" = "" ]; then
+if [ -z "$output" ]; then
   input_filename=${input##*/}
   output=${input_filename%.*}.gif
 fi
