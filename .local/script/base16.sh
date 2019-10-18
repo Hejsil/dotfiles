@@ -7,8 +7,12 @@ TEMPLATE="$2"; [ -z "$TEMPLATE" ] && {
     echo "$TEMPLATE_CONTENT" >"$TEMPLATE"
 }
 
-seq 0 15 | xargs -I{} printf "base0%X\n" {} | while read -r BASE; do
-    HEX="$(grep "$BASE" "$SCHEME" | cut -d'"' -f2)"
+eval "$(cat "$SCHEME")"
+
+seq 0 15 | while read -r NUM; do
+    BASE="$(printf "base0%X" "$NUM")"
+    COLORVAR="\$COLOR$NUM"
+    HEX="$(eval "echo \"$COLORVAR\"")"
     HEX_R="$(echo "$HEX" | cut -c1-2)"
     HEX_G="$(echo "$HEX" | cut -c3-4)"
     HEX_B="$(echo "$HEX" | cut -c5-6)"
