@@ -332,17 +332,50 @@
         "textPreformat.foreground": "#{{base0D-hex}}", //D
         "textSeparator.foreground": "#f0f"
     },
-    "workbench.statusBar.visible": true,
-    "workbench.activityBar.visible": true,
+    "workbench.activityBar.visible": false,
     "workbench.sideBar.location": "left",
-    "breadcrumbs.enabled": true,
+    "breadcrumbs.enabled": false,
     "editor.minimap.enabled": false,
     "editor.renderWhitespace": "all",
     "editor.renderControlCharacters": true,
     "window.menuBarVisibility": "toggle",
     "workbench.editor.showTabs": false,
     "workbench.editor.closeOnFileDelete": true,
-    "workbench.editor.enablePreview": false,
     "explorer.openEditors.visible": 0,
-    "files.autoSave": "onFocusChange"
+    "files.autoSave": "onFocusChange",
+    "editor.rulers": [
+        100
+    ],
+    "files.exclude": {
+        "**/build": true,
+        "**/zen-cache": true,
+        "**/zig-cache": true
+    },
+    "files.simpleDialog.enable": true,
+    "files.watcherExclude": {
+        "**/build/**": true,
+        "**/zen-cache/**": true,
+        "**/zig-cache/**": true
+    },
+    "workbench.enableExperiments": false,
+    "workbench.startupEditor": "none",
+    "workbench.iconTheme": "vs-minimal",
+    "workbench.statusBar.visible": false,
+    "workbench.tips.enabled": false,
+    "workbench.editor.showIcons": false,
+    "workbench.settings.enableNaturalLanguageSearch": false,
+    "workbench.settings.useSplitJSON": true,
+    "zenMode.centerLayout": false,
+    "zenMode.fullScreen": false,
+    "zenMode.restore": true,
+    "search.followSymlinks": false,
+    "search.location": "panel",
+    "search.showLineNumbers": true,
+    "search.smartCase": true,
+    "search.useGlobalIgnoreFiles": true,
+    "terminal.explorerKind": "external",
+    "terminal.external.linuxExec": "alacritty",
+    "update.mode": "none",
+    "update.showReleaseNotes": false,
+    "telemetry.enableCrashReporter": false
  }
