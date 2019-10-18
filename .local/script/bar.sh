@@ -12,8 +12,15 @@ bar-info.sh | bar-mk.sh | lemonbar  \
     -B "$COLOR0"                    \
     -F "$COLOR5"                    \
     -u '2'                          \
+    -n 'lemonbar'                   \
     -o '1' &
 
 trap "kill $!" INT TERM EXIT
+
+while ! xdo id -a lemonbar; do
+    sleep 0.1s
+done
+
+xdo below -t $(xdo id -n root) $(xdo id -a lemonbar)
 
 wait
