@@ -30,6 +30,9 @@ super + {t,shift + t,s,f}
 super + {_,shift + } {1-9,0}
     bspc {desktop -f,node -d} "focused:^{1-9,10}"
 
+super + ctrl + {Left,Down,Up,Right}
+    bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
 #
 # Sound
 #
