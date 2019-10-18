@@ -2,7 +2,8 @@
 
 set -e
 
-eval "$(colors.sh)"
+SCHEME="$HOME/.local/script/colors.sh"
+eval "$(cat "$SCHEME")"
 
 ICON_CALENDER="$(printf "\u$(printf "%x" 59399)")"
 ICON_NEWSPAPER="$(printf "\u$(printf "%x" 61930)")"
@@ -25,7 +26,7 @@ ICON_CHIP="$(printf "\u$(printf "%x" 62171)")"
 ICON_CLOCK="$(printf "\u$(printf "%x" 59402)")"
 
 block() {
-    printf "%s" "%{U$COLOR6}%{+o}"
+    printf "%s" "%{U#$COLOR6}%{+o}"
     printf "$@"
     printf "%s" "%{-o}"
 }

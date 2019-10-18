@@ -10,28 +10,43 @@ TEMPLATE="$2"; [ -z "$TEMPLATE" ] && {
 eval "$(cat "$SCHEME")"
 
 seq 0 15 | while read -r NUM; do
-    BASE="$(printf "base0%X" "$NUM")"
+    (
     COLORVAR="\$COLOR$NUM"
     HEX="$(eval "echo \"$COLORVAR\"")"
-    HEX_R="$(echo "$HEX" | cut -c1-2)"
-    HEX_G="$(echo "$HEX" | cut -c3-4)"
-    HEX_B="$(echo "$HEX" | cut -c5-6)"
-    HEX_BGR="${HEX_B}${HEX_G}${HEX_R}"
-    RGB_R="$(printf %d "0x$HEX_R")"
-    RGB_G="$(printf %d "0x$HEX_G")"
-    RGB_B="$(printf %d "0x$HEX_B")"
-    DEC_R="0$(echo "$RGB_R / 255" | bc -l)"
-    DEC_G="0$(echo "$RGB_G / 255" | bc -l)"
-    DEC_B="0$(echo "$RGB_B / 255" | bc -l)"
-    printf "%s" " -e s/{{$BASE-hex}}/$HEX/g"
-    printf "%s" " -e s/{{$BASE-hex-r}}/$HEX_R/g"
-    printf "%s" " -e s/{{$BASE-hex-g}}/$HEX_G/g"
-    printf "%s" " -e s/{{$BASE-hex-b}}/$HEX_B/g"
-    printf "%s" " -e s/{{$BASE-hex-bgr}}/$HEX_BGR/g"
-    printf "%s" " -e s/{{$BASE-rgb-r}}/$RGB_R/g"
-    printf "%s" " -e s/{{$BASE-rgb-g}}/$RGB_G/g"
-    printf "%s" " -e s/{{$BASE-rgb-b}}/$RGB_B/g"
-    printf "%s" " -e s/{{$BASE-dec-r}}/$DEC_R/g"
-    printf "%s" " -e s/{{$BASE-dec-g}}/$DEC_G/g"
-    printf "%s" " -e s/{{$BASE-dec-b}}/$DEC_B/g"
+    echo "$HEX" | fold -w2 | paste -sd ' ' - | (
+    read -r HEX_R HEX_G HEX_B
+
+    printf "%d %d %d" "0x$HEX_R" "0x$HEX_G" "0x$HEX_B" | (
+    read -r RGB_R RGB_G RGB_B
+
+    (
+        echo "$RGB_R / 255"
+        echo "$RGB_G / 255"
+        echo "$RGB_B / 255"
+    ) | bc -l | paste -sd ' ' - | (
+    read -r DEC_R DEC_G DEC_B
+    
+    printf " -e s/{{base0%X-hex}}/%s/g 
+ -e s/{{base0%X-hex-r}}/%s/g
+ -e s/{{base0%X-hex-g}}/%s/g
+ -e s/{{base0%X-hex-b}}/%s/g
+ -e s/{{base0%X-hex-bgr}}/%s/g
+ -e s/{{base0%X-rgb-r}}/%s/g
+ -e s/{{base0%X-rgb-g}}/%s/g
+ -e s/{{base0%X-rgb-b}}/%s/g
+ -e s/{{base0%X-dec-r}}/0%s/g
+ -e s/{{base0%X-dec-g}}/0%s/g
+ -e s/{{base0%X-dec-b}}/0%s/g" \
+    "$NUM" "$HEX" \
+    "$NUM" "$HEX_R" \
+    "$NUM" "$HEX_G" \
+    "$NUM" "$HEX_B" \
+    "$NUM" "${HEX_B}${HEX_G}${HEX_R}" \
+    "$NUM" "$RGB_R" \
+    "$NUM" "$RGB_G" \
+    "$NUM" "$RGB_B" \
+    "$NUM" "$DEC_R" \
+    "$NUM" "$DEC_G" \
+    "$NUM" "$DEC_B"
+    ) ) ) ) &
 done | xargs sed "$TEMPLATE"

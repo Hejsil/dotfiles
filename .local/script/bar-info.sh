@@ -75,10 +75,13 @@ seq 0 inf | while read -r I; do
 
     # Things to run every 2 seconds
     if [ $((I % 2)) = 0 ]; then
-        print_news
         print_net
         print_mem
         print_cpu
+    fi
+    # Things to run every 4 seconds
+    if [ $((I % 2)) = 0 ]; then
+        print_news
     fi
 
     echo ""
