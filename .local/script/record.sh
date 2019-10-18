@@ -8,7 +8,7 @@ while getopts "f:" opt; do
         FPS="$OPTARG"
         ;;
     *)
-        echo "Invalid flag"
+        echo "Usage: record.sh [-f <FPS>] <FILE>"
         exit 1
         ;;
     esac
@@ -16,7 +16,7 @@ done
 shift "$((OPTIND - 1))"
 
 OUTPUT="$1"
-[ -z "$OUTPUT" ] && echo "No file provided" && exit 1
+[ -z "$OUTPUT" ] && OUTPUT="out.mp4"
 
 slop -f "%x %y %w %h" | (
     read -r X Y W H
