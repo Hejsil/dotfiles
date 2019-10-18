@@ -1,0 +1,3 @@
+browser open.sh %u
+max-browser-tabs 50
+bind-key O open-all-unread-in-browser-and-mark-read
