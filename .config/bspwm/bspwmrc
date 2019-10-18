@@ -1,10 +1,14 @@
 #!/bin/sh
 
+#### Colors ####
+
+eval "$(colors.sh)"
+
+#### bspwm config ####
+
 for MONITOR in $(bspc query -M --names); do
     bspc monitor "$MONITOR" -d 1 2 3 4 5 6 7 8 9 0
 done
-
-eval "$(colors.sh)"
 
 bspc config normal_border_color "$COLOR1"
 bspc config active_border_color "$COLOR2"
@@ -17,11 +21,17 @@ bspc config split_ratio          0.55
 bspc config border_width         2
 bspc config window_gap           0
 
+#### Language ####
+
 setxkbmap -layout "dk"
+
+#### Generate symlinks ####
+
 ln -s "$HOME/.local/script/open.sh" "$HOME/.local/script/xdg-open"
 
-# Generate themes. Having this here, allows us to hot reload themes which is nice
-SCHEME="$HOME/colors.yaml"
+#### Generate themes #####
+
+SCHEME="$HOME/.local/script/colors.sh"
 ALACRITTY_TEMPLATE="$HOME/templates/alacritty.yml"
 ROFI_TEMPLATE="$HOME/templates/theme.rasi"
 VSCODIUM_TEMPLATE="$HOME/templates/settings.json"
@@ -31,8 +41,10 @@ base16.sh "$SCHEME" "$VSCODIUM_TEMPLATE" > "$HOME/.config/VSCodium/User/settings
 base16.sh "$SCHEME" "$ROFI_TEMPLATE" > "$HOME/.config/rofi/theme.rasi" &
 base16.sh "$SCHEME" "$XRESOURCES_TEMPLATE" > "$HOME/.Xresources"
 
+#### Auto start ####
+
 # programs we run on startup and never restart
-runonce.sh megasync
+#runonce.sh megasync
 runonce.sh redshift
 runonce.sh sxhkd -r /tmp/sxhkd.log
 
@@ -42,10 +54,9 @@ restart.sh bar.sh
 
 restart.sh dunst
 
-# reload sxhkd config when it changes
-echo "$HOME/.config/sxhkd/sxhkdrc" | restart.sh entr -p pkill -USR1 -x sxhkd
+#### Reload ####
 
-# restart wm when certain configs changes
+echo "$HOME/.config/sxhkd/sxhkdrc" | restart.sh entr -p pkill -USR1 -x sxhkd
 (
     echo "$HOME/.config/bspwm/bspwmrc"
     echo "$HOME/.local/script/bar-info.sh"
