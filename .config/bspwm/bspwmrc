@@ -31,11 +31,12 @@ ln -s "$HOME/.local/script/open.sh" "$HOME/.local/script/xdg-open"
 
 #### Generate themes #####
 
+TEMPLATE_DIR="$HOME/.local/share/template"
 SCHEME="$HOME/.local/script/colors.sh"
-ALACRITTY_TEMPLATE="$HOME/templates/alacritty.yml"
-ROFI_TEMPLATE="$HOME/templates/theme.rasi"
-VSCODIUM_TEMPLATE="$HOME/templates/settings.json"
-XRESOURCES_TEMPLATE="$HOME/templates/.Xresources"
+ALACRITTY_TEMPLATE="$TEMPLATE_DIR/alacritty.yml"
+ROFI_TEMPLATE="$TEMPLATE_DIR/theme.rasi"
+VSCODIUM_TEMPLATE="$TEMPLATE_DIR/settings.json"
+XRESOURCES_TEMPLATE="$TEMPLATE_DIR/.Xresources"
 base16.sh "$SCHEME" "$ALACRITTY_TEMPLATE" > "$HOME/.config/alacritty/alacritty.yml" &
 base16.sh "$SCHEME" "$VSCODIUM_TEMPLATE" > "$HOME/.config/VSCodium/User/settings.json" &
 base16.sh "$SCHEME" "$ROFI_TEMPLATE" > "$HOME/.config/rofi/theme.rasi" &
