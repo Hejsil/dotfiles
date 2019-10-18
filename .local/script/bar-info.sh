@@ -63,13 +63,11 @@ while inotifywait /tmp/volume-notify-file 2>/dev/null >/dev/null; do
     print_volume
     echo ""
 done &
-trap "kill $!" INT TERM QUIT EXIT
 
 while true; do
-    newsboat -x reload >/dev/null
-    sleep 1h
+    while ! newsboat -x reload; do sleep 1s; done
+    sleep 30m
 done &
-trap "kill $!" INT TERM QUIT EXIT
 
 seq 0 inf | while read -r I; do
     # Things to run every second
