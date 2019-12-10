@@ -19,7 +19,7 @@ events.connect(events.FILE_AFTER_SAVE, function()
         if status == 0 then
             io.reload_file()
         else
-            ui.print(stderr)
+            --ui.print(stderr)
         end
     end)
     if not p then
@@ -27,6 +27,16 @@ events.connect(events.FILE_AFTER_SAVE, function()
         return
     end
 end)
+
+textadept.editing.autocompleters.zig = textadept.editing.autocompleters.ansi_c
+
+keys.zig = {
+  ['s\n'] = function()
+    buffer:line_end()
+    buffer:add_text(';')
+    buffer:new_line()
+  end,
+}
 
 if type(snippets) == 'table' then
     local mem = [[mem.,std.mem.,,@import("std").mem.]]
