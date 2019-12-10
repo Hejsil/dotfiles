@@ -1,4 +1,5 @@
 #!/bin/sh
+. /etc/profile.d/devkit-env.sh
 HISTSIZE=
 HISTFILESIZE= 
 
