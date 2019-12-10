@@ -12,15 +12,17 @@ __mkdir_alias() {
     cd "$@"
 }
 
-__ls_alias() {
-   exa -a "$@"
-}
-
 alias cd='__cd_alias'
 alias mkdir='__mkdir_alias'
-alias ls='__ls_alias'
+alias ls='exa -a'
 alias o=open.sh
 alias fo=fuzz-open.sh
-eval "$(starship init "$0")"
 
+alias ga='git add'
+alias gc='git commit'
+alias gd='git diff'
+alias gp='git push'
+alias gs='git status'
+
+eval "$(starship init "$0")"
 pfetch
