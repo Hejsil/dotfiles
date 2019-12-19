@@ -1,34 +1,36 @@
 #!/bin/sh
 
-ARG="$1"; [ -z "$ARG" ] && exit 1
-
-name_match() {
-    echo "$ARG" | grep -E "$1"
+PROGRAM="$(basename "$0")"
+usage() {
+    echo "Usage: $(basename "$PROGRAM")"
 }
 
-mime_match() {
-    file -i "$ARG" | grep -E "$1"
-}
+while getopts "h" OPT; do
+    case "$OPT" in
+        h)
+            usage
+            exit 0
+            ;;
+        *)
+            usage
+            exit 1
+            ;;
+    esac
+done
+shift $((OPTIND-1))
 
-echo "$ARG" >> /tmp/open.log
+[ -z "$1" ] && exit 0
+ARG1="$1"
+OPENER="$(opener.sh "$ARG1")"
 
-if mime_match "application/pdf;"; then
-    "$READER" "$ARG"
-elif mime_match "text/.*;|application/json"; then
-    "$EDITOR" "$ARG"
-elif mime_match "image/.*;"; then
-    sxiv "$ARG"
-elif mime_match "(audio|video)/.*;"; then
-    mpv "$ARG"
-elif mime_match "application/java-archive;"; then
-    java -jar "$ARG"
-elif mime_match "application/x-bittorrent;"; then
-    deluge "$ARG"
-elif name_match "^(https?:\/\/)?(www\.)?youtu(\.be\/.*|be\.com\/watch\?.*v=.*)$"; then
-    mpv "$ARG"
-elif name_match "^(https?:\/\/)|(www\.)"; then
-    "$BROWSER" "$ARG"
-else
-    echo "No match"
-    exit 1
-fi
+for ARG in "$@"; do
+    OTHER="$(opener.sh "$ARG")"
+    if [ "$OTHER" != "$OPENER" ]; then
+        >&2 echo "Some args require different programs"
+        >&2 echo "> $OPENER $ARG1"
+        >&2 echo "> $OTHER $ARG"
+        exit 1
+    fi
+done
+
+$OPENER "$@"
