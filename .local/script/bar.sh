@@ -3,13 +3,13 @@
 SCHEME="$HOME/.local/script/colors.sh"
 eval "$(cat "$SCHEME")"
 
-BAR_HEIGHT="35"
+BAR_HEIGHT="30"
 bspc config top_padding "$BAR_HEIGHT"
 
 bar-info.sh | bar-mk.sh | lemonbar  \
     -g "x$BAR_HEIGHT"               \
-    -f 'monospace-15'               \
-    -f 'fontello-17'                \
+    -f 'monospace-12'               \
+    -f 'fontello-14'                \
     -B "#$COLOR0"                    \
     -F "#$COLOR5"                    \
     -u '2'                          \

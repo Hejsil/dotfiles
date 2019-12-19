@@ -43,6 +43,10 @@ cpu_usage() {
     grep -E 'cpu ' /proc/stat | sed -E "s/[ ]+/ /g" | cut -d ' ' -f 2,4,5
 }
 
+var_wrap() {
+    sed -u "s/'/'\"'\"'/g" | sed -u -E "s/(.*)/$1='\1';/"
+}
+
 CPU_LAST="$(mktemp /tmp/cpu-last.XXXXXX)"
 CPU_CURR="$(mktemp /tmp/cpu-curr.XXXXXX)"
 cpu_usage | sed 's/[0-9]*/0/g' >"$CPU_LAST"
@@ -62,10 +66,8 @@ while inotifywait /tmp/volume-notify-file 2>/dev/null >/dev/null; do
     echo ""
 done &
 
-while true; do
-    while ! newsboat -x reload; do sleep 1s; done
-    sleep 30m
-done &
+bspc subscribe report | var_wrap 'BSPWM_REPORT' &
+xtitle -s | var_wrap 'WINDOW' &
 
 seq 0 inf | while read -r I; do
     # Things to run every second
