@@ -1,9 +1,13 @@
 #!/bin/sh
 
-FPS="60"
+PROGRAM="$(basename "$0")"
+usage() {
+    echo "Usage: $(basename "$PROGRAM")"
+}
 
-while getopts "f:" opt; do
-    case "$opt" in
+FPS="60"
+while getopts "f:" OPT; do
+    case "$OPT" in
     f)
         FPS="$OPTARG"
         ;;

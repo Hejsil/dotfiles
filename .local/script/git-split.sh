@@ -1,11 +1,11 @@
 #!/bin/sh
 
-FILE="$1"; [ -z "$FILE" ] && echo "No file provided" && exit 1
-FILEA="$2"; [ -z "$FILEA" ] && echo "Missing name for first new file" && exit 1
-FILEB="$3"; [ -z "$FILEB" ] && echo "Missing name for second new file" && exit 1
-[ "$FILE" = "$FILEA" ] && echo "Files cannot have same name" && exit 1
-[ "$FILE" = "$FILEB" ] && echo "Files cannot have same name" && exit 1
-[ "$FILEA" = "$FILEB" ] && echo "Files cannot have same name" && exit 1
+FILE="$1"; [ -z "$FILE" ] && { echo "No file provided"; exit 1; }
+FILEA="$2"; [ -z "$FILEA" ] && { echo "Missing name for first new file"; exit 1; }
+FILEB="$3"; [ -z "$FILEB" ] && { echo "Missing name for second new file"; exit 1; }
+[ "$FILE" = "$FILEA" ] && { echo "Files cannot have same name"; exit 1; }
+[ "$FILE" = "$FILEB" ] && { echo "Files cannot have same name"; exit 1; }
+[ "$FILEA" = "$FILEB" ] && { echo "Files cannot have same name"; exit 1; }
 
 CURRENT_BRANCH="$(git status | grep 'On branch' | cut -d ' ' -f 3-)"
 TMP_BRANCH="__tmp_branch__"
