@@ -12,9 +12,7 @@ print_volume() {
 }
 
 print_news() {
-    NEWS="$(newsboat -x print-unread | cut -d ' ' -f1)"
-    [ -z "$NEWS" ] && return
-
+    NEWS="$(find "$HOME/.cache/rss/unread/" -type f | wc -l)"
     printf "NEWS='%s';" "$NEWS"
 }
 
@@ -80,7 +78,7 @@ seq 0 inf | while read -r I; do
         print_cpu
     fi
     # Things to run every 4 seconds
-    if [ $((I % 2)) = 0 ]; then
+    if [ $((I % 4)) = 0 ]; then
         print_news
     fi
 
