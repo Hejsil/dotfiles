@@ -5,25 +5,31 @@ set -e
 SCHEME="$HOME/.local/script/colors.sh"
 eval "$(cat "$SCHEME")"
 
-ICON_CALENDER="$(printf "\u$(printf "%x" 59399)")"
-ICON_NEWSPAPER="$(printf "\u$(printf "%x" 61930)")"
-ICON_DOWN="$(printf "\u$(printf "%x" 59398)")"
-ICON_UP="$(printf "\u$(printf "%x" 59397)")"
-ICON_DOWNLOAD="$(printf "\u$(printf "%x" 59400)")"
-ICON_UPLOAD="$(printf "\u$(printf "%x" 59401)")"
-ICON_VOLUME0="$(printf "\u$(printf "%x" 59393)")"
-ICON_VOLUME1="$(printf "\u$(printf "%x" 59394)")"
-ICON_VOLUME2="$(printf "\u$(printf "%x" 59395)")"
-ICON_VOLUME3="$(printf "\u$(printf "%x" 59396)")"
-ICON_TEMP0="$(printf "\u$(printf "%x" 62155)")"
-ICON_TEMP1="$(printf "\u$(printf "%x" 62154)")"
-ICON_TEMP2="$(printf "\u$(printf "%x" 62153)")"
-ICON_TEMP3="$(printf "\u$(printf "%x" 62152)")"
-ICON_TEMP4="$(printf "\u$(printf "%x" 62151)")"
-ICON_SPEED="$(printf "\u$(printf "%x" 59392)")"
-ICON_RSS="$(printf "\u$(printf "%x" 61763)")"
-ICON_CHIP="$(printf "\u$(printf "%x" 62171)")"
-ICON_CLOCK="$(printf "\u$(printf "%x" 59402)")"
+# dash shell has a builtin printf which does
+# not support \uXXXX.
+printff() {
+    "$(which printf)" "$*"
+}
+
+ICON_CALENDER="$(printff "\u$(printf "%x" 59399)")"
+ICON_NEWSPAPER="$(printff "\u$(printf "%x" 61930)")"
+ICON_DOWN="$(printff "\u$(printf "%x" 59398)")"
+ICON_UP="$(printff "\u$(printf "%x" 59397)")"
+ICON_DOWNLOAD="$(printff "\u$(printf "%x" 59400)")"
+ICON_UPLOAD="$(printff "\u$(printf "%x" 59401)")"
+ICON_VOLUME0="$(printff "\u$(printf "%x" 59393)")"
+ICON_VOLUME1="$(printff "\u$(printf "%x" 59394)")"
+ICON_VOLUME2="$(printff "\u$(printf "%x" 59395)")"
+ICON_VOLUME3="$(printff "\u$(printf "%x" 59396)")"
+ICON_TEMP0="$(printff "\u$(printf "%x" 62155)")"
+ICON_TEMP1="$(printff "\u$(printf "%x" 62154)")"
+ICON_TEMP2="$(printff "\u$(printf "%x" 62153)")"
+ICON_TEMP3="$(printff "\u$(printf "%x" 62152)")"
+ICON_TEMP4="$(printff "\u$(printf "%x" 62151)")"
+ICON_SPEED="$(printff "\u$(printf "%x" 59392)")"
+ICON_RSS="$(printff "\u$(printf "%x" 61763)")"
+ICON_CHIP="$(printff "\u$(printf "%x" 62171)")"
+ICON_CLOCK="$(printff "\u$(printf "%x" 59402)")"
 
 block() {
     printf "%s" "%{U#$COLOR6}%{+o}"
@@ -34,12 +40,39 @@ block() {
 while read -r LINE; do
     eval "$LINE"
 
-    for MONITOR in $(bspc query -M --names | nl -w1 -v0 | cut -f1); do
-        printf "%s" "%{S$MONITOR}%{l}"
+    bspc query -M --names | nl -w1 -v0 | while read -r INDEX MONITOR; do
+        printf "%s" "%{S$INDEX}"
 
         printf "%s" "%{c}"
+        printf "%s" "$WINDOW"
 
-        printf "%s" "%{r}"
+        printf "%s" "%{l} "
+        echo "$BSPWM_REPORT" | tr ':' '\n' |
+            grep "$MONITOR" -A 1000 |
+            sed -e '1d' -e '/[mMwW]/q'|
+            sed '$d' |
+        while read -r INFO; do
+            NUM="${INFO#?}"
+            case "$INFO" in
+                o*)
+                    block " %s" "$NUM*"
+                    ;;
+                O*)
+                    block "%s %s%s" "%{+u}" "$NUM*" "%{-u}"
+                    ;;
+                f*)
+                    block " %s " "$NUM"
+                    ;;
+                F*)
+                    block "%s %s %s" "%{+u}" "$NUM" "%{-u}"
+                    ;;
+                *)
+                    ;;
+            esac
+        done
+        printf " "
+
+        printf "%s" "%{r} "
         block " %3d%% %s " "$CPU" "$ICON_SPEED"
         printf " "
         block " %3d%% %s " "$MEM" "$ICON_CHIP"
