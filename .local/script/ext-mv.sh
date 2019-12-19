@@ -2,13 +2,15 @@
 EXT="$1"; [ -z "$EXT" ] && echo "No ext" && exit 1
 
 shift
-for FILE in "$@"; do (
+for FILE in "$@"; do
     REAL="$(realpath "$FILE")"
-    cd "$(dirname "$REAL")" || exit 1
+    RENAME="${REAL%.*}.$EXT"
+    cd "$(dirname "$REAL")" || continue
 
     if ( git rev-parse --is-inside-work-tree 2>&1 ) >/dev/null; then
-        git mv -- "$REAL" "${REAL%.*}.$EXT" || mv -- "$REAL" "${REAL%.*}.$EXT"
+        git mv -- "$REAL" "$RENAME" || mv -- "$REAL" "${REAL%.*}.$EXT" || continue
     else
-        mv -- "$REAL" "${REAL%.*}.$EXT"
+        mv -- "$REAL" "$RENAME" || continue
     fi
-) done
+    echo "$REAL -> $RENAME"
+done
