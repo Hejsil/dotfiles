@@ -1,0 +1,4 @@
+#!/bin/sh
+# This is not an alias because I want it to show up in my
+# program launcher (rofi)
+textadept --force "$*"
