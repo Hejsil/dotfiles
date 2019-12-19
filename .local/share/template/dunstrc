@@ -1,0 +1,18 @@
+[global]
+    geometry = "320x5-0+35"
+    padding = 10
+    horizontal_padding = 10
+    frame_width = 2
+    frame_color = "#{{base01-hex}}"
+
+[urgency_low]
+    background = "#{{base00-hex}}"
+    foreground = "#{{base03-hex}}"
+
+[urgency_normal]
+    background = "#{{base00-hex}}"
+    foreground = "#{{base05-hex}}"
+
+[urgency_critical]
+    background = "#{{base00-hex}}"
+    foreground = "#{{base08-hex}}"

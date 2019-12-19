@@ -35,15 +35,22 @@ ln -s "$HOME/.local/script/open.sh" "$HOME/.local/script/xdg-open"
 
 #### Generate themes #####
 
+mkfile() {
+    mkdir -p "$(dirname "$1")"
+    touch "$1"
+    echo "$1"
+}
+
 TEMPLATE_DIR="$HOME/.local/share/template"
-ALACRITTY_TEMPLATE="$TEMPLATE_DIR/alacritty.yml"
-ROFI_TEMPLATE="$TEMPLATE_DIR/theme.rasi"
-VSCODIUM_TEMPLATE="$TEMPLATE_DIR/settings.json"
-XRESOURCES_TEMPLATE="$TEMPLATE_DIR/.Xresources"
-base16.sh "$SCHEME" "$ALACRITTY_TEMPLATE" > "$HOME/.config/alacritty/alacritty.yml" &
-base16.sh "$SCHEME" "$VSCODIUM_TEMPLATE" > "$HOME/.config/VSCodium/User/settings.json" &
-base16.sh "$SCHEME" "$ROFI_TEMPLATE" > "$HOME/.config/rofi/theme.rasi" &
-base16.sh "$SCHEME" "$XRESOURCES_TEMPLATE" > "$HOME/.Xresources"
+base16.sh "$SCHEME" "$TEMPLATE_DIR/alacritty.yml" > "$(mkfile "$HOME/.config/alacritty/alacritty.yml")" &
+base16.sh "$SCHEME" "$TEMPLATE_DIR/dunstrc" > "$(mkfile "$HOME/.config/dunst/dunstrc")" &
+base16.sh "$SCHEME" "$TEMPLATE_DIR/.gtkrc-2.0" > "$(mkfile "$HOME/.gtkrc-2.0")" &
+base16.sh "$SCHEME" "$TEMPLATE_DIR/gtk.css" > "$(mkfile "$HOME/.config/gtk-3.0/gtk.css")" &
+base16.sh "$SCHEME" "$TEMPLATE_DIR/theme.rasi" > "$(mkfile "$HOME/.config/rofi/theme.rasi")" &
+base16.sh "$SCHEME" "$TEMPLATE_DIR/settings.json" > "$(mkfile "$HOME/.config/VSCodium/User/settings.json")" &
+base16.sh "$SCHEME" "$TEMPLATE_DIR/.Xresources" > "$(mkfile "$HOME/.Xresources")" &
+wait
+gtkrc-reload
 
 #### Auto start ####
 
@@ -70,8 +77,5 @@ echo "$HOME/.config/sxhkd/sxhkdrc" | restart.sh entr -p pkill -USR1 -x sxhkd
     echo "$HOME/.local/script/restart.sh"
     echo "$HOME/.local/script/runonce.sh"
     echo "$SCHEME"
-    echo "$ALACRITTY_TEMPLATE"
-    echo "$VSCODIUM_TEMPLATE"
-    echo "$ROFI_TEMPLATE"
-    echo "$XRESOURCES_TEMPLATE"
+    find -type -f "$TEMPLATE_DIR"
 ) | restart.sh entr -p bspc wm -r
