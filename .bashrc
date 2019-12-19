@@ -1,7 +1,6 @@
 #!/bin/sh
-. /etc/profile.d/devkit-env.sh
 HISTSIZE=
-HISTFILESIZE= 
+HISTFILESIZE=
 
 __cd_alias() {
     cd "$@" || return
@@ -22,6 +21,8 @@ alias fo=fuzz-open.sh
 alias ga='git add'
 alias gc='git commit'
 alias gd='git diff'
+alias gds='git diff --stat'
+alias gl='git log'
 alias gp='git push'
 alias gs='git status'
 
