@@ -1,36 +1,46 @@
 buffer:set_theme(not CURSES and 'xresources' or 'term', { font = 'monospace', fontsize = 16 })
 
 textadept.file_types.extensions.zig = 'zig'
+textadept.file_types.extensions.zen = 'zig'
 
 textadept.editing.strip_trailing_spaces = true
 
-buffer.view_ws = buffer.WS_VISIBLEALWAYS
+buffer.auto_c_choose_single = false
+buffer.additional_selection_typing = true
+buffer.h_scroll_bar = false
+buffer.v_scroll_bar = false
 buffer.tab_width = 4
 buffer.use_tabs = false
-buffer.additional_selection_typing = true
+buffer.view_ws = buffer.WS_VISIBLEALWAYS
 
 ui.tabs = false
 
-io.quick_open_max = 50000
-
-lfs.default_filter = {
-    '!/build$', '!/build%-release$', '!/zen%-cache$', '!/zig%-cache$',
-
-    -- Hack: Compied from lfs_ext.lua. Idk how to concat the
-    --       current lfs.default_filter with more filters.
-    --       `lfs.default_filter = lfs.default_filter .. {''}`
-    --       doesn't seem to work
-    -- File extensions to exclude.
-    '!.a', '!.bmp', '!.bz2', '!.class', '!.dll', '!.exe', '!.gif', '!.gz',
-    '!.jar', '!.jpeg', '!.jpg', '!.o', '!.pdf', '!.png', '!.so', '!.tar', '!.tgz',
-    '!.tif', '!.tiff', '!.xz', '!.zip',
-    -- Directories to exclude.
-    '!/%.bzr$', '!/%.git$', '!/%.hg$', '!/%.svn$', '!/node_modules$',
-}
-
 keys['cg'] = textadept.editing.goto_line
 keys['c\n'] = ui.find.find_next
-keys['cp'] = io.quick_open
+keys['cp'] = function()
+    -- Textadepts io.quick_open is really slow when
+    -- there are lots of files. I therefor use fd+rofi
+    -- for a much faster quick open menu.
+    function dirname(str)
+        if not str or not str:match(".-/.-") then
+            return nil
+        end
+        return string.gsub(str, "(.*/)(.*)", "%1")
+    end
+
+    path = io.get_project_root()
+    if not path then path = dirname(buffer.filename) end
+    if not path then path = os.getenv("HOME") end
+    if not path then return end
+
+    local process = io.popen('rofi-file-picker.sh '..path)
+    --TODO check error
+    local file = process:read('l')
+    process:close()
+
+    if not file then return end
+    io.open_file(file)
+end
 
 -- More general system that autoindent
 -- Instead of just copying indentation, we copy everything
@@ -42,10 +52,20 @@ events.connect(events.CHAR_ADDED, function(code)
     local line = buffer:line_from_position(buffer.current_pos)
     if line == 0 then return end
 
-    -- If we end on line 1 (lines are zero indexed)
-    -- then we don't have two lines to compare, so
-    -- just copy indentation
+    local curr, _ = buffer.get_line(line)
+    if curr:find('^[\t ]*$') == nil then
+        -- The new line we end up on have none whitespace chars.
+        -- This means we pressed enter not at the end of the line.
+        -- We just copy the prev lines indentation in this case.
+        buffer.line_indentation[line] = buffer.line_indentation[line - 1]
+        buffer:vc_home()
+        return
+    end
+
     if line == 1 then
+        -- If we end on line 1 (lines are zero indexed)
+        -- then we don't have two lines to compare, so
+        -- just copy indentation.
         buffer.line_indentation[line] = buffer.line_indentation[line - 1]
         buffer:vc_home()
         return
@@ -76,4 +96,9 @@ events.connect(events.CHAR_ADDED, function(code)
     else
         buffer:add_text(common)
     end
+end)
+
+-- Hide topbar
+events.connect(events.INITIALIZED, function()
+    ui.menubar = {}
 end)
