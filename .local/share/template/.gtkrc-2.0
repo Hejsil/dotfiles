@@ -42,20 +42,20 @@ style "default"
   GtkHTML::vlink_color = "#{{base0E-hex}}"
   GtkHTML::cite_color = "#{{base07-hex}}"
 
-  fg[NORMAL]      = "#{{base04-hex}}"
-  text[NORMAL]    = "#{{base04-hex}}"
+  fg[NORMAL]      = "#{{base05-hex}}"
+  text[NORMAL]    = "#{{base05-hex}}"
   bg[NORMAL]      = "#{{base00-hex}}"
   base[NORMAL]    = "#{{base00-hex}}"
 
-  fg[INSENSITIVE]      = "#{{base04-hex}}"
+  fg[INSENSITIVE]      = "#{{base05-hex}}"
   bg[INSENSITIVE]      = "#{{base01-hex}}"
-  text[INSENSITIVE]    = "#{{base04-hex}}"
+  text[INSENSITIVE]    = "#{{base05-hex}}"
   base[INSENSITIVE]    = "#{{base01-hex}}"
 
   fg[PRELIGHT]    = "#{{base00-hex}}"
   text[PRELIGHT]  = "#{{base00-hex}}"
-  bg[PRELIGHT]    = "#{{base04-hex}}"
-  base[PRELIGHT]  = "#{{base04-hex}}"
+  bg[PRELIGHT]    = "#{{base05-hex}}"
+  base[PRELIGHT]  = "#{{base05-hex}}"
 
   fg[ACTIVE]      = "#{{base05-hex}}"
   text[ACTIVE]    = "#{{base05-hex}}"
@@ -64,7 +64,7 @@ style "default"
 
   fg[SELECTED]    = "#{{base00-hex}}"
   text[SELECTED]  = "#{{base00-hex}}"
-  bg[SELECTED]    = "#{{base04-hex}}"
+  bg[SELECTED]    = "#{{base05-hex}}"
   base[SELECTED]  = "#{{base07-hex}}"
 }
 
