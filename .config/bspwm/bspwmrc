@@ -78,5 +78,5 @@ echo "$HOME/.config/sxhkd/sxhkdrc" | restart.sh entr -p pkill -USR1 -x sxhkd
     echo "$HOME/.local/script/restart.sh"
     echo "$HOME/.local/script/runonce.sh"
     echo "$SCHEME"
-    find -type -f "$TEMPLATE_DIR"
+    find "$TEMPLATE_DIR"
 ) | restart.sh entr -p bspc wm -r
