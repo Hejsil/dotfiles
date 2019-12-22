@@ -1,3 +1,15 @@
+args.register('-vm', '--view-mode', 0, function()
+    events.connect(events.FILE_OPENED, function()
+        buffer.read_only = true
+    end)
+    events.connect(events.FILE_CHANGED, function()
+        buffer.read_only = false
+        io.reload_file()
+        buffer.read_only = true
+        return true -- stop prompt
+    end, 1)
+end, 'View-only mode')
+
 buffer:set_theme(not CURSES and 'xresources' or 'term', { font = 'monospace', fontsize = 16 })
 
 textadept.file_types.extensions.zig = 'zig'
