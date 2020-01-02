@@ -3,26 +3,21 @@
 PROGRAM="$(basename "$0")"
 usage() {
     echo "Usage: $(basename "$PROGRAM")"
+    exit "$1"
 }
 
 while getopts "h" OPT; do
     case "$OPT" in
-        h)
-            usage
-            exit 0
-            ;;
-        *)
-            usage
-            exit 1
-            ;;
+        h) usage 0 ;;
+        *) usage 1 ;;
     esac
 done
 shift $((OPTIND-1))
 
 FILENAME="$1"
-EXT="${FILENAME##*.}"
 [ -e "$FILENAME" ] && echo "$FILENAME already exists" && exit 1
 
+EXT="${FILENAME##*.}"
 case "$EXT" in
     "sh")
         {
@@ -31,18 +26,13 @@ case "$EXT" in
             echo 'PROGRAM="$(basename "$0")"'
             echo 'usage() {'
             echo '    echo "Usage: $(basename "$PROGRAM")"'
+            echo '    exit "$1"'
             echo '}'
             echo ''
             echo 'while getopts "h" OPT; do'
             echo '    case "$OPT" in'
-            echo '        h)'
-            echo '            usage'
-            echo '            exit 0'
-            echo '            ;;'
-            echo '        *)'
-            echo '            usage'
-            echo '            exit 1'
-            echo '            ;;'
+            echo '        h) usage 0 ;;'
+            echo '        *) usage 1 ;;'
             echo '    esac'
             echo 'done'
             echo 'shift $((OPTIND-1))'
