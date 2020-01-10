@@ -21,14 +21,14 @@ shift $((OPTIND-1))
 
 TMP="$(mktemp)"
 TAB="$(printf '\t')"
-find "$HOME/.cache/rss/unread/" -type f -exec awk 'FNR==3 {printf "%s\t%s\n", FILENAME, $0}' {} + |
+rss-list.sh -u | cut -d"$TAB" -f1,4 |
 while IFS="$TAB" read -r FILE LINK; do
     printf "%s\t%s\t%s\n" "$(opener.sh "$LINK")" "$FILE" "$LINK"
-done | grep "^$BROWSER" | head -n 50 >"$TMP"
+done | grep "^$BROWSER" | cut -d"$TAB" -f2,3 | head -n 50 >"$TMP"
 
 if [ -s "$TMP" ]; then
-    cut -d"$TAB" -f3 < "$TMP" | tr '\n' ' ' | xargs "$BROWSER" &
-    cut -d"$TAB" -f2 < "$TMP" | xargs -I{} mv {} "$HOME/.cache/rss/read" &
+    cut -d"$TAB" -f2 < "$TMP" | tr '\n' ' ' | xargs "$BROWSER" &
+    cut -d"$TAB" -f1 < "$TMP" | xargs -I{} mv {} "$HOME/.cache/rss/read" &
     wait
 fi
 
