@@ -11,6 +11,12 @@ super + Return
 super + shift + Return
     $TERMINAL -e nnn -id
 
+super + r
+    rss-read.sh
+
+super + shift + r
+    rss-open-all-in-browser.sh
+
 #
 # bspwm
 #
