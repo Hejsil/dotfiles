@@ -24,6 +24,7 @@ ARG1="$1"
 OPENER="$(opener.sh "$ARG1")"
 
 for ARG in "$@"; do
+    echo "$ARG" >> /tmp/open.log
     OTHER="$(opener.sh "$ARG")"
     if [ "$OTHER" != "$OPENER" ]; then
         >&2 echo "Some args require different programs"
@@ -33,4 +34,5 @@ for ARG in "$@"; do
     fi
 done
 
+[ -z "$OPENER" ] && exit 1
 $OPENER "$@"
