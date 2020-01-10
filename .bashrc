@@ -27,4 +27,4 @@ alias gp='git push'
 alias gs='git status'
 
 eval "$(starship init "$0")"
-pfetch
+rsfetch -lNPdehHkrcstuU@w
