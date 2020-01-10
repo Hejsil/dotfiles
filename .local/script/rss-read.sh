@@ -21,10 +21,10 @@ shift $((OPTIND-1))
 
 TMP="$(mktemp)"
 TAB="$(printf '\t')"
-find "$HOME/.cache/rss/unread/" -type f | while read -r FILE; do
-    tr '\n' '\t' < "$FILE"
-    printf "%s\n" "$FILE"
-done | cut -d"$TAB" -f2,3,8 | rofi -dmenu >"$TMP"
+rss-list.sh -u |
+    cut -d"$TAB" -f1,3,4 |
+    awk -F"$TAB" '{ printf "%s\t%s\t%s\n", $2, $3, $1 }' |
+    rofi -dmenu >"$TMP"
 
 if [ -s "$TMP" ]; then
     cut -d"$TAB" -f2 < "$TMP" | xargs open.sh
