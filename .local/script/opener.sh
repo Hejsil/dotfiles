@@ -4,10 +4,11 @@ if [ -f "$1" ]; then
     MINE="$(file --mime-type -Lb "$1")"
     case "$MINE" in
         application/pdf) echo "$READER" ;;
-        application/x-bittorrent) echo "deluge" ;;
+        application/x-bittorrent) echo 'tra.sh' ;;
         inode/x-empty|application/json|text*) echo "$EDITOR" ;;
-        image/*) echo 'sxiv' ;;
-        audio/*) echo 'mpv' ;;
+        image/*) echo 'sxiv -a' ;;
+        video/*) echo 'mpv' ;;
+        audio/*) echo 'mpv --vid=no' ;;
         *)
             >&2 echo "No match"
             exit 1
@@ -16,6 +17,7 @@ if [ -f "$1" ]; then
 else
     case "$1" in
         *youtube*watch*|*youtu.be*) echo 'mpv' ;;
+        magnet:*) echo 'tra.sh' ;;
         http*|www*) echo "$BROWSER" ;;
         *)
             >&2 echo "No match"
