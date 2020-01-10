@@ -58,6 +58,7 @@ gtkrc-reload
 
 # programs we run on startup and never restart
 runonce.sh megasync
+runonce.sh minidlnad -S -f "/home/$USER/.config/minidlna/minidlna.conf" -P "/home/$USER/.config/minidlna/minidlna.pid"
 runonce.sh redshift
 runonce.sh sxhkd -r /tmp/sxhkd.log
 
