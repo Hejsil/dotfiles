@@ -65,7 +65,7 @@ events.connect(events.CHAR_ADDED, function(code)
     if line == 0 then return end
 
     local curr, _ = buffer.get_line(line)
-    if curr:find('^[\t ]*$') == nil then
+    if curr:find('%S') ~= nil then
         -- The new line we end up on have none whitespace chars.
         -- This means we pressed enter not at the end of the line.
         -- We just copy the prev lines indentation in this case.
@@ -97,7 +97,7 @@ events.connect(events.CHAR_ADDED, function(code)
     end
 
     local common = prev1:sub(1, i - 1)
-    if common:find('^[\t ]*$') then
+    if common:find('^%s*$') then
         -- If common is only whitespace, then just copy
         -- prev lines ident instead. Example:
         --     s
