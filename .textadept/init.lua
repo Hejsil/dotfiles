@@ -1,14 +1,3 @@
-args.register('-vm', '--view-mode', 0, function()
-    events.connect(events.FILE_OPENED, function()
-        buffer.read_only = true
-    end)
-    events.connect(events.FILE_CHANGED, function()
-        buffer.read_only = false
-        io.reload_file()
-        buffer.read_only = true
-        return true -- stop prompt
-    end, 1)
-end, 'View-only mode')
 
 buffer:set_theme(not CURSES and 'xresources' or 'term', { font = 'monospace', fontsize = 16 })
 
@@ -114,3 +103,21 @@ end)
 events.connect(events.INITIALIZED, function()
     ui.menubar = {}
 end)
+
+-- Auto refresh when having no unsaved changes
+events.connect(events.FILE_CHANGED, function()
+    if not buffer.modify then
+        local read_only = buffer.read_only
+        buffer.read_only = false
+        io.reload_file()
+        buffer.read_only = read_only
+        return true -- stop prompt
+    end
+end, 1)
+
+-- Args
+args.register('-vm', '--view-mode', 0, function()
+    events.connect(events.FILE_OPENED, function()
+        buffer.read_only = true
+    end)
+end, 'View-only mode')
