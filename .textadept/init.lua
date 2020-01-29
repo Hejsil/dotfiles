@@ -16,6 +16,16 @@ buffer.view_ws = buffer.WS_VISIBLEALWAYS
 
 ui.tabs = false
 
+function fileExists(name)
+    local f = io.open(name,"r")
+    if f ~= nil then
+        io.close(f)
+        return true
+    else
+        return false
+    end
+end
+
 keys['cg'] = textadept.editing.goto_line
 keys['c\n'] = ui.find.find_next
 keys['cp'] = function()
@@ -35,11 +45,10 @@ keys['cp'] = function()
     if not path then return end
 
     local process = io.popen('rofi-file-picker.sh '..path)
-    --TODO check error
-    local file = process:read('l')
-    process:close()
+    local file = process:read('*l')
 
     if not file then return end
+    if not fileExists(file) then return end
     io.open_file(file)
 end
 
