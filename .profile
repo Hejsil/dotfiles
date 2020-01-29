@@ -2,7 +2,7 @@
 export PATH="/usr/lib/ccache/bin/:$HOME/.local/bin:$HOME/.local/script:$PATH"
 export EDITOR="textadept-curses"
 export TERMINAL="alacritty"
-export BROWSER="chromium"
+export BROWSER="palemoon"
 export READER="zathura"
 
 export NNN_OPENER="open.sh"
