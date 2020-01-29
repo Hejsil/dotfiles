@@ -2,30 +2,12 @@
 
 set -e
 
-print_date() {
-    printf "DATE='%s';" "$(date '+%F')"
-    printf "TIME='%s';" "$(date '+%R')"
-}
-
 print_volume() {
-    printf "VOLUME='%s';" "$(amixer sget Master | tr '\n' ' ' | cut -d "[" -f 2 | cut -d "%" -f 1)"
+    amixer sget Master | tr '\n' ' ' | cut -d "[" -f 2 | cut -d "%" -f 1
 }
 
 print_news() {
-    NEWS="$(find "$HOME/.cache/rss/unread/" -type f | wc -l)"
-    printf "NEWS='%s';" "$NEWS"
-}
-
-NET_RECEIVED='0'
-NET_TRANSMITTED='0'
-print_net() {
-    NET=$(tail -n +3 /proc/net/dev | sed -E 's/[ ]+/ /g' | cut -d ':' -f2 | cut -d ' ' -f 2,10)
-    NET_RECEIVED2=$(echo "$NET" | cut -d ' ' -f1 | awk '{sum+=$1} END {print sum}')
-    NET_TRANSMITTED2=$(echo "$NET" | cut -d ' ' -f2 | awk '{sum+=$1} END {print sum}')
-    printf "NET_DOWN='%s';" "$((NET_RECEIVED2 - NET_RECEIVED))"
-    printf "NET_UP='%s';" "$((NET_TRANSMITTED2 - NET_TRANSMITTED))"
-    NET_RECEIVED="$NET_RECEIVED2"
-    NET_TRANSMITTED="$NET_TRANSMITTED2"
+    find "$HOME/.cache/rss/unread/" -type f | wc -l
 }
 
 print_mem() {
@@ -35,7 +17,7 @@ print_mem() {
     if [ "$MEM_CURR2" != "$MEM_CURR" ] || [ "$MEM_MAX2" != "$MEM_MAX" ]; then
         MEM_CURR="$MEM_CURR2"
         MEM_MAX="$MEM_MAX2"
-        printf "MEM='%s';" "$(echo "$MEM_CURR $MEM_MAX" | awk '{ printf "%d",($1/$2)*100}')"
+        echo "$MEM_CURR $MEM_MAX" | awk '{ printf "%d",($1/$2)*100}'
     fi
 }
 
@@ -43,47 +25,50 @@ cpu_usage() {
     grep -E 'cpu ' /proc/stat | sed -E "s/[ ]+/ /g" | cut -d ' ' -f 2,4,5
 }
 
-var_wrap() {
-    sed -u "s/'/'\"'\"'/g" | sed -u -E "s/(.*)/$1='\1';/"
-}
-
 CPU_LAST="$(mktemp /tmp/cpu-last.XXXXXX)"
 CPU_CURR="$(mktemp /tmp/cpu-curr.XXXXXX)"
 cpu_usage | sed 's/[0-9]*/0/g' >"$CPU_LAST"
 print_cpu() {
     cpu_usage >"$CPU_CURR"
-    printf "CPU='%s';" "$(paste -d " " "$CPU_CURR" "$CPU_LAST" |
+    paste -d " " "$CPU_CURR" "$CPU_LAST" |
         awk '{printf "%d %d %d\n",($1-$4),($2-$5),($3-$6)}' |
-        awk '{usage=($1+$2)/($1+$2+$3); printf "%d",usage*100}')"
+        awk '{usage=($1+$2)/($1+$2+$3); printf "%d",usage*100}'
     cp "$CPU_CURR" "$CPU_LAST"
 }
 
-touch /tmp/volume-notify-file
-print_volume
+var_wrap() {
+    sed -u "s/'/'\"'\"'/g" | sed -u -E "s/(.*)/$1='\1';/"
+}
 
-while inotifywait /tmp/volume-notify-file 2>/dev/null >/dev/null; do
+(
+    touch /tmp/volume-notify-file
     print_volume
-    echo ""
-done &
+
+    while inotifywait /tmp/volume-notify-file 2>/dev/null >/dev/null; do
+        print_volume
+    done
+) | var_wrap 'VOLUME' &
 
 bspc subscribe report | var_wrap 'BSPWM_REPORT' &
 xtitle -s | var_wrap 'WINDOW' &
 
 seq 0 inf | while read -r I; do
-    # Things to run every second
-    print_date
+    (
+        # Things to run every second
+        date '+%R' | var_wrap 'TIME'
 
-    # Things to run every 2 seconds
-    if [ $((I % 2)) = 0 ]; then
-        print_net
-        print_mem
-        print_cpu
-    fi
-    # Things to run every 4 seconds
-    if [ $((I % 4)) = 0 ]; then
-        print_news
-    fi
-
+        # Things to run every 2 seconds
+        if [ $((I % 2)) = 0 ]; then
+            print_mem | var_wrap 'MEM'
+            print_cpu | var_wrap 'CPU'
+        fi
+        # Things to run every 4 seconds
+        if [ $((I % 4)) = 0 ]; then
+            date '+%F' | var_wrap 'DATE'
+            print_news | var_wrap 'NEWS'
+        fi
+    ) | tr '\n' ' '
     echo ""
+
     sleep 1
 done
