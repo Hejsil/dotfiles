@@ -1,5 +1,4 @@
 rofi.show-icons:      true
-rofi.matching:        fuzzy
 rofi.case-sensitive:  false
 rofi.color-enabled:   true
 rofi.separator-style: solid
