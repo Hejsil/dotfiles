@@ -1,8 +1,11 @@
 [global]
-    geometry = "320x5-0+35"
+    geometry = "320x5-0+30"
     padding = 10
     horizontal_padding = 10
-    frame_width = 2
+    font = "JetBrains Mono"
+    follow = "keyboard"
+    format = "<big><b>%s</b></big>\n%b"
+    frame_width = 1
     frame_color = "#{{base01-hex}}"
 
 [urgency_low]

@@ -1,5 +1,5 @@
 
-buffer:set_theme(not CURSES and 'xresources' or 'term', { font = 'monospace', fontsize = 16 })
+buffer:set_theme(not CURSES and 'xresources' or 'term', { font = 'JetBrains Mono', fontsize = 15 })
 
 textadept.file_types.extensions.zig = 'zig'
 textadept.file_types.extensions.zen = 'zig'
