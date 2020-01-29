@@ -42,7 +42,8 @@ READ_DIR="$CACHE_DIR/read"; mkdir -p "$READ_DIR"
 CONFIG_DIR="$GLOBAL_CONFIG_DIR/rss"; mkdir -p "$CONFIG_DIR"
 URL_CONFIG="$CONFIG_DIR/urls"; touch -a "$URL_CONFIG"
 
-while read -r LINE; do
+while read -r LINE _; do
+    >&2 echo "$LINE"
     curl -s "$LINE" | sfeed | tr '\t' '\a'
 done < "$URL_CONFIG" |
 while IFS="$(printf '\a')" read -r TIMESTAMP TITLE LINK CONTENT CONTENT_TYPE ID AUTHOR ENCLOSURE; do
