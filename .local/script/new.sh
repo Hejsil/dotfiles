@@ -68,7 +68,7 @@ case "$EXT" in
             echo 'const std = @import("std");'
             echo ''
             echo 'pub fn main() void {'
-            echo '    std.debug.warn("Hello World!")'
+            echo '    std.debug.warn("Hello World!");'
             echo '}'
         } > "$FILENAME"
         ;;
