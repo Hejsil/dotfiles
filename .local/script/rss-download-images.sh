@@ -32,13 +32,15 @@ rss-list.sh -u | tr "$TAB" "$A" | while IFS="$A" read -r FILE _ _ LINK DESC _; d
             done || exit 1
             mv "$FILE" "$HOME/.cache/rss/read"
             ;;
-        *tag:konachan.net*)
+        *tag:konachan.*)
             TMP="$(mktemp "$TMP_TEMPLATE")"
-            IMG_LINK="$(curl -s https://konachan.net/post/show/297793 |
+            IMG_LINK="$(curl -s "$LINK" |
                 grep -o 'href="[^"]*" id="highres"' |
                 cut -d'"' -f2)"
-            curl "$IMG_LINK" > "$TMP" || exit 1
-            correct-ext.sh "$TMP"
+            [ -z "$IMG_LINK" ] || {
+                curl "$IMG_LINK" > "$TMP" || exit 1
+                correct-ext.sh "$TMP"
+            }
             mv "$FILE" "$HOME/.cache/rss/read"
             ;;
         *e-shuushuu.net*)
