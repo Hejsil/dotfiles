@@ -44,10 +44,10 @@ super + ctrl + {Left,Down,Up,Right}
 #
 
 XF86Audio{Raise}Volume
-    mute.sh 0 && volume.sh +5%
+    mute.sh 0 && volume.sh +2%
 
 XF86AudioLowerVolume
-    mute.sh 0 && volume.sh -5%
+    mute.sh 0 && volume.sh -2%
 
 XF86AudioMute
     mute.sh $(((pactl list sinks | grep -q Mute:.no > /dev/null) && echo 1) || echo 0)
