@@ -15,11 +15,10 @@ __mkdir_alias() {
 alias cd='__cd_alias'
 alias mkdir='__mkdir_alias'
 alias ls='exa -a'
-alias o=open.sh
-alias fo=fuzz-open.sh
 
 alias ga='git add'
 alias gc='git commit'
+alias gco='git checkout'
 alias gd='git diff'
 alias gds='git diff --stat'
 alias gl='git log'
