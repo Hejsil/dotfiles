@@ -8,7 +8,7 @@ for FILE in "$@"; do
     cd "$(dirname "$REAL")" || continue
 
     if ( git rev-parse --is-inside-work-tree 2>&1 ) >/dev/null; then
-        git mv -- "$REAL" "$RENAME" || mv -- "$REAL" "${REAL%.*}.$EXT" || continue
+        git mv -- "$REAL" "$RENAME" || mv -- "$REAL" "$RENAME" || continue
     else
         mv -- "$REAL" "$RENAME" || continue
     fi
