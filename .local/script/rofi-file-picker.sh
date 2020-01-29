@@ -20,4 +20,4 @@ done
 shift $((OPTIND-1))
 
 DIR="$1"; [ -z "$DIR" ] && { echo "Missing DIR"; exit 1; }
-fd '.' "$DIR" -H -t f | head -n 50000 | rofi -dmenu
+fd '' "$DIR" -Ht f | rofi -dmenu
