@@ -1,54 +1,60 @@
 #!/bin/sh
 
-PROGRAM="$(basename "$0")"
+PROGRAM=${0##*/}
 usage() {
-    echo "Usage: $(basename "$PROGRAM")"
-    exit "$1"
+    echo "Usage: $PROGRAM"
 }
 
-while getopts "h" OPT; do
-    case "$OPT" in
-        h) usage 0 ;;
-        *) usage 1 ;;
+while [ -n "$1" ]; do
+    case $1 in
+        --) shift; break ;;
+        -h|--help) usage; exit 0 ;;
+        -*) usage; exit 1 ;;
+        *) break ;;
     esac
+    shift
 done
-shift $((OPTIND-1))
 
 mkdir -p "$HOME/Downloads/Images/"
-TMP_TEMPLATE="$HOME/Downloads/Images/XXXXXX"
+TMP_TEMPLATE=$HOME/Downloads/Images/XXXXXX
 
-TAB="$(printf '\t')"
-A="$(printf '\a')"
-rss-list.sh -u | tr "$TAB" "$A" | while IFS="$A" read -r FILE _ _ LINK DESC _; do
-    case "$FILE" in
-        *www.pixiv.net*)
-            echo "$DESC" |
-                grep -oE '<img src="[^"]*"' |
-                cut -d'"' -f2 |
-            while read -r IMG_LINK; do
-                TMP="$(mktemp "$TMP_TEMPLATE")"
-                curl "$IMG_LINK" > "$TMP"
-                correct-ext.sh "$TMP"
-            done || exit 1
-            mv "$FILE" "$HOME/.cache/rss/read"
-            ;;
+TAB=$(printf '\t')
+A=$(printf '\a')
+rss-list.sh -u | tr "$TAB" "$A" | while IFS=$A read -r FILE _ _ LINK DESC _; do
+    case $FILE in
         *tag:konachan.*)
-            TMP="$(mktemp "$TMP_TEMPLATE")"
-            IMG_LINK="$(curl -s "$LINK" |
+            curl -s "$LINK" |
                 grep -o 'href="[^"]*" id="highres"' |
-                cut -d'"' -f2)"
-            [ -z "$IMG_LINK" ] || {
-                curl "$IMG_LINK" > "$TMP" || exit 1
-                correct-ext.sh "$TMP"
-            }
-            mv "$FILE" "$HOME/.cache/rss/read"
+                cut -d'"' -f2 |
+                sed "s$TAB^$TAB$FILE$A$TAB"
             ;;
-        *e-shuushuu.net*)
-            TMP="$(mktemp "$TMP_TEMPLATE")"
-            curl "$LINK" > "$TMP" || exit 1
+        *www.pixiv.net*|*e-shuushuu.net*|*www.artstation.com*)
+            echo "$DESC" | grep -oE '\w+:\/\/[-a-zA-Z0-9:@;?&=\/%\+\.\*!'"'"'\(\),\$_\{\}\^~`#|]+' |
+                sed "s$TAB^$TAB$FILE$A$TAB"
+            ;;
+        *) case $LINK in
+                *www.reddit.com*)
+                    echo "$DESC" | grep -oE '\w+:\/\/[-a-zA-Z0-9:@;?&=\/%\+\.\*!'"'"'\(\),\$_\{\}\^~`#|]+' |
+                        sed "s$TAB^$TAB$FILE$A$TAB"
+                    ;;
+                *) ;;
+            esac
+            ;;
+    esac
+done | while IFS=$A read -r FILE LINK; do
+    TMP=$(mktemp "$TMP_TEMPLATE")
+    curl "$LINK" > "$TMP" || continue
+    case $(file -b --mime-type "$TMP") in
+        image/*)
             correct-ext.sh "$TMP"
             mv "$FILE" "$HOME/.cache/rss/read"
             ;;
-        *) ;;
+        *)
+            rm "$TMP"
+            ;;
     esac
 done
+
+
+
+

@@ -1,23 +1,24 @@
 #!/bin/sh
 
-PROGRAM="$(basename "$0")"
+PROGRAM=${0##*/}
 usage() {
-    echo "Usage: $(basename "$PROGRAM")"
+    echo "Usage: $PROGRAM"
 }
 
-while getopts "h" OPT; do
-    case "$OPT" in
-        h)
-            usage
-            exit 0
-            ;;
-        *)
-            usage
-            exit 1
-            ;;
+while [ -n "$1" ]; do
+    case $1 in
+        --) shift; break ;;
+        -h|--help) usage; exit 0 ;;
+        -*) usage; exit 1 ;;
+        *) break ;;
     esac
+    shift
 done
-shift $((OPTIND-1))
 
-DIR="$1"; [ -z "$DIR" ] && { echo "Missing DIR"; exit 1; }
+DIR=$1
+if [ -z "$DIR" ]; then
+    usage
+    exit 1
+fi
+
 fd '' "$DIR" -Ht f | rofi -dmenu

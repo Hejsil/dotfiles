@@ -1,29 +1,25 @@
 #!/bin/sh
 
-PROGRAM="$(basename "$0")"
+PROGRAM=${0##*/}
 usage() {
-    echo "Usage: $(basename "$PROGRAM")"
+    echo "Usage: $PROGRAM"
 }
 
-while getopts "h" OPT; do
-    case "$OPT" in
-        h)
-            usage
-            exit 0
-            ;;
-        *)
-            usage
-            exit 1
-            ;;
+while [ -n "$1" ]; do
+    case $1 in
+        --) shift; break ;;
+        -h|--help) usage; exit 0 ;;
+        -*) usage; exit 1 ;;
+        *) break ;;
     esac
+    shift
 done
-shift $((OPTIND-1))
 
-TMP="$(mktemp)"
-TAB="$(printf '\t')"
+TMP=$(mktemp)
+TAB=$(printf '\t')
 rss-list.sh -u | cut -d"$TAB" -f1,4 |
-while IFS="$TAB" read -r FILE LINK; do
-    printf "%s\t%s\t%s\n" "$(opener.sh "$LINK")" "$FILE" "$LINK"
+while IFS=$TAB read -r FILE LINK; do
+    printf '%s\t%s\t%s\n' "$(opener.sh "$LINK")" "$FILE" "$LINK"
 done | grep "^$BROWSER" | cut -d"$TAB" -f2,3 | head -n 50 >"$TMP"
 
 if [ -s "$TMP" ]; then

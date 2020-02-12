@@ -1,47 +1,52 @@
 #!/bin/sh
 
-PROGRAM="$(basename "$0")"
+PROGRAM=${0##*/}
 usage() {
-    echo "Usage: $(basename "$PROGRAM")"
-    exit "$1"
+    echo "Usage: $PROGRAM"
 }
 
-while getopts "h" OPT; do
-    case "$OPT" in
-        h) usage 0 ;;
-        *) usage 1 ;;
+while [ -n "$1" ]; do
+    case $1 in
+        --) shift; break ;;
+        -h|--help) usage; exit 0 ;;
+        -*) usage; exit 1 ;;
+        *) break ;;
     esac
+    shift
 done
-shift $((OPTIND-1))
 
-FILENAME="$1"
-[ -e "$FILENAME" ] && echo "$FILENAME already exists" && exit 1
+FILENAME=$1
+if [ -e "$FILENAME" ]; then
+    echo "$FILENAME already exists"
+    exit 1
+fi
 
 EXT="${FILENAME##*.}"
-case "$EXT" in
-    "sh")
+case $EXT in
+    sh)
         {
             echo '#!/bin/sh'
             echo ''
-            echo 'PROGRAM="$(basename "$0")"'
+            echo 'PROGRAM="${0##*/}"'
             echo 'usage() {'
-            echo '    echo "Usage: $(basename "$PROGRAM")"'
-            echo '    exit "$1"'
+            echo '    echo "Usage: "'
             echo '}'
             echo ''
-            echo 'while getopts "h" OPT; do'
-            echo '    case "$OPT" in'
-            echo '        h) usage 0 ;;'
-            echo '        *) usage 1 ;;'
+            echo 'while [ -n "$1" ]; do'
+            echo '    case $1 in'
+            echo '        --) shift; break ;;'
+            echo '        -h|--help) usage; exit 0 ;;'
+            echo '        -*) usage; exit 1 ;;'
+            echo '        *) break ;;'
             echo '    esac'
+            echo '    shift'
             echo 'done'
-            echo 'shift $((OPTIND-1))'
             echo ''
             echo "echo 'Hello World!'"
         } > "$FILENAME"
         chmod +x "$FILENAME"
         ;;
-    "html")
+    html)
         {
             echo '<!DOCTYPE html>'
             echo '<html>'
@@ -57,13 +62,13 @@ case "$EXT" in
             echo '</html>'
         } > "$FILENAME"
         ;;
-    "md")
+    md)
         {
             echo '# Hello World'
             echo 'Hello World!'
         } > "$FILENAME"
         ;;
-    "zig")
+    zig)
         {
             echo 'const std = @import("std");'
             echo ''

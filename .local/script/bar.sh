@@ -3,7 +3,7 @@
 SCHEME="$HOME/.local/script/colors.sh"
 eval "$(cat "$SCHEME")"
 
-BAR_HEIGHT="30"
+BAR_HEIGHT=30
 bspc config top_padding "$BAR_HEIGHT"
 
 bar-info.sh | bar-mk.sh | lemonbar  \
@@ -12,9 +12,9 @@ bar-info.sh | bar-mk.sh | lemonbar  \
     -f 'fontello-14'                \
     -B "#$COLOR0"                   \
     -F "#$COLOR5"                   \
-    -u '2'                          \
+    -u 2                            \
     -n 'lemonbar'                   \
-    -o '1' &
+    -o 1 &
 
 trap "kill $!" INT TERM EXIT
 

@@ -1,29 +1,28 @@
 #!/bin/sh
 
-PROGRAM="$(basename "$0")"
+PROGRAM=${0##*/}
 usage() {
-    echo "Usage: $(basename "$PROGRAM") [ -hru ]"
-    exit "$1"
+    echo "Usage: $PROGRAM"
 }
 
-READ=''
-UNREAD=''
-while getopts "hru" OPT; do
-    case "$OPT" in
-        r) READ='read' ;;
-        u) UNREAD='unread' ;;
-        h) usage 0 ;;
-        *) usage 1 ;;
+while [ -n "$1" ]; do
+    case $1 in
+        --) shift; break ;;
+        -r|--read) READ='read' ;;
+        -u|--unread) UNREAD='unread' ;;
+        -h|--help) usage; exit 0 ;;
+        -*) usage; exit 1 ;;
+        *) break ;;
     esac
+    shift
 done
-shift $((OPTIND-1))
 
 list_feed() {
     [ -z "$1" ] && return
     find "$HOME/.cache/rss/$1/" -type f -exec awk '
         BEGINFILE { printf "%s", FILENAME }
-        {printf "\t%s", $0}
-        ENDFILE {printf "\n"}' {} +
+        { printf "\t%s", $0 }
+        ENDFILE { printf "\n" }' {} +
 }
 
 list_feed "$READ"

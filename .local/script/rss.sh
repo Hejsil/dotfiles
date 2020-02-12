@@ -1,28 +1,24 @@
 #!/bin/sh
 
-PROGRAM="$(basename "$0")"
+PROGRAM=${0##*/}
 usage() {
     echo "Usage: $PROGRAM [-h]"
-    echo "    -h    Print hel information and exists"
+    echo '    -h    Print help information and exists'
 }
 
-while getopts "i:h" OPT; do
-    case "$OPT" in
-        h)
-            usage
-            exit 0
-            ;;
-        *)
-            usage
-            exit 1
-            ;;
+while [ -n "$1" ]; do
+    case $1 in
+        --) shift; break ;;
+        -h|--help) usage; exit 0 ;;
+        -*) usage; exit 1 ;;
+        *) break ;;
     esac
+    shift
 done
-shift $((OPTIND-1))
 
 dir_with_fallback() {
-    DIR="$1"
-    FALLBACK="$2"
+    DIR=$1
+    FALLBACK=$2
     if [ -e "$DIR" ]; then
         echo "$DIR"
     else
@@ -30,8 +26,8 @@ dir_with_fallback() {
     fi
 }
 
-GLOBAL_CACHE_DIR="$(dir_with_fallback "$XDG_CACHE_HOME" "$HOME/.cache")"
-GLOBAL_CONFIG_DIR="$(dir_with_fallback "$XDG_CONFIG_HOME" "$HOME/.config")"
+GLOBAL_CACHE_DIR=$(dir_with_fallback "$XDG_CACHE_HOME" "$HOME/.cache")
+GLOBAL_CONFIG_DIR=$(dir_with_fallback "$XDG_CONFIG_HOME" "$HOME/.config")
 
 # cache dirs
 CACHE_DIR="$GLOBAL_CACHE_DIR/rss";
@@ -43,20 +39,20 @@ CONFIG_DIR="$GLOBAL_CONFIG_DIR/rss"; mkdir -p "$CONFIG_DIR"
 URL_CONFIG="$CONFIG_DIR/urls"; touch -a "$URL_CONFIG"
 
 while read -r LINE _; do
-    >&2 echo "$LINE"
+    echo "$LINE" >&2
     curl -s "$LINE" | sfeed | tr '\t' '\a'
 done < "$URL_CONFIG" |
-while IFS="$(printf '\a')" read -r TIMESTAMP TITLE LINK CONTENT CONTENT_TYPE ID AUTHOR ENCLOSURE; do
-    ID="$(echo "$ID" | sed 's#/#|#g')"
-    [ -z "$ID" ] && ID="$(echo "$LINK" | sed 's#/#|#g')"
+while IFS=$(printf '\a') read -r TIMESTAMP TITLE LINK CONTENT CONTENT_TYPE ID AUTHOR ENCLOSURE; do
+    ID=$(echo "$ID" | sed 's#/#|#g')
+    [ -z "$ID" ] && ID=$(echo "$LINK" | sed 's#/#|#g')
     [ -z "$ID" ] && {
-        >&2 echo 'No id'
+        echo 'No id' >&2
         continue
     }
     [ -e "$UNREAD_DIR/$ID" ] && continue
     [ -e "$READ_DIR/$ID" ] && continue
 
-    printf "%s\n%s\n%s\n%s\n%s\n%s\n%s\n" "$TIMESTAMP" "$TITLE" "$LINK" \
+    printf '%s\n%s\n%s\n%s\n%s\n%s\n%s\n' "$TIMESTAMP" "$TITLE" "$LINK" \
         "$CONTENT" "$CONTENT_TYPE" "$AUTHOR" "$ENCLOSURE" \
         >"$UNREAD_DIR/$ID"
 done

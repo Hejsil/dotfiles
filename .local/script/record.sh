@@ -1,28 +1,26 @@
 #!/bin/sh
 
-PROGRAM="$(basename "$0")"
+PROGRAM=${0##*/}
 usage() {
-    echo "Usage: $(basename "$PROGRAM")"
+    echo "Usage: $PROGRAM"
 }
 
-FPS="60"
-while getopts "f:" OPT; do
-    case "$OPT" in
-    f)
-        FPS="$OPTARG"
-        ;;
-    *)
-        echo "Usage: record.sh [-f <FPS>] <FILE>"
-        exit 1
-        ;;
+FPS=60
+while [ -n "$1" ]; do
+    case $1 in
+        --) shift; break ;;
+        -f|--fps) shift; FPS=$1 ;;
+        -h|--help) usage; exit 0 ;;
+        -*) usage; exit 1 ;;
+        *) break ;;
     esac
+    shift
 done
-shift "$((OPTIND - 1))"
 
-OUTPUT="$1"
-[ -z "$OUTPUT" ] && OUTPUT="out.mp4"
+OUTPUT=$1
+[ -z "$OUTPUT" ] && OUTPUT='out.mp4'
 
-slop -f "%x %y %w %h" | (
+slop -f '%x %y %w %h' | {
     read -r X Y W H
     ffmpeg -f x11grab -s "${W}x${H}" -i ":0.0+${X},${Y}" -r "$FPS" -vcodec libx264 "$OUTPUT"
-)
+}
