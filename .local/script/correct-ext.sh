@@ -1,19 +1,22 @@
 #!/bin/sh
 
-while getopts "h" OPT; do
-    case "$OPT" in
-        h)
-            echo "usage: $(basename "$0") FILE..."
-            echo "renames the files extention to match the files type"
-            ;;
-        *)
-            exit 1
-            ;;
+PROGRAM=${0##*/}
+usage() {
+    echo "Usage: $PROGRAM"
+    echo "renames the files extention to match the files type"
+}
+
+while [ -n "$1" ]; do
+    case $1 in
+        --) shift; break ;;
+        -h|--help) usage; exit 0 ;;
+        -*) usage; exit 1 ;;
+        *) break ;;
     esac
+    shift
 done
-shift $((OPTIND-1))
 
 for FILE in "$@"; do
-    EXT="$(file -i "$FILE" | cut -d' ' -f2 | rev | cut -d'/' -f1 | cut -d';' -f2 | rev)"
+    EXT=$(file --extension "$FILE" | rev | cut -d':' -f 1 | rev | cut -d'/' -f1 | sed 's/ //g')
     ext-mv.sh "$EXT" "$FILE"
 done

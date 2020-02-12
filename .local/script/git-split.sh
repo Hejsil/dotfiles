@@ -1,14 +1,21 @@
 #!/bin/sh
 
-FILE="$1"; [ -z "$FILE" ] && { echo "No file provided"; exit 1; }
-FILEA="$2"; [ -z "$FILEA" ] && { echo "Missing name for first new file"; exit 1; }
-FILEB="$3"; [ -z "$FILEB" ] && { echo "Missing name for second new file"; exit 1; }
-[ "$FILE" = "$FILEA" ] && { echo "Files cannot have same name"; exit 1; }
-[ "$FILE" = "$FILEB" ] && { echo "Files cannot have same name"; exit 1; }
-[ "$FILEA" = "$FILEB" ] && { echo "Files cannot have same name"; exit 1; }
+FILE=$1
+FILEA=$2
+FILEB=$3
 
-CURRENT_BRANCH="$(git status | grep 'On branch' | cut -d ' ' -f 3-)"
-TMP_BRANCH="__tmp_branch__"
+if [ -z "$FILE" ] || [ -z "$FILEA" ] || [ -z "$FILEB" ]; then
+    echo 'Expected 3 arguements' >&2
+    exit 1
+fi
+
+if [ "$FILE" = "$FILEA" ] || [ "$FILE" = "$FILEB" ] || [ "$FILEA" = "$FILEB" ]; then
+    echo 'Files cannot have same name' >&2
+    exit 1
+fi
+
+CURRENT_BRANCH=$(git status | grep 'On branch' | cut -d ' ' -f 3-)
+TMP_BRANCH='__tmp_branch__'
 
 git checkout -b "$TMP_BRANCH"
 git mv "$FILE" "$FILEA"

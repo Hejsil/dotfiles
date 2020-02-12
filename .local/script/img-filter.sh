@@ -1,30 +1,29 @@
 #!/bin/sh
 
+PROGRAM=${0##*/}
 usage() {
-    echo "img-filter.sh [ -r RATIO ] [ -n RATIO ] [ -l PIXELS ] [ -g PIXELS ] [-h]"
+    echo "usage: $PROGRAM [ -r RATIO ] [ -n RATIO ] [ -l PIXELS ] [ -g PIXELS ] [-h]"
 }
 
-while getopts "r:l:n:g:h" OPT; do
-    case "$OPT" in
-        r) RATIO="$(echo "$OPTARG" | bc -l)" ;;
-        n) NOTRATIO="$(echo "$OPTARG" | bc -l)" ;;
-        l) LEAST="$(echo "$OPTARG" | bc -l)" ;;
-        g) GREATER="$(echo "$OPTARG" | bc -l)" ;;
-        h) 
-            usage
-            exit 0
-            ;;
-        *) ;;
+while [ -n "$1" ]; do
+    case $1 in
+        --) shift; break ;;
+        -h|--help) usage; exit 0 ;;
+        -r|--ratio) shift; RATIO=$(echo "$1" | bc -l) ;;
+        -n|--not-ratio) shift; NOT_RATIO=$(echo "$1" | bc -l) ;;
+        -l|--least) shift; LEAST=$(echo "$1" | bc -l) ;;
+        -g|--greater) shift; GREATER=$(echo "$1" | bc -l) ;;
+        -*) usage; exit 1 ;;
+        *) break ;;
     esac
+    shift
 done
-shift $((OPTIND-1))
 
 find "$@" -type f | while read -r FILE; do
-    identify -format "%w %h " "$FILE" | (
-        read -r W H REST
-        #echo "$FILE $W $H"
+    identify -format '%w %h ' "$FILE" | {
+        read -r W H _
 
-        if [ -n "$NOTRATIO" ] && ! [ "$(echo "$W/$H" | bc -l)" = "$NOTRATIO" ]; then
+        if [ -n "$NOT_RATIO" ] && ! [ "$(echo "$W/$H" | bc -l)" = "$NOT_RATIO" ]; then
             echo "$FILE"
         elif [ -n "$RATIO" ] && [ "$(echo "$W/$H" | bc -l)" = "$RATIO" ]; then
             echo "$FILE"
@@ -33,5 +32,5 @@ find "$@" -type f | while read -r FILE; do
         elif [ -n "$GREATER" ] && ! [ "$(echo "$W*$H" | bc -l)" -lt "$GREATER" ]; then
             echo "$FILE"
         fi
-    )
+    }
 done

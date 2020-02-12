@@ -1,34 +1,29 @@
 #!/bin/sh
 
-
-PROGRAM="$(basename "$0")"
+PROGRAM=${0##*/}
 usage() {
-    echo "Usage: $(basename "$PROGRAM")"
+    echo "Usage: $PROGRAM"
 }
 
-NOISE="0"
-SCALE="2"
-TILE="400"
-while getopts "n:s:t:h" OPT; do
-    case "$OPT" in
-        n) NOISE="$OPTARG" ;;
-        s) SCALE="$OPTARG" ;;
-        t) TILE="$OPTARG" ;;
-        h)
-            usage
-            exit 0
-            ;;
-        *)
-            usage
-            exit 1
-            ;;
+NOISE=0
+SCALE=2
+TILE=400
+while [ -n "$1" ]; do
+    case $1 in
+        --) shift; break ;;
+        -n|--noise) shift; NOISE=$1 ;;
+        -s|--scale) SCALE=$1 ;;
+        -t|--tile) TILE=$1 ;;
+        -h|--help) usage; exit 0 ;;
+        -*) usage; exit 1 ;;
+        *) break ;;
     esac
+    shift
 done
-shift $((OPTIND-1))
 
-TMP="$(mktemp)"
+TMP=$(mktemp)
 find "$@" -type f | while read -r FILE; do
     waifu2x-ncnn-vulkan -i "$FILE" -o "$TMP" -n "$NOISE" -s "$SCALE" -t "$TILE"
-    printf "%s\n%s\n" "$FILE" "$TMP" | sxiv -fo - | xargs -I{} cp '{}' "$FILE"
+    printf '%s\n%s\n' "$FILE" "$TMP" | sxiv -fo - | xargs -I{} cp '{}' "$FILE"
 done
 rm "$TMP"

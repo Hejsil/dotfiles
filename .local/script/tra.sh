@@ -1,23 +1,19 @@
 #!/bin/sh
 
-PROGRAM="$(basename "$0")"
+PROGRAM=${0##*/}
 usage() {
-    echo "Usage: $(basename "$PROGRAM")"
+    echo "Usage: $PROGRAM"
 }
 
-while getopts "h" OPT; do
-    case "$OPT" in
-        h)
-            usage
-            exit 0
-            ;;
-        *)
-            usage
-            exit 1
-            ;;
+while [ -n "$1" ]; do
+    case $1 in
+        --) shift; break ;;
+        -h|--help) usage; exit 0 ;;
+        -*) usage; exit 1 ;;
+        *) break ;;
     esac
+    shift
 done
-shift $((OPTIND-1))
 
 transmission-remote -a "$1" || exit 1
 notify-send 'Torrent added' "$1"
