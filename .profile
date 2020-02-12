@@ -1,6 +1,6 @@
 #!/bin/sh
 export PATH="/usr/lib/ccache/bin/:$HOME/.local/bin:$HOME/.local/script:$PATH"
-export EDITOR="textadept-curses"
+export EDITOR="vis"
 export TERMINAL="alacritty"
 export BROWSER="palemoon"
 export READER="zathura"
