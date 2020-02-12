@@ -343,6 +343,7 @@
     "workbench.editor.closeOnFileDelete": true,
     "explorer.openEditors.visible": 0,
     "files.autoSave": "onFocusChange",
+    "files.simpleDialog.enable": true,
     "editor.rulers": [
         100
     ],
@@ -351,8 +352,12 @@
         "**/zen-cache": true,
         "**/zig-cache": true
     },
-    "files.simpleDialog.enable": true,
     "files.watcherExclude": {
+        "**/build/**": true,
+        "**/zen-cache/**": true,
+        "**/zig-cache/**": true
+    },
+    "search.exclude": {
         "**/build/**": true,
         "**/zen-cache/**": true,
         "**/zig-cache/**": true
