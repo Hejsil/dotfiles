@@ -16,16 +16,6 @@ buffer.view_ws = buffer.WS_VISIBLEALWAYS
 
 ui.tabs = false
 
-function fileExists(name)
-    local f = io.open(name,"r")
-    if f ~= nil then
-        io.close(f)
-        return true
-    else
-        return false
-    end
-end
-
 keys['cg'] = textadept.editing.goto_line
 keys['c\n'] = ui.find.find_next
 keys['cp'] = function()
@@ -39,6 +29,16 @@ keys['cp'] = function()
         return string.gsub(str, "(.*/)(.*)", "%1")
     end
 
+    function file_exists(name)
+        local f = io.open(name,"r")
+        if f ~= nil then
+            io.close(f)
+            return true
+        else
+            return false
+        end
+    end
+
     path = io.get_project_root()
     if not path then path = dirname(buffer.filename) end
     if not path then path = os.getenv("HOME") end
@@ -48,7 +48,7 @@ keys['cp'] = function()
     local file = process:read('*l')
 
     if not file then return end
-    if not fileExists(file) then return end
+    if not file_exists(file) then return end
     io.open_file(file)
 end
 
