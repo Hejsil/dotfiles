@@ -1,5 +1,6 @@
 -- load standard vis module, providing parts of the Lua API
 require('vis')
+require('plugins/zig')
 
 vis.ftdetect.filetypes.zig = {
     ext = { "%.zig$" },
@@ -25,4 +26,9 @@ vis.events.subscribe(vis.events.WIN_OPEN, function(win)
     vis:command('set show-tabs on')
     vis:command('set tabwidth 4')
     vis:command('set theme my-theme')
+
+    vis:map(vis.modes.NORMAL, '<C-Up>', '<C-k>')
+    vis:map(vis.modes.NORMAL, '<C-Down>', '<C-j>')
+    vis:map(vis.modes.INSERT, '<C-Up>', function () vis:feedkeys('<vis-selection-new-lines-above-first>') end)
+    vis:map(vis.modes.INSERT, '<C-Down>', function () vis:feedkeys('<vis-selection-new-lines-below-last>') end)
 end)
