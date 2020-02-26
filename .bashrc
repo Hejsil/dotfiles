@@ -1,9 +1,4 @@
 #!/usr/bin/env bash
-HISTSIZE=100000
-HISTFILESIZE=2000000
-
-shopt -s histappend
-export PROMPT_COMMAND='history -a; history -c; history -r;'
 
 __cd_alias() {
     cd "$@" || return
