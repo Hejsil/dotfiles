@@ -1,7 +1,6 @@
 #!/bin/sh
 
-SCHEME="$HOME/.local/script/colors.sh"
-eval "$(cat "$SCHEME")"
+. "$HOME/.local/script/colors.sh"
 
 BAR_HEIGHT=30
 bspc config top_padding "$BAR_HEIGHT"

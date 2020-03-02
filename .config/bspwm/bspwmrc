@@ -3,7 +3,7 @@
 #### Colors ####
 
 SCHEME="$HOME/.local/script/colors.sh"
-eval "$(cat "$SCHEME")"
+. "$SCHEME"
 
 #### bspwm config ####
 
