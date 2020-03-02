@@ -68,6 +68,8 @@ while read -r LINE; do
         printf ' '
         block ' %3d%% %s ' "$MEM" "$ICON_CHIP"
         printf ' '
+        block ' %3s %s ' "$MAILS" "$ICON_NEWSPAPER"
+        printf ' '
         block ' %3d %s ' "$NEWS" "$ICON_RSS"
         printf ' '
         block ' %3d%% %s ' "$VOLUME" "$(echo "$VOLUME" | sab -l 1 -s "$ICON_VOLUME1$ICON_VOLUME2$ICON_VOLUME3")"

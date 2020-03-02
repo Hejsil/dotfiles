@@ -6,6 +6,10 @@ print_volume() {
     amixer sget Master | tr '\n' ' ' | cut -d'[' -f2 | cut -d'%' -f 1
 }
 
+print_mails() {
+    find "$HOME/.local/share/mail/" -type f | grep '.*/new/.*' | wc -l
+}
+
 print_news() {
     find "$HOME/.cache/rss/unread/" -type f | wc -l
 }
@@ -48,6 +52,14 @@ var_wrap() {
         print_volume
     done
 } | var_wrap 'VOLUME' &
+
+{
+    print_mails
+    while inotifywait "$HOME/.local/share/mail/" -r -e 'move' 2>/dev/null >/dev/null; do
+        print_mails
+    done
+} | var_wrap 'MAILS' & 
+
 
 bspc subscribe report | var_wrap 'BSPWM_REPORT' &
 xtitle -s | var_wrap 'WINDOW' &
