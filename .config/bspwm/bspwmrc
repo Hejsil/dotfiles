@@ -67,11 +67,12 @@ runonce.sh sxhkd -r /tmp/sxhkd.log
 restart.sh wall.sh "$HOME/MEGA/Pictures/Wallpapers"
 restart.sh bar.sh
 restart.sh dunst
+runonce.sh sxhkd -r /tmp/sxhkd.log
 
 #### Reload ####
 
-echo "$HOME/.config/sxhkd/sxhkdrc" | restart.sh entr -p pkill -USR1 -x sxhkd
-(
+{
+    echo "$HOME/.config/sxhkd/sxhkdrc"
     echo "$HOME/.config/bspwm/bspwmrc"
     echo "$HOME/.local/script/bar-info.sh"
     echo "$HOME/.local/script/bar-mk.sh"
@@ -81,4 +82,4 @@ echo "$HOME/.config/sxhkd/sxhkdrc" | restart.sh entr -p pkill -USR1 -x sxhkd
     echo "$HOME/.local/script/runonce.sh"
     echo "$SCHEME"
     find "$TEMPLATE_DIR"
-) | restart.sh entr -p bspc wm -r
+} | restart.sh entr -p bspc wm -r
