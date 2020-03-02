@@ -1,7 +1,7 @@
 #!/bin/sh
 export PATH="/usr/lib/ccache/bin/:$HOME/go/bin:$HOME/.local/bin:$HOME/.local/script:$PATH"
 export HISTSIZE=
-exoirt HISTFILESIZE=
+export HISTFILESIZE=
 export EDITOR='vis'
 export TERMINAL='alacritty'
 export BROWSER='chrome'

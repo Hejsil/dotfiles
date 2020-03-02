@@ -56,18 +56,11 @@ gtkrc-reload
 
 #### Auto start ####
 
-# programs we run on startup and never restart
-runonce.sh megasync
-runonce.sh minidlnad -S -f "/home/$USER/.config/minidlna/minidlna.conf" -P "/home/$USER/.config/minidlna/minidlna.pid"
-runonce.sh transmission-daemon -f
-runonce.sh redshift
-runonce.sh sxhkd -r /tmp/sxhkd.log
-
 # programs we restart when we restart the wm
 restart.sh wall.sh "$HOME/MEGA/Pictures/Wallpapers"
 restart.sh bar.sh
 restart.sh dunst
-runonce.sh sxhkd -r /tmp/sxhkd.log
+restart.sh sxhkd -r /tmp/sxhkd.log
 
 #### Reload ####
 
@@ -79,7 +72,6 @@ runonce.sh sxhkd -r /tmp/sxhkd.log
     echo "$HOME/.local/script/bar.sh"
     echo "$HOME/.local/script/base16.sh"
     echo "$HOME/.local/script/restart.sh"
-    echo "$HOME/.local/script/runonce.sh"
     echo "$SCHEME"
     find "$TEMPLATE_DIR"
 } | restart.sh entr -p bspc wm -r
