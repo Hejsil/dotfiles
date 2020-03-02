@@ -2,8 +2,7 @@
 
 set -e
 
-SCHEME=$HOME/.local/script/colors.sh
-eval "$(cat "$SCHEME")"
+. "$HOME/.local/script/colors.sh"
 
 # dash shell has a builtin printf which does
 # not support \uXXXX.

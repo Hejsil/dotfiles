@@ -15,8 +15,6 @@ if [ -z "$TEMPLATE" ]; then
     echo "$TEMPLATE_CONTENT" >"$TEMPLATE"
 fi
 
-eval "$(cat )"
-
 # Very ugly, but fast way to generate sed arguments that replace
 # the template replacements with colors from the scheme.
 # Find a prettier way that is just as fast.
