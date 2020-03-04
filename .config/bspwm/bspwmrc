@@ -57,7 +57,6 @@ gtkrc-reload
 #### Auto start ####
 
 # programs we restart when we restart the wm
-restart.sh wall.sh "$HOME/MEGA/Pictures/Wallpapers"
 restart.sh bar.sh
 restart.sh dunst
 restart.sh sxhkd -r /tmp/sxhkd.log
