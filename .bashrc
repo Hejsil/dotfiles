@@ -2,7 +2,7 @@
 
 __cd_alias() {
     cd "$@" || return
-    timeout -k 0s 1s exa -a
+    exa -a
 }
 
 __mkdir_alias() {
@@ -13,6 +13,7 @@ __mkdir_alias() {
 alias cd='__cd_alias'
 alias mkdir='__mkdir_alias'
 alias ls='exa -a'
+alias rg='rg --no-heading'
 
 alias ga='git add'
 alias gb='git branch'
