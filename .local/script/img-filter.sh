@@ -13,6 +13,7 @@ while [ -n "$1" ]; do
         -n|--not-ratio) shift; NOT_RATIO=$(echo "$1" | bc -l) ;;
         -l|--least) shift; LEAST=$(echo "$1" | bc -l) ;;
         -g|--greater) shift; GREATER=$(echo "$1" | bc -l) ;;
+        -w|--least-width) shift; least_width=$(echo "$1" | bc -l) ;;
         -*) usage; exit 1 ;;
         *) break ;;
     esac
@@ -27,9 +28,11 @@ find "$@" -type f | while read -r FILE; do
             echo "$FILE"
         elif [ -n "$RATIO" ] && [ "$(echo "$W/$H" | bc -l)" = "$RATIO" ]; then
             echo "$FILE"
-        elif [ -n "$LEAST" ] && [ "$(echo "$W*$H" | bc -l)" -lt "$LEAST" ]; then
+        elif [ -n "$LEAST" ] && [ "$(( $W * $H ))" -lt "$LEAST" ]; then
             echo "$FILE"
-        elif [ -n "$GREATER" ] && ! [ "$(echo "$W*$H" | bc -l)" -lt "$GREATER" ]; then
+        elif [ -n "$GREATER" ] && ! [ "$(( $W * $H ))" -lt "$GREATER" ]; then
+            echo "$FILE"
+        elif [ -n "$least_width" ] && [ "$W" -lt "$least_width" ]; then
             echo "$FILE"
         fi
     }
