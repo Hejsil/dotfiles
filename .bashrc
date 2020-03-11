@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+shopt -s histappend
+
 __cd_alias() {
     cd "$@" || return
     exa -a
