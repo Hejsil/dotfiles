@@ -9,7 +9,7 @@ super + Return
     $TERMINAL
 
 super + shift + Return
-    $TERMINAL -e nnn -id
+    $TERMINAL -e nnn -ndA
 
 super + r
     rss-read.sh
