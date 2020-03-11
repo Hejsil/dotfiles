@@ -1,6 +1,5 @@
 #!/bin/sh
 STDIN=$(if [ -t 0 ]; then echo; else cat; fi)
-echo "$@" >> /tmp/runonce.log
 
 DIR='/tmp/processes'
 LOG_DIR='/tmp/logs'
