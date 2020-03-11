@@ -28,7 +28,10 @@ rss-list.sh -u | tr "$TAB" "$A" | while IFS=$A read -r FILE _ _ LINK DESC _; do
                 cut -d'"' -f2 |
                 sed "s$TAB^$TAB$FILE$A$TAB"
             ;;
-        *www.pixiv.net*|*e-shuushuu.net*|*www.artstation.com*)
+        *e-shuushuu.net*)
+            echo "$FILE$A$LINK"
+            ;;
+        *www.pixiv.net*|*www.artstation.com*)
             echo "$DESC" | grep -oE '\w+:\/\/[-a-zA-Z0-9:@;?&=\/%\+\.\*!'"'"'\(\),\$_\{\}\^~`#|]+' |
                 sed "s$TAB^$TAB$FILE$A$TAB"
             ;;
