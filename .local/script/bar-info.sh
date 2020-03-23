@@ -3,11 +3,11 @@
 set -e
 
 print_volume() {
-    amixer sget Master | tr '\n' ' ' | cut -d'[' -f2 | cut -d'%' -f 1
+    pulsemixer --get-volume | cut -d' ' -f1
 }
 
 print_mails() {
-    find "$HOME/.local/share/mail/" -type f | grep '.*/new/.*' | wc -l
+    find "$HOME/.local/share/mail/" -type f | grep -c ',$'
 }
 
 print_news() {
