@@ -15,9 +15,6 @@ if [ -z "$TEMPLATE" ]; then
     echo "$TEMPLATE_CONTENT" >"$TEMPLATE"
 fi
 
-# Very ugly, but fast way to generate sed arguments that replace
-# the template replacements with colors from the scheme.
-# Find a prettier way that is just as fast.
 <"$SCHEME" sed -e '/^#/d' -e 's/^COLOR//' | awk --non-decimal-data -F'=' '{
     R = substr($2, 1, 2)
     G = substr($2, 3, 2)
