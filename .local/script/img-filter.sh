@@ -28,9 +28,9 @@ find "$@" -type f | while read -r FILE; do
             echo "$FILE"
         elif [ -n "$RATIO" ] && [ "$(echo "$W/$H" | bc -l)" = "$RATIO" ]; then
             echo "$FILE"
-        elif [ -n "$LEAST" ] && [ "$(( $W * $H ))" -lt "$LEAST" ]; then
+        elif [ -n "$LEAST" ] && [ "$((W * H))" -lt "$LEAST" ]; then
             echo "$FILE"
-        elif [ -n "$GREATER" ] && ! [ "$(( $W * $H ))" -lt "$GREATER" ]; then
+        elif [ -n "$GREATER" ] && ! [ "$((W * H))" -lt "$GREATER" ]; then
             echo "$FILE"
         elif [ -n "$least_width" ] && [ "$W" -lt "$least_width" ]; then
             echo "$FILE"
