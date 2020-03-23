@@ -19,6 +19,9 @@ else
         *youtube*watch*|*youtu.be*) echo 'mpv' ;;
         magnet:*) echo 'tra.sh' ;;
         http*|www*) echo "$BROWSER" ;;
+        *:*)
+            echo "${1%%:*}"
+            ;;
         *)
             echo "No match" >&2
             exit 1
