@@ -9,11 +9,11 @@ while [ -n "$1" ]; do
     case $1 in
         --) shift; break ;;
         -h|--help) usage; exit 0 ;;
-        -r|--ratio) shift; RATIO=$(echo "$1" | bc -l) ;;
-        -n|--not-ratio) shift; NOT_RATIO=$(echo "$1" | bc -l) ;;
-        -l|--least) shift; LEAST=$(echo "$1" | bc -l) ;;
-        -g|--greater) shift; GREATER=$(echo "$1" | bc -l) ;;
-        -w|--least-width) shift; least_width=$(echo "$1" | bc -l) ;;
+        -r|--ratio) shift; RATIO=$1 ;;
+        -n|--not-ratio) shift; NOT_RATIO=$1 ;;
+        -l|--least) shift; LEAST=$1 ;;
+        -g|--greater) shift; GREATER=$1 ;;
+        -w|--least-width) shift; least_width=$1 ;;
         -*) usage; exit 1 ;;
         *) break ;;
     esac
