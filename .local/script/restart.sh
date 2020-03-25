@@ -1,12 +1,12 @@
 #!/bin/sh
-STDIN=$(if [ -t 0 ]; then echo ''; else cat; fi)
+stdin=$(if [ -t 0 ]; then echo ''; else cat; fi)
 
-DIR='/tmp/processes'
-LOG_DIR='/tmp/logs'
-FILE="$DIR/$(echo "$@" | sed 's#/#|#g')"
-LOG_FILE="$LOG_DIR/$(echo "$@" | sed 's#/#|#g')"
-mkdir -p "$DIR" "$LOG_DIR"
-[ -s "$FILE" ] && kill -- "-$(cat "$FILE")"
+dir='/tmp/processes'
+log_dir='/tmp/logs'
+file="$dir/$(echo "$@" | sed 's#/#|#g')"
+log_file="$log_dir/$(echo "$@" | sed 's#/#|#g')"
+mkdir -p "$dir" "$log_dir"
+[ -s "$file" ] && kill -- "-$(cat "$file")"
 
-echo "$STDIN" | nohup "$@" 2>"$LOG_FILE" >"$LOG_FILE" &
-ps -o pgid= "$!" >"$FILE"
+echo "$stdin" | nohup "$@" 2>"$log_file" >"$log_file" &
+ps -o pgid= "$!" >"$file"

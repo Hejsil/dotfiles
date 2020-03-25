@@ -1,8 +1,8 @@
 #!/bin/sh
 
-PROGRAM="${0##*/}"
+program="${0##*/}"
 usage() {
-    echo "Usage: "
+    echo "Usage: $program"
 }
 
 while [ -n "$1" ]; do

@@ -2,17 +2,17 @@
 
 set -e
 
-PROGRAM=${0##*/}
+program=${0##*/}
 usage() {
-    echo "Usage: $PROGRAM [ -t TIME ] [ -m MONITORS ] FOLDER"
+    echo "Usage: $program [ -t time ] [ -m monitors ] folder"
 }
 
-TIME='1m'
+time='1m'
 while [ -n "$1" ]; do
     case $1 in
         --) shift; break ;;
-        -t|--time) shift; TIME=$1 ;;
-        -m|--monitor) shift; MONITORS=$1 ;;
+        -t|--time) shift; time=$1 ;;
+        -m|--monitor) shift; monitors=$1 ;;
         -h|--help) usage; exit 0 ;;
         -*) usage; exit 1 ;;
         *) break ;;
@@ -20,20 +20,20 @@ while [ -n "$1" ]; do
     shift
 done
 
-FOLDER=$1; [ -z "$FOLDER" ] && { echo 'No folder provided' >&2; exit 1; }
-[ -z "$MONITORS" ] && MONITORS=$(xrandr | grep ' connected' | wc -l)
-[ -z "$MONITORS" ] && { echo 'No amount of monitors specified' >&2; exit 1; }
+folder=$1; [ -z "$folder" ] && { echo 'No folder provided' >&2; exit 1; }
+[ -z "$monitors" ] && monitors=$(xrandr | grep ' connected' | wc -l)
+[ -z "$monitors" ] && { echo 'No amount of monitors specified' >&2; exit 1; }
 
-# TODO: Actually use MONITORS variable
-TMP=$(mktemp)
+# TODO: Actually use monitors variable
+tmp=$(mktemp)
 while true; do
-    find "$FOLDER" -type f >"$TMP" || exit 1
-    sort -R "$TMP"
-done | paste - - | while IFS=$(printf '\t') read -r FIRST SECOND; do
-    if [ "$FIRST" = "$SECOND" ]; then
+    find "$folder" -type f >"$tmp" || exit 1
+    sort -R "$tmp"
+done | paste - - | while IFS=$(printf '\t') read -r first second; do
+    if [ "$first" = "$second" ]; then
         continue
     fi
 
-    feh --no-fehbg --bg-fill "$FIRST" "$SECOND"
-    sleep "$TIME"
+    feh --no-fehbg --bg-fill "$first" "$second"
+    sleep "$time"
 done

@@ -1,8 +1,8 @@
 #!/bin/sh
 
-PROGRAM=${0##*/}
+program=${0##*/}
 usage() {
-    echo "Usage: $PROGRAM [-h]"
+    echo "Usage: $program [-h]"
     echo '    -h    Print help information and exists'
 }
 
@@ -17,42 +17,42 @@ while [ -n "$1" ]; do
 done
 
 dir_with_fallback() {
-    DIR=$1
-    FALLBACK=$2
-    if [ -e "$DIR" ]; then
-        echo "$DIR"
+    dir=$1
+    fallback=$2
+    if [ -e "$dir" ]; then
+        echo "$dir"
     else
-        echo "$FALLBACK"
+        echo "$fallback"
     fi
 }
 
-GLOBAL_CACHE_DIR=$(dir_with_fallback "$XDG_CACHE_HOME" "$HOME/.cache")
-GLOBAL_CONFIG_DIR=$(dir_with_fallback "$XDG_CONFIG_HOME" "$HOME/.config")
+global_cache_dir=$(dir_with_fallback "$XDG_CACHE_HOME" "$HOME/.cache")
+global_config_dir=$(dir_with_fallback "$XDG_CONFIG_HOME" "$HOME/.config")
 
 # cache dirs
-CACHE_DIR="$GLOBAL_CACHE_DIR/rss";
-UNREAD_DIR="$CACHE_DIR/unread"; mkdir -p "$UNREAD_DIR"
-READ_DIR="$CACHE_DIR/read"; mkdir -p "$READ_DIR"
+cache_dir="$global_cache_dir/rss";
+unread_dir="$cache_dir/unread"; mkdir -p "$unread_dir"
+read_dir="$cache_dir/read"; mkdir -p "$read_dir"
 
 # configs
-CONFIG_DIR="$GLOBAL_CONFIG_DIR/rss"; mkdir -p "$CONFIG_DIR"
-URL_CONFIG="$CONFIG_DIR/urls"; touch -a "$URL_CONFIG"
+config_dir="$global_config_dir/rss"; mkdir -p "$config_dir"
+url_config="$config_dir/urls"; touch -a "$url_config"
 
-while read -r LINE _; do
-    echo "$LINE" >&2
-    curl -s "$LINE" | sfeed | tr '\t' '\a'
-done < "$URL_CONFIG" |
-while IFS=$(printf '\a') read -r TIMESTAMP TITLE LINK CONTENT CONTENT_TYPE ID AUTHOR ENCLOSURE; do
-    ID=$(echo "$ID" | sed 's#/#|#g')
-    [ -z "$ID" ] && ID=$(echo "$LINK" | sed 's#/#|#g')
-    [ -z "$ID" ] && {
+while read -r line _; do
+    echo "$line" >&2
+    curl -s "$line" | sfeed | tr '\t' '\a'
+done < "$url_config" |
+while IFS=$(printf '\a') read -r timestamp title link content content_type id author enclosure; do
+    id=$(echo "$id" | sed 's#/#|#g')
+    [ -z "$id" ] && id=$(echo "$link" | sed 's#/#|#g')
+    [ -z "$id" ] && {
         echo 'No id' >&2
         continue
     }
-    [ -e "$UNREAD_DIR/$ID" ] && continue
-    [ -e "$READ_DIR/$ID" ] && continue
+    [ -e "$unread_dir/$id" ] && continue
+    [ -e "$read_dir/$id" ] && continue
 
-    printf '%s\n%s\n%s\n%s\n%s\n%s\n%s\n' "$TIMESTAMP" "$TITLE" "$LINK" \
-        "$CONTENT" "$CONTENT_TYPE" "$AUTHOR" "$ENCLOSURE" \
-        >"$UNREAD_DIR/$ID"
+    printf '%s\n%s\n%s\n%s\n%s\n%s\n%s\n' "$timestamp" "$title" "$link" \
+        "$content" "$content_type" "$author" "$enclosure" \
+        >"$unread_dir/$id"
 done
