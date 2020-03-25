@@ -3,7 +3,7 @@
 set -e
 
 print_volume() {
-    pulsemixer --get-volume | cut -d' ' -f1
+    amixer sget "$(amixer scontrols | sed -e "s/^[^']*'//" -e "s/'[^']*$//" | head -n 1)" | tr '\n' ' ' | cut -d'[' -f2 | cut -d'%' -f 1
 }
 
 print_mails() {
