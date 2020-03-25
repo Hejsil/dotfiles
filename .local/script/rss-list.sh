@@ -1,15 +1,15 @@
 #!/bin/sh
 
-PROGRAM=${0##*/}
+program=${0##*/}
 usage() {
-    echo "Usage: $PROGRAM"
+    echo "Usage: $program"
 }
 
 while [ -n "$1" ]; do
     case $1 in
         --) shift; break ;;
-        -r|--read) READ='read' ;;
-        -u|--unread) UNREAD='unread' ;;
+        -r|--read) read='read' ;;
+        -u|--unread) unread='unread' ;;
         -h|--help) usage; exit 0 ;;
         -*) usage; exit 1 ;;
         *) break ;;
@@ -25,5 +25,5 @@ list_feed() {
         ENDFILE { printf "\n" }' {} +
 }
 
-list_feed "$READ"
-list_feed "$UNREAD"
+list_feed "$read"
+list_feed "$unread"

@@ -1,8 +1,8 @@
 #!/bin/sh
 
-PROGRAM=${0##*/}
+program=${0##*/}
 usage() {
-    echo "Usage: $PROGRAM"
+    echo "Usage: $program"
 }
 
 while [ -n "$1" ]; do
@@ -15,16 +15,16 @@ while [ -n "$1" ]; do
     shift
 done
 
-TMP=$(mktemp)
-TAB=$(printf '\t')
+tmp=$(mktemp)
+tab=$(printf '\t')
 rss-list.sh -u |
-    cut -d"$TAB" -f1,3,4,7 |
-    awk -F"$TAB" '{ printf "%-60s\t%-20s\t%s\t%s\n", substr($2, 0, 60), substr($4, 0, 20), $3, $1 }' |
-    rofi -dmenu >"$TMP"
+    cut -d"$tab" -f1,3,4,7 |
+    awk -F"$tab" '{ printf "%-60s\t%-20s\t%s\t%s\n", substr($2, 0, 60), substr($4, 0, 20), $3, $1 }' |
+    rofi -dmenu >"$tmp"
 
-if [ -s "$TMP" ]; then
-    cut -d"$TAB" -f3 "$TMP" | xargs open.sh
-    cut -d"$TAB" -f4 "$TMP" | xargs -I{} mv {} "$HOME/.cache/rss/read"
+if [ -s "$tmp" ]; then
+    cut -d"$tab" -f3 "$tmp" | xargs open.sh
+    cut -d"$tab" -f4 "$tmp" | xargs -I{} mv {} "$HOME/.cache/rss/read"
 fi
 
-rm "$TMP"
+rm "$tmp"

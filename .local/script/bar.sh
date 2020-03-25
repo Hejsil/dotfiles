@@ -2,11 +2,11 @@
 
 . "$HOME/.local/script/colors.sh"
 
-BAR_HEIGHT=30
-bspc config top_padding "$BAR_HEIGHT"
+bar_height=30
+bspc config top_padding "$bar_height"
 
 bar-info.sh | bar-mk.sh | lemonbar  \
-    -g "x$BAR_HEIGHT"               \
+    -g "x$bar_height"               \
     -f 'JetBrains Mono-12'          \
     -f 'fontello-14'                \
     -B "#$COLOR0"                   \

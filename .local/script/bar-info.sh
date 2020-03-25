@@ -29,15 +29,15 @@ cpu_usage() {
     grep 'cpu ' /proc/stat | awk '{ print $2, $4, $5 }'
 }
 
-CPU_LAST=$(mktemp /tmp/cpu-last.XXXXXX)
-CPU_CURR=$(mktemp /tmp/cpu-curr.XXXXXX)
-cpu_usage | sed 's/[0-9]*/0/g' >"$CPU_LAST"
+cpu_last=$(mktemp /tmp/cpu-last.XXXXXX)
+cpu_curr=$(mktemp /tmp/cpu-curr.XXXXXX)
+cpu_usage | sed 's/[0-9]*/0/g' >"$cpu_last"
 print_cpu() {
-    cpu_usage >"$CPU_CURR"
-    paste -d' ' "$CPU_CURR" "$CPU_LAST" |
+    cpu_usage >"$cpu_curr"
+    paste -d' ' "$cpu_curr" "$cpu_last" |
         awk '{ printf "%d %d %d\n", ($1-$4), ($2-$5), ($3-$6) }' |
         awk '{ usage=($1+$2)/($1+$2+$3); printf "%d", usage*100 }'
-    cp "$CPU_CURR" "$CPU_LAST"
+    cp "$cpu_curr" "$cpu_last"
 }
 
 var_wrap() {

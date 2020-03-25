@@ -1,8 +1,8 @@
 #!/bin/sh
 
-PROGRAM=${0##*/}
+program=${0##*/}
 usage() {
-    echo "Usage: $PROGRAM"
+    echo "Usage: $program"
 }
 
 while [ -n "$1" ]; do
@@ -15,19 +15,19 @@ while [ -n "$1" ]; do
     shift
 done
 
-FILENAME=$1
-if [ -e "$FILENAME" ]; then
-    echo "$FILENAME already exists"
+filename=$1
+if [ -e "$filename" ]; then
+    echo "$filename already exists"
     exit 1
 fi
 
-EXT="${FILENAME##*.}"
-case $EXT in
+ext="${filename##*.}"
+case $ext in
     sh)
         {
             echo '#!/bin/sh'
             echo ''
-            echo 'PROGRAM="${0##*/}"'
+            echo 'program="${0##*/}"'
             echo 'usage() {'
             echo '    echo "Usage: "'
             echo '}'
@@ -43,8 +43,8 @@ case $EXT in
             echo 'done'
             echo ''
             echo "echo 'Hello World!'"
-        } > "$FILENAME"
-        chmod +x "$FILENAME"
+        } > "$filename"
+        chmod +x "$filename"
         ;;
     html)
         {
@@ -60,13 +60,13 @@ case $EXT in
             echo '</body>'
             echo ''
             echo '</html>'
-        } > "$FILENAME"
+        } > "$filename"
         ;;
     md)
         {
             echo '# Hello World'
             echo 'Hello World!'
-        } > "$FILENAME"
+        } > "$filename"
         ;;
     zig)
         {
@@ -75,9 +75,9 @@ case $EXT in
             echo 'pub fn main() void {'
             echo '    std.debug.warn("Hello World!");'
             echo '}'
-        } > "$FILENAME"
+        } > "$filename"
         ;;
     *)
-        touch "$FILENAME"
+        touch "$filename"
         ;;
 esac

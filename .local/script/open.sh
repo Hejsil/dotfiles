@@ -1,8 +1,8 @@
 #!/bin/sh
 
-PROGRAM=${0##*/}
+program=${0##*/}
 usage() {
-    echo "Usage: $PROGRAM"
+    echo "Usage: $program"
 }
 
 while [ -n "$1" ]; do
@@ -16,19 +16,19 @@ while [ -n "$1" ]; do
 done
 
 [ -z "$1" ] && exit 0
-ARG1=$1
-OPENER=$(opener.sh "$ARG1")
+arg1=$1
+opener=$(opener.sh "$arg1")
 
 for ARG in "$@"; do
     echo "$ARG" >> /tmp/open.log
-    OTHER=$(opener.sh "$ARG")
-    if [ "$OTHER" != "$OPENER" ]; then
+    other=$(opener.sh "$ARG")
+    if [ "$other" != "$opener" ]; then
         echo "Some args require different programs" >&2
-        echo "> $OPENER $ARG1" >&2
-        echo "> $OTHER $ARG" >&2
+        echo "> $opener $arg1" >&2
+        echo "> $other $ARG" >&2
         exit 1
     fi
 done
 
-[ -z "$OPENER" ] && exit 1
-$OPENER "$@"
+[ -z "$opener" ] && exit 1
+$opener "$@"

@@ -1,15 +1,15 @@
 #!/bin/sh
 
-PROGRAM=${0##*/}
+program=${0##*/}
 usage() {
-    echo "Usage: $PROGRAM"
+    echo "Usage: $program"
 }
 
-FPS=60
+fps=60
 while [ -n "$1" ]; do
     case $1 in
         --) shift; break ;;
-        -f|--fps) shift; FPS=$1 ;;
+        -f|--fps) shift; fps=$1 ;;
         -h|--help) usage; exit 0 ;;
         -*) usage; exit 1 ;;
         *) break ;;
@@ -17,10 +17,10 @@ while [ -n "$1" ]; do
     shift
 done
 
-OUTPUT=$1
-[ -z "$OUTPUT" ] && OUTPUT='out.mp4'
+output=$1
+[ -z "$output" ] && output='out.mp4'
 
 slop -f '%x %y %w %h' | {
-    read -r X Y W H
-    ffmpeg -f x11grab -s "${W}x${H}" -i ":0.0+${X},${Y}" -r "$FPS" -vcodec libx264 "$OUTPUT"
+    read -r x y w h
+    ffmpeg -f x11grab -s "${w}x${h}" -i ":0.0+${x},${y}" -r "$fps" -vcodec libx264 "$output"
 }

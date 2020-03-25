@@ -1,9 +1,9 @@
 #!/usr/bin/env sh
 
-USER_RESOURCES="$HOME/.Xresources"
-SYS_RESOURCES=/etc/X11/xinit/.Xresources
-[ -f "$SYS_RESOURCES" ] && xrdb -merge "$SYS_RESOURCES"
-[ -f "$USER_RESOURCES" ] && xrdb -merge "$USER_RESOURCES"
+user_resources="$HOME/.Xresources"
+sys_resources=/etc/X11/xinit/.Xresources
+[ -f "$sys_resources" ] && xrdb -merge "$sys_resources"
+[ -f "$user_resources" ] && xrdb -merge "$user_resources"
 
 xrandr --output HDMI-0 --mode 1920x1080 --right-of DP-0 \
     --output DP-0 --primary --mode 2560x1440 --rate 144

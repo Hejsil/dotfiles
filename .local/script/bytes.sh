@@ -1,17 +1,17 @@
 #!/bin/sh
 
-VAL=$1
-if [ -z "$VAL" ]; then
+value=$1
+if [ -z "$value" ]; then
     echo 'No input' >&2
     exit 1
 fi
 
 while read -r UNIT; do
-    if [ "$VAL" -lt 1024 ]; then
-        echo "${VAL}${UNIT}"
+    if [ "$value" -lt 1024 ]; then
+        echo "${value}${UNIT}"
         exit 0
     fi
-    VAL=$(((VAL + 512) / 1024))
+    value=$(((value + 512) / 1024))
 done << STRING
 B
 KiB

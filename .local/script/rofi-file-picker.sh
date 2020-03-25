@@ -1,8 +1,8 @@
 #!/bin/sh
 
-PROGRAM=${0##*/}
+program=${0##*/}
 usage() {
-    echo "Usage: $PROGRAM"
+    echo "Usage: $program"
 }
 
 while [ -n "$1" ]; do
@@ -15,10 +15,10 @@ while [ -n "$1" ]; do
     shift
 done
 
-DIR=$1
-if [ -z "$DIR" ]; then
+dir=$1
+if [ -z "$dir" ]; then
     usage
     exit 1
 fi
 
-fd '' "$DIR" -Ht f | rofi -dmenu
+fd '' "$dir" -Ht f | rofi -dmenu

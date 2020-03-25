@@ -1,8 +1,8 @@
 #!/bin/sh
 
-PROGRAM=${0##*/}
+program=${0##*/}
 usage() {
-    echo "Usage: $PROGRAM"
+    echo "Usage: $program"
 }
 
 while [ -n "$1" ]; do
@@ -15,17 +15,17 @@ while [ -n "$1" ]; do
     shift
 done
 
-TMP=$(mktemp)
-TAB=$(printf '\t')
-rss-list.sh -u | cut -d"$TAB" -f1,4 |
-while IFS=$TAB read -r FILE LINK; do
+tmp=$(mktemp)
+tab=$(printf '\t')
+rss-list.sh -u | cut -d"$tab" -f1,4 |
+while IFS=$tab read -r FILE LINK; do
     printf '%s\t%s\t%s\n' "$(opener.sh "$LINK")" "$FILE" "$LINK"
-done | grep "^$BROWSER" | cut -d"$TAB" -f2,3 | head -n 50 >"$TMP"
+done | grep "^$BROWSER" | cut -d"$tab" -f2,3 | head -n 50 >"$tmp"
 
-if [ -s "$TMP" ]; then
-    cut -d"$TAB" -f2 < "$TMP" | tr '\n' ' ' | xargs "$BROWSER" &
-    cut -d"$TAB" -f1 < "$TMP" | xargs -I{} mv {} "$HOME/.cache/rss/read" &
+if [ -s "$tmp" ]; then
+    cut -d"$tab" -f2 < "$tmp" | tr '\n' ' ' | xargs "$BROWSER" &
+    cut -d"$tab" -f1 < "$tmp" | xargs -I{} mv {} "$HOME/.cache/rss/read" &
     wait
 fi
 
-rm "$TMP"
+rm "$tmp"

@@ -1,8 +1,8 @@
 #!/bin/sh
 
 if [ -f "$1" ]; then
-    MINE=$(file --mime-type -Lb "$1")
-    case $MINE in
+    mine=$(file --mime-type -Lb "$1")
+    case $mine in
         application/pdf) echo "$READER" ;;
         application/x-bittorrent) echo 'tra.sh' ;;
         inode/x-empty|application/json|text*) echo "$EDITOR" ;;

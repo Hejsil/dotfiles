@@ -1,34 +1,34 @@
 #!/bin/sh
 
-FILE=$1
-FILEA=$2
-FILEB=$3
+file=$1
+filea=$2
+fileb=$3
 
-if [ -z "$FILE" ] || [ -z "$FILEA" ] || [ -z "$FILEB" ]; then
+if [ -z "$file" ] || [ -z "$filea" ] || [ -z "$fileb" ]; then
     echo 'Expected 3 arguements' >&2
     exit 1
 fi
 
-if [ "$FILE" = "$FILEA" ] || [ "$FILE" = "$FILEB" ] || [ "$FILEA" = "$FILEB" ]; then
-    echo 'Files cannot have same name' >&2
+if [ "$file" = "$filea" ] || [ "$file" = "$fileb" ] || [ "$filea" = "$fileb" ]; then
+    echo 'files cannot have same name' >&2
     exit 1
 fi
 
-CURRENT_BRANCH=$(git status | grep 'On branch' | cut -d ' ' -f 3-)
-TMP_BRANCH='__tmp_branch__'
+current_branch=$(git status | grep 'On branch' | cut -d ' ' -f 3-)
+tmp_branch='__tmp_branch__'
 
-git checkout -b "$TMP_BRANCH"
-git mv "$FILE" "$FILEA"
-git commit -m "git mv '$FILE' '$FILEA'"
+git checkout -b "$tmp_branch"
+git mv "$file" "$filea"
+git commit -m "git mv '$file' '$filea'"
 
-git checkout "$CURRENT_BRANCH"
-git mv "$FILE" "$FILEB"
-git commit -m "git mv '$FILE' '$FILEB'"
+git checkout "$current_branch"
+git mv "$file" "$fileb"
+git commit -m "git mv '$file' '$fileb'"
 
-git merge --no-ff "$TMP_BRANCH"
-git rm "$FILE"
-git add "$FILEA"
-git add "$FILEB"
+git merge --no-ff "$tmp_branch"
+git rm "$file"
+git add "$filea"
+git add "$fileb"
 git commit
 
-git branch -d "$TMP_BRANCH"
+git branch -d "$tmp_branch"
