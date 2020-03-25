@@ -31,4 +31,4 @@ alias gr='git rebase'
 alias grc='git rebase --continue'
 
 eval "$(starship init "$0")"
-rsfetch -lNPdehHkrcstuU@w
+rsfetch -lNPdehHkrcstuU@w -p pacman
