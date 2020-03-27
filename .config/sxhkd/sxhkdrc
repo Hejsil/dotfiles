@@ -2,8 +2,9 @@
 # Programs
 #
 
+# rofi starts slow, and dmenu is slow on large inputs... *sign* I can do better. Use st as a window for launch.sh!
 super + @space
-    rofi -show run
+    st -c 'pick-dialog' -e launch.sh
 
 super + Return
     $TERMINAL
@@ -12,7 +13,7 @@ super + shift + Return
     $TERMINAL -e nnn -ndA
 
 super + r
-    rss-read.sh
+    st -c 'pick-dialog' -e rss-read.sh
 
 super + shift + r
     rss-open-all-in-browser.sh
@@ -29,6 +30,9 @@ super + {Left,Down,Up,Right}
 
 super + shift + {Left,Down,Up,Right}
     bspc node -s {west,south,north,east}
+
+super + ctrl + shift + {Left,Down,Up,Right}
+    bspc node -m {west,south,north,east}
 
 super + {t,shift + t,s,f}
     bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
