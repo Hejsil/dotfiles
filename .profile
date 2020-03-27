@@ -9,7 +9,7 @@ export PROMPT_COMMAND="history -a; history -c; history -r"
 
 # Programs
 export EDITOR='vis'
-export TERMINAL='alacritty'
+export TERMINAL='st'
 export BROWSER='chrome'
 export READER='zathura'
 
