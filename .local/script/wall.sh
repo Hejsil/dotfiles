@@ -34,6 +34,6 @@ done | paste - - | while IFS=$(printf '\t') read -r first second; do
         continue
     fi
 
-    feh --no-fehbg --bg-fill "$first" "$second"
+    setroot "$first" "$second"
     sleep "$time"
 done
