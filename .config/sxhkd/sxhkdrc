@@ -12,6 +12,9 @@ super + Return
 super + shift + Return
     $TERMINAL -e nnn -ndA
 
+super + m
+    $TERMINAL -e aerc
+
 super + r
     st -c 'pick-dialog' -e rss-read.sh
 
