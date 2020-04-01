@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-user_resources="$HOME/.Xresources"
+user_resources="$HOME/.config/xorg/resources"
 sys_resources=/etc/X11/xinit/.Xresources
 [ -f "$sys_resources" ] && xrdb -merge "$sys_resources"
 [ -f "$user_resources" ] && xrdb -merge "$user_resources"
