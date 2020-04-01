@@ -53,13 +53,13 @@ __cd_alias() {
     exa -a
 }
 
-__mkdir_alias() {
+__ccd_alias() {
     mkdir "$@" || return
     cd "$@"
 }
 
 alias cd='__cd_alias'
-alias mkdir='__mkdir_alias'
+alias ccd='__ccd_alias'
 alias ls='exa -a'
 alias rg='rg --no-heading'
 
