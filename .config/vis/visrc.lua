@@ -35,9 +35,4 @@ vis.events.subscribe(vis.events.WIN_OPEN, function(win)
     vis:map(vis.modes.NORMAL, '<C-p>', function() vis:command('fzf') end)    
 
 
-    function noop() end
-    vis:map(vis.modes.INSERT, '<Left>', noop)
-    vis:map(vis.modes.INSERT, '<Down>', noop)
-    vis:map(vis.modes.INSERT, '<Right>', noop)
-    vis:map(vis.modes.INSERT, '<Up>', noop)  
 end)
