@@ -33,8 +33,8 @@ __bash_prompt_command() {
     PS1="\n${bold}${fg_blue}${cwd}${reset}"
 
     if git rev-parse --is-inside-work-tree &>/dev/null; then
-        local branch=$(timeout 0.5s git branch --show-current || echo "???")
-        local dirty=$(timeout 0.5s git diff --quiet --ignore-submodules HEAD &>/dev/null || echo "*")
+        local branch=$(timeout 0.1s git branch --show-current || echo "???")
+        local dirty=$(timeout 0.1s git diff --quiet --ignore-submodules HEAD &>/dev/null || echo "*")
         PS1+=" ${bold}${fg_grey}${branch}${dirty}${reset}"
     fi
 
