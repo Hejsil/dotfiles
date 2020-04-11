@@ -11,6 +11,7 @@ wall.sh "$HOME/MEGA/Pictures/Wallpapers" &
 megasync &
 transmission-daemon -f &
 redshift &
+xbanish &
 go-to-sleep.sh &
 
 exec bspwm
