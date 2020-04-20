@@ -46,7 +46,7 @@ __bash_prompt_command() {
     PS1+="\n${bold}${prompt_color}\$${reset} "
 }
 
-PROMPT_COMMAND="__bash_prompt_command"
+PROMPT_COMMAND="${PROMPT_COMMAND};__bash_prompt_command"
 
 __cd_alias() {
     cd "$@" || return
