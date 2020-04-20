@@ -10,7 +10,7 @@ export PROMPT_COMMAND="history -a; history -c; history -r"
 # Programs
 export EDITOR='vis'
 export TERMINAL='st'
-export BROWSER='chrome'
+export BROWSER='chromium'
 export READER='zathura'
 
 export GNUPGHOME="$HOME/.config/gnupg"
@@ -27,5 +27,5 @@ export TERMINFO_DIRS="$TERMINFO:/usr/share/terminfo"
 
 export NNN_OPENER='open.sh'
 
-export FZF_DEFAULT_COMMAND='fd -H'
+export FZF_DEFAULT_COMMAND='fd -H --type f'
 export FZF_DEFAULT_OPTS='--info=hidden --color=16'
