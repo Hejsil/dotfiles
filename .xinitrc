@@ -12,6 +12,5 @@ megasync &
 transmission-daemon -f &
 redshift &
 xbanish &
-go-to-sleep.sh &
 
 exec bspwm
