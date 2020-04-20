@@ -12,8 +12,8 @@ while [ -n "$1" ]; do
     case $1 in
         --) shift; break ;;
         -n|--noise) shift; noise=$1 ;;
-        -s|--scale) scale=$1 ;;
-        -t|--tile) tile=$1 ;;
+        -s|--scale) shift; scale=$1 ;;
+        -t|--tile) shift; tile=$1 ;;
         -h|--help) usage; exit 0 ;;
         -*) usage; exit 1 ;;
         *) break ;;
