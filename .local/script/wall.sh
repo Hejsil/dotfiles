@@ -21,19 +21,10 @@ while [ -n "$1" ]; do
 done
 
 folder=$1; [ -z "$folder" ] && { echo 'No folder provided' >&2; exit 1; }
-[ -z "$monitors" ] && monitors=$(xrandr | grep ' connected' | wc -l)
+[ -z "$monitors" ] && monitors=$(xrandr | grep -c ' connected')
 [ -z "$monitors" ] && { echo 'No amount of monitors specified' >&2; exit 1; }
 
-# TODO: Actually use monitors variable
-tmp=$(mktemp)
 while true; do
-    find "$folder" -type f >"$tmp" || exit 1
-    sort -R "$tmp"
-done | paste - - | while IFS=$(printf '\t') read -r first second; do
-    if [ "$first" = "$second" ]; then
-        continue
-    fi
-
-    setroot "$first" "$second"
+    find "$folder" -type f | sort -R | head -n "$monitors" | xargs -d '\n' setroot
     sleep "$time"
 done
