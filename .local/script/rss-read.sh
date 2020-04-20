@@ -18,13 +18,13 @@ done
 tmp=$(mktemp)
 tab=$(printf '\t')
 rss-list.sh -u |
-    cut -d"$tab" -f1,3,4,7 |
-    awk -F"$tab" '{ printf "%-60s\t%-20s\t%s\t%s\n", substr($2, 0, 60), substr($4, 0, 20), $3, $1 }' |
+    cut -f1,3,4,7,8 |
+    awk -F"$tab" '{ printf "%-60s\t%-20s\t%s\t%s\t%s\n", substr($2, 0, 60), substr($4, 0, 20), $1, $3, $5 }' |
     fzf >"$tmp"
 
 if [ -s "$tmp" ]; then
-    cut -d"$tab" -f3 "$tmp" | xargs daemonize.sh open.sh
-    cut -d"$tab" -f4 "$tmp" | xargs -I{} mv {} "$HOME/.cache/rss/read"
+    cut -f4,5 "$tmp" | sed 's/\t$//' | rev | cut -f1 | rev | xargs daemonize.sh open.sh
+    cut -f3 "$tmp" | xargs -I{} mv {} "$HOME/.cache/rss/read"
 fi
 
 rm "$tmp"
