@@ -1,19 +1,16 @@
 #!/bin/sh
 
-. "$HOME/.local/script/colors.sh"
-
-bar_height=30
+bar_height=26
 bspc config top_padding "$bar_height"
 
 bar-info.sh | bar-mk.sh | lemonbar  \
     -g "x$bar_height"               \
-    -f 'JetBrains Mono-12'          \
-    -f 'fontello-14'                \
-    -B "#$COLOR0"                   \
-    -F "#$COLOR5"                   \
+    -f "$(xgetres bar.font)"        \
+    -f "$(xgetres bar.symbol_font)" \
+    -B "$(xgetres bar.color0)"      \
+    -F "$(xgetres bar.color7)"      \
     -u 2                            \
-    -n 'lemonbar'                   \
-    -o 1 &
+    -n 'lemonbar'                   &
 
 trap "kill $!" INT TERM EXIT
 
