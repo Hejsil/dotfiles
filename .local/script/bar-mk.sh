@@ -1,79 +1,101 @@
-#!/bin/sh
+#!/bin/sh -e
 
-set -e
-
-. "$HOME/.local/script/colors.sh"
-
-# dash shell has a builtin printf which does
-# not support \uXXXX.
-printff() {
-    "$(which printf)" "$*"
+percent_to_color() {
+    color_picked=$(($1 / 34))
+    case $color_picked in
+        0) xgetres bar.color2 ;;
+        1) xgetres bar.color3 ;;
+        *) xgetres bar.color1 ;;
+    esac
 }
 
-icon_calender=$(printff "\u$(printf "%x" 59399)")
-icon_newspaper=$(printff "\u$(printf "%x" 61930)")
-icon_down=$(printff "\u$(printf "%x" 59398)")
-icon_up=$(printff "\u$(printf "%x" 59397)")
-icon_download=$(printff "\u$(printf "%x" 59400)")
-icon_upload=$(printff "\u$(printf "%x" 59401)")
-icon_volume0=$(printff "\u$(printf "%x" 59393)")
-icon_volume1=$(printff "\u$(printf "%x" 59394)")
-icon_volume2=$(printff "\u$(printf "%x" 59395)")
-icon_volume3=$(printff "\u$(printf "%x" 59396)")
-icon_temp0=$(printff "\u$(printf "%x" 62155)")
-icon_temp1=$(printff "\u$(printf "%x" 62154)")
-icon_temp2=$(printff "\u$(printf "%x" 62153)")
-icon_temp3=$(printff "\u$(printf "%x" 62152)")
-icon_temp4=$(printff "\u$(printf "%x" 62151)")
-icon_speed=$(printff "\u$(printf "%x" 59392)")
-icon_rss=$(printff "\u$(printf "%x" 61763)")
-icon_chip=$(printff "\u$(printf "%x" 62171)")
-icon_clock=$(printff "\u$(printf "%x" 59402)")
+colored_bars() {
+    low=$(percent_to_color 0)
+    mid=$(percent_to_color 50)
+    high=$(percent_to_color 100)
+    echo "%{F$low}▁,%{F$low}▂,%{F$mid}▃,%{F$mid}▄,%{F$mid}▅,%{F$high}▆,%{F$high}▇,%{F$high}█"
+}
 
 block() {
-    printf '%s' "%{U#$COLOR6}%{+o}"
+    printf '%s' '%{+o}'
     printf "$@"
     printf '%s' '%{-o}'
 }
 
-while read -r LINE; do
-    eval "$LINE"
+bar_block() {
+    name=$1
+    value=$2
+    color=$3
+    shift; shift; shift
+    block ' %s: %s%s%s ' "$name" "%{F$color}" "$(echo "$value" | sab "$@")" "%{F-}"
+}
 
-    bspc query -M --names | nl -w1 -v0 | while read -r INDEX MONITOR; do
-        printf '%s' "%{S$INDEX}"
+volume_block() {
+    bar_block "$1" "$2" "$(percent_to_color "$2")" -s '─,┫%{F-},━' -t mark-center
+}
 
-        printf '%s' '%{c}'
-        printf '%s' "$WINDOW"
+memory_block() {
+    bar_block "$1" "$2" "-" -l1 -s "$(colored_bars)"
+}
+
+cpu_block() {
+    name=$1
+    values=$2
+    bars=$(echo "$values" | tr ' ' '\n'  | sed '/^$/d' |
+        sab -l1 -s "$(colored_bars)" |
+        tr -d '\n')
+    block ' %s: %s%s ' "$name" "$bars" "%{F-}"
+}
+
+mail=$(block ' mail:  0 ')
+rss=$(block ' rss:  0 ')
+date=$(block ' %s ' "$(date '+%b %d %a %R')")
+mem=$(memory_block 'mem' 0)
+cpu=$(cpu_block 'cpu' 0)
+vol=$(volume_block 'vol' 0)
+bspwm=''
+win_block=''
+
+while read -r line; do
+    name=${line%%=*}
+    value=${line#*=}
+
+    # I wanted an efficient way of checking if the bar ever changed and only output it if it did. This
+    # is what I came up with. I aligned the code the make it more readable. Basically, each case saves
+    # the old value, costructs the new one, and checks if the value changed. If it didn't then we just
+    # continue the loop.
+    case $name in
+        rss)   old=$rss;     rss=$(block ' %s:%3d '   "$name" "$value"); [  "$rss" = "$old" ] && continue ;;
+        mail)  old=$mail;   mail=$(block ' %s:%3d '   "$name" "$value"); [ "$mail" = "$old" ] && continue ;;
+        date)  old=$date;   date=$(block ' %s '               "$value"); [ "$date" = "$old" ] && continue ;;
+        mem)   old=$mem;     mem=$(memory_block       "$name" "$value"); [  "$mem" = "$old" ] && continue ;;
+        cpu)   old=$cpu;     cpu=$(cpu_block          "$name" "$value"); [  "$cpu" = "$old" ] && continue ;;
+        vol)   old=$vol;     vol=$(volume_block       "$name" "$value"); [  "$vol" = "$old" ] && continue ;;
+        win)   old=$win;     win=$value;                                 [  "$win" = "$old" ] && continue ;;
+        bspwm) old=$bspwm; bspwm=$value;                                 [ "$bspm" = "$old" ] && continue ;;
+        *)
+            continue
+            ;;
+    esac
+    
+    bspc query -M --names | nl -w1 -v0 | while read -r index monitor; do
+        printf '%s' "%{S${index}}%{c}${win}%{r}${mail} ${rss} ${mem} ${cpu} ${vol} ${date} "
 
         printf '%s' '%{l} '
-        echo "$BSPWM_REPORT" | tr ':' '\n' |
-            grep "$MONITOR" -A 1000 |
+        echo "$bspwm" | tr ':' '\n' |
+            grep "$monitor" -A 1000 |
             sed -e '1d' -e '/[mMwW]/q' |
             sed '$d' |
-        while read -r INFO; do
-            NUM="${INFO#?}"
-            case $INFO in
-                o*) block ' %s*' "$NUM" ;;
-                f*) block ' %s ' "$NUM" ;;
-                O*) block '%s %s*%s' '%{+u}' "$NUM" '%{-u}' ;;
-                F*) block '%s %s %s' "%{+u}" "$NUM" '%{-u}' ;;
+        while read -r info; do
+            num="${info#?}"
+            case $info in
+                o*) block ' %s*' "$num" ;;
+                f*) block ' %s ' "$num" ;;
+                O*) block '%s %s*%s' '%{+u}' "$num" '%{-u}' ;;
+                F*) block '%s %s %s' "%{+u}" "$num" '%{-u}' ;;
                 *) ;;
             esac
         done
-        printf " "
-
-        printf '%s' '%{r} '
-        block ' %3d%% %s ' "$CPU" "$icon_speed"
-        printf ' '
-        block ' %3d%% %s ' "$MEM" "$icon_chip"
-        printf ' '
-        block ' %3s %s ' "$MAILS" "$icon_newspaper"
-        printf ' '
-        block ' %3d %s ' "$NEWS" "$icon_rss"
-        printf ' '
-        block ' %3d%% %s ' "$VOLUME" "$(echo "$VOLUME" | sab -l 1 -s "$icon_volume1$icon_volume2$icon_volume3")"
-        printf ' '
-        block ' %s %s ' "$TIME" "$icon_clock"
         printf ' '
     done
     echo

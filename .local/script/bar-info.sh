@@ -1,32 +1,26 @@
-#!/bin/sh
-
-set -e
+#!/bin/sh -e
 
 print_volume() {
-    amixer sget "$(amixer scontrols | sed -e "s/^[^']*'//" -e "s/'[^']*$//" | head -n 1)" | tr '\n' ' ' | cut -d'[' -f2 | cut -d'%' -f 1
+    pulsemixer --get-volume | cut -f1 -d' '
 }
 
 print_mails() {
     find "$HOME/.local/share/mail/" -type f | grep -c ',$'
 }
 
-print_news() {
+print_rss() {
     find "$HOME/.cache/rss/unread/" -type f | wc -l
 }
 
 print_mem() {
     MEMORY="$(grep 'Mem' /proc/meminfo | sed "s/[^0-9]*//g" | tr '\n' ' ')"
-    MEM_CURR2=$(echo "$MEMORY" | awk '{ printf "%d", ($1-$3) }')
-    MEM_MAX2=$(echo "$MEMORY" | awk '{ printf "%d", $1 }')
-    if [ "$MEM_CURR2" != "$MEM_CURR" ] || [ "$MEM_MAX2" != "$MEM_MAX" ]; then
-        MEM_CURR=$MEM_CURR2
-        MEM_MAX=$MEM_MAX2
-        echo "$MEM_CURR $MEM_MAX" | awk '{ printf "%d", ($1/$2)*100 }'
-    fi
+    MEM_CURR=$(echo "$MEMORY" | awk '{ printf "%d", ($1-$3) }')
+    MEM_MAX=$(echo "$MEMORY" | awk '{ printf "%d", $1 }')
+    echo "$MEM_CURR $MEM_MAX" | awk '{ printf "%d\n", ($1/$2)*100 }'
 }
 
 cpu_usage() {
-    grep 'cpu ' /proc/stat | awk '{ print $2, $4, $5 }'
+    grep 'cpu[0-9]' /proc/stat | awk '{ print $2, $4, $5 }'
 }
 
 cpu_last=$(mktemp /tmp/cpu-last.XXXXXX)
@@ -36,12 +30,14 @@ print_cpu() {
     cpu_usage >"$cpu_curr"
     paste -d' ' "$cpu_curr" "$cpu_last" |
         awk '{ printf "%d %d %d\n", ($1-$4), ($2-$5), ($3-$6) }' |
-        awk '{ usage=($1+$2)/($1+$2+$3); printf "%d", usage*100 }'
+        awk '{ usage=($1+$2)/($1+$2+$3); printf "%d ", usage*100 }'
+    echo
+
     cp "$cpu_curr" "$cpu_last"
 }
 
-var_wrap() {
-    sed -u "s/'/'\"'\"'/g" | sed -u -E "s/(.*)/$1='\1';/"
+wrap() {
+    sed -u "s/^/$1=/"
 }
 
 {
@@ -51,36 +47,35 @@ var_wrap() {
     while inotifywait /tmp/volume-notify-file 2>/dev/null >/dev/null; do
         print_volume
     done
-} | var_wrap 'VOLUME' &
+} | wrap 'vol' &
 
 {
     print_mails
-    while inotifywait "$HOME/.local/share/mail/" -r -e 'move' 2>/dev/null >/dev/null; do
+    while inotifywait "$HOME/.local/share/mail/" -r -e 'move,create,delete' 2>/dev/null >/dev/null; do
         print_mails
     done
-} | var_wrap 'MAILS' & 
+} | wrap 'mail' & 
+
+{
+    print_rss
+    while inotifywait "$HOME/.cache/rss/unread" -r -e 'move,create,delete' 2>/dev/null >/dev/null; do
+        print_rss
+    done
+} | wrap 'rss' & 
 
 
-bspc subscribe report | var_wrap 'BSPWM_REPORT' &
-xtitle -s | var_wrap 'WINDOW' &
+bspc subscribe report | wrap 'bspwm' &
+xtitle -s | wrap 'win' &
 
 seq 0 inf | while read -r I; do
-    {
-        # Things to run every second
-        date '+%R' | var_wrap 'TIME'
+    # Things to run every second
+    date '+%b %d %a %R' | wrap 'date'
 
-        # Things to run every 2 seconds
-        if [ $((I % 2)) = 0 ]; then
-            print_mem | var_wrap 'MEM'
-            print_cpu | var_wrap 'CPU'
-        fi
-        # Things to run every 4 seconds
-        if [ $((I % 4)) = 0 ]; then
-            date '+%F' | var_wrap 'DATE'
-            print_news | var_wrap 'NEWS'
-        fi
-    } | tr '\n' ' '
-    echo ""
+    # Things to run every 2 seconds
+    if [ $((I % 2)) = 0 ]; then
+        print_mem | wrap 'mem'
+        print_cpu | wrap 'cpu'
+    fi
 
     sleep 1
 done

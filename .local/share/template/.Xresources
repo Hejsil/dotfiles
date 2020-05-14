@@ -1,4 +1,5 @@
-*font:          JetBrains Mono-14
+*font:           JetBrains Mono-14
+bar.font:        JetBrains Mono-12
 *foreground:    #{{base05-hex}}
 *selforeground: #{{base00-hex}}
 *background:    #{{base00-hex}}
