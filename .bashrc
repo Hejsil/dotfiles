@@ -33,9 +33,10 @@ __bash_prompt_command() {
     PS1="\n${bold}${fg_blue}${cwd}${reset}"
 
     if git rev-parse --is-inside-work-tree &>/dev/null; then
-        local branch=$(timeout 0.1s git branch --show-current || echo "???")
+        local fallback=$(timeout 0.1s git log --oneline -n 1 --decorate=short | cut -d')' -f1 | sed 's/ (HEAD// ; s/ //g' | rev | cut -d, -f1 | rev)
+        local branch=$(timeout 0.1s git branch --show-current)
         local dirty=$(timeout 0.1s git diff --quiet --ignore-submodules HEAD &>/dev/null || echo "*")
-        PS1+=" ${bold}${fg_grey}${branch}${dirty}${reset}"
+        PS1+=" ${bold}${fg_grey}${branch:-${fallback:-???}}${dirty}${reset}"
     fi
 
     case $exit_code in
@@ -70,7 +71,7 @@ alias gcl='git clone'
 alias gco='git checkout'
 alias gd='git diff'
 alias gds='git diff --stat'
-alias gl='git log'
+alias gl='git log --graph --oneline'
 alias gp='git push'
 alias gpl='git pull'
 alias gs='git status'
