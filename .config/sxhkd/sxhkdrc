@@ -64,4 +64,4 @@ XF86Audio{Raise,Lower}Volume
 #
 
 Print
-    screenshot.sh "$HOME/MEGA/Pictures/Screenshots"
+    screenshot.sh "$HOME/mega/images/screenshots"

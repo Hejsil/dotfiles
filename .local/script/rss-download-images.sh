@@ -15,8 +15,8 @@ while [ -n "$1" ]; do
     shift
 done
 
-mkdir -p "$HOME/Downloads/Images/"
-tmp_template="$HOME/Downloads/Images/XXXXXX"
+mkdir -p "$HOME/downloads/images/"
+tmp_template="$HOME/downloads/images/XXXXXX"
 
 tab=$(printf '\t')
 a=$(printf '\a')

@@ -7,7 +7,7 @@ sys_resources=/etc/X11/xinit/.Xresources
 
 xrandr --output HDMI-0 --mode 1920x1080 --right-of DP-0 \
     --output DP-0 --primary --mode 2560x1440 --rate 144
-wall.sh "$HOME/MEGA/Pictures/Wallpapers" &
+wall.sh "$HOME/mega/images/wallpapers" &
 megasync &
 transmission-daemon -f &
 redshift &
