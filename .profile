@@ -2,8 +2,8 @@
 export PATH="/usr/lib/ccache/bin/:$HOME/.local/bin:$HOME/.local/script:$PATH"
 
 # Bash history
-export HISTSIZE=
-export HISTFILESIZE=
+export HISTSIZE=9999999
+export HISTFILESIZE=9999999
 export HISTCONTROL='ignoredups:erasedups'
 export PROMPT_COMMAND="history -a; history -c; history -r"
 
