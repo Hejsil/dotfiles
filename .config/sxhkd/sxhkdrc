@@ -57,7 +57,7 @@ super + ctrl + alt + {Left,Down,Up,Right}
 #
 
 XF86Audio{Raise,Lower}Volume
-    amixer sset "$(amixer scontrols | sed -e "s/^[^']*'//" -e "s/'[^']*$//" | head -n 1)" 2%{+,-} && touch /tmp/volume-notify-file
+    pulsemixer --change-volume {+,-}2 && touch /tmp/volume-notify-file
 
 #
 # Misc
