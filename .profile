@@ -8,7 +8,7 @@ export HISTCONTROL='ignoredups:erasedups'
 export PROMPT_COMMAND="history -a; history -c; history -r"
 
 # Programs
-export EDITOR='vis'
+export EDITOR='nvim'
 export TERMINAL='st'
 export BROWSER='chromium'
 export READER='zathura'
