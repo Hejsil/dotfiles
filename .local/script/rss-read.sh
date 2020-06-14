@@ -23,7 +23,7 @@ rss-list.sh -u |
     fzf >"$tmp"
 
 if [ -s "$tmp" ]; then
-    cut -f4,5 "$tmp" | sed 's/\t$//' | rev | cut -f1 | rev | xargs daemonize.sh open.sh
+    cut -f4,5 "$tmp" | sed 's/\t$//' | rev | cut -f1 | rev | xargs setsid -f open.sh
     cut -f3 "$tmp" | xargs -I{} mv {} "$HOME/.cache/rss/read"
 fi
 
