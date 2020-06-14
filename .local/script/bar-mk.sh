@@ -77,9 +77,9 @@ while read -r line; do
             continue
             ;;
     esac
-    
+
     bspc query -M --names | nl -w1 -v0 | while read -r index monitor; do
-        printf '%s' "%{S${index}}%{c}${win}%{r}${mail} ${rss} ${mem} ${cpu} ${vol} ${date} "
+        printf '%s' "%{S${index}}"
 
         printf '%s' '%{l} '
         echo "$bspwm" | tr ':' '\n' |
@@ -96,7 +96,7 @@ while read -r line; do
                 *) ;;
             esac
         done
-        printf ' '
+        printf '  %s%s ' "${win}" "%{r} ${mail} ${rss} ${mem} ${cpu} ${vol} ${date}"
     done
     echo
 done
