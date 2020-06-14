@@ -14,7 +14,7 @@ __bash_prompt_command() {
     local fg_cyan="\[$(tput setaf 6)\]"
     local fg_white="\[$(tput setaf 7)\]"
     local fg_grey="\[$(tput setaf 8)\]"
-    
+
     local bg_black="\[$(tput setab 0)\]"
     local bg_red="\[$(tput setab 1)\]"
     local bg_green="\[$(tput setab 2)\]"
@@ -24,16 +24,16 @@ __bash_prompt_command() {
     local bg_cyan="\[$(tput setab 6)\]"
     local bg_white="\[$(tput setab 7)\]"
     local bg_grey="\[$(tput setab 8)\]"
-    
+
     local bold="\[$(tput bold)\]"
     local reset="\[$(tput sgr0)\]"
-    
+
     local a=$(printf "\a")
     local cwd=$(pwd | sed "s$a^$HOME$a~$a" | sed -E "s$a.*/([^/]*/[^/]*/[^/]*\$)$a\1$a")
     PS1="\n${bold}${fg_blue}${cwd}${reset}"
 
     if git rev-parse --is-inside-work-tree &>/dev/null; then
-        local fallback=$(timeout 0.1s git log --oneline -n 1 --decorate=short | cut -d')' -f1 | sed 's/ (HEAD// ; s/ //g' | rev | cut -d, -f1 | rev)
+        local fallback=$(timeout 0.1s git log --oneline -n 1 --decorate=short 2>/dev/null | cut -d')' -f1 | sed 's/ (HEAD// ; s/ //g' | rev | cut -d, -f1 | rev)
         local branch=$(timeout 0.1s git branch --show-current)
         local dirty=$(timeout 0.1s git diff --quiet --ignore-submodules HEAD &>/dev/null || echo "*")
         PS1+=" ${bold}${fg_grey}${branch:-${fallback:-???}}${dirty}${reset}"
@@ -63,6 +63,7 @@ alias cd='__cd_alias'
 alias ccd='__ccd_alias'
 alias ls='exa -a'
 alias rg='rg --no-heading'
+alias gdb="gdb -nh -x '$XDG_CONFIG_HOME/gdb/init'"
 
 alias ga='git add'
 alias gb='git branch'
