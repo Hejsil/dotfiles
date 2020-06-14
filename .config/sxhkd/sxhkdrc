@@ -9,6 +9,9 @@ super + @space
 super + Return
     $TERMINAL
 
+super + b
+    $BROWSER
+
 super + shift + Return
     $TERMINAL -e nnn -ndA
 
