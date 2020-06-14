@@ -1,0 +1,4 @@
+[core]
+    excludesfile = /home/hejsil/.config/git/ignore
+    editor = nvim
+    pager = delta --dark

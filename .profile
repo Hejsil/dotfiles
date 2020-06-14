@@ -13,16 +13,23 @@ export TERMINAL='st'
 export BROWSER='chromium'
 export READER='zathura'
 
-export GNUPGHOME="$HOME/.config/gnupg"
-export LESSHISTFILE="$HOME/.cache/less/history"
-export CCACHE_DIR="$HOME/.cache/ccache"
-export CARGO_HOME="$HOME/.cache/cargo"
-export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc-2.0"
-export HISTFILE="$HOME/.local/share/bash/history"
-export NOTMUCH_CONFIG="$HOME/.config/notmuch/notmuchrc"
-export WGETRC="$HOME/.config/wget/wgetrc"
-export CUDA_CACHE_PATH="$HOME/.cache/nv"
-export TERMINFO="$HOME/.local/share/terminfo"
+export XDG_CACHE_HOME="$HOME/.cache"
+export LESSHISTFILE="$XDG_CACHE_HOME/less/history"
+export CCACHE_DIR="$XDG_CACHE_HOME/ccache"
+export CARGO_HOME="$XDG_CACHE_HOME/cargo"
+export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
+
+export XDG_DATA_HOME="$HOME/.local/share"
+export HISTFILE="$XDG_DATA_HOME/bash/history"
+export TERMINFO="$XDG_DATA_HOME/terminfo"
+
+export XDG_CONFIG_HOME="$HOME/.config"
+export GNUPGHOME="$XDG_CONFIG_HOME/gnupg"
+export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc-2.0"
+export NOTMUCH_CONFIG="$XDG_CONFIG_HOME/notmuch/notmuchrc"
+export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+
 export TERMINFO_DIRS="$TERMINFO:/usr/share/terminfo"
 
 export NNN_OPENER='open.sh'

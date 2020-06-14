@@ -45,11 +45,9 @@ mkfile() {
     echo "$1"
 }
 
-TEMPLATE_DIR="$HOME/.local/share/template"
+TEMPLATE_DIR="$HOME/.config/template"
 base16.sh "$SCHEME" "$TEMPLATE_DIR/dunstrc" > "$(mkfile "$HOME/.config/dunst/dunstrc")" &
 base16.sh "$SCHEME" "$TEMPLATE_DIR/.gtkrc-2.0" > "$(mkfile "$HOME/.config/gtk-2.0/gtkrc-2.0")" &
-base16.sh "$SCHEME" "$TEMPLATE_DIR/gtk.css" > "$(mkfile "$HOME/.config/gtk-3.0/gtk.css")" &
-base16.sh "$SCHEME" "$TEMPLATE_DIR/settings.json" > "$(mkfile "$HOME/.config/VSCodium/User/settings.json")" &
 base16.sh "$SCHEME" "$TEMPLATE_DIR/.Xresources" > "$(mkfile "$HOME/.config/xorg/resources")" &
 wait
 gtkrc-reload
