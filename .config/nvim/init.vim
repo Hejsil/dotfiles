@@ -4,6 +4,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'ziglang/zig.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 call plug#end()
 
 " Aaaw man, I sure do love that fzf.vim overrides the default prompt so that I
@@ -22,13 +23,43 @@ command! -bang -nargs=* Rg
 
 let g:fzf_layout = {}
 
+set listchars=trail:•,tab:▸\ 
+set list
+
 set nowrap
+set nohlsearch
+
 set expandtab
 set tabstop=4
 set shiftwidth=4
 set showtabline=0
+
 set laststatus=0
 set number relativenumber
 
+set spell! spelllang=en_us
+
 nnoremap <C-p> :Files<Enter>
+
+hi Keyword      cterm=bold     ctermfg=blue
+hi StorageClass cterm=bold     ctermfg=blue
+hi Type         cterm=bold     ctermfg=blue
+hi Structure    cterm=bold     ctermfg=blue
+hi Statement    cterm=bold     ctermfg=blue
+hi Conditional  cterm=bold     ctermfg=blue
+hi Repeat       cterm=bold     ctermfg=blue
+hi Boolean      cterm=bold     ctermfg=cyan
+hi Constant     cterm=bold     ctermfg=cyan
+hi Number       cterm=bold     ctermfg=cyan
+hi Special      cterm=bold     ctermfg=cyan
+hi String       cterm=bold     ctermfg=green
+hi Character    cterm=bold     ctermfg=green
+hi Function     cterm=bold     ctermfg=yellow
+hi Comment      cterm=italic   ctermfg=darkgray
+hi LineNr       cterm=italic   ctermfg=darkgray
+hi CursorLineNr cterm=italic   ctermfg=darkgray
+hi EndOfBuffer  cterm=italic   ctermfg=darkgray
+hi Whitespace   cterm=NONE     ctermfg=darkgray
+hi Error        cterm=standout ctermbg=white    ctermfg=red
+hi Operator     cterm=bold     ctermfg=white
 
