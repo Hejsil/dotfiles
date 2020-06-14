@@ -25,6 +25,6 @@ folder=$1; [ -z "$folder" ] && { echo 'No folder provided' >&2; exit 1; }
 [ -z "$monitors" ] && { echo 'No amount of monitors specified' >&2; exit 1; }
 
 while true; do
-    find "$folder" -type f | sort -R | head -n "$monitors" | xargs -d '\n' setroot
+    find "$folder" -type f | sort -R | head -n "$monitors" | xargs -d '\n' setroot -z
     sleep "$time"
 done
