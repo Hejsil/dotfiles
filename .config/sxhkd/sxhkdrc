@@ -24,6 +24,9 @@ super + r
 super + shift + r
     rss-open-all-in-browser.sh
 
+super + o
+    open.sh "$(xsel -b)"
+
 #
 # bspwm
 #
