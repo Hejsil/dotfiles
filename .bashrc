@@ -2,7 +2,6 @@
 
 shopt -s histappend
 
-
 __bash_prompt_command() {
     local exit_code=$?
     local fg_black="\[$(tput setaf 0)\]"
@@ -49,6 +48,13 @@ __bash_prompt_command() {
 
 PROMPT_COMMAND="${PROMPT_COMMAND};__bash_prompt_command"
 
+__swallow() {
+    id=$(xdo id)
+    xdo hide
+    $("$@")
+    xdo show "$id"
+}
+
 __cd_alias() {
     cd "$@" || return
     exa -a
@@ -78,5 +84,11 @@ alias gpl='git pull'
 alias gs='git status'
 alias gr='git rebase'
 alias grc='git rebase --continue'
+
+alias chromium='__swallow chromium'
+alias gimp='__swallow gimp'
+alias mpv='__swallow mpv'
+alias sxiv='__swallow sxiv'
+alias zathura='__swallow zathura'
 
 rsfetch -lNPdehHkrcstuU@w -p pacman
