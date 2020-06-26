@@ -14,6 +14,6 @@ megasync &
 transmission-daemon -f &
 redshift &
 xbanish &
-mbsync -a &
+mbsync -a -c "$HOME/.config/isync/mbsyncrc" &
 
 exec bspwm
