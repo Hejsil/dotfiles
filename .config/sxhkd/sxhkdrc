@@ -4,13 +4,10 @@
 
 # rofi starts slow, and dmenu is slow on large inputs... *sign* I can do better. Use st as a window for launch.sh!
 super + @space
-    st -c 'pick-dialog' -e launch.sh
+    $TERMINAL -c 'pick-dialog' -e launch.sh
 
 super + Return
     $TERMINAL
-
-super + b
-    $BROWSER
 
 super + shift + Return
     $TERMINAL -e nnn -ndA
@@ -19,10 +16,13 @@ super + m
     $TERMINAL -e aerc
 
 super + r
-    st -c 'pick-dialog' -e rss-read.sh
+    $TERMINAL -c 'pick-dialog' -e rss-read.sh
 
 super + shift + r
     rss-open-all-in-browser.sh
+
+super + b
+    $BROWSER
 
 super + o
     open.sh "$(xsel -b)"
@@ -35,7 +35,8 @@ super + q
     bspc node -c
 
 super + {Left,Down,Up,Right}
-    bspc node -f {west,south,north,east}
+    bspc node -f {west,south,north,east} && \
+        xdotool getactivewindow mousemove --window '%1' --polar 0 0
 
 super + shift + {Left,Down,Up,Right}
     bspc node -s {west,south,north,east}
