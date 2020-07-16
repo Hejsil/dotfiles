@@ -16,7 +16,7 @@ if [ -f "$1" ]; then
     esac
 else
     case $1 in
-        *youtube*watch*|*youtu.be*|*.mp3|*.mp3"?"*|*.mp4|*.mp4"?"*|*.webm|*.webm"?"*) echo 'mpv' ;;
+        *youtube*watch*|*youtube*playlist*|*youtu.be*|*.mp3|*.mp3"?"*|*.mp4|*.mp4"?"*|*.webm|*.webm"?"*) echo 'mpv' ;;
         http*|www*) echo "$BROWSER" ;;
         magnet:*) echo 'tra.sh' ;;
         *:*)
