@@ -47,9 +47,21 @@ cpu_block() {
     block ' %s: %s%s ' "$name" "$bars" "%{F-}"
 }
 
-mail=$(block ' mail:  0 ')
-rss=$(block ' rss:  0 ')
+mail_block() {
+    name=$1
+    value=$2
+    block '%s %s:%3d %s' "%{A1:$TERMINAL -e aerc &:}" "$name" "$value" '%{A}'
+}
+
+rss_block() {
+    name=$1
+    value=$2
+    block '%s %s:%3d %s' "%{A1:$TERMINAL -c 'pick-dialog' -e rss-read.sh &:}" "$name" "$value" '%{A}'
+}
+
 date=$(block ' %s ' "$(date '+%b %d %a %R')")
+rss=$(rss_block 'rss' 0)
+mail=$(mail_block 'mail' 0)
 mem=$(memory_block 'mem' 0)
 cpu=$(cpu_block 'cpu' 0)
 vol=$(volume_block 'vol' 0)
@@ -65,9 +77,9 @@ while read -r line; do
     # the old value, costructs the new one, and checks if the value changed. If it didn't then we just
     # continue the loop.
     case $name in
-        rss)   old=$rss;     rss=$(block ' %s:%3d '   "$name" "$value"); [  "$rss" = "$old" ] && continue ;;
-        mail)  old=$mail;   mail=$(block ' %s:%3d '   "$name" "$value"); [ "$mail" = "$old" ] && continue ;;
         date)  old=$date;   date=$(block ' %s '               "$value"); [ "$date" = "$old" ] && continue ;;
+        rss)   old=$rss;     rss=$(rss_block          "$name" "$value"); [  "$rss" = "$old" ] && continue ;;
+        mail)  old=$mail;   mail=$(mail_block         "$name" "$value"); [ "$mail" = "$old" ] && continue ;;
         mem)   old=$mem;     mem=$(memory_block       "$name" "$value"); [  "$mem" = "$old" ] && continue ;;
         cpu)   old=$cpu;     cpu=$(cpu_block          "$name" "$value"); [  "$cpu" = "$old" ] && continue ;;
         vol)   old=$vol;     vol=$(volume_block       "$name" "$value"); [  "$vol" = "$old" ] && continue ;;
@@ -89,9 +101,9 @@ while read -r line; do
         while read -r info; do
             num="${info#?}"
             case $info in
-                o*) block ' %s*' "$num" ;;
+                o*|u*) block ' %s*' "$num" ;;
                 f*) block ' %s ' "$num" ;;
-                O*) block '%s %s*%s' '%{+u}' "$num" '%{-u}' ;;
+                O*|U*) block '%s %s*%s' '%{+u}' "$num" '%{-u}' ;;
                 F*) block '%s %s %s' "%{+u}" "$num" '%{-u}' ;;
                 *) ;;
             esac
