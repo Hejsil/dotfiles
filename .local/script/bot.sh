@@ -12,7 +12,7 @@ while read -r command link; do
                 sed 's#/#|#g' | {
             read -r name
             read -r id
-            format="$(echo "$command" | sed -e 's/p/bestaudio/' -e 's/v/bestvideo/')"
+            format="$(echo "$command" | sed -e 's/p/bestaudio/' -e 's/v/best/')"
             file_name="$folder/$name ($format) ($id)"
             if ! [ -e "$file_name" ]; then
                 youtube-dl -f "$format" --no-playlist  -o "$file_name" "$link"
