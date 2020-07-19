@@ -8,18 +8,16 @@ mash_tools listener 'dispatcher' |
     sed -Eu 's/^:://' |
 while read -r command link; do
     case $command in
-        p|v) youtube-dl --no-playlist --get-id --get-title "$link" |
-                sed 's#/#|#g' | {
-            read -r name
-            read -r id
+        p|v)
             format="$(echo "$command" | sed -e 's/p/bestaudio/' -e 's/v/best/')"
-            file_name="$folder/$name ($format) ($id)"
+            template="$folder/%(title)s %(id)s ($format)"
+            file_name="$(youtube-dl --no-playlist -o "$template" --get-filename "$link")"
             if ! [ -e "$file_name" ]; then
-                youtube-dl -f "$format" --no-playlist  -o "$file_name" "$link"
+                youtube-dl -f "$format" --no-playlist  -o "$template" "$link"
             fi
 
             echo "$file_name"
-        } ;;
+            ;;
         s) killall mpv ;;
     esac
 done | xargs -n 1 -d'\n' mpv --fullscreen
