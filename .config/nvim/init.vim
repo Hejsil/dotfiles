@@ -4,7 +4,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'ziglang/zig.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 call plug#end()
 
 " Aaaw man, I sure do love that fzf.vim overrides the default prompt so that I
@@ -37,9 +36,11 @@ set showtabline=0
 set laststatus=0
 set number relativenumber
 
-set spell! spelllang=en_us
+" set spell! spelllang=en_us
 
 nnoremap <C-p> :Files<Enter>
+
+autocmd TextChanged,InsertLeave * silent write
 
 hi Keyword      cterm=bold     ctermfg=blue
 hi StorageClass cterm=bold     ctermfg=blue
