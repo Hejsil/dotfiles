@@ -26,16 +26,18 @@ bar_block() {
     name=$1
     value=$2
     color=$3
-    shift; shift; shift
-    block ' %s: %s%s%s ' "$name" "%{F$color}" "$(echo "$value" | sab "$@")" "%{F-}"
+    command=$4
+    shift; shift; shift; shift
+    block '%s %s: %s%s%s %s' "%{A1:$command &:}" "$name" "%{F$color}" \
+        "$(echo "$value" | sab "$@")" "%{F-}" "%{A}"
 }
 
 volume_block() {
-    bar_block "$1" "$2" "$(percent_to_color "$2")" -s '─,┫%{F-},━' -t mark-center
+    bar_block "$1" "$2" "$(percent_to_color "$2")" "pavucontrol" -s '─,┫%{F-},━' -t mark-center
 }
 
 memory_block() {
-    bar_block "$1" "$2" "-" -l1 -s "$(colored_bars)"
+    bar_block "$1" "$2" "-" "true" -l1 -s "$(colored_bars)"
 }
 
 cpu_block() {
