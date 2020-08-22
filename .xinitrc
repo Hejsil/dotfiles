@@ -6,6 +6,7 @@ sys_resources=/etc/X11/xinit/.Xresources
 [ -f "$user_resources" ] && xrdb -merge "$user_resources"
 
 xset r rate 300 50
+setxkbmap -layout "dk"
 xrandr --output HDMI-0 --mode 1920x1080 --right-of DP-0 \
     --output DP-0 --primary --mode 2560x1440 --rate 144
 
