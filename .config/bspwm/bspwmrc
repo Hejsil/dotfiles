@@ -31,11 +31,10 @@ bspc rule -a Zathura state=tiled
 
 #### Language ####
 
-setxkbmap -layout "dk"
 
 #### Generate symlinks ####
 
-ln -s "$HOME/.local/script/open.sh" "$HOME/.local/script/xdg-open"
+ln -s "$HOME/.local/script/open" "$HOME/.local/script/xdg-open"
 
 #### Generate themes #####
 

@@ -25,7 +25,7 @@ super + b
     $BROWSER
 
 super + o
-    open.sh "$(xsel -b)"
+    open "$(xsel -b)"
 
 #
 # bspwm
@@ -58,6 +58,9 @@ super + alt + {Left,Down,Up,Right}
 
 super + ctrl + alt + {Left,Down,Up,Right}
     bspc node -v {-20 0,0 20,0 -20,20 0}
+
+ctrl + alt + {Left,Down,Up,Right}
+    bspc node -p {west,south,north,east}
 
 #
 # Sound
