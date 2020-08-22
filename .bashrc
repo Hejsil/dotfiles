@@ -51,7 +51,7 @@ PROMPT_COMMAND="${PROMPT_COMMAND};__bash_prompt_command"
 __swallow() {
     id=$(xdo id)
     xdo hide
-    $("$@")
+    "$@"
     xdo show "$id"
 }
 
@@ -65,11 +65,26 @@ __ccd_alias() {
     cd "$@"
 }
 
-alias cd='__cd_alias'
+alias ..='__cd_alias ..'
+alias ...='__cd_alias ../..'
+alias .3='__cd_alias ../../..'
+alias .4='__cd_alias ../../../..'
+
 alias ccd='__ccd_alias'
+alias cd='__cd_alias'
+
+alias v='nvim'
+alias vim='nvim'
+
 alias ls='exa -a'
-alias rg='rg --no-heading'
+alias ll='exa -al'
+
+alias cp='cp -i'
+
+alias drag='dragon-drag-and-drop'
 alias gdb="gdb -nh -x '$XDG_CONFIG_HOME/gdb/init'"
+alias o='open'
+alias rg='rg --no-heading'
 
 alias ga='git add'
 alias gb='git branch'
@@ -86,9 +101,11 @@ alias gr='git rebase'
 alias grc='git rebase --continue'
 
 alias chromium='__swallow chromium'
+alias chrome='__swallow chromium'
 alias gimp='__swallow gimp'
 alias mpv='__swallow mpv'
+alias st='__swallow st'
 alias sxiv='__swallow sxiv'
 alias zathura='__swallow zathura'
 
-rsfetch -lNPdehHkrcstuU@w -p pacman
+
