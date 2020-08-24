@@ -21,7 +21,7 @@ while [ -n "$1" ]; do
     shift
 done
 
-tmp=$(mktemp)
+tmp=$(mktemp '/tmp/XXXXXXX.png')
 find "$@" -type f | while read -r file; do
     waifu2x-ncnn-vulkan -i "$file" -o "$tmp" -n "$noise" -s "$scale" -t "$tile"
     printf '%s\n%s\n' "$file" "$tmp" | sxiv -fo - | xargs -I{} cp '{}' "$file"
