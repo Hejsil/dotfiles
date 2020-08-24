@@ -6,22 +6,22 @@
 
 
 # Menu
-menu.border.color: #dcdcdc
+menu.border.color: #{{base05-hex}}
 
 menu.title.bg: Solid Flat
-menu.title.bg.color: #141414
+menu.title.bg.color: #{{base00-hex}}
 menu.title.bg.shadow: 0
-menu.title.text.color: #dcdcdc
+menu.title.text.color: #{{base05-hex}}
 menu.title.text.justify: Center
 
 menu.items.bg: Solid Flat
-menu.items.bg.color: #141414
-menu.items.text.color: #dcdcdc
+menu.items.bg.color: #{{base00-hex}}
+menu.items.text.color: #{{base05-hex}}
 menu.items.disabled.text.color: #aaaaaa
 
 menu.items.active.bg: Solid Flat
-menu.items.active.bg.color: #c8821e
-menu.items.active.text.color: #dcdcdc
+menu.items.active.bg.color: #{{base0A-hex}}
+menu.items.active.text.color: #{{base05-hex}}
 
 menu.separator.color: #aaaaaa
 menu.separator.width: 1
@@ -29,113 +29,113 @@ menu.separator.padding.width: 2
 menu.separator.padding.height: 4
 
 # Window focused
-window.active.title.separator.color: #141414
+window.active.title.separator.color: #{{base00-hex}}
 
 # Active window
-window.active.border.color: #c8821e
+window.active.border.color: #{{base0A-hex}}
 
 
 window.active.title.bg: flat solid
-window.active.title.bg.color: #141414
-window.active.title.separator.color: #141414
+window.active.title.bg.color: #{{base00-hex}}
+window.active.title.separator.color: #{{base00-hex}}
 window.active.text.justify: center
 
 window.active.label.bg: parentrelative
-window.active.label.text.color: #dcdcdc
+window.active.label.text.color: #{{base05-hex}}
 
 window.active.handle.bg: flat solid
-window.active.handle.bg.color: #141414
+window.active.handle.bg.color: #{{base00-hex}}
 
 window.active.grip.bg: flat solid
-window.active.grip.bg.color: #141414
+window.active.grip.bg.color: #{{base00-hex}}
 
 window.active.button.unpressed.bg: flat solid
-window.active.button.unpressed.bg.color: #141414
-window.active.button.unpressed.image.color: #dcdcdc
+window.active.button.unpressed.bg.color: #{{base00-hex}}
+window.active.button.unpressed.image.color: #{{base05-hex}}
 
 window.active.button.pressed.bg: flat solid
-window.active.button.pressed.bg.color: #c8821e
-window.active.button.pressed.image.color: #141414
+window.active.button.pressed.bg.color: #{{base0A-hex}}
+window.active.button.pressed.image.color: #{{base00-hex}}
 
 window.active.button.disabled.bg: flat solid
-window.active.button.disabled.bg.color: #141414
+window.active.button.disabled.bg.color: #{{base00-hex}}
 window.active.button.disabled.image.color: #aaaaaa
 
 window.active.button.hover.bg: flat solid
-window.active.button.hover.bg.color: #141414
-window.active.button.hover.image.color: #c8821e
+window.active.button.hover.bg.color: #{{base00-hex}}
+window.active.button.hover.image.color: #{{base0A-hex}}
 
-#window.active.button.toggled.bg: #c8821e
-#window.active.button.toggled.image.color: #141414
+#window.active.button.toggled.bg: #{{base0A-hex}}
+#window.active.button.toggled.image.color: #{{base00-hex}}
 
 # Inactive window
-window.inactive.border.color: #141414
+window.inactive.border.color: #{{base00-hex}}
 
 window.inactive.title.bg: flat solid
-window.inactive.title.bg.color: #141414
-window.inactive.title.separator.color: #141414
+window.inactive.title.bg.color: #{{base00-hex}}
+window.inactive.title.separator.color: #{{base00-hex}}
 window.inactive.text.justify: center
 
 window.inactive.label.bg: parentrelative
 window.inactive.label.text.color: #aaaaaa
 
 window.inactive.handle.bg: flat solid
-window.inactive.handle.bg.color: #141414
+window.inactive.handle.bg.color: #{{base00-hex}}
 
 window.inactive.grip.bg: flat solid
-window.inactive.grip.bg.color: #141414
+window.inactive.grip.bg.color: #{{base00-hex}}
 
 window.inactive.button.unpressed.bg: flat solid
-window.inactive.button.unpressed.bg.color: #141414
+window.inactive.button.unpressed.bg.color: #{{base00-hex}}
 window.inactive.button.unpressed.image.color: #aaaaaa
 
 window.inactive.button.pressed.bg: flat solid
-window.inactive.button.pressed.bg.color: #c8821e
-window.inactive.button.pressed.image.color: #141414
+window.inactive.button.pressed.bg.color: #{{base0A-hex}}
+window.inactive.button.pressed.image.color: #{{base00-hex}}
 
 window.inactive.button.disabled.bg: flat solid
 window.inactive.button.disabled.bg.color: #aaaaaa
-window.inactive.button.disabled.image.color: #141414
+window.inactive.button.disabled.image.color: #{{base00-hex}}
 
 window.inactive.button.hover.bg: flat solid
-window.inactive.button.hover.bg.color: #141414
-window.inactive.button.hover.image.color: #c8821e
+window.inactive.button.hover.bg.color: #{{base00-hex}}
+window.inactive.button.hover.image.color: #{{base0A-hex}}
 
 
 # OSD
 osd.border.width: 1
-osd.border.color: #c8821e
+osd.border.color: #{{base0A-hex}}
 
 osd.bg: flat solid
-osd.bg.color: #141414
+osd.bg.color: #{{base00-hex}}
 osd.label.bg: flat solid
-osd.label.bg.color: #141414
-osd.label.text.color: #dcdcdc
+osd.label.bg.color: #{{base00-hex}}
+osd.label.text.color: #{{base05-hex}}
 
 # OSD
 osd.bg: Solid Flat
-osd.bg.color: #141414
+osd.bg.color: #{{base00-hex}}
 osd.bg.shadow: 0
 
 osd.border.width: 2
 osd.hilight.bg: Solid Flat
-osd.hilight.bg.color: #c8821e
+osd.hilight.bg.color: #{{base0A-hex}}
 osd.unhilight.bg: flat solid
-osd.unhilight.bg.color: #141414
+osd.unhilight.bg.color: #{{base00-hex}}
 
 osd.button.unpressed.bg: flat border
-osd.button.unpressed.bg.color: #3c78e6
-#osd.button.unpressed.*.border.color: #141414
+osd.button.unpressed.bg.color: #{{base0D-hex}}
+#osd.button.unpressed.*.border.color: #{{base00-hex}}
 
 osd.button.pressed.bg: flat border
-osd.button.pressed.bg.color: #c8821e
-#osd.button.pressed.*.border.color: #141414
+osd.button.pressed.bg.color: #{{base0A-hex}}
+#osd.button.pressed.*.border.color: #{{base00-hex}}
 
 osd.button.focused.bg: flat solid border
-osd.button.focused.bg.color: #dcdcdc
-#osd.button.focused.*.border.color: #141414
+osd.button.focused.bg.color: #{{base05-hex}}
+#osd.button.focused.*.border.color: #{{base00-hex}}
 
-osd.button.focused.box.color: #c8821e
+osd.button.focused.box.color: #{{base0A-hex}}
 
 
 # Fonts
