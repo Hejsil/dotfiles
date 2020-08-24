@@ -40,7 +40,7 @@ set number relativenumber
 
 nnoremap <C-p> :Files<Enter>
 
-autocmd TextChanged,InsertLeave * silent write
+" autocmd TextChanged,InsertLeave * silent write
 
 hi Keyword      cterm=bold     ctermfg=blue
 hi StorageClass cterm=bold     ctermfg=blue

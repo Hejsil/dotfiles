@@ -38,6 +38,11 @@ ln -sf "$HOME/.local/script/open" "$HOME/.local/script/xdg-open"
 
 #### Generate themes #####
 
+mkdir2() {
+    mkdir -p "$1"
+    echo "$1"
+}
+
 mkfile() {
     mkdir -p "$(dirname "$1")"
     touch "$1"
@@ -45,9 +50,18 @@ mkfile() {
 }
 
 TEMPLATE_DIR="$HOME/.config/template"
+GTK_TEMPLATE_DIR="$TEMPLATE_DIR/$GTK_THEME"
+cp -r "$GTK_TEMPLATE_DIR" "$(mkdir2 "$HOME/.themes/")"
+
+rg -aFl '{{base' "$GTK_TEMPLATE_DIR" |
+    sd -s "$GTK_TEMPLATE_DIR/" '' |
+while read -r file; do
+    base16.sh "$SCHEME" "$GTK_TEMPLATE_DIR/$file" > "$(mkfile "$HOME/.themes/$GTK_THEME/$file")" &
+done
+
 base16.sh "$SCHEME" "$TEMPLATE_DIR/dunstrc" > "$(mkfile "$HOME/.config/dunst/dunstrc")" &
-base16.sh "$SCHEME" "$TEMPLATE_DIR/.gtkrc-2.0" > "$(mkfile "$HOME/.config/gtk-2.0/gtkrc-2.0")" &
 base16.sh "$SCHEME" "$TEMPLATE_DIR/.Xresources" > "$(mkfile "$HOME/.config/xorg/resources")" &
+
 wait
 gtkrc-reload
 xrdb -merge "$HOME/.config/xorg/resources"
