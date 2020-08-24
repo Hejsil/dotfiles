@@ -34,7 +34,7 @@ bspc rule -a Zathura state=tiled
 
 #### Generate symlinks ####
 
-ln -s "$HOME/.local/script/open" "$HOME/.local/script/xdg-open"
+ln -sf "$HOME/.local/script/open" "$HOME/.local/script/xdg-open"
 
 #### Generate themes #####
 
