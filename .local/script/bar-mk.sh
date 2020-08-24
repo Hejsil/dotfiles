@@ -61,6 +61,7 @@ rss_block() {
     block '%s %s:%3d %s' "%{A1:$TERMINAL -c 'pick-dialog' -e rss-read.sh &:}" "$name" "$value" '%{A}'
 }
 
+wttr=$(block '')
 date=$(block ' %s ' "$(date '+%b %d %a %R')")
 rss=$(rss_block 'rss' 0)
 mail=$(mail_block 'mail' 0)
@@ -79,6 +80,7 @@ while read -r line; do
     # the old value, costructs the new one, and checks if the value changed. If it didn't then we just
     # continue the loop.
     case $name in
+        wttr)  old=$wttr;   wttr=$(block ' %s '               "$value"); [ "$wttr" = "$old" ] && continue ;;
         date)  old=$date;   date=$(block ' %s '               "$value"); [ "$date" = "$old" ] && continue ;;
         rss)   old=$rss;     rss=$(rss_block          "$name" "$value"); [  "$rss" = "$old" ] && continue ;;
         mail)  old=$mail;   mail=$(mail_block         "$name" "$value"); [ "$mail" = "$old" ] && continue ;;
@@ -110,7 +112,7 @@ while read -r line; do
                 *) ;;
             esac
         done
-        printf '  %s%s ' "${win}" "%{r} ${mail} ${rss} ${mem} ${cpu} ${vol} ${date}"
+        printf '  %s%s ' "${win}" "%{r} ${mail} ${rss} ${mem} ${cpu} ${vol} ${wttr} ${date}"
     done
     echo
 done
