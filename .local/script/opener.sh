@@ -3,11 +3,11 @@
 if [ -f "$1" ]; then
     mine=$(file --mime-type -Lb "$1")
     case $mine in
-        application/pdf) echo "swallow $READER" ;;
+        application/pdf) echo "$READER" ;;
         application/x-bittorrent) echo 'tra.sh' ;;
         inode/x-empty|application/json|text*) echo "$EDITOR" ;;
-        image/*) echo 'swallow sxiv -a' ;;
-        video/*) echo 'swallow mpv' ;;
+        image/*) echo 'sxiv -a' ;;
+        video/*) echo 'mpv' ;;
         audio/*) echo 'mpv --vid=no' ;;
         *)
             echo "No match" >&2
@@ -17,8 +17,8 @@ if [ -f "$1" ]; then
 else
     case $1 in
         '') echo "$EDITOR" ;;
-        *youtube*watch*|*youtube*playlist*|*youtu.be*|*twitch.tv*|*.mp3|*.mp3"?"*|*.mp4|*.mp4"?"*|*.webm|*.webm"?"*) echo 'swallow mpv' ;;
-        http*|www*) echo "swallow $BROWSER" ;;
+        *youtube*watch*|*youtube*playlist*|*youtu.be*|*twitch.tv*|*.mp3|*.mp3"?"*|*.mp4|*.mp4"?"*|*.webm|*.webm"?"*) echo 'mpv' ;;
+        http*|www*) echo "$BROWSER" ;;
         magnet:*) echo 'tra.sh' ;;
         *:*)
             echo "${1%%:*}"
