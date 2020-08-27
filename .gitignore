@@ -12,6 +12,7 @@
 .config/gtk-2.0
 .config/hotspotrc
 .config/htop
+.config/inkscape
 .config/isync
 .config/libfm/
 .config/libreoffice/
@@ -24,9 +25,11 @@
 .config/nvim/.netrwhist
 .config/nvim/spell
 .config/obs-studio
+.config/oomox
 .config/pavucontrol.ini
 .config/pcmanfm/
 .config/pulse
+.config/qt5ct
 .config/retroarch/
 .config/tm35-randomizer
 .config/tracy/
