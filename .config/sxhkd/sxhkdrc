@@ -6,6 +6,12 @@
 super + @space
     $TERMINAL -c 'pick-dialog' -e launch.sh
 
+super + r
+    $TERMINAL -c 'pick-dialog' -e rss-read.sh
+
+super + shift + r
+    rss-open-all-in-browser.sh
+
 super + Return
     $TERMINAL
 
@@ -14,12 +20,6 @@ super + shift + Return
 
 super + m
     $TERMINAL -e aerc
-
-super + r
-    $TERMINAL -c 'pick-dialog' -e rss-read.sh
-
-super + shift + r
-    rss-open-all-in-browser.sh
 
 super + b
     $BROWSER
