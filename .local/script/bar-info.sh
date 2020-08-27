@@ -12,10 +12,6 @@ print_rss() {
     find "$HOME/.cache/rss/unread/" -type f | wc -l
 }
 
-print_wttr() {
-    curl --silent 'wttr.in?format=1' | cut -d ' ' -f2
-}
-
 print_mem() {
     MEMORY="$(grep 'Mem' /proc/meminfo | sed "s/[^0-9]*//g" | tr '\n' ' ')"
     MEM_CURR=$(echo "$MEMORY" | awk '{ printf "%d", ($1-$3) }')
@@ -80,10 +76,5 @@ seq 0 inf | while read -r I; do
         print_mem | wrap 'mem'
         print_cpu | wrap 'cpu'
     fi
-
-    if [ $((I % 1000)) = 0 ]; then
-        print_wttr | wrap 'wttr'
-    fi
-
     sleep 1
 done
