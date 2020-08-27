@@ -204,6 +204,8 @@ while read user a1 a2 a3 a4 a5 a6 a7 a8 a9; do
     elif echo "$a2" | rg -i 'typ(es?|ing)|is' >/dev/null; then
         type_cmd "$a1" "$a3" "$a4"
 
+    elif echo "$a2 $a3 $a4" | rg -i 'has \d* (hp|(sp_)?(attack|defense)|speed)' >/dev/null; then
+        stat_cmd "$a1" "$a4" "$a3"
     elif echo "$a2 $a3" | rg -i '(hp|(sp_)?(attack|defense)|speed) is' >/dev/null; then
         stat_cmd "$a1" "$a2" "$a4"
 
@@ -224,7 +226,7 @@ while read user a1 a2 a3 a4 a5 a6 a7 a8 a9; do
     elif echo "$a2" | rg -i 'has' >/dev/null; then
         trainer_party_cmd "$a1" "1" "$a3" "$a4" "$a5" "$a6" "$a7" "$a8"
 
-    elif echo "$user $a1" | rg "$channel done" >/dev/null; then
+    elif echo "$a1" | rg "done" >/dev/null; then
         kill "$proc"
         exit 0
     fi
