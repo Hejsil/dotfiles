@@ -18,9 +18,11 @@ while [ -n "$1" ]; do
 done
 
 output=$1
-[ -z "$output" ] && output='out.mp4'
+[ -z "$output" ] && output="$HOME/video/$(date '+%y-%m-%dT%H:%M:%S').mp4"
 
+echo "$output"
 slop -f '%x %y %w %h' | {
     read -r x y w h
     ffmpeg -f x11grab -s "${w}x${h}" -i ":0.0+${x},${y}" -r "$fps" -vcodec libx264 "$output"
 }
+
