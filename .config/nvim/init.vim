@@ -38,7 +38,11 @@ set number relativenumber
 
 " set spell! spelllang=en_us
 
-nnoremap <C-p> :Files<Enter>
+noremap <C-p> :Files<Enter>
+noremap <C-f> :Rg 
+nnoremap r :%s//gc<Left><Left><Left>
+vnoremap r :s//gc<Left><Left><Left>
+vnoremap <C-s> :sort<Enter>
 
 " autocmd TextChanged,InsertLeave * silent write
 
