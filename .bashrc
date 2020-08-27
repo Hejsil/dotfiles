@@ -84,6 +84,7 @@ alias cp='cp -i'
 alias drag='dragon-drag-and-drop'
 alias gdb="gdb -nh -x '$XDG_CONFIG_HOME/gdb/init'"
 alias o='open'
+alias r='ruplacer'
 alias rg='rg --no-heading'
 alias trr='transmission-remote'
 
@@ -97,16 +98,32 @@ alias gds='git diff --stat'
 alias gl='git log --graph --oneline'
 alias gp='git push'
 alias gpl='git pull'
-alias gs='git status'
 alias gr='git rebase'
 alias grc='git rebase --continue'
+alias gs='git status'
 
-alias chromium='__swallow chromium'
-alias chrome='__swallow chromium'
-alias gimp='__swallow gimp'
-alias mpv='__swallow mpv'
-alias st='__swallow st'
-alias sxiv='__swallow sxiv'
-alias zathura='__swallow zathura'
+alias chr='swallow chromium'
+alias chrome='swallow chromium'
+alias chromium='swallow chromium'
 
+alias gimp='swallow gimp'
+alias gmp='swallow gimp'
+
+alias aud='swallow mpv -vid=no'
+alias audio='swallow mpv -vid=no'
+alias mp='swallow mpv'
+alias mpv='swallow mpv'
+alias vid='swallow mpv'
+alias video='swallow mpv'
+
+alias st='swallow st'
+
+alias image='swallow sxiv -a'
+alias img='swallow sxiv -a'
+alias sx='swallow sxiv -a'
+alias sxiv='swallow sxiv -a'
+
+alias pdf='swallow zathura'
+alias zat='swallow zathura'
+alias zathura='swallow zathura'
 
