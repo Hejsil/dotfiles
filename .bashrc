@@ -85,6 +85,7 @@ alias drag='dragon-drag-and-drop'
 alias gdb="gdb -nh -x '$XDG_CONFIG_HOME/gdb/init'"
 alias o='open'
 alias rg='rg --no-heading'
+alias trr='transmission-remote'
 
 alias ga='git add'
 alias gb='git branch'
