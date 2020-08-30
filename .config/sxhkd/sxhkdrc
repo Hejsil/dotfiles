@@ -4,7 +4,10 @@
 
 # rofi starts slow, and dmenu is slow on large inputs... *sign* I can do better. Use st as a window for launch.sh!
 super + @space
-    $TERMINAL -c 'pick-dialog' -e launch.sh
+    $TERMINAL -c 'pick-dialog' -e launch-program.sh
+
+super + g
+    $TERMINAL -c 'pick-dialog' -e launch-steam-game.sh
 
 super + r
     $TERMINAL -c 'pick-dialog' -e rss-read.sh
