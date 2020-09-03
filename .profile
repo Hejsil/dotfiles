@@ -36,6 +36,7 @@ export TERMINFO_DIRS="$TERMINFO:/usr/share/terminfo"
 
 export NNN_OPENER='open.sh'
 
+export LESS="-R"
 export FZF_DEFAULT_COMMAND='fd -H --type f'
 export FZF_DEFAULT_OPTS='--info=hidden --color=16'
 
