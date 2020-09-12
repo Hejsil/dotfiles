@@ -42,3 +42,4 @@
 .config/user-dirs.locale
 .config/xorg
 .local/script/xdg-open
+.local/share/anilist/list.backup
