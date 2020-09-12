@@ -12,7 +12,7 @@ setxkbmap -layout "dk"
 xrandr --output HDMI-0 --mode 1920x1080 --right-of DP-0 \
     --output DP-0 --primary --mode 2560x1440 --rate 144
 
-wall.sh "$HOME/mega/images/wallpapers" &
+wall.sh "$HOME/mega/images/wallpapers" >/tmp/wall.sh.log 2>/tmp/wall.sh.log &
 megasync &
 transmission-daemon -f &
 redshift &
