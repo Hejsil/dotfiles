@@ -20,7 +20,7 @@
 .config/melonDS/
 .config/mgba/
 .config/monitors.xml
-.config/mpv
+.config/mpv/watch_later
 .config/notmuch
 .config/nvim/.netrwhist
 .config/nvim/spell
