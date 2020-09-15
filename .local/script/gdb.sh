@@ -2,4 +2,4 @@
 exe=$1
 shift
 
-gdb "$exe" -ex "run $*"
+gdb -nh -x "$XDG_CONFIG_HOME/gdb/init" "$exe" -ex "run $*"
