@@ -1,11 +1,4 @@
-#!/bin/sh
-
-set -e
-
-program=${0##*/}
-usage() {
-    echo "Usage: $program [ -t time ] [ -m monitors ] folder"
-}
+#!/bin/sh -e
 
 time='1m'
 while [ -n "$1" ]; do

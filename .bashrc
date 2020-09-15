@@ -81,10 +81,13 @@ alias ll='exa -al'
 
 alias cp='cp -i'
 
+alias d='delta'
+alias o='open'
+alias p='patch'
+alias r='replace'
+
 alias drag='dragon-drag-and-drop'
 alias gdb="gdb -nh -x '$XDG_CONFIG_HOME/gdb/init'"
-alias o='open'
-alias r='ruplacer'
 alias rg='rg --no-heading'
 alias trr='transmission-remote'
 

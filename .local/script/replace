@@ -1,0 +1,15 @@
+#!/bin/sh
+
+pattern=$1
+replacement=$2
+shift; shift;
+
+find "$@" -type f | while read -r file; do
+    tmp=$(mktemp)
+    sd -p "$pattern" "$replacement" "$file" > "$tmp"
+    diff -u "$file" "$tmp"
+    [ $? = 2 ] && exit 1
+
+    rm "$tmp"
+done
+
