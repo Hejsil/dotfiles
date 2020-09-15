@@ -1,0 +1,4 @@
+! Make the caps lock button a backspace button
+clear lock
+keycode 66 = Escape
+

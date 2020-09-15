@@ -40,6 +40,6 @@
 .config/unity3d/
 .config/user-dirs.dirs
 .config/user-dirs.locale
-.config/xorg
+.config/xorg/resources
 .local/script/xdg-open
 .local/share/anilist/list.backup

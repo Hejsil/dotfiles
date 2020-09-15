@@ -1,9 +1,11 @@
 #!/usr/bin/env sh
 
-user_resources="$HOME/.config/xorg/resources"
+user_modmap="$XDG_CONFIG_HOME/xorg/modmap"
+user_resources="$XDG_CONFIG_HOME/xorg/resources"
 sys_resources=/etc/X11/xinit/.Xresources
 [ -f "$sys_resources" ] && xrdb -merge "$sys_resources"
 [ -f "$user_resources" ] && xrdb -merge "$user_resources"
+[ -f "$user_modmap" ] && xmodmap "$user_modmap"
 
 xset r rate 300 50
 xset s off

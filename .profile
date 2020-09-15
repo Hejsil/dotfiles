@@ -28,6 +28,7 @@ export GNUPGHOME="$XDG_CONFIG_HOME/gnupg"
 export NOTMUCH_CONFIG="$XDG_CONFIG_HOME/notmuch/notmuchrc"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
+export XINITRC="$XDG_CONFIG_HOME/xorg/init"
 
 export GTK_THEME='oomox-xresources-reverse'
 export GTK2_RC_FILES="$HOME/.themes/$GTK_THEME/gtk-2.0/gtkrc"
