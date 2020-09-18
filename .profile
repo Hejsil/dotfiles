@@ -12,6 +12,7 @@ export BROWSER='chromium'
 export EDITOR='nvim'
 export READER='zathura'
 export TERMINAL='st'
+export PAGER='less'
 
 export XDG_CACHE_HOME="$HOME/.cache"
 export CARGO_HOME="$XDG_CACHE_HOME/cargo"

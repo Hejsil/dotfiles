@@ -1,12 +1,6 @@
 #!/bin/sh
 
-#### Colors ####
-
-SCHEME="$HOME/.local/script/colors.sh"
-. "$SCHEME"
-
-#### bspwm config ####
-
+. "$HOME/.local/script/colors.sh"
 bspc rule -r "*"
 
 for MONITOR in $(bspc query -M --names); do
@@ -30,58 +24,3 @@ bspc rule -a pick-dialog state=floating sticky=on focus=on
 bspc rule -a Zathura state=tiled
 bspc rule -a origin.exe state=floating
 
-
-#### Generate symlinks ####
-
-ln -sf "$HOME/.local/script/open" "$HOME/.local/script/xdg-open"
-
-#### Generate themes #####
-
-mkdir2() {
-    mkdir -p "$1"
-    echo "$1"
-}
-
-mkfile() {
-    mkdir -p "$(dirname "$1")"
-    touch "$1"
-    echo "$1"
-}
-
-TEMPLATE_DIR="$HOME/.config/template"
-GTK_TEMPLATE_DIR="$TEMPLATE_DIR/$GTK_THEME"
-cp -r "$GTK_TEMPLATE_DIR" "$(mkdir2 "$HOME/.themes/")"
-
-rg -aFl '{{base' "$GTK_TEMPLATE_DIR" |
-    sd -s "$GTK_TEMPLATE_DIR/" '' |
-while read -r file; do
-    base16.sh "$SCHEME" "$GTK_TEMPLATE_DIR/$file" > "$(mkfile "$HOME/.themes/$GTK_THEME/$file")" &
-done
-
-base16.sh "$SCHEME" "$TEMPLATE_DIR/dunstrc" > "$(mkfile "$HOME/.config/dunst/dunstrc")" &
-base16.sh "$SCHEME" "$TEMPLATE_DIR/.Xresources" > "$(mkfile "$HOME/.config/xorg/resources")" &
-
-wait
-gtkrc-reload
-xrdb -merge "$HOME/.config/xorg/resources"
-
-#### Auto start ####
-
-# programs we restart when we restart the wm
-restart.sh bar.sh
-restart.sh dunst
-restart.sh sxhkd -r /tmp/sxhkd.log
-
-#### Reload ####
-
-{
-    echo "$HOME/.config/sxhkd/sxhkdrc"
-    echo "$HOME/.config/bspwm/bspwmrc"
-    echo "$HOME/.local/script/bar-info.sh"
-    echo "$HOME/.local/script/bar-mk.sh"
-    echo "$HOME/.local/script/bar.sh"
-    echo "$HOME/.local/script/base16.sh"
-    echo "$HOME/.local/script/restart.sh"
-    echo "$SCHEME"
-    find "$TEMPLATE_DIR"
-} | restart.sh entr -p bspc wm -r
