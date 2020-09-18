@@ -64,7 +64,13 @@ wrap() {
 } | wrap 'rss' & 
 
 
-bspc subscribe report | wrap 'bspwm' &
+{
+    # Wait for bspc to be awailable. This allows us to run
+    # the bar before bspwm has been run
+    while ! bspc subscribe -c 1; do :; done
+    bspc subscribe report | wrap 'bspwm'
+} &
+
 xtitle -s | wrap 'win' &
 
 seq 0 inf | while read -r I; do
