@@ -1,0 +1,105 @@
+#!/bin/sh
+
+database='https://raw.githubusercontent.com/manami-project/anime-offline-database/master/anime-offline-database.json'
+cache_dir="$HOME/.cache/anilist"
+list_dir="$HOME/.local/share/anilist"
+list_file="$list_dir/list"
+
+database_file="$cache_dir/database.json"
+cache_file="$cache_dir/cache.csv"
+
+update_database() {
+    local tmp1=$(mktemp)
+    local tmp2=$(mktemp)
+    curl -s "$database" > "$tmp1"
+    jq -r '.data[] | .sources[0], .title, .type, .animeSeason.year, .animeSeason.season' "$database_file" |
+        paste -d '\t' - - - - - |
+        awk -F '\t' '{printf "%s\t%s\t%s\t%s %s\n",$1,$2,$3,$4,$5}' > "$tmp2"
+
+
+    mv "$tmp1" "$database_file"
+    mv "$tmp2" "$cache_file"
+}
+
+mktmpfifo() {
+    local res=$(mktemp -u)
+    echo "$res"
+    mkfifo -m 600 "$res"
+}
+
+list() {
+    local T=$(printf '\t')
+    local A=$(printf '\a')
+    local filtered_sed=$(mktmpfifo)
+    local full_sed=$(mktmpfifo)
+    local pattern=$(mktmpfifo)
+    local reordered_list=$(mktmpfifo)
+
+    awk -F '\t' '{printf "%s\n", $1}' "$list_file" > "$pattern" &
+    sd -p '^([^\t]*)\t([^\t]*)\t.*$' "s$A\$1\\\\b$A\$2$T\$1$A;" "$cache_file" > "$full_sed" &
+    awk '{printf "%s\t%s\t%s\t%s\t%s\n",$2,$3,$4,$5,$1 }' "$list_file" > "$reordered_list" &
+    rg -wf "$pattern" "$full_sed" > "$filtered_sed" &
+    sed -f "$filtered_sed" "$reordered_list" &
+    wait
+
+    rm "$filtered_sed"
+    rm "$full_sed"
+    rm "$pattern"
+    rm "$reordered_list"
+}
+
+fzf2() {
+    fzf -m -d '\t' --tiebreak begin --tabstop 4 -n 2,5 --with-nth 1,2,3,4,5
+}
+
+mkdir -p "$cache_dir"
+mkdir -p "$list_dir"
+cp "$list_file" "$list_file.backup"
+
+[ -f "$database_file" ] || update_database
+update_database &
+
+command=$1
+
+case $command in
+    browse|pick) while true; do
+        ids=$(mktemp)
+        case $command in
+            browse) < "$cache_file" fzf2 | cut -f1 > "$ids" ;;
+            pick) list | fzf2 | cut -f6 > "$ids" ;;
+        esac
+        [ -s "$ids" ] || { rm "$ids"; exit 0; }
+
+        while true; do
+            choice=$(printf 'c\tcompleted\nr\trewatch\nw\twatching\np\tplan to watch\no\ton hold\nd\tdropped\nv\tview\nt\ttorrent\n' | fzf | cut -f 1)
+            case $choice in
+                v) xargs -d '\n' setsid -f "$BROWSER" < "$ids" 2>/dev/null >/dev/null ;;
+                t) rg -wf "$ids" "$cache_file" | cut -f 2 |
+                    sd ' ' '+' | sd '^(.)' 'https://nyaa.si/?q=$1' |
+                    xargs -d '\n' setsid -f "$BROWSER" 2>/dev/null >/dev/null
+                ;;
+                r|c|w|p|o|d) while read -r id; do
+                    rg -wF "$id" "$list_file" | {
+                        read -r _ date status episodes count
+                        [ -z "$date" ] && date=$(date '+%Y-%m-%d')
+                        [ -z "$count" ] && count=1
+                        [ -z "$episodes" ] && episodes=0
+                        [ "$choice" != 'r' ] && status=$choice
+                        [ "$choice" = 'r' ] && count=$((count + 1))
+
+                        # Add updated entry
+                        {
+                            rg -vwF "$id" "$list_file"
+                            printf "%s\t%s\t%s\t%s\t%s\n" "$id" "$date" "$status" "$episodes" "$count"
+                        } | sort | sponge "$list_file"
+                    }
+                done < "$ids" ;;
+                *) break ;;
+            esac
+        done
+
+        rm "$ids";
+    done ;;
+    list) list ;;
+esac
+
