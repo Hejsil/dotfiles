@@ -12,6 +12,9 @@ super + g
 super + r
     $TERMINAL -c 'pick-dialog' -e rss-read.sh
 
+super + c
+    $TERMINAL -c 'pick-dialog' -e icalc
+
 super + shift + r
     rss-open-all-in-browser.sh
 
