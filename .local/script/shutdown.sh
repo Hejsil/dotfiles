@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 yay -Syu --noconfirm
 yay -Yc --noconfirm
 poweroff

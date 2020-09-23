@@ -68,12 +68,12 @@ echo "$dunstrc" | entr -nr dunst &
 
 #### Other programs ####
 
-wall.sh "$HOME/mega/images/wallpapers" >/tmp/wall.sh.log 2>/tmp/wall.sh.log &
-megasync &
-transmission-daemon -f &
-redshift &
-xbanish &
 mbsync -a -c "$HOME/.config/isync/mbsyncrc" &
+megasync &
+redshift &
+transmission-daemon -f &
+wall.sh "$HOME/mega/images/wallpapers" >/tmp/wall.sh.log 2>/tmp/wall.sh.log &
+xbanish &
 
 exec bspwm
 
