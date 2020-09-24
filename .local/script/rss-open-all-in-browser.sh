@@ -17,14 +17,15 @@ done
 
 tmp=$(mktemp)
 tab=$(printf '\t')
-rss-list.sh -u | cut -f1,4,8 |
-while IFS=$tab read -r file link enclosure; do
+rss-list.sh -u |
+while IFS=$tab read -r file _ _ link _ _ _ enclosure; do
     printf '%s\t%s\t%s\t%s\n' "$(opener.sh "$link")" "$file" "$link" "$enclosure"
-done | grep "^$BROWSER" | cut -f2,3,4 | head -n 50 >"$tmp"
+done | grep "^$BROWSER" | head -n 50 >"$tmp"
 
 if [ -s "$tmp" ]; then
-    cut -f2,3 "$tmp" | sed 's/\t$//' | rev | cut -f1 | rev | tr '\n' ' ' | xargs setsid -f "$BROWSER"
-    cut -f1 "$tmp" | xargs -I{} mv {} "$HOME/.cache/rss/read"
+    choose -f '\t' -1 -i "$tmp" | xargs -d '\n' opener.sh || exit 1
+    choose -f '\t' -1 -i "$tmp" | xargs -d '\n' setsid -f open
+    choose -f '\t'  1 -i "$tmp" | xargs -d '\n' -I{} mv {} "$HOME/.cache/rss/read"
 fi
 
 rm "$tmp"
