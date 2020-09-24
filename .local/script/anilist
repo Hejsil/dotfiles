@@ -71,10 +71,10 @@ case $command in
         [ -s "$ids" ] || { rm "$ids"; exit 0; }
 
         while true; do
-            choice=$(printf 'c\tcompleted\nr\trewatch\nw\twatching\np\tplan to watch\no\ton hold\nd\tdropped\nv\tview\nt\ttorrent\n' | fzf | cut -f 1)
+            choice=$(printf 'c\tcompleted\nr\trewatch\nw\twatching\np\tplan to watch\no\ton hold\nd\tdropped\nv\tview\nt\ttorrent\n' | fzf | cut -f1)
             case $choice in
                 v) xargs -d '\n' setsid -f "$BROWSER" < "$ids" 2>/dev/null >/dev/null ;;
-                t) rg -wf "$ids" "$cache_file" | cut -f 2 |
+                t) rg -wf "$ids" "$cache_file" | cut -f2 |
                     sd ' ' '+' | sd '^(.)' 'https://nyaa.si/?q=$1' |
                     xargs -d '\n' setsid -f "$BROWSER" 2>/dev/null >/dev/null
                 ;;
