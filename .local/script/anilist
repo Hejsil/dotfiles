@@ -49,7 +49,7 @@ list() {
 }
 
 fzf2() {
-    fzf -m -d '\t' --tiebreak begin --tabstop 4 -n 2,5 --with-nth 1,2,3,4,5
+    fzf -m -d '\t' --tiebreak begin --tabstop 4 --with-nth 1,2,3,4,5 "$@"
 }
 
 mkdir -p "$cache_dir"
@@ -65,8 +65,8 @@ case $command in
     browse|pick) while true; do
         ids=$(mktemp)
         case $command in
-            browse) < "$cache_file" fzf2 | cut -f1 > "$ids" ;;
-            pick) list | fzf2 | cut -f6 > "$ids" ;;
+            browse) < "$cache_file" fzf2 -n 2,3,4 | cut -f1 > "$ids" ;;
+            pick) list | fzf2 -n 2,5 | cut -f6 > "$ids" ;;
         esac
         [ -s "$ids" ] || { rm "$ids"; exit 0; }
 
