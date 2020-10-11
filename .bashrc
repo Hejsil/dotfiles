@@ -105,9 +105,8 @@ alias gr='git rebase'
 alias grc='git rebase --continue'
 alias gs='git status'
 
-alias chr='swallow chromium'
-alias chrome='swallow chromium'
-alias chromium='swallow chromium'
+alias bro="swallow $BROWSER"
+alias browser="swallow $BROWSER"
 
 alias gimp='swallow gimp'
 alias gmp='swallow gimp'
