@@ -1,7 +1,8 @@
 set clipboard+=unnamedplus
 
 call plug#begin('~/.local/share/nvim/plugged')
-Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+Plug 'christoomey/vim-sort-motion'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " fzf and friends
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -31,14 +32,13 @@ command! -bang -nargs=* Rg
     \ call fzf#vim#grep(
     \   'rg --column --line-number --no-heading --color=always --smart-case --only-matching --replace= -- '.shellescape(<q-args>), 1,
     \   fzf#vim#with_preview({'options': ['--prompt', '> ']}), <bang>0)
+command! -bang -nargs=* Rgf
+    \ call fzf#vim#grep(
+    \   'rg --fixed-strings --column --line-number --no-heading --color=always --smart-case --only-matching --replace= -- '.shellescape(<q-args>), 1,
+    \   fzf#vim#with_preview({'options': ['--prompt', '> ']}), <bang>0)
 
 let g:rustfmt_autosave = 1
 let g:fzf_layout = {}
-
-let g:LanguageClient_autoStart = 1
-let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-    \ }
 
 set completeopt=noinsert,menuone
 
@@ -61,24 +61,20 @@ set nonumber
 set relativenumber
 set numberwidth=1
 
-" set spell! spelllang=en_us
+set spell! spelllang=en_us
 
 noremap <C-p> :Files<Enter>
-noremap <C-f> :Rg 
+noremap <C-f> :Rgf 
 nnoremap r :%s//gc<Left><Left><Left>
 vnoremap r :s//gc<Left><Left><Left>
-vnoremap <C-s> :sort<Enter>
 
 " ncm remaps
 inoremap <expr> <Tab> (pumvisible() ? "\<c-y>" : "\<Tab>")
 inoremap <expr> <CR> (pumvisible() ? "\<c-e>\<CR>" : "\<CR>")
 
 " Language server remaps
-nnoremap <silent> K :call LanguageClient_textDocument_hover()<Enter>
-nnoremap <silent> gd :call LanguageClient_textDocument_definition()<Enter>
-nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<Enter>
+nmap <silent> gd <Plug>(coc-definition)
 
-" autocmd TextChanged,InsertLeave * silent write
 autocmd BufEnter * call ncm2#enable_for_buffer()
 autocmd BufReadPost *.rs setlocal filetype=rust
 
