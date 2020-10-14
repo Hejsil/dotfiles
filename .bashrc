@@ -92,7 +92,7 @@ alias rg='rg --no-heading'
 alias trr='transmission-remote'
 
 alias ga='git add'
-alias gb='git branch'
+alias gb='git branch --all'
 alias gc='git commit'
 alias gcl='git clone'
 alias gco='git checkout'
