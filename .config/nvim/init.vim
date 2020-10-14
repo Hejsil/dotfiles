@@ -1,22 +1,25 @@
 set clipboard+=unnamedplus
 
 call plug#begin('~/.local/share/nvim/plugged')
-Plug 'christoomey/vim-sort-motion'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-" fzf and friends
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+    Plug 'christoomey/vim-sort-motion'
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'tpope/vim-commentary'
 
-" ncm and friends
-Plug 'ncm2/ncm2'
-Plug 'roxma/nvim-yarp'
-Plug 'ncm2/ncm2-bufword'
-Plug 'ncm2/ncm2-path'
+    " fzf and friends
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf.vim'
 
-" Language plugings
-Plug 'rust-lang/rust.vim'
-Plug 'ziglang/zig.vim'
+    " ncm and friends
+    Plug 'ncm2/ncm2'
+    Plug 'roxma/nvim-yarp'
+    Plug 'ncm2/ncm2-bufword'
+    Plug 'ncm2/ncm2-path'
+
+    " Language plugins
+    Plug 'rust-lang/rust.vim'
+    Plug 'ziglang/zig.vim'
+
 call plug#end()
 
 " Aaaw man, I sure do love that fzf.vim overrides the default prompt so that I
@@ -61,7 +64,7 @@ set nonumber
 set relativenumber
 set numberwidth=1
 
-set spell! spelllang=en_us
+" set spell! spelllang=en_us
 
 noremap <C-p> :Files<Enter>
 noremap <C-f> :Rgf 
@@ -77,6 +80,8 @@ nmap <silent> gd <Plug>(coc-definition)
 
 autocmd BufEnter * call ncm2#enable_for_buffer()
 autocmd BufReadPost *.rs setlocal filetype=rust
+
+autocmd FileType vim setlocal commentstring=\"\ %s
 
 hi Keyword      cterm=bold     ctermfg=blue
 hi StorageClass cterm=bold     ctermfg=blue
