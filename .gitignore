@@ -4,6 +4,7 @@
 .config/aerc/accounts.conf
 .config/autostart
 .config/chromium
+.config/coc
 .config/dconf
 .config/desmume/
 .config/discord
@@ -33,6 +34,7 @@
 .config/retroarch/
 .config/tm35-randomizer
 .config/tracy/
+.config/transmission
 .config/transmission-daemon/dht.dat
 .config/transmission-daemon/resume
 .config/transmission-daemon/stats.json
