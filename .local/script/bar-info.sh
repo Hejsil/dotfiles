@@ -72,8 +72,8 @@ wrap() {
 } | wrap 'bspwm' &
 
 xtitle -s | wrap 'win' &
-seq "$(date +%s)" inf | sed 's/^/@/' | delay-line 1s |
-    date -f - '+%b %d %a %R' | wrap 'date' &
+seq "$(date +%s)" 1 inf | sed 's/^/@/' | date -f - '+%b %d %a %R' |
+     wrap 'date' | delay-line 1s &
 
 seq 0 inf | delay-line 2s | while read -r I; do
     print_mem | wrap 'mem'
