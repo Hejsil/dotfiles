@@ -1,38 +1,65 @@
-package.disabled = true
 aws.disabled = true
 battery.disabled = true
+cmake.disabled = true
 conda.disabled = true
+crystal.disabled = true
+dart.disabled = true
+docker_context.disabled = true
 dotnet.disabled = true
+elixir.disabled = true
 elm.disabled = true
 env_var.disabled = true
-elixir.disabled = true
+erlang.disabled = true
+gcloud.disabled = true
 golang.disabled = true
-haskell.disabled = true
-hg_branch.disbled = true
-jobs.disabled = true
-kubernetes.disabled = true
-nix_shell.disabled = true
+helm.disabled = true
+hg_branch.disabled = true
+hostname.disabled = true
 java.disabled = true
+julia.disabled = true
+kubernetes.disabled = true
 memory_usage.disabled = true
-crystal.disbled = true
+nim.disabled = true
+nix_shell.disabled = true
 nodejs.disabled = true
+ocaml.disabled = true
+package.disabled = true
+perl.disabled = true
 php.disabled = true
+purescript.disabled = true
 python.disabled = true
 ruby.disabled = true
 rust.disabled = true
+shlvl.disable = true
 singularity.disabled = true
+swift.disable = true
 terraform.disabled = true
 time.disabled = true
 username.disabled = true
+zig.disabled = true
 
 [character]
+error_symbol = '[\$](bold red)'
+format = '$symbol '
+success_symbol = '[\$](bold green)'
 use_symbol_for_status = true
+vicmd_symbol = '[\$](bold green)'
 
 [cmd_duration]
-min_time = 2
+min_time = 0
 show_milliseconds = true
 
 [directory]
+read_only_style = 'bold red'
+style = 'bold blue'
+truncation_length = 3
+
+[git_branch]
+style = 'bold bright-black'
 truncation_length = 10
 
+[git_status]
+ahead = '>'
+behind = '<'
+modified = '*'
 
