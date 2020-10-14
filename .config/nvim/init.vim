@@ -3,7 +3,7 @@ set clipboard+=unnamedplus
 call plug#begin('~/.local/share/nvim/plugged')
 
     Plug 'christoomey/vim-sort-motion'
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'neovim/nvim-lspconfig'
     Plug 'tpope/vim-commentary'
 
     " fzf and friends
@@ -21,6 +21,16 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'ziglang/zig.vim'
 
 call plug#end()
+
+lua <<EOF
+    require'nvim_lsp'.bashls.setup{}
+    require'nvim_lsp'.clangd.setup{}
+    require'nvim_lsp'.cmake.setup{}
+    require'nvim_lsp'.rls.setup{}
+    require'nvim_lsp'.vimls.setup{}
+    -- require'nvim_lsp'.zls.setup{}
+EOF
+
 
 " Aaaw man, I sure do love that fzf.vim overrides the default prompt so that I
 " have to manually get it back... Why? Having my cwd as the prompt is not
@@ -76,7 +86,8 @@ inoremap <expr> <Tab> (pumvisible() ? "\<c-y>" : "\<Tab>")
 inoremap <expr> <CR> (pumvisible() ? "\<c-e>\<CR>" : "\<CR>")
 
 " Language server remaps
-nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
+nmap <silent> K  <cmd>lua vim.lsp.buf.hover()<CR>
 
 autocmd BufEnter * call ncm2#enable_for_buffer()
 autocmd BufReadPost *.rs setlocal filetype=rust
