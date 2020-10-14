@@ -12,30 +12,6 @@ print_rss() {
     find "$HOME/.cache/rss/unread/" -type f | wc -l
 }
 
-print_mem() {
-    MEMORY="$(grep 'Mem' /proc/meminfo | sed "s/[^0-9]*//g" | tr '\n' ' ')"
-    MEM_CURR=$(echo "$MEMORY" | awk '{ printf "%d", ($1-$3) }')
-    MEM_MAX=$(echo "$MEMORY" | awk '{ printf "%d", $1 }')
-    echo "$MEM_CURR $MEM_MAX" | awk '{ printf "%d\n", ($1/$2)*100 }'
-}
-
-cpu_usage() {
-    grep 'cpu[0-9]' /proc/stat | awk '{ print $2, $4, $5 }'
-}
-
-cpu_last=$(mktemp /tmp/cpu-last.XXXXXX)
-cpu_curr=$(mktemp /tmp/cpu-curr.XXXXXX)
-cpu_usage | sed 's/[0-9]*/0/g' >"$cpu_last"
-print_cpu() {
-    cpu_usage >"$cpu_curr"
-    paste -d' ' "$cpu_curr" "$cpu_last" |
-        awk '{ printf "%d %d %d\n", ($1-$4), ($2-$5), ($3-$6) }' |
-        awk '{ usage=($1+$2)/($1+$2+$3); printf "%d ", usage*100 }'
-    echo
-
-    cp "$cpu_curr" "$cpu_last"
-}
-
 wrap() {
     sed -u "s/^/$1=/"
 }
@@ -72,10 +48,28 @@ wrap() {
 } | wrap 'bspwm' &
 
 xtitle -s | wrap 'win' &
+
+# Print the date every second
 seq "$(date +%s)" 1 inf | sed 's/^/@/' | date -f - '+%b %d %a %R' |
      wrap 'date' | delay-line 1s &
 
-seq 0 inf | delay-line 2s | while read -r I; do
-    print_mem | wrap 'mem'
-    print_cpu | wrap 'cpu'
-done
+# Print cpu usage every second
+cpu_count=$(grep -c processor /proc/cpuinfo)
+mpstat -P ALL 1 |
+    # Filter out lines that doesn't contain information
+    sed -u -e '/^$/d' -e '/all/d' -e '/CPU/d' | choose -1 |
+    # Pick idle percentage and make it into usage percentage
+    stdbuf -o L awk '{printf "%d\n", 100-$1}' |
+    # Group N lines into one line where N is the number of CPUs
+    # we have on the systel.
+    stdbuf -o L paste -d ' ' $(yes - | head -n "$cpu_count" | tr '\n' ' ') |
+    wrap 'cpu' &
+
+# Print memory usage every second
+free -s 1 |
+    # Filter out unused information
+    grep --line-buffered Mem | choose 1 2 |
+    # Calculate memory usage in percent
+    stdbuf -o L awk '{ printf "%d\n", ($2/$1)*100 }' |
+    wrap 'mem' &
+
