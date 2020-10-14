@@ -1,0 +1,38 @@
+package.disabled = true
+aws.disabled = true
+battery.disabled = true
+conda.disabled = true
+dotnet.disabled = true
+elm.disabled = true
+env_var.disabled = true
+elixir.disabled = true
+golang.disabled = true
+haskell.disabled = true
+hg_branch.disbled = true
+jobs.disabled = true
+kubernetes.disabled = true
+nix_shell.disabled = true
+java.disabled = true
+memory_usage.disabled = true
+crystal.disbled = true
+nodejs.disabled = true
+php.disabled = true
+python.disabled = true
+ruby.disabled = true
+rust.disabled = true
+singularity.disabled = true
+terraform.disabled = true
+time.disabled = true
+username.disabled = true
+
+[character]
+use_symbol_for_status = true
+
+[cmd_duration]
+min_time = 2
+show_milliseconds = true
+
+[directory]
+truncation_length = 10
+
+
