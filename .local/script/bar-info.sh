@@ -54,33 +54,28 @@ wrap() {
     while inotifywait "$HOME/.local/share/mail/" -r -e 'move,create,delete' 2>/dev/null >/dev/null; do
         print_mails
     done
-} | wrap 'mail' & 
+} | wrap 'mail' &
 
 {
     print_rss
     while inotifywait "$HOME/.cache/rss/unread" -r -e 'move,create,delete' 2>/dev/null >/dev/null; do
         print_rss
     done
-} | wrap 'rss' & 
+} | wrap 'rss' &
 
 
 {
-    # Wait for bspc to be awailable. This allows us to run
+    # Wait for bspc to be available. This allows us to run
     # the bar before bspwm has been run
-    while ! bspc subscribe -c 1; do :; done
-    bspc subscribe report | wrap 'bspwm'
-} &
+    while ! bspc subscribe -c 1; do sleep 0.1s; done
+    bspc subscribe report
+} | wrap 'bspwm' &
 
 xtitle -s | wrap 'win' &
+seq "$(date +%s)" inf | sed 's/^/@/' | delay-line 1s |
+    date -f - '+%b %d %a %R' | wrap 'date' &
 
-seq 0 inf | while read -r I; do
-    # Things to run every second
-    date '+%b %d %a %R' | wrap 'date'
-
-    # Things to run every 2 seconds
-    if [ $((I % 2)) = 0 ]; then
-        print_mem | wrap 'mem'
-        print_cpu | wrap 'cpu'
-    fi
-    sleep 1
+seq 0 inf | delay-line 2s | while read -r I; do
+    print_mem | wrap 'mem'
+    print_cpu | wrap 'cpu'
 done
