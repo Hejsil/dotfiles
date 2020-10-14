@@ -105,6 +105,14 @@ alias gr='git rebase'
 alias grc='git rebase --continue'
 alias gs='git status'
 
+alias dc='sudo docker-compose'
+alias dcl='sudo docker-compose logs'
+alias dcp='sudo docker-compose pull'
+alias dcr='sudo docker-compose restart'
+alias dcs='sudo docker-compose stop'
+alias dcu='sudo docker-compose up'
+alias dcx='sudo docker-compose exec'
+
 alias bro="swallow $BROWSER"
 alias browser="swallow $BROWSER"
 
