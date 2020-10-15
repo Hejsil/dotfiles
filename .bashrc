@@ -59,6 +59,7 @@ alias grc='git rebase --continue'
 alias gs='git status'
 
 alias dc='sudo docker-compose'
+alias dcd='sudo docker-compose down'
 alias dcl='sudo docker-compose logs'
 alias dcp='sudo docker-compose pull'
 alias dcr='sudo docker-compose restart'
