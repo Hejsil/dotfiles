@@ -1,3 +1,6 @@
 #!/bin/sh
-git config --local user.name 'Jimmi Holst Christensen'
-git config --local user.email 'jhc@dismail.de'
+[ -z "$1" ] && { echo "Expected name"; exit 1; }
+[ -z "$2" ] && { echo "Expected email"; exit 1; }
+
+git config --local user.name "$1"
+git config --local user.email "$2"
