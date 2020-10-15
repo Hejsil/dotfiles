@@ -4,3 +4,5 @@
     pager = delta --dark
 [pull]
 	rebase = true
+[credential]
+	helper = store

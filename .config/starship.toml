@@ -16,6 +16,7 @@ helm.disabled = true
 hg_branch.disabled = true
 hostname.disabled = true
 java.disabled = true
+jobs.disabled = true
 julia.disabled = true
 kubernetes.disabled = true
 memory_usage.disabled = true
