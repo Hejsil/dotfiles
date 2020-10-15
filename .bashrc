@@ -90,4 +90,6 @@ alias pdf='swallow zathura'
 alias zat='swallow zathura'
 alias zathura='swallow zathura'
 
+source <(cod init $$ bash)
+
 eval "$(starship init "$0")"
