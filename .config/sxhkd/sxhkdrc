@@ -15,6 +15,9 @@ super + r
 super + c
     $TERMINAL -c 'pick-dialog' -e icalc
 
+super + {_,ctrl +} a
+    $TERMINAL -c 'pick-dialog' -e anilist {pick,browse}
+
 super + shift + r
     rss-open-all-in-browser.sh
 
