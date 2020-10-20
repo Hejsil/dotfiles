@@ -1,6 +1,7 @@
 .config/Caprine
 .config/GIMP
 .config/QtProject.conf
+.config/VirtualBox
 .config/aerc/accounts.conf
 .config/autostart
 .config/chromium
@@ -9,6 +10,7 @@
 .config/desmume/
 .config/discord
 .config/dunst
+.config/git/credentials
 .config/gnupg
 .config/gtk-2.0
 .config/hotspotrc
@@ -29,6 +31,7 @@
 .config/oomox
 .config/pavucontrol.ini
 .config/pcmanfm/
+.config/protonfixes
 .config/pulse
 .config/qt5ct
 .config/retroarch/
@@ -43,5 +46,6 @@
 .config/user-dirs.dirs
 .config/user-dirs.locale
 .config/xorg/resources
+.config/zathura
 .local/script/xdg-open
 .local/share/anilist/list.backup
