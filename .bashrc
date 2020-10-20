@@ -1,13 +1,11 @@
 #!/usr/bin/env bash
 
+source <(cod init $$ bash)
+source <(starship init bash --print-full-init)
+eval "$(lua /usr/share/z.lua/z.lua --init bash enhanced once)"
+
 shopt -s histappend
 
-__swallow() {
-    id=$(xdo id)
-    xdo hide
-    "$@"
-    xdo show "$id"
-}
 __cd_alias() {
     cd "$@" || return
     exa -a
@@ -91,6 +89,3 @@ alias pdf='swallow zathura'
 alias zat='swallow zathura'
 alias zathura='swallow zathura'
 
-source <(cod init $$ bash)
-
-eval "$(starship init "$0")"
