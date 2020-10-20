@@ -1,11 +1,24 @@
 #!/bin/sh -e
 
+#. "$HOME/.local/script/colors.sh"
+
+#awk -F= -v "color1=$COLOR1" '
+#BEGIN {
+#}
+#$1 == "date" {
+#}
+#'
+
+color1=$(xgetres bar.color1)
+color2=$(xgetres bar.color2)
+color3=$(xgetres bar.color3)
+
 percent_to_color() {
     color_picked=$(($1 / 34))
     case $color_picked in
-        0) xgetres bar.color2 ;;
-        1) xgetres bar.color3 ;;
-        *) xgetres bar.color1 ;;
+        0) echo "$color2" ;;
+        1) echo "$color3" ;;
+        *) echo "$color1" ;;
     esac
 }
 
@@ -74,22 +87,16 @@ while read -r line; do
     name=${line%%=*}
     value=${line#*=}
 
-    # I wanted an efficient way of checking if the bar ever changed and only output it if it did. This
-    # is what I came up with. I aligned the code the make it more readable. Basically, each case saves
-    # the old value, costructs the new one, and checks if the value changed. If it didn't then we just
-    # continue the loop.
     case $name in
-        date)  old=$date;   date=$(block ' %s '               "$value"); [ "$date" = "$old" ] && continue ;;
-        rss)   old=$rss;     rss=$(rss_block          "$name" "$value"); [  "$rss" = "$old" ] && continue ;;
-        mail)  old=$mail;   mail=$(mail_block         "$name" "$value"); [ "$mail" = "$old" ] && continue ;;
-        mem)   old=$mem;     mem=$(memory_block       "$name" "$value"); [  "$mem" = "$old" ] && continue ;;
-        cpu)   old=$cpu;     cpu=$(cpu_block          "$name" "$value"); [  "$cpu" = "$old" ] && continue ;;
-        vol)   old=$vol;     vol=$(volume_block       "$name" "$value"); [  "$vol" = "$old" ] && continue ;;
-        win)   old=$win;     win=$value;                                 [  "$win" = "$old" ] && continue ;;
-        bspwm) old=$bspwm; bspwm=$value;                                 [ "$bspm" = "$old" ] && continue ;;
-        *)
-            continue
-            ;;
+        date)   date=$(block ' %s '         "$value") ;;
+        rss)     rss=$(rss_block    "$name" "$value") ;;
+        mail)   mail=$(mail_block   "$name" "$value") ;;
+        mem)     mem=$(memory_block "$name" "$value") ;;
+        cpu)     cpu=$(cpu_block    "$name" "$value") ;;
+        vol)     vol=$(volume_block "$name" "$value") ;;
+        win)     win=$value                           ;;
+        bspwm) bspwm=$value                           ;;
+        *)     continue                               ;;
     esac
 
     bspc query -M --names | nl -w1 -v0 | while read -r index monitor; do
