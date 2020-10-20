@@ -1,4 +1,3 @@
-set clipboard+=unnamedplus
 
 call plug#begin('~/.local/share/nvim/plugged')
 
@@ -24,7 +23,7 @@ call plug#end()
 
 lua <<EOF
     require'nvim_lsp'.bashls.setup{}
-    require'nvim_lsp'.clangd.setup{}
+    -- require'nvim_lsp'.clangd.setup{}
     require'nvim_lsp'.cmake.setup{}
     require'nvim_lsp'.rls.setup{}
     require'nvim_lsp'.vimls.setup{}
@@ -53,6 +52,7 @@ command! -bang -nargs=* Rgf
 let g:rustfmt_autosave = 1
 let g:fzf_layout = {}
 
+set clipboard=unnamed,unnamedplus
 set completeopt=noinsert,menuone
 
 set listchars=trail:•,tab:▸\ 
@@ -77,7 +77,7 @@ set numberwidth=1
 " set spell! spelllang=en_us
 
 noremap <C-p> :Files<Enter>
-noremap <C-f> :Rgf 
+noremap <C-f> "qyiw:Rgf <C-R>q
 nnoremap r :%s//gc<Left><Left><Left>
 vnoremap r :s//gc<Left><Left><Left>
 
