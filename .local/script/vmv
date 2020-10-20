@@ -1,0 +1,19 @@
+#!/bin/sh
+
+old_file_names=$(mktemp)
+new_file_names=$(mktemp)
+
+for f in "$@"; do
+    printf "%s\n" "$f"
+done | tee "$old_file_names" > "$new_file_names"
+
+$EDITOR "$new_file_names"
+
+IFS=$(printf '\a')
+paste -d "$IFS" "$old_file_names" "$new_file_names" | while read from to; do
+    [ "$from" = "$to" ] && continue
+    mv -i "$from" "$to"
+done
+
+rm "$old_file_names" "$new_file_names"
+
