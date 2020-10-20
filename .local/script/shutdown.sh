@@ -1,4 +1,3 @@
 #!/bin/sh -e
-yay -Syu --noconfirm
-yay -Yc --noconfirm
+update.sh
 poweroff
