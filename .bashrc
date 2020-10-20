@@ -43,6 +43,7 @@ alias rg='rg --no-heading'
 alias trr='transmission-remote'
 
 alias ga='git add'
+alias gap='git add --patch'
 alias gb='git branch --all'
 alias gc='git commit'
 alias gcl='git clone'
