@@ -53,7 +53,7 @@ done | while IFS=$a read -r file link; do
         continue
     }
     case $(file -b --mime-type "$tmp") in
-        image/*) correct-ext.sh "$tmp" ;;
+        image/*) ;;
         *) rm "$tmp" ;;
     esac
 done
