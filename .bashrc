@@ -2,7 +2,7 @@
 
 source <(cod init $$ bash)
 source <(starship init bash --print-full-init)
-eval "$(lua /usr/share/z.lua/z.lua --init bash enhanced once)"
+eval "$(zoxide init bash)"
 
 shopt -s histappend
 
