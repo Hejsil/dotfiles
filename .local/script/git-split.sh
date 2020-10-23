@@ -19,16 +19,16 @@ tmp_branch='__tmp_branch__'
 
 git checkout -b "$tmp_branch"
 git mv "$file" "$filea"
-git commit -m "git mv '$file' '$filea'"
+git commit --no-verify -m "git mv '$file' '$filea'"
 
 git checkout "$current_branch"
 git mv "$file" "$fileb"
-git commit -m "git mv '$file' '$fileb'"
+git commit --no-verify -m "git mv '$file' '$fileb'"
 
 git merge --no-ff "$tmp_branch"
 git rm "$file"
 git add "$filea"
 git add "$fileb"
-git commit
+git commit --no-verify
 
 git branch -d "$tmp_branch"
