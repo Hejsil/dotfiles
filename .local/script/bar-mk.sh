@@ -1,17 +1,12 @@
 #!/bin/sh -e
 
-#. "$HOME/.local/script/colors.sh"
-
-#awk -F= -v "color1=$COLOR1" '
-#BEGIN {
-#}
-#$1 == "date" {
-#}
-#'
-
 color1=$(xgetres bar.color1)
 color2=$(xgetres bar.color2)
 color3=$(xgetres bar.color3)
+low=$color2
+mid=$color3
+high=$color1
+colored_bars="%{F$low}▁,%{F$low}▂,%{F$mid}▃,%{F$mid}▄,%{F$mid}▅,%{F$high}▆,%{F$high}▇,%{F$high}█"
 
 percent_to_color() {
     color_picked=$(($1 / 34))
@@ -20,13 +15,6 @@ percent_to_color() {
         1) echo "$color3" ;;
         *) echo "$color1" ;;
     esac
-}
-
-colored_bars() {
-    low=$(percent_to_color 0)
-    mid=$(percent_to_color 50)
-    high=$(percent_to_color 100)
-    echo "%{F$low}▁,%{F$low}▂,%{F$mid}▃,%{F$mid}▄,%{F$mid}▅,%{F$high}▆,%{F$high}▇,%{F$high}█"
 }
 
 block() {
@@ -50,16 +38,16 @@ volume_block() {
 }
 
 memory_block() {
-    bar_block "$1" "$2" "-" "true" -l1 -s "$(colored_bars)"
+    bar_block "$1" "$2" "-" "true" -l1 -s "$colored_bars"
 }
 
 cpu_block() {
     name=$1
     values=$2
     bars=$(echo "$values" | tr ' ' '\n'  | sed '/^$/d' |
-        sab -l1 -s "$(colored_bars)" |
+        sab -l1 -s "$colored_bars" |
         tr -d '\n')
-    block ' %s: %s%s ' "$name" "$bars" "%{F-}"
+    block '%s %s: %s%s %s' "%{A1:$TERMINAL -e gotop &:}" "$name" "$bars" "%{F-}" '%{A}'
 }
 
 mail_block() {
