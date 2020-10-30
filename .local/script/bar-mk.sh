@@ -62,32 +62,34 @@ rss_block() {
     block '%s %s:%3d %s' "%{A1:$TERMINAL -c 'pick-dialog' -e rss-read.sh &:}" "$name" "$value" '%{A}'
 }
 
+screens=$(bspc query -M --names | nl -w1 -v0)
+
+bspwm=''
+cpu=$(cpu_block 'cpu' 0)
 date=$(block ' %s ' "$(date '+%b %d %a %R')")
-rss=$(rss_block 'rss' 0)
 mail=$(mail_block 'mail' 0)
 mem=$(memory_block 'mem' 0)
-cpu=$(cpu_block 'cpu' 0)
+rss=$(rss_block 'rss' 0)
 vol=$(volume_block 'vol' 0)
-bspwm=''
-win_block=''
+win=''
 
 while read -r line; do
     name=${line%%=*}
     value=${line#*=}
 
     case $name in
-        date)   date=$(block ' %s '         "$value") ;;
-        rss)     rss=$(rss_block    "$name" "$value") ;;
+        bspwm) bspwm=$value                           ;;
+        cpu)     cpu=$(cpu_block    "$name" "$value") ;;
+        date)   date=$(block        ' %s '  "$value") ;;
         mail)   mail=$(mail_block   "$name" "$value") ;;
         mem)     mem=$(memory_block "$name" "$value") ;;
-        cpu)     cpu=$(cpu_block    "$name" "$value") ;;
+        rss)     rss=$(rss_block    "$name" "$value") ;;
         vol)     vol=$(volume_block "$name" "$value") ;;
         win)     win=$value                           ;;
-        bspwm) bspwm=$value                           ;;
         *)     continue                               ;;
     esac
 
-    bspc query -M --names | nl -w1 -v0 | while read -r index monitor; do
+    printf "%s\n" "$screens" | while read -r index monitor; do
         printf '%s' "%{S${index}}"
 
         printf '%s' '%{l} '
