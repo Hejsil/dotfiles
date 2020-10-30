@@ -77,8 +77,8 @@ set numberwidth=1
 " set spell! spelllang=en_us
 
 noremap <C-p> :Files<Enter>
-noremap <C-f> "qyiw:Rgf <C-R>q
-nnoremap r :%s//gc<Left><Left><Left>
+noremap <C-f> :Rgf <C-R><C-W>
+nnoremap r :%s/\<<C-R><C-W>\>//gc<Left><Left><Left>
 vnoremap r :s//gc<Left><Left><Left>
 
 " ncm remaps
