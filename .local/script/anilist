@@ -12,9 +12,9 @@ update_database() {
     local tmp1=$(mktemp)
     local tmp2=$(mktemp)
     curl -s "$database" > "$tmp1"
-    jq -r '.data[] | .sources[0], .title, .type, .animeSeason.year, .animeSeason.season' "$database_file" |
-        paste -d '\t' - - - - - |
-        awk -F '\t' '{printf "%s\t%s\t%s\t%s %s\n",$1,$2,$3,$4,$5}' > "$tmp2"
+    jq -r '.data[] | .sources[0], .title, .type, .animeSeason.year, .animeSeason.season, .episodes' "$database_file" |
+        paste -d '\t' - - - - - - |
+        awk -F '\t' '{printf "%s\t%s\t%s\t%s %s\t%s\n",$1,$2,$3,$4,$5,$6}' > "$tmp2"
 
 
     mv "$tmp1" "$database_file"
@@ -32,19 +32,19 @@ list() {
     local A=$(printf '\a')
     local filtered_sed=$(mktmpfifo)
     local full_sed=$(mktmpfifo)
-    local pattern=$(mktmpfifo)
+    local rg_pattern=$(mktmpfifo)
     local reordered_list=$(mktmpfifo)
 
-    awk -F '\t' '{printf "%s\n", $1}' "$list_file" > "$pattern" &
-    sd -p '^([^\t]*)\t([^\t]*)\t.*$' "s$A\$1\\\\b$A\$2$T\$1$A;" "$cache_file" > "$full_sed" &
-    awk '{printf "%s\t%s\t%s\t%s\t%s\n",$2,$3,$4,$5,$1 }' "$list_file" > "$reordered_list" &
-    rg -wf "$pattern" "$full_sed" > "$filtered_sed" &
+    cut -f1 "$list_file" > "$rg_pattern" &
+    cut -f1,2 "$cache_file" | sed -e "s/^/s$A/" -e "s/$T/\\\\b$A/" -e "s/$/$A;/" > "$full_sed" &
+    nawk '{printf "%s\t%s\t%s\t%s\t%s\t%s\n",$2,$3,$4,$5,$1,$1 }' "$list_file" > "$reordered_list" &
+    rg --word-regexp -f "$rg_pattern" "$full_sed" > "$filtered_sed" &
     sed -f "$filtered_sed" "$reordered_list" &
     wait
 
     rm "$filtered_sed"
     rm "$full_sed"
-    rm "$pattern"
+    rm "$rg_pattern"
     rm "$reordered_list"
 }
 
@@ -66,30 +66,43 @@ case $command in
         ids=$(mktemp)
         case $command in
             browse) < "$cache_file" fzf2 -n 2,3,4 | cut -f1 > "$ids" ;;
-            pick) list | fzf2 -n 2,5 | cut -f6 > "$ids" ;;
+            pick) list | fzf2 | cut -f6 > "$ids" ;;
         esac
-        [ -s "$ids" ] || { rm "$ids"; exit 0; }
+        [ -s "$ids" ] || { rm "$ids"; break; }
 
         while true; do
-            choice=$(printf 'c\tcompleted\nr\trewatch\nw\twatching\np\tplan to watch\no\ton hold\nd\tdropped\nv\tview\nt\ttorrent\n' | fzf | cut -f1)
+            choice=$(printf '
+c\tcompleted
+d\tdropped
+o\ton hold
+p\tplan to watch
+r\trewatch
+t\ttorrent
+v\tview
+w\twatching
+' | sed '/^$/d' | fzf | cut -f1)
             case $choice in
                 v) xargs -d '\n' setsid -f "$BROWSER" < "$ids" 2>/dev/null >/dev/null ;;
-                t) rg -wf "$ids" "$cache_file" | cut -f2 |
+                t) rg --word-regexp -f "$ids" "$cache_file" | cut -f2 |
                     sd ' ' '+' | sd '^(.)' 'https://nyaa.si/?q=$1' |
                     xargs -d '\n' setsid -f "$BROWSER" 2>/dev/null >/dev/null
                 ;;
                 r|c|w|p|o|d) while read -r id; do
-                    rg -wF "$id" "$list_file" | {
+                    rg --word-regexp --fixed-strings "$id" "$list_file" | {
                         read -r _ date status episodes count
                         [ -z "$date" ] && date=$(date '+%Y-%m-%d')
                         [ -z "$count" ] && count=1
                         [ -z "$episodes" ] && episodes=0
                         [ "$choice" != 'r' ] && status=$choice
                         [ "$choice" = 'r' ] && count=$((count + 1))
+                        [ "$choice" = 'c' ] && {
+                            total=$(rg --word-regexp --fixed-strings "$id" "$cache_file" | cut -f5)
+                            [ -z "$total" ] || episodes=$total
+                        }
 
                         # Add updated entry
                         {
-                            rg -vwF "$id" "$list_file"
+                            rg --invert-match --word-regexp --fixed-strings "$id" "$list_file"
                             printf "%s\t%s\t%s\t%s\t%s\n" "$id" "$date" "$status" "$episodes" "$count"
                         } | sort | sponge "$list_file"
                     }
@@ -102,4 +115,6 @@ case $command in
     done ;;
     list) list ;;
 esac
+
+wait
 
