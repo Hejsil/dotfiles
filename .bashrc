@@ -7,13 +7,13 @@ eval "$(zoxide init bash)"
 shopt -s histappend
 
 __cd_alias() {
-    cd "$@" || return
+    z "$@" || return
     exa -a
 }
 
 __ccd_alias() {
     mkdir "$@" || return
-    cd "$@"
+    z "$@"
 }
 
 alias ..='__cd_alias ..'
