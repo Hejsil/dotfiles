@@ -1,19 +1,17 @@
-
 call plug#begin('~/.local/share/nvim/plugged')
 
     Plug 'christoomey/vim-sort-motion'
-    Plug 'neovim/nvim-lspconfig'
-    Plug 'tpope/vim-commentary'
-
-    " fzf and friends
-    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
+    Plug 'neovim/nvim-lspconfig'
+    Plug 'nvim-lua/diagnostic-nvim'
+    Plug 'tpope/vim-commentary'
 
     " ncm and friends
     Plug 'ncm2/ncm2'
     Plug 'roxma/nvim-yarp'
     Plug 'ncm2/ncm2-bufword'
     Plug 'ncm2/ncm2-path'
+    Plug 'subnut/ncm2-github-emoji'
 
     " Language plugins
     Plug 'rust-lang/rust.vim'
@@ -22,14 +20,24 @@ call plug#begin('~/.local/share/nvim/plugged')
 call plug#end()
 
 lua <<EOF
-    require'nvim_lsp'.bashls.setup{}
-    -- require'nvim_lsp'.clangd.setup{}
-    require'nvim_lsp'.cmake.setup{}
-    require'nvim_lsp'.rls.setup{}
-    require'nvim_lsp'.vimls.setup{}
-    -- require'nvim_lsp'.zls.setup{}
-EOF
+    local nvim_lsp = require'nvim_lsp'
+    local ncm2 = require'ncm2'
+    local diag = require'diagnostic'
+    nvim_lsp.util.default_config = vim.tbl_extend(
+        'force',
+        nvim_lsp.util.default_config,
+        {
+            on_init = ncm2.register_lsp_source,
+            on_attach = diag.on_attach
+        })
 
+    nvim_lsp.bashls.setup{}
+    nvim_lsp.clangd.setup{}
+    nvim_lsp.cmake.setup{}
+    nvim_lsp.rls.setup{}
+    nvim_lsp.vimls.setup{}
+    --nvim_lsp.zls.setup{}
+EOF
 
 " Aaaw man, I sure do love that fzf.vim overrides the default prompt so that I
 " have to manually get it back... Why? Having my cwd as the prompt is not
@@ -42,12 +50,14 @@ command! -bang -nargs=? -complete=dir Files
 " anyways.
 command! -bang -nargs=* Rg
     \ call fzf#vim#grep(
-    \   'rg --column --line-number --no-heading --color=always --smart-case --only-matching --replace= -- '.shellescape(<q-args>), 1,
-    \   fzf#vim#with_preview({'options': ['--prompt', '> ']}), <bang>0)
+    \   'rg --column --line-number --no-heading --color=always --smart-case --only-matching --replace= -- '.shellescape(<q-args>),
+    \   1, fzf#vim#with_preview({'options': ['--prompt', '> ']}), <bang>0)
 command! -bang -nargs=* Rgf
     \ call fzf#vim#grep(
-    \   'rg --fixed-strings --column --line-number --no-heading --color=always --smart-case --only-matching --replace= -- '.shellescape(<q-args>), 1,
-    \   fzf#vim#with_preview({'options': ['--prompt', '> ']}), <bang>0)
+    \   'rg --fixed-strings --column --line-number --no-heading --color=always --smart-case --only-matching --replace= -- '.shellescape(<q-args>),
+    \   1, fzf#vim#with_preview({'options': ['--prompt', '> ']}), <bang>0)
+
+let g:diagnostic_show_sign = 0
 
 let g:rustfmt_autosave = 1
 let g:fzf_layout = {}
@@ -58,41 +68,48 @@ set completeopt=noinsert,menuone
 set listchars=trail:•,tab:▸\ 
 set list
 
-" set hidden
+set noswapfile
+set hidden
 set title
 
 set nowrap
 set nohlsearch
 
+set autoindent
 set expandtab
-set tabstop=4
 set shiftwidth=4
 set showtabline=0
+set smartindent
+set softtabstop=4
+set tabstop=4
 
+set colorcolumn=100
 set laststatus=0
 set nonumber
-set relativenumber
 set numberwidth=1
+set relativenumber
 
 " set spell! spelllang=en_us
 
-noremap <C-p> :Files<Enter>
-noremap <C-f> :Rgf <C-R><C-W>
-nnoremap r :%s/\<<C-R><C-W>\>//gc<Left><Left><Left>
-vnoremap r :s//gc<Left><Left><Left>
+noremap <c-p> :Files<Enter>
+noremap <c-f> :Rgf <c-r><c-w>
+nnoremap r :%s/\<<c-r><c-w>\>//gc<left><left><left>
+vnoremap r :s//gc<left><left><left>
 
 " ncm remaps
-inoremap <expr> <Tab> (pumvisible() ? "\<c-y>" : "\<Tab>")
-inoremap <expr> <CR> (pumvisible() ? "\<c-e>\<CR>" : "\<CR>")
+inoremap <expr> <tab> (pumvisible() ? "\<c-y>" : "\<tab>")
+inoremap <expr> <cr> (pumvisible() ? "\<c-e>\<cr>" : "\<cr>")
+
+" autoclose
+inoremap { {}<left>
+inoremap ( ()<left>
+inoremap [ []<left>
 
 " Language server remaps
-nmap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
-nmap <silent> K  <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<cr>
+nnoremap <silent> K  <cmd>lua vim.lsp.buf.hover()<cr>
 
 autocmd BufEnter * call ncm2#enable_for_buffer()
-autocmd BufReadPost *.rs setlocal filetype=rust
-
-autocmd FileType vim setlocal commentstring=\"\ %s
 
 hi Keyword      cterm=bold     ctermfg=blue
 hi StorageClass cterm=bold     ctermfg=blue
