@@ -8,7 +8,7 @@ export HISTCONTROL='ignoredups:erasedups'
 export PROMPT_COMMAND="history -a; history -c; history -r"
 
 # Programs
-export BROWSER='librewolf'
+export BROWSER='firefox'
 export EDITOR='nvim'
 export READER='zathura'
 export TERMINAL='st'
