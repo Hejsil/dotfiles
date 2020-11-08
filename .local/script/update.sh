@@ -2,5 +2,5 @@
 
 yay -Syu --noconfirm
 yay -Yc --noconfirm
-nvim +PlugInstall +PlugUpdate +UpdateRemotePlugins +qa
+nvim +PlugClean +PlugInstall +PlugUpdate +UpdateRemotePlugins +qa
 
