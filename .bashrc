@@ -23,6 +23,9 @@ alias .4='__cd_alias ../../../..'
 
 alias ccd='__ccd_alias'
 alias cd='__cd_alias'
+alias c='__cd_alias'
+
+alias k='kak'
 
 alias v='nvim'
 alias vim='nvim'
