@@ -49,8 +49,12 @@ uniq2() { stdbuf -o L uniq; }
 xtitle -s | uniq2 | wrap 'win' &
 
 # Print the date every second
-seq "$(date +%s)" 1 inf | sed 's/^/@/' | date -f - '+%b %d %a %R' |
-     delay-line 1s | uniq2 | wrap 'date' &
+while true; do
+    # Do 10 minutes, then repeat. This is to handle things like system suspends
+    d=$(date +%s)
+    seq "$d" 1 "$((d + 60 * 10))" | sed 's/^/@/' | date -f - '+%b %d %a %R' |
+        delay-line 1s
+done | uniq2 | wrap 'date' &
 
 # Print cpu usage every second
 cpu_count=$(grep -c processor /proc/cpuinfo)
