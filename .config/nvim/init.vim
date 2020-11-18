@@ -101,11 +101,6 @@ vnoremap r :s//gc<left><left><left>
 inoremap <expr> <tab> (pumvisible() ? "\<c-y>" : "\<tab>")
 inoremap <expr> <cr> (pumvisible() ? "\<c-e>\<cr>" : "\<cr>")
 
-" autoclose
-inoremap { {}<left>
-inoremap ( ()<left>
-inoremap [ []<left>
-
 " Language server remaps
 nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<cr>
 nnoremap <silent> K  <cmd>lua vim.lsp.buf.hover()<cr>
