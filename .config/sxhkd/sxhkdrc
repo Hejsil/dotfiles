@@ -24,9 +24,6 @@ super + shift + r
 super + Return
     $TERMINAL
 
-super + shift + Return
-    $TERMINAL -e nnn -ndA
-
 super + m
     $TERMINAL -e aerc
 
