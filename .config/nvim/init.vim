@@ -1,8 +1,9 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
+    Plug 'Ogromny/nvim-lspconfig', { 'branch': 'zls_support' }
     Plug 'christoomey/vim-sort-motion'
     Plug 'junegunn/fzf.vim'
-    Plug 'neovim/nvim-lspconfig'
+    Plug 'mg979/vim-visual-multi'
     Plug 'nvim-lua/diagnostic-nvim'
     Plug 'tpope/vim-commentary'
 
@@ -36,7 +37,7 @@ lua <<EOF
     nvim_lsp.cmake.setup{}
     nvim_lsp.rls.setup{}
     nvim_lsp.vimls.setup{}
-    --nvim_lsp.zls.setup{}
+    nvim_lsp.zls.setup{}
 EOF
 
 " Aaaw man, I sure do love that fzf.vim overrides the default prompt so that I
