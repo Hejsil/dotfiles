@@ -15,8 +15,9 @@ while [ -n "$1" ]; do
     shift
 done
 
-mkdir -p "$HOME/downloads/images/"
-tmp_template="$HOME/downloads/images/XXXXXX"
+download_dir="$HOME/downloads/images"
+mkdir -p "$download_dir"
+tmp_template="$download_dir/XXXXXX"
 
 tab=$(printf '\t')
 a=$(printf '\a')
@@ -58,6 +59,7 @@ done | while IFS=$a read -r file link; do
     esac
 done
 
-
-
+find "$download_dir" -maxdepth 1 -type f |
+    xargs -d'\n' identify -format "%w %d/%f\n" | awk '$1 < 2560' |
+    cut -d' ' -f2- | xargs -d'\n' rm
 
