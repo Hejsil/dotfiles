@@ -73,8 +73,7 @@ ctrl + alt + {Left,Down,Up,Right}
 #
 
 XF86Audio{Raise,Lower}Volume
-    pulsemixer --change-volume {+,-}2 && touch /tmp/volume-notify-file
-
+    pactl set-sink-volume @DEFAULT_SINK@ {+,-}2%
 #
 # Misc
 #

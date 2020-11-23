@@ -5,21 +5,20 @@ print_volume() {
 }
 
 print_mails() {
-    find "$HOME/.local/share/mail/" -type f | grep -c ',$'
+    fd ',$' "$HOME/.local/share/mail/" --type f | wc -l
 }
 
 print_rss() {
-    find "$HOME/.cache/rss/unread/" -type f | wc -l
+    fd '.' "$HOME/.cache/rss/unread/" --type f | wc -l
 }
 
 wrap() { sed -u "s/^/$1=/"; }
 uniq2() { stdbuf -o L uniq; }
 
 {
-    touch /tmp/volume-notify-file
     print_volume
 
-    while inotifywait /tmp/volume-notify-file 2>/dev/null >/dev/null; do
+    pactl subscribe | rg --line-buffered 'on sink' | while read -r _; do
         print_volume
     done
 } | uniq2 | wrap 'vol' &
@@ -62,7 +61,7 @@ mpstat -P ALL 1 |
     # Filter out lines that doesn't contain information
     sed -u -e '/^$/d' -e '/all/d' -e '/CPU/d' | choose -1 |
     # Pick idle percentage and make it into usage percentage
-    stdbuf -o L awk '{printf "%d\n", 100-$1}' |
+    stdbuf -o L nawk '{printf "%d\n", 100-$1}' |
     # Group N lines into one line where N is the number of CPUs
     # we have on the systel.
     stdbuf -o L paste -d ' ' $(yes - | head -n "$cpu_count" | tr '\n' ' ') |
@@ -74,7 +73,7 @@ free -s 1 |
     # Filter out unused information
     grep --line-buffered Mem | choose 1 2 |
     # Calculate memory usage in percent
-    stdbuf -o L awk '{ printf "%d\n", ($2/$1)*100 }' |
+    stdbuf -o L nawk '{ printf "%d\n", ($2/$1)*100 }' |
     uniq2 |
     wrap 'mem' &
 
