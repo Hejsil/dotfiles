@@ -94,7 +94,7 @@ set relativenumber
 
 noremap <c-p> :Files<Enter>
 noremap <c-f> :Rgf <c-r><c-w>
-nnoremap r :%s/\<<c-r><c-w>\>//gc<left><left><left>
+nnoremap r :.,$s/\<<c-r><c-w>\>//gc<left><left><left>
 vnoremap r :s//gc<left><left><left>
 
 " ncm remaps
