@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-source <(cod init $$ bash)
 source <(starship init bash --print-full-init)
 eval "$(zoxide init bash)"
 
@@ -89,7 +88,6 @@ alias st='swallow st'
 
 alias image='swallow sxiv -a'
 alias img='swallow sxiv -a'
-alias sx='swallow sxiv -a'
 alias sxiv='swallow sxiv -a'
 
 alias pdf='swallow zathura'
