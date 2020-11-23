@@ -1,6 +1,7 @@
 .config/Caprine
 .config/GIMP
 .config/QtProject.conf
+.config/Syncplay/
 .config/VirtualBox
 .config/aerc/accounts.conf
 .config/autostart
@@ -12,6 +13,7 @@
 .config/dunst
 .config/git/credentials
 .config/gnupg
+.config/google-meet-desktop/
 .config/gtk-2.0
 .config/hotspotrc
 .config/htop
@@ -21,6 +23,7 @@
 .config/libreoffice/
 .config/lutris
 .config/melonDS/
+.config/menus/
 .config/mgba/
 .config/monitors.xml
 .config/mpv/watch_later
@@ -29,12 +32,14 @@
 .config/nvim/spell
 .config/obs-studio
 .config/oomox
+.config/openra/
 .config/pavucontrol.ini
 .config/pcmanfm/
 .config/protonfixes
 .config/pulse
 .config/qt5ct
 .config/retroarch/
+.config/syncplay.ini
 .config/tm35-randomizer
 .config/tracy/
 .config/transmission
