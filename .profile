@@ -1,5 +1,5 @@
 #!/bin/sh
-export PATH="/usr/lib/ccache/bin/:$HOME/.local/bin:$HOME/.local/script:$PATH"
+export PATH="/usr/share/bcc/tools/:/usr/lib/ccache/bin/:$HOME/.local/bin:$HOME/.local/script:$PATH"
 
 # Bash history
 export HISTSIZE=9999999
