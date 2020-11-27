@@ -17,7 +17,7 @@ shift; shift;
 
 find "$@" -type f | while read -r file; do
     tmp=$(mktemp)
-    sd "$string_mode" -p "$pattern" "$replacement" "$file" > "$tmp"
+    sd $string_mode -p "$pattern" "$replacement" "$file" > "$tmp"
     diff -u "$file" "$tmp"
     [ $? = 2 ] && exit 1
 
