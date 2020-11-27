@@ -9,7 +9,7 @@
     "bind-address-ipv4": "0.0.0.0",
     "bind-address-ipv6": "::",
     "blocklist-enabled": false,
-    "blocklist-url": "http://www.example.com/blocklist",
+    "blocklist-url": "pI\u0007",
     "cache-size-mb": 4,
     "dht-enabled": true,
     "download-dir": "/home/hejsil/Downloads",
