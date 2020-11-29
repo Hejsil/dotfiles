@@ -33,6 +33,7 @@ alias ls='exa -a'
 alias ll='exa -al'
 
 alias cp='cp -i'
+alias rm='rip'
 
 alias d='delta'
 alias o='open'
@@ -70,27 +71,4 @@ alias dcr='sudo docker-compose restart'
 alias dcs='sudo docker-compose stop'
 alias dcu='sudo docker-compose up'
 alias dcx='sudo docker-compose exec'
-
-alias bro="swallow $BROWSER"
-alias browser="swallow $BROWSER"
-
-alias gimp='swallow gimp'
-alias gmp='swallow gimp'
-
-alias aud='swallow mpv -vid=no'
-alias audio='swallow mpv -vid=no'
-alias mp='swallow mpv'
-alias mpv='swallow mpv'
-alias vid='swallow mpv'
-alias video='swallow mpv'
-
-alias st='swallow st'
-
-alias image='swallow sxiv -a'
-alias img='swallow sxiv -a'
-alias sxiv='swallow sxiv -a'
-
-alias pdf='swallow zathura'
-alias zat='swallow zathura'
-alias zathura='swallow zathura'
 
