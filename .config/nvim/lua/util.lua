@@ -33,5 +33,17 @@ function util.term(cmd, callback)
     vim.cmd("startinsert!")
 end
 
+function util.snippet(word, text)
+    local escaped = text
+        :gsub("\n", "<cr>")
+        :gsub("|", "\\|")
+
+    if escaped:find("<c>") then
+        vim.cmd("inorea <buffer> " .. word .. " " .. escaped .. '<esc>?<c><cr>c3l<c-o>:lua vim.fn.getchar(0)<cr>')
+    else
+        vim.cmd("inorea <buffer> " .. word .. " " .. escaped .. '<c-o>:lua vim.fn.getchar(0)<cr>')
+    end
+end
+
 return util
 
