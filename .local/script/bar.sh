@@ -10,7 +10,7 @@ bar-info.sh | bar-mk.sh | lemonbar  \
     -B "$(xgetres bar.color0)"      \
     -F "$(xgetres bar.color7)"      \
     -u 2                            \
-    -n 'lemonbar' | sh              &
+    -n 'lemonbar'              &
 
 trap "kill $!" INT TERM EXIT
 

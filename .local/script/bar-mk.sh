@@ -27,18 +27,16 @@ bar_block() {
     name=$1
     value=$2
     color=$3
-    command=$4
-    shift; shift; shift; shift
-    block '%s %s: %s%s%s %s' "%{A1:$command &:}" "$name" "%{F$color}" \
-        "$(echo "$value" | sab "$@")" "%{F-}" "%{A}"
+    shift; shift; shift
+    block ' %s: %s%s%s ' "$name" "%{F$color}" "$(echo "$value" | sab "$@")" "%{F-}"
 }
 
 volume_block() {
-    bar_block "$1" "$2" "$(percent_to_color "$2")" "pavucontrol" -s '─,┫%{F-},━' -t mark-center
+    bar_block "$1" "$2" "$(percent_to_color "$2")" -s '─,┫%{F-},━' -t mark-center
 }
 
 memory_block() {
-    bar_block "$1" "$2" "-" "true" -l1 -s "$colored_bars"
+    bar_block "$1" "$2" "-" -l1 -s "$colored_bars"
 }
 
 cpu_block() {
@@ -47,19 +45,19 @@ cpu_block() {
     bars=$(echo "$values" | tr ' ' '\n'  | sed '/^$/d' |
         sab -l1 -s "$colored_bars" |
         tr -d '\n')
-    block '%s %s: %s%s %s' "%{A1:$TERMINAL -e gotop &:}" "$name" "$bars" "%{F-}" '%{A}'
+    block ' %s: %s%s ' "$name" "$bars" "%{F-}"
 }
 
 mail_block() {
     name=$1
     value=$2
-    block '%s %s:%3d %s' "%{A1:$TERMINAL -e aerc &:}" "$name" "$value" '%{A}'
+    block ' %s:%3d ' "$name" "$value"
 }
 
 rss_block() {
     name=$1
     value=$2
-    block '%s %s:%3d %s' "%{A1:$TERMINAL -c 'pick-dialog' -e rss-read.sh &:}" "$name" "$value" '%{A}'
+    block ' %s:%3d ' "$name" "$value"
 }
 
 screens=$(bspc query -M --names | nl -w1 -v0)
