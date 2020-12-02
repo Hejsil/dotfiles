@@ -7,12 +7,12 @@ shopt -s histappend
 
 __cd_alias() {
     z "$@" || return
-    exa -a
+    timeout -k 0 0.1s exa -a
 }
 
 __ccd_alias() {
     mkdir "$@" || return
-    z "$@"
+    __cd_alias "$@"
 }
 
 alias ..='__cd_alias ..'
