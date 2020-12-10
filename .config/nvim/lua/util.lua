@@ -34,14 +34,15 @@ function util.term(cmd, callback)
 end
 
 function util.snippet(word, text)
+    local eat_space = '<c-o>:lua vim.fn.getchar(0)<cr>'
     local escaped = text
         :gsub("\n", "<cr>")
         :gsub("|", "\\|")
 
     if escaped:find("<c>") then
-        vim.cmd("inorea <buffer> " .. word .. " " .. escaped .. '<esc>?<c><cr>c3l<c-o>:lua vim.fn.getchar(0)<cr>')
+        vim.cmd("inorea <buffer> " .. word .. " " .. escaped .. '<esc>?<c><cr>c3l' .. eat_space)
     else
-        vim.cmd("inorea <buffer> " .. word .. " " .. escaped .. '<c-o>:lua vim.fn.getchar(0)<cr>')
+        vim.cmd("inorea <buffer> " .. word .. " " .. escaped .. eat_space)
     end
 end
 
