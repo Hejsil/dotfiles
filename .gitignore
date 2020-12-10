@@ -15,6 +15,7 @@
 .config/gnupg
 .config/google-meet-desktop/
 .config/gtk-2.0
+.config/gtk-3.0
 .config/hotspotrc
 .config/htop
 .config/inkscape
@@ -22,6 +23,7 @@
 .config/libfm/
 .config/libreoffice/
 .config/lutris
+.config/lxc
 .config/melonDS/
 .config/menus/
 .config/mgba/
