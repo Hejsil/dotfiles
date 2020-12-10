@@ -1,2 +1,2 @@
-lua require('zig')
+lua require('zig').load()
 

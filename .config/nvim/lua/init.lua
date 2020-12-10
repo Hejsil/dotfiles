@@ -6,7 +6,6 @@ vim.cmd("Plug 'Ogromny/nvim-lspconfig', { 'branch': 'zls_support' }")
 vim.cmd("Plug 'christoomey/vim-sort-motion'")
 vim.cmd("Plug 'junegunn/fzf.vim'")
 vim.cmd("Plug 'mg979/vim-visual-multi'")
-vim.cmd("Plug 'nvim-lua/diagnostic-nvim'")
 vim.cmd("Plug 'tpope/vim-commentary'")
 vim.cmd("Plug 'ncm2/ncm2'")
 vim.cmd("Plug 'roxma/nvim-yarp'")
@@ -28,7 +27,6 @@ vim.o.laststatus=0
 vim.o.showtabline=0
 vim.o.title=true
 vim.g.mapleader = ','
-vim.g.diagnostic_show_sign = 0
 vim.g.rustfmt_autosave = 1
 
 -- These cannot be set through vim.o or nvim_set_option
@@ -48,14 +46,12 @@ vim.cmd("set tabstop=4")
 -- lsp stuff
 
 local ncm2 = require"ncm2"
-local diag = require"diagnostic"
 local nvim_lsp = require"nvim_lsp"
 nvim_lsp.util.default_config = vim.tbl_extend(
     "force",
     nvim_lsp.util.default_config,
     {
         on_init = ncm2.register_lsp_source,
-        on_attach = diag.on_attach
     })
 
 nvim_lsp.bashls.setup{}
@@ -64,6 +60,13 @@ nvim_lsp.cmake.setup{}
 nvim_lsp.rls.setup{}
 nvim_lsp.vimls.setup{}
 nvim_lsp.zls.setup{}
+
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+    vim.lsp.diagnostic.on_publish_diagnostics, {
+        signs = false,
+    }
+)
+
 
 -- Keybind
 
