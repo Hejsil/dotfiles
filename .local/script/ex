@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env -S sh
 
 if [ -f $1 ] ; then
     case $1 in

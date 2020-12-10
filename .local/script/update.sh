@@ -1,4 +1,4 @@
-#!/bin/sh -e
+#!/usr/bin/env -S sh -e
 
 yay -Syu --noconfirm
 yay -Yc --noconfirm

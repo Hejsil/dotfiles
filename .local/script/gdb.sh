@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env -S sh
 exe=$1
 shift
 

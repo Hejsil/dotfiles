@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env -S sh
 
 database='https://raw.githubusercontent.com/manami-project/anime-offline-database/master/anime-offline-database.json'
 cache_dir="$HOME/.cache/anilist"

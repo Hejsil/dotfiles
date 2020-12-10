@@ -1,4 +1,4 @@
-#!/bin/sh -e
+#!/usr/bin/env -S sh -e
 
 print_volume() {
     pulsemixer --get-volume | cut -f1 -d' '
