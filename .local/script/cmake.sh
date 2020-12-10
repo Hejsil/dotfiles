@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env -S sh
 
 if ! [ -e build ]; then (
     mkdir build

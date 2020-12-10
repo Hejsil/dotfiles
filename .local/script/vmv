@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env -S sh
 
 old_file_names=$(mktemp)
 new_file_names=$(mktemp)
@@ -10,8 +10,9 @@ done | tee "$old_file_names" > "$new_file_names"
 $EDITOR "$new_file_names"
 
 IFS=$(printf '\a')
-paste -d "$IFS" "$old_file_names" "$new_file_names" | while read from to; do
-    [ "$from" = "$to" ] && continue
+paste -d "$IFS" "$old_file_names" "$new_file_names" |
+    nawk -F "$IFS" '$1 != $2' |
+while read -r from to; do
     mv -i "$from" "$to"
 done
 

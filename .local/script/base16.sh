@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env -S sh
 
 scheme=$1
 template=$2

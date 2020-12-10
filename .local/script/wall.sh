@@ -1,4 +1,4 @@
-#!/bin/sh -e
+#!/usr/bin/env -S sh -e
 
 time='1m'
 while [ -n "$1" ]; do
