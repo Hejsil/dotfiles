@@ -18,6 +18,9 @@ super + c
 super + {_,ctrl +} a
     $TERMINAL -c 'pick-dialog' -e anilist {pick,browse}
 
+super + b
+    $TERMINAL -c 'pick-dialog' -e book
+
 super + shift + r
     rss-open-all-in-browser.sh
 
@@ -26,9 +29,6 @@ super + Return
 
 super + m
     $TERMINAL -e aerc
-
-super + b
-    $BROWSER
 
 super + o
     open "$(xsel -b)"
