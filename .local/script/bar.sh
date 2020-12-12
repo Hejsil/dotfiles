@@ -3,7 +3,10 @@
 bar_height=26
 bspc config top_padding "$bar_height"
 
-bar-info.sh | bar-mk.sh | lemonbar  \
+lemonbar-maker --low "$(xgetres bar.color2)" \
+    --mid "$(xgetres bar.color3)" \
+    --high "$(xgetres bar.color1)" |
+lemonbar  \
     -g "x$bar_height"               \
     -f "$(xgetres bar.font)"        \
     -f "$(xgetres bar.symbol_font)" \
