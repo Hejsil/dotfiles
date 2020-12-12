@@ -7,8 +7,8 @@ if [ -f "$1" ]; then
         application/x-bittorrent) echo 'tra.sh' ;;
         inode/x-empty|application/json|text*) echo "$EDITOR" ;;
         image/*) echo 'sxiv -a' ;;
-        video/*) echo 'mpv --volume=30 --shuffle --loop-playlist' ;;
-        audio/*) echo 'mpv --volume=30 --shuffle --vid=no --loop-playlist' ;;
+        video/*) echo 'mpv' ;;
+        audio/*) echo 'mpv --vid=no'  ;;
         *)
             echo "No match" >&2
             exit 1
@@ -18,7 +18,7 @@ else
     case $1 in
         '') echo "$EDITOR" ;;
         *youtube*watch*|*youtube*playlist*|*youtu.be*|*.mp3|*.mp3"?"*|*.mp4|*.mp4"?"*|*.webm|*.webm"?"*)
-            echo 'mpv  --volume=30 --shuffle --loop-playlist'
+            echo 'mpv'
         ;;
         http*|www*) echo "$BROWSER" ;;
         magnet:*) echo 'tra.sh' ;;
