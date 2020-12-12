@@ -15,6 +15,11 @@ __ccd_alias() {
     __cd_alias "$@"
 }
 
+__kak_alias() {
+    session_id=$(pwd | sd -s "$HOME/" "" | tr "/" "-")
+    tmux new-session sh -c "kak -c '$session_id' $@ || kak -s '$session_id' $@"
+}
+
 alias ..='__cd_alias ..'
 alias ...='__cd_alias ../..'
 alias .3='__cd_alias ../../..'
@@ -24,7 +29,7 @@ alias ccd='__ccd_alias'
 alias cd='__cd_alias'
 alias c='__cd_alias'
 
-alias k='kak'
+alias kak='__kak_alias'
 
 alias v='nvim'
 alias vim='nvim'

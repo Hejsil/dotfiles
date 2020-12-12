@@ -1,0 +1,18 @@
+set-option global tabstop 4
+set-option global ui_options ncurses_assistant=none
+
+add-highlighter global/ number-lines -relative -separator ' '
+
+map global user f ':fzf<ret>'
+map global user s ':fzf-rg<ret>'
+
+define-command open -params 1 %{
+    tmux-terminal-window sh -c %sh{
+        printf '%s | sed "s/^/evaluate-commands -client %s edit /" | kak -p "%s"' \
+            "$1" "$kak_client" "$kak_session"
+    }
+}
+
+define-command fzf    %{ open fzf    }
+define-command fzf-rg %{ open fzf-rg }
+
