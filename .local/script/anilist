@@ -1,4 +1,4 @@
-#!/usr/bin/env -S sh
+#!/bin/sh
 
 database='https://raw.githubusercontent.com/manami-project/anime-offline-database/master/anime-offline-database.json'
 cache_dir="$HOME/.cache/anilist"
@@ -12,44 +12,16 @@ update_database() {
     local tmp1=$(mktemp)
     local tmp2=$(mktemp)
     curl -s "$database" > "$tmp1"
-    jq -r '.data[] | .sources[0], .title, .type, .animeSeason.year, .animeSeason.season, .episodes' "$database_file" |
+    jq -r '.data[] | .type, .animeSeason.year, .animeSeason.season, .episodes, .title, .sources[0]' "$database_file" |
         paste -d '\t' - - - - - - |
-        awk -F '\t' '{printf "%s\t%s\t%s\t%s %s\t%s\n",$1,$2,$3,$4,$5,$6}' > "$tmp2"
-
+        awk -F '\t' '{printf "%s\t%s %s\t%s\t%s\t%s\n",$1,$2,$3,$4,$5,$6}' > "$tmp2"
 
     mv "$tmp1" "$database_file"
     mv "$tmp2" "$cache_file"
 }
 
-mktmpfifo() {
-    local res=$(mktemp -u)
-    echo "$res"
-    mkfifo -m 600 "$res"
-}
-
-list() {
-    local T=$(printf '\t')
-    local A=$(printf '\a')
-    local filtered_sed=$(mktmpfifo)
-    local full_sed=$(mktmpfifo)
-    local rg_pattern=$(mktmpfifo)
-    local reordered_list=$(mktmpfifo)
-
-    cut -f1 "$list_file" > "$rg_pattern" &
-    cut -f1,2 "$cache_file" | sed -e "s/^/s$A/" -e "s/$T/\\\\b$A/" -e "s/$/$A;/" > "$full_sed" &
-    nawk '{printf "%s\t%s\t%s\t%s\t%s\t%s\n",$2,$3,$4,$5,$1,$1 }' "$list_file" > "$reordered_list" &
-    rg --word-regexp -f "$rg_pattern" "$full_sed" > "$filtered_sed" &
-    sed -f "$filtered_sed" "$reordered_list" &
-    wait
-
-    rm "$filtered_sed"
-    rm "$full_sed"
-    rm "$rg_pattern"
-    rm "$reordered_list"
-}
-
 fzf2() {
-    fzf -m -d '\t' --tiebreak begin --tabstop 4 --with-nth 1,2,3,4,5 "$@"
+    fzf -m --tiebreak begin --tabstop 4 "$@"
 }
 
 mkdir -p "$cache_dir"
@@ -61,17 +33,17 @@ update_database &
 
 command=$1
 
-case $command in
-    browse|pick) while true; do
-        ids=$(mktemp)
-        case $command in
-            browse) < "$cache_file" fzf2 -n 2,3,4 | cut -f1 > "$ids" ;;
-            pick) list | fzf2 | cut -f6 > "$ids" ;;
-        esac
-        [ -s "$ids" ] || { rm "$ids"; break; }
+while true; do
+    picks=$(mktemp)
+    case $command in
+        browse) < "$cache_file" fzf2 | cut -f4,5 > "$picks" ;;
+        pick) < "$list_file" fzf2 | cut -f5,6 > "$picks" ;;
+        *) exit 1 ;;    
+    esac
+    [ -s "$picks" ] || { rm "$picks"; break; }
 
-        while true; do
-            choice=$(printf '
+    while true; do
+        choice=$(printf '
 c\tcompleted
 d\tdropped
 o\ton hold
@@ -81,38 +53,38 @@ t\ttorrent
 v\tview
 w\twatching
 ' | sed '/^$/d' | fzf | cut -f1)
-            case $choice in
-                v) xargs -d '\n' setsid -f "$BROWSER" < "$ids" 2>/dev/null >/dev/null ;;
-                t) rg --word-regexp -f "$ids" "$cache_file" | cut -f2 |
-                    sd ' ' '+' | sd '^(.)' 'https://nyaa.si/?q=$1' |
-                    xargs -d '\n' setsid -f "$BROWSER" 2>/dev/null >/dev/null
-                ;;
-                r|c|w|p|o|d) while read -r id; do
-                    rg --word-regexp --fixed-strings "$id" "$list_file" | {
-                        read -r _ date status episodes count
-                        [ -z "$date" ] && date=$(date '+%Y-%m-%d')
-                        [ -z "$count" ] && count=1
-                        [ -z "$episodes" ] && episodes=0
-                        [ "$choice" != 'r' ] && status=$choice
-                        [ "$choice" = 'r' ] && count=$((count + 1))
-                        [ "$choice" = 'c' ] && {
-                            total=$(rg --word-regexp --fixed-strings "$id" "$cache_file" | cut -f5)
-                            [ -z "$total" ] || episodes=$total
-                        }
+        case $choice in
+            v) cut -f2 "$picks" | xargs -d '\n' setsid -f "$BROWSER" 2>/dev/null >/dev/null ;;
 
-                        # Add updated entry
-                        {
-                            rg --invert-match --word-regexp --fixed-strings "$id" "$list_file"
-                            printf "%s\t%s\t%s\t%s\t%s\n" "$id" "$date" "$status" "$episodes" "$count"
-                        } | sort | sponge "$list_file"
+            t) cut -f1 "$picks" |
+                sed -e 's/ /+/g' -e 's#^#https://nyaa.si/?q=#' |
+                xargs -d '\n' setsid -f "$BROWSER" 2>/dev/null >/dev/null
+            ;;
+
+            r|c|w|p|o|d) while read -r title id; do
+                rg --word-regexp --fixed-strings "$id" "$list_file" | {
+                    read -r date status episodes count _ _
+                    [ -z "$date" ] && date=$(date '+%Y-%m-%d')
+                    [ -z "$count" ] && count=1
+                    [ -z "$episodes" ] && episodes=0
+                    [ "$choice" != 'r' ] && status=$choice
+                    [ "$choice" = 'r' ] && count=$((count + 1))
+                    [ "$choice" = 'c' ] && {
+                        total=$(rg --word-regexp --fixed-strings "$id" "$cache_file" | cut -f3)
+                        [ -z "$total" ] || episodes=$total
                     }
-                done < "$ids" ;;
-                *) break ;;
-            esac
-        done
 
-        rm "$ids";
-    done ;;
-    list) list ;;
-esac
+                    # Add updated entry
+                    {
+                        rg --invert-match --word-regexp --fixed-strings "$id" "$list_file"
+                        printf "%s\t%s\t%s\t%s\t%s\t%s\n" "$date" "$status" "$episodes" "$count" "$title" "$id"
+                    } | sort | sponge "$list_file"
+                }
+            done < "$picks" ;;
+            *) break ;;
+        esac
+    done
+
+    rm "$picks";
+done 
 
