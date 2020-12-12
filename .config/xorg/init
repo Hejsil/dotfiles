@@ -52,8 +52,7 @@ xrdb -merge "$xresources"
 } | entr -np generate gtk_theme &
 
 {
-    echo "$HOME/.local/script/bar-info.sh"
-    echo "$HOME/.local/script/bar-mk.sh"
+    echo "$(which lemonbar-maker)"
     echo "$HOME/.local/script/bar.sh"
     echo "$xresources"
 } | entr -nr bar.sh &
