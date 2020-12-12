@@ -1,4 +1,4 @@
-#!/usr/bin/env -S sh
+#!/usr/bin/sh
 
 bar_height=26
 bspc config top_padding "$bar_height"

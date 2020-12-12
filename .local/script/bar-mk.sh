@@ -1,4 +1,4 @@
-#!/usr/bin/env -S sh -e
+#!/usr/bin/sh -e
 
 color1=$(xgetres bar.color1)
 color2=$(xgetres bar.color2)

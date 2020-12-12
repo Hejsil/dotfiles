@@ -1,4 +1,4 @@
-#!/usr/bin/env -S sh
+#!/usr/bin/sh
 
 template_dir="$HOME/.config/template"
 colors="$HOME/.local/script/colors.sh"
