@@ -16,7 +16,7 @@ __ccd_alias() {
 }
 
 __kak_alias() {
-    session_id=$(pwd | sd -s "$HOME/" "" | tr "/" "-")
+    session_id=$(pwd | sha1sum | cut -d' ' -f1)
     tmux new-session sh -c "kak -c '$session_id' $@ || kak -s '$session_id' $@"
 }
 
