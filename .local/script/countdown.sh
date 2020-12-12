@@ -1,4 +1,4 @@
-#!/usr/bin/env -S sh
+#!/usr/bin/sh
 time="$1"
 msg="$2"
 # music="$3"

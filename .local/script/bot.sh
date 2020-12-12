@@ -1,4 +1,4 @@
-#!/usr/bin/env -S sh
+#!/usr/bin/sh
 folder="$HOME/downloads/discord-bot"
 mkdir -p "$folder"
 

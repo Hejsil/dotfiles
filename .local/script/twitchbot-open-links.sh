@@ -1,4 +1,4 @@
-#!/usr/bin/env -S sh
+#!/usr/bin/sh
 
 channel=$1
 browser=$2

@@ -1,2 +1,2 @@
-#!/usr/bin/env -S sh
+#!/usr/bin/sh
 printf "" | fzf "--preview=calc {q}" --preview-window=up

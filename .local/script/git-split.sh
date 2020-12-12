@@ -1,4 +1,4 @@
-#!/usr/bin/env -S sh -e
+#!/usr/bin/sh -e
 
 file=$1
 filea=$2
