@@ -1,20 +1,19 @@
-# Options
+require-module auto-pairs
+eval %sh{kak-lsp --kakoune -s "$kak_session"}
+
+lsp-enable
+#lsp-auto-hover-enable
+auto-pairs-enable
 
 set-option global tabstop 4
-set-option global ui_options ncurses_assistant=off
-set-option global ui_options ncurses_set_title=true
-
-# Highlighting
+set-option global ui_options ncurses_assistant=off ncurses_set_title=true
 
 add-highlighter global/ number-lines -relative -separator ' '
 add-highlighter global/ show-whitespaces -tab '▸' -tabpad ' ' -lf ' ' -spc ' '
 
-# Mappings
-
+# fzf
 map global user f ':fzf<ret>'
 map global user s ':fzf-rg<ret>'
-
-# Commands
 
 define-command open -params 1 %{
     tmux-terminal-window sh -c %sh{
@@ -26,26 +25,16 @@ define-command open -params 1 %{
 define-command fzf    %{ open fzf    }
 define-command fzf-rg %{ open fzf_rg }
 
-# Hooks
-
-hook global InsertCompletionShow .* %{
-    map window insert <tab> <c-n>
-}
-
-hook global InsertCompletionHide .* %{
-    map window insert <tab> <tab>
-}
+# Auto complete with tab
+hook global InsertCompletionShow .* %{ map window insert <tab> <c-n> }
+hook global InsertCompletionHide .* %{ map window insert <tab> <tab> }
 
 # Replaces tabs with spaces
 hook global InsertChar \t %{ exec -draft h@ }
 
-# lsp
-
-eval %sh{kak-lsp --kakoune -s "$kak_session"}
-lsp-enable
-lsp-auto-hover-enable
-
-# colors
+# Format on write
+hook global WinSetOption filetype=rust %{ hook window BufWritePre .* lsp-formatting-sync }
+hook global WinSetOption filetype=zig %{ hook window BufWritePre .* lsp-formatting-sync }
 
 # For Code
 face global keyword blue+b
