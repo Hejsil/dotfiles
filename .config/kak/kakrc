@@ -1,10 +1,20 @@
+# Options
+
 set-option global tabstop 4
-set-option global ui_options ncurses_assistant=none
+set-option global ui_options ncurses_assistant=off
+set-option global ui_options ncurses_set_title=true
+
+# Highlighting
 
 add-highlighter global/ number-lines -relative -separator ' '
+add-highlighter global/ show-whitespaces -tab '▸' -tabpad ' ' -lf ' ' -spc ' '
+
+# Mappings
 
 map global user f ':fzf<ret>'
 map global user s ':fzf-rg<ret>'
+
+# Commands
 
 define-command open -params 1 %{
     tmux-terminal-window sh -c %sh{
@@ -14,5 +24,78 @@ define-command open -params 1 %{
 }
 
 define-command fzf    %{ open fzf    }
-define-command fzf-rg %{ open fzf-rg }
+define-command fzf-rg %{ open fzf_rg }
+
+# Hooks
+
+hook global InsertCompletionShow .* %{
+    map window insert <tab> <c-n>
+}
+
+hook global InsertCompletionHide .* %{
+    map window insert <tab> <tab>
+}
+
+# Replaces tabs with spaces
+hook global InsertChar \t %{ exec -draft h@ }
+
+# lsp
+
+eval %sh{kak-lsp --kakoune -s "$kak_session"}
+lsp-enable
+lsp-auto-hover-enable
+
+# colors
+
+# For Code
+face global keyword blue+b
+face global attribute blue+b
+face global type blue+b
+face global value cyan+b
+face global string green+b
+face global function yellow+b
+face global operator white+b
+face global variable white
+
+face global builtin yellow+b
+face global comment bright-black+i
+face global documentation comment
+
+face global module red
+face global meta red
+
+# For markup
+face global title blue
+face global header cyan
+face global mono green
+face global block magenta
+face global link cyan
+face global bullet cyan
+face global list yellow
+
+# builtin faces
+face global Default default,default
+face global PrimarySelection white,blue+fg
+face global SecondarySelection black,blue+fg
+face global PrimaryCursor black,white+fg
+face global SecondaryCursor black,white+fg
+face global PrimaryCursorEol black,cyan+fg
+face global SecondaryCursorEol black,cyan+fg
+face global LineNumbers default,default
+face global LineNumberCursor default,default+r
+face global MenuForeground white,blue
+face global MenuBackground blue,white
+face global MenuInfo cyan
+face global Information black,yellow
+face global Error black,red
+face global StatusLine cyan,default
+face global StatusLineMode yellow,default
+face global StatusLineInfo blue,default
+face global StatusLineValue green,default
+face global StatusCursor black,cyan
+face global Prompt yellow,default
+face global MatchingChar default,default+b
+face global Whitespace default,default+f
+face global BufferPadding blue,default
+
 
