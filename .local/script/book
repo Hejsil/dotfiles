@@ -1,0 +1,13 @@
+#!/usr/bin/env -S sh
+
+tmp=$(mktemp)
+bookmarks="$HOME/.config/bookmarks"
+
+< "$bookmarks" fzf -m -d '\t' > "$tmp"
+
+if [ -s "$tmp" ]; then
+    choose -f '\t' -1 -i "$tmp" | xargs -d '\n' setsid -f open
+fi
+
+rm "$tmp"
+

@@ -24,11 +24,11 @@ super + b
 super + shift + r
     rss-open-all-in-browser.sh
 
-super + Return
-    $TERMINAL
-
 super + m
     $TERMINAL -e aerc
+
+super + Return
+    $TERMINAL
 
 super + o
     open "$(xsel -b)"
