@@ -9,7 +9,7 @@ export PROMPT_COMMAND="history -a; history -c; history -r"
 
 # Programs
 export BROWSER='firefox'
-export EDITOR='nvim'
+export EDITOR='kak'
 export READER='zathura'
 export TERMINAL='st'
 export PAGER='less'
