@@ -20,6 +20,12 @@ __kak_alias() {
     tmux new-session sh -c "kak -c '$session_id' $@ || kak -s '$session_id' $@"
 }
 
+gst() { (
+    source deps/env.sh
+    source dddq_environment.sh
+    RUST_BACKTRACE=1 GST_PLUGIN_PATH="$(pwd)/target/debug:$GST_PLUGIN_PATH" GST_DEBUG_DUMP_DOT_DIR=dot "$@"
+) }
+
 alias ..='__cd_alias ..'
 alias ...='__cd_alias ../..'
 alias .3='__cd_alias ../../..'
@@ -30,9 +36,7 @@ alias cd='__cd_alias'
 alias c='__cd_alias'
 
 alias kak='__kak_alias'
-
-alias v='nvim'
-alias vim='nvim'
+alias k='__kak_alias'
 
 alias ls='exa -a'
 alias ll='exa -al'
