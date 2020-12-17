@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/bin/sh
 
 program="${0##*/}"
 usage() {

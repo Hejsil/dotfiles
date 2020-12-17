@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/bin/sh
 
 if [ -f "$1" ]; then
     mine=$(file --mime-type -Lb "$1")

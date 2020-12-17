@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/bin/sh
 time="$1"
 msg="$2"
 # music="$3"

@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/bin/sh
 
 fd 'appmanifest_' "$HOME/.local/share/Steam/steamapps/" --maxdepth 1 |
     xargs rg --no-filename '^}|"appid"|"name"' |
