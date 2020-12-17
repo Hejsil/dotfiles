@@ -1,6 +1,6 @@
 [core]
     excludesfile = /home/hejsil/.config/git/ignore
-    editor = nvim
+    editor = kak
     pager = delta --dark
 [pull]
 	rebase = true

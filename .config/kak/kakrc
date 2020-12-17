@@ -1,24 +1,32 @@
-require-module auto-pairs
 eval %sh{kak-lsp --kakoune -s "$kak_session"}
 
 lsp-enable
 #lsp-auto-hover-enable
-auto-pairs-enable
 
 set-option global tabstop 4
 set-option global ui_options ncurses_assistant=off ncurses_set_title=true
 
 add-highlighter global/ number-lines -relative -separator ' '
 add-highlighter global/ show-whitespaces -tab '▸' -tabpad ' ' -lf ' ' -spc ' '
+add-highlighter global/ regex '\h+$' 0:default,red
 
-# fzf
+map global user c ':comment-line<ret>'
+map global user y '<a-|>xsel -bi<ret>'
+map global user p '!xsel -bo<ret>'
 map global user f ':fzf<ret>'
 map global user s ':fzf-rg<ret>'
 
+map global insert <pageup> '<a-;><c-b>'
+map global insert <pagedown> '<a-;><c-f>'
+
+map global normal "'" '<a-i>w*/<ret>'
+
+# fzf
 define-command open -params 1 %{
     tmux-terminal-window sh -c %sh{
-        printf '%s | sed "s/^/evaluate-commands -client %s edit /" | kak -p "%s"' \
-            "$1" "$kak_client" "$kak_session"
+        printf '%s | sed -E -e "s/^/evaluate-commands -client %s edit / ;
+            s/:([0-9]+).*/\\nexecute-keys -client %s \\1g/" | kak -p "%s"' \
+            "$1" "$kak_client" "$kak_client" "$kak_session"
     }
 }
 
@@ -36,22 +44,23 @@ hook global InsertChar \t %{ exec -draft h@ }
 hook global WinSetOption filetype=rust %{ hook window BufWritePre .* lsp-formatting-sync }
 hook global WinSetOption filetype=zig %{ hook window BufWritePre .* lsp-formatting-sync }
 
+# Colors
+
 # For Code
 face global keyword blue+b
 face global attribute blue+b
-face global type blue+b
+face global type cyan+b
 face global value cyan+b
 face global string green+b
 face global function yellow+b
 face global operator white+b
 face global variable white
-
+face global meta cyan+b
+face global module yellow+b
 face global builtin yellow+b
 face global comment bright-black+i
 face global documentation comment
 
-face global module red
-face global meta red
 
 # For markup
 face global title blue
