@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/bin/sh
 
 program=${0##*/}
 usage() {
@@ -35,11 +35,8 @@ rss-list.sh -u | tr "$tab" "$a" | while IFS=$a read -r file _ _ link desc _; do
             # shuushuu started using https only, but didn't update their rss feed...
             echo "https:${link#http:}"
             ;;
-        *www.artstation.com*)
-            echo "$desc" | grep -oE '\w+:\/\/[-a-zA-Z0-9:@;?&=\/%\+\.\*!'"'"'\(\),\$_\{\}\^~`#|]+'
-            ;;
         *) case $link in
-                *www.reddit.com*)
+                *www.reddit.com*|*pixiv.net*)
                     echo "$desc" | grep -oE '\w+:\/\/[-a-zA-Z0-9:@;?&=\/%\+\.\*!'"'"'\(\),\$_\{\}\^~`#|]+'
                     ;;
                 *) ;;

@@ -1,4 +1,4 @@
-#!/usr/bin/sh -e
+#!/bin/sh -e
 
 time='1m'
 while [ -n "$1" ]; do

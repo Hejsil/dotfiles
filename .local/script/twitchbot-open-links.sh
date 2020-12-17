@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/bin/sh
 
 channel=$1
 browser=$2
@@ -10,6 +10,6 @@ touch "$chat_file"
 
 tail -n 0 -f "$chat_file" |
     rg --line-buffered -o -v "^($channel\.)?tmi.twitch.tv:" |
-    rg --line-buffered -o '(https?://)?(www\.)?(\w*\.)+(\w+)(/[^\s]*)?' |
+    rg --line-buffered -o '((https?://)|(www\.))(\w*\.)+(\w+)(/[^\s]*)?' |
     xargs -d'\n' -n 1 $browser
 

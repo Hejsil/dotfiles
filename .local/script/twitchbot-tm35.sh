@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/bin/sh
 
 proc=$$
 channel=$1

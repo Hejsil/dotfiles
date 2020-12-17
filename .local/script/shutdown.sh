@@ -1,3 +1,3 @@
-#!/usr/bin/sh -e
+#!/bin/sh -e
 update.sh
 systemctl poweroff
