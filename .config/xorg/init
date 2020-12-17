@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/sh
 
 #### Setup variables and dirs ####
 template_dir="$HOME/.config/template"
