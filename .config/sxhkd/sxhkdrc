@@ -50,8 +50,11 @@ super + shift + {Left,Down,Up,Right}
 super + ctrl + shift + {Left,Down,Up,Right}
     bspc node -m {west,south,north,east}
 
-super + {t,shift + t,s,f}
+super + {t,shift + t,shift + f,f}
     bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+super + {s}
+    bspc node -g {sticky}
 
 super + {_,shift + } {1-9,0}
     bspc {desktop -f,node -d} "focused:^{1-9,10}"
