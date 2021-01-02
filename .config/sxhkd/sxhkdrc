@@ -16,7 +16,7 @@ super + c
     $TERMINAL -c 'pick-dialog' -e icalc
 
 super + {_,ctrl +} a
-    $TERMINAL -c 'pick-dialog' -e anilist {pick,browse}
+    $TERMINAL -c 'pick-dialog' -e anilist-ui {pick,browse}
 
 super + b
     $TERMINAL -c 'pick-dialog' -e book
