@@ -71,8 +71,13 @@ mbsync -a -c "$HOME/.config/isync/mbsyncrc" &
 megasync &
 redshift &
 transmission-daemon -f &
-wall.sh "$HOME/mega/images/wallpapers" >/tmp/wall.sh.log 2>/tmp/wall.sh.log &
 xbanish &
+
+wall.sh "$HOME/mega/images/wallpapers" >>/tmp/wall.sh.log 2>>/tmp/wall.sh.log &
+twitchbot.sh -c 'komarispaghetti' -n 'komarispaghetti' -a "$(pass show twitch-oath)" &
+
+rm -r .mash
+MASH_TOKEN="$(pass show discord-token)" mash start &
 
 exec bspwm
 
