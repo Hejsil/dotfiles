@@ -5,8 +5,11 @@
 .config/VirtualBox
 .config/aerc/accounts.conf
 .config/autostart
+.config/bottom/
+.config/cava/
 .config/chromium
 .config/coc
+.config/configstore/
 .config/dconf
 .config/desmume/
 .config/discord
