@@ -1,10 +1,11 @@
 #!/bin/sh
 
+colors="$(which colors.sh)"
 template_dir="$HOME/.config/template"
-colors="$HOME/.local/script/colors.sh"
 
 xresources="$XDG_CONFIG_HOME/xorg/resources"
 dunstrc="$XDG_CONFIG_HOME/dunst/dunstrc"
+kittyrc="$XDG_CONFIG_HOME/kitty/kitty.conf"
 gtk_theme="$HOME/.themes/$GTK_THEME"
 gtk_template="$template_dir/$GTK_THEME"
 
@@ -15,6 +16,9 @@ case $1 in
         ;;
     dunstrc)
         base16.sh "$colors" "$template_dir/dunstrc" > "$dunstrc"
+        ;;
+    kitty)
+        base16.sh "$colors" "$template_dir/kitty.conf" > "$kittyrc"
         ;;
     gtk_theme)
         mkdir -p "$HOME/.themes/"

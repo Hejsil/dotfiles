@@ -22,4 +22,4 @@ bspc config focus_follows_pointer true
 bspc rule -a 'MEGAsync' -o hidden=on
 bspc rule -a 'Zathura' state=tiled
 bspc rule -a 'origin.exe' state=floating
-bspc rule -a 'pick-dialog' state=floating sticky=on focus=on
+bspc rule -a 'window' state=floating sticky=on focus=on
