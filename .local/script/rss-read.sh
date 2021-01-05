@@ -8,7 +8,7 @@ rss-list.sh -u |
 
 if [ -s "$tmp" ]; then
     choose -f '\t' -1 -i "$tmp" | xargs -d '\n' opener.sh || exit 1
-    choose -f '\t' -1 -i "$tmp" | xargs -d '\n' setsid -f open
+    choose -f '\t' -1 -i "$tmp" | xargs -d '\n' tsp open
     choose -f '\t'  2 -i "$tmp" | xargs -d '\n' -I{} mv {} "$HOME/.cache/rss/read"
 fi
 

@@ -1,16 +1,5 @@
 #!/bin/sh
 
-#### Setup variables and dirs ####
-template_dir="$HOME/.config/template"
-colors="$HOME/.local/script/colors.sh"
-
-xresources="$XDG_CONFIG_HOME/xorg/resources"
-dunstrc="$XDG_CONFIG_HOME/dunst/dunstrc"
-gtk_theme="$HOME/.themes/$GTK_THEME"
-
-mkdir -p "$XDG_CONFIG_HOME/xorg"
-mkdir -p "$XDG_CONFIG_HOME/dunst"
-
 #### X Settings ####
 
 xset r rate 300 50
@@ -20,64 +9,39 @@ setxkbmap -layout "dk"
 xrandr --output HDMI-0 --mode 1920x1080 --right-of DP-0 \
     --output DP-0 --primary --mode 2560x1440 --rate 144
 
-#### Generate themes that don't exist ####
+xrdb -merge "$XDG_CONFIG_HOME/xorg/resources"
 
-ln -sf "$HOME/.local/script/open" "$HOME/.local/script/xdg-open"
-[ -f "$xresources" ] || generate xresources
-[ -f "$dunstrc" ]    || generate dunstrc
-[ -d "$gtk_theme" ]  || generate gtk_theme
-xrdb -merge "$xresources"
-
+{
 #### Watches ####
 
-{
-    echo "$template_dir/.Xresources"
-    echo "$HOME/.local/script/generate"
-    echo "$HOME/.local/script/base16.sh"
-    echo "$colors"
-} | entr -np generate xresources &
-
-{
-    echo "$template_dir/dunstrc"
-    echo "$HOME/.local/script/generate"
-    echo "$HOME/.local/script/base16.sh"
-    echo "$colors"
-} | entr -np generate dunstrc &
-
-{
-    find "$template_dir/$GTK_THEME" -type f
-    echo "$HOME/.local/script/generate"
-    echo "$HOME/.local/script/base16.sh"
-    echo "$colors"
-} | entr -np generate gtk_theme &
-
-{
-    echo "$(which lemonbar-maker)"
-    echo "$HOME/.local/script/bar.sh"
-    echo "$xresources"
-} | entr -nr bar.sh &
-
-{
+tsp sh -c 'generate depends xresources | entr -np generate xresources'
+tsp sh -c 'generate depends dunstrc | entr -np generate dunstrc'
+tsp sh -c 'generate depends kitty | entr -np generate kitty'
+tsp sh -c 'generate depends gtk_theme | entr -np generate gtk_theme'
+tsp sh -c '{
     echo "$HOME/.config/bspwm/bspwmrc"
-    echo "$colors"
-} | entr -np bspc wm -r &
-
-echo "$XDG_CONFIG_HOME/sxhkd/sxhkdrc" | entr -nr sxhkd -r /tmp/sxhkd.log &
-echo "$dunstrc" | entr -nr dunst &
+    echo "$(which colors.sh)"
+} | entr -np bspc wm -r'
+tsp sh -c 'echo "$XDG_CONFIG_HOME/sxhkd/sxhkdrc" | entr -nr sxhkd -r /tmp/sxhkd.log'
+tsp sh -c 'echo "$XDG_CONFIG_HOME/dunst/dunstrc" | entr -nr dunst'
+tsp sh -c '{
+    echo "$(which lemonbar-maker)"
+    echo "$(which bar.sh)"
+    echo "$XDG_CONFIG_HOME/xorg/resources"
+} | entr -nr bar.sh'
 
 #### Other programs ####
 
-mbsync -a -c "$HOME/.config/isync/mbsyncrc" &
-megasync &
-redshift &
-transmission-daemon -f &
-xbanish &
-
-wall.sh "$HOME/mega/images/wallpapers" >>/tmp/wall.sh.log 2>>/tmp/wall.sh.log &
-twitchbot.sh -c 'komarispaghetti' -n 'komarispaghetti' -a "$(pass show twitch-oath)" &
-
 rm -r .mash
-MASH_TOKEN="$(pass show discord-token)" mash start &
+tsp mbsync -a -c "$HOME/.config/isync/mbsyncrc"
+tsp redshift
+tsp transmission-daemon -f
+tsp megasync
+tsp xbanish
+tsp wall.sh "$HOME/mega/images/wallpapers"
+TWITCH_TOKEN=$(pass show twitch-oath) tsp twitchbot.sh -c 'komarispaghetti' -n 'komarispaghetti'
+MASH_TOKEN=$(pass show discord-token) tsp mash start
+} &
 
 exec bspwm
 

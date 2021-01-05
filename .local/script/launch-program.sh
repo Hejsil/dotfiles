@@ -1,4 +1,2 @@
 #!/bin/sh
-
-setsid -f $(path-exes.sh | fzf --print-query | grep -v '^$' | tail -n 1)
-sleep 0.05s
+path-exes.sh | fzf -m | xargs -d'\n' -n 1 tsp

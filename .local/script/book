@@ -3,10 +3,10 @@
 tmp=$(mktemp)
 bookmarks="$HOME/.config/bookmarks"
 
-< "$bookmarks" fzf -m -d '\t' > "$tmp"
+< "$bookmarks" fzf -m -d '\t' --tabstop 12 > "$tmp"
 
 if [ -s "$tmp" ]; then
-    choose -f '\t' -1 -i "$tmp" | xargs -d '\n' setsid -f open
+    choose -f '\t' -1 -i "$tmp" | xargs -d '\n' tsp open
 fi
 
 rm "$tmp"

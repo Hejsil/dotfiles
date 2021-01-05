@@ -34,11 +34,11 @@ torrent
 view
 ' | sed '/^$/d' | fzf | cut -f1)
         case $choice in
-            view) cut -f2 "$picks" | xargs -d '\n' setsid -f "$BROWSER" 2>/dev/null >/dev/null ;;
+            view) cut -f2 "$picks" | xargs -d '\n' tsp "$BROWSER" ;;
 
             torrent) cut -f1 "$picks" |
                 sed -e 's/ /+/g' -e 's#^#https://nyaa.si/?q=#' |
-                xargs -d '\n' setsid -f "$BROWSER" 2>/dev/null >/dev/null
+                xargs -d '\n' tsp "$BROWSER"
             ;;
             complete|drop|plan_to_watch|put_on_hold|start_watching)
                 cut -f2 "$picks" | xargs -d'\n' anilist "$choice" 2>/tmp/dump ;;
