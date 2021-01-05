@@ -31,5 +31,17 @@ case $1 in
         done
         gtkrc-reload
         ;;
+    depends)
+        printf "%s\n%s\n%s\n" \
+            "$(realpath "$0")" \
+            "$(which base16.sh)" \
+            "$colors"
+        case $2 in
+            xresources) echo "$template_dir/.Xresources" ;;
+            dunstrc) echo "$template_dir/dunstrc" ;;
+            kitty) echo "$template_dir/kitty.conf" ;;
+            gtk_theme) find "$gtk_template" -type f ;;
+        esac
+        ;;
 esac
 

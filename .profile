@@ -41,9 +41,8 @@ export GTK2_RC_FILES="$HOME/.themes/$GTK_THEME/gtk-2.0/gtkrc"
 
 export TERMINFO_DIRS="$TERMINFO:/usr/share/terminfo"
 
-export NNN_OPENER='open.sh'
-
-export LESS="-R"
 export FZF_DEFAULT_COMMAND='fd -H --type f -S -10m'
 export FZF_DEFAULT_OPTS='--info=hidden --color=16'
-
+export LESS="-R"
+export NNN_OPENER='open.sh'
+export TS_SLOTS=10000
