@@ -3,7 +3,7 @@
 cache_dir="$HOME/.cache/anilist"
 database_file="$cache_dir/database.json"
 
-fzf2() { fzf -m --tiebreak begin --tabstop 4 "$@"; }
+fzf2() { fzf -m --tiebreak begin -d '\t' "$@"; }
 
 [ -f "$database_file" ] || anilist fetch
 anilist fetch &
@@ -13,8 +13,8 @@ command=$1
 while true; do
     picks=$(mktemp)
     case $command in
-        browse) anilist database | fzf2 | cut -f5,6 > "$picks" ;;
-        pick) anilist list | fzf2 | cut -f5,6 > "$picks" ;;
+        browse) anilist database | fzf2 --with-nth=1,2,3,4,5 | cut -f5,6 > "$picks" ;;
+        pick) anilist list | fzf2 --with-nth=1,2,3,4,5 --tabstop 4 | cut -f5,6 > "$picks" ;;
         *)
             wait
             rm "$picks"
