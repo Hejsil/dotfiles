@@ -11,8 +11,9 @@ export PROMPT_COMMAND="history -a; history -c; history -r"
 export BROWSER='firefox'
 export EDITOR='kak'
 export READER='zathura'
-export TERMINAL='st'
+export TERMINAL='kitty -1'
 export PAGER='less'
+export WINDOW="$TERMINAL --class window"
 
 export XDG_CACHE_HOME="$HOME/.cache"
 export CARGO_HOME="$XDG_CACHE_HOME/cargo"
