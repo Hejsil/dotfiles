@@ -3,7 +3,6 @@ arg1=$1
 opener=$(opener.sh "$arg1")
 
 for ARG in "$@"; do
-    echo "$ARG" >> /tmp/open.log
     other=$(opener.sh "$ARG")
     if [ "$other" != "$opener" ]; then
         echo "Some args require different programs" >&2

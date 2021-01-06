@@ -5,7 +5,7 @@ bspc config top_padding "$bar_height"
 
 lemonbar-maker --low "$(xgetres bar.color2)" \
     --mid "$(xgetres bar.color3)" \
-    --high "$(xgetres bar.color1)" 2>$(mktemp '/tmp/lemonbar-maker-XXXXXX.log') |
+    --high "$(xgetres bar.color1)" |
 lemonbar  \
     -g "x$bar_height"               \
     -f "$(xgetres bar.font)"        \
