@@ -30,10 +30,9 @@ tsp sh -c '{
     echo "$XDG_CONFIG_HOME/xorg/resources"
 } | entr -nr bar.sh'
 
-#### Other programs ####
+#### Daemons ####
 
 rm -r .mash
-tsp mbsync -a -c "$HOME/.config/isync/mbsyncrc"
 tsp redshift
 tsp transmission-daemon -f
 tsp megasync
@@ -41,6 +40,12 @@ tsp xbanish
 tsp wall.sh "$HOME/mega/images/wallpapers"
 TWITCH_TOKEN=$(pass show twitch-oath) tsp twitchbot.sh -c 'komarispaghetti' -n 'komarispaghetti'
 MASH_TOKEN=$(pass show discord-token) tsp mash start
+
+#### Task that are nice to just have run on startup ####
+
+tsp mbsync -a -c "$HOME/.config/isync/mbsyncrc"
+tsp anilist fetch
+
 } &
 
 exec bspwm
