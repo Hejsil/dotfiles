@@ -1,20 +1,22 @@
 #!/bin/sh
 
-cache_dir="$HOME/.cache/anilist"
-database_file="$cache_dir/database.json"
-
-fzf2() { fzf -m --tiebreak begin -d '\t' "$@"; }
-
-[ -f "$database_file" ] || anilist fetch
-anilist fetch &
+fzf2() {
+    size=$(tput cols)
+    fzf -m -d '\t' --tiebreak begin --with-nth=1,2,3,4,5 \
+        --preview "kitty icat --clear --transfer-mode file; \
+            kitty icat --place \
+            \${FZF_PREVIEW_COLUMNS}x\${FZF_PREVIEW_LINES}@\$(($size - FZF_PREVIEW_COLUMNS))x0 \
+            --scale-up --transfer-mode file {7}" \
+        "$@"
+}
 
 command=$1
 
 while true; do
     picks=$(mktemp)
     case $command in
-        browse) anilist database | fzf2 --with-nth=1,2,3,4,5 | cut -f5,6 > "$picks" ;;
-        pick) anilist list | fzf2 --with-nth=1,2,3,4,5 --tabstop 4 | cut -f5,6 > "$picks" ;;
+        browse) anilist database | fzf2 | cut -f5,6 > "$picks" ;;
+        pick) anilist list | fzf2 --tabstop 4 | cut -f5,6 > "$picks" ;;
         *)
             wait
             rm "$picks"
