@@ -14,9 +14,11 @@ chat_rect="rectangle=${width}x${chat_height}+${x}+${chat_y}"
 cam_rect="rectangle=${width}x${cam_height}+${x}+${cam_y}"
 
 bspc rule -a sticky-chat -o state=floating layer=above sticky=on "$chat_rect"
+bspc rule -a sticky-background -o private=on sticky=on
 bspc rule -a "mpv" -o state=floating layer=above sticky=on "$cam_rect"
 
-st -c sticky-chat &
+kitty --class sticky-chat &
+kitty --class sticky-background &
 mpv av://v4l2:/dev/video0 --profile=low-latency --untimed --panscan=1.0  &
 
 
