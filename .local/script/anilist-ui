@@ -32,6 +32,8 @@ drop
 plan_to_watch
 put_on_hold
 start_watching
+update
+remove
 torrent
 view
 ' | sed '/^$/d' | fzf | cut -f1)
@@ -42,7 +44,7 @@ view
                 sed -e 's/ /+/g' -e 's#^#https://nyaa.si/?q=#' |
                 xargs -d '\n' tsp "$BROWSER"
             ;;
-            complete|drop|plan_to_watch|put_on_hold|start_watching)
+            complete|drop|plan_to_watch|put_on_hold|start_watching|update|remove)
                 cut -f2 "$picks" | xargs -d'\n' anilist "$choice" 2>/tmp/dump ;;
             *) break ;;
         esac
