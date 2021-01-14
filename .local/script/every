@@ -1,0 +1,9 @@
+#!/bin/sh
+
+sleep_time=$1
+shift
+
+while true; do
+    "$@"
+    sleep "$sleep_time"
+done
