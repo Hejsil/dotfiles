@@ -1,8 +1,5 @@
 eval %sh{kak-lsp --kakoune -s "$kak_session"}
 
-lsp-enable
-#lsp-auto-hover-enable
-
 set-option global tabstop 4
 set-option global ui_options ncurses_assistant=off ncurses_set_title=true
 
@@ -40,9 +37,12 @@ hook global InsertCompletionHide .* %{ map window insert <tab> <tab> }
 # Replaces tabs with spaces
 hook global InsertChar \t %{ exec -draft h@ }
 
-# Format on write
-hook global WinSetOption filetype=rust %{ hook window BufWritePre .* lsp-formatting-sync }
-hook global WinSetOption filetype=zig %{ hook window BufWritePre .* lsp-formatting-sync }
+# lsp hooks
+hook global WinSetOption filetype=(rust|zig) %{
+    lsp-enable-window
+    lsp-auto-signature-help-enable
+    hook window BufWritePre .* lsp-formatting-sync
+}
 
 def -hidden insert-c-n %{
     try %{
