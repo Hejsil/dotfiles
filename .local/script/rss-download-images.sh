@@ -1,20 +1,5 @@
 #!/bin/sh
 
-program=${0##*/}
-usage() {
-    echo "Usage: $program"
-}
-
-while [ -n "$1" ]; do
-    case $1 in
-        --) shift; break ;;
-        -h|--help) usage; exit 0 ;;
-        -*) usage; exit 1 ;;
-        *) break ;;
-    esac
-    shift
-done
-
 download_dir="$HOME/downloads/images"
 mkdir -p "$download_dir"
 tmp_template="$download_dir/XXXXXX"
@@ -45,11 +30,12 @@ rss-list.sh -u | tr "$tab" "$a" | while IFS=$a read -r file _ _ link desc _; do
     esac | sed "s$tab^$tab$file$a$tab"
 done | while IFS=$a read -r file link; do
     tmp=$(mktemp "$tmp_template")
-    mv "$file" "$HOME/.cache/rss/read"
     curl "$link" > "$tmp" || {
         rm "$tmp"
         continue
     }
+
+    mv "$file" "$HOME/.cache/rss/read"
     case $(file -b --mime-type "$tmp") in
         image/*) ;;
         *) rm "$tmp" ;;
@@ -58,5 +44,5 @@ done
 
 find "$download_dir" -maxdepth 1 -type f |
     xargs -d'\n' identify -format "%w %d/%f\n" | awk '$1 < 2560' |
-    cut -d' ' -f2- | xargs -d'\n' rm
+    cut -d' ' -f2- | xargs -d'\n' rm || true
 
