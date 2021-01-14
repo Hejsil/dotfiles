@@ -41,11 +41,10 @@ tsp wall.sh "$HOME/mega/images/wallpapers"
 TWITCH_TOKEN=$(pass show twitch-oath) tsp twitchbot.sh -c 'komarispaghetti' -n 'komarispaghetti'
 MASH_TOKEN=$(pass show discord-token) tsp mash start
 
-#### Task that are nice to just have run on startup ####
-
-tsp mbsync -a -c "$HOME/.config/isync/mbsyncrc"
-tsp anilist fetch
-
+#### Task to run every N hours ####
+tsp every 1h tsp mbsync -a -c "$HOME/.config/isync/mbsyncrc"
+tsp every 2h sh -c 'tsp -D "$(tsp rss.sh)" rss-download-images.sh'
+tsp every 6h tsp anilist fetch
 } &
 
 exec bspwm
