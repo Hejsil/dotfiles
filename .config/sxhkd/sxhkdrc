@@ -16,7 +16,7 @@ super + c
     $WINDOW -e icalc
 
 super + {_,ctrl +} a
-    $WINDOW -e anilist-ui {pick,browse}
+    $WINDOW -e anilist-ui {list,database}
 
 super + b
     $WINDOW -e book

@@ -15,8 +15,8 @@ command=$1
 while true; do
     picks=$(mktemp)
     case $command in
-        browse) anilist database | fzf2 | cut -f5,6 > "$picks" ;;
-        pick) anilist list | fzf2 --tabstop 4 | cut -f5,6 > "$picks" ;;
+        database) anilist database | fzf2 | cut -f5,6 > "$picks" ;;
+        list) anilist list | fzf2 --tabstop 4 | cut -f5,6 > "$picks" ;;
         *)
             wait
             rm "$picks"
