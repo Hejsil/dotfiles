@@ -41,6 +41,7 @@
 .config/obs-studio
 .config/oomox
 .config/openra/
+.config/openvpn/
 .config/pavucontrol.ini
 .config/pcmanfm/
 .config/protonfixes
@@ -89,9 +90,11 @@
 .local/share/lutris/
 .local/share/mail/
 .local/share/marble/
+.local/share/mc/
 .local/share/meld/
 .local/share/mime/
 .local/share/multimc/
+.local/share/nautilus/
 .local/share/nvim/
 .local/share/recently-used.xbel
 .local/share/rustup/
