@@ -18,6 +18,9 @@ map global insert <pagedown> '<a-;><c-f>'
 
 map global normal "'" '<a-i>w*/<ret>'
 
+# Fix bad mappings for Danish keyboards
+map global normal æ '<a-;>'
+
 # fzf
 define-command open -params 1 %{
     terminal sh -c %sh{
@@ -34,13 +37,10 @@ define-command fzf-rg %{ open fzf_rg }
 hook global InsertCompletionShow .* %{ map window insert <tab> <c-n> }
 hook global InsertCompletionHide .* %{ map window insert <tab> <tab> }
 
-# Replaces tabs with spaces
-hook global InsertChar \t %{ exec -draft h@ }
-
 # lsp hooks
 hook global WinSetOption filetype=(rust|zig) %{
     lsp-enable-window
-    lsp-auto-signature-help-enable
+    # lsp-auto-signature-help-enable
     hook window BufWritePre .* lsp-formatting-sync
 }
 
