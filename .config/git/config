@@ -3,6 +3,6 @@
     editor = kak
     pager = delta --dark
 [pull]
-	rebase = true
+    rebase = true
 [credential]
-	helper = store
+    helper = store
