@@ -1,3 +1,5 @@
-set pagination off
-set history save on
 set history filename ~/.local/share/gdb/history
+set history save on
+set pagination off
+set print pretty on
+
