@@ -1,5 +1,7 @@
 #!/bin/sh
 
+rss.sh
+
 download_dir="$HOME/downloads/images"
 mkdir -p "$download_dir"
 tmp_template="$download_dir/XXXXXX"

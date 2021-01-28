@@ -1,0 +1,6 @@
+[Unit]
+Description=Sync anime database
+Conflicts=shutdown.target
+
+[Service]
+ExecStart=/usr/local/bin/anilist fetch

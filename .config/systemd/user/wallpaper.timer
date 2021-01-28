@@ -1,0 +1,9 @@
+[Unit]
+Description=Minutely switch wallpaper
+
+[Timer]
+OnCalendar=hourly
+
+[Install]
+WantedBy=timers.target
+

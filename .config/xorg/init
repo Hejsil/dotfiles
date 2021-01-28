@@ -33,19 +33,11 @@ tsp sh -c '{
 #### Daemons ####
 
 rm -r .mash
-tsp redshift
-tsp transmission-daemon -f
-tsp megasync
-tsp xbanish
-tsp wall.sh "$HOME/mega/images/wallpapers"
 TWITCH_TOKEN=$(pass show twitch-oath) tsp twitchbot.sh -c 'komarispaghetti' -n 'komarispaghetti'
 MASH_TOKEN=$(pass show discord-token) tsp mash start
-
-#### Task to run every N hours ####
-tsp every 1h tsp mbsync -a -c "$HOME/.config/isync/mbsyncrc"
-tsp every 2h sh -c 'tsp -D "$(tsp rss.sh)" rss-download-images.sh'
-tsp every 6h tsp anilist fetch
 } &
+
+systemctl --user start user-graphical-login.target
 
 exec bspwm
 

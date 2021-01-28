@@ -1,0 +1,9 @@
+[Unit]
+Description=Hourly anime sync
+
+[Timer]
+OnCalendar=hourly
+
+[Install]
+WantedBy=timers.target
+
