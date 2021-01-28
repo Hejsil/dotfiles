@@ -1,0 +1,9 @@
+[Unit]
+Description=Xbanish
+
+[Service]
+ExecStart=/usr/bin/xbanish
+
+[Install]
+WantedBy=user-graphical-login.target
+

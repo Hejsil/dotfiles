@@ -1,0 +1,8 @@
+[Unit]
+Description=Pick random wallpaper
+
+[Service]
+ExecStart=%h/.local/script/wall.sh '%h/mega/images/wallpapers'
+
+[Install]
+WantedBy=user-graphical-login.target
