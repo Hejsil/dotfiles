@@ -1,7 +1,4 @@
 [Unit]
-Description=Sync rss feed
-Conflicts=shutdown.target
-
+Conflicts/usr/bin/shutdown.target
 [Service]
-Environment=PATH=%h/.local/bin:%h/.local/script:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin
 ExecStart=%h/.local/script/rss-download-images.sh

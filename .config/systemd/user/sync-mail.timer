@@ -1,9 +1,5 @@
-[Unit]
-Description=Hourly mail sync
-
 [Timer]
 OnCalendar=hourly
-
 [Install]
 WantedBy=timers.target
 

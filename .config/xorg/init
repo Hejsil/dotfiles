@@ -11,33 +11,5 @@ xrandr --output HDMI-0 --mode 1920x1080 --right-of DP-0 \
 
 xrdb -merge "$XDG_CONFIG_HOME/xorg/resources"
 
-{
-#### Watches ####
-
-tsp sh -c 'generate depends xresources | entr -np generate xresources'
-tsp sh -c 'generate depends dunstrc | entr -np generate dunstrc'
-tsp sh -c 'generate depends kitty | entr -np generate kitty'
-tsp sh -c 'generate depends gtk_theme | entr -np generate gtk_theme'
-tsp sh -c '{
-    echo "$HOME/.config/bspwm/bspwmrc"
-    echo "$(which colors.sh)"
-} | entr -np bspc wm -r'
-tsp sh -c 'echo "$XDG_CONFIG_HOME/sxhkd/sxhkdrc" | entr -nr sxhkd -r /tmp/sxhkd.log'
-tsp sh -c 'echo "$XDG_CONFIG_HOME/dunst/dunstrc" | entr -nr dunst'
-tsp sh -c '{
-    echo "$(which lemonbar-maker)"
-    echo "$(which bar.sh)"
-    echo "$XDG_CONFIG_HOME/xorg/resources"
-} | entr -nr bar.sh'
-
-#### Daemons ####
-
-rm -r .mash
-TWITCH_TOKEN=$(pass show twitch-oath) tsp twitchbot.sh -c 'komarispaghetti' -n 'komarispaghetti'
-MASH_TOKEN=$(pass show discord-token) tsp mash start
-} &
-
-systemctl --user start user-graphical-login.target
-
 exec bspwm
 
