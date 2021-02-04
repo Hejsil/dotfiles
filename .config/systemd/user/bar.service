@@ -1,0 +1,4 @@
+[Service]
+ExecStart=/usr/bin/sh -c 'printf "%s\n%s\n%s\n" "$(which lemonbar-maker)" "$(which bar.sh)" "$XDG_CONFIG_HOME/xorg/resources" | entr -nr bar.sh'
+[Install]
+WantedBy=user-graphical-login.target

@@ -1,8 +1,5 @@
 [Unit]
-Description=Sync mail
-Conflicts=shutdown.target
+Conflicts/usr/bin/shutdown.target
 Requires=gpg-agent.service
-
 [Service]
-Environment=GNUPGHOME=%h/.config/gnupg
 ExecStart=/usr/bin/mbsync -Va -c '%h/.config/isync/mbsyncrc'

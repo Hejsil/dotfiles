@@ -1,0 +1,4 @@
+[Service]
+ExecStart=/usr/bin/sh -c 'generate depends kitty | entr -np generate kitty'
+[Install]
+WantedBy=user-graphical-login.target

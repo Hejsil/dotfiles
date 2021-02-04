@@ -1,0 +1,5 @@
+[Service]
+ExecStart=/usr/bin/sh -c 'rm -r .mash; MASH_TOKEN=$(pass show discord-token) mash start'
+Requires=gpg-agent.service
+[Install]
+WantedBy=user-graphical-login.target

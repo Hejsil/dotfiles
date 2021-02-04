@@ -1,0 +1,4 @@
+[Service]
+ExecStart=/usr/bin/sh -c 'generate depends xresources | entr -np generate xresources'
+[Install]
+WantedBy=user-graphical-login.target

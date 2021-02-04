@@ -23,3 +23,6 @@ bspc rule -a 'MEGAsync' -o hidden=on
 bspc rule -a 'Zathura' state=tiled
 bspc rule -a 'origin.exe' state=floating
 bspc rule -a 'window' state=floating sticky=on focus=on
+
+systemctl --user import-environment
+systemctl --user start user-graphical-login.target

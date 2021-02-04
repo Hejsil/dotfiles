@@ -1,8 +1,4 @@
-[Unit]
-Description=Redshift
-
 [Service]
 ExecStart=/usr/bin/redshift
-
 [Install]
 WantedBy=user-graphical-login.target

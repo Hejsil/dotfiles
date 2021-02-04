@@ -1,8 +1,4 @@
-[Unit]
-Description=Megasync
-
 [Service]
 ExecStart=/usr/bin/megasync
-
 [Install]
 WantedBy=user-graphical-login.target

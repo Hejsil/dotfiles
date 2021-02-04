@@ -1,5 +1,4 @@
 [Unit]
-Description=GnuPG private key agent
 IgnoreOnIsolate=true
 
 [Service]
@@ -12,5 +11,5 @@ ExecStop=/usr/bin/pkill gpg-agent
 Restart=on-abort
 
 [Install]
-WantedBy=default.target
+WantedBy=user-graphical-login.target
 

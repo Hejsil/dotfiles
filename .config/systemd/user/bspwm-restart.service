@@ -1,0 +1,4 @@
+[Service]
+ExecStart=/usr/bin/sh -c 'printf "%s\n%s\n"  "$HOME/.config/bspwm/bspwmrc" "$(which colors.sh)" | entr -np bspc wm -r'
+[Install]
+WantedBy=user-graphical-login.target

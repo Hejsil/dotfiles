@@ -1,0 +1,4 @@
+[Service]
+ExecStart=/usr/bin/sh -c 'echo "$XDG_CONFIG_HOME/sxhkd/sxhkdrc" | entr -nr sxhkd -r /tmp/sxhkd.log'
+[Install]
+WantedBy=user-graphical-login.target
