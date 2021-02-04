@@ -17,6 +17,7 @@ map global insert <pageup> '<a-;><c-b>'
 map global insert <pagedown> '<a-;><c-f>'
 
 map global normal "'" '<a-i>w*/<ret>'
+map global normal "z" ':w<ret>'
 
 # Fix bad mappings for Danish keyboards
 map global normal æ '<a-;>'
