@@ -42,7 +42,6 @@ alias ls='exa -a'
 alias ll='exa -al'
 
 alias cp='cp -i'
-alias sudo='doas --'
 
 alias d='delta'
 alias o='open'
