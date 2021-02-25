@@ -1,4 +1,4 @@
 [Unit]
 Conflicts/usr/bin/shutdown.target
 [Service]
-ExecStart=%h/.local/script/sfeed_download_images
+ExecStart=%h/.local/script/rss-download-images.sh

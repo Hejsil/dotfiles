@@ -28,8 +28,6 @@ export LESSHISTFILE="$XDG_DATA_HOME/less/history"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export TERMINFO="$XDG_DATA_HOME/terminfo"
 export _ZL_DATA="$XDG_DATA_HOME/zlua"
-export SFEED_URL_FILE="$XDG_DATA_HOME/sfeed/read"
-export sfeedpath="$XDG_DATA_HOME/sfeed/feeds"
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export GNUPGHOME="$XDG_CONFIG_HOME/gnupg"

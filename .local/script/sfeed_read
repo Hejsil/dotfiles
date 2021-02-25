@@ -1,6 +1,0 @@
-#!/bin/sh
-
-tab=$(printf '\t')
-sfeed_list |
-    awk -F"$tab" '{ printf "%-60s\t%-15s\t%s\t%s\n", substr($2, 0, 60), substr($7, 0, 15), $3, $8 }' |
-    fzf -m -d '\t' --with-nth=1,2 | cut -f3,4 | tr '\t' '\n' | xargs -d'\n' xargs tsp sfeed_open_read
