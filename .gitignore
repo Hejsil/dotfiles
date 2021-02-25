@@ -104,6 +104,7 @@
 .local/share/nvim/
 .local/share/recently-used.xbel
 .local/share/rustup/
+.local/share/sfeed/
 .local/share/template/
 .local/share/themes/
 .local/share/vulkan/
