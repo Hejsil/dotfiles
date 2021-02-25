@@ -1,4 +1,5 @@
 .config/Caprine
+.config/Electron/
 .config/GIMP
 .config/JetBrains/
 .config/QtProject.conf
@@ -16,6 +17,7 @@
 .config/dconf
 .config/desmume/
 .config/discord
+.config/docker/
 .config/dunst
 .config/filezilla/
 .config/git/credentials
