@@ -1,6 +1,6 @@
 #!/bin/sh
 
-sfeed_update "$HOME/.config/sfeed/sfeedrc"
+rss.sh
 
 download_dir="$HOME/downloads/images"
 mkdir -p "$download_dir"
@@ -8,8 +8,8 @@ tmp_template="$download_dir/XXXXXX"
 
 tab=$(printf '\t')
 a=$(printf '\a')
-sfeed_list | tr "$tab" "$a" | while IFS=$a read -r _ _ link desc _; do
-    case $link in
+rss-list.sh -u | tr "$tab" "$a" | while IFS=$a read -r file _ _ link desc _; do
+    case $file in
         *tag:konachan.*)
             curl -s "$link" |
                 grep -o 'href="[^"]*" id="highres"' |
@@ -22,23 +22,29 @@ sfeed_list | tr "$tab" "$a" | while IFS=$a read -r _ _ link desc _; do
             # shuushuu started using https only, but didn't update their rss feed...
             echo "https:${link#http:}"
             ;;
-        *www.reddit.com* | *pixiv.net*)
-            echo "$desc" | grep -oE '\w+:\/\/[-a-zA-Z0-9:@;?&=\/%\+\.\*!'"'"'\(\),\$_\{\}\^~`#|]+'
+        *) case $link in
+                *www.reddit.com*|*pixiv.net*)
+                    echo "$desc" | grep -oE '\w+:\/\/[-a-zA-Z0-9:@;?&=\/%\+\.\*!'"'"'\(\),\$_\{\}\^~`#|]+'
+                    ;;
+                *) ;;
+            esac
             ;;
-    esac | sed "s${tab}^${tab}${link}${a}${tab}"
-done | while IFS=$a read -r id link; do
+    esac | sed "s$tab^$tab$file$a$tab"
+done | while IFS=$a read -r file link; do
     tmp=$(mktemp "$tmp_template")
-    curl "$link" >"$tmp" || {
+    curl "$link" > "$tmp" || {
         rm "$tmp"
         continue
     }
 
-    echo "$id" | sfeed_markread read
+    mv "$file" "$HOME/.cache/rss/read"
     case $(file -b --mime-type "$tmp") in
         image/*) ;;
         *) rm "$tmp" ;;
     esac
 done
 
-find "$download_dir" -maxdepth 1 -type f -exec identify -format "%w %d/%f\n" {} + |
-    awk '$1 < 2560' | cut -d' ' -f2- | xargs -d'\n' rm || true
+find "$download_dir" -maxdepth 1 -type f |
+    xargs -d'\n' identify -format "%w %d/%f\n" | awk '$1 < 2560' |
+    cut -d' ' -f2- | xargs -d'\n' rm || true
+

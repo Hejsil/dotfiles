@@ -6,8 +6,8 @@ for ARG in "$@"; do
     other=$(opener.sh "$ARG")
     if [ "$other" != "$opener" ]; then
         echo "Some args require different programs" >&2
-        echo "> $opener '$arg1'" >&2
-        echo "> $other '$ARG'" >&2
+        echo "> $opener $arg1" >&2
+        echo "> $other $ARG" >&2
         exit 1
     fi
 done

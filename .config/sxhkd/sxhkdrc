@@ -10,7 +10,7 @@ super + g
     $WINDOW -e launch-steam-game.sh
 
 super + r
-    $WINDOW -e sfeed_read
+    $WINDOW -e rss-read.sh
 
 super + c
     $WINDOW -e icalc
@@ -22,7 +22,7 @@ super + b
     $WINDOW -e book
 
 super + shift + r
-    sfeed_open_all_in_browser
+    rss-open-all-in-browser.sh
 
 super + m
     $TERMINAL -e aerc

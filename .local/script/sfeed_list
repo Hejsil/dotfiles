@@ -1,4 +1,0 @@
-#!/bin/sh
-
-find "$sfeedpath" -type f -exec cat {} + |
-    rg -Fwv -f "$SFEED_URL_FILE"
