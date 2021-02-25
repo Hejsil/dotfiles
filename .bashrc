@@ -24,7 +24,7 @@ gst() { (
     source deps/env.sh
     source dddq_environment.sh
     RUST_BACKTRACE=1 GST_PLUGIN_PATH="$(pwd)/target/debug:$GST_PLUGIN_PATH" GST_DEBUG_DUMP_DOT_DIR=dot "$@"
-) }
+); }
 
 alias ..='__cd_alias ..'
 alias ...='__cd_alias ../..'
@@ -57,7 +57,7 @@ alias ga='git add'
 alias gap='git add --patch'
 alias gb='git branch --all'
 alias gc='git commit'
-alias gcl='git clone'
+alias gcl='git clone --recursive'
 alias gco='git checkout'
 alias gd='git diff'
 alias gds='git diff --staged'
@@ -70,4 +70,3 @@ alias gr='git rebase'
 alias grc='git rebase --continue'
 alias gs='git status'
 alias gsh='git stash'
-
