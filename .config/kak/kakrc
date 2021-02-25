@@ -39,11 +39,16 @@ hook global InsertCompletionShow .* %{ map window insert <tab> <c-n> }
 hook global InsertCompletionHide .* %{ map window insert <tab> <tab> }
 
 # lsp hooks
-hook global WinSetOption filetype=(rust|zig) %{
-    lsp-enable-window
-    # lsp-auto-signature-help-enable
-    hook window BufWritePre .* lsp-formatting-sync
-}
+hook global WinSetOption filetype=(rust|zig) %{ lsp-enable-window }
+
+# formatter hooks
+hook global BufWritePre .* %{ try format catch %{} }
+hook global WinSetOption filetype=git-commit %{ set-option window formatcmd 'par "72rTbgqR" "B=.,?_A_a" "Q=_s>q|"' }
+hook global WinSetOption filetype=json       %{ set-option window formatcmd "jq --indent %opt{tabstop} ." }
+hook global WinSetOption filetype=python     %{ set-option window formatcmd 'yapf' }
+hook global WinSetOption filetype=rust       %{ set-option window formatcmd 'rustfmt' }
+hook global WinSetOption filetype=sh         %{ set-option window formatcmd "shfmt -i %opt{tabstop} -s -ci" }
+hook global WinSetOption filetype=zig        %{ set-option window formatcmd 'zig-fix' }
 
 def -hidden insert-c-n %{
     try %{
