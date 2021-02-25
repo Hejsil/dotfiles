@@ -1,0 +1,8 @@
+#!/bin/sh
+
+tab=$(printf '\t')
+sfeed_list |
+    while IFS=$tab read -r _ _ link _ _ _ _ enclosure _; do
+        printf '%s\t%s\t%s\n' "$(opener.sh "$link")" "$link" "$enclosure"
+    done | grep "^$BROWSER" | head -n 50 | cut -f2,3 | tr '\t' '\n' |
+    xargs -d'\n' xargs tsp sfeed_open_read
