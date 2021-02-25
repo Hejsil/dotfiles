@@ -1,6 +1,5 @@
 #!/bin/sh
 
-proc=$$
 channel=$1
 chat_dir=$2
 chat_file="$chat_dir/$channel"
@@ -18,7 +17,8 @@ trainer_parties=$(printf "%s" "$in" | rg '\.trainers\[\d*\]\.party\[\d*\]')
 find_in() {
     str=$1
     regex=$2
-    shift; shift
+    shift
+    shift
     printf "%s" "$str" 2>/dev/null | tr -d ' ' 2>/dev/null | rg -i "^$regex$" -r '$1'
 }
 
@@ -194,18 +194,16 @@ mkdir -p "$chat_dir"
 touch "$chat_file"
 
 tail -n 0 -f "$chat_file" | rg --line-buffered -o '<([\w\d_-]*)>\s*(.*)' -r '$1 $2' |
-while read user msg; do
-    formatted_msg=$(printf "%s" "$msg" | fmt -w 38 | sd '\n' '\\n' | sd '\\n$' '')
-    name=$(printf "%s" "$names" | shuf -n 1)
-    description=$(printf "%s" "$descriptions" | shuf -n 1)
+    while read user msg; do
+        formatted_msg=$(printf "%s" "$msg" | fmt -w 38 | sd '\n' '\\n' | sd '\\n$' '')
+        name=$(printf "%s" "$names" | shuf -n 1)
+        description=$(printf "%s" "$descriptions" | shuf -n 1)
 
-    printf "%s -> %s\n" "$(printf "%s" "$name" | rg '.*=(.*)' -r '$1')" "$user" >&2
-    printf "%s -> %s" "$(printf "%s" "$description" | rg '.*=(.*)' -r '$1')" "$formatted_msg" >&2
-    printf "%s\n" "$name" | sd '=.*' "=$user"
-    printf "%s\n" "$description" | sd '=.*' "=$formatted_msg"
-done
-
-
+        printf "%s -> %s\n" "$(printf "%s" "$name" | rg '.*=(.*)' -r '$1')" "$user" >&2
+        printf "%s -> %s" "$(printf "%s" "$description" | rg '.*=(.*)' -r '$1')" "$formatted_msg" >&2
+        printf "%s\n" "$name" | sd '=.*' "=$user"
+        printf "%s\n" "$description" | sd '=.*' "=$formatted_msg"
+    done
 
 # tail -n 0 -f "$chat_file" | rg --line-buffered -o '<([\w\d_-]*)>\s*!mod (.*)' -r '$1 $2' |
 # while read user a1 a2 a3 a4 a5 a6 a7 a8 a9; do
@@ -248,4 +246,3 @@ done
 #         exit 0
 #     fi
 # done
-
