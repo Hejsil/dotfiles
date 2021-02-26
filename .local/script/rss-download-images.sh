@@ -9,8 +9,8 @@ tmp_template="$download_dir/XXXXXX"
 tab=$(printf '\t')
 a=$(printf '\a')
 rss-list.sh -u | tr "$tab" "$a" | while IFS=$a read -r file _ _ link desc _; do
-    case $file in
-        *tag:konachan.*)
+    case $link in
+        *konachan.net*)
             curl -s "$link" |
                 grep -o 'href="[^"]*" id="highres"' |
                 cut -d'"' -f2
@@ -22,17 +22,13 @@ rss-list.sh -u | tr "$tab" "$a" | while IFS=$a read -r file _ _ link desc _; do
             # shuushuu started using https only, but didn't update their rss feed...
             echo "https:${link#http:}"
             ;;
-        *) case $link in
-                *www.reddit.com*|*pixiv.net*)
-                    echo "$desc" | grep -oE '\w+:\/\/[-a-zA-Z0-9:@;?&=\/%\+\.\*!'"'"'\(\),\$_\{\}\^~`#|]+'
-                    ;;
-                *) ;;
-            esac
+        *www.reddit.com* | *pixiv.net*)
+            echo "$desc" | grep -oE '\w+:\/\/[-a-zA-Z0-9:@;?&=\/%\+\.\*!'"'"'\(\),\$_\{\}\^~`#|]+'
             ;;
     esac | sed "s$tab^$tab$file$a$tab"
 done | while IFS=$a read -r file link; do
     tmp=$(mktemp "$tmp_template")
-    curl "$link" > "$tmp" || {
+    curl "$link" >"$tmp" || {
         rm "$tmp"
         continue
     }
@@ -47,4 +43,3 @@ done
 find "$download_dir" -maxdepth 1 -type f |
     xargs -d'\n' identify -format "%w %d/%f\n" | awk '$1 < 2560' |
     cut -d' ' -f2- | xargs -d'\n' rm || true
-
