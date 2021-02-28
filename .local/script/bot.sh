@@ -34,11 +34,11 @@ download() {
     esac
 
     IFS=$(printf '\a')
-    template="$folder/$download_folder/%(title)s %(id)s ($format)"
+    template="$folder/$download_folder/%(title)s [%(creator)s] %(id)s ($format)"
     youtube-dl -i -f "$format" -o "${template}${IFS}%(id)s${IFS}%(license)s${IFS}%(title)s" --get-filename "$link" |
         while read -r file_name id license title; do
             if [ "${license#*Creative Commons}" == "$license" ]; then
-                notify-send "Invalid license!" "$(printf 'user: %s\ntitle: %s\nlicense: %s' \
+                notify-send "Invalid license!" "$(printf '%s\n%s\n%s\n' \
                     "$user" "$title" "$license")"
                 continue
             fi
@@ -47,7 +47,7 @@ download() {
                 youtube-dl -i -f "$format" -o "$template" "$id" >&2
             fi
             printf '%s\n' "$file_name"
-            notify-send "Song queued" "$(printf 'user: %s\ntitle: %s\n' \
+            notify-send "Song queued" "$(printf '%s\n%s\n' \
                 "$user" "$title")"
         done
 
@@ -84,7 +84,7 @@ while ! printf '' | socat -u "$mpv_socket" - 2>/dev/null; do :; done |
         printf '%s\n' "$file_name" >"$playing"
         printf '{ "command": ["loadfile", "%s"] }\n' "$file_name" |
             socat -u - "$mpv_socket"
-        title=$(basename "$file_name" | rg '^(.*) \w+ \(\w+\)$' -r '$1')
+        title=$(basename "$file_name" | rg '^(.*) \[(.+)\] [^ ]+ \(\w+\)$' -r "$(printf '$1\n$2')")
         notify-send "Now playing" "$title"
     done
 
