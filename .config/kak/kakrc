@@ -39,14 +39,23 @@ hook global InsertCompletionShow .* %{ map window insert <tab> <c-n> }
 hook global InsertCompletionHide .* %{ map window insert <tab> <tab> }
 
 # lsp hooks
-hook global WinSetOption filetype=(rust|zig) %{ lsp-enable-window }
+hook global WinSetOption filetype=zig %{ lsp-enable-window }
+hook global WinSetOption filetype=rust %{
+    lsp-enable-window
+    hook window -group semantic-tokens BufReload .* lsp-semantic-tokens
+    hook window -group semantic-tokens NormalIdle .* lsp-semantic-tokens
+    hook window -group semantic-tokens InsertIdle .* lsp-semantic-tokens
+    hook -once -always window WinSetOption filetype=.* %{
+        remove-hooks window semantic-tokens
+    }
+}
 
 # formatter hooks
 hook global BufWritePre .* %{ try format catch %{} }
 hook global WinSetOption filetype=git-commit %{ set-option window formatcmd 'par "72rTbgqR" "B=.,?_A_a" "Q=_s>q|"' }
 hook global WinSetOption filetype=json       %{ set-option window formatcmd "jq --indent %opt{tabstop} ." }
 hook global WinSetOption filetype=python     %{ set-option window formatcmd 'yapf' }
-hook global WinSetOption filetype=rust       %{ set-option window formatcmd 'rustfmt' }
+hook global WinSetOption filetype=rust       %{ set-option window formatcmd 'rustfmt --edition 2018' }
 hook global WinSetOption filetype=sh         %{ set-option window formatcmd "shfmt -i %opt{tabstop} -s -ci" }
 hook global WinSetOption filetype=zig        %{ set-option window formatcmd 'zig-fix' }
 
@@ -76,7 +85,7 @@ face global module yellow+b
 face global builtin yellow+b
 face global comment bright-black+i
 face global documentation comment
-
+face global InlayHint bright-black+i
 
 # For markup
 face global title blue
