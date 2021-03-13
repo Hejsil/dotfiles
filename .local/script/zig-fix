@@ -35,6 +35,6 @@ zig fmt "$1" >/dev/null
 
 # Global constant groups
 {
-    grep -n '^const.*;$' "$1" | cut -d: -f1 | ranges | sed 's/$/!sort/'
+    grep -E -n '^(pub\s+)?const.*;$' "$1" | cut -d: -f1 | ranges | sed 's/$/!sort/'
     echo 'x'
 } | ex -s "$1"
