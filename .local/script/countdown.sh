@@ -30,16 +30,15 @@ cols=$(tput cols)
 
 seq "$time" -1 0 | delay-line 1s |
     stdbuf -o L nawk '{printf "%.2d:%.2d\n", $1/60, $1%60}' |
-while read -r fmt_time; do
-    {
-        tput cup 1 $(( (cols - msg_len) / 2 + 1 )) 
-        printf %s "$msg"
+    while read -r fmt_time; do
+        {
+            tput cup 1 $(((cols - msg_len) / 2 + 1))
+            printf %s "$msg"
 
-        tput cup 2 $(( (cols - time_len) / 2 + 1 ))
-        printf %s "$fmt_time"
-    } | lolcat -S 100
-    tput civis
-done
+            tput cup 2 $(((cols - time_len) / 2 + 1))
+            printf %s "$fmt_time"
+        } | lolcat -S 100
+        tput civis
+    done
 
 read -r _
-

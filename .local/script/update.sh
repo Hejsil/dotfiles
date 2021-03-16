@@ -2,4 +2,3 @@
 
 paru -Syu --noconfirm
 paru -c --noconfirm
-

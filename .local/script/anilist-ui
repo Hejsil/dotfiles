@@ -15,15 +15,18 @@ command=$1
 while true; do
     picks=$(mktemp)
     case $command in
-        database) anilist database | fzf2 | cut -f5,6 > "$picks" ;;
-        list) anilist list | fzf2 --tabstop 4 | cut -f5,6 > "$picks" ;;
+        database) anilist database | fzf2 | cut -f5,6 >"$picks" ;;
+        list) anilist list | fzf2 --tabstop 4 | cut -f5,6 >"$picks" ;;
         *)
             wait
             rm "$picks"
             exit 0
             ;;
     esac
-    [ -s "$picks" ] || { rm "$picks"; break; }
+    [ -s "$picks" ] || {
+        rm "$picks"
+        break
+    }
 
     while true; do
         choice=$(printf '
@@ -41,16 +44,17 @@ view
         case $choice in
             view) cut -f2 "$picks" | xargs -d '\n' tsp "$BROWSER" ;;
 
-            torrent) cut -f1 "$picks" |
-                sed -e 's/ /+/g' -e 's#^#https://nyaa.si/?q=#' |
-                xargs -d '\n' tsp "$BROWSER"
-            ;;
-            complete|drop|plan_to_watch|put_on_hold|start_watching|update|remove|watch_episode)
-                cut -f2 "$picks" | xargs -d'\n' anilist "$choice" 2>/tmp/dump ;;
+            torrent)
+                cut -f1 "$picks" |
+                    sed -e 's/ /+/g' -e 's#^#https://nyaa.si/?q=#' |
+                    xargs -d '\n' tsp "$BROWSER"
+                ;;
+            complete | drop | plan_to_watch | put_on_hold | start_watching | update | remove | watch_episode)
+                cut -f2 "$picks" | xargs -d'\n' anilist "$choice" 2>/tmp/dump
+                ;;
             *) break ;;
         esac
     done
 
-    rm "$picks";
+    rm "$picks"
 done
-

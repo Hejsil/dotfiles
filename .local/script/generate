@@ -11,14 +11,14 @@ gtk_template="$template_dir/$GTK_THEME"
 
 case $1 in
     xresources)
-        base16.sh "$colors" "$template_dir/.Xresources" > "$xresources"
+        base16.sh "$colors" "$template_dir/.Xresources" >"$xresources"
         xrdb -merge "$xresources"
         ;;
     dunstrc)
-        base16.sh "$colors" "$template_dir/dunstrc" > "$dunstrc"
+        base16.sh "$colors" "$template_dir/dunstrc" >"$dunstrc"
         ;;
     kitty)
-        base16.sh "$colors" "$template_dir/kitty.conf" > "$kittyrc"
+        base16.sh "$colors" "$template_dir/kitty.conf" >"$kittyrc"
         ;;
     gtk_theme)
         mkdir -p "$HOME/.themes/"
@@ -26,9 +26,9 @@ case $1 in
 
         rg -aFl '{{base' "$gtk_template" |
             sd -s "$gtk_template/" '' |
-        while read -r file; do
-            base16.sh "$colors" "$gtk_template/$file" > "$gtk_theme/$file"
-        done
+            while read -r file; do
+                base16.sh "$colors" "$gtk_template/$file" >"$gtk_theme/$file"
+            done
         gtkrc-reload
         ;;
     depends)
@@ -44,4 +44,3 @@ case $1 in
         esac
         ;;
 esac
-

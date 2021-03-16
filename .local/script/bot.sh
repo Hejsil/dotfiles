@@ -37,7 +37,7 @@ download() {
     template="$folder/$download_folder/%(title)s [%(creator)s] %(id)s ($format)"
     youtube-dl -i -f "$format" -o "${template}${IFS}%(id)s${IFS}%(license)s${IFS}%(title)s" --get-filename "$link" |
         while read -r file_name id license title; do
-            if [ "${license#*Creative Commons}" == "$license" ]; then
+            if [ "${license#*Creative Commons}" = "$license" ]; then
                 notify-send "Invalid license!" "$(printf '%s\n%s\n%s\n' \
                     "$user" "$title" "$license")"
                 continue

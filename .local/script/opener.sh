@@ -5,10 +5,10 @@ if [ -f "$1" ]; then
     case $mine in
         application/pdf) echo "$READER" ;;
         application/x-bittorrent) echo 'tra.sh' ;;
-        inode/x-empty|application/json|text*) echo "$EDITOR" ;;
+        inode/x-empty | application/json | text*) echo "$EDITOR" ;;
         image/*) echo 'sxiv -a' ;;
         video/*) echo 'mpv' ;;
-        audio/*) echo 'mpv --vid=no'  ;;
+        audio/*) echo 'mpv --vid=no' ;;
         *)
             echo "No match" >&2
             exit 1
@@ -17,10 +17,10 @@ if [ -f "$1" ]; then
 else
     case $1 in
         '') echo "$EDITOR" ;;
-        *youtube*watch*|*youtube*playlist*|*youtu.be*|*.mp3|*.mp3"?"*|*.mp4|*.mp4"?"*|*.webm|*.webm"?"*)
+        *youtube*watch* | *youtube*playlist* | *youtu.be* | *.mp3 | *.mp3"?"* | *.mp4 | *.mp4"?"* | *.webm | *.webm"?"*)
             echo 'mpv'
-        ;;
-        http*|www*) echo "$BROWSER" ;;
+            ;;
+        http* | www*) echo "$BROWSER" ;;
         magnet:*) echo 'tra.sh' ;;
         *:*)
             echo "${1%%:*}"
@@ -31,4 +31,3 @@ else
             ;;
     esac
 fi
-
