@@ -1,6 +1,5 @@
 #!/bin/sh
 
-
 dash='https://dashboard.twitch.tv/popout/u/komarispaghetti/stream-manager'
 class='Chromium'
 dash_class_prefix='dashboard.twitch.tv'
@@ -24,7 +23,6 @@ bspc rule -a "${class}:${dashpop_class_prefix}_reward-queue" -o node=@/2/2/1/2
 bspc rule -a "${class}:${dashpop_class_prefix}_quick-actions" -o node=@/2/2/2/1
 bspc rule -a "${class}:${dashpop_class_prefix}_edit-stream-info" -o node=@/2/2/2/2
 
-
 chromium "--app=https://dashboard.twitch.tv/u/komarispaghetti/stream-manager" &
 chromium "--app=$dash/quick-actions" &
 chromium "--app=$dash/activity-feed" &
@@ -33,4 +31,3 @@ chromium "--app=$dash/reward-queue" &
 tor-browser --allow-remote &
 
 wait
-

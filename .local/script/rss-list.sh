@@ -7,11 +7,16 @@ usage() {
 
 while [ -n "$1" ]; do
     case $1 in
-        --) shift; break ;;
-        -r|--read) read='read' ;;
-        -u|--unread) unread='unread' ;;
-        -h|--help) usage; exit 0 ;;
-        -*) usage; exit 1 ;;
+        -r | --read) read='read' ;;
+        -u | --unread) unread='unread' ;;
+        -h | --help)
+            usage
+            exit 0
+            ;;
+        -*)
+            usage
+            exit 1
+            ;;
         *) break ;;
     esac
     shift

@@ -2,4 +2,3 @@
 echo "" | fzf -d ':' --ansi \
     --bind "change:reload(rg $@ --hidden --line-number {q} || true)" \
     --preview 'bat --style=numbers --pager=never --color=always --line-range={2}: --highlight-line={2} {1}'
-

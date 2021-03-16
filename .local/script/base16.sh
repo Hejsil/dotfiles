@@ -10,12 +10,12 @@ fi
 
 # If no template was given, read it from stdin
 if [ -z "$template" ]; then
-    template_CONTENT=$(cat)
-    template=$(mktemp "/tmp/template.XXXXXX")
-    echo "$template_CONTENT" >"$template"
+    template_content=$(cat)
+    template=$(mktemp)
+    echo "$template_content" >"$template"
 fi
 
-<"$scheme" sed -e '/^#/d' -e 's/^COLOR//' | awk --non-decimal-data -F'=' '{
+sed -e '/^#/d' -e 's/^COLOR//' <"$scheme" | nawk -F'=' '{
     R = substr($2, 1, 2)
     G = substr($2, 3, 2)
     B = substr($2, 5, 2)

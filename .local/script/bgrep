@@ -1,6 +1,6 @@
 #!/bin/sh
 pattern=$1
-shift;
+shift
 
 endian='l'
 signed='u'
@@ -8,13 +8,13 @@ size=8
 
 for i in $(echo "$pattern" | tr ' ' '\n'); do
     case $i in
-        lu*|bu*|li*|bi*)
+        lu* | bu* | li* | bi*)
             endian="$(echo "$i" | cut -b1)"
             signed="$(echo "$i" | cut -b2)"
             size="$(echo "$i" | cut -b3-)"
             ;;
         *)
-            printf "%0$((size/4))x\n" "$i" | fold -w2 | case $endian in
+            printf "%0$((size / 4))x\n" "$i" | fold -w2 | case $endian in
                 l) tac ;;
                 b) cat ;;
             esac | sed -e 's/^/\\\\x/' | tr -d '\n'
@@ -22,4 +22,3 @@ for i in $(echo "$pattern" | tr ' ' '\n'); do
     esac
 done | xargs -I% rg --no-heading --no-line-number --only-matching \
     --case-sensitive --multiline --text --byte-offset '(?-u)%' $@
-

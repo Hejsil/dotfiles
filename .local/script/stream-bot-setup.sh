@@ -18,4 +18,3 @@ st -e twitchbot-open-links.sh komarispaghetti 'tor-browser --allow-remote' \
 st -e tail -f '/tmp/twitch/komarispaghetti' &
 
 wait
-

@@ -12,4 +12,3 @@ tail -n 0 -f "$chat_file" |
     rg --line-buffered -o -v "^($channel\.)?tmi.twitch.tv:" |
     rg --line-buffered -o '((https?://)|(www\.))(\w*\.)+(\w+)(/[^\s]*)?' |
     xargs -d'\n' -n 1 $browser
-

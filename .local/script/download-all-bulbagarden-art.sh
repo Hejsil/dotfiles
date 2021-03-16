@@ -5,4 +5,3 @@ curl 'https://archives.bulbagarden.net/wiki/Category:Game_artwork' |
     xargs -d '\n' curl |
     rg '<img\s+alt="[^"]*"\s+src="([^"]+)/thumb/([^"]+)/[^/"]*"' -o -r 'https:$1/$2' |
     xargs -d '\n' curl --remote-name-all
-

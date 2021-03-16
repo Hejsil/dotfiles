@@ -3,24 +3,20 @@
 chat_dir='/tmp/twitch'
 while [ -n "$1" ]; do
     case $1 in
-    --)
-        shift
-        break
-        ;;
-    -c | --channel)
-        shift
-        channel=$1
-        ;;
-    -n | --nick)
-        shift
-        nick=$1
-        ;;
-    -d | --dir)
-        shift
-        chat_dir=$1
-        ;;
-    -*) exit 1 ;;
-    *) break ;;
+        -c | --channel)
+            shift
+            channel=$1
+            ;;
+        -n | --nick)
+            shift
+            nick=$1
+            ;;
+        -d | --dir)
+            shift
+            chat_dir=$1
+            ;;
+        -*) exit 1 ;;
+        *) break ;;
     esac
     shift
 done
