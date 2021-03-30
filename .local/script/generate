@@ -11,13 +11,16 @@ gtk_template="$template_dir/$GTK_THEME"
 
 case $1 in
     xresources)
+        mkdir -p "$(dirname "$xresources")"
         base16.sh "$colors" "$template_dir/.Xresources" >"$xresources"
         xrdb -merge "$xresources"
         ;;
     dunstrc)
+        mkdir -p "$(dirname "$dunstrc")"
         base16.sh "$colors" "$template_dir/dunstrc" >"$dunstrc"
         ;;
     kitty)
+        mkdir -p "$(dirname "$kittyrc")"
         base16.sh "$colors" "$template_dir/kitty.conf" >"$kittyrc"
         ;;
     gtk_theme)
