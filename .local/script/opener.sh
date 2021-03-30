@@ -17,7 +17,7 @@ if [ -f "$1" ]; then
 else
     case $1 in
         '') echo "$EDITOR" ;;
-        *youtube*watch* | *youtube*playlist* | *youtu.be* | *.mp3 | *.mp3"?"* | *.mp4 | *.mp4"?"* | *.webm | *.webm"?"*)
+        *youtube*watch* | *youtube*playlist* | *youtu.be* | *odysee.com* | *.mp3 | *.mp3"?"* | *.mp4 | *.mp4"?"* | *.webm | *.webm"?"*)
             echo 'mpv'
             ;;
         http* | www*) echo "$BROWSER" ;;
