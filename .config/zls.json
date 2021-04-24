@@ -1,6 +1,7 @@
 {
     "build_runner_path": "/home/hejsil/.local/share/zls/build_runner.zig",
     "enable_snippets": false,
+    "zig_exe_path": "/usr/bin/zig",
     "zig_lib_path": "/usr/lib/zig",
     "warn_style": false,
     "operator_completions": false
