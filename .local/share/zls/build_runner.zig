@@ -1,28 +1,27 @@
-const root = @import("build.zig");
-const std = @import("std");
-const io = std.io;
-const fmt = std.fmt;
+const ArrayList = std.ArrayList;
 const Builder = std.build.Builder;
-const Pkg = std.build.Pkg;
 const InstallArtifactStep = std.build.InstallArtifactStep;
 const LibExeObjStep = std.build.LibExeObjStep;
-const ArrayList = std.ArrayList;
+const Pkg = std.build.Pkg;
+const fmt = std.fmt;
+const io = std.io;
+const root = @import("@build@");
+const std = @import("std");
 
 ///! This is a modified build runner to extract information out of build.zig
 ///! Modified from the std.special.build_runner
-
 pub fn main() !void {
     var arena = std.heap.ArenaAllocator.init(std.heap.page_allocator);
     defer arena.deinit();
 
     const allocator = &arena.allocator;
 
-    const builder = try Builder.create(allocator, "", "", "");
+    const builder = try Builder.create(allocator, "", "", "", "");
     defer builder.destroy();
 
     try runBuild(builder);
 
-    const stdout_stream = io.getStdOut().outStream();
+    const stdout_stream = io.getStdOut().writer();
 
     // TODO: We currently add packages from every LibExeObj step that the install step depends on.
     //       Should we error out or keep one step or something similar?
@@ -51,7 +50,7 @@ fn processStep(stdout_stream: anytype, step: *std.build.Step) anyerror!void {
 }
 
 fn processPackage(out_stream: anytype, pkg: Pkg) anyerror!void {
-    try out_stream.print("{}\x00{}\n", .{ pkg.name, pkg.path });
+    try out_stream.print("{s}\x00{s}\n", .{ pkg.name, pkg.path });
     if (pkg.dependencies) |dependencies| {
         for (dependencies) |dep| {
             try processPackage(out_stream, dep);
