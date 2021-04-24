@@ -39,7 +39,3 @@ done | while IFS=$a read -r file link; do
         *) rm "$tmp" ;;
     esac
 done
-
-find "$download_dir" -maxdepth 1 -type f |
-    xargs -d'\n' identify -format "%w %d/%f\n" | awk '$1 < 2560' |
-    cut -d' ' -f2- | xargs -d'\n' rm || true
