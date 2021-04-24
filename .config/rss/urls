@@ -2,9 +2,7 @@
 http://n-gate.com/index.rss
 https://andrewkelley.me/rss.xml
 https://buttondown.email/ZigSHOWTIME/rss
-https://e-shuushuu.net/index.rss
 https://hnrss.org/frontpage
-https://konachan.net/post/atom
 https://lbryfeed.melroy.org/channel/odysee/@AlphaNerd:8
 https://lbryfeed.melroy.org/channel/odysee/@BrodieRobertson:5
 https://lbryfeed.melroy.org/channel/odysee/@DenshiVideo:f
@@ -13,13 +11,6 @@ https://lbryfeed.melroy.org/channel/odysee/@UpperEchelonGamers:3
 https://lbryfeed.melroy.org/channel/odysee/@censiCLICK:3
 https://lbryfeed.melroy.org/channel/odysee/@veritasium:f
 https://lbryfeed.melroy.org/channel/odysee/Luke:7
-https://rakuen.thec.me/PixivRss/daily-20
-https://rakuen.thec.me/PixivRss/female-20
-https://rakuen.thec.me/PixivRss/male-20
-https://rakuen.thec.me/PixivRss/monthly-20
-https://rakuen.thec.me/PixivRss/original-20
-https://rakuen.thec.me/PixivRss/rookie-20
-https://rakuen.thec.me/PixivRss/weekly-20
 https://rsshub.app/github/trending/weekly
 https://rsshub.app/github/trending/weekly/c
 https://rsshub.app/github/trending/weekly/c++
@@ -28,8 +19,25 @@ https://rsshub.app/github/trending/weekly/lua
 https://rsshub.app/github/trending/weekly/nim
 https://rsshub.app/github/trending/weekly/rust
 https://rsshub.app/github/trending/weekly/zig
+https://rsshub.app/pixiv/user/
+https://rsshub.app/pixiv/user/103410
+https://rsshub.app/pixiv/user/10480119
+https://rsshub.app/pixiv/user/14225654
+https://rsshub.app/pixiv/user/1465280
+https://rsshub.app/pixiv/user/14910447
+https://rsshub.app/pixiv/user/2012188
 https://rsshub.app/pixiv/user/2131660	ogipote
-https://www.sakugabooru.com/post/atom
+https://rsshub.app/pixiv/user/2312019
+https://rsshub.app/pixiv/user/26410504
+https://rsshub.app/pixiv/user/306422
+https://rsshub.app/pixiv/user/33108487
+https://rsshub.app/pixiv/user/37307335
+https://rsshub.app/pixiv/user/40163021
+https://rsshub.app/pixiv/user/643512
+https://rsshub.app/pixiv/user/7618326
+https://rsshub.app/pixiv/user/7808
+https://rsshub.app/pixiv/user/801146
+https://rsshub.app/pixiv/user/9212166
 https://www.youtube.com/feeds/videos.xml?channel_id=UC-9b7aDP6ZN0coj9-xFnrtw	Astrum
 https://www.youtube.com/feeds/videos.xml?channel_id=UC0uxybw4_TMM_Wnl1PFJq6w	라면 RAMYEON POE
 https://www.youtube.com/feeds/videos.xml?channel_id=UC1SoHjGhDqK6h980sYsXjhg	sirgog
@@ -50,6 +58,7 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCC2m_Y8aa4ZsTMY0no8kY9w	OMG
 https://www.youtube.com/feeds/videos.xml?channel_id=UCCuoqzrsHlwv1YyPKLuMDUQ	Jonathan Blow
 https://www.youtube.com/feeds/videos.xml?channel_id=UCD6VugMZKRhSyzWEWA9W2fg	SsethTzeentach
 https://www.youtube.com/feeds/videos.xml?channel_id=UCE1jXbVAGJQEORz9nZqb5bQ	Ahoy
+https://www.youtube.com/feeds/videos.xml?channel_id=UCEwhtpXrg5MmwlH04ANpL8A	SimonDev
 https://www.youtube.com/feeds/videos.xml?channel_id=UCGSGPehp0RWfca-kENgBJ9Q	Jreg
 https://www.youtube.com/feeds/videos.xml?channel_id=UCJm8Zrooq9qsgefMlVRtzRg	DistantKingdom
 https://www.youtube.com/feeds/videos.xml?channel_id=UCK8XIGR5kRidIw2fWqwyHRA	Reducible
