@@ -7,7 +7,7 @@ shopt -s histappend
 
 __cd_alias() {
     z "$@" || return
-    timeout -k 0 0.1s exa -a
+    timeout -k 0 0.1s exa
 }
 
 __ccd_alias() {
@@ -57,8 +57,9 @@ alias ga='git add'
 alias gap='git add --patch'
 alias gb='git branch --all'
 alias gc='git commit'
-alias gcn='git commit --no-verify'
+alias gca='git commit --amend'
 alias gcl='git clone --recursive'
+alias gcn='git commit --no-verify'
 alias gco='git checkout'
 alias gd='git diff'
 alias gds='git diff --staged'
