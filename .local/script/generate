@@ -32,7 +32,6 @@ case $1 in
             while read -r file; do
                 base16.sh "$colors" "$gtk_template/$file" >"$gtk_theme/$file"
             done
-        gtkrc-reload
         ;;
     depends)
         printf "%s\n%s\n%s\n" \

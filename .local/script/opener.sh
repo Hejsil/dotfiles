@@ -20,7 +20,7 @@ else
         *youtube*watch* | *youtube*playlist* | *youtu.be* | *odysee.com* | *.mp3 | *.mp3"?"* | *.mp4 | *.mp4"?"* | *.webm | *.webm"?"*)
             echo 'mpv'
             ;;
-        http* | www*) echo "$BROWSER" ;;
+        file:* | https:* | http:* | www:*) echo "$BROWSER" ;;
         magnet:*) echo 'tra.sh' ;;
         *:*)
             echo "${1%%:*}"
