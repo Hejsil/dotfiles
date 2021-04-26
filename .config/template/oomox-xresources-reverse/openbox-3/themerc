@@ -20,7 +20,7 @@ menu.items.text.color: #{{base05-hex}}
 menu.items.disabled.text.color: #aaaaaa
 
 menu.items.active.bg: Solid Flat
-menu.items.active.bg.color: #{{base0A-hex}}
+menu.items.active.bg.color: #{{base02-hex}}
 menu.items.active.text.color: #{{base05-hex}}
 
 menu.separator.color: #aaaaaa
@@ -54,8 +54,8 @@ window.active.button.unpressed.bg.color: #{{base00-hex}}
 window.active.button.unpressed.image.color: #{{base05-hex}}
 
 window.active.button.pressed.bg: flat solid
-window.active.button.pressed.bg.color: #{{base0A-hex}}
-window.active.button.pressed.image.color: #{{base00-hex}}
+window.active.button.pressed.bg.color: #{{base02-hex}}
+window.active.button.pressed.image.color: #{{base05-hex}}
 
 window.active.button.disabled.bg: flat solid
 window.active.button.disabled.bg.color: #{{base00-hex}}
@@ -63,10 +63,10 @@ window.active.button.disabled.image.color: #aaaaaa
 
 window.active.button.hover.bg: flat solid
 window.active.button.hover.bg.color: #{{base00-hex}}
-window.active.button.hover.image.color: #{{base0A-hex}}
+window.active.button.hover.image.color: #{{base02-hex}}
 
-#window.active.button.toggled.bg: #{{base0A-hex}}
-#window.active.button.toggled.image.color: #{{base00-hex}}
+#window.active.button.toggled.bg: #{{base02-hex}}
+#window.active.button.toggled.image.color: #{{base05-hex}}
 
 # Inactive window
 window.inactive.border.color: #{{base00-hex}}
@@ -90,8 +90,8 @@ window.inactive.button.unpressed.bg.color: #{{base00-hex}}
 window.inactive.button.unpressed.image.color: #aaaaaa
 
 window.inactive.button.pressed.bg: flat solid
-window.inactive.button.pressed.bg.color: #{{base0A-hex}}
-window.inactive.button.pressed.image.color: #{{base00-hex}}
+window.inactive.button.pressed.bg.color: #{{base02-hex}}
+window.inactive.button.pressed.image.color: #{{base05-hex}}
 
 window.inactive.button.disabled.bg: flat solid
 window.inactive.button.disabled.bg.color: #aaaaaa
@@ -99,12 +99,12 @@ window.inactive.button.disabled.image.color: #{{base00-hex}}
 
 window.inactive.button.hover.bg: flat solid
 window.inactive.button.hover.bg.color: #{{base00-hex}}
-window.inactive.button.hover.image.color: #{{base0A-hex}}
+window.inactive.button.hover.image.color: #{{base02-hex}}
 
 
 # OSD
 osd.border.width: 1
-osd.border.color: #{{base0A-hex}}
+osd.border.color: #{{base02-hex}}
 
 osd.bg: flat solid
 osd.bg.color: #{{base00-hex}}
@@ -119,23 +119,23 @@ osd.bg.shadow: 0
 
 osd.border.width: 2
 osd.hilight.bg: Solid Flat
-osd.hilight.bg.color: #{{base0A-hex}}
+osd.hilight.bg.color: #{{base02-hex}}
 osd.unhilight.bg: flat solid
-osd.unhilight.bg.color: #{{base00-hex}}
+osd.unhilight.bg.color: #{{base01-hex}}
 
 osd.button.unpressed.bg: flat border
-osd.button.unpressed.bg.color: #{{base0D-hex}}
-#osd.button.unpressed.*.border.color: #{{base00-hex}}
+osd.button.unpressed.bg.color: #{{base02-hex}}
+#osd.button.unpressed.*.border.color: #{{base05-hex}}
 
 osd.button.pressed.bg: flat border
-osd.button.pressed.bg.color: #{{base0A-hex}}
-#osd.button.pressed.*.border.color: #{{base00-hex}}
+osd.button.pressed.bg.color: #{{base02-hex}}
+#osd.button.pressed.*.border.color: #{{base05-hex}}
 
 osd.button.focused.bg: flat solid border
 osd.button.focused.bg.color: #{{base05-hex}}
-#osd.button.focused.*.border.color: #{{base00-hex}}
+#osd.button.focused.*.border.color: #{{base01-hex}}
 
-osd.button.focused.box.color: #{{base0A-hex}}
+osd.button.focused.box.color: #{{base02-hex}}
 
 
 # Fonts
