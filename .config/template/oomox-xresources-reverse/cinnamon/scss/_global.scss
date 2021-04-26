@@ -2,11 +2,11 @@
 
 // main colors used in theme
 // 1.0 < 1 will result in most cinnamon surfaces being transparent
-$button_bg_color: #3c78e6;
-$button_fg_color: #141414;
-$selected_bg_color: #c8821e;
-$selected_fg_color: #141414;
-$tooltip_bg_color: #141414;
+$button_bg_color: #3c3c3c;
+$button_fg_color: #dcdcdc;
+$selected_bg_color: #3c3c3c;
+$selected_fg_color: #dcdcdc;
+$tooltip_bg_color: #282828;
 $tooltip_fg_color: #dcdcdc;
 $dark_bg_color: fade-out(#141414, 1 - 1.0);
 $dark_fg_color: #dcdcdc;

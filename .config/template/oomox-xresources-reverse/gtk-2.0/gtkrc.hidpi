@@ -1,7 +1,7 @@
 # Oomox GTK Theme (Numix Fork)
 
 gtk-color-scheme =
-"base_color:#{{base00-hex}}\nbg_color:#{{base00-hex}}\ntooltip_bg_color:#{{base00-hex}}\nselected_bg_color:#{{base0A-hex}}\ntext_color:#{{base05-hex}}\nfg_color:#{{base05-hex}}\ntooltip_fg_color:#{{base05-hex}}\nselected_fg_color:#{{base00-hex}}\nmenubar_bg_color:#{{base00-hex}}\nmenubar_fg_color:#{{base05-hex}}\ntoolbar_bg_color:#{{base00-hex}}\ntoolbar_fg_color:#{{base05-hex}}\nmenu_bg_color:#{{base00-hex}}\nmenu_fg_color:#{{base05-hex}}\npanel_bg_color:#{{base00-hex}}\npanel_fg_color:#{{base05-hex}}\nlink_color:#{{base0D-hex}}\nbtn_bg_color:#{{base0D-hex}}\nbtn_fg_color:#{{base00-hex}}\ntitlebar_bg_color:#{{base00-hex}}\ntitlebar_fg_color:#{{base05-hex}}\nprimary_caret_color:#{{base05-hex}}\nsecondary_caret_color:#{{base05-hex}}\naccent_bg_color:#{{base0A-hex}}\n"
+"base_color:#{{base00-hex}}\nbg_color:#{{base01-hex}}\ntooltip_bg_color:#{{base01-hex}}\nselected_bg_color:#{{base02-hex}}\ntext_color:#{{base05-hex}}\nfg_color:#{{base05-hex}}\ntooltip_fg_color:#{{base05-hex}}\nselected_fg_color:#{{base05-hex}}\nmenubar_bg_color:#{{base00-hex}}\nmenubar_fg_color:#{{base05-hex}}\ntoolbar_bg_color:#{{base01-hex}}\ntoolbar_fg_color:#{{base05-hex}}\nmenu_bg_color:#{{base00-hex}}\nmenu_fg_color:#{{base05-hex}}\npanel_bg_color:#{{base01-hex}}\npanel_fg_color:#{{base05-hex}}\nlink_color:#{{base0D-hex}}\nbtn_bg_color:#{{base02-hex}}\nbtn_fg_color:#{{base05-hex}}\ntitlebar_bg_color:#{{base00-hex}}\ntitlebar_fg_color:#{{base05-hex}}\nprimary_caret_color:#{{base05-hex}}\nsecondary_caret_color:#{{base05-hex}}\naccent_bg_color:#{{base0A-hex}}\n"
 # Default Style
 
 style "murrine-default" {

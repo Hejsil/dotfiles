@@ -10,15 +10,15 @@
 
 <!-- ::: CONSTANTS ::: -->
 <constant name="C_titlebar_focused" value="#{{base00-hex}}" />
-<constant name="C_titlebar_unfocused" value="#{{base00-hex}}" />
+<constant name="C_titlebar_unfocused" value="#{{base01-hex}}" />
 <constant name="C_border_focused" value="#{{base0A-hex}}" />
 <constant name="C_border_unfocused" value="#{{base00-hex}}" />
 <constant name="C_title_focused" value="#{{base05-hex}}" />
-<constant name="C_title_unfocused" value="blend/#{{base05-hex}}/#{{base00-hex}}/0.4" />
+<constant name="C_title_unfocused" value="blend/#{{base05-hex}}/#{{base01-hex}}/0.4" />
 <constant name="C_icons_focused" value="#{{base05-hex}}" />
 <constant name="C_icons_focused_prelight" value="gtk:bg[SELECTED])" />
 <constant name="C_icons_focused_pressed" value="shade/gtk:bg[SELECTED]/0.8" />
-<constant name="C_icons_unfocused" value="blend/#{{base05-hex}}/#{{base00-hex}}/0.4" />
+<constant name="C_icons_unfocused" value="blend/#{{base05-hex}}/#{{base01-hex}}/0.4" />
 <constant name="C_icons_unfocused_prelight" value="gtk:bg[SELECTED])" />
 <constant name="C_icons_unfocused_pressed" value="shade/gtk:bg[SELECTED]/0.8" />
 
