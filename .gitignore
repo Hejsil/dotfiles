@@ -50,6 +50,7 @@
 .config/openvpn/
 .config/pavucontrol.ini
 .config/pcmanfm/
+.config/pipewire/
 .config/protonfixes
 .config/pulse
 .config/qt5ct

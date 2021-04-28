@@ -1,0 +1,9 @@
+#!/bin/sh
+
+cmd=$1
+[ -z "$cmd" ] && [ -f 'Cargo.toml' ] &&
+    cmd='cargo clippy && cargo build'
+[ -z "$cmd" ] && [ -f 'build.zig' ] &&
+    cmd='zig build'
+
+fd '\.(rs|toml|zig)' | entr -crs "$cmd"
