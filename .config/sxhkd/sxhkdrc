@@ -2,7 +2,8 @@
 # Programs
 #
 
-# rofi starts slow, and dmenu is slow on large inputs... *sign* I can do better. Use st as a window for launch.sh!
+# rofi starts slow, and dmenu is slow on large inputs... *sign* I can do better.
+# Use st as a window for launch.sh!
 super + @space
     $WINDOW -e launch-program.sh
 
