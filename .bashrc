@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 source <(starship init bash --print-full-init)
+source /usr/share/bash-completion/bash_completion
 eval "$(zoxide init bash)"
 
 shopt -s histappend
