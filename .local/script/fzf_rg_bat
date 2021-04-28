@@ -1,0 +1,11 @@
+#!/bin/sh
+
+hightlight_line=$1
+lines=$2
+file=$3
+line_range_start=$((hightlight_line - (lines / 4)))
+[ "$line_range_start" -lt 0 ] && line_range_start=0
+
+bat --style=numbers --pager=never --color=always \
+    --line-range="$line_range_start": \
+    --highlight-line="$hightlight_line" "$file"
