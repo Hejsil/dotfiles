@@ -48,4 +48,5 @@ export FZF_DEFAULT_COMMAND='fd -H --type f -S -10m'
 export FZF_DEFAULT_OPTS='--info=hidden --color=16'
 export LESS="-R"
 export NNN_OPENER='open.sh'
+export QT_QPA_PLATFORMTHEME=gtk2
 export TS_SLOTS=10000
