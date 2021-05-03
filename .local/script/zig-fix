@@ -19,18 +19,6 @@ if [ "$#" -ne 1 ] || [ -d "$1" ]; then
     exit 0
 fi
 
-# while true; do
-#     error=$(zig fmt "$1" --color off 2>&1 |
-#         rg -o "([^:]+):(\d+):(\d+): error: expected '([^']+)', found '([^']+)'" -r "$(printf '$1\t$2\t$3\t$4\t$5')" |
-#         head -n 1)
-
-#     [ -z "$error" ] && break
-#     echo "$error" | {
-#         read -r file line column expected found
-#         sed -i "${line}s/.\{$((column - 1))\}/&${expected}/" "$1"
-#     }
-# done
-
 zig fmt "$1" >/dev/null
 
 # Global constant groups
