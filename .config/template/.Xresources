@@ -1,7 +1,6 @@
 *font:           JetBrains Mono-22
-*font2:          Symbola-22
+*font2:          twemoji-22
 bar.font:        JetBrains Mono-12
-bar.symbol_font: Symbola-12
 *foreground:    #{{base05-hex}}
 *selforeground: #{{base00-hex}}
 *background:    #{{base00-hex}}
