@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 source <(starship init bash --print-full-init)
-source /usr/share/bash-completion/bash_completion
+eval "$(direnv hook bash)"
 eval "$(zoxide init bash)"
 
 shopt -s histappend
@@ -18,14 +18,8 @@ __ccd_alias() {
 
 __kak_alias() {
     session_id=$(pwd | sha1sum | cut -d' ' -f1)
-    kak -c "$session_id" $@ || kak -s "$session_id" $@
+    kak -c "$session_id" "$@" || kak -s "$session_id" "$@"
 }
-
-gst() { (
-    source deps/env.sh
-    source dddq_environment.sh
-    RUST_BACKTRACE=1 GST_PLUGIN_PATH="$(pwd)/target/debug:$GST_PLUGIN_PATH" GST_DEBUG_DUMP_DOT_DIR=dot "$@"
-); }
 
 alias ..='__cd_alias ..'
 alias ...='__cd_alias ../..'
@@ -37,17 +31,12 @@ alias cd='__cd_alias'
 alias c='__cd_alias'
 
 alias kak='__kak_alias'
-alias k='__kak_alias'
 
 alias ls='exa -a'
 alias ll='exa -al'
 
 alias cp='cp -i'
-
-alias d='delta'
 alias o='open'
-alias p='patch'
-alias r='replace'
 
 alias drag='dragon-drag-and-drop'
 alias gdb="gdb -nh -x '$XDG_CONFIG_HOME/gdb/init'"

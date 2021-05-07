@@ -1,0 +1,2 @@
+#!/bin/sh
+uni -q p all | fzf -m +x | cut -d"'" -f2 | tr -d '\n' | xsel -b
