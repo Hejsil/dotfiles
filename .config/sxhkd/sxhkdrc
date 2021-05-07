@@ -13,6 +13,9 @@ super + g
 super + r
     $WINDOW -e rss-read.sh
 
+super + e
+    $WINDOW -e fzf-uni
+
 super + c
     $WINDOW -e icalc
 
