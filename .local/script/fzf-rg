@@ -1,4 +1,4 @@
 #!/bin/sh
 echo "" | fzf -d ':' --no-extended --ansi \
     --bind "change:reload:rg $* --fixed-strings --hidden --line-number {q} || true" \
-    --preview 'fzf_rg_bat {2} "$FZF_PREVIEW_LINES" {1}'
+    --preview 'fzf-rg-bat {2} "$FZF_PREVIEW_LINES" {1}'
