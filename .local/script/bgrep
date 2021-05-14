@@ -13,12 +13,13 @@ for i in $(echo "$pattern" | tr ' ' '\n'); do
             signed="$(echo "$i" | cut -b2)"
             size="$(echo "$i" | cut -b3-)"
             ;;
-        *)
+        [0-9]*)
             printf "%0$((size / 4))x\n" "$i" | fold -w2 | case $endian in
                 l) tac ;;
                 b) cat ;;
             esac | sed -e 's/^/\\\\x/' | tr -d '\n'
             ;;
+        *) printf "%s" "$i" ;;
     esac
 done | xargs -I% rg --no-heading --no-line-number --only-matching \
-    --case-sensitive --multiline --text --byte-offset '(?-u)%' $@
+    --case-sensitive --multiline --text --byte-offset '(?-u)%' "$@"
