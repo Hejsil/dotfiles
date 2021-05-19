@@ -37,6 +37,7 @@ alias ll='exa -al'
 
 alias cp='cp -i'
 alias o='open'
+alias r='ranger'
 
 alias drag='dragon-drag-and-drop'
 alias gdb="gdb -nh -x '$XDG_CONFIG_HOME/gdb/init'"
