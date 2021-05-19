@@ -24,11 +24,6 @@ map global normal 'z' ':w<ret>'
 # Fix bad mappings for Danish keyboards
 map global normal æ '<a-;>'
 
-# Lang specific bindings
-hook global WinSetOption filetype=zig %{
-    map global insert 'æ' 'pub fn () void {}<esc><a-f>(;i'
-}
-
 # fzf
 define-command open -params 1 %{
     terminal sh -c %sh{
