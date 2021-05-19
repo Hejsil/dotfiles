@@ -7,6 +7,7 @@ fzf2() {
             kitty icat --place \
             \${FZF_PREVIEW_COLUMNS}x\${FZF_PREVIEW_LINES}@\$(($size - FZF_PREVIEW_COLUMNS))x0 \
             --scale-up --transfer-mode file {7}" \
+        --preview-window right,38% \
         "$@"
 }
 
