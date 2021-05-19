@@ -72,6 +72,17 @@ roots = ["pubspec.yaml", ".git"]
 command = "sh"
 args = ["-c", "dart $(dirname $(which dart))/snapshots/analysis_server.dart.snapshot --lsp"]
 
+[language.deno]
+filetypes = ["typescript", "javascript"]
+roots = [".git"]
+command = "deno"
+args = ["lsp"]
+
+[language.deno.initialization_options]
+enable = true
+lint = true
+unstable = false
+
 [language.elm]
 filetypes = ["elm"]
 roots = ["elm.json"]
