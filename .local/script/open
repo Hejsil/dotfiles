@@ -1,16 +1,6 @@
 #!/bin/sh
-arg1=$1
-opener=$(opener.sh "$arg1")
 
-for ARG in "$@"; do
-    other=$(opener.sh "$ARG")
-    if [ "$other" != "$opener" ]; then
-        echo "Some args require different programs" >&2
-        echo "> $opener $arg1" >&2
-        echo "> $other $ARG" >&2
-        exit 1
-    fi
-done
+opener=$(file -0 -F ' ' --mime-type -L "$@" | sed 's/\x0\s*/\t/' | opener.sh | sort -u)
 
-[ -z "$opener" ] && exit 1
+[ -z "$opener" ] || [ "$(echo "$opener" | wc -l)" -ne 1 ] && exit 1
 $opener "$@"

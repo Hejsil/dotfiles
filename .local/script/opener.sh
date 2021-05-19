@@ -1,7 +1,7 @@
 #!/bin/sh
 
-if [ -f "$1" ]; then
-    mine=$(file --mime-type -Lb "$1")
+IFS="$(printf '\t')"
+while read -r file mine; do
     case $mine in
         application/pdf) echo "$READER" ;;
         application/x-bittorrent) echo 'tra.sh' ;;
@@ -10,24 +10,21 @@ if [ -f "$1" ]; then
         video/*) echo 'mpv' ;;
         audio/*) echo 'mpv --vid=no' ;;
         *)
-            echo "No match" >&2
-            exit 1
+            case $file in
+                '') echo "$EDITOR" ;;
+                *youtube*watch* | *youtube*playlist* | *youtu.be* | *odysee.com* | *.mp3 | *.mp3"?"* | *.mp4 | *.mp4"?"* | *.webm | *.webm"?"*)
+                    echo 'mpv'
+                    ;;
+                file:* | https:* | http:* | www:*) echo "$BROWSER" ;;
+                magnet:*) echo 'tra.sh' ;;
+                *:*)
+                    echo "${1%%:*}"
+                    ;;
+                *)
+                    echo "No match '$file' '$mine'" >&2
+                    exit 1
+                    ;;
+            esac
             ;;
     esac
-else
-    case $1 in
-        '') echo "$EDITOR" ;;
-        *youtube*watch* | *youtube*playlist* | *youtu.be* | *odysee.com* | *.mp3 | *.mp3"?"* | *.mp4 | *.mp4"?"* | *.webm | *.webm"?"*)
-            echo 'mpv'
-            ;;
-        file:* | https:* | http:* | www:*) echo "$BROWSER" ;;
-        magnet:*) echo 'tra.sh' ;;
-        *:*)
-            echo "${1%%:*}"
-            ;;
-        *)
-            echo "No match" >&2
-            exit 1
-            ;;
-    esac
-fi
+done
