@@ -17,7 +17,7 @@ super + e
     $WINDOW -e fzf-uni
 
 super + c
-    $WINDOW -e icalc
+    $WINDOW -e clipmenu
 
 super + {_,shift +,alt +,ctrl +} a
     $WINDOW -e anilist-ui {list '^[^\t]*\tc',list '^[^\t]*\tp',list '',database}
