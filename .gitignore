@@ -79,12 +79,15 @@
 .local/share/Tabletop Simulator/
 .local/share/Terraria/
 .local/share/Trash
+.local/share/Valve Corporation/
 .local/share/aerc/
 .local/share/applications/
 .local/share/bash/
 .local/share/cod/
 .local/share/data/
+.local/share/delta/
 .local/share/desktop-directories/
+.local/share/direnv/
 .local/share/espanso/
 .local/share/firenvim/
 .local/share/fonts/
@@ -105,7 +108,10 @@
 .local/share/multimc/
 .local/share/nautilus/
 .local/share/nvim/
+.local/share/python_keyring/
+.local/share/ranger/
 .local/share/recently-used.xbel
+.local/share/rr/
 .local/share/rustup/
 .local/share/sfeed/
 .local/share/template/
