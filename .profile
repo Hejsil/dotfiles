@@ -5,7 +5,7 @@ export PATH="/usr/share/bcc/tools/:/usr/lib/ccache/bin/:$HOME/.cache/cargo/bin:$
 export HISTSIZE=9999999
 export HISTFILESIZE=9999999
 export HISTCONTROL='ignoredups:erasedups'
-export PROMPT_COMMAND="history -a; history -c; history -r"
+export PROMPT_COMMAND='history -a; history -c; history -r'
 
 # Programs
 export BROWSER='firefox'
@@ -39,14 +39,14 @@ export WEECHAT_HOME="$XDG_CONFIG_HOME/weechat"
 export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
 export XINITRC="$XDG_CONFIG_HOME/xorg/init"
 
-export GTK_THEME='oomox-xresources-reverse'
-export GTK2_RC_FILES="$HOME/.themes/$GTK_THEME/gtk-2.0/gtkrc"
-
-export TERMINFO_DIRS="$TERMINFO:/usr/share/terminfo"
-
+export CM_LAUNCHER='fzf'
 export FZF_DEFAULT_COMMAND='fd -H --type f -S -10m'
 export FZF_DEFAULT_OPTS='--info=hidden --color=16'
-export LESS="-R"
+export GTK_THEME='oomox-xresources-reverse'
+export LESS='-R'
 export NNN_OPENER='open.sh'
-export QT_QPA_PLATFORMTHEME=gtk2
+export QT_QPA_PLATFORMTHEME='gtk2'
 export TS_SLOTS=10000
+
+export GTK2_RC_FILES="$HOME/.themes/$GTK_THEME/gtk-2.0/gtkrc"
+export TERMINFO_DIRS="$TERMINFO:/usr/share/terminfo"
