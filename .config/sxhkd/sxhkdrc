@@ -19,6 +19,9 @@ super + e
 super + c
     $WINDOW -e clipmenu
 
+super + s
+    $WINDOW -e shutdown.sh
+
 super + {_,shift +,alt +,ctrl +} a
     $WINDOW -e anilist-ui {list '^[^\t]*\tc',list '^[^\t]*\tp',list '',database}
 
