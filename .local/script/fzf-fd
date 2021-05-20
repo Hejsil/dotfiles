@@ -1,0 +1,2 @@
+#!/bin/sh
+fzf --preview "bat --pager=never --color=always {}"

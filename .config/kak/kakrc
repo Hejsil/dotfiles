@@ -33,7 +33,7 @@ define-command open -params 1 %{
     }
 }
 
-define-command fzf    %{ open fzf    }
+define-command fzf    %{ open fzf-fd    }
 define-command fzf-rg %{ open fzf-rg }
 
 # Auto complete with tab

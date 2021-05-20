@@ -41,7 +41,7 @@ export XINITRC="$XDG_CONFIG_HOME/xorg/init"
 
 export CM_LAUNCHER='fzf'
 export FZF_DEFAULT_COMMAND='fd -H --type f -S -10m'
-export FZF_DEFAULT_OPTS='--info=hidden --color=16'
+export FZF_DEFAULT_OPTS='--no-info --color=16'
 export GTK_THEME='oomox-xresources-reverse'
 export LESS='-R'
 export NNN_OPENER='open.sh'
