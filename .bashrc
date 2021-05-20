@@ -36,6 +36,8 @@ alias ls='exa -a'
 alias ll='exa -al'
 
 alias cp='cp -i'
+alias man='fzf-man'
+alias mv='mv -i'
 alias o='open'
 alias r='ranger'
 
