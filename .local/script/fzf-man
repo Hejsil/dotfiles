@@ -1,0 +1,6 @@
+#!/bin/sh
+if [ "$#" -ne 0 ]; then
+    man "$@" && exit 0
+fi
+
+man -k . | fzf --query="$*" --preview 'echo {} | fzf-man-open' | fzf-man-open
