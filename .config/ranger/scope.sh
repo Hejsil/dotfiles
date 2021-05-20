@@ -156,7 +156,7 @@ handle_image() {
             ##     convert -- "${FILE_PATH}" -auto-orient "${IMAGE_CACHE_PATH}" && exit 6
             ## fi
 
-            convert -- "${FILE_PATH}" -thumbnail '1200x1200>' "${IMAGE_CACHE_PATH}" && exit 6
+            convert -- "${FILE_PATH}" -thumbnail '1000x1000>' "${IMAGE_CACHE_PATH}" && exit 6
             ## `w3mimgdisplay` will be called for all images (unless overriden
             ## as above), but might fail for unsupported types.
             exit 7
