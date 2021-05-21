@@ -115,12 +115,6 @@ roots = ["package.json"]
 command = "html-languageserver"
 args = ["--stdio"]
 
-[language.javascript]
-filetypes = ["javascript"]
-roots = [".flowconfig"]
-command = "flow"
-args = ["lsp"]
-
 [language.json]
 filetypes = ["json"]
 roots = ["package.json"]
