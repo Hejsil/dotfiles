@@ -41,9 +41,10 @@ hook global InsertCompletionShow .* %{ map window insert <tab> <c-n> }
 hook global InsertCompletionHide .* %{ map window insert <tab> <tab> }
 
 # lsp hooks
-hook global WinSetOption filetype=.* %{ lsp-enable-window }
-hook global WinSetOption filetype=rust %{
+hook global WinSetOption filetype=(sh|c|cpp|javascript|typescript|python|rust|zig) %{
     lsp-enable-window
+}
+hook global WinSetOption filetype=rust %{
     hook window -group semantic-tokens BufReload .* lsp-semantic-tokens
     hook window -group semantic-tokens NormalIdle .* lsp-semantic-tokens
     hook window -group semantic-tokens InsertIdle .* lsp-semantic-tokens
