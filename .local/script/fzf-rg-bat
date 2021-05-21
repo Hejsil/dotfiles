@@ -6,5 +6,5 @@ line_range_start=$((hightlight_line - (FZF_PREVIEW_LINES / 4)))
 [ "$line_range_start" -lt 0 ] && line_range_start=0
 
 bat --style=numbers --color=always \
-    --line-range="$line_range_start": \
+    --line-range="${line_range_start}:$((line_range_start + FZF_PREVIEW_LINES))" \
     --highlight-line="$hightlight_line" "$file"

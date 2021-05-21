@@ -3,4 +3,10 @@ if [ "$#" -ne 0 ]; then
     man "$@" && exit 0
 fi
 
-man -k . | fzf --query="$*" --preview 'echo {} | fzf-man-open' | fzf-man-open
+bat_cmd='bat -l Manpage --plain --color=always '
+bat_range='--line-range=:$FZF_PREVIEW_LINES'
+
+man -k . | sd '^([^ ]+) \(([^)]+)\)\s*(.*)$' '$2\t$1\t$3' |
+    fzf -d '\t' --with-nth=2,3 --query="$*" \
+        --preview "man {1} {2} 2>/dev/null | $bat_cmd $bat_range" |
+    cut -f1,2 | tr -d '\n' | xargs -d'\t' man
