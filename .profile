@@ -10,9 +10,10 @@ export PROMPT_COMMAND='history -a; history -c; history -r'
 # Programs
 export BROWSER='firefox'
 export EDITOR='kak'
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export PAGER='less'
 export READER='zathura'
 export TERMINAL='kitty -1'
-export PAGER='less'
 export WINDOW="$TERMINAL --class window"
 
 export XDG_CACHE_HOME="$HOME/.cache"
