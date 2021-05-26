@@ -41,6 +41,10 @@ alias mv='mv -i'
 alias o='open'
 alias r='ranger'
 
+alias ab='autobuild'
+alias cb='cargo build'
+alias zb='zig build'
+
 alias drag='dragon-drag-and-drop'
 alias gdb="gdb -nh -x '$XDG_CONFIG_HOME/gdb/init'"
 alias rg='rg --no-heading'
