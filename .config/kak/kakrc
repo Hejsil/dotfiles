@@ -54,6 +54,7 @@ hook global WinSetOption filetype=rust %{
 }
 
 # lint hooks
+# hook global ModeChange .* %{ try lint catch %{} }
 hook global BufWritePre .* %{ try lint catch %{} }
 hook global WinSetOption filetype=sh %{ set-option window lintcmd 'shellcheck -f gcc' }
 
