@@ -20,6 +20,10 @@ while true; do
     case $command in
         database) anilist database | rg "$search" | fzf2 | cut -f5,6 >"$picks" ;;
         list) anilist list | rg "$search" | fzf2 --tabstop 4 | cut -f5,6 >"$picks" ;;
+        update)
+            anilist list | cut -f6 | xargs -d'\n' anilist update
+            exit 0
+            ;;
         *)
             wait
             rm "$picks"
