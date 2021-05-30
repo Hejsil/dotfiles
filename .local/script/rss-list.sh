@@ -24,7 +24,7 @@ done
 
 list_feed() {
     [ -z "$1" ] && return
-    find "$HOME/.cache/rss/$1/" -type f -exec awk '
+    find "$HOME/.local/share/rss/$1/" -type f -exec awk '
         BEGINFILE { printf "%s", FILENAME }
         { printf "\t%s", $0 }
         ENDFILE { printf "\n" }' {} +
