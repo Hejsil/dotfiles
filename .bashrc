@@ -46,7 +46,7 @@ alias cb='cargo build'
 alias zb='zig build'
 
 alias drag='dragon-drag-and-drop'
-alias gdb="gdb -nh -x '$XDG_CONFIG_HOME/gdb/init'"
+alias gdb='gdb -nh -x "$XDG_CONFIG_HOME/gdb/init"'
 alias rg='rg --no-heading'
 alias trr='transmission-remote'
 
@@ -58,6 +58,7 @@ alias gca='git commit --amend'
 alias gcl='git clone --recursive'
 alias gcn='git commit --no-verify'
 alias gco='git checkout'
+alias gcop='git checkout --patch'
 alias gd='git diff'
 alias gds='git diff --staged'
 alias gf='git fetch'
