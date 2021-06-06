@@ -40,6 +40,10 @@ super + Return
 super + o
     open "$(xsel -b)"
 
+super + p
+    pavucontrol
+
+
 #
 # bspwm
 #
