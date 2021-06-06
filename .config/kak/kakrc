@@ -33,7 +33,7 @@ define-command open -params 1 %{
     }
 }
 
-define-command fzf    %{ open fzf-fd    }
+define-command fzf    %{ open fzf-fd }
 define-command fzf-rg %{ open fzf-rg }
 
 # Auto complete with tab
@@ -57,6 +57,7 @@ hook global WinSetOption filetype=rust %{
 # hook global ModeChange .* %{ try lint catch %{} }
 hook global BufWritePre .* %{ try lint catch %{} }
 hook global WinSetOption filetype=sh %{ set-option window lintcmd 'shellcheck -f gcc' }
+hook global WinSetOption filetype=zig %{ set-option window lintcmd 'zig-check' }
 
 # formatter hooks
 hook global BufWritePre .* %{ try format catch %{} }
