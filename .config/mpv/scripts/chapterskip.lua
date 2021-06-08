@@ -8,7 +8,7 @@ local categories = {
     prologue = "^Prologue/^Intro",
     opening = "^OP/ OP$/^Opening",
     ending = "^ED/ ED$/^Ending",
-    preview = "Preview$/^Next/^Extra"
+    preview = "Preview$/^Next/^Extra/^PV"
 }
 
 local options = {
