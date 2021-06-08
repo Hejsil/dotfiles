@@ -33,7 +33,7 @@ done | while IFS=$a read -r file link; do
         continue
     }
 
-    mv "$file" "$HOME/.cache/rss/read"
+    mv "$file" "$HOME/.local/share/rss/read/"
     case $(file -b --mime-type "$tmp") in
         image/*) ;;
         *) rm "$tmp" ;;
