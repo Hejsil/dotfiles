@@ -25,8 +25,22 @@ map global insert <pagedown> '<a-;><c-f>'
 map global normal "'" '<a-i>w*/<ret>'
 map global normal 'z' ':w<ret>'
 
+map global normal '<a-down>' ':move-lines-down<ret>'
+map global normal '<a-up>' ':move-lines-up<ret>'
+map global insert '<a-down>' '<a-;>:move-lines-down<ret>'
+map global insert '<a-up>' '<a-;>:move-lines-up<ret>'
+
 # Fix bad mappings for Danish keyboards
 map global normal æ '<a-;>'
+
+# Moving lines
+define-command -override move-lines-down -docstring 'move line down' %{
+    execute-keys -draft '<a-x><a-_><a-:>Z;ezj<a-x>dzP'
+}
+
+define-command -override move-lines-up -docstring 'move line up' %{
+    execute-keys -draft '<a-x><a-_><a-:><a-;>Z;bzk<a-x>dzp'
+}
 
 # fzf
 define-command open -params 1 %{
