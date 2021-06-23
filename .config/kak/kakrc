@@ -72,7 +72,6 @@ hook global WinSetOption filetype=rust %{
 }
 
 # lint hooks
-# hook global ModeChange .* %{ try lint catch %{} }
 hook global BufWritePre .* %{ try lint catch %{} }
 hook global WinSetOption filetype=sh %{ set-option window lintcmd 'shellcheck -f gcc' }
 hook global WinSetOption filetype=zig %{ set-option window lintcmd 'zig-check' }
@@ -84,18 +83,8 @@ hook global WinSetOption filetype=json       %{ set-option window formatcmd "jq 
 hook global WinSetOption filetype=python     %{ set-option window formatcmd 'yapf' }
 hook global WinSetOption filetype=rust       %{ set-option window formatcmd 'rustfmt --edition 2018' }
 hook global WinSetOption filetype=sh         %{ set-option window formatcmd "shfmt -i %opt{tabstop} -s -ci" }
-hook global WinSetOption filetype=zig        %{ set-option window formatcmd 'zig-fix' }
-
-
-def -hidden insert-c-n %{
-    try %{
-        lsp-snippets-select-next-placeholders
-        exec '<a-;>d'
-    } catch %{
-        exec -with-hooks '<c-n>'
-    }
-}
-map global insert <c-n> "<a-;>: insert-c-n<ret>"
+hook global WinSetOption filetype=xml        %{ set-option window formatcmd 'xmllint --format -' }
+hook global WinSetOption filetype=zig        %{ set-option window formatcmd 'zig-fmt' }
 
 # Colors
 

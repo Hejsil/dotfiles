@@ -1,28 +1,14 @@
 #!/bin/sh -e
 
-self=$0
+file=$(mktemp)
+zig fmt --stdin >"$file"
 
-# The two first ifs ensures that we only ever get 1 file as input, which
-# will make the logic afterwards simpler.
-if [ "$#" = 0 ]; then
-    tmp=$(mktemp)
-    trap 'rm "$tmp"' EXIT
-    cat - >"$tmp"
-
-    "$self" "$tmp"
-    cat "$tmp"
-    exit 0
-fi
-
-if [ "$#" -ne 1 ] || [ -d "$1" ]; then
-    find "$@" -type f -exec "$self" {} ';'
-    exit 0
-fi
-
-zig fmt "$1" >/dev/null
-
-# Global constant groups
+# Sort global constants
 {
-    grep -E -n '^(pub\s+)?const.*;$' "$1" | cut -d: -f1 | ranges | sed 's/$/!sort/'
+    grep -E -n '^(pub\s+)?const.*;$' "$file" | cut -d: -f1 |
+        ranges | sed 's/$/!sort/'
     echo 'x'
-} | ex -s "$1"
+} | ex -s "$file"
+
+cat "$file"
+rm "$file"
