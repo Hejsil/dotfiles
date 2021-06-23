@@ -1,0 +1,6 @@
+#!/bin/sh
+
+url=$1
+curl -g "$url" |
+    rg -o ' <a href="([^.][^"]*)"' -r '$1' |
+    sed "s#^#$url#"
