@@ -5,7 +5,7 @@ export PATH="/usr/share/bcc/tools/:/usr/lib/ccache/bin/:$HOME/.cache/cargo/bin:$
 export HISTSIZE=9999999
 export HISTFILESIZE=9999999
 export HISTCONTROL='ignoredups:erasedups'
-export PROMPT_COMMAND='history -a; history -c; history -r'
+export PROMPT_COMMAND='history -a; history -c; history -r; history -n'
 
 # Programs
 export BROWSER='firefox'
@@ -44,6 +44,7 @@ export CM_LAUNCHER='fzf'
 export FZF_DEFAULT_COMMAND='fd -H --type f -S -10m'
 export FZF_DEFAULT_OPTS='--no-info --color=16'
 export GTK_THEME='oomox-xresources-reverse'
+export HSTR_CONFIG='hicolor,prompt-bottom,raw-history-view'
 export LESS='-R'
 export NNN_OPENER='open.sh'
 export QT_QPA_PLATFORMTHEME='gtk2'
