@@ -9,8 +9,6 @@ ln -snf "$(pwd)/.local" "$HOME/.local"
 ln -snf "$(pwd)/.profile" "$HOME/.profile"
 ln -snf "$(pwd)/.xsession" "$HOME/.xsession"
 ln -sf "$(which open)" "$HOME/.local/script/xdg-open"
-generate kitty
 generate xresources
 generate dunstrc
 generate gtk_theme
-

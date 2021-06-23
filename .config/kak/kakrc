@@ -4,6 +4,10 @@ set-option global tabstop 4
 set-option global ui_options ncurses_assistant=off ncurses_set_title=true
 set-option global modelinefmt '%val{bufname} %val{cursor_line}:%val{cursor_char_column} {{context_info}} {{mode_info}} '
 
+hook global KakBegin .* %{
+    set-option global termcmd 'st -c window -e sh -c'
+}
+
 add-highlighter global/ number-lines -relative -separator ' '
 add-highlighter global/ show-whitespaces -tab '▸' -tabpad ' ' -lf ' ' -spc ' '
 add-highlighter global/ regex '\h+$' 0:default,red
