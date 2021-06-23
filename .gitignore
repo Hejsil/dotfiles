@@ -20,6 +20,7 @@
 .config/docker/
 .config/dunst
 .config/filezilla/
+.config/gh/
 .config/git/credentials
 .config/gnupg
 .config/google-calendar-dark-nativefier-e22938/
@@ -108,10 +109,12 @@
 .local/share/multimc/
 .local/share/nautilus/
 .local/share/nvim/
+.local/share/pobfrontend/
 .local/share/python_keyring/
 .local/share/ranger/
 .local/share/recently-used.xbel
 .local/share/rr/
+.local/share/rss/
 .local/share/rustup/
 .local/share/sfeed/
 .local/share/template/
