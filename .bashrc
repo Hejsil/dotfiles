@@ -24,7 +24,9 @@ __ccd_alias() {
 
 __kak_alias() {
     session_id=$(pwd | sha1sum | cut -d' ' -f1)
-    kak -c "$session_id" "$@" || kak -s "$session_id" "$@"
+
+    kak -c "$session_id" "$@" ||
+        kak -s "$session_id" "$@"
 }
 
 alias ..='__cd_alias ..'
@@ -43,6 +45,7 @@ alias ll='exa -al'
 
 alias cp='cp -i'
 alias man='fzf-man'
+alias map='xargs -d"\n"'
 alias mv='mv -i'
 alias o='open'
 alias r='ranger'
