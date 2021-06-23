@@ -13,8 +13,8 @@ export EDITOR='kak'
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export PAGER='less'
 export READER='zathura'
-export TERMINAL='kitty -1'
-export WINDOW="$TERMINAL --class window"
+export TERMINAL='st'
+export WINDOW="$TERMINAL -c window"
 
 export XDG_CACHE_HOME="$HOME/.cache"
 export CARGO_HOME="$XDG_CACHE_HOME/cargo"

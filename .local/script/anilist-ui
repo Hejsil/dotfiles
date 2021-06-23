@@ -3,12 +3,9 @@
 fzf2() {
     ratio=3
     percent=$((100 / ratio))
-    fzf -m -d '\t' --tiebreak begin --with-nth=1,2,3,4,5 \
-        --preview-window="right,${percent}%,border-none" \
-        --preview "kitty icat --clear --transfer-mode file; \
-            kitty icat --place \
-            \${FZF_PREVIEW_COLUMNS}x\${FZF_PREVIEW_LINES}@\$(((FZF_PREVIEW_COLUMNS * $ratio) - FZF_PREVIEW_COLUMNS))x0 \
-            --scale-up --transfer-mode file {7}" \
+    fzfimg.sh -m -d '\t' --tiebreak begin --with-nth=1,2,3,4,5 \
+        --preview-window="right:${percent}%,border-none" \
+        --preview "draw_preview {7}" \
         "$@"
 }
 
