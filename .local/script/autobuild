@@ -6,4 +6,4 @@ cmd=$*
 [ -z "$cmd" ] && [ -f 'build.zig' ] &&
     cmd='zig build'
 
-fd '\.(h|hh|hpp|c|cc|cpp|rs|toml|zig)' | entr -crs "$cmd"
+fd '\.(h|hh|hpp|c|cc|cpp|rs|toml|zig)$' | entr -crs "$cmd"
