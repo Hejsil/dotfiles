@@ -40,8 +40,9 @@ alias c='__cd_alias'
 
 alias kak='__kak_alias'
 
-alias ls='exa -a'
+alias df='duf'
 alias ll='exa -al'
+alias ls='exa -a'
 
 alias cp='cp -i'
 alias man='fzf-man'
