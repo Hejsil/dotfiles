@@ -19,6 +19,8 @@ map global user f ':fzf<ret>'          -docstring 'Fzf files'
 map global user s ':fzf-rg<ret>'       -docstring 'Fzf content of files'
 map global user S '!sort<ret>d'        -docstring 'Sort'
 
+map global user l ':enter-user-mode lsp<ret>' -docstring "LSP mode"
+
 map global insert <pageup> '<a-;><c-b>'
 map global insert <pagedown> '<a-;><c-f>'
 
@@ -66,6 +68,8 @@ hook global WinSetOption filetype=rust %{
     hook window -group semantic-tokens BufReload .* lsp-semantic-tokens
     hook window -group semantic-tokens NormalIdle .* lsp-semantic-tokens
     hook window -group semantic-tokens InsertIdle .* lsp-semantic-tokens
+    hook window -group semantic-tokens NormalIdle .* rust-analyzer-inlay-hints
+    hook window -group semantic-tokens InsertIdle .* rust-analyzer-inlay-hints
     hook -once -always window WinSetOption filetype=.* %{
         remove-hooks window semantic-tokens
     }
@@ -73,7 +77,7 @@ hook global WinSetOption filetype=rust %{
 
 # lint hooks
 hook global BufWritePre .* %{ try lint catch %{} }
-hook global WinSetOption filetype=sh %{ set-option window lintcmd 'shellcheck -f gcc' }
+hook global WinSetOption filetype=sh  %{ set-option window lintcmd 'shellcheck -f gcc' }
 hook global WinSetOption filetype=zig %{ set-option window lintcmd 'zig-check' }
 
 # formatter hooks
@@ -123,8 +127,8 @@ face global PrimaryCursorEol black,cyan+fg
 face global SecondaryCursorEol black,cyan+fg
 face global LineNumbers default,default
 face global LineNumberCursor default,default+r
-face global MenuForeground white,blue
-face global MenuBackground blue,white
+face global MenuForeground white,bright-black
+face global MenuBackground white,black
 face global MenuInfo cyan
 face global Information black,yellow
 face global Error black,red

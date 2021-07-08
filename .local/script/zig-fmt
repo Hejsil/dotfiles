@@ -5,7 +5,7 @@ zig fmt --stdin >"$file"
 
 # Sort global constants
 {
-    grep -E -n '^(pub\s+)?const.*;$' "$file" | cut -d: -f1 |
+    grep -E -n '^((pub\s+)?const|usingnamespace).*;$' "$file" | cut -d: -f1 |
         ranges | sed 's/$/!sort/'
     echo 'x'
 } | ex -s "$file"
