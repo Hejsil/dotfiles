@@ -1,0 +1,139 @@
+#!/bin/sh
+folder="$HOME/.cache/bot"
+mpv_socket="/tmp/mpvsocket"
+
+music_folder="$folder/music"
+playing="$folder/playing"
+queue="$folder/queue"
+random_queue="$folder/random_queue"
+video_folder="$folder/video"
+
+mkdir -p "$music_folder"
+mkdir -p "$video_folder"
+
+touch "$playing" "$queue" "$random_queue"
+
+queue_pop() {
+    the_queue=$1
+    res=$(head -n1 "$the_queue")
+    sed -i '1d' "$the_queue"
+    printf '%s\n' "$res"
+}
+
+print_songs() {
+    rg --color never --no-line-number --no-filename -o \
+        '^.*/(.*)\[(.*)\].*$' "$1" \
+        -r "$2 \$1 \$2"
+}
+
+case $1 in
+    status)
+        print_songs "$playing" '🎧'
+        print_songs "$queue" '📌'
+        print_songs "$random_queue" '🎲'
+        exit 0
+        ;;
+    discord)
+        selection='select(.d.member == null and .t == "MESSAGE_CREATE")'
+        mash listen |
+            jq -r --unbuffered "$selection | .d.author.username , .d.content" |
+            stdbuf -o L paste - -
+        exit 0
+        ;;
+    watch)
+        printf '%s\n%s\n' "$queue" "$random_queue" | entr echo 'update!'
+        exit 0
+        ;;
+    *) ;;
+esac
+
+download() {
+    user=$1
+    cmd=$2
+    link=$3
+
+    case "$cmd" in
+        p | pt)
+            format="bestaudio"
+            download_folder="music"
+            ;;
+        v | vt)
+            format="best"
+            download_folder="video"
+            ;;
+        *) return ;;
+    esac
+
+    IFS=$(printf '\a')
+    template="$folder/$download_folder/%(title)s [%(creator)s] %(id)s ($format)"
+    youtube-dl -i -f "$format" -o "${template}${IFS}%(id)s${IFS}%(license)s${IFS}%(title)s" --get-filename "$link" |
+        while read -r file_name id license title; do
+            # if [ "${license#*Creative Commons}" = "$license" ]; then
+            #     notify-send "Invalid license!" "$(printf '%s\n%s\n%s\n' \
+            #         "$user" "$title" "$license")"
+            #     continue
+            # fi
+
+            if ! [ -e "$file_name" ]; then
+                youtube-dl -i -f "$format" -o "$template" "$id" >&2
+            fi
+            printf '%s\n' "$file_name"
+            # notify-send "Song queued" "$(printf '%s\n%s\n' \
+            #     "$user" "$title")"
+        done
+
+}
+
+IFS=$(printf '\t')
+cat - | while read -r user rest; do
+    cmd='p'
+    case $rest in
+        !vt*) cmd='vt' ;;
+        !pt*) cmd='pt' ;;
+        !v*) cmd='v' ;;
+        !p*) cmd='p' ;;
+        !s*)
+            printf '{ "command": ["stop"] }\n' | socat -u - "$mpv_socket"
+            continue
+            ;;
+    esac
+
+    echo "$rest" |
+        rg -o 'https?://(-\.)?([^\s/?\.#-]+\.?)+(/[^\s]*)?' |
+        while read -r link; do
+            printf "!%s %s\n" "$cmd" "$link"
+
+            download "$user" "$cmd" "$link" | case $cmd in
+                p | v) cat "$queue" - ;;
+                pt | vt) cat - "$queue" ;;
+            esac | sponge "$queue"
+        done
+done &
+
+mpv "--input-ipc-server=$mpv_socket" --force-window --idle --loop-playlist=no 2>&1 </dev/null >/dev/null &
+while ! printf '' | socat -u "$mpv_socket" - 2>/dev/null; do :; done |
+    rg --line-buffered -F '{"event":"idle"}' |
+    while read -r _; do
+        file_name=$(queue_pop "$queue")
+
+        if [ -z "$file_name" ]; then
+            # If no file has been queue, then we pick a file that we have already
+            # downloaded at random.
+            file_name=$(queue_pop "$random_queue")
+        fi
+
+        while [ -z "$file_name" ]; do
+            # No file in random queue. Create a new one
+            find "$music_folder" -type f | sort -R >"$random_queue"
+            file_name=$(queue_pop "$random_queue")
+
+            # Still no file. Wait till we have some
+            [ -z "$file_name" ] && inotifywait "$music_folder"
+        done
+
+        printf '%s\n' "$file_name" >"$playing"
+        printf '{ "command": ["loadfile", "%s"] }\n' "$file_name" |
+            socat -u - "$mpv_socket"
+        # title=$(basename "$file_name" | rg '^(.*) \[(.+)\] [^ ]+ \(\w+\)$' -r "$(printf '$1\n$2')")
+        # notify-send "Now playing" "$title"
+    done
