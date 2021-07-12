@@ -71,7 +71,6 @@ config/xorg/resources
 config/zathura
 local/bin/
 local/lib/
-local/script/xdg-open
 local/share/Baba_Is_You/
 local/share/JetBrains/
 local/share/Nextcloud/
