@@ -1,5 +1,12 @@
 #!/bin/sh
-export PATH="/usr/share/bcc/tools/:/usr/lib/ccache/bin/:$HOME/.cache/cargo/bin:$HOME/.local/bin:$HOME/.local/script:$PATH"
+
+export PATH="\
+/usr/share/bcc/tools/:\
+/usr/lib/ccache/bin/:\
+$HOME/.cache/cargo/bin:\
+$HOME/.local/bin:\
+$HOME/.local/script:\
+$PATH"
 
 # Bash history
 export HISTSIZE=9999999
@@ -52,3 +59,7 @@ export TS_SLOTS=10000
 
 export GTK2_RC_FILES="$HOME/.themes/$GTK_THEME/gtk-2.0/gtkrc"
 export TERMINFO_DIRS="$TERMINFO:/usr/share/terminfo"
+
+if [ -z "$DISPLAY" ] && [ "$(tty)" = /dev/tty1 ]; then
+    exec sx
+fi
