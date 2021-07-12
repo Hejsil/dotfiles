@@ -22,6 +22,11 @@ __ccd_alias() {
     __cd_alias "$@"
 }
 
+__paru_alias() {
+    paru "$@" || return 1
+    paru -Qqe >"$XDG_CONFIG_HOME/installed-programs"
+}
+
 __kak_alias() {
     session_id=$(pwd | sha1sum | cut -d' ' -f1)
 
@@ -39,6 +44,7 @@ alias cd='__cd_alias'
 alias c='__cd_alias'
 
 alias kak='__kak_alias'
+alias paru='__paru_alias'
 
 alias df='duf'
 alias ll='exa -al'
