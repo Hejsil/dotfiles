@@ -12,7 +12,7 @@
     "blocklist-url": "http://john.bitsurge.net/public/biglist.p2p.gz",
     "cache-size-mb": 16,
     "dht-enabled": true,
-    "download-dir": "/home/hejsil/Downloads",
+    "download-dir": "/home/hejsil/downloads",
     "download-queue-enabled": false,
     "download-queue-size": 5,
     "encryption": 1,
