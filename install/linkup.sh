@@ -1,7 +1,7 @@
 #!/bin/sh -e
 
 link() {
-    if ! [ -L "$2" ]; then
+    if ! [ -L "$2" ] && [ -e "$2" ]; then
         echo "Install script will remove '$2'. Are you sure?" >&2
         rm -rfI "$2"
         [ -e "$2" ] && return 1

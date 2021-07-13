@@ -3,20 +3,27 @@
 exe="$(realpath "$0")"
 here="$(dirname "$exe")/.."
 
+. "$here/config/profile"
+
 git_clone() {
     git clone --depth 1 --shallow-submodules --recursive "$@"
 }
 
 install_paru() {
+    if command -v paru; then
+        return
+    fi
+
     folder="$(mktemp -d)"
 
+    sudo pacman -Syu
     sudo pacman -S --needed base-devel
     [ -e "$folder" ] && rm -rf "$folder"
     git_clone 'https://aur.archlinux.org/paru.git' "$folder"
 
     cd "$folder"
     makepkg -si --noconfirm
-    paru -S --noconfirm paru
+    paru -S paru-bin
 }
 
 install_zig() {
@@ -46,7 +53,7 @@ install_st() {
 }
 
 install_paru
-paru -S --needed --noconfirm - <"$here/config/installed-programs"
+paru -S --needed - <"$here/config/installed-programs"
 
 install_zig 'lemonbar-maker'
 install_zig 'anilist'
