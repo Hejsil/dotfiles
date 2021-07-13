@@ -68,8 +68,6 @@ hook global WinSetOption filetype=rust %{
     hook window -group semantic-tokens BufReload .* lsp-semantic-tokens
     hook window -group semantic-tokens NormalIdle .* lsp-semantic-tokens
     hook window -group semantic-tokens InsertIdle .* lsp-semantic-tokens
-    hook window -group semantic-tokens NormalIdle .* rust-analyzer-inlay-hints
-    hook window -group semantic-tokens InsertIdle .* rust-analyzer-inlay-hints
     hook -once -always window WinSetOption filetype=.* %{
         remove-hooks window semantic-tokens
     }
