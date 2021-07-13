@@ -4,13 +4,7 @@ source <(cod init $$ bash)
 source <(starship init bash --print-full-init)
 eval "$(direnv hook bash)"
 eval "$(zoxide init bash)"
-
-# if this is interactive shell, then bind hstr to Ctrl-r (for Vi mode check doc)
-# if this is interactive shell, then bind 'kill last command' to Ctrl-x k
-if [[ $- =~ .*i.* ]]; then bind '"\C-r": "\C-a hstr -- \C-j"'; fi
-if [[ $- =~ .*i.* ]]; then bind '"\C-xk": "\C-a hstr -k \C-j"'; fi
-
-shopt -s histappend
+source /usr/share/doc/mcfly/mcfly.bash
 
 __cd_alias() {
     z "$@" || return
