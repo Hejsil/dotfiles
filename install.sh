@@ -2,7 +2,7 @@
 
 cd "$(dirname "$0")" || exit 1
 
-install/programs.sh
-install/system-files.sh
 install/linkup.sh
+install/system-files.sh
+install/programs.sh
 install/generate-themes.sh
