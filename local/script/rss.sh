@@ -10,7 +10,7 @@ url_config="$config_dir/urls"
 mkdir -p "$read_dir" "$unread_dir" "$config_dir"
 touch -a "$url_config"
 
-cut -f1 "$url_config" | xargs curl -sZ | sfeed | tr '\t' '\a' |
+cut -f1 "$url_config" | xargs curl -s | sfeed | tr '\t' '\a' |
     while IFS=$(printf '\a') read -r timestamp title link content content_type id author enclosure; do
         id=$(echo "$id" | sed 's#/#|#g')
         [ -z "$id" ] && id=$(echo "$link" | sed 's#/#|#g')
