@@ -31,7 +31,7 @@ export ERRFILE="$XDG_CACHE_HOME/x11/xsession-errors"
 
 export XDG_DATA_HOME="$HOME/.local/share"
 export GOPATH="$XDG_DATA_HOME/go"
-export HISTFILE="$XDG_DATA_HOME/bash/history"
+export HISTFILE="$XDG_DATA_HOME/bash_history"
 export LESSHISTFILE="$XDG_DATA_HOME/less/history"
 export MACHINE_STORAGE_PATH="$XDG_DATA_HOME/docker-machine"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
