@@ -56,6 +56,8 @@ export LESS='-R'
 export NNN_OPENER='open.sh'
 export QT_QPA_PLATFORMTHEME='gtk2'
 export TS_SLOTS=10000
+export MCFLY_FUZZY=true
+export MCFLY_RESULTS=20
 
 export GTK2_RC_FILES="$HOME/.themes/$GTK_THEME/gtk-2.0/gtkrc"
 export TERMINFO_DIRS="$TERMINFO:/usr/share/terminfo"
