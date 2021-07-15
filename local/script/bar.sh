@@ -1,7 +1,10 @@
 #!/bin/sh
 
-bar_height=26
-bspc config top_padding "$bar_height"
+bar_height=$(bspc config top_padding)
+while [ "$bar_height" = 0 ]; do
+    sleep 0.1s
+    bar_height=$(bspc config top_padding)
+done
 
 lemonbar-maker --low "$(xgetres bar.color2)" \
     --mid "$(xgetres bar.color3)" \
@@ -13,8 +16,6 @@ lemonbar-maker --low "$(xgetres bar.color2)" \
         -F "$(xgetres bar.color7)" \
         -u 2 \
         -n 'lemonbar' &
-
-trap "kill $!" INT TERM EXIT
 
 while ! xdo id -a lemonbar 2>/dev/null >/dev/null; do
     sleep 0.1s

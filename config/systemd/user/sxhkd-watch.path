@@ -1,4 +1,4 @@
-[Service]
-ExecStart=/usr/bin/bspc wm -r
+[Path]
+PathChanged=%h/.config/sxhkd/sxhkdrc
 [Install]
 WantedBy=user-graphical-login.target

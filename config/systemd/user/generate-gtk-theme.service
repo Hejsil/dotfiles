@@ -1,4 +1,4 @@
 [Service]
-ExecStart=/usr/bin/sh -c 'generate depends gtk_theme | entr -np generate gtk_theme'
+ExecStart=%h/.local/script/generate gtk_theme
 [Install]
 WantedBy=user-graphical-login.target

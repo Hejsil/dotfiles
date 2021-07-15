@@ -1,4 +1,4 @@
 [Service]
-ExecStart=/usr/bin/sh -c 'generate depends dunstrc | entr -np generate dunstrc'
+ExecStart=%h/.local/scriptp/generate dunstrc
 [Install]
 WantedBy=user-graphical-login.target

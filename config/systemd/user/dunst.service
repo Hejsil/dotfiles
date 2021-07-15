@@ -1,4 +1,4 @@
 [Service]
-ExecStart=/usr/bin/sh -c 'echo "$XDG_CONFIG_HOME/dunst/dunstrc" | entr -nr dunst'
+ExecStart=/usr/bin/dunst
 [Install]
 WantedBy=user-graphical-login.target

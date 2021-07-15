@@ -1,0 +1,5 @@
+[Path]
+PathChanged=%h/.config/bspwm/bspwmrc
+PathChanged=%h/.local/script/colors.sh
+[Install]
+WantedBy=user-graphical-login.target
