@@ -11,7 +11,7 @@ $PATH"
 # Bash history
 export HISTSIZE=9999999
 export HISTFILESIZE=9999999
-export HISTCONTROL='ignoredups:erasedups'
+export HISTCONTROL='ignorespace:ignoredups:erasedups'
 export PROMPT_COMMAND='history -a; history -c; history -r; history -n'
 
 # Programs

@@ -71,6 +71,7 @@ gzip
 haguichi
 haveged
 hdparm
+hstr
 htop
 hyperfine
 inotify-tools
@@ -100,7 +101,6 @@ maim
 make
 man-db
 man-pages
-mcfly
 mediainfo
 megasync-bin
 melonds-git
