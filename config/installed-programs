@@ -20,6 +20,7 @@ clipmenu
 cmake
 cod
 conan
+dante
 dhcpcd
 direnv-bin
 discord_arch_electron
@@ -59,6 +60,7 @@ git
 git-delta
 git-lfs
 github-cli
+glfw-x11
 google-meet-desktop
 graphviz
 grep
@@ -75,6 +77,7 @@ hdparm
 hstr
 htop
 hyperfine
+imagemagick
 inotify-tools
 intel-ucode
 isync
@@ -82,10 +85,12 @@ jq
 kak-lsp
 kakoune
 lemonbar-xft-git
+lib32-gamemode
 lib32-libpulse
 lib32-nvidia-utils
 lib32-vulkan-icd-loader
 lib32-vulkan-intel
+librealsense
 libtool
 libva-vdpau-driver
 libxft-bgra
@@ -112,6 +117,7 @@ mon2cam-git
 moreutils
 mpv
 msmtp
+multimc5
 nawk
 networkmanager
 nodejs
@@ -119,8 +125,7 @@ ntfs-3g
 ntp
 nvidia-dkms
 nvidia-settings
-obs-linuxbrowser-bin
-obs-studio
+obs-studio-tytan652
 obs-websocket
 openssh
 openssl-1.0
@@ -188,6 +193,7 @@ uni
 vi
 vscodium-bin-marketplace
 vulkan-intel
+w3m
 waifu2x-ncnn-vulkan-bin
 websocat
 which
