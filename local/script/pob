@@ -1,0 +1,16 @@
+#!/bin/sh
+
+repo='PathOfBuildingCommunity/PathOfBuilding'
+pob_dir="$XDG_DATA_HOME/pob"
+mkdir -p "$pob_dir"
+
+latest_release=$(gh release list -L 1 -R "$repo" | cut -f3)
+release_dir="$pob_dir/$latest_release"
+
+if ! [ -d "$release_dir" ]; then
+    mkdir -p "$release_dir"
+    gh release download "$latest_release" -R "$repo" -p '*Portable*' -D "$release_dir"
+    fd . "$release_dir" -e zip -x unzip {} -d "$release_dir"
+fi
+
+wine "$release_dir/Path of Building.exe"

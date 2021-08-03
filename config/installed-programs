@@ -58,6 +58,7 @@ gimp
 git
 git-delta
 git-lfs
+github-cli
 google-meet-desktop
 graphviz
 grep
@@ -132,7 +133,6 @@ par
 paru-bin
 pass
 patch
-path-of-building-community-git
 pavucontrol
 pcmanfm
 perf
