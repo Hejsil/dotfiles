@@ -1,2 +1,2 @@
 #!/bin/sh
-fzf "$@" --preview 'bat --style=numbers --color=always --line-range :$FZF_PREVIEW_LINES {}'
+fzf "$@" --preview 'bat ---color=always --line-range :$FZF_PREVIEW_LINES {}'
