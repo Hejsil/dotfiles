@@ -1,0 +1,31 @@
+#!/bin/sh -e
+
+command=$1
+dir=$2
+top_of_stack="$dir/top"
+
+mkdir -p "$dir"
+if ! [ -f "$top_of_stack" ]; then
+    echo '0' >"$top_of_stack"
+fi
+
+case $command in
+    pop)
+        top=$(cat "$top_of_stack")
+        cat "$dir/$top"
+        rm "$dir/$top"
+        echo "$((top - 1))" >"$top_of_stack"
+        ;;
+    push)
+        top=$(cat "$top_of_stack")
+        new_top=$((top + 1))
+        cat - >"$dir/$new_top"
+        echo "$new_top" >"$top_of_stack"
+        ;;
+    show)
+        i=1
+        while cat "$dir/$i" 2>/dev/null; do
+            i=$((i + 1))
+        done
+        ;;
+esac

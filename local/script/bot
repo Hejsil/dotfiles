@@ -11,26 +11,19 @@ video_folder="$folder/video"
 mkdir -p "$music_folder"
 mkdir -p "$video_folder"
 
-touch "$playing" "$queue" "$random_queue"
-
-queue_pop() {
-    the_queue=$1
-    res=$(head -n1 "$the_queue")
-    sed -i '1d' "$the_queue"
-    printf '%s\n' "$res"
-}
+touch "$playing"
 
 print_songs() {
     rg --color never --no-line-number --no-filename -o \
-        '^.*/(.*)\[(.*)\].*$' "$1" \
-        -r "$2 \$1 \$2"
+        '^.*/(.*)\[(.*)\].*$' \
+        -r "$1 \$1 \$2"
 }
 
 case $1 in
     status)
-        print_songs "$playing" '🎧'
-        print_songs "$queue" '📌'
-        print_songs "$random_queue" '🎲'
+        print_songs '🎧' <"$playing"
+        queue show "$queue" | print_songs '📌'
+        queue show "$random_queue" | print_songs '🎲'
         exit 0
         ;;
     discord)
@@ -41,7 +34,12 @@ case $1 in
         exit 0
         ;;
     watch)
-        printf '%s\n%s\n' "$queue" "$random_queue" | entr echo 'update!'
+        while true; do
+            {
+                find "$queue" -type f
+                find "$random_queue" -type f
+            } | entr echo 'update!'
+        done
         exit 0
         ;;
     *) ;;
@@ -103,10 +101,8 @@ cat - | while read -r user rest; do
         while read -r link; do
             printf "!%s %s\n" "$cmd" "$link"
 
-            download "$user" "$cmd" "$link" | case $cmd in
-                p | v) cat "$queue" - ;;
-                pt | vt) cat - "$queue" ;;
-            esac | sponge "$queue"
+            download "$user" "$cmd" "$link" |
+                xargs -d'\n' -I% sh -c "echo '%' | queue enqueue '$queue'"
         done
 done &
 
@@ -114,18 +110,19 @@ mpv "--input-ipc-server=$mpv_socket" --force-window --idle --loop-playlist=no 2>
 while ! printf '' | socat -u "$mpv_socket" - 2>/dev/null; do :; done |
     rg --line-buffered -F '{"event":"idle"}' |
     while read -r _; do
-        file_name=$(queue_pop "$queue")
+        file_name=$(queue dequeue "$queue")
 
         if [ -z "$file_name" ]; then
             # If no file has been queue, then we pick a file that we have already
             # downloaded at random.
-            file_name=$(queue_pop "$random_queue")
+            file_name=$(queue dequeue "$random_queue")
         fi
 
         while [ -z "$file_name" ]; do
             # No file in random queue. Create a new one
-            find "$music_folder" -type f | sort -R >"$random_queue"
-            file_name=$(queue_pop "$random_queue")
+            find "$music_folder" -type f | sort -R |
+                xargs -d'\n' -I% sh -c "echo '%' | queue enqueue '$random_queue'"
+            file_name=$(queue dequeue "$random_queue")
 
             # Still no file. Wait till we have some
             [ -z "$file_name" ] && inotifywait "$music_folder"
