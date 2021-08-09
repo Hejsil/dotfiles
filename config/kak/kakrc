@@ -82,7 +82,7 @@ hook global WinSetOption filetype=zig %{ set-option window lintcmd 'zig-check' }
 hook global BufWritePre .* %{ try format catch %{} }
 hook global WinSetOption filetype=git-commit %{ set-option window formatcmd 'par "72rTbgqR" "B=.,?_A_a" "Q=_s>q|"' }
 hook global WinSetOption filetype=json       %{ set-option window formatcmd "jq --indent %opt{tabstop} ." }
-hook global WinSetOption filetype=python     %{ set-option window formatcmd 'yapf' }
+hook global WinSetOption filetype=python     %{ set-option window formatcmd 'black - -l 100' }
 hook global WinSetOption filetype=rust       %{ set-option window formatcmd 'rustfmt --edition 2018' }
 hook global WinSetOption filetype=sh         %{ set-option window formatcmd "shfmt -i %opt{tabstop} -s -ci" }
 hook global WinSetOption filetype=xml        %{ set-option window formatcmd 'xmllint --format -' }

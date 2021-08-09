@@ -149,6 +149,7 @@ proton-ge-custom-bin
 protontricks
 pulsemixer
 pyside2
+python-black
 python-language-server
 python-pylint
 qt5-styleplugins
@@ -177,6 +178,7 @@ syncplay
 task-spooler
 tealdeer
 texinfo
+time
 tmux
 tor-browser
 torsocks
@@ -190,6 +192,7 @@ typescript
 typescript-language-server-bin
 ueberzug
 uni
+valgrind
 vi
 vscodium-bin-marketplace
 vulkan-intel
@@ -213,7 +216,6 @@ xorg-util-macros
 xorg-xinit
 xorg-xrandr
 xsel
-yapf
 youtube-dl
 zathura
 zathura-pdf-mupdf
