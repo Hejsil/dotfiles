@@ -9,12 +9,16 @@ base
 bash-language-server
 bat
 binutils
+bison
+bloaty
 bottom-bin
 bspwm
 btrfs-progs
 calc
+caprine
 cava
 ccache
+chromium
 clipmenu
 cmake
 cod
@@ -42,6 +46,7 @@ fd
 file
 findutils
 firefox
+flex
 flirc-bin
 fuse2
 fzf
@@ -59,6 +64,7 @@ git
 git-delta
 git-lfs
 github-cli
+glava
 glfw-x11
 google-meet-desktop
 graphviz
@@ -78,6 +84,7 @@ hstr
 htop
 hyperfine
 imagemagick
+indent
 inotify-tools
 intel-ucode
 isync
@@ -91,7 +98,9 @@ lib32-nvidia-utils
 lib32-vulkan-icd-loader
 lib32-vulkan-intel
 librealsense
+libreoffice-fresh
 libtool
+libusb-git
 libva-vdpau-driver
 libxft-bgra
 linux-firmware
@@ -139,6 +148,7 @@ paru-bin
 pass
 patch
 pavucontrol
+pcl
 pcmanfm
 perf
 picom
@@ -151,7 +161,11 @@ pulsemixer
 pyside2
 python-black
 python-language-server
+python-numpy
+python-pika
+python-pipenv
 python-pylint
+python-pynput
 qt5-styleplugins
 ranger
 re2
@@ -167,6 +181,8 @@ sfeed
 shellcheck
 shfmt
 sic
+slack-desktop
+slop
 socat
 starship-bin
 steam
@@ -194,6 +210,7 @@ ueberzug
 uni
 valgrind
 vi
+vim
 vscodium-bin-marketplace
 vulkan-intel
 w3m
@@ -203,6 +220,7 @@ which
 wine
 winetricks
 xbanish
+xcb-util-errors
 xclip
 xdelta3
 xdo
@@ -213,9 +231,13 @@ xorg-server
 xorg-server-devel
 xorg-server-xephyr
 xorg-util-macros
+xorg-xev
 xorg-xinit
 xorg-xrandr
+xow-git
 xsel
+xtitle
+xtrans
 youtube-dl
 zathura
 zathura-pdf-mupdf
