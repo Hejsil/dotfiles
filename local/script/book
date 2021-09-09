@@ -5,7 +5,7 @@ bookmarks="$HOME/.config/bookmarks"
 
 fzf -m -d '\t' --tabstop 12 <"$bookmarks" >"$tmp"
 if [ -s "$tmp" ]; then
-    choose -f '\t' -1 -i "$tmp" | xargs -d '\n' tsp open
+    hck -f 2 "$tmp" | xargs -d '\n' tsp open
 fi
 
 rm "$tmp"

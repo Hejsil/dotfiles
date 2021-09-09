@@ -15,7 +15,6 @@ btrfs-progs
 calc
 cava
 ccache
-choose-bin
 clipmenu
 cmake
 cod
@@ -73,6 +72,7 @@ gst-plugins-ugly
 gzip
 haguichi
 haveged
+hck-bin
 hdparm
 hstr
 htop
