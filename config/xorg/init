@@ -4,6 +4,7 @@ xset r rate 300 50
 xset s off
 xset s off -dpms
 setxkbmap -layout "dk"
+xmodmap -e 'keycode 135 = Super_L'
 xrandr --output HDMI-0 --mode 1920x1080 --right-of DP-0 \
     --output DP-0 --primary --mode 2560x1440 --rate 144
 
