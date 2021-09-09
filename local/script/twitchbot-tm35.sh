@@ -174,7 +174,7 @@ trainer_party_cmd() {
     printf ".trainers[%d].party_type=none\n" "$trainer"
     printf ".trainers[%d].party_size=%s\n" "$trainer" "$party_size"
 
-    printf "%s" "$party" | awk '{print NR-1 " " $0}' | while read i member; do
+    printf "%s" "$party" | nawk '{print NR-1 " " $0}' | while read i member; do
         level=$(find_in "$trainer_parties" "\.trainers\[$trainer\]\.party\[$i\].level=(.*)")
         [ -z "$level" ] && level=$last_level
 
