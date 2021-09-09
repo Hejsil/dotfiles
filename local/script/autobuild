@@ -6,4 +6,5 @@ cmd=$*
 [ -z "$cmd" ] && [ -f 'build.zig' ] &&
     cmd='zig build'
 
-fd '\.(h|hh|hpp|c|cc|cpp|rs|toml|zig)$' | entr -crs "$cmd"
+fd -e h -e hh -e hpp -e c -e cc -e cpp -e rs -e toml -e zig \
+    --exclude 'zig-cache' | entr -crs "$cmd"
