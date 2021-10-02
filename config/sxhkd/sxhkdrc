@@ -58,7 +58,7 @@ super + {Left,Down,Up,Right}
 super + shift + {Left,Down,Up,Right}
     bspc node -s {west,south,north,east}
 
-super + ctrl + shift + {Left,Down,Up,Right}
+super + ctrl + alt + {Left,Down,Up,Right}
     bspc node -m {west,south,north,east}
 
 super + {t,shift + t,shift + f,f}
