@@ -1,5 +1,13 @@
 #!/bin/sh -e
 
+case $(git remote get-url origin) in
+    git@github.com:Hejsil/*) ;;
+    *)
+        zig fmt --stdin
+        exit
+        ;;
+esac
+
 file=$(mktemp)
 zig fmt --stdin >"$file"
 
