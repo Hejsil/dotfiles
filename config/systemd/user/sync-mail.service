@@ -1,7 +1,9 @@
 [Unit]
-Conflicts/usr/bin/shutdown.target
+Conflicts=/usr/bin/shutdown.target
 Requires=gpg-agent.service
 [Install]
 WantedBy=user-graphical-login.target
 [Service]
 ExecStart=/usr/bin/mbsync -Va -c '%h/.config/isync/mbsyncrc'
+Restart=on-failure
+RestartSec=5
