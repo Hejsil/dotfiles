@@ -73,13 +73,14 @@ hook global WinSetOption filetype=rust %{
     }
 }
 
-# lint hooks
-hook global BufWritePre .* %{ try lint catch %{} }
+hook global BufWritePre .* %{
+    try format catch %{}
+    try lint catch %{}
+}
+
 hook global WinSetOption filetype=sh  %{ set-option window lintcmd 'shellcheck -f gcc' }
 hook global WinSetOption filetype=zig %{ set-option window lintcmd 'zig-check' }
 
-# formatter hooks
-hook global BufWritePre .* %{ try format catch %{} }
 hook global WinSetOption filetype=git-commit %{ set-option window formatcmd 'par "72rTbgqR" "B=.,?_A_a" "Q=_s>q|"' }
 hook global WinSetOption filetype=json       %{ set-option window formatcmd "jq --indent %opt{tabstop} ." }
 hook global WinSetOption filetype=python     %{ set-option window formatcmd 'black - -l 100' }
