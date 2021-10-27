@@ -32,8 +32,7 @@ map global normal '<a-up>' ':move-lines-up<ret>'
 map global insert '<a-down>' '<a-;>:move-lines-down<ret>'
 map global insert '<a-up>' '<a-;>:move-lines-up<ret>'
 
-# Fix bad mappings for Danish keyboards
-map global normal æ '<a-;>'
+map global insert '<c-o>' '<a-;>o'
 
 # Moving lines
 define-command -override move-lines-down -docstring 'move line down' %{
@@ -70,6 +69,30 @@ hook global WinSetOption filetype=rust %{
     hook window -group semantic-tokens InsertIdle .* lsp-semantic-tokens
     hook -once -always window WinSetOption filetype=.* %{
         remove-hooks window semantic-tokens
+    }
+
+    hook window -group autocomplete InsertChar '[^\w\n]' %{
+        try %{
+            execute-keys -draft '<a-;>2<space>'
+        } catch %{
+            execute-keys -save-regs '"' '<a-;>h<a-;>Gh<a-;>|rust-autocomplete<ret><a-;>s¤<ret><a-;>d'
+        }
+    }
+    hook -once -always window WinSetOption filetype=.* %{
+        remove-hooks window autocomplete
+    }
+}
+
+hook global WinSetOption filetype=zig %{
+    hook window -group autocomplete InsertChar '[^\w\n]' %{
+        try %{
+            execute-keys -draft '<a-;>2<space>'
+        } catch %{
+            execute-keys -save-regs '"' '<a-;>h<a-;>Gh<a-;>|zig-autocomplete<ret><a-;>s¤<ret><a-;>d'
+        }
+    }
+    hook -once -always window WinSetOption filetype=.* %{
+        remove-hooks window autocomplete
     }
 }
 

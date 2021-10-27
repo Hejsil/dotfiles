@@ -1,0 +1,23 @@
+#!/bin/nawk -f
+
+# We are inside a comment. Don't autocomplete in here
+/^.*\/\// { printf "%s¤", $0; next }
+
+# We are inside a string. Don't autocomplete in here
+/^([^"]*"(\\"|[^"])*")*[^"]*"(\\"|[^"])+$/ { printf "%s¤", $0; next }
+
+# We are inside a char. Don't autocomplete in here
+/^([^']*'(\\'|[^'])*')*[^']*'(\\'|[^'])+$/ { printf "%s¤", $0; next }
+
+/[^a-zA-Z0-9_]if $/  { printf "%s¤ {}", $0 ; next }
+/[^a-zA-Z0-9_]for $/ { printf "%sitem in ¤ {}", $0 ; next }
+
+/\{$/ { printf "%s¤}", $0 ; next }
+/\($/ { printf "%s¤)", $0 ; next }
+/\[$/ { printf "%s¤]", $0 ; next }
+
+/[^\\]"$/  { printf "%s¤\"", $0 ; next }
+/[^\\]'$/  { printf "%s¤'", $0 ; next }
+
+{printf "%s¤", $0}
+
