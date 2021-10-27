@@ -5,8 +5,6 @@ template_dir="$HOME/.config/template"
 
 xresources="$XDG_CONFIG_HOME/xorg/resources"
 dunstrc="$XDG_CONFIG_HOME/dunst/dunstrc"
-gtk_theme="$HOME/.themes/$GTK_THEME"
-gtk_template="$template_dir/$GTK_THEME"
 
 case $1 in
     xresources)
@@ -18,16 +16,6 @@ case $1 in
         mkdir -p "$(dirname "$dunstrc")"
         base16.sh "$colors" "$template_dir/dunstrc" >"$dunstrc"
         ;;
-    gtk_theme)
-        mkdir -p "$HOME/.themes/"
-        cp -r "$gtk_template" "$HOME/.themes/"
-
-        rg -aFl '{{base' "$gtk_template" |
-            sd -s "$gtk_template/" '' |
-            while read -r file; do
-                base16.sh "$colors" "$gtk_template/$file" >"$gtk_theme/$file"
-            done
-        ;;
     depends)
         printf "%s\n%s\n%s\n" \
             "$(realpath "$0")" \
@@ -36,7 +24,6 @@ case $1 in
         case $2 in
             xresources) echo "$template_dir/.Xresources" ;;
             dunstrc) echo "$template_dir/dunstrc" ;;
-            gtk_theme) find "$gtk_template" -type f ;;
         esac
         ;;
 esac

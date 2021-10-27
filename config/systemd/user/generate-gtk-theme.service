@@ -1,4 +1,0 @@
-[Service]
-ExecStart=%h/.local/script/generate gtk_theme
-[Install]
-WantedBy=user-graphical-login.target
