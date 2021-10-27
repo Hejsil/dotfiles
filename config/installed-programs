@@ -1,3 +1,4 @@
+adobe-source-sans-fonts
 aerc
 alsa-firmware
 alsa-plugins
@@ -12,6 +13,7 @@ binutils
 bison
 bloaty
 bottom
+breeze-gtk
 bspwm
 btrfs-progs
 calc
@@ -61,6 +63,7 @@ gimp
 git
 git-delta
 git-extras
+git-lfs
 github-cli
 glava
 glfw-x11
@@ -90,6 +93,7 @@ jq
 kak-lsp
 kakoune
 kcachegrind
+krita
 lemonbar-xft-git
 lib32-libpulse
 lib32-nvidia-utils
@@ -143,6 +147,7 @@ par
 paru-bin
 pass
 patch
+path-of-building-community-git
 pavucontrol
 pcl
 perf
@@ -180,7 +185,7 @@ slop
 socat
 starship
 steam
-steam-native-runtime
+stress
 sudo
 sxhkd
 sxiv
@@ -194,6 +199,7 @@ transmission-cli
 ttf-bitstream-vera
 ttf-jetbrains-mono
 ttf-liberation
+ttf-sarasa-gothic
 ttf-symbola
 ttf-twemoji
 typescript
@@ -226,6 +232,7 @@ xow-git
 xsel
 xtitle
 xtrans
+youtube-dl
 youtube-dlp
 zathura
 zathura-pdf-mupdf
