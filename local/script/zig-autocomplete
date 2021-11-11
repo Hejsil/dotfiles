@@ -19,14 +19,8 @@
 /(^|[^a-zA-Z0-9_])union(\(enum(\([^)]*\))?\))? $/ { printf "%s{¤}", $0 ; next }
 
 /(^|[^a-zA-Z0-9_])fn main $/ { printf "%s() !void {\n    ¤\n}", $0 ; next }
-/(^|[^a-zA-Z0-9_])fn [a-zA-Z_][a-zA-Z0-9_]* $/   { printf "%s(¤) void {}", $0 ; next }
-
-/\{$/ { printf "%s¤}", $0 ; next }
-/\($/ { printf "%s¤)", $0 ; next }
-/\[$/ { printf "%s¤]", $0 ; next }
-
-/(^|[^\\])"$/  { printf "%s¤\"", $0 ; next }
-/(^|[^\\])'$/  { printf "%s¤'", $0 ; next }
+/(^|[^a-zA-Z0-9_])fn [A-Z][a-zA-Z0-9_]* $/  { printf "%s(comptime T: type) type {\n    return ¤;\n}", $0 ; next }
+/(^|[^a-zA-Z0-9_])fn [a-z_][a-zA-Z0-9_]* $/ { printf "%s(¤) void {}", $0 ; next }
 
 # fmt api autocomplete
 /(^|[^a-zA-Z0-9_])log\.(emerg|alert|crit|err|warn|notice|info|debug) $/ {
@@ -38,5 +32,12 @@
 /^const std $/ { printf "%s= @import(\"std\");\n¤", $0 ; next }
 
 /(^|[^a-zA-Z0-9_])allocator: $/ { printf "%s*mem.Allocator,¤", $0 ; next }
+
+/\{$/ { printf "%s¤}", $0 ; next }
+/\($/ { printf "%s¤)", $0 ; next }
+/\[$/ { printf "%s¤]", $0 ; next }
+
+/(^|[^\\])"$/ { printf "%s¤\"", $0 ; next }
+/(^|[^\\])'$/ { printf "%s¤'", $0 ; next }
 
 {printf "%s¤", $0}
