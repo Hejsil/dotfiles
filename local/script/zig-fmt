@@ -20,7 +20,7 @@ if [ -s "$errors" ]; then
 fi
 
 case $(git remote get-url origin) in
-    git@github.com:Hejsil/*)
+    git@github.com:Hejsil/* | git@github.com:TM35-Metronome/* | '')
         {
             # Sort global constants only for repos I own
             grep -E -n '^((pub\s+)?(const|usingnamespace)).*;$' "$file" | cut -d: -f1 |
