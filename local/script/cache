@@ -1,0 +1,54 @@
+#!/bin/sh -e
+
+# A command that can provide caching for any command that can produce a file.
+# cache file1 file2 -- command file1 file2 {{output}}
+#
+# All files specified before '--' are considered input files. If these files content change
+# 'cache' should rerun the command. After '--' is the command that will be executed. '{{output}}'
+# will be replaced with the path that 'cache' wants the output to be.
+#
+# 'cache' will print the path to the cached file to standard out
+
+data_to_hash() {
+    while [ -n "$1" ]; do
+        file=$1
+        shift
+
+        case $file in
+            --) break ;;
+            *) cat "$file" ;;
+        esac
+    done
+
+    for arg in "$@"; do
+        echo "$arg"
+    done
+}
+
+cache_home="${XDG_CACHE_HOME:-$HOME/.cache}"
+cache_path="$cache_home/cache"
+mkdir -p "$cache_path"
+
+file_name=$(data_to_hash "$@" | b3sum | cut -d' ' -f1)
+file_path="$cache_path/$file_name"
+
+if ! [ -f "$file_path" ]; then
+    while [ -n "$1" ]; do
+        case $1 in
+            --)
+                shift
+                break
+                ;;
+            *) shift ;;
+        esac
+    done
+
+    cmd=$1
+    shift
+
+    for arg in "$@"; do
+        echo "$arg"
+    done | sed "s#{{output}}#$file_path#" | xargs -d'\n' "$cmd" >/dev/null
+fi
+
+echo "$file_path"

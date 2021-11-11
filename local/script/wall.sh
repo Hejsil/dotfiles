@@ -2,12 +2,22 @@
 
 folder=$1
 stack_folder='/tmp/random-wallpapers'
-monitors=$(xrandr | grep -c ' connected')
-seq "$monitors" | while read -r; do
+
+pop() {
     stack pop "$stack_folder" || {
         find "$folder" -type f | sort -R | while read -r file; do
             echo "$file" | stack push "$stack_folder"
         done
         stack pop "$stack_folder"
     }
-done | sed 's/^/-z\n/' | xargs -d '\n' setroot
+}
+
+xrandr --listactivemonitors |
+    rg -o '^ (\d+): [^ ]+ (\d+)/\d+x(\d+)' -r '$1 $2 $3' |
+    while read -r id w h; do
+        file=$(pop)
+        file=$(cache "$file" -- convert "$file" -resize "${w}x${h}^" '{{output}}')
+        echo '--on'
+        echo "$id"
+        echo "$file"
+    done | xargs -d '\n' setroot
