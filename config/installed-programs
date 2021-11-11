@@ -5,6 +5,7 @@ alsa-plugins
 amd-ucode
 autoconf
 automake
+b3sum
 bandwhich
 base
 bash-language-server
@@ -51,6 +52,7 @@ firefox
 flex
 fuse2
 fzf
+gamehub
 gawk
 gcc
 gconf
@@ -171,6 +173,7 @@ redshift
 reflector
 ripgrep
 rr
+rust
 rust-analyzer
 sad
 sd
