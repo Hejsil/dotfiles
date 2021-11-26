@@ -9,8 +9,8 @@
 [credential]
     helper = store
 [user]
-    email = 3759175+Hejsil@users.noreply.github.com
-    name = Komari Spaghetti
+    email = jhc@dismail.de
+    name = Jimmi Holst Christensen
 [init]
     defaultBranch = master
 [filter "lfs"]
