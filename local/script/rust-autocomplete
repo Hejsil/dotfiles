@@ -11,6 +11,7 @@
 
 /[^a-zA-Z0-9_]if $/  { printf "%s¤ {}", $0 ; next }
 /[^a-zA-Z0-9_]for $/ { printf "%sitem in ¤ {}", $0 ; next }
+/[^a-zA-Z0-9_]lock\($/ { printf "%s).unwrap()¤", $0 ; next }
 
 /\{$/ { printf "%s¤}", $0 ; next }
 /\($/ { printf "%s¤)", $0 ; next }
