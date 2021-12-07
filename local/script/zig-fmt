@@ -1,23 +1,9 @@
 #!/bin/sh -e
 
 file=$(mktemp)
-errors=$(mktemp)
 
 cat - >"$file"
-
-zig fmt "$file" 2>"$errors" >/dev/null || true
-if [ -s "$errors" ]; then
-    tab=$(printf '\t')
-    {
-        # Look for "expected 'x', found 'y'" errors and place the expected tokens into the file
-        rg -o "[^:]*:([^:]*):([^:]*): error: expected '([^']*)', found " \
-            -r "\$1$tab\$2$tab\$3" <"$errors" |
-            nawk '{printf "%ds#.\{%d\}#&%s#\n", $1, $2 - 1, $3 }'
-
-    } | sed 's#^#-e\n#' | xargs -d'\n' sed -E -i "$file"
-
-    zig fmt "$file" >/dev/null 2>/dev/null || true
-fi
+zig fmt "$file" 2>/dev/null >/dev/null || true
 
 case $(git remote get-url origin) in
     git@github.com:Hejsil/* | git@github.com:TM35-Metronome/* | '')
@@ -33,4 +19,3 @@ esac
 
 cat "$file"
 rm "$file"
-rm "$errors"
