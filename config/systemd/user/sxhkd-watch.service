@@ -1,6 +1,6 @@
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/systemctl --user restart sxhkd.service
+ExecStart=/usr/bin/killall -s USR1 sxhkd
 
 [Install]
 WantedBy=user-graphical-login.target
