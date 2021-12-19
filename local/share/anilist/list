@@ -517,7 +517,6 @@
 2020-09-08	c	13	1	Rio: Rainbow Gate!	https://anidb.net/anime/7931
 2020-09-08	c	13	1	Seitokai Yakuindomo	https://anidb.net/anime/7532
 2020-09-08	c	13	1	Seitokai Yakuindomo*	https://anidb.net/anime/10197
-2020-09-08	c	13	1	Senki Zesshou Symphogear	https://anidb.net/anime/8709
 2020-09-08	c	13	1	Sora no Otoshimono	https://anidb.net/anime/6658
 2020-09-08	c	13	1	Sukitte Ii na yo.	https://anidb.net/anime/9236
 2020-09-08	c	13	1	Uchuu Patrol Luluco	https://anidb.net/anime/11920
@@ -531,6 +530,7 @@
 2020-09-08	c	13	2	Rosario to Vampire	https://anidb.net/anime/5273
 2020-09-08	c	13	2	Rosario to Vampire Capu2	https://anidb.net/anime/5873
 2020-09-08	c	13	2	Sekirei: Pure Engagement	https://anidb.net/anime/6793
+2020-09-08	c	13	2	Senki Zesshou Symphogear	https://anidb.net/anime/8709
 2020-09-08	c	13	3	Free!: Eternal Summer	https://anidb.net/anime/10415
 2020-09-08	c	13	5	Fate/Zero	https://anidb.net/anime/8160
 2020-09-08	c	13	5	Fate/stay night: Unlimited Blade Works 2nd Season	https://anidb.net/anime/10760
@@ -814,7 +814,7 @@
 2020-11-16	c	12	1	Free!: Dive to the Future	https://anidb.net/anime/13548
 2020-11-21	c	12	1	Bikini Warriors	https://anidb.net/anime/11251
 2020-11-23	c	12	1	BNA	https://anidb.net/anime/14997
-2020-12-19	c	13	1	Senki Zesshou Symphogear G	https://anidb.net/anime/9465
+2020-12-19	c	13	2	Senki Zesshou Symphogear G	https://anidb.net/anime/9465
 2020-12-19	d	1	0	Banana Fish	https://anidb.net/anime/13536
 2020-12-28	c	12	1	Majo no Tabitabi	https://anidb.net/anime/15202
 2021-01-02	c	13	1	Thunderbolt Fantasy	https://anidb.net/anime/11917
@@ -823,10 +823,10 @@
 2021-01-04	d	3	0	Koisuru Asteroid	https://anidb.net/anime/14707
 2021-01-06	c	1	1	Pokemon Movie 17: Hakai no Mayu to Diancie	https://anidb.net/anime/10318
 2021-01-08	c	12	1	Maoujou de Oyasumi	https://anidb.net/anime/15095
-2021-01-08	c	13	1	Senki Zesshou Symphogear AXZ	https://anidb.net/anime/11955
-2021-01-08	c	13	1	Senki Zesshou Symphogear GX	https://anidb.net/anime/10321
+2021-01-08	c	13	2	Senki Zesshou Symphogear AXZ	https://anidb.net/anime/11955
+2021-01-08	c	13	2	Senki Zesshou Symphogear GX	https://anidb.net/anime/10321
 2021-01-09	c	1	1	Kud Wafter	https://anidb.net/anime/12713
-2021-01-10	c	13	1	Senki Zesshou Symphogear XV	https://anidb.net/anime/11959
+2021-01-10	c	13	2	Senki Zesshou Symphogear XV	https://anidb.net/anime/11959
 2021-01-14	c	21	1	Fate/Grand Order: Zettai Majuu Sensen Babylonia	https://anidb.net/anime/14238
 2021-01-14	d	1	0	100-man no Inochi no Ue ni Ore wa Tatteiru	https://anidb.net/anime/15415
 2021-01-14	d	1	0	Adachi to Shimamura	https://anidb.net/anime/14904
@@ -883,7 +883,6 @@
 2021-05-29	d	1	0	Appare-Ranman!	https://anidb.net/anime/15145
 2021-05-29	d	1	0	Dorohedoro	https://anidb.net/anime/14483
 2021-05-29	d	1	0	Kaze ga Tsuyoku Fuiteiru	https://anidb.net/anime/14109
-2021-05-29	w	1	0	Kakushigoto (TV)	https://anidb.net/anime/15267
 2021-05-30	c	12	1	Tonikaku Kawaii	https://anidb.net/anime/15421
 2021-06-02	d	5	0	Null Peta	https://anidb.net/anime/15023
 2021-06-04	c	1	1	Thunderbolt Fantasy Movie 2: Bewitching Melody of the West	https://anidb.net/anime/14786
@@ -975,7 +974,6 @@
 2021-10-08	d	1	0	Heion Sedai no Idaten-tachi	https://anidb.net/anime/15676
 2021-10-08	d	1	0	Jahy-sama wa Kujikenai!	https://anidb.net/anime/16256
 2021-10-08	w	1	0	Kageki Shoujo!!	https://anidb.net/anime/15810
-2021-10-08	w	1	0	Kanojo mo Kanojo	https://anidb.net/anime/15851
 2021-10-09	c	1	1	Evangelion: 2.0 You Can (Not) Advance	https://anidb.net/anime/6171
 2021-10-09	c	1	1	Evangelion: 3.0 You Can (Not) Redo	https://anidb.net/anime/7565
 2021-10-09	c	1	1	Evangelion: 3.0+1.0 Thrice Upon a Time	https://anidb.net/anime/8895
@@ -984,7 +982,6 @@
 2021-10-09	d	1	0	Re-Main	https://anidb.net/anime/16090
 2021-10-09	d	1	0	Scarlet Nexus	https://anidb.net/anime/16135
 2021-10-09	d	2	0	Peach Boy Riverside	https://anidb.net/anime/15678
-2021-10-09	w	1	0	Bokutachi no Remake	https://anidb.net/anime/15320
 2021-10-10	d	1	0	Shinigami Bocchan to Kuro Maid	https://anidb.net/anime/16036
 2021-10-15	c	12	1	Yuuki Yuuna wa Yuusha de Aru	https://anidb.net/anime/10750
 2021-10-16	c	1	1	Josee to Tora to Sakana-tachi	https://anidb.net/anime/15287
@@ -995,7 +992,6 @@
 2021-10-17	d	1	0	Tantei wa Mou, Shindeiru.	https://anidb.net/anime/15998
 2021-10-17	d	1	0	Tsuki ga Michibiku Isekai Douchuu	https://anidb.net/anime/15795
 2021-10-17	d	1	0	Uramichi Oniisan	https://anidb.net/anime/15240
-2021-10-17	w	1	0	Shiroi Suna no Aquatope	https://anidb.net/anime/15987
 2021-10-19	c	22	1	Hyouka	https://anidb.net/anime/8855
 2021-10-20	d	1	0	Comic Girls	https://anidb.net/anime/13238
 2021-11-09	c	1	1	Violet Evergarden Movie	https://anidb.net/anime/14013
@@ -1010,3 +1006,7 @@
 2021-12-05	c	39	1	JoJo no Kimyou na Bouken Part 5: Ougon no Kaze	https://anidb.net/anime/14173
 2021-12-06	c	20	1	Fumetsu no Anata e	https://anidb.net/anime/15351
 2021-12-07	c	12	1	Kaizoku Oujo	https://anidb.net/anime/15656
+2021-12-08	d	1	0	Bokutachi no Remake	https://anidb.net/anime/15320
+2021-12-08	d	1	0	Kakushigoto (TV)	https://anidb.net/anime/15267
+2021-12-08	d	1	0	Kanojo mo Kanojo	https://anidb.net/anime/15851
+2021-12-08	d	1	0	Shiroi Suna no Aquatope	https://anidb.net/anime/15987
