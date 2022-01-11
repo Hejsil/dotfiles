@@ -73,7 +73,7 @@ download() {
             # fi
 
             if ! [ -e "$file_name" ]; then
-                yt-dlp -i -f "$format" -o "$template" "$id" >&2
+                yt-dlp -i -f "$format" -o "$template" -- "$id" >&2
             fi
             printf '%s\n' "$file_name"
             # notify-send "Song queued" "$(printf '%s\n%s\n' \
@@ -101,8 +101,9 @@ cat - | while read -r user rest; do
         while read -r link; do
             printf "!%s %s\n" "$cmd" "$link"
 
-            download "$user" "$cmd" "$link" |
-                xargs -d'\n' -I% sh -c "echo '%' | queue enqueue '$queue'"
+            download "$user" "$cmd" "$link" | while read -r song; do
+                echo "$song" | queue enqueue "$queue"
+            done
         done
 done &
 
@@ -120,8 +121,9 @@ while ! printf '' | socat -u "$mpv_socket" - 2>/dev/null; do :; done |
 
         while [ -z "$file_name" ]; do
             # No file in random queue. Create a new one
-            find "$music_folder" -type f | sort -R |
-                xargs -d'\n' -I% sh -c "echo '%' | queue enqueue '$random_queue'"
+            find "$music_folder" -type f | sort -R | while read -r song; do
+                echo "$song" | queue enqueue "$random_queue"
+            done
             file_name=$(queue dequeue "$random_queue")
 
             # Still no file. Wait till we have some
