@@ -4,7 +4,7 @@ cmd=$*
 [ -z "$cmd" ] && [ -f 'Cargo.toml' ] &&
     cmd='cargo clippy && cargo build'
 [ -z "$cmd" ] && [ -f 'build.zig' ] &&
-    cmd='zig build'
+    cmd='zig build --prominent-compile-errors'
 
 fd -e h -e hh -e hpp -e c -e cc -e cpp -e rs -e toml -e zig \
     --exclude 'zig-cache' | entr -crs "$cmd"

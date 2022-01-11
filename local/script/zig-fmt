@@ -5,7 +5,9 @@ file=$(mktemp)
 cat - >"$file"
 zig fmt "$file" 2>/dev/null >/dev/null || true
 
-case $(git remote get-url origin) in
+remote=$(git remote get-url upstream ||
+    git remote get-url origin)
+case $remote in
     git@github.com:Hejsil/* | git@github.com:TM35-Metronome/* | '')
         {
             # Sort global constants only for repos I own

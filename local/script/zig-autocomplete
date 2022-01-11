@@ -31,7 +31,7 @@
 
 /^const std $/ { printf "%s= @import(\"std\");\n¤", $0 ; next }
 
-/(^|[^a-zA-Z0-9_])allocator: $/ { printf "%s*mem.Allocator,¤", $0 ; next }
+/(^|[^a-zA-Z0-9_])allocator: $/ { printf "%smem.Allocator,¤", $0 ; next }
 
 /\{$/ { printf "%s¤}", $0 ; next }
 /\($/ { printf "%s¤)", $0 ; next }
