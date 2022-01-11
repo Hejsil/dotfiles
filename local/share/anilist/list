@@ -40,7 +40,7 @@
 2017-07-09	c	13	1	Baccano!	https://anidb.net/anime/4897
 2017-07-10	c	12	1	Rolling☆Girls	https://anidb.net/anime/10784
 2017-07-12	c	12	1	Alice to Zouroku	https://anidb.net/anime/12526
-2017-07-12	c	12	1	Seikaisuru Kado	https://anidb.net/anime/11762
+2017-07-12	c	12	2	Seikaisuru Kado	https://anidb.net/anime/11762
 2017-07-12	d	8	0	Sakura Quest	https://anidb.net/anime/12602
 2017-07-13	c	12	4	New Game!!	https://anidb.net/anime/12819
 2017-07-14	c	12	1	Eromanga-sensei	https://anidb.net/anime/11981
@@ -155,7 +155,7 @@
 2018-01-03	d	6	0	Date A Live	https://anidb.net/anime/8808
 2018-01-04	c	10	1	Kyousou Giga (TV)	https://anidb.net/anime/9992
 2018-01-31	c	12	1	Shimoneta to Iu Gainen ga Sonzai Shinai Taikutsu na Sekai	https://anidb.net/anime/10888
-2018-03-02	c	1	1	No Game No Life: Zero	https://anidb.net/anime/12276
+2018-03-02	c	1	2	No Game No Life: Zero	https://anidb.net/anime/12276
 2018-04-08	c	13	1	Violet Evergarden	https://anidb.net/anime/12138
 2018-04-10	c	12	2	Yuru Camp△	https://anidb.net/anime/12743
 2018-04-11	d	1	0	Dame x Prince Anime Caravan	https://anidb.net/anime/13300
@@ -349,10 +349,10 @@
 2020-09-08	c	1	2	Pokemon Movie 12: Arceus Choukoku no Jikuu e	https://anidb.net/anime/6316
 2020-09-08	c	1	3	Pokemon Movie 01: Mewtwo no Gyakushuu	https://anidb.net/anime/990
 2020-09-08	c	1	3	Steins;Gate: Oukoubakko no Poriomania	https://anilist.co/anime/10863
-2020-09-08	c	1	3	Suzumiya Haruhi no Shoushitsu	https://anidb.net/anime/7221
 2020-09-08	c	1	4	Fate/stay night: Unlimited Blade Works Prologue	https://anisearch.com/anime/10005
 2020-09-08	c	1	4	Issho ni Sleeping: Sleeping with Hinako	https://anidb.net/anime/7295
 2020-09-08	c	1	4	Shelter (Music)	https://anidb.net/anime/12482
+2020-09-08	c	1	4	Suzumiya Haruhi no Shoushitsu	https://anidb.net/anime/7221
 2020-09-08	c	1	6	Pokemon Movie 03: Kesshoutou no Teiou Entei	https://myanimelist.net/anime/1118
 2020-09-08	c	2	1	Denpa-teki na Kanojo	https://anidb.net/anime/6322
 2020-09-08	c	2	1	High School DxD OVA	https://anidb.net/anime/8925
@@ -535,7 +535,8 @@
 2020-09-08	c	13	5	Fate/Zero	https://anidb.net/anime/8160
 2020-09-08	c	13	5	Fate/stay night: Unlimited Blade Works 2nd Season	https://anidb.net/anime/10760
 2020-09-08	c	13	5	Little Busters!: Refrain	https://anidb.net/anime/9822
-2020-09-08	c	14	3	Suzumiya Haruhi no Yuuutsu	https://anidb.net/anime/3651
+2020-09-08	c	14	4	Suzumiya Haruhi no Yuuutsu	https://anidb.net/anime/3651
+2020-09-08	c	14	4	Suzumiya Haruhi no Yuuutsu (2009)	https://kitsu.io/anime/3579
 2020-09-08	c	16	1	Nagato Yuki-chan no Shoushitsu	https://anidb.net/anime/10815
 2020-09-08	c	16	1	Pokemon Housoukyoku	https://anidb.net/anime/3419
 2020-09-08	c	18	1	Pokemon Generations	https://anidb.net/anime/12409
@@ -973,7 +974,6 @@
 2021-10-08	d	1	0	Genjitsu Shugi Yuusha no Oukoku Saikenki	https://anidb.net/anime/15505
 2021-10-08	d	1	0	Heion Sedai no Idaten-tachi	https://anidb.net/anime/15676
 2021-10-08	d	1	0	Jahy-sama wa Kujikenai!	https://anidb.net/anime/16256
-2021-10-08	w	1	0	Kageki Shoujo!!	https://anidb.net/anime/15810
 2021-10-09	c	1	1	Evangelion: 2.0 You Can (Not) Advance	https://anidb.net/anime/6171
 2021-10-09	c	1	1	Evangelion: 3.0 You Can (Not) Redo	https://anidb.net/anime/7565
 2021-10-09	c	1	1	Evangelion: 3.0+1.0 Thrice Upon a Time	https://anidb.net/anime/8895
@@ -1010,3 +1010,7 @@
 2021-12-08	d	1	0	Kakushigoto (TV)	https://anidb.net/anime/15267
 2021-12-08	d	1	0	Kanojo mo Kanojo	https://anidb.net/anime/15851
 2021-12-08	d	1	0	Shiroi Suna no Aquatope	https://anidb.net/anime/15987
+2021-12-20	c	13	1	Kageki Shoujo!!	https://anidb.net/anime/15810
+2021-12-30	c	1	1	Spider-Man: Into The Spider-Verse	https://kitsu.io/anime/42218
+2021-12-30	p	0	0	FLCL Alternative	https://anidb.net/anime/13258
+2021-12-30	p	0	0	FLCL Progressive	https://anidb.net/anime/12023
