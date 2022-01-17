@@ -104,7 +104,7 @@ hook global BufWritePre .* %{
 hook global WinSetOption filetype=sh  %{ set-option window lintcmd 'shellcheck -f gcc' }
 hook global WinSetOption filetype=zig %{ set-option window lintcmd 'zig-check' }
 
-hook global WinSetOption filetype=git-commit %{ set-option window formatcmd 'par "72rTbgqR" "B=.,?_A_a" "Q=_s>q|"' }
+hook global WinSetOption filetype=git-commit %{ set-option window formatcmd 'pandoc --columns=72 --tab-stop 2 --from gfm --to gfm' }
 hook global WinSetOption filetype=json       %{ set-option window formatcmd "jq --indent %opt{tabstop} ." }
 hook global WinSetOption filetype=python     %{ set-option window formatcmd 'black - -l 100' }
 hook global WinSetOption filetype=rust       %{ set-option window formatcmd 'rustfmt --edition 2018' }

@@ -133,6 +133,7 @@ openvpn
 os-prober
 pacman
 pacman-contrib
+pandoc
 par
 paru-bin
 pass
@@ -191,6 +192,7 @@ ttf-liberation
 ttf-sarasa-gothic
 ttf-symbola
 ttf-twemoji
+udisks2
 ueberzug
 ungoogled-chromium
 uni
