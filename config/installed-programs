@@ -29,6 +29,7 @@ dash
 dhcpcd
 direnv
 discord_arch_electron
+dkms
 dmenu
 docker
 docker-compose
@@ -95,6 +96,7 @@ lib32-gnutls
 lib32-vulkan-icd-loader
 lib32-vulkan-intel
 lib32-vulkan-radeon
+libpulse
 librealsense
 libtool
 libusb-git
@@ -136,13 +138,13 @@ os-prober
 pacman
 pacman-contrib
 pandoc
-par
 paru-bin
 pass
 patch
 pavucontrol
 perf
 picom
+pipewire
 pipewire-alsa
 pipewire-jack
 pipewire-pulse
@@ -211,6 +213,7 @@ wasmtime
 websocat
 which
 wine
+wireplumber
 xbanish
 xclip
 xdelta3
