@@ -1,0 +1,2 @@
+#!/bin/sh
+exec chromium --new-window https://discordapp.com/app

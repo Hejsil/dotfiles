@@ -8,4 +8,4 @@ if [ -s "$tmp" ]; then
     hck -f 2 "$tmp" | xargs -d '\n' tsp open
 fi
 
-rm "$tmp"
+exec rm "$tmp"

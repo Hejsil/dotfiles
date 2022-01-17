@@ -35,5 +35,5 @@ output=$1
 echo "$output"
 slop -f '%x %y %w %h' | {
     read -r x y w h
-    ffmpeg -f x11grab -s "${w}x${h}" -i ":0.0+${x},${y}" -r "$fps" -vcodec libx264 "$output"
+    exec ffmpeg -f x11grab -s "${w}x${h}" -i ":0.0+${x},${y}" -r "$fps" -vcodec libx264 "$output"
 }

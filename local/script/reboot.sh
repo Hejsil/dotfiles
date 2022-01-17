@@ -1,3 +1,3 @@
 #!/bin/sh -e
 update.sh
-reboot
+exec reboot

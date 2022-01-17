@@ -1,2 +1,2 @@
 #!/bin/sh
-printf "" | fzf "--preview=calc {q}" --preview-window=up
+echo | exec fzf --disabled "--preview=calc {q}" --preview-window=up

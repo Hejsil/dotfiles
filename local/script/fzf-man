@@ -9,4 +9,4 @@ bat_range='--line-range=:$FZF_PREVIEW_LINES'
 man -k . | sd '^([^ ]+) \(([^)]+)\)\s*(.*)$' '$2\t$1\t$3' |
     fzf -d '\t' --with-nth=2,3 --query="$*" \
         --preview "man {1} {2} 2>/dev/null | $bat_cmd $bat_range" |
-    cut -f1,2 | tr -d '\n' | xargs -d'\t' man
+    cut -f1,2 | tr -d '\n' | exec xargs -d'\t' man

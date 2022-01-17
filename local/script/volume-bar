@@ -2,4 +2,4 @@
 
 pactl subscribe | rg --line-buffered "'change' on sink " | while read -r _; do
     pulsemixer --get-volume | cut -f1 -d' '
-done | stdbuf -o L uniq | xob
+done | stdbuf -o L uniq | exec xob

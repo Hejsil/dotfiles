@@ -16,4 +16,4 @@ paste -d "$IFS" "$old_file_names" "$new_file_names" |
         mv -i "$from" "$to"
     done
 
-rm "$old_file_names" "$new_file_names"
+exec rm "$old_file_names" "$new_file_names"

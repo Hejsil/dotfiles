@@ -3,4 +3,4 @@
 opener=$(file -0 -F ' ' --mime-type -L "$@" | sed 's/\x0\s*/\t/' | opener.sh | sort -u)
 
 [ -z "$opener" ] || [ "$(echo "$opener" | wc -l)" -ne 1 ] && exit 1
-$opener "$@"
+exec $opener "$@"

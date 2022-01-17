@@ -1,3 +1,2 @@
 #!/bin/sh -e
-
-zig ast-check --color off "$@" 2>&1
+exec zig ast-check --color off "$@" 2>&1

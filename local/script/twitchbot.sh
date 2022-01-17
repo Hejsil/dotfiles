@@ -29,4 +29,4 @@ printf "" >"$chat_file"
     echo ":JOIN #$channel"
     sleep 100d
     #tail -f "$chat_file" >/dev/null
-} | sic -h 'irc.chat.twitch.tv' -p '6667' -n "$nick" -k "$TWITCH_TOKEN" >>"$chat_file"
+} | exec sic -h 'irc.chat.twitch.tv' -p '6667' -n "$nick" -k "$TWITCH_TOKEN" >>"$chat_file"

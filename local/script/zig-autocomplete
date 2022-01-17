@@ -30,6 +30,7 @@
 /(^|[^a-zA-Z0-9_])fmt\.format $/ { printf "%s(¤, \"\", .{})", $0 ; next }
 
 /^const std $/ { printf "%s= @import(\"std\");\n¤", $0 ; next }
+/^[ ]*(const|var) [a-zA-Z][a-zA-Z0-9_]* $/ { printf "%s= ¤;", $0 ; next }
 
 /(^|[^a-zA-Z0-9_])allocator: $/ { printf "%smem.Allocator,¤", $0 ; next }
 

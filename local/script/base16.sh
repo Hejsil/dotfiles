@@ -27,4 +27,4 @@ sed -e '/^#/d' -e 's/^COLOR//' <"$scheme" | nawk -F'=' '{
     printf " -e s/{{base0%X-rgb-r}}/%d/g", $1, "0x" R
     printf " -e s/{{base0%X-rgb-g}}/%d/g", $1, "0x" G
     printf " -e s/{{base0%X-rgb-b}}/%d/g", $1, "0x" B
-}' | xargs sed "$template"
+}' | exec xargs sed "$template"
