@@ -72,6 +72,7 @@ grep
 groff
 grub
 gsfonts
+gst-plugin-pipewire
 gst-plugins-bad
 gst-plugins-bad-libs
 gst-plugins-base
@@ -101,6 +102,7 @@ libva-vdpau-driver
 libxft-bgra-git
 linux-firmware
 linux-zen
+linux-zen-headers
 lld
 llvm
 lostfiles
@@ -142,6 +144,7 @@ pavucontrol
 perf
 picom
 pipewire-alsa
+pipewire-jack
 pipewire-pulse
 pkgconf
 proton-ge-custom-bin
