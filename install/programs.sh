@@ -27,6 +27,10 @@ install_paru() {
 }
 
 install_zig() {
+    if command -v "$1"; then
+        return
+    fi
+
     repo="$1"
     folder="$(mktemp -d)"
 
@@ -36,6 +40,10 @@ install_zig() {
 }
 
 install_st() {
+    if command -v st; then
+        return
+    fi
+
     folder="$HOME/repo/st-flexipatch"
     rm -rf "$folder"
     mkdir -p "$folder"
@@ -53,7 +61,7 @@ install_st() {
 }
 
 install_paru
-paru -S --needed - <"$here/config/installed-programs"
+paru -S --confirm --needed - <"$here/config/installed-programs"
 
 install_zig 'lemonbar-maker'
 install_zig 'anilist'
