@@ -27,7 +27,7 @@ conan
 dante
 dash
 dhcpcd
-direnv-bin
+direnv
 discord_arch_electron
 dmenu
 docker
@@ -35,7 +35,7 @@ docker-compose
 docker-credential-pass-bin
 dosfstools
 dragon-drag-and-drop
-duf-bin
+duf
 dunst
 duperemove
 dust
