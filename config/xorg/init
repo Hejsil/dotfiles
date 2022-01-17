@@ -5,7 +5,7 @@ xset s off
 xset s off -dpms
 setxkbmap -layout "dk"
 xmodmap -e 'keycode 135 = Super_L'
-xrandr --output HDMI-1 --mode 1920x1080 --right-of DP-0 \
+xrandr --output HDMI-1 --mode 1920x1080 --right-of DP-1 \
     --output DP-1 --primary --mode 2560x1440 --rate 144
 
 xrdb -merge "$XDG_CONFIG_HOME/xorg/resources"
