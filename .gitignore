@@ -1,15 +1,10 @@
-config/Caprine
-config/Electron/
-config/GIMP
-config/JetBrains/
-config/QtProject.conf
-config/Slack/
-config/Syncplay/
-config/VirtualBox
 config/aerc/accounts.conf
 config/autostart
+config/BasemarkGPU/
 config/bottom/
+config/Caprine
 config/cava/
+config/cef_user_data/
 config/chromium
 config/coc
 config/configstore/
@@ -19,28 +14,40 @@ config/desmume/
 config/discord
 config/docker/
 config/dunst
+config/Electron/
 config/filezilla/
 config/gh/
+config/GIMP
 config/git/credentials
+config/glava/
 config/gnupg
 config/google-calendar-dark-nativefier-e22938/
 config/google-meet-desktop/
 config/gtk-2.0
+config/gtk-3.0/
 config/hotspotrc
 config/htop
 config/inkscape
 config/isync
+config/JetBrains/
 config/jgit/
+config/karboncalligraphyrc
+config/kcachegrindrc
 config/kitty/
+config/kritadisplayrc
+config/kritarc
 config/libfm/
 config/libreoffice/
 config/lutris
 config/lxc
+config/massif-visualizerrc
 config/melonDS/
 config/menus/
 config/mgba/
+config/mimeapps.list
 config/monitors.xml
 config/mpv/watch_later
+config/neofetch/
 config/notmuch
 config/nvim/.netrwhist
 config/nvim/spell
@@ -54,7 +61,12 @@ config/pipewire/
 config/protonfixes
 config/pulse
 config/qt5ct
+config/QtProject.conf
 config/retroarch/
+config/Slack/
+config/Soundux/
+config/subversion/
+config/Syncplay/
 config/syncplay.ini
 config/tm35-randomizer
 config/tracy/
@@ -66,23 +78,18 @@ config/transmission-daemon/torrents
 config/unity3d/
 config/user-dirs.dirs
 config/user-dirs.locale
+config/VirtualBox
+config/xfce4/
 config/xorg/resources
 config/zathura
 local/bin/
 local/lib/
-local/share/Baba_Is_You/
-local/share/JetBrains/
-local/share/Nextcloud/
-local/share/Pocketwatch Games/
-local/share/Steam/
-local/share/Tabletop Simulator/
-local/share/Terraria/
-local/share/Trash
-local/share/Valve Corporation/
 local/share/aerc/
 local/share/applications/
+local/share/Baba_Is_You/
 local/share/bash_history
 local/share/cod/
+local/share/Daedalic Entertainment GmbH/
 local/share/data/
 local/share/delta/
 local/share/desktop-directories/
@@ -97,7 +104,12 @@ local/share/gsettings-data-convert
 local/share/gvfs-metadata/
 local/share/icc/
 local/share/icons/
+local/share/JetBrains/
 local/share/keyrings/
+local/share/Kishonti Ltd/
+local/share/krita/
+local/share/krita.log
+local/share/krita-sysinfo.log
 local/share/lutris/
 local/share/mail/
 local/share/marble/
@@ -106,8 +118,10 @@ local/share/meld/
 local/share/mime/
 local/share/multimc/
 local/share/nautilus/
+local/share/Nextcloud/
 local/share/nvim/
 local/share/pobfrontend/
+local/share/Pocketwatch Games/
 local/share/python_keyring/
 local/share/ranger/
 local/share/recently-used.xbel
@@ -115,10 +129,17 @@ local/share/rr/
 local/share/rss/
 local/share/rustup/
 local/share/sfeed/
+local/share/Steam/
+local/share/Tabletop Simulator/
 local/share/template/
+local/share/Terraria/
 local/share/themes/
+local/share/Trash
+local/share/Valve Corporation/
+local/share/virtualenv/
 local/share/vulkan/
 local/share/xorg/
 local/share/zathura/
 local/share/zig/
 local/share/zoxide/
+local/state/

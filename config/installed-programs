@@ -28,7 +28,7 @@ dante
 dash
 dhcpcd
 direnv-bin
-discord
+discord_arch_electron
 dmenu
 docker
 docker-compose
@@ -37,6 +37,7 @@ dosfstools
 dragon-drag-and-drop
 duf-bin
 dunst
+duperemove
 dust
 efibootmgr
 entr
@@ -98,10 +99,11 @@ libtool
 libusb-git
 libva-vdpau-driver
 libxft-bgra-git
-linux
 linux-firmware
+linux-zen
 lld
 llvm
+lostfiles
 luajit
 lutris
 m4
@@ -138,11 +140,11 @@ patch
 pavucontrol
 perf
 picom
+pipewire-alsa
+pipewire-pulse
 pkgconf
 proton-ge-custom-bin
-pulseaudio
 pulseaudio-alsa
-pulseaudio-jack
 pulsemixer
 pv
 pyside2
@@ -180,6 +182,7 @@ task-spooler
 tealdeer
 texinfo
 time
+tmux
 tor-browser
 transmission-cli
 ttf-bitstream-vera
@@ -192,6 +195,7 @@ ueberzug
 ungoogled-chromium
 uni
 unrar
+valgrind
 vi
 vim
 vulkan-intel
