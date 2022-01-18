@@ -1,4 +1,4 @@
 [Service]
-ExecStart=%h/.local/scriptp/generate xresources
+ExecStart=%h/.local/script/generate xresources
 [Install]
 WantedBy=user-graphical-login.target
