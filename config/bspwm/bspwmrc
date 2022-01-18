@@ -25,6 +25,7 @@ bspc rule -a 'MEGAsync' -o hidden=on
 bspc rule -a 'Zathura' state=tiled
 bspc rule -a 'origin.exe' state=floating
 bspc rule -a 'window' state=floating center=on sticky=on focus=on rectangle=1280x720+0+0
+bspc rule -a 'fullscreen' state=fullscreen
 
 systemctl --user import-environment
 systemctl --user start user-graphical-login.target

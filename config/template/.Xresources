@@ -1,4 +1,5 @@
 *font:           monospace-16
+big.font:        monospace-32
 bar.font:        monospace-12
 *foreground:    #{{base05-hex}}
 *selforeground: #{{base00-hex}}

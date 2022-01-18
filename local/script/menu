@@ -1,0 +1,56 @@
+#!/bin/sh
+
+fzf2() {
+    fzf --layout reverse-list --cycle --margin 0,1 --color 16,border:bright-black \
+        --border rounded --prompt '' -d'\t' "$@"
+}
+
+item() {
+    str=$1
+    shift
+    cmd="$*"
+    printf '%s\t%s\n' "$str" "$cmd"
+}
+
+option_menu() {
+    while true; do
+        items=$(for option in "$@"; do
+            item $option
+        done)
+        chosen=$(echo "$items" | fzf2 --with-nth=1 | cut -f2-)
+        if [ -z "$chosen" ]; then return; fi
+        $chosen
+    done
+}
+
+run_file_menu() {
+    files_cmd=$1
+    cmd=$2
+    while true; do
+        chosen=$($files_cmd | fzf2)
+        if [ -z "$chosen" ]; then return; fi
+
+        echo "$cmd '$chosen'" >&2
+        $cmd "$chosen"
+    done
+}
+
+main() {
+    option_menu \
+        "anime menu anime" \
+        "music mpv --fs --ytdl-format=bestaudio/best --shuffle \
+        https://youtube.com/playlist?list=PLQHmQm6ZbDZbb8szk0cg13FQBc2fNwPvS"
+}
+
+anime() {
+    cd "$HOME/torrents" || return
+    run_file_menu \
+        'fd . --maxdepth 1 --strip-cwd-prefix' \
+        'fd . --type f -e mkv -e mp4 -X mpv --fs {} ;'
+}
+
+case $1 in
+    main) main ;;
+    anime) anime ;;
+    *) ;;
+esac
