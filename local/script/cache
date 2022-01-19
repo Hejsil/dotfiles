@@ -16,13 +16,11 @@ data_to_hash() {
 
         case $file in
             --) break ;;
-            *) cat "$file" ;;
+            *) stat "$file" ;;
         esac
     done
 
-    for arg in "$@"; do
-        echo "$arg"
-    done
+    echo "$@"
 }
 
 cache_home="${XDG_CACHE_HOME:-$HOME/.cache}"
@@ -33,6 +31,7 @@ file_name=$(data_to_hash "$@" | b3sum | cut -d' ' -f1)
 file_path="$cache_path/$file_name"
 
 if ! [ -f "$file_path" ]; then
+    echo 'Cache miss' >&2
     while [ -n "$1" ]; do
         case $1 in
             --)

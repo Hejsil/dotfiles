@@ -16,7 +16,7 @@ xrandr --listactivemonitors |
     rg -o '^ (\d+): [^ ]+ (\d+)/\d+x(\d+)' -r '$1 $2 $3' |
     while read -r id w h; do
         file=$(pop)
-        file=$(cache "$file" -- convert "$file" -resize "${w}x${h}^" '{{output}}')
+        file=$(cache "$file" -- convert "$file" -resize "${w}x${h}^" -quality 100 'jpg:{{output}}')
         echo '--on'
         echo "$id"
         echo "$file"
