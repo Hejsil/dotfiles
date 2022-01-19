@@ -92,6 +92,7 @@ jq
 kak-lsp
 kakoune
 lemonbar-xft-git
+lensfun
 lib32-gnutls
 lib32-vulkan-icd-loader
 lib32-vulkan-intel
@@ -108,6 +109,7 @@ linux-zen-headers
 lld
 llvm
 lostfiles
+lshw
 luajit
 lutris
 m4
@@ -184,6 +186,7 @@ sudo
 sxhkd
 sxiv
 syncplay
+syncthing
 task-spooler
 tealdeer
 texinfo

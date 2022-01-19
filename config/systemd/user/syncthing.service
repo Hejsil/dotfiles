@@ -1,4 +1,4 @@
 [Service]
-ExecStart=/usr/bin/megasync
+ExecStart=/usr/bin/syncthing
 [Install]
 WantedBy=user-graphical-login.target
