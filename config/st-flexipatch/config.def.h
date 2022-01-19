@@ -9,7 +9,7 @@ static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
 #if FONT2_PATCH
 /* Spare fonts */
 static char *font2[] = {
-    "emoji:pixelsize=20:antialias=true:autohint=true",
+/*	"Inconsolata for Powerline:pixelsize=12:antialias=true:autohint=true", */
 /*	"Hack Nerd Font Mono:pixelsize=11:antialias=true:autohint=true", */
 };
 #endif // FONT2_PATCH
@@ -22,6 +22,10 @@ int borderperc = 20;
 static int borderpx = 2;
 #endif // RELATIVEBORDER_PATCH
 
+#if OPENURLONCLICK_PATCH
+static char *url_opener = "xdg-open";
+#endif // OPENURLONCLICK_PATCH
+
 /*
  * What program is execed by st depends of these precedence rules:
  * 1: program passed with -e
@@ -31,7 +35,7 @@ static int borderpx = 2;
  * 5: value of shell in config.h
  */
 static char *shell = "/bin/sh";
-char *utmp = NULL;
+char *utmp = "/usr/bin/tmux";
 /* scroll program: to enable use a string like "scroll" */
 char *scroll = NULL;
 char *stty_args = "stty raw pass8 nl -echo -iexten -cstopb 38400";
@@ -100,11 +104,11 @@ static unsigned int cursorthickness = 2;
  *    Bold affects lines thickness if boxdraw_bold is not 0. Italic is ignored.
  * 0: disable (render all U25XX glyphs normally from the font).
  */
-const int boxdraw = 0;
-const int boxdraw_bold = 0;
+const int boxdraw = 1;
+const int boxdraw_bold = 1;
 
 /* braille (U28XX):  1: render as adjacent "pixels",  0: use font */
-const int boxdraw_braille = 0;
+const int boxdraw_braille = 1;
 #endif // BOXDRAW_PATCH
 
 /*
@@ -334,8 +338,8 @@ static MouseShortcut mshortcuts[] = {
 	{ XK_ANY_MOD,           Button2, selpaste,       {.i = 0},      1 },
 	#endif // CLIPBOARD_PATCH
 	#if SCROLLBACK_MOUSE_PATCH
-	{ ShiftMask,            Button4, kscrollup,      {.i = 4} },
-	{ ShiftMask,            Button5, kscrolldown,    {.i = 4} },
+	{ ShiftMask,            Button4, kscrollup,      {.i = 1} },
+	{ ShiftMask,            Button5, kscrolldown,    {.i = 1} },
 	#elif UNIVERSCROLL_PATCH
 	{ XK_ANY_MOD,           Button4, ttysend,        {.s = "\033[5;2~"}, 0, -1 },
 	{ XK_ANY_MOD,           Button5, ttysend,        {.s = "\033[6;2~"}, 0, -1 },
@@ -344,8 +348,8 @@ static MouseShortcut mshortcuts[] = {
 	{ ShiftMask,            Button5, ttysend,        {.s = "\033[6;2~"} },
 	#endif // SCROLLBACK_MOUSE_PATCH
 	#if SCROLLBACK_MOUSE_ALTSCREEN_PATCH
-	{ XK_NO_MOD,            Button4, kscrollup,      {.i = 4} },
-	{ XK_NO_MOD,            Button5, kscrolldown,    {.i = 4} },
+	{ XK_NO_MOD,            Button4, kscrollup,      {.i = 1} },
+	{ XK_NO_MOD,            Button5, kscrolldown,    {.i = 1} },
 	#else
 	{ XK_ANY_MOD,           Button4, ttysend,        {.s = "\031"} },
 	{ XK_ANY_MOD,           Button5, ttysend,        {.s = "\005"} },
@@ -713,3 +717,29 @@ static char ascii_printable[] =
  */
 static char *plumb_cmd = "plumb";
 #endif // RIGHTCLICKTOPLUMB_PATCH
+
+#if UNDERCURL_PATCH
+/**
+ * Undercurl style. Set UNDERCURL_STYLE to one of the available styles.
+ *
+ * Curly: Dunno how to draw it *shrug*
+ *  _   _   _   _
+ * ( ) ( ) ( ) ( )
+ *	 (_) (_) (_) (_)
+ *
+ * Spiky:
+ * /\  /\   /\	/\
+ *   \/  \/	  \/
+ *
+ * Capped:
+ *	_     _     _
+ * / \   / \   / \
+ *    \_/   \_/
+ */
+// Available styles
+#define UNDERCURL_CURLY 0
+#define UNDERCURL_SPIKY 1
+#define UNDERCURL_CAPPED 2
+// Active style
+#define UNDERCURL_STYLE UNDERCURL_SPIKY
+#endif // UNDERCURL_PATCH

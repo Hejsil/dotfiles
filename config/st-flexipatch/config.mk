@@ -25,7 +25,7 @@ LIGATURES_INC = `$(PKG_CONFIG) --cflags harfbuzz`
 LIGATURES_LIBS = `$(PKG_CONFIG) --libs harfbuzz`
 
 # Uncomment this for the SIXEL patch / SIXEL_PATCH
-SIXEL_C = sixel.c sixel_hls.c
+#SIXEL_C = sixel.c sixel_hls.c
 
 # includes and libs, uncomment harfbuzz for the ligatures patch
 INCS = -I$(X11INC) \

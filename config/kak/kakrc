@@ -45,7 +45,7 @@ define-command -override move-lines-up -docstring 'move line up' %{
 
 # fzf
 define-command open -params 1 %{
-    terminal sh -c %sh{
+    tmux-terminal-window sh -c %sh{
         printf '%s | sed -E -e "s/^/evaluate-commands -client %s edit / ;
             s/:([0-9]+).*/\\nexecute-keys -client %s \\1g/" | kak -p "%s"' \
             "$1" "$kak_client" "$kak_client" "$kak_session"
