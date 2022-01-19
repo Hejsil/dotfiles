@@ -117,7 +117,6 @@ make
 man-db
 man-pages
 mediainfo
-megasync
 melonds-git
 meson
 mimalloc

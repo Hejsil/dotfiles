@@ -21,7 +21,6 @@ bspc config focus_follows_pointer true
 bspc config ignore_ewmh_focus true
 bspc config top_padding 26
 
-bspc rule -a 'MEGAsync' -o hidden=on
 bspc rule -a 'Zathura' state=tiled
 bspc rule -a 'origin.exe' state=floating
 bspc rule -a 'window' state=floating center=on sticky=on focus=on rectangle=1280x720+0+0
