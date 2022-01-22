@@ -1,12 +1,9 @@
 eval %sh{kak-lsp --kakoune -s "$kak_session"}
+lsp-enable
 
 set-option global tabstop 4
 set-option global ui_options ncurses_assistant=off ncurses_set_title=true
 set-option global modelinefmt '%val{bufname} %val{cursor_line}:%val{cursor_char_column} {{context_info}} {{mode_info}} '
-
-hook global KakBegin .* %{
-    set-option global termcmd 'st -c window -e sh -c'
-}
 
 add-highlighter global/ number-lines -relative -separator ' '
 add-highlighter global/ show-whitespaces -tab '▸' -tabpad ' ' -lf ' ' -spc ' '
@@ -60,9 +57,6 @@ hook global InsertCompletionShow .* %{ map window insert <tab> <c-n> }
 hook global InsertCompletionHide .* %{ map window insert <tab> <tab> }
 
 # lsp hooks
-hook global WinSetOption filetype=(sh|c|cpp|javascript|typescript|python|rust|zig) %{
-    lsp-enable-window
-}
 hook global WinSetOption filetype=rust %{
     hook window -group semantic-tokens BufReload .* lsp-semantic-tokens
     hook window -group semantic-tokens NormalIdle .* lsp-semantic-tokens
