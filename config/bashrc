@@ -25,10 +25,11 @@ __paru_alias() {
 }
 
 __kak_alias() {
-    session_id=$(pwd | sha1sum | cut -d' ' -f1)
+    cwd=$(pwd)
+    session_id=$(echo "$cwd" | sha1sum | cut -d' ' -f1)
 
-    kak -c "$session_id" "$@" ||
-        kak -s "$session_id" "$@"
+    KAK_LSP_FORCE_PROJECT_ROOT="$cwd" kak -c "$session_id" "$@" ||
+        KAK_LSP_FORCE_PROJECT_ROOT="$cwd" kak -s "$session_id" "$@"
 }
 
 alias ..='__cd_alias ..'
