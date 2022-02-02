@@ -1,4 +1,4 @@
 [Service]
-ExecStart=/usr/bin/syncthing
+ExecStart=/usr/bin/syncthing -no-browser
 [Install]
 WantedBy=user-graphical-login.target

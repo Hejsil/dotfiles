@@ -3,6 +3,9 @@ aerc
 alsa-firmware
 alsa-plugins
 amd-ucode
+ananicy
+ananicy-cpp
+audacity
 autoconf
 automake
 b3sum
@@ -100,6 +103,7 @@ libpulse
 librealsense
 libtool
 libusb-git
+libva-mesa-driver
 libva-vdpau-driver
 libxft-bgra-git
 linux-firmware
@@ -120,6 +124,7 @@ melonds-git
 meson
 mimalloc
 minizip
+mold
 moreutils
 mpv
 mpv-sponsorblock-minimal-git
@@ -185,6 +190,7 @@ sxhkd
 sxiv
 syncplay
 syncthing
+task
 task-spooler
 tealdeer
 texinfo
@@ -215,11 +221,13 @@ websocat
 which
 wine
 wireplumber
+wireshark-qt
 xbanish
 xclip
 xdelta3
 xdo
 xdotool
+xf86-video-amdgpu
 xgetres
 xob
 xorg-server

@@ -11,3 +11,5 @@ install/linkup.sh
 install/system-files.sh
 install/programs.sh
 install/generate-themes.sh
+
+systemctl enable dbus-broker.service

@@ -6,7 +6,7 @@ cat - >"$file"
 zig fmt "$file" 2>/dev/null >/dev/null || true
 
 remote=$(git remote get-url upstream ||
-    git remote get-url origin)
+    git remote get-url origin || true)
 case $remote in
     git@github.com:Hejsil/* | git@github.com:TM35-Metronome/* | '')
         {

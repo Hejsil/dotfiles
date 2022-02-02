@@ -99,6 +99,9 @@ XF86Audio{Raise,Lower}Volume
 Print
     screenshot.sh "$HOME/mega/images/screenshots"
 
+shift + Print
+    screenshot-slop.sh "$HOME/mega/images/screenshots"
+
 Pause
     $TERMINAL -c fullscreen -f $(xgetres big.font) -e bash -c 'sleep 0.1s; menu main'
 
