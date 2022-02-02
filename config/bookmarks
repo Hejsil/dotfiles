@@ -6,6 +6,7 @@ kakoune	https://github.com/mawww/kakoune/blob/master/README.asciidoc#3-basic-int
 music	https://www.youtube.com/playlist?list=PLQHmQm6ZbDZbb8szk0cg13FQBc2fNwPvS
 nyaa	https://www.nyaa.si
 rust-docs	https://doc.rust-lang.org/std/
-rust-gstreamer-docs	https://gstreamer.pages.freedesktop.org/gstreamer-rs/stable/latest/docs/gstreamer_base/index.html
+rust-gstreamer-docs	https://docs.rs/gstreamer/latest/gstreamer/
+rust-glib-docs	https://docs.rs/glib/latest/glib/
 twitch	https://www.twitch.tv
 youtube	https://www.youtube.com
