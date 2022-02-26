@@ -6,7 +6,7 @@ while read -r file mine; do
         application/pdf) echo "$READER" ;;
         application/x-bittorrent) echo 'tra.sh' ;;
         inode/x-empty | application/json | text*) echo "$EDITOR" ;;
-        image/*) echo 'sxiv -a' ;;
+        image/*) echo 'nsxiv -a' ;;
         video/*) echo 'mpv' ;;
         audio/*) echo 'mpv --vid=no' ;;
         *) case $file in
