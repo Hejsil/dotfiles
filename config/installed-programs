@@ -29,9 +29,10 @@ cmake
 conan
 dante
 dash
+dbus-broker
 dhcpcd
 direnv
-discord_arch_electron
+discord
 dkms
 dmenu
 docker
@@ -75,12 +76,15 @@ grep
 groff
 grub
 gsfonts
+gst-editing-services
 gst-plugin-pipewire
 gst-plugins-bad
 gst-plugins-bad-libs
 gst-plugins-base
 gst-plugins-good
 gst-plugins-ugly
+gst-rtsp-server
+gstreamer-vaapi
 gzip
 haguichi
 haveged
@@ -132,8 +136,10 @@ msmtp
 nawk
 networkmanager
 nodejs
+nsxiv
+ntfs-3g
 ntp
-obs-studio-tytan652
+obs-studio
 obs-websocket
 openal
 openssh
@@ -147,6 +153,7 @@ paru-bin
 pass
 patch
 pavucontrol
+peg
 perf
 picom
 pipewire
@@ -187,7 +194,6 @@ starship
 steam
 sudo
 sxhkd
-sxiv
 syncplay
 syncthing
 task
@@ -220,6 +226,7 @@ wasmtime
 websocat
 which
 wine
+winetricks
 wireplumber
 wireshark-qt
 xbanish
