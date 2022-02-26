@@ -5,5 +5,3 @@ Requires=gpg-agent.service
 WantedBy=user-graphical-login.target
 [Service]
 ExecStart=/usr/bin/mbsync -Va -c '%h/.config/isync/mbsyncrc'
-Restart=on-failure
-RestartSec=5
