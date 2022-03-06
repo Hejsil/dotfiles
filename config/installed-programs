@@ -100,6 +100,7 @@ kakoune
 lemonbar-xft-git
 lensfun
 lib32-gnutls
+lib32-libusb-git
 lib32-vulkan-icd-loader
 lib32-vulkan-intel
 lib32-vulkan-radeon
@@ -181,6 +182,7 @@ rr-git
 rust
 rust-analyzer
 sad
+scc
 sd
 sed
 setroot

@@ -1,3 +1,3 @@
 #!/bin/sh -e
 update.sh
-exec reboot
+exec systemctl reboot
