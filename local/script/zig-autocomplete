@@ -10,35 +10,74 @@
 # We are inside a char. Don't autocomplete in here
 /^([^']*'(\\'|[^'])*')*[^']*'(\\'|[^'])+$/ { printf "%s¤", $0; next }
 
-/(^|[^a-zA-Z0-9_])(if|while|switch) $/ { printf "%s(¤) {}", $0 ; next }
-/(^|[^a-zA-Z0-9_])for $/               { printf "%s(¤) |item| {}", $0 ; next }
-/(^|[^a-zA-Z0-9_])test $/              { printf "%s\"¤\" {}", $0 ; next }
+$NF ~ /^(if|while|switch)$/ { printf "%s(¤) {}", $0 ; next }
+$NF == "catcherr"           { $NF = "catch";  printf "%s |err| ¤", $0 ; next }
+$NF == "switcherr"          { $NF = "switch"; printf "%s (err) {\n    error.¤ => {},\n}", $0 ; next }
+$NF == "ifexpr"             { $NF = "if";     printf "%s (¤) 0 else 0", $0 ; next }
+$NF == "ifelse"             { $NF = "if";     printf "%s (¤) {} else {}", $0 ; next }
+$NF == "ifopt"              { $NF = "if";     printf "%s (¤) |item| {}", $0 ; next }
+$NF == "iferr"              { $NF = "if";     printf "%s (¤) |item| {} else |err| {}", $0 ; next }
+$NF == "for"                { $NF = "for";    printf "%s (¤) |item| {}", $0 ; next }
+$NF == "fori"               { $NF = "for";    printf "%s (¤) |item, i| {}", $0 ; next }
+$NF == "whilei"             { $NF = "while";  printf "var i: usize = 0;\n%s (i < ¤) : (i += 1) {}", $0 ; next }
+$NF == "whileit"            { $NF = "while";  printf "%s (¤.next()) |item| {}", $0 ; next }
+$NF == "whileerr"           { $NF = "while";  printf "%s (¤) |item| {} else |err| {}", $0 ; next }
+$NF == "test"               { $NF = "test";   printf "%s\"¤\" {}", $0 ; next }
 
-/(^|[^a-zA-Z0-9_])(struct|suspend|error) $/       { printf "%s{¤}", $0 ; next }
-/(^|[^a-zA-Z0-9_])(enum|union)(\([^)]*\))? $/     { printf "%s{¤}", $0 ; next }
-/(^|[^a-zA-Z0-9_])union(\(enum(\([^)]*\))?\))? $/ { printf "%s{¤}", $0 ; next }
+$NF ~ /^(struct|suspend|error)$/       { printf "%s{¤}", $0 ; next }
+$NF ~ /^(enum|union)(\([^)]*\))?$/     { printf "%s{¤}", $0 ; next }
+$NF ~ /^union(\(enum(\([^)]*\))?\))?$/ { printf "%s{¤}", $0 ; next }
 
-/(^|[^a-zA-Z0-9_])fn main $/ { printf "%s() !void {\n    ¤\n}", $0 ; next }
-/(^|[^a-zA-Z0-9_])fn [A-Z][a-zA-Z0-9_]* $/  { printf "%s(comptime T: type) type {\n    return ¤;\n}", $0 ; next }
-/(^|[^a-zA-Z0-9_])fn [a-z_][a-zA-Z0-9_]* $/ { printf "%s(¤) void {}", $0 ; next }
+NF-1 > 0 && $(NF-1) == "fn" && $NF == "main"                 { printf "%s() !void {\n    ¤\n}", $0 ; next }
+NF-1 > 0 && $(NF-1) == "fn" && $NF ~ /^[A-Z][a-zA-Z0-9_]*$/  { printf "%s(comptime T: type) type {\n    return ¤;\n}", $0 ; next }
+NF-1 > 0 && $(NF-1) == "fn" && $NF ~ /^[a-z_][a-zA-Z0-9_]*$/ { printf "%s(¤) void {}", $0 ; next }
 
 # fmt api autocomplete
-/(^|[^a-zA-Z0-9_])log\.(emerg|alert|crit|err|warn|notice|info|debug) $/ {
+$NF ~ /log\.(emerg|alert|crit|err|warn|notice|info|debug)$/ {
     printf "%s(\"¤\", .{})", $0 ; next
 }
-/\.(print) $/                    { printf "%s(\"¤\", .{})", $0 ; next }
-/(^|[^a-zA-Z0-9_])fmt\.format $/ { printf "%s(¤, \"\", .{})", $0 ; next }
+$NF ~ /\.print$/     { printf "%s(\"¤\", .{})", $0 ; next }
+$NF ~ /fmt\.format$/ { printf "%s(¤, \"\", .{})", $0 ; next }
 
-/^const std $/ { printf "%s= @import(\"std\");\n¤", $0 ; next }
 /^[ ]*(const|var) [a-zA-Z][a-zA-Z0-9_]* $/ { printf "%s= ¤;", $0 ; next }
 
-/(^|[^a-zA-Z0-9_])allocator: $/ { printf "%smem.Allocator,¤", $0 ; next }
+$NF ~ /^allocator:$/ { printf "%smem.Allocator,¤", $0 ; next }
 
-/\{$/ { printf "%s¤}", $0 ; next }
-/\($/ { printf "%s¤)", $0 ; next }
-/\[$/ { printf "%s¤]", $0 ; next }
+$NF ~ /\{$/ { printf "%s¤}", $0 ; next }
+$NF ~ /\($/ { printf "%s¤)", $0 ; next }
+$NF ~ /\[$/ { printf "%s¤]", $0 ; next }
 
-/(^|[^\\])"$/ { printf "%s¤\"", $0 ; next }
-/(^|[^\\])'$/ { printf "%s¤'", $0 ; next }
+$NF ~ /(^|[^\\])"$/ { printf "%s¤\"", $0 ; next }
+$NF ~ /(^|[^\\])'$/ { printf "%s¤'", $0 ; next }
+
+# `import x` -> `const x = @import("x.zig");`
+NF-1 > 1 && $(NF-1) == "import" {
+    to_import = $NF;
+    to_import_no_dot = $NF;
+    sub(/\..*/, "", to_import_no_dot)
+
+    $(NF-1) = "";
+    $NF = "";
+    sub(/^[ ]*/, "")
+
+    printf "%sconst %s = @import(\"%s\");\n¤", $0, to_import_no_dot , to_import
+
+    next
+}
+
+# `alias a.b.c` -> `const c = a.b.c;`
+NF-1 > 1 && $(NF-1) == "alias" {
+    to_alias = $NF;
+    to_alias_no_dot = $NF;
+    sub(/.*\./, "", to_alias_no_dot)
+
+    $(NF-1) = "";
+    $NF = "";
+    sub(/^[ ]*/, "")
+
+    printf "%sconst %s = %s;\n¤", $0, to_alias_no_dot , to_alias
+
+    next
+}
 
 {printf "%s¤", $0}
