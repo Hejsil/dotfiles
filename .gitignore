@@ -1,5 +1,6 @@
 config/aerc/accounts.conf
 config/autostart
+config/awakened-poe-trade/
 config/BasemarkGPU/
 config/bottom/
 config/Caprine
@@ -9,9 +10,12 @@ config/chromium
 config/coc
 config/configstore/
 config/crewlink/
+config/CrossCode/
+config/czkawka/
 config/dconf
 config/desmume/
 config/discord
+config/discordcanary/
 config/docker/
 config/dunst
 config/Electron/
@@ -23,12 +27,15 @@ config/glava/
 config/gnupg
 config/google-calendar-dark-nativefier-e22938/
 config/google-meet-desktop/
+config/gops/
 config/gtk-2.0
 config/gtk-3.0/
+config/heroic/
 config/hotspotrc
 config/htop
 config/inkscape
 config/isync
+config/itch/
 config/JetBrains/
 config/jgit/
 config/karboncalligraphyrc
@@ -48,6 +55,7 @@ config/mimeapps.list
 config/monitors.xml
 config/mpv/watch_later
 config/neofetch/
+config/nextjs-nodejs/
 config/notmuch
 config/nvim/.netrwhist
 config/nvim/spell
@@ -68,6 +76,7 @@ config/Soundux/
 config/subversion/
 config/Syncplay/
 config/syncplay.ini
+config/syncthing/
 config/tm35-randomizer
 config/tracy/
 config/transmission
@@ -79,11 +88,13 @@ config/unity3d/
 config/user-dirs.dirs
 config/user-dirs.locale
 config/VirtualBox
+config/wireshark/
 config/xfce4/
 config/xorg/resources
 config/zathura
 local/bin/
 local/lib/
+local/opt/
 local/share/aerc/
 local/share/applications/
 local/share/Baba_Is_You/
@@ -97,6 +108,7 @@ local/share/direnv/
 local/share/espanso/
 local/share/firenvim/
 local/share/fonts/
+local/share/GameAnalytics/
 local/share/gdb/
 local/share/go/
 local/share/graveyard/
@@ -119,6 +131,8 @@ local/share/mime/
 local/share/multimc/
 local/share/nautilus/
 local/share/Nextcloud/
+local/share/npm/
+local/share/NuGet/
 local/share/nvim/
 local/share/pobfrontend/
 local/share/Pocketwatch Games/
@@ -130,6 +144,7 @@ local/share/rss/
 local/share/rustup/
 local/share/sfeed/
 local/share/Steam/
+local/share/syncthing/
 local/share/Tabletop Simulator/
 local/share/template/
 local/share/Terraria/
@@ -137,7 +152,9 @@ local/share/themes/
 local/share/Trash
 local/share/Valve Corporation/
 local/share/virtualenv/
+local/share/vm-pool/
 local/share/vulkan/
+local/share/webkitgtk/
 local/share/xorg/
 local/share/zathura/
 local/share/zig/
