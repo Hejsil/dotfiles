@@ -1,7 +1,6 @@
 [core]
     excludesfile = /home/hejsil/.config/git/ignore
     editor = kak
-    pager = delta --dark
 [commit]
     template = /home/hejsil/.config/git/commit
 [pull]
@@ -11,10 +10,16 @@
 [user]
     email = jhc@dismail.de
     name = Jimmi Holst Christensen
-[init]
-    defaultBranch = master
+[diff]
+    tool = difftastic
+[difftool]
+    prompt = false
+[difftool "difftastic"]
+    cmd = difft "$LOCAL" "$REMOTE"
+[pager]
+    difftool = true
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
