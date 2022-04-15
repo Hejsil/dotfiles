@@ -1,0 +1,6 @@
+#!/bin/execlineb -s1
+cd $1
+backtick -E file { date "+%y-%m-%dT%H:%M:%S:%N.png" }
+backtick -E selection { slop -f "%g" }
+foreground { import -window root -crop $selection $file }
+xclip -selection clipboard -t image/png -i $file

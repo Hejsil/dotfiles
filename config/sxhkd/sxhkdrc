@@ -3,9 +3,9 @@
 #
 
 # rofi starts slow, and dmenu is slow on large inputs... *sign* I can do better.
-# Use st as a window for launch.sh!
+# Use st as a window for launch-program!
 super + @space
-    $WINDOW -e launch-program.sh
+    $WINDOW -e launch-program
 
 super + g
     $WINDOW -e launch-steam-game.sh
@@ -20,7 +20,7 @@ super + c
     $WINDOW -e clipmenu
 
 super + s
-    $WINDOW -e shutdown.sh
+    $WINDOW -e shutdown
 
 super + {_,shift +,alt +,ctrl +} a
     $WINDOW -e anilist-ui {list '^[^\t]*\tc',list '^[^\t]*\t(p|w)',list '',database}
@@ -97,10 +97,10 @@ XF86Audio{Raise,Lower}Volume
 #
 
 Print
-    screenshot.sh "$HOME/Sync/images/screenshots"
+    screenshot "$HOME/Sync/images/screenshots"
 
 shift + Print
-    screenshot-slop.sh "$HOME/Sync/images/screenshots"
+    screenshot-slop "$HOME/Sync/images/screenshots"
 
 Pause
     $TERMINAL -c fullscreen -f $(xgetres big.font) -e bash -c 'sleep 0.1s; menu main'

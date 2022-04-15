@@ -45,6 +45,8 @@ ed
 efibootmgr
 entr
 exa
+execline
+execline-man-pages-git
 fd
 file
 findutils

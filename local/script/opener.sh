@@ -4,7 +4,7 @@ IFS="$(printf '\t')"
 while read -r file mine; do
     case $mine in
         application/pdf) echo "$READER" ;;
-        application/x-bittorrent) echo 'tra.sh' ;;
+        application/x-bittorrent) echo 'tra' ;;
         inode/x-empty | application/json | text*) echo "$EDITOR" ;;
         image/*) echo 'nsxiv -a' ;;
         video/*) echo 'mpv' ;;
@@ -15,7 +15,7 @@ while read -r file mine; do
                 echo 'mpv'
                 ;;
             file:* | https:* | http:* | www:*) echo "$BROWSER" ;;
-            magnet:*) echo 'tra.sh' ;;
+            magnet:*) echo 'tra' ;;
             *:*)
                 echo "${1%%:*}"
                 ;;

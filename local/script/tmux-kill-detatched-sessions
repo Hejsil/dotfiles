@@ -1,5 +1,4 @@
-#!/bin/sh
-
-tmux list-sessions -F '#{session_attached} #{session_id}' |
-    nawk '/^0/{print $2}' |
-    xargs -n 1 tmux kill-session -t
+#!/bin/execlineb -P
+pipeline { tmux list-sessions -F "#{session_attached} #{session_id}" }
+pipeline { nawk "/^0/{print \$2}" }
+xargs -n 1 tmux kill-session -t

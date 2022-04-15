@@ -1,0 +1,3 @@
+#!/bin/execlineb -s1
+if { transmission-remote -a "$1" }
+notify-send 'Torrent added' "$1"

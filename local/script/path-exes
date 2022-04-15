@@ -1,0 +1,7 @@
+#!/bin/execlineb -P
+importas path PATH
+pipeline { echo "$path" }
+pipeline { tr ":" "\n" }
+pipeline { redirfd -w 2 /dev/null xargs -I% find -L % -type f }
+pipeline { xargs basename -a }
+sort -u

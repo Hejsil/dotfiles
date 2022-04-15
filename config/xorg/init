@@ -1,13 +1,14 @@
-#!/bin/sh
+#!/bin/execlineb -P
+importas config XDG_CONFIG_HOME
+cd $config
 
-xset r rate 300 50
-xset s off
-xset s off -dpms
-setxkbmap -layout "dk"
-xmodmap -e 'keycode 135 = Super_L'
-xrandr --output HDMI-1 --mode 1920x1080 --right-of DP-1 \
-    --output DP-1 --primary --mode 2560x1440 --rate 144
+foreground { xrandr --output HDMI-1 --mode 1920x1080 --right-of DP-1
+    --output DP-1 --primary --mode 2560x1440 --rate 144 }
+foreground { xset r rate 300 50 }
+foreground { xset s off }
+foreground { xset s off -dpms }
+foreground { setxkbmap -layout dk }
+foreground { xmodmap -e "keycode 135 = Super_L" }
+foreground { xrdb -merge xorg/resources }
 
-xrdb -merge "$XDG_CONFIG_HOME/xorg/resources"
-
-exec bspwm
+bspwm

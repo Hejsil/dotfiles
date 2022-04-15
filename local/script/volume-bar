@@ -1,5 +1,8 @@
-#!/bin/sh
-
-pactl subscribe | rg --line-buffered "'change' on sink " | while read -r _; do
-    pulsemixer --get-volume | cut -f1 -d' '
-done | stdbuf -o L uniq | exec xob
+#!/bin/execlineb -P
+pipeline { pactl subscribe }
+pipeline { rg --line-buffered "'change' on sink " }
+pipeline {
+    forstdin _ pipeline { pulsemixer --get-volume } cut -f1 "-d "
+}
+pipeline { stdbuf -o L uniq }
+xob

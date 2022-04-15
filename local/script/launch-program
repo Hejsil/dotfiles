@@ -1,0 +1,4 @@
+#!/bin/execlineb -P
+pipeline { path-exes }
+pipeline { fzf -m }
+xargs "-d\n" -n 1 tsp

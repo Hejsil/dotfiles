@@ -1,2 +1,6 @@
-#!/bin/sh
-uni -q p all | fzf -m +x | cut -d"'" -f2 | tr -d '\n' | exec xsel -b
+#!/bin/execlineb -P
+pipeline { uni -q p all }
+pipeline { fzf -m +x }
+pipeline { cut -d "'" -f2 }
+pipeline { tr -d "\n" }
+xsel -b

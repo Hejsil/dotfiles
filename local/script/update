@@ -1,0 +1,4 @@
+#!/bin/execlineb -P
+if { paru -Syu --noconfirm }
+if { paru -Sc --noconfirm }
+paru -c --noconfirm

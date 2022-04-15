@@ -1,2 +1,2 @@
-#!/bin/sh -e
-exec zig ast-check --color off "$@" 2>&1
+#!/bin/execlineb -s1
+fdmove -c 2 1 zig ast-check --color off $1

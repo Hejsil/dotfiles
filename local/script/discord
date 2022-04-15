@@ -1,2 +1,2 @@
-#!/bin/sh
-exec /usr/bin/discord --no-sandbox
+#!/bin/execlineb -P
+/usr/bin/discord --no-sandbox

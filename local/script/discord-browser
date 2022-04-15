@@ -1,2 +1,2 @@
-#!/bin/sh
-exec chromium --new-window https://discordapp.com/app
+#!/bin/execlineb -P
+chromium --new-window https://discordapp.com/app

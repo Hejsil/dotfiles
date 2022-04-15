@@ -1,11 +1,8 @@
-#!/bin/sh
-
-tmp=$(mktemp)
-bookmarks="$HOME/.config/bookmarks"
-
-fzf -m -d '\t' --tabstop 12 <"$bookmarks" >"$tmp"
-if [ -s "$tmp" ]; then
-    hck -f 2 "$tmp" | xargs -d '\n' tsp open
-fi
-
-exec rm "$tmp"
+#!/bin/execlineb -P
+importas home HOME
+cd $home
+cd .config
+pipeline { cat bookmarks }
+pipeline { fzf -m -d "\t" --tabstop 12 }
+pipeline { hck -f 2 }
+xargs -d "\n" tsp open
