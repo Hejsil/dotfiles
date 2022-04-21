@@ -1,4 +1,0 @@
-[Unit]
-Conflicts=/usr/bin/shutdown.target
-[Service]
-ExecStart=/usr/local/bin/anilist fetch
