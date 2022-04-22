@@ -27,15 +27,7 @@ while true; do
             exit 0
             ;;
         download-image)
-            anilist database "$search" | cut -f7 | xargs -d'\n' -I% curl % -o "$output"
-            while true; do
-                redirect=$(rg -o 'The document has moved <a href="([^"]*)"' -r '$1' "$output")
-                if [ -z "$redirect" ]; then
-                    break
-                fi
-
-                curl "$redirect" -o "$output"
-            done
+            anilist database "$search" | cut -f7 | xargs -d'\n' -I% curl -L % -o "$output"
             exit 0
             ;;
         *)
