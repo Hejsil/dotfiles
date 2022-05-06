@@ -23,7 +23,7 @@ super + s
     $WINDOW -e shutdown
 
 super + {_,shift +,alt +,ctrl +} a
-    $WINDOW -e anilist-ui {list '^[^\t]*\tc',list '^[^\t]*\t(p|w)',list '',database}
+    $WINDOW -e aniz-ui {list '^[^\t]*\tc',list '^[^\t]*\t(p|w)',list '',database}
 
 super + b
     $WINDOW -e book

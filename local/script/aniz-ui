@@ -5,7 +5,7 @@ fzf2() {
     percent=$((100 / ratio))
     fzfimg.sh -m -d '\t' --tiebreak begin --with-nth=1,2,3,4,5 \
         --preview-window="right:${percent}%,border-none" \
-        --preview 'draw_preview "$(cache -- anilist-ui download-image {6} "{{output}}")"' \
+        --preview 'draw_preview "$(cache -- aniz-ui download-image {6} "{{output}}")"' \
         "$@"
 }
 
@@ -16,18 +16,18 @@ output=$3
 while true; do
     picks=$(mktemp)
     case $command in
-        database) anilist database | rg "$search" | fzf2 | cut -f5,6 >"$picks" ;;
-        list) anilist list | rg "$search" | fzf2 --tabstop 4 | cut -f5,6 >"$picks" ;;
+        database) aniz database | rg "$search" | fzf2 | cut -f5,6 >"$picks" ;;
+        list) aniz list | rg "$search" | fzf2 --tabstop 4 | cut -f5,6 >"$picks" ;;
         copy)
-            anilist database | rg "$search" | fzf2 | xsel -b
+            aniz database | rg "$search" | fzf2 | xsel -b
             exit 0
             ;;
         update)
-            anilist list | cut -f6 | xargs -d'\n' anilist update
+            aniz list | cut -f6 | xargs -d'\n' aniz update
             exit 0
             ;;
         download-image)
-            anilist database "$search" | cut -f7 | xargs -d'\n' -I% curl -L % -o "$output"
+            aniz database "$search" | cut -f7 | xargs -d'\n' -I% curl -L % -o "$output"
             exit 0
             ;;
         *)
@@ -63,7 +63,7 @@ view
                     xargs -d '\n' tsp "$BROWSER"
                 ;;
             complete | drop | plan_to_watch | put_on_hold | start_watching | update | remove | watch_episode)
-                cut -f2 "$picks" | xargs -d'\n' anilist "$choice" 2>/tmp/dump
+                cut -f2 "$picks" | xargs -d'\n' aniz "$choice" 2>/tmp/dump
                 ;;
             *) break ;;
         esac
