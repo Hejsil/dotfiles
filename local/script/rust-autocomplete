@@ -9,16 +9,17 @@
 # We are inside a char. Don't autocomplete in here
 /^([^']*'(\\'|[^'])*')*[^']*'(\\'|[^'])+$/ { printf "%s¤", $0; next }
 
-/^[ ]*if $/  { printf "%s¤ {}", $0 ; next }
-/^[ ]*for $/ { printf "%sitem in ¤ {}", $0 ; next }
-/[^a-zA-Z0-9_]lock\($/ { printf "%s).unwrap()¤", $0 ; next }
+$NF == "if"  { $NF = "if";     printf "%s ¤ {  }", $0 ; next }
+$NF == "for" { $NF = "for";    printf "%s item ¤ {  }", $0 ; next }
 
-/\{$/ { printf "%s¤}", $0 ; next }
-/\($/ { printf "%s¤)", $0 ; next }
-/\[$/ { printf "%s¤]", $0 ; next }
+$NF ~ /\.lock\($/ { printf "%s).unwrap()¤", $0 ; next }
 
-/[^\\]"$/  { printf "%s¤\"", $0 ; next }
-/[^\\]'$/  { printf "%s¤'", $0 ; next }
+$NF ~ /\{$/ { printf "%s¤}", $0 ; next }
+$NF ~ /\($/ { printf "%s¤)", $0 ; next }
+$NF ~ /\[$/ { printf "%s¤]", $0 ; next }
+
+$NF ~ /(^|[^\\])"$/ { printf "%s¤\"", $0 ; next }
+$NF ~ /(^|[^\\])'$/ { printf "%s¤'", $0 ; next }
 
 {printf "%s¤", $0}
 

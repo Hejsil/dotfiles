@@ -10,38 +10,67 @@
 # We are inside a char. Don't autocomplete in here
 /^([^']*'(\\'|[^'])*')*[^']*'(\\'|[^'])+$/ { printf "%s¤", $0; next }
 
-$NF ~ /^(if|while|switch)$/ { printf "%s(¤) {}", $0 ; next }
-$NF == "catcherr"           { $NF = "catch";  printf "%s |err| ¤", $0 ; next }
-$NF == "switcherr"          { $NF = "switch"; printf "%s (err) {\n    error.¤ => {},\n}", $0 ; next }
-$NF == "ifexpr"             { $NF = "if";     printf "%s (¤) 0 else 0", $0 ; next }
-$NF == "ifelse"             { $NF = "if";     printf "%s (¤) {} else {}", $0 ; next }
-$NF == "ifopt"              { $NF = "if";     printf "%s (¤) |item| {}", $0 ; next }
-$NF == "iferr"              { $NF = "if";     printf "%s (¤) |item| {} else |err| {}", $0 ; next }
-$NF == "for"                { $NF = "for";    printf "%s (¤) |item| {}", $0 ; next }
-$NF == "fori"               { $NF = "for";    printf "%s (¤) |item, i| {}", $0 ; next }
-$NF == "whilei"             { $NF = "while";  printf "var i: usize = 0;\n%s (i < ¤) : (i += 1) {}", $0 ; next }
-$NF == "whileit"            { $NF = "while";  printf "%s (¤.next()) |item| {}", $0 ; next }
-$NF == "whileerr"           { $NF = "while";  printf "%s (¤) |item| {} else |err| {}", $0 ; next }
-$NF == "test"               { $NF = "test";   printf "%s\"¤\" {}", $0 ; next }
+$NF ~ /^(if|while|switch)$/ { printf "%s( ¤ ) {  }", $0 ; next }
+$NF == "catcherr"           { sub($NF "[ ]*$", "catch");  printf "%s |err| ¤", $0 ; next }
+$NF == "switcherr"          { sub($NF "[ ]*$", "switch"); printf "%s (err) {\n    error.¤ => {  },\n}", $0 ; next }
+$NF == "ifexpr"             { sub($NF "[ ]*$", "if");     printf "%s ( ¤ ) 0 else 0", $0 ; next }
+$NF == "ifelse"             { sub($NF "[ ]*$", "if");     printf "%s ( ¤ ) {  } else {  }", $0 ; next }
+$NF == "ifopt"              { sub($NF "[ ]*$", "if");     printf "%s ( ¤ ) |item| {  }", $0 ; next }
+$NF == "iferr"              { sub($NF "[ ]*$", "if");     printf "%s ( ¤ ) |item| {  } else |err| {  }", $0 ; next }
+$NF == "for"                { sub($NF "[ ]*$", "for");    printf "%s ( ¤ ) |item| {  }", $0 ; next }
+$NF == "fori"               { sub($NF "[ ]*$", "for");    printf "%s ( ¤ ) |item, i| {  }", $0 ; next }
+$NF == "whilei"             { sub($NF "[ ]*$", "while");  printf "var i: usize = 0;\n%s (i < ¤) : (i += 1) {  }", $0 ; next }
+$NF == "whileit"            { sub($NF "[ ]*$", "while");  printf "%s ( ¤.next() ) |item| {  }", $0 ; next }
+$NF == "whileerr"           { sub($NF "[ ]*$", "while");  printf "%s ( ¤ ) |item| {  } else |err| {  }", $0 ; next }
+$NF == "test"               { sub($NF "[ ]*$", "test");   printf "%s\"¤\" {  }", $0 ; next }
 
-$NF ~ /^(struct|suspend|error)$/       { printf "%s{¤}", $0 ; next }
-$NF ~ /^(enum|union)(\([^)]*\))?$/     { printf "%s{¤}", $0 ; next }
-$NF ~ /^union(\(enum(\([^)]*\))?\))?$/ { printf "%s{¤}", $0 ; next }
+$NF ~ /^(struct|suspend|error)$/       { printf "%s{ ¤ }", $0 ; next }
+$NF ~ /^(enum|union)(\([^)]*\))?$/     { printf "%s{ ¤ }", $0 ; next }
+$NF ~ /^union(\(enum(\([^)]*\))?\))?$/ { printf "%s{ ¤ }", $0 ; next }
 
-NF-1 > 0 && $(NF-1) == "fn" && $NF == "main"                 { printf "%s() !void {\n    ¤\n}", $0 ; next }
-NF-1 > 0 && $(NF-1) == "fn" && $NF ~ /^[A-Z][a-zA-Z0-9_]*$/  { printf "%s(comptime T: type) type {\n    return ¤;\n}", $0 ; next }
-NF-1 > 0 && $(NF-1) == "fn" && $NF ~ /^[a-z_][a-zA-Z0-9_]*$/ { printf "%s(¤) void {}", $0 ; next }
+NF-1 > 0 && $(NF-1) == "fn" && $NF == "main("                  { printf "%s) !void {\n    ¤\n}", $0 ; next }
+NF-1 > 0 && $(NF-1) == "fn" && $NF ~ /^[A-Z][a-zA-Z0-9_]*\($/  { printf "%scomptime T: type) type {\n    return ¤;\n}", $0 ; next }
+NF-1 > 0 && $(NF-1) == "fn" && $NF ~ /^[a-z_][a-zA-Z0-9_]*\($/ { printf "%s ¤ ) void {\n\n}", $0 ; next }
 
 # fmt api autocomplete
-$NF ~ /log\.(emerg|alert|crit|err|warn|notice|info|debug)$/ {
-    printf "%s(\"¤\", .{})", $0 ; next
+$NF ~ /log\.(emerg|alert|crit|err|warn|notice|info|debug)\($/ {
+    printf "%s\"¤\", .{  })", $0 ; next
 }
-$NF ~ /\.print$/     { printf "%s(\"¤\", .{})", $0 ; next }
-$NF ~ /fmt\.format$/ { printf "%s(¤, \"\", .{})", $0 ; next }
+$NF ~ /\.print\($/     { printf "%s\"¤\", .{  })", $0 ; next }
+$NF ~ /fmt\.format\($/ { printf "%s ¤, \"\", .{  })", $0 ; next }
 
-/^[ ]*(const|var) [a-zA-Z][a-zA-Z0-9_]* $/ { printf "%s= ¤;", $0 ; next }
+NF-1 > 0 && $(NF-1) == "var" && $NF == "gba" {
+    indent = $0
+    sub("[^ ].*$", "", indent)
+    printf "%svar gba_state = heap.GeneralPurposeAllocator(.{}){};\n%sconst gba = gba_state.allocator();\n%sdefer _ = gba_state.deinit();\n\n%s¤",
+        indent, indent, indent, indent
+    next
+}
 
-$NF ~ /^allocator:$/ { printf "%smem.Allocator,¤", $0 ; next }
+NF-1 > 0 && $(NF-1) == "var" && $NF == "arena" {
+    indent = $0
+    sub("[^ ].*$", "", indent)
+    printf "%svar arena_state = heap.ArenaAllocator.init(¤);\n%sconst arena = arena_state.allocator();\n%sdefer arena_state.deinit();\n\n",
+        indent, indent, indent
+    next
+}
+
+NF-1 > 0 && $(NF-1) == "var" && $NF == "list" {
+    indent = $0
+    sub("[^ ].*$", "", indent)
+    printf "%svar list = std.ArrayList(¤).init(allocator);\n%sdefer list.deinit();\n\n",
+        indent, indent
+    next
+}
+
+/^[ ]*(pub [ ]*)?(const|var) [a-zA-Z][a-zA-Z0-9_]* $/ { printf "%s= ¤;", $0 ; next }
+/^[ ]*_ $/                                            { printf "%s= ¤;", $0 ; next }
+
+$NF ~ /^allocator:$/       { printf "%s mem.Allocator¤", $0 ; next }
+$NF ~ /^(str|string):$/    { printf "%s []const u8¤", $0 ; next }
+$NF ~ /^(reader|writer):$/ { printf "%s anytype¤", $0 ; next }
+$NF ~ /^len:$/             { printf "%s usize¤", $0 ; next }
+$NF ~ /^[A-Z][a-z0-9_]*:$/ { printf "%s type¤", $0 ; next }
 
 $NF ~ /\{$/ { printf "%s¤}", $0 ; next }
 $NF ~ /\($/ { printf "%s¤)", $0 ; next }
