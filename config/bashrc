@@ -24,6 +24,20 @@ __paru_alias() {
     paru -Qqe >"$XDG_CONFIG_HOME/installed-programs"
 }
 
+__confirm() {
+    command=$1
+    shift
+    printf "Are you sure you want to %s these [y/N]:\n" "${command}"
+    for arg in "$@"; do
+        printf "%s\n" "$arg"
+    done
+
+    read -r answer
+    if [ "$answer" = "y" ]; then
+        $command "$@"
+    fi
+}
+
 __kak_alias() {
     cwd=$(pwd)
     session_id=$(echo "$cwd" | sha1sum | cut -d' ' -f1)
@@ -79,8 +93,8 @@ alias gp='git push'
 alias gpl='git pull'
 alias grbc='git rebase --continue'
 alias grb='git rebase'
-alias grs='git restore'
-alias grss='git restore --staged'
+alias grs='__confirm "git restore"'
+alias grss='__confirm "git restore --staged"'
 alias grsp='git restore --patch'
 alias gs='git status'
 alias gsh='git stash'
