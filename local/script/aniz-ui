@@ -43,12 +43,12 @@ while true; do
 
     while true; do
         choice=$(printf '
-watch_episode
+watch-episode
 complete
 drop
-plan_to_watch
-put_on_hold
-start_watching
+plan-to-watch
+put-on-hold
+start-watching
 update
 remove
 torrent
@@ -62,7 +62,7 @@ view
                     sed -e 's/ /+/g' -e 's#^#https://nyaa.si/?q=#' |
                     xargs -d '\n' tsp "$BROWSER"
                 ;;
-            complete | drop | plan_to_watch | put_on_hold | start_watching | update | remove | watch_episode)
+            complete | drop | plan-to-watch | put-on-hold | start-watching | update | remove | watch-episode)
                 cut -f2 "$picks" | xargs -d'\n' aniz "$choice" 2>/tmp/dump
                 ;;
             *) break ;;
