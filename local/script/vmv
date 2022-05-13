@@ -13,7 +13,7 @@ IFS=$(printf '\a')
 paste -d "$IFS" "$old_file_names" "$new_file_names" |
     nawk -F "$IFS" '$1 != $2' |
     while read -r from to; do
-        mv -i "$from" "$to"
+        mv -n "$from" "$to"
     done
 
 exec rm "$old_file_names" "$new_file_names"
