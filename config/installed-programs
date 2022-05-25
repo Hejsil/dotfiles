@@ -92,6 +92,7 @@ isync
 itch
 jack2
 jdk-openjdk
+jpegoptim
 jq
 jre11-openjdk
 kak-lsp
@@ -179,6 +180,7 @@ reple
 ripgrep
 rr-bin
 rtkit
+rust
 rust-analyzer
 sad
 samba

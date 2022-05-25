@@ -3,6 +3,7 @@ config/autostart
 config/awakened-poe-trade/
 config/BasemarkGPU/
 config/bottom/
+config/btop/
 config/Caprine
 config/cava/
 config/cef_user_data/
@@ -146,6 +147,7 @@ local/share/sfeed/
 local/share/Steam/
 local/share/syncthing/
 local/share/Tabletop Simulator/
+local/share/task/
 local/share/template/
 local/share/Terraria/
 local/share/themes/
