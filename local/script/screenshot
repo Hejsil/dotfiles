@@ -1,5 +1,7 @@
 #!/bin/execlineb -s1
 cd $1
-backtick -E file { date "+%y-%m-%dT%H:%M:%S:%N.png" }
+backtick -E file { date "+%y-%m-%dT%H-%M-%S-%N.png" }
 foreground { import -window root $file }
+foreground { oxipng -o 6 --strip $file }
+foreground { notify-send Screenshot $file }
 xclip -selection clipboard -t image/png -i $file
