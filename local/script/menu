@@ -50,21 +50,11 @@ anime() {
 
 music() {
     playlist='https://youtube.com/playlist?list=PLQHmQm6ZbDZbb8szk0cg13FQBc2fNwPvS'
-    yt-dlp -j --flat-playlist "$playlist" |
-        jq -r '.id' |
-        xargs -d'\n' -I% cache -- menu download-song % '{{output}}' |
-        xargs -d'\n' mpv --fs --shuffle
-}
-
-# yt-dlp cannot --embed-metadata if it does not have the correct file extension, but `cache` does
-# not support outputting with an extension. We therefor have this wrapper that first outputs to
-# /tmp/<file>.webm and then moves that to the output
-download_song() {
-    song=$1
-    output=$2
-    tmp="$(mktemp).webm"
-    yt-dlp -i -f bestaudio/best --embed-metadata -o "$tmp" -- "$song"
-    mv "$tmp" "$output"
+    music_folder="$HOME/Sync/music"
+    cd "$music_folder"
+    yt-dlp --extract-audio --audio-format mp3 -f bestaudio/best --embed-metadata \
+        -o '%(title)s.%(ext)s' --restrict-filename --download-archive archive.txt "$playlist"
+    mpv --fs --shuffle *
 }
 
 case $1 in
