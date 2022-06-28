@@ -69,12 +69,18 @@ hook global WinSetOption filetype=rust %{
         try %{
             execute-keys -draft '<a-;>2<space>'
         } catch %{
-            execute-keys -save-regs '"' '<a-;>h<a-;>Gh<a-;>|rust-autocomplete<ret><a-;>s¤<ret><a-;>d'
+            execute-keys -draft '<a-;>h<a-;>Gh<a-;>|rust-autocomplete<ret>'
+            execute-keys -save-regs '"' '<a-;><a-f>¤<a-;>;<a-;>d'
         }
     }
     hook -once -always window WinSetOption filetype=.* %{
         remove-hooks window autocomplete
     }
+
+    # Make kak-lsp force rust-analyzer to fully analyze the file. If I don't do these, the editor
+    # will wait until I do any lsp action before analyzing anything. I then have to wait the
+    # around 10 seconds for it to finish. I would rather this is just done at startup.
+    lsp-definition
 }
 
 hook global WinSetOption filetype=zig %{
@@ -82,7 +88,8 @@ hook global WinSetOption filetype=zig %{
         try %{
             execute-keys -draft '<a-;>2<space>'
         } catch %{
-            execute-keys -save-regs '"' '<a-;>h<a-;>Gh<a-;>|zig-autocomplete<ret><a-;>s¤<ret><a-;>d'
+            execute-keys -draft '<a-;>h<a-;>Gh<a-;>|zig-autocomplete<ret>'
+            execute-keys -save-regs '"' '<a-;><a-f>¤<a-;>;<a-;>d'
         }
     }
     hook -once -always window WinSetOption filetype=.* %{
@@ -101,6 +108,7 @@ hook global WinSetOption filetype=zig %{ set-option window lintcmd 'zig-check' }
 hook global WinSetOption filetype=git-commit %{ set-option window formatcmd 'pandoc --columns=72 --tab-stop 2 --from markdown_github --to markdown_github' }
 hook global WinSetOption filetype=java       %{ set-option window formatcmd 'astyle --max-code-length=100 --mode=java' }
 hook global WinSetOption filetype=json       %{ set-option window formatcmd "jq --indent %opt{tabstop} ." }
+hook global WinSetOption filetype=lua        %{ set-option window formatcmd "stylua - --indent-width %opt{tabstop} --indent-type Spaces --column-width 100 --quote-style AutoPreferDouble --call-parentheses Always" }
 hook global WinSetOption filetype=python     %{ set-option window formatcmd 'black - -l 100' }
 hook global WinSetOption filetype=rust       %{ set-option window formatcmd 'rustfmt --edition 2018' }
 hook global WinSetOption filetype=sh         %{ set-option window formatcmd "shfmt -i %opt{tabstop} -s -ci" }
