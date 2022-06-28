@@ -9,6 +9,7 @@ config/cava/
 config/cef_user_data/
 config/chromium
 config/coc
+config/.conan/
 config/configstore/
 config/crewlink/
 config/CrossCode/
@@ -78,6 +79,7 @@ config/subversion/
 config/Syncplay/
 config/syncplay.ini
 config/syncthing/
+config/task/
 config/tm35-randomizer
 config/tracy/
 config/transmission
@@ -91,7 +93,9 @@ config/user-dirs.locale
 config/VirtualBox
 config/wireshark/
 config/xfce4/
+config/xmcl/
 config/xorg/resources
+config/yarn/
 config/zathura
 local/bin/
 local/lib/
@@ -111,7 +115,9 @@ local/share/firenvim/
 local/share/fonts/
 local/share/GameAnalytics/
 local/share/gdb/
+local/share/gnupg/
 local/share/go/
+local/share/gradle/
 local/share/graveyard/
 local/share/gsettings-data-convert
 local/share/gvfs-metadata/
@@ -135,8 +141,10 @@ local/share/Nextcloud/
 local/share/npm/
 local/share/NuGet/
 local/share/nvim/
+local/share/pass/
 local/share/pobfrontend/
 local/share/Pocketwatch Games/
+local/share/PolyMC/
 local/share/python_keyring/
 local/share/ranger/
 local/share/recently-used.xbel
@@ -157,6 +165,8 @@ local/share/virtualenv/
 local/share/vm-pool/
 local/share/vulkan/
 local/share/webkitgtk/
+local/share/webkitgtk-4.0/
+local/share/wine/
 local/share/xorg/
 local/share/zathura/
 local/share/zig/
