@@ -3,7 +3,7 @@
 exe="$(realpath "$0")"
 here="$(dirname "$exe")/.."
 
-. "$here/config/profile"
+source "$here/config/env"
 
 git_clone() {
     git clone --depth 1 --shallow-submodules --recursive "$@"

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-source ~/.config/enviroment
+source ~/.config/env
 source ~/.bashrc
 
 if [ -z "$DISPLAY" ] && [ "$(tty)" = /dev/tty1 ]; then
