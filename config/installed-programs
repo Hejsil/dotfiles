@@ -192,7 +192,6 @@ samba
 sd
 sed
 selene-linter
-setroot
 sfeed
 shellcheck
 shfmt
@@ -254,6 +253,7 @@ xow-git
 xsel
 xtitle
 xtrans
+xwallpaper
 yarn
 youtube-dl
 yt-dlp

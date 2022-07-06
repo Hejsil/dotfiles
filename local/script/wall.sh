@@ -13,11 +13,12 @@ pop() {
 }
 
 xrandr --listactivemonitors |
-    rg -o '^ (\d+): [^ ]+ (\d+)/\d+x(\d+)' -r '$1 $2 $3' |
+    rg -o '^ \d+: [^ ]+ (\d+)/\d+x(\d+).*  (.+)$' -r '$3 $1 $2' |
     while read -r id w h; do
         file=$(pop)
         file=$(cache "$file" -- convert "$file" -resize "${w}x${h}^" -quality 100 'jpg:{{output}}')
-        echo '--on'
+        echo '--output'
         echo "$id"
+        echo '--center'
         echo "$file"
-    done | xargs -d '\n' setroot
+    done | xargs -d '\n' xwallpaper
