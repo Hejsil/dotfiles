@@ -23,8 +23,8 @@ bspc config top_padding 26
 
 bspc rule -a 'Zathura' state=tiled
 bspc rule -a 'origin.exe' state=floating
-bspc rule -a 'window' state=floating center=on sticky=on focus=on rectangle=1280x720+0+0
+bspc rule -a 'window' state=floating center=on sticky=on focus=on rectangle=1600x900+0+0
 bspc rule -a 'fullscreen' state=fullscreen
 
-systemctl --user import-environment
+env | cut -d'=' -f1 | sed '/^_$/d' | xargs -d'\n' -n1 systemctl --user import-environment
 systemctl --user start user-graphical-login.target

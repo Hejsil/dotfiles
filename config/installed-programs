@@ -10,6 +10,7 @@ automake
 b3sum
 base
 bat
+bear
 binutils
 bison
 bloaty
@@ -22,8 +23,10 @@ chaotic-keyring
 chaotic-mirrorlist
 chromium
 clang
+clang13
 cmake
 conan
+creduce
 dante
 dbus-broker
 dhcpcd
@@ -74,8 +77,10 @@ gst-plugins-good
 gst-plugins-ugly
 gst-rtsp-server
 gstreamer-vaapi
+hastebin
 haveged
 hck-bin
+heaptrack
 hstr
 hyperfine
 inotify-tools
@@ -87,6 +92,7 @@ jq
 jre11-openjdk
 kak-lsp
 kakoune
+kcachegrind
 ladspa
 lemonbar-xft-git
 lib32-libusb
@@ -104,6 +110,7 @@ linux-zen
 linux-zen-headers
 lld
 llvm
+llvm13
 lostfiles
 lshw
 lua-language-server
