@@ -37,7 +37,7 @@ dkms
 docker
 docker-compose
 docker-credential-pass-bin
-dragon-drag-and-drop
+dragon-drop
 duf
 dunst
 dust
@@ -79,7 +79,7 @@ gst-rtsp-server
 gstreamer-vaapi
 hastebin
 haveged
-hck-bin
+hck
 heaptrack
 hstr
 hyperfine
