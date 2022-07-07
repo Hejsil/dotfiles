@@ -1,6 +1,5 @@
 #!/bin/sh
 
-. "$HOME/.local/script/colors.sh"
 bspc rule -r "*"
 
 for MONITOR in $(bspc query -M --names); do

@@ -1,0 +1,23 @@
+#!/bin/nawk -f
+
+$2 == "application/pdf"          { print ENVIRON["READER"]  ; next }
+$2 == "inode/x-empty"            { print ENVIRON["EDITOR"]  ; next }
+$2 == "application/json"         { print ENVIRON["EDITOR"]  ; next }
+$2 ~ "^text/"                    { print ENVIRON["EDITOR"]  ; next }
+$2 == "application/x-bittorrent" { print "tra"              ; next }
+$2 ~ "^image/"                   { print "nsxiv -a"         ; next }
+$2 ~ "^video/"                   { print "mpv"              ; next }
+$2 ~ "^audio/"                   { print "mpv --vid=no"     ; next }
+$1 ~ "youtube.*watch"            { print "mpv"              ; next }
+$1 ~ "youtube.*playlist"         { print "mpv"              ; next }
+$1 ~ "youtu\.be"                 { print "mpv"              ; next }
+$1 ~ "odysee\.com"               { print "mpv"              ; next }
+$1 ~ "\.mp3$"                    { print "mpv"              ; next }
+$1 ~ "\.mp4$"                    { print "mpv"              ; next }
+$1 ~ "\.webm$"                   { print "mpv"              ; next }
+$1 ~ "^file:"                    { print ENVIRON["BROWSER"] ; next }
+$1 ~ "^http:"                    { print ENVIRON["BROWSER"] ; next }
+$1 ~ "^https:"                   { print ENVIRON["BROWSER"] ; next }
+$1 ~ "^www:"                     { print ENVIRON["BROWSER"] ; next }
+$1 ~ "^magnet:"                  { print "tra"              ; next }
+                                 { print ENVIRON["EDITOR"]  ; next }

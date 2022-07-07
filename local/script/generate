@@ -1,6 +1,6 @@
 #!/bin/sh
 
-colors="$(which colors.sh)"
+. ~/.config/env
 template_dir="$HOME/.config/template"
 
 xresources="$XDG_CONFIG_HOME/xorg/resources"
@@ -9,18 +9,17 @@ dunstrc="$XDG_CONFIG_HOME/dunst/dunstrc"
 case $1 in
     xresources)
         mkdir -p "$(dirname "$xresources")"
-        base16.sh "$colors" "$template_dir/.Xresources" >"$xresources"
+        base16 "$template_dir/.Xresources" >"$xresources"
         xrdb -merge "$xresources" || true
         ;;
     dunstrc)
         mkdir -p "$(dirname "$dunstrc")"
-        exec base16.sh "$colors" "$template_dir/dunstrc" >"$dunstrc"
+        exec base16 "$template_dir/dunstrc" >"$dunstrc"
         ;;
     depends)
-        printf "%s\n%s\n%s\n" \
-            "$(realpath "$0")" \
-            "$(which base16.sh)" \
-            "$colors"
+        realpath "$0"
+        which base16
+        echo "$HOME/.config/env"
         case $2 in
             xresources) echo "$template_dir/.Xresources" ;;
             dunstrc) echo "$template_dir/dunstrc" ;;

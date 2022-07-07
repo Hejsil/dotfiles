@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+source ~/.config/env
 source <(starship init bash --print-full-init)
 eval "$(direnv hook bash)"
 eval "$(zoxide init bash)"

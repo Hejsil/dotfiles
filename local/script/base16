@@ -1,0 +1,7 @@
+#!/bin/execlineb -s1
+
+pipeline { env }
+pipeline { rg COLOR -r "" }
+pipeline { sd "=" "\t" }
+pipeline { base16.awk }
+xargs sed "$1"

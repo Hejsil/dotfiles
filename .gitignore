@@ -32,6 +32,7 @@ config/google-meet-desktop/
 config/gops/
 config/gtk-2.0
 config/gtk-3.0/
+config/heaptrack_gui
 config/heroic/
 config/hotspotrc
 config/htop
@@ -142,6 +143,7 @@ local/share/npm/
 local/share/NuGet/
 local/share/nvim/
 local/share/pass/
+local/share/pki/
 local/share/pobfrontend/
 local/share/Pocketwatch Games/
 local/share/PolyMC/

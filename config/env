@@ -74,4 +74,21 @@ export TS_SLOTS=10000
 export GTK_THEME="Breeze:dark"
 export TERMINFO_DIRS="$TERMINFO:/usr/share/terminfo"
 
+export COLOR0=141414
+export COLOR1=282828
+export COLOR2=3c3c3c
+export COLOR3=505050
+export COLOR4=646464
+export COLOR5=dcdcdc
+export COLOR6=f0f0f0
+export COLOR7=dcdcdc
+export COLOR8=f03232
+export COLOR9=dc501e
+export COLOR10=c8821e
+export COLOR11=78b496
+export COLOR12=3c96b4
+export COLOR13=3c78e6
+export COLOR14=6464e6
+export COLOR15=c83cf0
+
 export RS_SERIAL_DEFAULT=739112060855

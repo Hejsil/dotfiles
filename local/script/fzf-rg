@@ -1,4 +1,5 @@
-#!/bin/sh
-echo | exec fzf --disabled --delimiter ':' --no-extended --ansi \
-    --bind "change:reload:rg $* --color=always --hidden --line-number -- {q} || true" \
-    --preview 'fzf-rg-bat {2} {1}'
+#!/bin/execlineb -s1
+pipeline { echo }
+fzf --disabled --delimiter ":" --no-extended --ansi \
+    --bind "change:reload:rg $1 --color=always --hidden --line-number -- {q} || true" \
+    --preview "fzf-rg-bat {2} {1}"

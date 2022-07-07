@@ -1,0 +1,2 @@
+#!/bin/execlineb -P
+curl -F "clbin=<-" https://clbin.com
