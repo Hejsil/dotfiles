@@ -2,7 +2,7 @@
 
 tab=$(printf '\t')
 rss-list.sh -u |
-    nawk -F"$tab" '{ printf "%-15s\t%s\t%s\t%s\t%s\n", substr($7, 0, 15), $3, $1, $4, $8 }' |
+    nawk -F"$tab" '{ printf "%-14s\t%s\t%s\t%s\t%s\n", substr($7, 0, 14), $3, $1, $4, $8 }' |
     fzf -m -d '\t' --with-nth=1,2 --preview 'COLUMNS=$FZF_PREVIEW_COLUMNS rss-to-md.sh {3}' |
     cut -f3,4,5 | tr '\t' '\n' |
     exec xargs -d'\n' xargs tsp rss-open-read.sh
