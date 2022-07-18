@@ -1,19 +1,24 @@
 #!/bin/execlineb -S1
 
-define images "/tmp/wallpapers-on-screen"
+define wallpapers_on_screen "/tmp/wallpapers-on-screen"
+backtick -E monitors { mktemp "/tmp/wall.monitors.XXXXXXXX" }
+backtick -E wallpapers { mktemp "/tmp/wall.wallpapers.XXXXXXXX" }
+
+foreground { redirfd -w 1 $monitors monitors name }
 foreground {
-    backtick -E count {
-        pipeline { xrandr }
-        grep -c "\\bconnected\\b"
-    }
     pipeline { fd . $1 --type f }
-    pipeline { sort -R }
-    redirfd -w 1 $images head -n $count
+    redirfd -w 1 $wallpapers sort -R
 }
 
 foreground {
-    pipeline { cat $images }
-    xargs -d "\n" feh --bg-fill
+    pipeline { paste $monitors $wallpapers }
+    redirfd -w 1 $wallpapers_on_screen grep -v "^\\s"
+}
+
+foreground { rm $monitors $wallpapers }
+foreground {
+    pipeline { redirfd -r 0 $wallpapers_on_screen tr "\\t" "\\n" }
+    xargs "-d\n" -P 0 -n2 mpvpaper -p -o "--pause --force-window=no"
 }
 
 

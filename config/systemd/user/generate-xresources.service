@@ -1,4 +1,0 @@
-[Service]
-ExecStart=%h/.local/script/generate xresources
-[Install]
-WantedBy=user-graphical-login.target

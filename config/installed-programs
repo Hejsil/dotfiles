@@ -24,13 +24,13 @@ duf
 dunst
 dust
 entr
-eww-git
 exfat-utils
 factorio
 feh
 ffmpeg
 firefox
 flex
+foot
 gallery-dl
 gamemode
 gcc
@@ -61,6 +61,7 @@ hardinfo
 hastebin
 htop
 hwinfo
+hyprland
 iftop
 inotify-tools
 isync
@@ -90,6 +91,7 @@ minisign
 mkcert
 mpv
 mpv-sponsorblock-minimal-git
+mpvpaper
 msmtp
 multimc-bin
 net-tools
@@ -102,6 +104,7 @@ obsidian
 ocl-icd
 openvpn
 oxipng
+pamixer
 pandoc-cli
 pass
 patchelf
@@ -302,6 +305,7 @@ unrar
 vesktop
 vscodium
 w3m
+waybar
 webkit2gtk
 websocat
 wget
@@ -309,8 +313,10 @@ which
 wine
 winetricks
 wireshark-qt
+wl-clipboard
+wob
 xdg-desktop-portal
-xdg-desktop-portal-gtk
+xdg-desktop-portal-hyprland
 xdg-ninja-git
 xob
 xone-dkms-git

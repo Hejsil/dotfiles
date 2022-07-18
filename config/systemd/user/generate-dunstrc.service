@@ -1,4 +1,0 @@
-[Service]
-ExecStart=%h/.local/script/generate dunstrc
-[Install]
-WantedBy=user-graphical-login.target

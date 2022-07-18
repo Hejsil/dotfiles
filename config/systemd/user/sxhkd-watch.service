@@ -1,6 +1,0 @@
-[Service]
-Type=oneshot
-ExecStart=/usr/bin/killall -s USR1 sxhkd
-
-[Install]
-WantedBy=user-graphical-login.target

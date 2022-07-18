@@ -1,0 +1,11 @@
+#!/bin/execlineb -S1
+# Translates a workspace id that is relative to the focused monitor to the real workspace id.
+# The workspace rules have been setup by `hyprland-setup-workspace-rules` so that this is possible.
+backtick -E focused_monitor {
+    pipeline { hyprctl monitors -j }
+    jq -r ".[] | select(.focused) | .name"
+}
+pipeline { hyprland-monitor-workspaces }
+pipeline { grep -F $focused_monitor }
+pipeline { sed "${1}!d" }
+cut -f1

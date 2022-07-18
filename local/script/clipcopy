@@ -1,2 +1,2 @@
 #!/bin/execlineb -s0
-redirfd -w 1 /dev/null nohup xclip -in -selection clipboard $@
+wl-copy $@

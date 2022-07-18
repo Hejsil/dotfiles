@@ -1,4 +1,5 @@
 #!/bin/sh
+
 if [ "$#" -ne 0 ]; then
     man "$@" && exit 0
 fi

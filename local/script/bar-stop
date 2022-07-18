@@ -1,6 +1,4 @@
 #!/bin/execlineb -P
-pipeline { xrandr }
-pipeline { grep "\\bconnected\\b" }
-pipeline { cut -d " " -f1 }
+pipeline { monitors model }
 forstdin -E screen background { eww close "bar-${screen}" }
 wait

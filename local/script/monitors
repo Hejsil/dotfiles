@@ -1,0 +1,3 @@
+#!/bin/execlineb -S1
+pipeline { hyprctl monitors -j }
+jq ".[] | .$1" -r

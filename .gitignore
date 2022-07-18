@@ -29,6 +29,7 @@ config/dorion/
 config/dunst
 config/Electron/
 config/filezilla/
+config/foot/
 config/gcloud/
 config/gh/
 config/GIMP
@@ -121,6 +122,7 @@ config/VirtualBox
 config/vlc/
 config/VNote/
 config/VSCodium/
+config/waybar/style.css
 config/WebCord/
 config/wireplumber/
 config/wireshark/

@@ -3,26 +3,13 @@
 . ~/.config/env
 template_dir="$HOME/.config/template"
 
-xresources="$XDG_CONFIG_HOME/xorg/resources"
 dunstrc="$XDG_CONFIG_HOME/dunst/dunstrc"
+foot="$XDG_CONFIG_HOME/foot/foot.ini"
+waybar="$XDG_CONFIG_HOME/waybar/style.css"
 
-case $1 in
-    xresources)
-        mkdir -p "$(dirname "$xresources")"
-        base16 "$template_dir/.Xresources" >"$xresources"
-        xrdb -merge "$xresources" || true
-        ;;
-    dunstrc)
-        mkdir -p "$(dirname "$dunstrc")"
-        exec base16 "$template_dir/dunstrc" >"$dunstrc"
-        ;;
-    depends)
-        realpath "$0"
-        which base16
-        echo "$HOME/.config/env"
-        case $2 in
-            xresources) echo "$template_dir/.Xresources" ;;
-            dunstrc) echo "$template_dir/dunstrc" ;;
-        esac
-        ;;
-esac
+mkdir -p "$(dirname "$dunstrc")"
+mkdir -p "$(dirname "$foot")"
+mkdir -p "$(dirname "$waybar")"
+base16 "$template_dir/foot.ini" >"$foot"
+base16 "$template_dir/dunstrc" >"$dunstrc"
+base16 "$template_dir/waybar.css" >"$waybar"

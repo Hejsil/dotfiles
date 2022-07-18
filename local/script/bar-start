@@ -1,8 +1,5 @@
 #!/bin/execlineb -P
-pipeline { xrandr }
-pipeline { grep "\\bconnected\\b" }
-pipeline { cut -d " " -f1 }
-forstdin -E screen background {
-    eww open bar --id "bar-${screen}" --arg "screen=${screen}"
-}
-wait
+pipeline { monitors "name, .model" }
+pipeline { paste - - }
+pipeline { awk "-F\t" "{ printf \"--id\\nbar-%s\\n--arg\\nscreen_name=%s\\n--arg\\nscreen_model=%s\\n\", $1, $1, $2 }" }
+xargs "-d\n" -n6 eww open bar

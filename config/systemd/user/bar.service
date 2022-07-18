@@ -1,13 +1,6 @@
-[Unit]
-After=eww.service
-PartOf=eww.service
-
 [Service]
-ExecStartPre=/usr/bin/eww ping
-ExecStart=%h/.local/script/bar-start
-ExecStop=%h/.local/script/bar-stop
-Type=oneshot
-RemainAfterExit=true
+Type=exec
+ExecStart=/usr/bin/waybar
 
 [Install]
 WantedBy=user-graphical-login.target

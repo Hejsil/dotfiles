@@ -1,0 +1,5 @@
+#!/bin/execlineb -S1
+# This command works the same as `hyprctl dispatch movetoworkspace $1`, but it switches to a workspace
+# on the same monitor.
+pipeline { hyprland-to-real-workspace $1 }
+xargs hyprctl dispatch movetoworkspace

@@ -17,6 +17,8 @@ export PROMPT_COMMAND='history -a; history -c; history -r; history -n'
 # Programs
 export MANPAGER="bat -l man -p"
 export PAGER='less'
+export TERMINAL='footclient'
+export WINDOW="$TERMINAL --app-id float -W 100x60"
 
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -70,10 +72,12 @@ export FZF_DEFAULT_COMMAND='fd -H --type f -S -10m'
 export FZF_DEFAULT_OPTS='--no-info --color=16'
 export GTK_THEME="Breeze:dark"
 export LESS='-R'
+export LIBSEAT_BACKEND=logind
 export QT_QPA_PLATFORMTHEME='gtk2'
 export TERMINFO_DIRS="$TERMINFO:/usr/share/terminfo"
 export TRANSMISSION_REMOTE=192.168.0.119
 export WINE_FULLSCREEN_FSR=1
+export XKB_DEFAULT_LAYOUT=dk
 
 export COLOR0=141414
 export COLOR1=282828
