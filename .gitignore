@@ -57,6 +57,7 @@ config/mgba/
 config/mimeapps.list
 config/monitors.xml
 config/mpv/watch_later
+config/NecroDancer/
 config/neofetch/
 config/nextjs-nodejs/
 config/notmuch
@@ -101,6 +102,7 @@ config/zathura
 local/bin/
 local/lib/
 local/opt/
+local/share/10tons/
 local/share/aerc/
 local/share/applications/
 local/share/Baba_Is_You/
@@ -138,6 +140,7 @@ local/share/meld/
 local/share/mime/
 local/share/multimc/
 local/share/nautilus/
+local/share/NecroDancer/
 local/share/Nextcloud/
 local/share/npm/
 local/share/NuGet/
@@ -161,6 +164,7 @@ local/share/task/
 local/share/template/
 local/share/Terraria/
 local/share/themes/
+local/share/TowerFall/
 local/share/Trash
 local/share/Valve Corporation/
 local/share/virtualenv/
