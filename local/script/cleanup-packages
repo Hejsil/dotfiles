@@ -1,0 +1,2 @@
+#!/bin/sh
+paru -Rsu $(paru -Qetq | fzf -m --preview 'paru -Qi {}')
