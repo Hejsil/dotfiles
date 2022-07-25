@@ -25,6 +25,7 @@ dhcpcd
 difftastic
 direnv
 discord
+discord-screenaudio
 docker
 docker-compose
 docker-credential-pass-bin
@@ -118,12 +119,12 @@ perf
 perl-libwww
 perl-locale-gettext
 pipewire
+pipewire-alsa
 pipewire-jack
 pipewire-pulse
 pipewire-v4l2
 pkgconf
 proton-ge-custom-bin
-pulseaudio-alsa
 pulsemixer
 pyside2
 python-babel
