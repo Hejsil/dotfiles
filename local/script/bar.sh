@@ -6,14 +6,14 @@ while [ "$bar_height" = 0 ]; do
     bar_height=$(bspc config top_padding)
 done
 
-lemonbar-maker --low "$(xgetres bar.color2)" \
-    --mid "$(xgetres bar.color3)" \
-    --high "$(xgetres bar.color1)" |
+lemonbar-maker --low "#$COLOR11" \
+    --mid "#$COLOR10" \
+    --high "#$COLOR8" |
     lemonbar \
         -g "x$bar_height" \
         -f "$(xgetres bar.font)" \
-        -B "$(xgetres bar.color0)" \
-        -F "$(xgetres bar.color7)" \
+        -B "#$COLOR0" \
+        -F "#$COLOR5" \
         -u 2 \
         -n 'lemonbar' &
 
