@@ -77,6 +77,8 @@ config/QtProject.conf
 config/retroarch/
 config/Slack/
 config/Soundux/
+config/steamtinkerlaunch/
+config/steam-tui/
 config/subversion/
 config/Syncplay/
 config/syncplay.ini
@@ -113,6 +115,7 @@ local/share/data/
 local/share/delta/
 local/share/desktop-directories/
 local/share/direnv/
+local/share/discord-screenaudio/
 local/share/espanso/
 local/share/firenvim/
 local/share/fonts/
