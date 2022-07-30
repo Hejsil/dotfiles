@@ -63,7 +63,8 @@ install_st() {
 install_paru
 paru -S --confirm --needed - <"$here/config/installed-programs"
 
-install_zig 'lemonbar-maker'
 install_zig 'anilist'
+install_zig 'cache'
+install_zig 'lemonbar-maker'
 
 install_st

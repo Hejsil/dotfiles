@@ -1,7 +1,10 @@
 #!/bin/sh -e
 
 folder=$1
-stack_folder='/tmp/random-wallpapers'
+stack_folder='/tmp/wallpapers/stack'
+scaled_folder='/tmp/wallpapers/images'
+
+mkdir -p "$scaled_folder"
 
 pop() {
     stack pop "$stack_folder" || {
@@ -16,9 +19,11 @@ xrandr --listactivemonitors |
     rg -o '^ \d+: [^ ]+ (\d+)/\d+x(\d+).*  (.+)$' -r '$3 $1 $2' |
     while read -r id w h; do
         file=$(pop)
-        file=$(cache "$file" -- convert "$file" -resize "${w}x${h}^" -quality 100 'jpg:{{output}}')
+        scaled="$scaled_folder/$(basename "$file")-$id"
+        cache -f "$file" -o "$scaled" -- \
+            convert "$file" -resize "${w}x${h}^" -quality 100 "jpg:$scaled"
         echo '--output'
         echo "$id"
         echo '--center'
-        echo "$file"
+        echo "$scaled"
     done | xargs -d '\n' xwallpaper
