@@ -17,7 +17,7 @@ install_paru() {
     folder="$(mktemp -d)"
 
     sudo pacman -Syu
-    sudo pacman -S --needed base-devel
+    sudo pacman -S --needed base-devel git
     [ -e "$folder" ] && rm -rf "$folder"
     git_clone 'https://aur.archlinux.org/paru.git' "$folder"
 
