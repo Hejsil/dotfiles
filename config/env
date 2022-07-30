@@ -29,6 +29,7 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 
 export CARGO_HOME="$XDG_CACHE_HOME/cargo"
+export CARGO_TARGET_DIR="$XDG_CACHE_HOME/cargo-target"
 export CCACHE_DIR="$XDG_CACHE_HOME/ccache"
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
 export ERRFILE="$XDG_CACHE_HOME/x11/xsession-errors"
