@@ -11,7 +11,7 @@ mkdir -p "$read_dir" "$unread_dir" "$config_dir"
 touch -a "$url_config"
 
 output=$(mktemp -d /tmp/curl.XXXXXXXX)
-cut -f1 .config/rss/urls | sed '/^$/d' | nl -w1 | sed 's/^/-o\t/' | xargs curl -Z -s --output-dir "$output"
+cut -f1 "$url_config" | sed '/^$/d' | nl -w1 | sed 's/^/-o\t/' | xargs curl -Z -s --output-dir "$output"
 
 find "$output" -type f -print0 | xargs -0 cat | sfeed | tr '\t' '\a' |
     while IFS=$(printf '\a') read -r timestamp title link content content_type id author enclosure; do
