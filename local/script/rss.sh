@@ -10,7 +10,10 @@ url_config="$config_dir/urls"
 mkdir -p "$read_dir" "$unread_dir" "$config_dir"
 touch -a "$url_config"
 
-cut -f1 "$url_config" | xargs curl -s | sfeed | tr '\t' '\a' |
+output=$(mktemp -d /tmp/curl.XXXXXXXX)
+cut -f1 .config/rss/urls | sed '/^$/d' | nl -w1 | sed 's/^/-o\t/' | xargs curl -Z -s --output-dir "$output"
+
+find "$output" -type f -print0 | xargs -0 cat | sfeed | tr '\t' '\a' |
     while IFS=$(printf '\a') read -r timestamp title link content content_type id author enclosure; do
         id=$(echo "$id" | sed 's#/#|#g')
         [ -z "$id" ] && id=$(echo "$link" | sed 's#/#|#g')
@@ -25,3 +28,5 @@ cut -f1 "$url_config" | xargs curl -s | sfeed | tr '\t' '\a' |
             "$content" "$content_type" "$author" "$enclosure" \
             >"$unread_dir/$id"
     done
+
+rm -r "$output"
