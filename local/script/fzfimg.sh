@@ -85,15 +85,15 @@ function calculate_position {
 
     case "${PREVIEW_POSITION:-${DEFAULT_PREVIEW_POSITION}}" in
         left|up|top)
-            X=0
-            Y=0
+            X=1
+            Y=1
             ;;
         right)
-            X=$((TERMINAL_COLUMNS - COLUMNS))
-            Y=0
+            X=$((TERMINAL_COLUMNS - COLUMNS - 2))
+            Y=1
             ;;
         down|bottom)
-            X=0
+            X=1
             Y=$((TERMINAL_LINES - LINES - 1))
             ;;
     esac
@@ -145,4 +145,3 @@ if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
             --bind "${REDRAW_KEY}:${REDRAW_COMMAND}" \
             "${@}"
 fi
-
