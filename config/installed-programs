@@ -75,6 +75,8 @@ hastebin
 haveged
 hck
 hdparm
+heaptrack
+hotspot
 hstr
 inotify-tools
 isync
@@ -163,6 +165,7 @@ rust-analyzer
 sad
 samba
 sd
+sdl2_image
 sed
 sfeed
 shellcheck
@@ -172,6 +175,7 @@ slop
 socat
 starship
 steam
+strace
 subversion
 sudo
 sxhkd
@@ -191,12 +195,13 @@ udisks2
 ueberzug
 uni
 unrar
+valgrind
 vi
 vim
 vkd3d
 vulkan-radeon
 w3m
-waifu2x-ncnn-vulkan-bin
+waifu2x-ncnn-vulkan
 websocat
 which
 wine
@@ -212,6 +217,7 @@ xf86-video-ati
 xgetres
 xob
 xorg-server
+xorg-xev
 xorg-xinit
 xow-git
 xsel
@@ -220,7 +226,7 @@ youtube-dl
 yt-dlp
 zathura
 zathura-pdf-mupdf
-zig-dev-bin
+zig-git
 zip
-zls-bin
+zls-git
 zoxide
