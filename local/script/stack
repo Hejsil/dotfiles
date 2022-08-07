@@ -5,26 +5,26 @@ dir=$2
 top_of_stack="$dir/top"
 
 mkdir -p "$dir"
-if ! [ -f "$top_of_stack" ]; then
-    echo '0' >"$top_of_stack"
+if ! [ -h "$top_of_stack" ]; then
+    ln -sf "0" "$top_of_stack"
 fi
 
-read -r top <"$top_of_stack"
+top=$(readlink "$top_of_stack")
 
 case $command in
     pop)
-        cat "$dir/$top"
+        readlink "$dir/$top"
         rm "$dir/$top"
-        echo "$((top - 1))" >"$top_of_stack"
+        ln -sf "$((top - 1))" "$top_of_stack"
         ;;
     push)
         new_top=$((top + 1))
-        cat - >"$dir/$new_top"
-        echo "$new_top" >"$top_of_stack"
+        ln -s "$(cat -)" "$dir/$new_top"
+        ln -sf "$new_top" "$top_of_stack"
         ;;
     show)
         i=1
-        while cat "$dir/$i" 2>/dev/null; do
+        while readlink "$dir/$i" 2>/dev/null; do
             i=$((i + 1))
         done
         ;;
