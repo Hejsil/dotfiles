@@ -29,14 +29,14 @@ while true; do
             exit 0
             ;;
         get-image)
-            output=$(mktemp -p "$images_dir")
+            output="$images_dir/$(echo "$search" | b3sum | cut -d' ' -f1)"
             cache -o "$output" -- aniz-ui download-image "$search" "$output"
             echo "$output"
             exit 0
             ;;
         download-image)
             output=$3
-            aniz database "$search" | cut -f7 | xargs -d'\n' -I% curl -L % -o "$output"
+            aniz database "$search" | cut -f7 | xargs -d'\n' -I% curl -s -L % -o "$output"
             exit 0
             ;;
         *)
