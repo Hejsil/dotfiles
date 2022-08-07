@@ -9,8 +9,8 @@
 # We are inside a char. Don't autocomplete in here
 /^([^']*'(\\'|[^'])*')*[^']*'(\\'|[^'])+$/ { printf "%s¤", $0; next }
 
-$NF == "if"  { $NF = "if";     printf "%s ¤ {  }", $0 ; next }
-$NF == "for" { $NF = "for";    printf "%s item in ¤ {  }", $0 ; next }
+$NF == "if"             { $NF = "if";     printf "%s ¤ {  }", $0 ; next }
+NF == 1 && $NF == "for" { $NF = "for";    printf "%s item in ¤ {  }", $0 ; next }
 
 $NF ~ /\.lock\($/ { printf "%s).unwrap()¤", $0 ; next }
 

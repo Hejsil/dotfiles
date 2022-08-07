@@ -22,7 +22,7 @@ $NF == "fori"               { sub($NF "[ ]*$", "for");    printf "%s ( ¤ ) |ite
 $NF == "whilei"             { sub($NF "[ ]*$", "while");  printf "var i: usize = 0;\n%s (i < ¤) : (i += 1) {  }", $0 ; next }
 $NF == "whileit"            { sub($NF "[ ]*$", "while");  printf "%s ( ¤.next() ) |item| {  }", $0 ; next }
 $NF == "whileerr"           { sub($NF "[ ]*$", "while");  printf "%s ( ¤ ) |item| {  } else |err| {  }", $0 ; next }
-$NF == "test"               { sub($NF "[ ]*$", "test");   printf "%s\"¤\" {  }", $0 ; next }
+$NF == "test"               { sub($NF "[ ]*$", "test");   printf "%s \"¤\" {  }", $0 ; next }
 
 $NF ~ /^(struct|suspend|error)$/       { printf "%s{ ¤ }", $0 ; next }
 $NF ~ /^(enum|union)(\([^)]*\))?$/     { printf "%s{ ¤ }", $0 ; next }
