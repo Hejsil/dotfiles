@@ -16,9 +16,6 @@ super + r
 super + e
     $WINDOW -e fzf-uni
 
-super + c
-    $WINDOW -e clipmenu
-
 super + s
     $WINDOW -e shutdown
 
@@ -44,6 +41,9 @@ super + p
     for i in 1 2 ; do pactl list sinks short ; done | \
         rg -F "$(pactl get-default-sink)" -A 1 --max-count 1 | tail -n1 | \
         cut -f2 | xargs -d'\n' pactl set-default-sink
+
+ctrl + @space
+    xdotool click 1
 
 #
 # bspwm
