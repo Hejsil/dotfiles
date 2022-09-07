@@ -1,0 +1,44 @@
+#!/bin/sh
+
+out=$1
+picker=${2:-fzf}
+preview=$3
+
+pick() {
+    "$picker" --preview-window="right:50%,border-none" --preview "$preview" "$@"
+}
+
+done_it="<done>"
+new_tag="<new tag>"
+exit_it="<exit>"
+tags=$(fd . "$out" --type f | sed 's|.*/||' | cut -d, -f3- | tr ',' '\n' |
+    sed '/^[0-9]*\.[a-z]*/d' | sort -u)
+
+picked_tags=$(mktemp)
+while true; do
+    tag=$({
+        echo "$done_it"
+        echo "$exit_it"
+        echo "$new_tag"
+        echo "$tags"
+    } | pick)
+
+    if [ "$tag" = "$exit_it" ]; then
+        exit 1
+    fi
+    if [ "$tag" = "$done_it" ]; then
+        break
+    fi
+    if [ "$tag" = "$new_tag" ]; then
+        tag=$(printf "" | pick --print-query)
+    fi
+    if [ -z "$tag" ]; then
+        continue
+    fi
+
+    echo "$tag" >>"$picked_tags"
+    tags=$(echo "$tags" | sed "/^$tag$/d")
+done
+
+cat "$picked_tags"
+rm "$picked_tags"

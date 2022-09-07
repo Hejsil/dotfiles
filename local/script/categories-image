@@ -1,0 +1,19 @@
+#!/bin/sh
+
+image=$1
+out=$2
+
+ext=$(file "$image" --extension | rg -o '.*: (\w+)*' -r '$1')
+name=$(categories-namer "$out" "fzfimg.sh" "draw_preview '$image'")
+if [ -z "$name" ]; then
+    exit 1
+fi
+
+i=0
+file="$out/$name,$i.$ext"
+while [ -f "$file" ]; do
+    i=$((i + 1))
+    file="$out/$name,$i.$ext"
+done
+
+mv -i "$image" "$file"

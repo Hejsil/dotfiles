@@ -1,0 +1,27 @@
+#!/bin/sh
+
+out=$1
+picker=${2:-fzf}
+preview=$3
+
+pick() {
+    "$picker" --preview-window="right:50%,border-none" --preview "$preview"
+}
+
+fw=$(printf 'sfw\nnsfw' | pick)
+if [ -z "$fw" ]; then
+    exit 1
+fi
+
+category=$(categories-pick-category "$out" "$picker" "$preview")
+if [ -z "$category" ]; then
+    exit 1
+fi
+
+picked_tags=$(categories-pick-tags "$out" "$picker" "$preview")
+if [ -z "$category" ]; then
+    exit 1
+fi
+
+picked_tags=$(echo "$picked_tags" | sort -u | tr '\n' ',' | sed 's/,$//')
+echo "$fw,$category,$picked_tags" | sed 's/,$//'
