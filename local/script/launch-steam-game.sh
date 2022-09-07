@@ -1,8 +1,8 @@
 #!/bin/sh
 
-id=$(steam-list.sh | fzf -d '\t' --with-nth=1 | tail -n 1 | cut -f2)
-[ -z "$id" ] && exit 0
+ids=$(steam-list.sh | fzf -m -d '\t' --with-nth=1 | cut -f2)
+[ -z "$ids" ] && exit 0
 
 action=$(printf 'run\nuninstall\n' | fzf | tail -n 1)
 [ -z "$action" ] && exit 0
-exec tsp steam "steam://$action/$id"
+echo "$ids" | xargs -d'\n' -I% tsp steam "steam://$action/%"
