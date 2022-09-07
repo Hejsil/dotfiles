@@ -107,7 +107,7 @@ function draw_preview {
         [action]=add [identifier]="${PREVIEW_ID}" \
         [x]="${X}" [y]="${Y}" \
         [width]="${COLUMNS}" [height]="${LINES}" \
-        [scaler]=forced_cover [scaling_position_x]=0.5 [scaling_position_y]=0.5 \
+        [scaler]=fit_contain [scaling_position_x]=0.5 [scaling_position_y]=0.5 \
         [path]="${@}")
         # add [synchronously_draw]=True if you want to see each change
 }
