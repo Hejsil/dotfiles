@@ -1,6 +1,7 @@
 adobe-source-sans-fonts
 aerc
 alsa-firmware
+alsa-utils
 amd-ucode
 ananicy-cpp
 archlinux-keyring
@@ -52,12 +53,14 @@ firefox
 flex
 fzf
 gamehub
+gamemode
 gawk
 gcc
 gcr
 gdb
 gettext
-gimp
+gifgen
+gimp-git
 git
 git-delta
 git-extras
@@ -86,6 +89,7 @@ jq
 jre11-openjdk
 kak-lsp
 kakoune
+krita
 ladspa
 lemonbar-xft-git
 lib32-libusb
@@ -104,11 +108,13 @@ linux-zen
 linux-zen-headers
 lld
 llvm
+love
 lua-language-server
 m4
 make
 man-db
 man-pages
+mediainfo
 mimalloc
 minq-ananicy-git
 mold
@@ -122,6 +128,7 @@ networkmanager
 nsxiv
 ntfs-3g
 ntp
+obs-studio-browser
 ocl-icd
 openvpn
 os-prober
@@ -148,10 +155,14 @@ pyside2
 python-babel
 python-bcrypt
 python-black
+python-gobject
 python-language-server
 python-mutagen
+python-numpy
+python-pika
 python-pycryptodomex
 python-pylint
+python-pynput
 python-websockets
 qt5-tools
 qt5-wayland
@@ -166,6 +177,7 @@ sad
 samba
 sd
 sdl2_image
+sdl2_ttf
 sed
 sfeed
 shellcheck
@@ -222,6 +234,7 @@ xorg-xinit
 xow-git
 xsel
 xwallpaper
+yarn
 youtube-dl
 yt-dlp
 zathura
