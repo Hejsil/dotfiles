@@ -1,4 +1,4 @@
 [Service]
-ExecStart=/home/hejsil/.local/script/bar.sh
+ExecStart=/home/hejsil/.local/script/bar
 [Install]
 WantedBy=user-graphical-login.target
