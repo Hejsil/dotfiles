@@ -80,7 +80,6 @@ hck
 hdparm
 heaptrack
 hotspot
-hstr
 inotify-tools
 isync
 itch
@@ -102,6 +101,7 @@ libtool
 libusb-compat
 libva-mesa-driver
 libva-vdpau-driver
+libvips
 libxft-bgra
 linux-firmware
 linux-zen
@@ -110,11 +110,14 @@ lld
 llvm
 love
 lua-language-server
+lutris
 m4
 make
 man-db
 man-pages
 mediainfo
+melonds-git
+meson
 mimalloc
 minq-ananicy-git
 mold
@@ -125,6 +128,7 @@ msmtp
 nawk
 ncdu
 networkmanager
+node-gyp
 nsxiv
 ntfs-3g
 ntp
@@ -221,6 +225,7 @@ winetricks
 wireplumber
 xbanish
 xclip
+xdelta3
 xdg-ninja-git
 xdo
 xdotool
@@ -233,6 +238,7 @@ xorg-xev
 xorg-xinit
 xow-git
 xsel
+xterm
 xwallpaper
 yarn
 youtube-dl
