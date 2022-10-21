@@ -1,0 +1,4 @@
+#!/bin/sh
+
+echo "$1" >>"$HOME/.config/rss/urls"
+sort -u "$HOME/.config/rss/urls" | exec sponge "$HOME/.config/rss/urls"

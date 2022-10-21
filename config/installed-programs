@@ -13,6 +13,7 @@ base
 bat
 binutils
 bison
+bloaty
 breeze-gtk
 bspwm
 btop
@@ -25,6 +26,7 @@ clang
 cmake
 conan
 dante
+dash
 dbus-broker
 dhcpcd
 difftastic
@@ -52,6 +54,7 @@ findutils
 firefox
 flex
 fzf
+gallery-dl
 gamehub
 gamemode
 gawk
@@ -97,6 +100,7 @@ lib32-vkd3d
 libdvdcss
 libpulse
 librealsense
+libreoffice-fresh
 libtool
 libusb-compat
 libva-mesa-driver
@@ -245,7 +249,7 @@ youtube-dl
 yt-dlp
 zathura
 zathura-pdf-mupdf
-zig-git
+zig-dev-bin
 zip
 zls-git
 zoxide

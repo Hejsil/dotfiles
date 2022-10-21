@@ -1,0 +1,6 @@
+#!/bin/sh
+
+channel_id=$1
+channel_name=$2
+template='https://www.youtube.com/feeds/videos.xml?channel_id=%s\t%s'
+rss-add "$(printf "$template" "$channel_id" "$channel_name")"

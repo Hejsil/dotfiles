@@ -1,6 +1,0 @@
-#!/bin/sh
-
-channel_id=$1
-
-printf "\nhttps://rsshub.app/pixiv/user/%s\n" "$channel_id" >>"$HOME/.config/rss/urls"
-sort -u "$HOME/.config/rss/urls" | exec sponge "$HOME/.config/rss/urls"
