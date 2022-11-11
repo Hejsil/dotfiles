@@ -5,6 +5,8 @@ alsa-utils
 amd-ucode
 ananicy-cpp
 archlinux-keyring
+aspell
+aspell-en
 astyle
 autoconf
 automake
@@ -28,6 +30,7 @@ conan
 dante
 dash
 dbus-broker
+deno
 dhcpcd
 difftastic
 direnv
@@ -46,6 +49,7 @@ entr
 exa
 execline
 execline-man-pages-git
+exfat-utils
 factorio
 fakeroot
 fd
@@ -76,6 +80,7 @@ grub
 gst-plugin-pipewire
 gst-plugins-bad
 gst-plugins-good
+gyro-bin
 gzip
 hastebin
 haveged
