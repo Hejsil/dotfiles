@@ -1,8 +1,6 @@
 [core]
     excludesfile = /home/hejsil/.config/git/ignore
     editor = kak
-[commit]
-    template = /home/hejsil/.config/git/commit
 [pull]
     rebase = true
 [credential]

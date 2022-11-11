@@ -73,7 +73,7 @@ alias zb='zig build'
 alias drag='dragon-drag-and-drop'
 alias gdb='gdb -nh -x "$XDG_CONFIG_HOME/gdb/init"'
 alias rg='rg --no-heading'
-alias trr='transmission-remote 192.168.0.125'
+alias tm='transmission-remote 192.168.0.119'
 
 alias ga='git add'
 alias gap='git add --patch'
