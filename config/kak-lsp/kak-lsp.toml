@@ -15,7 +15,7 @@ args = ["start"]
 
 [language.c_cpp]
 filetypes = ["c", "cpp"]
-roots = ["compile_commands.json", ".clangd"]
+roots = ["compile_commands.json", ".clangd", ".git", ".hg"]
 command = "clangd"
 
 [language.crystal]

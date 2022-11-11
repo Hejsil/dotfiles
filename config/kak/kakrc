@@ -31,13 +31,19 @@ map global insert '<a-up>' '<a-;>:move-lines-up<ret>'
 
 map global insert '<c-o>' '<a-;>o'
 
+# Revert some changes kakoune did to the bindings. My muscle memory is to strong for
+# me to adabt to these changes.
+map global normal ',' '<space>'
+map global normal '<space>' ','
+map global normal 'X' 'Lx'
+
 # Moving lines
 define-command -override move-lines-down -docstring 'move line down' %{
-    execute-keys -draft '<a-x><a-_><a-:>Z;ezj<a-x>dzP'
+    execute-keys -draft 'x<a-_><a-:>Z;ezjxdzP'
 }
 
 define-command -override move-lines-up -docstring 'move line up' %{
-    execute-keys -draft '<a-x><a-_><a-:><a-;>Z;bzk<a-x>dzp'
+    execute-keys -draft 'x<a-_><a-:><a-;>Z;bzkxdzp'
 }
 
 # fzf
@@ -67,7 +73,9 @@ hook global WinSetOption filetype=rust %{
 
     hook window -group autocomplete InsertChar '[^\w\n.]' %{
         try %{
-            execute-keys -draft '<a-;>2<space>'
+            # Fail if we have more than one selection
+            echo "$kak_selections_length" |
+                sed -e '/^[0-9][0-9]* /d' -e 's/^[0-9][0-9]*$/fail/'
         } catch %{
             execute-keys -draft '<a-;>h<a-;>Gh<a-;>|rust-autocomplete<ret>'
             execute-keys -save-regs '"' '<a-;><a-f>¤<a-;>;<a-;>d'
@@ -85,8 +93,10 @@ hook global WinSetOption filetype=rust %{
 
 hook global WinSetOption filetype=zig %{
     hook window -group autocomplete InsertChar '[^\w\n.]' %{
-        try %{
-            execute-keys -draft '<a-;>2<space>'
+        try %sh{
+            # Fail if we have more than one selection
+            echo "$kak_selections_length" |
+                sed -e '/^[0-9][0-9]* /d' -e 's/^[0-9][0-9]*$/fail/'
         } catch %{
             execute-keys -draft '<a-;>h<a-;>Gh<a-;>|zig-autocomplete<ret>'
             execute-keys -save-regs '"' '<a-;><a-f>¤<a-;>;<a-;>d'
@@ -114,6 +124,7 @@ hook global WinSetOption filetype=rust       %{ set-option window formatcmd 'rus
 hook global WinSetOption filetype=sh         %{ set-option window formatcmd "shfmt -i %opt{tabstop} -s -ci" }
 hook global WinSetOption filetype=xml        %{ set-option window formatcmd 'xmllint --format -' }
 hook global WinSetOption filetype=zig        %{ set-option window formatcmd 'zig-fmt' }
+hook global WinSetOption filetype=c          %{ set-option window formatcmd 'clang-format' }
 
 # Colors
 
