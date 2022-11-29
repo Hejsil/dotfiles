@@ -14,7 +14,7 @@ map global user y '<a-|>xsel -bi<ret>' -docstring 'Copy to system clipboard'
 map global user p '!xsel -bo<ret>'     -docstring 'Paste from system clipboard'
 map global user f ':fzf<ret>'          -docstring 'Fzf files'
 map global user s ':fzf-rg<ret>'       -docstring 'Fzf content of files'
-map global user S '!sort<ret>d'        -docstring 'Sort'
+map global user S '|sort<ret>'         -docstring 'Sort'
 
 map global user l ':enter-user-mode lsp<ret>' -docstring "LSP mode"
 
