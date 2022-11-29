@@ -61,10 +61,11 @@ alias ls='exa -a'
 
 alias cp='cp -i'
 alias man='fzf-man'
-alias map='xargs -d"\n"'
 alias mv='mv -i'
+alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
+
+alias map='xargs -d"\n"'
 alias o='open'
-alias r='ranger'
 
 alias ab='autobuild'
 alias cb='cargo build'
