@@ -35,8 +35,8 @@ install_zig() {
     folder="$(mktemp -d)"
 
     git_clone "https://github.com/Hejsil/$repo.git" "$folder"
-    zig build --build-file "$folder/build.zig" -Drelease &&
-        sudo zig build --build-file "$folder/build.zig" -Drelease --prefix /usr/local
+    zig build --build-file "$folder/build.zig" -Drelease-safe &&
+        sudo zig build --build-file "$folder/build.zig" -Drelease-safe --prefix /usr/local
 }
 
 install_st() {
