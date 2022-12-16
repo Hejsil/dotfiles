@@ -1,3 +1,4 @@
 #!/bin/execlineb -P
+foreground { sleep 1s }
 importas xinitrc XINITRC
 startx $xinitrc
