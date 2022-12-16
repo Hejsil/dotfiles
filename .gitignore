@@ -43,6 +43,7 @@ config/JetBrains/
 config/jgit/
 config/karboncalligraphyrc
 config/kcachegrindrc
+config/kglobalshortcutsrc
 config/kitty/
 config/kritadisplayrc
 config/kritarc
@@ -61,6 +62,7 @@ config/NecroDancer/
 config/neofetch/
 config/nextjs-nodejs/
 config/notmuch
+config/NuGet/
 config/nvim/.netrwhist
 config/nvim/spell
 config/obs-studio
@@ -84,6 +86,7 @@ config/Syncplay/
 config/syncplay.ini
 config/syncthing/
 config/task/
+config/teamviewer/
 config/tm35-randomizer
 config/tracy/
 config/transmission
@@ -95,6 +98,8 @@ config/unity3d/
 config/user-dirs.dirs
 config/user-dirs.locale
 config/VirtualBox
+config/vlc/
+config/WebCord/
 config/wireshark/
 config/xfce4/
 config/xmcl/
@@ -106,6 +111,7 @@ local/lib/
 local/opt/
 local/share/10tons/
 local/share/aerc/
+local/share/Anki2/
 local/share/applications/
 local/share/Baba_Is_You/
 local/share/bash_history
@@ -135,10 +141,12 @@ local/share/Kishonti Ltd/
 local/share/krita/
 local/share/krita.log
 local/share/krita-sysinfo.log
+local/share/leagueoflegends/
 local/share/lutris/
 local/share/mail/
 local/share/marble/
 local/share/mc/
+local/share/mcfly/
 local/share/meld/
 local/share/mime/
 local/share/multimc/
@@ -164,6 +172,8 @@ local/share/Steam/
 local/share/syncthing/
 local/share/Tabletop Simulator/
 local/share/task/
+local/share/teamviewer15/
+local/share/TelegramDesktop/
 local/share/template/
 local/share/Terraria/
 local/share/themes/
@@ -171,6 +181,7 @@ local/share/TowerFall/
 local/share/Trash
 local/share/Valve Corporation/
 local/share/virtualenv/
+local/share/vlc/
 local/share/vm-pool/
 local/share/vulkan/
 local/share/webkitgtk/
