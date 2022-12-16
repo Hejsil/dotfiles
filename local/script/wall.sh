@@ -2,7 +2,7 @@
 
 folder=$1
 screens=$(mktemp)
-images=$(mktemp)
+images=/tmp/wallpapers-on-screen
 
 xrandr --listactivemonitors |
     rg -o '^ \d+: [^ ]+ \d+/\d+x\d+.*  (.+)$' -r '$1' >"$screens"
@@ -15,4 +15,3 @@ paste "$screens" "$images" |
     xargs -d '\n' xwallpaper
 
 rm "$screens"
-rm "$images"
