@@ -7,8 +7,8 @@
 local categories = {
     prologue = "^Prologue/^Intro/Intro$",
     opening = "^OP/ OP$/^Opening",
-    ending = "^ED/ ED$/^Ending",
-    preview = "Preview$/^Next/^Extra/^PV"
+    ending = "^ED/ ED$/^Ending/^Credits",
+    preview = "Preview$/^Next/^Extra/^PV/^Hunterpedia/^Greed Island Tutorial"
 }
 
 local options = {
