@@ -1,0 +1,5 @@
+#!/bin/execlineb -P
+pipeline { ps ax }
+pipeline { fzf -m }
+pipeline { hck -f2 }
+xargs "-d\n" kill -9

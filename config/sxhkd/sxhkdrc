@@ -16,6 +16,9 @@ super + r
 super + e
     $WINDOW -e fzf-uni
 
+super + k
+    $WINDOW -e fzf-kill
+
 super + s
     $WINDOW -e shutdown
 

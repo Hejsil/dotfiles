@@ -1,0 +1,5 @@
+#!/bin/nawk -f
+
+$NF ~ /^<[a-zA-Z0-9-_]*>$/ { printf "%s ¤ </%s>", $0, substr($NF, 2, length($NF) - 2) ; next }
+
+{printf "%s¤", $0}
