@@ -1,0 +1,21 @@
+#!/bin/bash -e
+
+xrandr_output=$(xrandr)
+
+output=$(echo "$xrandr_output" | rg '^([^ ]*) connected' -o -r '$1')
+mode=$(echo "$xrandr_output" | rg --multiline '^[^ ]* connected .*\n\s+([^ ]+)' -o -r '$1')
+rate=$(echo "$xrandr_output" |
+    rg --multiline '^[^ ]* connected .*\n\s+[^ ]+\s+(.*)' -o -r '$1' |
+    sed -E 's/\*|\+//g' |
+    while read -r line; do
+        echo "$line" | sed 's/[ ][ ]*/\n/g' | sort -h | tail -n1
+    done)
+
+count=$(echo "$output" | wc -l)
+
+paste \
+    <(yes -- '--output' | head -n "$count") <(echo "$output") \
+    <(yes -- '--mode' | head -n "$count") <(echo "$mode") \
+    <(yes -- '--rate' | head -n "$count") <(echo "$rate") |
+    tr '\t' '\n' |
+    xargs -d'\n' xrandr
