@@ -58,13 +58,15 @@ $NF ~ /gst::(gst_)?info!\($/  { printf "%sCAT, \"¤\")", $0 ; next }
 $NF ~ /gst::(gst_)?trace!\($/ { printf "%sCAT, \"¤\")", $0 ; next }
 $NF ~ /gst::(gst_)?warn!\($/  { printf "%sCAT, \"¤\")", $0 ; next }
 
-$NF ~ /::<$/ { printf "%s¤>", $0 ; next }
-$NF ~ /\{$/  { printf "%s¤}", $0 ; next }
-$NF ~ /\($/  { printf "%s¤)", $0 ; next }
-$NF ~ /\[$/  { printf "%s¤]", $0 ; next }
+$NF ~ /gst::ElementFactory:$/ { printf "%s:make(\"¤\", None)", $0 ; next }
+
+/::<$/ { printf "%s¤>", $0 ; next }
+/\{$/  { printf "%s¤}", $0 ; next }
+/\($/  { printf "%s¤)", $0 ; next }
+/\[$/  { printf "%s¤]", $0 ; next }
 
 $NF ~ /(^|[^\\])"$/ { printf "%s¤\"", $0 ; next }
-$NF ~ /(^|[^\\])'$/ { printf "%s¤'", $0 ; next }
+$NF ~ /(^|[^\\])'$/ { printf "%s¤'",  $0 ; next }
 
 {printf "%s¤", $0}
 

@@ -73,13 +73,6 @@ $NF ~ /^(reader|writer):$/ { printf "%s anytype¤", $0 ; next }
 $NF ~ /^len:$/             { printf "%s usize¤", $0 ; next }
 $NF ~ /^[A-Z][a-z0-9_]*:$/ { printf "%s type¤", $0 ; next }
 
-$NF ~ /\{$/ { printf "%s¤}", $0 ; next }
-$NF ~ /\($/ { printf "%s¤)", $0 ; next }
-$NF ~ /\[$/ { printf "%s¤]", $0 ; next }
-
-$NF ~ /(^|[^\\])"$/ { printf "%s¤\"", $0 ; next }
-$NF ~ /(^|[^\\])'$/ { printf "%s¤'", $0 ; next }
-
 # `import x` -> `const x = @import("x.zig");`
 NF > 1 && $(NF-1) == "import" {
     to_import = $NF;
@@ -109,5 +102,12 @@ NF > 1 && $(NF-1) == "alias" {
 
     next
 }
+
+/\{$/  { printf "%s¤}", $0 ; next }
+/\($/  { printf "%s¤)", $0 ; next }
+/\[$/  { printf "%s¤]", $0 ; next }
+
+$NF ~ /(^|[^\\])"$/ { printf "%s¤\"", $0 ; next }
+$NF ~ /(^|[^\\])'$/ { printf "%s¤'",  $0 ; next }
 
 {printf "%s¤", $0}

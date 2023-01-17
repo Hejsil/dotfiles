@@ -5,9 +5,9 @@ set-option global tabstop 4
 set-option global ui_options ncurses_assistant=off ncurses_set_title=true
 set-option global modelinefmt '%val{bufname} %val{cursor_line}:%val{cursor_char_column} {{context_info}} {{mode_info}} '
 
-add-highlighter global/ number-lines -relative -separator ' '
+add-highlighter global/ number-lines     -relative -separator ' '
 add-highlighter global/ show-whitespaces -tab '▸' -tabpad ' ' -lf ' ' -spc ' '
-add-highlighter global/ regex '\h+$' 0:default,red
+add-highlighter global/ regex            '\h+$' 0:default,red
 
 map global user c ':comment-line<ret>' -docstring 'Comment out line'
 map global user y '<a-|>xsel -bi<ret>' -docstring 'Copy to system clipboard'
@@ -18,16 +18,17 @@ map global user S '|sort<ret>'         -docstring 'Sort'
 
 map global user l ':enter-user-mode lsp<ret>' -docstring "LSP mode"
 
-map global insert <pageup> '<a-;><c-b>'
+map global insert <pageup>   '<a-;><c-b>'
 map global insert <pagedown> '<a-;><c-f>'
 
-map global normal "'" '<a-i>w*/<ret>'
-map global normal 'z' ':w<ret>'
+map global normal "'"     '<a-i>w*/<ret>'
+map global normal 'z'     ':w<ret>'
+map global normal '<ret>' 'i'
 
 map global normal '<a-down>' ':move-lines-down<ret>'
-map global normal '<a-up>' ':move-lines-up<ret>'
+map global normal '<a-up>'   ':move-lines-up<ret>'
 map global insert '<a-down>' '<a-;>:move-lines-down<ret>'
-map global insert '<a-up>' '<a-;>:move-lines-up<ret>'
+map global insert '<a-up>'   '<a-;>:move-lines-up<ret>'
 
 map global insert '<c-o>' '<a-;>o'
 
@@ -35,7 +36,7 @@ map global insert '<c-o>' '<a-;>o'
 # me to adabt to these changes.
 map global normal ',' '<space>'
 map global normal '<space>' ','
-map global normal 'X' 'Lx'
+
 
 # Moving lines
 define-command -override move-lines-down -docstring 'move line down' %{
@@ -62,71 +63,36 @@ define-command fzf-rg %{ open fzf-rg }
 hook global InsertCompletionShow .* %{ map window insert <tab> <c-n> }
 hook global InsertCompletionHide .* %{ map window insert <tab> <tab> }
 
-# lsp hooks
-hook global WinSetOption filetype=rust %{
-    hook window -group semantic-tokens BufReload .* lsp-semantic-tokens
-    hook window -group semantic-tokens NormalIdle .* lsp-semantic-tokens
-    hook window -group semantic-tokens InsertIdle .* lsp-semantic-tokens
-    hook -once -always window WinSetOption filetype=.* %{
-        remove-hooks window semantic-tokens
-    }
+declare-option -docstring "Shell command to autocomplete as you type" \
+    str autocompletecmd
 
-    hook window -group autocomplete InsertChar '[^\w\n.]' %{
-        try %{
-            # Fail if we have more than one selection
-            echo "$kak_selections_length" |
-                sed -e '/^[0-9][0-9]* /d' -e 's/^[0-9][0-9]*$/fail/'
-        } catch %{
-            execute-keys -draft '<a-;>h<a-;>Gh<a-;>|rust-autocomplete<ret>'
-            execute-keys -save-regs '"' '<a-;><a-f>¤<a-;>;<a-;>d'
-        }
-    }
-    hook -once -always window WinSetOption filetype=.* %{
-        remove-hooks window autocomplete
-    }
+declare-option -docstring "Same as autocompletecmd and is run after it" \
+    str autocompletecmd2
 
-    # Make kak-lsp force rust-analyzer to fully analyze the file. If I don't do these, the editor
-    # will wait until I do any lsp action before analyzing anything. I then have to wait the
-    # around 10 seconds for it to finish. I would rather this is just done at startup.
-    lsp-definition
+define-command autocomplete -params 1 -docstring "" %{
+    evaluate-commands %sh{
+        if ! command -v "$1" >/dev/null; then
+            echo "fail 'No command called ''$1'' in PATH'"
+        fi
+        if [ "$(echo "$kak_selections_length" | grep -c ' ')" != 0 ]; then
+            echo "fail 'Cannot autocomplete while having multiple selections'"
+        fi
+    }
+    execute-keys -draft "<a-;>h<a-;>Gh<a-;>|%arg[1]<ret>"
+    execute-keys -save-regs '"' '<a-;><a-f>¤<a-;>;<a-;>d'
 }
 
-hook global WinSetOption filetype=zig %{
-    hook window -group autocomplete InsertChar '[^\w\n.]' %{
-        try %sh{
-            # Fail if we have more than one selection
-            echo "$kak_selections_length" |
-                sed -e '/^[0-9][0-9]* /d' -e 's/^[0-9][0-9]*$/fail/'
-        } catch %{
-            execute-keys -draft '<a-;>h<a-;>Gh<a-;>|zig-autocomplete<ret>'
-            execute-keys -save-regs '"' '<a-;><a-f>¤<a-;>;<a-;>d'
-        }
-    }
-    hook -once -always window WinSetOption filetype=.* %{
-        remove-hooks window autocomplete
-    }
+hook global -group autocomplete InsertChar '[^\w\n.]' %{
+    try %{ autocomplete %opt{autocompletecmd} } catch %{}
+    try %{ autocomplete %opt{autocompletecmd2} } catch %{}
 }
 
-hook global WinSetOption filetype=html %{
-    hook window -group autocomplete InsertChar '[^\w\n.]' %{
-        try %sh{
-            # Fail if we have more than one selection
-            echo "$kak_selections_length" |
-                sed -e '/^[0-9][0-9]* /d' -e 's/^[0-9][0-9]*$/fail/'
-        } catch %{
-            execute-keys -draft '<a-;>h<a-;>Gh<a-;>|html-autocomplete<ret>'
-            execute-keys -save-regs '"' '<a-;><a-f>¤<a-;>;<a-;>d'
-        }
-    }
-    hook -once -always window WinSetOption filetype=.* %{
-        remove-hooks window autocomplete
-    }
-}
 
 hook global BufWritePre .* %{
     try format catch %{}
     try lint catch %{}
 }
+
 
 hook global WinSetOption filetype=html %{ set-option window lintcmd 'htmlhint -f unix' }
 hook global WinSetOption filetype=sh   %{ set-option window lintcmd 'shellcheck -f gcc' }
@@ -144,6 +110,12 @@ hook global WinSetOption filetype=rust       %{ set-option window formatcmd 'rus
 hook global WinSetOption filetype=sh         %{ set-option window formatcmd "shfmt -i %opt{tabstop} -s -ci" }
 hook global WinSetOption filetype=xml        %{ set-option window formatcmd 'xmllint --format -' }
 hook global WinSetOption filetype=zig        %{ set-option window formatcmd 'zig-fmt' }
+
+hook global WinSetOption filetype=html %{ set-option window autocompletecmd 'html-autocomplete' }
+hook global WinSetOption filetype=rust %{ set-option window autocompletecmd 'rust-autocomplete' }
+hook global WinSetOption filetype=zig  %{ set-option window autocompletecmd 'zig-autocomplete' }
+
+set-option global autocompletecmd2 'generic-autocomplete'
 
 # Colors
 
