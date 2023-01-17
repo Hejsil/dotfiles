@@ -1,0 +1,34 @@
+#!/bin/sh
+
+songs="$HOME/.local/share/synthriderz"
+mkdir -p "$songs"
+
+names=$(mktemp)
+links=$(mktemp)
+
+i=1
+end=1
+while true; do
+    result=$(curl -s "https://synthriderz.com/api/beatmaps?page=$i")
+    end=$(echo "$result" | jq '.pageCount')
+
+    echo "$result" | jq '.data[].filename' -r >"$names"
+    echo "$result" | jq '.data[].download_url' -r | sed 's#^#https://synthriderz.com#' >"$links"
+
+    paste "$names" "$links" | while read -r file link; do
+        if [ -f "$songs/$file" ]; then
+            continue
+        fi
+
+        curl -sL --output "$songs/$file" "$link"
+        echo "$file"
+    done
+
+    if [ "$i" = "$end" ]; then
+        break
+    fi
+
+    i=$((i + 1))
+done
+
+rm "$names" "$links"
