@@ -6,6 +6,26 @@ cmd=$*
 [ -z "$cmd" ] && [ -f 'build.zig' ] &&
     cmd='zig build --prominent-compile-errors'
 
-fd -e h -e hh -e hpp -e c -e cc -e cpp -e cs -e rs -e toml -e zig -e graphql -e js -e html -e css \
-    -e kt -e java -e toml -e lua -e yml -e py \
+fd \
+    -e c \
+    -e cc \
+    -e cfg \
+    -e cpp \
+    -e cs \
+    -e css \
+    -e graphql \
+    -e h \
+    -e hh \
+    -e hpp \
+    -e html \
+    -e java \
+    -e js \
+    -e kt \
+    -e lua \
+    -e py \
+    -e rs \
+    -e toml \
+    -e toml \
+    -e yml \
+    -e zig \
     --exclude 'zig-cache' | exec entr -crs "$cmd"
