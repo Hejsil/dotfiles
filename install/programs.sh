@@ -32,11 +32,14 @@ install_zig() {
     fi
 
     repo="$1"
-    folder="$(mktemp -d)"
+    folder="$HOME/repo/own/st-flexipatch"
+
+    rm -rf "$folder"
+    mkdir -p "$folder"
 
     git_clone "https://github.com/Hejsil/$repo.git" "$folder"
     zig build --build-file "$folder/build.zig" -Drelease-safe &&
-        sudo zig build --build-file "$folder/build.zig" -Drelease-safe --prefix /usr/local
+        sudo zig build --build-file "$folder/build.zig" -Drelease-safe --prefix "$HOME/.local"
 }
 
 install_st() {
@@ -44,26 +47,25 @@ install_st() {
         return
     fi
 
-    folder="$HOME/repo/st-flexipatch"
+    folder="$HOME/repo/forks/st-flexipatch"
     rm -rf "$folder"
     mkdir -p "$folder"
     git_clone 'https://github.com/bakkeby/st-flexipatch.git' "$folder"
 
     cd "$folder"
     rm config.def.h patches.def.h config.mk Makefile
-    ln "$here/config/st-flexipatch/config.def.h" 'config.def.h'
-    ln "$here/config/st-flexipatch/patches.def.h" 'patches.def.h'
-    ln "$here/config/st-flexipatch/config.mk" 'config.mk'
-    ln "$here/config/st-flexipatch/Makefile" 'Makefile'
+    ln -sf "$here/config/st-flexipatch/config.def.h" 'config.def.h'
+    ln -sf "$here/config/st-flexipatch/patches.def.h" 'patches.def.h'
+    ln -sf "$here/config/st-flexipatch/config.mk" 'config.mk'
+    ln -sf "$here/config/st-flexipatch/Makefile" 'Makefile'
 
-    make
-    sudo make install
+    make install PREFIX="$HOME/.local"
 }
 
 install_paru
 paru -S --confirm --needed - <"$here/config/installed-programs"
 
-install_zig 'anilist'
+install_zig 'aniz'
 install_zig 'cache'
 install_zig 'lemonbar-maker'
 
