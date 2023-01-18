@@ -1,19 +1,20 @@
-#!/bin/sh
+#!/bin/execlineb -P
 
-old_file_names=$(mktemp)
-new_file_names=$(mktemp)
+backtick -E old_file_names { mktemp }
+backtick -E new_file_names { mktemp }
 
-for f in "$@"; do
-    printf "%s\n" "$f"
-done | tee "$old_file_names" >"$new_file_names"
+# Save files comming from stdin into old and new_file_names
+foreground { redirfd -w 1 /dev/null tee $old_file_names $new_file_names }
 
-$EDITOR "$new_file_names"
+# Allow user to edit new_file_name
+importas editor EDITOR
+foreground { redirfd -r 0 /dev/tty $editor $new_file_names }
 
-IFS=$(printf '\a')
-paste -d "$IFS" "$old_file_names" "$new_file_names" |
-    nawk -F "$IFS" '$1 != $2' |
-    while read -r from to; do
-        mv -n "$from" "$to"
-    done
+# Rename file names that the user edited
+pipeline { paste $old_file_names $new_file_names }
+pipeline { nawk "$1 != $2" }
+pipeline { tr "\t" "\n" }
+foreground { xargs "-d\n" -n2 mv -n }
 
-exec rm "$old_file_names" "$new_file_names"
+# Clean up the mess
+rm $old_file_names $new_file_names

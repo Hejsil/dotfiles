@@ -1,29 +1,40 @@
-#!/bin/sh
+#!/bin/execlineb -P
 
-bar_height=$(bspc config top_padding)
-while [ "$bar_height" = 0 ]; do
-    sleep 0.1s
-    bar_height=$(bspc config top_padding)
-done
+# Wait for whatever is needed for lemonbar to run
+# TODO: This should probably not sleep
+foreground { sleep 0.1s }
 
-lemonbar-maker --low "#$COLOR11" \
-    --mid "#$COLOR10" \
-    --high "#$COLOR8" |
-    lemonbar \
-        -g "x$bar_height" \
-        -f "$(xgetres bar.font)" \
-        -B "#$COLOR0" \
-        -F "#$COLOR5" \
-        -u 2 \
-        -n 'lemonbar' &
+backtick -E bar_height { bspc config top_padding }
+backtick -E font       { xgetres bar.font }
 
-while ! xdo id -a lemonbar 2>/dev/null >/dev/null; do
-    sleep 0.1s
-done
+importas color0  COLOR0
+importas color5  COLOR5
+importas color8  COLOR8
+importas color10 COLOR10
+importas color11 COLOR11
 
-{
-    xdo id -n root
-    xdo id -a lemonbar
-} | xargs -d'\n' xdo below -t
+background {
+    pipeline {
+        lemonbar-maker
+            --low \#$color11
+            --mid \#$color10
+            --high \#$color8
+    }
+    lemonbar
+        -g x$bar_height
+        -f $font
+        -B \#$color0
+        -F \#$color5
+        -u 2
+        -n lemonbar
+}
+
+foreground { loopwhilex -x 0 xdo id -a lemonbar }
+
+pipeline {
+     foreground { xdo id -n root }
+     xdo id -a lemonbar
+}
+foreground { xargs "-d\n" xdo below -t }
 
 wait
