@@ -27,6 +27,7 @@ chaotic-mirrorlist
 chromium
 clang
 cmake
+codespell
 conan
 dante
 dash
@@ -36,7 +37,6 @@ dhcpcd
 difftastic
 direnv
 discord
-discord-screenaudio
 docker
 docker-compose
 docker-credential-pass-bin
@@ -69,7 +69,7 @@ gcr
 gdb
 gettext
 gifgen
-gimp-git
+gimp
 git
 git-delta
 git-extras
@@ -134,6 +134,7 @@ melonds-git
 meson
 mimalloc
 minq-ananicy-git
+mkcert
 mold
 moreutils
 mpv
@@ -203,13 +204,16 @@ sfeed
 shellcheck
 shfmt
 sic
+sidequest-bin
 slop
 socat
 speedtest++
+sshfs
 starship
 steam
 strace
 stress
+stylua
 subversion
 sudo
 sxhkd
@@ -228,6 +232,7 @@ ttf-sarasa-gothic
 ttf-symbola
 ttf-twemoji
 typescript-language-server
+udiskie
 udisks2
 ueberzug
 uni
@@ -237,9 +242,11 @@ vi
 vim
 vkd3d
 vulkan-radeon
+vulkan-swrast
 w3m
 waifu2x-ncnn-vulkan
 websocat
+wget
 which
 wine
 winetricks
@@ -247,6 +254,8 @@ wireplumber
 xbanish
 xclip
 xdelta3
+xdg-desktop-portal
+xdg-desktop-portal-gtk
 xdg-ninja-git
 xdo
 xdotool
