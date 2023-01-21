@@ -67,6 +67,7 @@ export NNN_OPENER='open.sh'
 export QT_QPA_PLATFORMTHEME='gtk2'
 export RUST_BACKTRACE=1
 export TS_SLOTS=10000
+export TRANSMISSION_REMOTE=192.168.0.119
 
 export GTK_THEME="Breeze:dark"
 export TERMINFO_DIRS="$TERMINFO:/usr/share/terminfo"
