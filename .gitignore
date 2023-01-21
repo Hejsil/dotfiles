@@ -77,6 +77,7 @@ config/pulse
 config/qt5ct
 config/QtProject.conf
 config/retroarch/
+config/SideQuest/
 config/Slack/
 config/Soundux/
 config/steamtinkerlaunch/
@@ -94,6 +95,7 @@ config/transmission-daemon/dht.dat
 config/transmission-daemon/resume
 config/transmission-daemon/stats.json
 config/transmission-daemon/torrents
+config/tree-sitter/
 config/unity3d/
 config/user-dirs.dirs
 config/user-dirs.locale
@@ -115,6 +117,7 @@ local/share/Anki2/
 local/share/applications/
 local/share/Baba_Is_You/
 local/share/bash_history
+local/share/calc_history
 local/share/cod/
 local/share/Daedalic Entertainment GmbH/
 local/share/data/
@@ -144,11 +147,13 @@ local/share/krita-sysinfo.log
 local/share/leagueoflegends/
 local/share/lutris/
 local/share/mail/
+local/share/man/
 local/share/marble/
 local/share/mc/
 local/share/mcfly/
 local/share/meld/
 local/share/mime/
+local/share/mkcert/
 local/share/multimc/
 local/share/nautilus/
 local/share/NecroDancer/
@@ -170,11 +175,13 @@ local/share/rustup/
 local/share/sfeed/
 local/share/Steam/
 local/share/syncthing/
+local/share/synthriderz/
 local/share/Tabletop Simulator/
 local/share/task/
 local/share/teamviewer15/
 local/share/TelegramDesktop/
 local/share/template/
+local/share/terminfo/
 local/share/Terraria/
 local/share/themes/
 local/share/TowerFall/

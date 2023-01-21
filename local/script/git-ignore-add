@@ -1,0 +1,4 @@
+#!/bin/sh
+
+echo "$1" >>.gitignore
+sort -u .gitignore | exec sponge .gitignore
