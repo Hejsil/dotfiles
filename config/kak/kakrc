@@ -12,7 +12,7 @@ add-highlighter global/ regex            '\h+$' 0:default,red
 map global user c ':comment-line<ret>' -docstring 'Comment out line'
 map global user y '<a-|>xsel -bi<ret>' -docstring 'Copy to system clipboard'
 map global user p '!xsel -bo<ret>'     -docstring 'Paste from system clipboard'
-map global user f ':fzf<ret>'          -docstring 'Fzf files'
+map global user f ':fzf-fd<ret>'       -docstring 'Fzf files'
 map global user s ':fzf-rg<ret>'       -docstring 'Fzf content of files'
 map global user S '|sort<ret>'         -docstring 'Sort'
 
@@ -56,7 +56,7 @@ define-command open -params 1 %{
     }
 }
 
-define-command fzf    %{ open fzf-fd }
+define-command fzf-fd %{ open fzf-fd }
 define-command fzf-rg %{ open fzf-rg }
 
 # Auto complete with tab
