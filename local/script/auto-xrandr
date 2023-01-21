@@ -1,21 +1,22 @@
-#!/bin/bash -e
+#!/bin/sh -e
 
-xrandr_output=$(xrandr)
+xrandr=$(mktemp)
+output=$(mktemp)
+mode=$(mktemp)
+rate=$(mktemp)
 
-output=$(echo "$xrandr_output" | rg '^([^ ]*) connected' -o -r '$1')
-mode=$(echo "$xrandr_output" | rg --multiline '^[^ ]* connected .*\n\s+([^ ]+)' -o -r '$1')
-rate=$(echo "$xrandr_output" |
-    rg --multiline '^[^ ]* connected .*\n\s+[^ ]+\s+(.*)' -o -r '$1' |
+xrandr >"$xrandr"
+
+rg <"$xrandr" '^([^ ]*) connected' -o -r '$1' >"$output"
+rg <"$xrandr" --multiline '^[^ ]* connected .*\n\s+([^ ]+)' -o -r '$1' >"$mode"
+rg <"$xrandr" --multiline '^[^ ]* connected .*\n\s+[^ ]+\s+(.*)' -o -r '$1' |
     sed -E 's/\*|\+//g' |
     while read -r line; do
         echo "$line" | sed 's/[ ][ ]*/\n/g' | sort -h | tail -n1
-    done)
+    done >"$rate"
 
-count=$(echo "$output" | wc -l)
-
-paste \
-    <(yes -- '--output' | head -n "$count") <(echo "$output") \
-    <(yes -- '--mode' | head -n "$count") <(echo "$mode") \
-    <(yes -- '--rate' | head -n "$count") <(echo "$rate") |
-    tr '\t' '\n' |
+paste "$output" "$mode" "$rate" |
+    nawk '{printf "--output\n%s\n--mode\n%s\n--rate\n%s\n", $1, $2, $3 }' |
     xargs -d'\n' xrandr
+
+rm "$xrandr" "$output" "$mode" "$rate"

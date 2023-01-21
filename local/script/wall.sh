@@ -5,7 +5,7 @@ screens=$(mktemp)
 images=/tmp/wallpapers-on-screen
 
 xrandr --listactivemonitors |
-    rg -o '^ \d+: [^ ]+ \d+/\d+x\d+.*  (.+)$' -r '$1' >"$screens"
+    rg -o '^ \d+: \+?\*?([^ ]+) ' -r '$1' >"$screens"
 count=$(wc -l <"$screens")
 
 find "$folder" -type f | sort -R | head -n "$count" >"$images"
