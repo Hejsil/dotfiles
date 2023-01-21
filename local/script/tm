@@ -1,0 +1,3 @@
+#!/bin/execlineb -s0
+importas remote TRANSMISSION_REMOTE
+transmission-remote $remote $@

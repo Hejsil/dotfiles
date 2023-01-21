@@ -1,5 +1,3 @@
 #!/bin/execlineb -P
-pipeline { ps ax }
-pipeline { fzf -m }
-pipeline { hck -f2 }
+pipeline { fzf-ps }
 xargs "-d\n" kill -9

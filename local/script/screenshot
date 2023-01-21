@@ -1,4 +1,4 @@
-#!/bin/execlineb -s1
+#!/bin/execlineb -S1
 cd $1
 backtick -E file { date "+%y-%m-%dT%H-%M-%S-%N.png" }
 foreground { import -window root $file }

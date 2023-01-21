@@ -1,0 +1,6 @@
+#!/bin/execlineb -P
+pipeline { tm -l }
+pipeline { fzf -m }
+pipeline { sed "s/^ *//" }
+pipeline { hck -f1 }
+tr -d '*'

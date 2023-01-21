@@ -1,5 +1,4 @@
-#!/bin/execlineb -s1
-
+#!/bin/execlineb -S1
 pipeline { env }
 pipeline { rg "^COLOR(\\d+=)" -r "\\$1" }
 pipeline { sd "=" "\t" }

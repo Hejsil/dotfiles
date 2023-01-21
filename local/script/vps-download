@@ -1,4 +1,0 @@
-#!/bin/execlineb -s1
-pipeline { curl -g "$1" }
-pipeline { rg -o " <a href=\"([^.][^\"]*)\"" -r "\\$1" }
-sed "s#^#${1}#"

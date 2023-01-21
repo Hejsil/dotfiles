@@ -1,4 +1,4 @@
-#!/bin/execlineb -s1
+#!/bin/execlineb -S1
 foreground {
     pipeline { tail -n +2 "$1" }
     head -n 1

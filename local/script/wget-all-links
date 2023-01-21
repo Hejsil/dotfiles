@@ -1,0 +1,5 @@
+#!/bin/execlineb -S1
+
+pipeline { fdmove -c 2 1 wget $1 --spider --recursive --no-directories --no-verbose }
+pipeline { grep -oe ${1}"[^ ]*" }
+sort -u

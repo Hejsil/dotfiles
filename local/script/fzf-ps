@@ -1,0 +1,4 @@
+#!/bin/execlineb -P
+pipeline { ps ax }
+pipeline { fzf -m }
+hck -f2
