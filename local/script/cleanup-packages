@@ -1,2 +1,4 @@
-#!/bin/sh
-paru -Rsu $(paru -Qetq | fzf -m --preview 'paru -Qi {}')
+#!/bin/execlineb -P
+pipeline { paru -Qetq }
+pipeline { fzf -m --preview "paru -Qi {}" }
+xargs "-d\n" paru -Rsu --noconfirm

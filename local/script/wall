@@ -1,0 +1,29 @@
+#!/bin/execlineb -S1
+
+backtick screens { mktemp }
+multisubstitute {
+    define folder $1
+    define images "/tmp/wallpapers-on-screen"
+    importas screens screens
+}
+
+foreground {
+    pipeline { xrandr --listactivemonitors }
+    redirfd -w 1 $screens rg -o "^ \\d+: \\+?\\*?([^ ]+) " -r "\\$1"
+}
+
+foreground {
+    backtick -E count { redirfd -r 0 $screens wc -l  }
+    pipeline { fd . $folder --type f }
+    pipeline { sort -R }
+    redirfd -w 1 $images head -n $count
+}
+
+foreground {
+    pipeline { paste $screens $images }
+    pipeline { nawk "{printf \"--output\\n%s\\n--zoom\\n%s\\n\", \$1, \$2 }" }
+    xargs -d "\n"  xwallpaper
+}
+
+rm $screens
+
