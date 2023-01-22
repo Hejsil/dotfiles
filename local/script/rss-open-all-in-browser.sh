@@ -1,7 +1,7 @@
 #!/bin/sh
 
 tab=$(printf '\t')
-rss-list.sh -u | cut -f1,4,8 |
+rss-list unread | cut -f1,4,8 |
     # Some links can be modified to open better
     sd 'https://nyaa.si/download/(\w+).torrent' 'https://nyaa.si/view/$1' |
     sd 'https://www.dr.dk/lyd/p4/radioavisen/[a-zA-Z0-9-]*' '' |

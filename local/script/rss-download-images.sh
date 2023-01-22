@@ -8,7 +8,7 @@ cd "$download_dir"
 tab=$(printf '\t')
 
 filter="www\.(pixiv\.net|artstation\.com)/artwork"
-image_rss_entries=$(rss-list.sh -u | cut "-d$tab" -f1,4 | rg "^[^\t]*\t.*$filter")
+image_rss_entries=$(rss-list unread | cut "-d$tab" -f1,4 | rg "^[^\t]*\t.*$filter")
 if [ -z "$image_rss_entries" ]; then
     exit
 fi
