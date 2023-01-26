@@ -39,7 +39,7 @@ install_zig() {
 
     git_clone "https://github.com/Hejsil/$repo.git" "$folder"
     zig build --build-file "$folder/build.zig" -Drelease-safe &&
-        sudo zig build --build-file "$folder/build.zig" -Drelease-safe --prefix "$HOME/.local"
+        zig build --build-file "$folder/build.zig" -Drelease-safe --prefix "$HOME/.local"
 }
 
 install_st() {
