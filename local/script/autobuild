@@ -25,7 +25,8 @@ fd \
     -e py \
     -e rs \
     -e toml \
-    -e toml \
+    -e ts \
+    -e tsx \
     -e yml \
     -e zig \
     --exclude 'zig-cache' | exec entr -crs "$cmd"
