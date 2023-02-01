@@ -1,6 +1,6 @@
 #!/bin/sh
 
-songs="$HOME/.local/share/synthriderz"
+songs="$XDG_DATA_HOME/synthriderz"
 mkdir -p "$songs"
 
 names=$(mktemp)
