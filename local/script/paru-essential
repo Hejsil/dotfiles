@@ -1,0 +1,7 @@
+#!/bin/execlineb -S1
+importas config XDG_CONFIG_HOME
+if { paru -Q $1 }
+foreground { sed -i "/^${1}$/d" "${config}/installed-programs" }
+foreground { redirfd -a 1 "${config}/essential-programs" printf "%s\n" $1 }
+pipeline { sort -u "${config}/essential-programs" }
+sponge "${config}/essential-programs"

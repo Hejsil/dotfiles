@@ -63,7 +63,8 @@ install_st() {
 }
 
 install_paru
-paru -S --confirm --needed - <"$here/config/installed-programs"
+paru -S --confirm --needed - <"$here/config/essential-programs"
+paru -S --confirm --needed - <"$here/config/installed-programs" || true
 
 install_zig 'aniz'
 install_zig 'cache'
