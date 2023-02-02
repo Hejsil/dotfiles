@@ -3,6 +3,6 @@ cd $1
 backtick -E file { date "+%y-%m-%dT%H-%M-%S-%N.png" }
 backtick -E selection { slop -f "%g" }
 foreground { import -window root -crop $selection $file }
-foreground { oxipng -o 6 --strip $file }
+foreground { oxipng -o max --strip safe $file }
 foreground { notify-send Screenshot $file }
 xclip -selection clipboard -t image/png -i $file
