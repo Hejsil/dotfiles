@@ -1,0 +1,14 @@
+#!/bin/execlineb -S1
+
+backtick -E output { mktemp -d "/tmp/curl.XXXXXXXX" }
+
+pipeline { cut -f1 "$1" }
+pipeline { sed "/^$/d" }
+pipeline { nl -w1 }
+pipeline { sed "s/^/-o\t/" }
+foreground { xargs curl -Z --output-dir $output }
+
+pipeline { find $output -type f -print0 }
+foreground { xargs -0 cat }
+
+rm -r $output

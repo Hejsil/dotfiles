@@ -10,23 +10,14 @@ url_config="$config_dir/urls"
 mkdir -p "$read_dir" "$unread_dir" "$config_dir"
 touch -a "$url_config"
 
-output=$(mktemp -d /tmp/curl.XXXXXXXX)
-cut -f1 "$url_config" | sed '/^$/d' | nl -w1 | sed 's/^/-o\t/' | xargs curl -Z --output-dir "$output"
-
-find "$output" -type f -print0 | xargs -0 cat | sfeed | tr '\t' '\a' |
-    while IFS=$(printf '\a') read -r timestamp title link content content_type id author enclosure; do
-        id=$(echo "$id" | sed 's#/#|#g')
-        [ -z "$id" ] && id=$(echo "$link" | sed 's#/#|#g')
-        [ -z "$id" ] && {
-            echo 'No id' >&2
-            continue
-        }
+IFS=$(printf '\a')
+rss-download-feed "$url_config" | sfeed | tr '\t' '\a' |
+    while read -r timestamp title link content content_type id author enclosure; do
+        id=$(printf '%s-%s-%s' "$id" "$link" "$enclosure" | xxhsum | cut -d' ' -f1)
         [ -e "$unread_dir/$id" ] && continue
         [ -e "$read_dir/$id" ] && continue
 
-        printf '%s\n%s\n%s\n%s\n%s\n%s\n%s\n' "$timestamp" "$title" "$link" \
-            "$content" "$content_type" "$author" "$enclosure" \
+        printf '%s\n%s\n%s\n%s\n%s\n%s\n%s\n' \
+            "$timestamp" "$title" "$link" "$content" "$content_type" "$author" "$enclosure" \
             >"$unread_dir/$id"
     done
-
-rm -r "$output"
