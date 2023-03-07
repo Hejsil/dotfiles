@@ -3,7 +3,7 @@
 repo='PathOfBuildingCommunity/PathOfBuilding'
 pob_dir="$XDG_CACHE_HOME/pob"
 
-if ! [ -d "$pob_dir" ]; then
+if ! [ -f "$pob_dir/Path of Building.exe" ]; then
     mkdir -p "$pob_dir"
 
     latest_release=$(gh release list -L 1 -R "$repo" | cut -f3)
