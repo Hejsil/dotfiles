@@ -45,8 +45,6 @@ super + p
         rg -F "$(pactl get-default-sink)" -A 1 --max-count 1 | tail -n1 | \
         cut -f2 | xargs -d'\n' pactl set-default-sink
 
-ctrl + @space
-    xdotool click 1
 
 #
 # bspwm
