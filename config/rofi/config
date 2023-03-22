@@ -1,5 +1,0 @@
-rofi.show-icons:      true
-rofi.case-sensitive:  false
-rofi.color-enabled:   true
-rofi.separator-style: solid
-rofi.theme:           theme
