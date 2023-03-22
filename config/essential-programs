@@ -93,6 +93,5 @@ xf86-video-ati
 xgetres
 xorg-server
 xorg-xinit
-xsel
 zig-dev-bin
 zoxide

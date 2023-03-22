@@ -37,8 +37,11 @@ super + m
 super + Return
     $TERMINAL
 
+super + shift + Return
+    $TERMINAL -f $(xgetres big.font)
+
 super + o
-    open "$(xsel -b)"
+    open "$(xclip -out -selection clipboard)"
 
 super + p
     for i in 1 2 ; do pactl list sinks short ; done | \

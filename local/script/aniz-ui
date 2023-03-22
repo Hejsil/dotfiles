@@ -21,7 +21,7 @@ while true; do
         database) aniz database | rg "$search" | fzf2 | cut -f5,6 >"$picks" ;;
         list) aniz list | rg "$search" | fzf2 --tabstop 4 | cut -f5,6 >"$picks" ;;
         copy)
-            aniz database | rg "$search" | fzf2 | xsel -b
+            aniz database | rg "$search" | fzf2 | xclip -in -selection clipboard
             exit 0
             ;;
         update)
