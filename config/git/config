@@ -6,7 +6,7 @@
 [credential]
     helper = store
 [user]
-    email = jhc@dismail.de
+    email = git@hejsil.anonaddy.me
     name = Jimmi Holst Christensen
 [diff]
     tool = difftastic
