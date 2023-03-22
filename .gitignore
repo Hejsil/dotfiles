@@ -25,6 +25,7 @@ config/filezilla/
 config/gh/
 config/GIMP
 config/git/credentials
+config/glab-cli/
 config/glava/
 config/gnupg
 config/google-calendar-dark-nativefier-e22938/
@@ -51,6 +52,7 @@ config/libfm/
 config/libreoffice/
 config/lutris
 config/lxc
+config/maltejur/
 config/massif-visualizerrc
 config/melonDS/
 config/menus/
@@ -102,6 +104,7 @@ config/user-dirs.locale
 config/VirtualBox
 config/vlc/
 config/WebCord/
+config/wireplumber/
 config/wireshark/
 config/xfce4/
 config/xmcl/
@@ -115,6 +118,7 @@ local/share/10tons/
 local/share/aerc/
 local/share/Anki2/
 local/share/applications/
+local/share/atlauncher/
 local/share/Baba_Is_You/
 local/share/bash_history
 local/share/calc_history
