@@ -66,12 +66,12 @@ torrent
 view
 ' | sed '/^$/d' | fzf | cut -f1)
         case $choice in
-            view) cut -f2 "$picks" | xargs -d '\n' tsp "$BROWSER" ;;
+            view) cut -f2 "$picks" | xargs -d '\n' systemd-run --user "$BROWSER" ;;
 
             torrent)
                 cut -f1 "$picks" |
                     sed -e 's/ /+/g' -e 's#^#https://nyaa.si/?q=#' |
-                    xargs -d '\n' tsp "$BROWSER"
+                    xargs -d '\n' systemd-run --user "$BROWSER"
                 ;;
             complete | drop | plan-to-watch | put-on-hold | start-watching | update | remove | watch-episode)
                 cut -f2 "$picks" | xargs -d'\n' aniz "$choice" 2>/tmp/dump

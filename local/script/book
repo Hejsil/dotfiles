@@ -5,4 +5,4 @@ cd .config
 pipeline { cat bookmarks }
 pipeline { fzf -m -d "\t" --tabstop 12 }
 pipeline { hck -f 2 }
-xargs -d "\n" tsp open
+xargs -d "\n" systemd-run --user open

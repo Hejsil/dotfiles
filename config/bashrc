@@ -19,6 +19,10 @@ __ccd_alias() {
 __paru_alias() {
     paru "$@" || return 1
     paru -Qqe >"$XDG_CONFIG_HOME/installed-programs"
+    rg -xF -f \
+        "$XDG_CONFIG_HOME/essential-programs" \
+        "$XDG_CONFIG_HOME/installed-programs" |
+        sponge "$XDG_CONFIG_HOME/essential-programs"
     rg -vxF -f \
         "$XDG_CONFIG_HOME/essential-programs" \
         "$XDG_CONFIG_HOME/installed-programs" |
