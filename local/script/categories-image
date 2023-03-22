@@ -17,3 +17,8 @@ while [ -f "$file" ]; do
 done
 
 mv -i "$image" "$file"
+
+case $ext in
+    png) oxipng -o max --strip safe "$file" ;;
+    *) ;;
+esac
