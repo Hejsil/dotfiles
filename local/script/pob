@@ -1,7 +1,7 @@
 #!/bin/sh
 
 repo='PathOfBuildingCommunity/PathOfBuilding'
-pob_dir="$XDG_CACHE_HOME/pob"
+pob_dir="$HOME/Sync/pob"
 
 if ! [ -f "$pob_dir/Path of Building.exe" ]; then
     mkdir -p "$pob_dir"
