@@ -152,6 +152,7 @@ wget
 which
 wine
 winetricks
+xcp
 xdelta3
 xdg-desktop-portal
 xdg-desktop-portal-gtk

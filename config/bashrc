@@ -67,7 +67,7 @@ alias df='duf'
 alias ll='exa -al'
 alias ls='exa -a'
 
-alias cp='rsync -ah --progress'
+alias cp='xcp'
 alias man='fzf-man'
 alias mv='mv -i'
 alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
