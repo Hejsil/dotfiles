@@ -42,6 +42,7 @@ export PASSWORD_STORE_DIR="$XDG_DATA_HOME/pass"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export TERMINFO="$XDG_DATA_HOME/terminfo"
 export VSCODE_PORTABLE="$XDG_DATA_HOME/vscode"
+export W3M_DIR="$XDG_DATA_HOME"/w3m
 export WINEPREFIX="$XDG_DATA_HOME/wine"
 export _ZL_DATA="$XDG_DATA_HOME/zlua"
 
