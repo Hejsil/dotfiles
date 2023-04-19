@@ -51,6 +51,7 @@ hastebin
 htmlhint
 inotify-tools
 isync
+itch-setup-bin
 jdk-openjdk
 jq
 jre11-openjdk
@@ -67,8 +68,10 @@ lld
 llvm
 lua-language-server
 lutris
+mangohud
 mediainfo
 melonds-git
+meson
 mgba-qt
 mimalloc
 minecraft-launcher
@@ -95,6 +98,7 @@ python-babel
 python-bcrypt
 python-black
 python-gobject
+python-graphql-core
 python-mutagen
 python-numpy
 python-pip
@@ -125,6 +129,7 @@ ripgrep
 rust-analyzer
 sdl2_image
 sdl2_ttf
+selene
 sfeed
 shellcheck
 shfmt
@@ -139,6 +144,7 @@ syncplay
 texinfo
 texlive-core
 tidy
+time
 transmission-cli
 typescript-language-server
 udisks2
@@ -158,12 +164,14 @@ xdg-desktop-portal
 xdg-desktop-portal-gtk
 xdg-ninja-git
 xob
+xone-dkms
 xone-dongle-firmware
-xow-git
 xterm
 xwallpaper
+yarn
 youtube-dl
 yt-dlp
+yuzu
 zathura
 zathura-pdf-mupdf
 zip
