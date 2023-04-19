@@ -75,10 +75,6 @@ alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
 alias map='xargs -d"\n"'
 alias o='open'
 
-alias ab='autobuild'
-alias cb='cargo build'
-alias zb='zig build'
-
 alias drag='dragon-drag-and-drop'
 alias gdb='gdb -nh -x "$XDG_CONFIG_HOME/gdb/init"'
 alias rg='rg --no-heading'
