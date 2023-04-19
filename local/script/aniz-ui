@@ -18,10 +18,16 @@ search=$2
 while true; do
     picks=$(mktemp)
     case $command in
-        database) aniz database | rg "$search" | fzf2 | cut -f5,6 >"$picks" ;;
-        list) aniz list | rg "$search" | fzf2 --tabstop 4 | cut -f5,6 >"$picks" ;;
+        database) aniz database | rg "$search" |
+            fzf2 --disabled --bind 'change:reload:aniz database --search {q}' |
+            cut -f5,6 >"$picks" ;;
+        list) aniz list | rg "$search" |
+            fzf2 --tabstop 4 --disabled --bind 'change:reload:aniz list --search {q}' |
+            cut -f5,6 >"$picks" ;;
         copy)
-            aniz database | rg "$search" | fzf2 | xclip -in -selection clipboard
+            aniz database | rg "$search" |
+                fzf2 --disabled --bind 'change:reload:aniz database --search {q}' |
+                xclip -in -selection clipboard
             exit 0
             ;;
         update)
