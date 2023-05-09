@@ -73,7 +73,6 @@ alias mv='mv -i'
 alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
 
 alias map='xargs -d"\n"'
-alias o='open'
 
 alias drag='dragon-drag-and-drop'
 alias gdb='gdb -nh -x "$XDG_CONFIG_HOME/gdb/init"'
