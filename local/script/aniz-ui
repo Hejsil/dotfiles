@@ -35,7 +35,7 @@ while true; do
             exit 0
             ;;
         get-image)
-            output="$images_dir/$(echo "$search" | b3sum | cut -d' ' -f1)"
+            output="$images_dir/$(echo "$2" | xxhsum | cut -d' ' -f1)"
             cache -o "$output" -- aniz-ui download-image "$search" "$output"
             echo "$output"
             exit 0
@@ -75,12 +75,12 @@ view
             view) cut -f2 "$picks" | xargs -d '\n' systemd-run --user "$BROWSER" ;;
 
             torrent)
-                cut -f1 "$picks" |
-                    sed -e 's/ /+/g' -e 's#^#https://nyaa.si/?q=#' |
+                cut -f1 "$picks" | jq -sRr @uri |
+                    sed -e 's#^#https://nyaa.si/?q=#' |
                     xargs -d '\n' systemd-run --user "$BROWSER"
                 ;;
             complete | drop | plan-to-watch | put-on-hold | start-watching | update | remove | watch-episode)
-                cut -f2 "$picks" | xargs -d'\n' aniz "$choice" 2>/tmp/dump
+                cut -f2 "$picks" | xargs -d'\n' aniz "$choice"
                 ;;
             *) break ;;
         esac
