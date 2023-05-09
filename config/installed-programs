@@ -1,5 +1,6 @@
 aerc
 aspell
+ast-grep
 astyle
 autoconf
 automake
@@ -27,7 +28,6 @@ duf
 dunst
 dust
 entr
-execline-man-pages-git
 exfat-utils
 flex
 gallery-dl
@@ -49,6 +49,7 @@ gst-plugins-good
 gyro-bin
 hastebin
 htmlhint
+hyperfine
 inotify-tools
 isync
 itch-setup-bin
@@ -76,7 +77,7 @@ mgba-qt
 mimalloc
 minecraft-launcher
 mkcert
-mpv-full-git
+mpv-git
 mpv-sponsorblock-minimal-git
 msmtp
 nsxiv
@@ -92,6 +93,7 @@ perl-libwww
 perl-locale-gettext
 pkgconf
 proton-ge-custom-bin
+protontricks-git
 pulsemixer
 pyside2
 python-babel
@@ -148,7 +150,7 @@ time
 transmission-cli
 typescript-language-server
 udisks2
-ueberzug
+ueberzugpp
 uni
 unrar
 w3m
@@ -164,8 +166,9 @@ xdg-desktop-portal
 xdg-desktop-portal-gtk
 xdg-ninja-git
 xob
-xone-dkms
+xone-dkms-git
 xone-dongle-firmware
+xow-git
 xterm
 xwallpaper
 yarn
@@ -175,4 +178,3 @@ yuzu
 zathura
 zathura-pdf-mupdf
 zip
-zls-git
