@@ -1,0 +1,2 @@
+#!/bin/execlineb -s0
+xclip -out -selection clipboard $@

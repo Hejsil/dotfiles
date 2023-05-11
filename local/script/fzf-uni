@@ -3,4 +3,4 @@ pipeline { uni -q p all }
 pipeline { fzf -m +x }
 pipeline { cut -d "'" -f2 }
 pipeline { tr -d "\n" }
-redirfd -w 1 /dev/null nohup xclip -in -selection clipboard
+clipcopy

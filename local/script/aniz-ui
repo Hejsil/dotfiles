@@ -27,7 +27,7 @@ while true; do
         copy)
             aniz database | rg "$search" |
                 fzf2 --disabled --bind 'change:reload:aniz database --search {q}' |
-                xclip -in -selection clipboard
+                clipcopy
             exit 0
             ;;
         update)
