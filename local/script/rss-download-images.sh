@@ -17,5 +17,6 @@ fi
 
 echo "$image_rss_entries" | cut "-d$tab" -f2 | xargs -d'\n' gallery-dl \
     --filter 'vars().get("width", vars().get("image_width", 2560)) >= 2560 and \
-    vars().get("height", vars().get("image_height", 1440)) >= 1440' || exit 1
-echo "$image_rss_entries" | cut "-d$tab" -f1 | xargs -d'\n' -I% mv % "$HOME/.local/share/rss/read/"
+    vars().get("height", vars().get("image_height", 1440)) >= 1440' &
+echo "$image_rss_entries" | cut "-d$tab" -f1 | xargs -d'\n' -I% mv % "$HOME/.local/share/rss/read/" &
+wait
