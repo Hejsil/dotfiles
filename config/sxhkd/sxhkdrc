@@ -22,6 +22,9 @@ super + k
 super + s
     $WINDOW -e shutdown
 
+super + c
+    $WINDOW -e icalc
+
 super + {_,shift +,alt +,ctrl +} a
     $WINDOW -e aniz-ui {list '^[^\t]*\tc',list '^[^\t]*\t(p|w)',list '',database}
 
