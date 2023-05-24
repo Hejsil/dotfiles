@@ -7,20 +7,22 @@ function draw_preview {
         read -r _ TERMINAL_COLUMNS
         X=$((TERMINAL_COLUMNS - COLUMNS - 2))
         Y=1
-        ueberzug cmd -s "/tmp/ueberzugpp-$ub_pid.socket" \
+        ueberzug cmd -s "$socket" \
             -a add -i "${PREVIEW_ID}" \
             -x "$X" -y "$Y" \
             --max-width "${COLUMNS}" --max-height "${LINES}" \
-            -f "${@}"
+            -f "${@}" >/dev/null
     }
 }
 
-ueberzug layer -o x11 --no-stdin --silent --use-escape-codes &
-ub_pid=$!
-trap "kill $ub_pid" EXIT
+ub_pid_file=$(mktemp)
+ueberzug layer -o x11 --no-stdin --pid-file "$ub_pid_file" --silent --use-escape-codes >/dev/null
+ub_pid=$(cat "$ub_pid_file")
 
 export -f draw_preview
-export ub_pid
+export socket="/tmp/ueberzugpp-$ub_pid.socket"
 SHELL="${BASH_BINARY}" \
     fzf --preview "draw_preview {}" \
     "${@}"
+
+ueberzug cmd -s "$socket" -a exit >/dev/null

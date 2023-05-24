@@ -55,7 +55,7 @@ while true; do
     [ -s "$picks" ] || {
         rm "$picks"
         rm -r "$images_dir"
-        break
+        exit 0
     }
 
     while true; do
@@ -87,5 +87,4 @@ view
     done
 
     rm "$picks"
-    rm -r "$images_dir"
 done
