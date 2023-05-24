@@ -34,6 +34,7 @@ config/gops/
 config/gtk-2.0
 config/gtk-3.0/
 config/heaptrack_gui
+config/helix/
 config/heroic/
 config/hotspotrc
 config/htop
@@ -110,6 +111,7 @@ config/xfce4/
 config/xmcl/
 config/xorg/resources
 config/yarn/
+config/yuzu/
 config/zathura
 local/bin/
 local/lib/
@@ -199,6 +201,7 @@ local/share/webkitgtk/
 local/share/webkitgtk-4.0/
 local/share/wine/
 local/share/xorg/
+local/share/yuzu/
 local/share/zathura/
 local/share/zig/
 local/share/zoxide/
