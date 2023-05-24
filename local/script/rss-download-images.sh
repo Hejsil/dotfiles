@@ -7,6 +7,11 @@ mkdir -p "$download_dir"
 cd "$download_dir"
 tab=$(printf '\t')
 
+rss-list unread | cut "-d$tab" -f1,3,8 |
+    rg '^[^\t]*\t.*https://api.dr.dk/podcasts' |
+    rg -v '^[^\t]*\t\d+\. \w{3} \d{4} kl\. 12:00' |
+    cut "-d$tab" -f1 | xargs -d'\n' -I% mv % "$HOME/.local/share/rss/read/"
+
 names='konachan|pixiv|artstation|danbooru\.donmai|yande'
 top_levels='com|net|us|re'
 filter="(https?://)(www\.)?($names)\.($top_levels)/(artwork|post)"
