@@ -1,5 +1,5 @@
 [Service]
-ExecStart=/usr/bin/xbanish
+ExecStart=/usr/bin/unclutter --timeout 2
 [Install]
 WantedBy=user-graphical-login.target
 
