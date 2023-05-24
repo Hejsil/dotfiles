@@ -117,8 +117,6 @@ hook global WinSetOption filetype=html %{ set-option window autocompletecmd 'htm
 hook global WinSetOption filetype=rust %{ set-option window autocompletecmd 'rust-autocomplete' }
 hook global WinSetOption filetype=zig  %{ set-option window autocompletecmd 'zig-autocomplete' }
 
-set-option global autocompletecmd2 'generic-autocomplete'
-
 # Colors
 
 # For Code
