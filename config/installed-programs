@@ -29,6 +29,7 @@ dunst
 dust
 entr
 exfat-utils
+ffmpeg
 flex
 gallery-dl
 gamemode
@@ -77,7 +78,7 @@ mgba-qt
 mimalloc
 minecraft-launcher
 mkcert
-mpv-git
+mpv
 mpv-sponsorblock-minimal-git
 msmtp
 nsxiv
@@ -168,7 +169,6 @@ xdg-ninja-git
 xob
 xone-dkms-git
 xone-dongle-firmware
-xow-git
 xterm
 xwallpaper
 yarn
