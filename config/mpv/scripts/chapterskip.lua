@@ -5,10 +5,10 @@
 -- This script skips chapters based on their title.
 
 local categories = {
-    prologue = "^Prologue/^Intro/Intro$",
-    opening = "^OP/ OP$/^Opening",
-    ending = "^ED/ ED$/^Ending/^Credits",
-    preview = "Preview$/^Next/^Extra/^PV/^Hunterpedia/^Greed Island Tutorial"
+    prologue = "^Prologue/Prologue$/^Intro/Intro$",
+    opening = "^OP/ OP$/^Opening/Opening$",
+    ending = "^ED/ ED$/^Ending/^Credits/^Endcard",
+    preview = "Preview$/^Next/^Extra/^PV/^Hunterpedia/^Greed Island Tutorial/^Outro/^SP/^Promo/^Additional T[iI]me/^Additonal Time"
 }
 
 local options = {
