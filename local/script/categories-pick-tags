@@ -1,18 +1,19 @@
 #!/bin/sh
 
-out=$1
-picker=${2:-fzf}
-preview=$3
+picker=${1:-fzf}
+preview=$2
 
 pick() {
-    "$picker" --preview-window="right:50%,border-none" --preview "$preview" "$@"
+    "$picker" --preview-window="right:70%,border-none" --preview "$preview" "$@"
 }
 
 done_it="<done>"
 new_tag="<new tag>"
 exit_it="<exit>"
-tags=$(fd . "$out" --type f | sed 's|.*/||' | cut -d, -f3- | tr ',' '\n' |
-    sed '/^[0-9]*\.[a-z]*/d' | sort -u)
+
+tags_file="$XDG_CONFIG_HOME/categories"
+mkdir -p "$(dirname "$tags_file")"
+tags=$(cat "$tags_file")
 
 picked_tags=$(mktemp)
 while true; do
@@ -31,6 +32,10 @@ while true; do
     fi
     if [ "$tag" = "$new_tag" ]; then
         tag=$(printf "" | pick --print-query)
+        {
+            echo "$tag"
+            cat "$tags_file"
+        } | sort -u | sponge "$tags_file"
     fi
     if [ -z "$tag" ]; then
         continue

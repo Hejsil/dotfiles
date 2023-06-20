@@ -4,7 +4,7 @@ image=$1
 out=$2
 
 ext=$(file "$image" --extension | rg -o '.*: (\w+)*' -r '$1')
-name=$(categories-namer "$out" "fzfimg.sh" "draw_preview '$image'")
+name=$(categories-namer "fzfimg.sh" "draw_preview '$image'")
 if [ -z "$name" ]; then
     exit 1
 fi
@@ -20,5 +20,6 @@ mv -i "$image" "$file"
 
 case $ext in
     png) oxipng -o max --strip safe "$file" ;;
+    gif) gifsicle -i "$file" --optimize=3 -o "$file" ;;
     *) ;;
 esac
