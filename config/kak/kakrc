@@ -22,9 +22,15 @@ map global user l ':enter-user-mode lsp<ret>' -docstring "LSP mode"
 map global insert <pageup>   '<a-;><c-b>'
 map global insert <pagedown> '<a-;><c-f>'
 
-map global normal "'"     '<a-i>w*/<ret>'
-map global normal 'z'     ':w<ret>'
-map global normal '<ret>' 'i'
+map global normal "'"           '<a-i>w*/<ret>'
+map global normal 'z'           ':w<ret>'
+
+# I fumble to much and hit `u` when I want to press `i`. Rebind so that
+# <ret> goes to insert mode and <backspace> undoes
+map global normal '<ret>'       'i'
+map global normal '<backspace>' 'u'
+map global normal 'u'           '<ret>'
+map global normal 'i'           '<ret>'
 
 map global normal '<a-down>' ':move-lines-down<ret>'
 map global normal '<a-up>'   ':move-lines-up<ret>'
