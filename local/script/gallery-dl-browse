@@ -1,0 +1,10 @@
+#!/bin/execlineb -S1
+importas cache XDG_CACHE_HOME
+backtick -E folder {
+    pipeline { echo "$1" }
+    jq -sRr @uri
+}
+
+pipeline { gallery-dl "$1" -D "${cache}/${folder}" }
+pipeline { sed "s/^# //" }
+xargs -n12 "-d\n" nsxiv -a -f -o -p
