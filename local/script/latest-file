@@ -1,0 +1,5 @@
+#!/bin/execlineb -S1
+pipeline { fd . $1 --exec stat --printf="%Y\t%n\n" }
+pipeline { sort -nr }
+pipeline { cut -f2 }
+head -1
