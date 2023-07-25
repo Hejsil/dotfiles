@@ -8,6 +8,7 @@ foreground { xset s off }
 foreground { xset s off -dpms }
 foreground { setxkbmap -layout dk }
 foreground { xmodmap -e "keycode 135 = Super_L" }
+foreground { xmodmap -e "keycode 66 = NoSymbol" }
 foreground { xrdb -merge xorg/resources }
 
 bspwm
