@@ -32,7 +32,7 @@ install_zig() {
     fi
 
     repo="$1"
-    folder="$HOME/repo/own/st-flexipatch"
+    folder="$HOME/repo/own/$repo"
 
     rm -rf "$folder"
     mkdir -p "$folder"
