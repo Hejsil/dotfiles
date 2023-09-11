@@ -15,7 +15,7 @@ export PROMPT_COMMAND='history -a; history -c; history -r; history -n'
 # Programs
 export BROWSER='firefox'
 export EDITOR='kak'
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export MANPAGER="bat -l man -p"
 export PAGER='less'
 export READER='zathura'
 export TERMINAL='st'
