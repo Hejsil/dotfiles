@@ -22,7 +22,7 @@ foreground {
 foreground {
     pipeline { paste $screens $images }
     pipeline { nawk "{printf \"--output\\n%s\\n--zoom\\n%s\\n\", \$1, \$2 }" }
-    xargs -d "\n"  xwallpaper
+    xargs -d "\n" xwallpaper
 }
 
 rm $screens
