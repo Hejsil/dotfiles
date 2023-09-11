@@ -8,7 +8,7 @@ eval "$(zoxide init bash)"
 
 __cd_alias() {
     z "$@" || return
-    timeout -k 0 0.1s exa
+    timeout -k 0 0.1s eza
 }
 
 __ccd_alias() {
@@ -64,8 +64,8 @@ alias kak='__kak_alias'
 alias paru='__paru_alias'
 
 alias df='duf'
-alias ll='exa -al'
-alias ls='exa -a'
+alias ll='eza -al'
+alias ls='eza -a'
 
 alias cp='xcp'
 alias man='fzf-man'
