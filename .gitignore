@@ -133,6 +133,7 @@ local/share/direnv/
 local/share/discord-screenaudio/
 local/share/espanso/
 local/share/firenvim/
+local/share/flatpak/
 local/share/fonts/
 local/share/GameAnalytics/
 local/share/gdb/
@@ -179,6 +180,7 @@ local/share/rr/
 local/share/rss/
 local/share/rustup/
 local/share/sfeed/
+local/share/SkullsOfTheShogun/
 local/share/Steam/
 local/share/syncthing/
 local/share/synthriderz/
@@ -201,6 +203,7 @@ local/share/webkitgtk/
 local/share/webkitgtk-4.0/
 local/share/wine/
 local/share/xorg/
+local/share/Yacht Club Games/
 local/share/yuzu/
 local/share/zathura/
 local/share/zig/
