@@ -3,6 +3,6 @@ importas path PATH
 pipeline { echo "$path" }
 pipeline { tr ":" "\n" }
 pipeline { sort -u }
-pipeline { xargs fd . -L --type f }
+pipeline { redirfd -w 2 /dev/null xargs fd . -L --type f }
 pipeline { xargs basename -a }
 sort -u
