@@ -2,6 +2,7 @@
 cd $1
 backtick -E file { date "+%y-%m-%dT%H-%M-%S-%N.png" }
 foreground { import -window root $file }
-foreground { oxipng -o max --strip safe $file }
+foreground { clipcopy -t image/png -i $file }
 foreground { notify-send Screenshot $file }
+foreground { oxipng -o max --strip safe $file }
 clipcopy -t image/png -i $file
