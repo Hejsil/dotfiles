@@ -1,3 +1,3 @@
 #!/bin/execlineb -P
 pipeline { echo }
-fzf --disabled "--preview=calc {q}" --preview-window=down:99%
+fzf --disabled "--preview=calc -- {q}" --preview-window=down:99%
