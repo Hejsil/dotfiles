@@ -1,0 +1,5 @@
+{
+    "zig_exe_path": "/usr/bin/zig",
+    "build_runner_path": "/home/hejsil/repo/forks/zls/src/special/build_runner.zig",
+    "enable_autofix": false
+}
