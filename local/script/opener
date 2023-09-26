@@ -3,6 +3,8 @@
 # $1 is the input we are trying to open
 # $2 is the mime if the input
 
+$1 ~ ".*\.dot"                   { print "open-dot"         ; next }
+
 $2 == "application/pdf"          { print ENVIRON["READER"]  ; next }
 $2 == "inode/x-empty"            { print ENVIRON["EDITOR"]  ; next }
 $2 == "application/json"         { print ENVIRON["EDITOR"]  ; next }
@@ -11,6 +13,7 @@ $2 == "application/x-bittorrent" { print "tm-add"           ; next }
 $2 ~ "^image/"                   { print "nsxiv -a"         ; next }
 $2 ~ "^video/"                   { print "mpv"              ; next }
 $2 ~ "^audio/"                   { print "mpv --vid=no"     ; next }
+
 $1 ~ "youtube.*watch"            { print "mpv"              ; next }
 $1 ~ "youtube.*playlist"         { print "mpv"              ; next }
 $1 ~ "youtu\.be"                 { print "mpv"              ; next }
