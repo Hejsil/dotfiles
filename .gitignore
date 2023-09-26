@@ -15,9 +15,12 @@ config/crewlink/
 config/CrossCode/
 config/czkawka/
 config/dconf
+config/deepcore-daemon/
+config/deep-server/
 config/desmume/
 config/discord
 config/discordcanary/
+config/discord-screenaudio/
 config/docker/
 config/dunst
 config/Electron/
@@ -68,6 +71,7 @@ config/notmuch
 config/NuGet/
 config/nvim/.netrwhist
 config/nvim/spell
+config/obsidian/
 config/obs-studio
 config/oomox
 config/openra/
@@ -80,6 +84,7 @@ config/pulse
 config/qt5ct
 config/QtProject.conf
 config/retroarch/
+config/rncbc.org/
 config/SideQuest/
 config/Slack/
 config/Soundux/
@@ -124,6 +129,7 @@ local/share/atlauncher/
 local/share/Baba_Is_You/
 local/share/bash_history
 local/share/calc_history
+local/share/Celeste/
 local/share/cod/
 local/share/Daedalic Entertainment GmbH/
 local/share/data/
@@ -192,6 +198,7 @@ local/share/template/
 local/share/terminfo/
 local/share/Terraria/
 local/share/themes/
+local/share/tm35-randomizer/
 local/share/TowerFall/
 local/share/Trash
 local/share/Valve Corporation/
