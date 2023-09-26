@@ -2,7 +2,6 @@ adobe-source-sans-fonts
 alsa-firmware
 alsa-utils
 amd-ucode
-ananicy-cpp
 archlinux-keyring
 base
 binutils
@@ -14,8 +13,8 @@ dbus-broker
 dhcpcd
 ed
 efibootmgr
-exa
 execline
+eza
 fakeroot
 fd
 file
@@ -45,7 +44,6 @@ m4
 make
 man-db
 man-pages
-minq-ananicy-git
 moreutils
 nawk
 networkmanager
@@ -81,7 +79,6 @@ vi
 vim
 vkd3d
 vulkan-radeon
-vulkan-swrast
 wireplumber
 xclip
 xdo
