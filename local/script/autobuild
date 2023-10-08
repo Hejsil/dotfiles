@@ -4,29 +4,6 @@ cmd=$*
 [ -z "$cmd" ] && [ -f 'Cargo.toml' ] &&
     cmd='cargo clippy && cargo build'
 [ -z "$cmd" ] && [ -f 'build.zig' ] &&
-    cmd='zig build test install --summary all'
+    cmd='fd . zig-cache --change-older-than 7days -x rm && zig build test install --summary all'
 
-fd \
-    -e c \
-    -e cc \
-    -e cfg \
-    -e cpp \
-    -e cs \
-    -e css \
-    -e graphql \
-    -e h \
-    -e hh \
-    -e hpp \
-    -e html \
-    -e java \
-    -e js \
-    -e kt \
-    -e lua \
-    -e py \
-    -e rs \
-    -e toml \
-    -e ts \
-    -e tsx \
-    -e yml \
-    -e zig \
-    --exclude 'zig-cache' | exec entr -crs "$cmd"
+fd | exec entr -crs "$cmd"
