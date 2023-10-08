@@ -14,7 +14,7 @@ dante
 deno
 difftastic
 direnv
-discord-screenaudio
+discord
 docker
 docker-compose
 downgrade
@@ -138,6 +138,7 @@ s3fs-fuse
 sfeed
 shellcheck
 shfmt
+sidequest-bin
 slop
 socat
 sshfs
@@ -278,7 +279,9 @@ typescript-language-server
 ueberzugpp
 uni
 unrar
+vscodium
 w3m
+webkit2gtk
 websocat
 wget
 which
