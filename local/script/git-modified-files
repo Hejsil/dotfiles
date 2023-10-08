@@ -1,0 +1,3 @@
+#!/bin/execlineb -P
+pipeline { git status --short }
+sed -e "/^ *[^M ] */d" -e "s/^ *M *//"
