@@ -1,6 +1,8 @@
 #!/bin/sh
 
-channel_id=$1
-channel_name=$2
+channel_link=$1
+channel_details=$(yt-dlp -j "$channel_link" -I 1:1)
+channel_id=$(echo "$channel_details" | jq .channel_id -r)
+channel_name=$(echo "$channel_details" | jq .channel -r)
 template='https://www.youtube.com/feeds/videos.xml?channel_id=%s\t%s'
 rss-add "$(printf "$template" "$channel_id" "$channel_name")"
