@@ -109,6 +109,7 @@ config/user-dirs.dirs
 config/user-dirs.locale
 config/VirtualBox
 config/vlc/
+config/VSCodium/
 config/WebCord/
 config/wireplumber/
 config/wireshark/
