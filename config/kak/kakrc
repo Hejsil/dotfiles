@@ -142,9 +142,9 @@ hook global -group autocomplete InsertChar '[^\w\n.]' %{
 }
 
 hook global BufWritePre .* %{
+    try autoalign catch %{}
     try format catch %{}
     try lint catch %{}
-    try autoalign catch %{}
 }
 
 hook global WinSetOption filetype=html %{ set-option window lintcmd 'htmlhint -f unix' }
