@@ -14,7 +14,7 @@ export HISTCONTROL='ignorespace:ignoredups:erasedups'
 export PROMPT_COMMAND='history -a; history -c; history -r; history -n'
 
 # Programs
-export BROWSER='firefox'
+export BROWSER='thorium-browser'
 export EDITOR='kak'
 export MANPAGER="bat -l man -p"
 export PAGER='less'
