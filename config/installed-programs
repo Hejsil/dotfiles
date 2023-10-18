@@ -1,5 +1,6 @@
 aerc-git
 aspell
+astyle
 b3sum
 bat
 bison
@@ -14,7 +15,7 @@ dante
 deno
 difftastic
 direnv
-discord
+discord_arch_electron
 docker
 docker-compose
 downgrade
@@ -41,6 +42,7 @@ gpu-screen-recorder-git
 graphviz
 groff
 gromit-mpx
+gst-editing-services
 gst-libav
 gst-plugin-libcamera
 gst-plugin-pipewire
@@ -86,6 +88,7 @@ mpv-sponsorblock-minimal-git
 msmtp
 multimc5
 net-tools
+nix
 nsxiv
 ntfs-3g
 obsidian
@@ -95,6 +98,7 @@ openvpn
 oxipng
 pandoc-cli
 pass
+patchelf
 pavucontrol
 perf
 perl-libwww
@@ -105,6 +109,7 @@ pulsemixer
 pyside2
 python-babel
 python-bcrypt
+python-black
 python-gobject
 python-mutagen
 python-numpy
@@ -133,6 +138,7 @@ qt5-webengine
 qt5-websockets
 qt5-x11extras
 ripgrep
+rust
 rust-analyzer
 s3fs-fuse
 sfeed
@@ -143,6 +149,7 @@ slop
 socat
 sshfs
 steam
+stylua
 subversion
 syncplay
 tesseract-data-afr
@@ -274,6 +281,8 @@ tesseract-data-vie
 tesseract-data-yid
 tesseract-data-yor
 texlive-basic
+thorium-browser-bin
+tidy
 transmission-cli
 typescript-language-server
 ueberzugpp
@@ -290,6 +299,7 @@ winetricks
 xcp
 xdg-desktop-portal
 xdg-desktop-portal-gtk
+xdg-ninja-git
 xob
 xone-dkms-git
 xone-dongle-firmware
