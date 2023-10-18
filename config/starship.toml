@@ -37,7 +37,6 @@ lua.disabled = true
 memory_usage.disabled = true
 meson.disabled = true
 nim.disabled = true
-nix_shell.disabled = true
 nodejs.disabled = true
 ocaml.disabled = true
 opa.disabled = true
