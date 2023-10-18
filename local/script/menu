@@ -54,7 +54,7 @@ music() {
     cd "$music_folder"
     yt-dlp --extract-audio --audio-format mp3 -f bestaudio/best --embed-metadata \
         -o '%(title)s.%(ext)s' --restrict-filename --download-archive archive.txt "$playlist"
-    mpv --loop-playlist --quiet --force-window=no --shuffle --volume=50 .
+    mpv --loop-playlist --quiet --force-window=no --shuffle --volume=30 .
 }
 
 case $1 in
