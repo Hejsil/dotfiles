@@ -10,6 +10,6 @@ slop -f '%x %y %w %h' | {
 }
 
 output_gif=$(echo "$output" | sed 's/\.[^.]*$/.gif/')
-gifgen -o "$output_gif" "$output"
+gifski -o "$output_gif" "$output"
 echo "$output"
 echo "$output_gif"
