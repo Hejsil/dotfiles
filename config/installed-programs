@@ -25,6 +25,7 @@ dunst
 dust
 entr
 exfat-utils
+factorio
 ffmpeg
 flex
 gallery-dl
@@ -33,6 +34,7 @@ gcc
 gdb
 gifgen
 gifsicle
+gifski
 gimp
 git-delta
 git-lfs
@@ -89,6 +91,7 @@ msmtp
 multimc5
 net-tools
 nix
+npm
 nsxiv
 ntfs-3g
 obsidian
@@ -147,8 +150,10 @@ shfmt
 sidequest-bin
 slop
 socat
+speedtest-cli
 sshfs
 steam
+strace
 stylua
 subversion
 syncplay
@@ -296,6 +301,7 @@ wget
 which
 wine
 winetricks
+wireshark-qt
 xcp
 xdg-desktop-portal
 xdg-desktop-portal-gtk

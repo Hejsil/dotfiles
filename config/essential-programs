@@ -19,7 +19,6 @@ fakeroot
 fd
 file
 findutils
-firefox
 fzf
 gawk
 gcr
@@ -69,6 +68,7 @@ starship
 sudo
 sxhkd
 syncthing
+thorium-browser
 tmux
 ttf-jetbrains-mono
 ttf-sarasa-gothic
