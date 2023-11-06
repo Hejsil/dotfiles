@@ -28,8 +28,11 @@ super + c
 super + {_,shift +,alt +,ctrl +} a
     $WINDOW -e aniz-ui {list '^[^\t]*\tc',list '^[^\t]*\t(p|w)',list '',database}
 
-super + b
+super + B
     $WINDOW -e book
+
+super + b
+    browser
 
 super + shift + r
     rss-open-all-in-browser.sh
