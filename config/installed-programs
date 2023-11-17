@@ -7,6 +7,7 @@ bison
 breeze-gtk
 btop
 calc
+carapace-bin
 chromium
 clang
 cmake
@@ -59,7 +60,6 @@ htop
 iftop
 inotify-tools
 isync
-jdk-openjdk
 jq
 jre11-openjdk
 jre8-openjdk
@@ -88,7 +88,6 @@ mkcert
 mpv
 mpv-sponsorblock-minimal-git
 msmtp
-multimc5
 net-tools
 nix
 npm
@@ -144,6 +143,7 @@ ripgrep
 rust
 rust-analyzer
 s3fs-fuse
+selene
 sfeed
 shellcheck
 shfmt
@@ -286,7 +286,6 @@ tesseract-data-vie
 tesseract-data-yid
 tesseract-data-yor
 texlive-basic
-thorium-browser-bin
 tidy
 transmission-cli
 typescript-language-server
