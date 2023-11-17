@@ -5,12 +5,14 @@ config/BasemarkGPU/
 config/bottom/
 config/btop/
 config/Caprine
+config/carapace
 config/cava/
 config/cef_user_data/
 config/chromium
 config/coc
 config/.conan/
 config/configstore/
+config/content_shell
 config/crewlink/
 config/CrossCode/
 config/czkawka/
@@ -54,6 +56,7 @@ config/kritadisplayrc
 config/kritarc
 config/libfm/
 config/libreoffice/
+config/Logseq
 config/lutris
 config/lxc
 config/maltejur/
@@ -96,6 +99,7 @@ config/syncplay.ini
 config/syncthing/
 config/task/
 config/teamviewer/
+config/thorium
 config/tm35-randomizer
 config/tracy/
 config/transmission
@@ -124,6 +128,7 @@ local/lib/
 local/opt/
 local/share/10tons/
 local/share/aerc/
+local/share/aivero-sample
 local/share/Anki2/
 local/share/applications/
 local/share/atlauncher/
@@ -167,16 +172,19 @@ local/share/mc/
 local/share/mcfly/
 local/share/meld/
 local/share/mime/
+local/share/mimeapps.list
 local/share/mkcert/
 local/share/multimc/
 local/share/nautilus/
 local/share/NecroDancer/
 local/share/Nextcloud/
+local/share/nix
 local/share/npm/
 local/share/NuGet/
 local/share/nvim/
 local/share/pass/
 local/share/pki/
+local/share/pnpm
 local/share/pobfrontend/
 local/share/Pocketwatch Games/
 local/share/PolyMC/
@@ -212,8 +220,10 @@ local/share/webkitgtk-4.0/
 local/share/wine/
 local/share/xorg/
 local/share/Yacht Club Games/
+local/share/yarn
 local/share/yuzu/
 local/share/zathura/
 local/share/zig/
 local/share/zoxide/
 local/state/
+local/Uber Entertainment
