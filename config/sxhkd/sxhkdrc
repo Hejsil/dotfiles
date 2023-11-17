@@ -7,9 +7,6 @@
 super + @space
     $WINDOW -e launch-program
 
-super + g
-    $WINDOW -e launch-steam-game.sh
-
 super + r
     $WINDOW -e rss-read.sh
 
@@ -40,6 +37,9 @@ super + shift + r
 super + m
     $TERMINAL -e aerc
 
+super + n
+    obsidian
+
 super + Return
     $TERMINAL
 
@@ -48,11 +48,6 @@ super + shift + Return
 
 super + o
     open "$(clippaste)"
-
-super + p
-    for i in 1 2 ; do pactl list sinks short ; done | \
-        rg -F "$(pactl get-default-sink)" -A 1 --max-count 1 | tail -n1 | \
-        cut -f2 | xargs -d'\n' pactl set-default-sink
 
 
 #
@@ -113,5 +108,5 @@ shift + Print
     screenshot-slop "$HOME/Sync/images/screenshots"
 
 Pause
-    $TERMINAL -c fullscreen -f $(xgetres big.font) -e bash -c 'sleep 0.1s; menu main'
+    $TERMINAL -c fullscreen -f $(xgetres big.font) -e bash -c 'menu main'
 
