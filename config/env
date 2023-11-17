@@ -1,10 +1,11 @@
 #!/bin/sh
 
 export PATH="\
-$HOME/.nix-profile/bin:\
 $HOME/.local/bin:\
 $HOME/.local/script:\
+$HOME/.nix-profile/bin:\
 $HOME/.cache/cargo/bin:\
+$HOME/.local/share/npm/bin:\
 $PATH"
 
 # Bash history
