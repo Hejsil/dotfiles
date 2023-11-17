@@ -3,6 +3,7 @@
 source ~/.config/env
 source /usr/share/fzf/key-bindings.bash
 source <(starship init bash --print-full-init)
+source <(carapace _carapace)
 eval "$(direnv hook bash)"
 eval "$(zoxide init bash)"
 
