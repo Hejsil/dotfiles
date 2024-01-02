@@ -49,7 +49,8 @@ super + shift + Return
 super + o
     open "$(clippaste)"
 
-
+super + i
+    $WINDOW -e sh -c 'cd ~/Sync/images; fzfimg.sh -m | dragon-drop --stdin --all --on-top --and-exit'
 #
 # bspwm
 #
