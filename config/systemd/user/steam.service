@@ -1,0 +1,5 @@
+[Service]
+ExecStart=/usr/bin/steam
+[Install]
+WantedBy=user-graphical-login.target
+
