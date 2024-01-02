@@ -37,9 +37,6 @@ super + p
 super + shift + r
     rss-open-all-in-browser.sh
 
-super + m
-    $TERMINAL -e aerc
-
 super + n
     obsidian
 
