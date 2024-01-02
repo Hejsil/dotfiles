@@ -2,16 +2,25 @@
 BASH_BINARY="$(which bash)"
 PREVIEW_ID="fzfpreview"
 
+curr_preview_file=$(mktemp -p /tmp fzfimg-file.XXXXXXXXXX)
+export curr_preview_file
+
 function draw_preview {
     stty </dev/tty size | {
         read -r _ TERMINAL_COLUMNS
         X=$((TERMINAL_COLUMNS - COLUMNS - 2))
         Y=1
-        ueberzug cmd -s "$socket" \
-            -a add -i "${PREVIEW_ID}" \
-            -x "$X" -y "$Y" \
-            --max-width "${COLUMNS}" --max-height "${LINES}" \
-            -f "${@}" >/dev/null
+
+        curr_preview=$(cat "$curr_preview_file")
+        next_preview="$X $Y $COLUMNS $LINES ${*}"
+        if [ "$curr_preview" != "$next_preview" ]; then
+            ueberzug cmd -s "$socket" \
+                -a add -i "${PREVIEW_ID}" \
+                -x "$X" -y "$Y" \
+                --max-width "${COLUMNS}" --max-height "${LINES}" \
+                -f "${@}" >/dev/null
+            printf "%s" "$next_preview" >"$curr_preview_file"
+        fi
     }
 }
 
@@ -26,3 +35,4 @@ SHELL="${BASH_BINARY}" \
     "${@}"
 
 ueberzug cmd -s "$socket" -a exit >/dev/null
+rm "$curr_preview_file"
