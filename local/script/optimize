@@ -1,0 +1,7 @@
+#!/bin/execlineb -S1
+case -- $1
+{
+    ".*\.png"   { optimize-png  $1 }
+    ".*\.gif"   { optimize-gif  $1 }
+    ".*\.jpe?g" { optimize-jpeg $1 }
+}

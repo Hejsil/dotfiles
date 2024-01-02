@@ -1,0 +1,3 @@
+#!/bin/execlineb -S1
+foreground { cache -f $1 -- oxipng -o max --strip safe $1 }
+             cache -f $1 -- oxipng -o max --strip safe $1

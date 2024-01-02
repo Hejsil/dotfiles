@@ -1,0 +1,3 @@
+#!/bin/execlineb -S1
+foreground { cache -f $1 -- gifsicle -i $1 --optimize=3 -o $1 }
+             cache -f $1 -- gifsicle -i $1 --optimize=3 -o $1

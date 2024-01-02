@@ -5,5 +5,5 @@ backtick -E selection { slop -f "%g" }
 foreground { import -window root -crop $selection $file }
 foreground { clipcopy -t image/png -i $file }
 foreground { notify-send Screenshot $file }
-foreground { oxipng -o max --strip safe $file }
+foreground { optimize $file }
 clipcopy -t image/png -i $file
