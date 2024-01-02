@@ -4,7 +4,7 @@ picker=${1:-fzf}
 preview=$2
 
 pick() {
-    "$picker" --preview-window="right:85%,border-none" --preview "$preview" "$@"
+    "$picker" --preview-window="right:75%,border-none" --preview "$preview" "$@"
 }
 
 done_it="<done>"
@@ -15,7 +15,7 @@ tags_file="$XDG_CONFIG_HOME/categories"
 mkdir -p "$(dirname "$tags_file")"
 tags=$(cat "$tags_file")
 
-picked_tags=$(mktemp)
+picked_tags=$(mktemp -p /tmp categorize-pick-tags.XXXXXXXXXX)
 while true; do
     tag=$({
         echo "$done_it"
@@ -32,10 +32,12 @@ while true; do
     fi
     if [ "$tag" = "$new_tag" ]; then
         tag=$(printf "" | pick --print-query)
-        {
-            echo "$tag"
-            cat "$tags_file"
-        } | sort -u | sponge "$tags_file"
+        if [ "$tag" != "" ]; then
+            {
+                echo "$tag"
+                cat "$tags_file"
+            } | sort -u | sponge "$tags_file"
+        fi
     fi
     if [ -z "$tag" ]; then
         continue
