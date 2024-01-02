@@ -1,5 +1,5 @@
 #!/bin/execlineb -S1
-backtick -E output { mktemp }
+backtick -E output { mktemp -p /tmp open-dot.XXXXXXXXXX }
 foreground { dot -x dot -Tpdf -o $output $1 }
 foreground { open $output }
 rm $output

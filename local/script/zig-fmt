@@ -1,6 +1,6 @@
 #!/bin/sh -e
 
-file=$(mktemp)
+file=$(mktemp -p /tmp zig-fmt.XXXXXXXXXX)
 
 cat - >"$file"
 zig fmt "$file" 2>/dev/null >/dev/null || true

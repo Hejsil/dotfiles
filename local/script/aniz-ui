@@ -16,7 +16,7 @@ command=$1
 search=$2
 
 while true; do
-    picks=$(mktemp)
+    picks=$(mktemp -p /tmp aniz-ui-picks.XXXXXXXXXX)
     case $command in
         database) aniz database | rg "$search" |
             fzf2 --disabled --bind 'change:reload:aniz database --search {q}' |
@@ -48,13 +48,11 @@ while true; do
         *)
             wait
             rm "$picks"
-            rm -r "$images_dir"
             exit 0
             ;;
     esac
     [ -s "$picks" ] || {
         rm "$picks"
-        rm -r "$images_dir"
         exit 0
     }
 

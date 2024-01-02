@@ -1,7 +1,6 @@
 #!/bin/execlineb -P
-
-backtick old_file_names { mktemp }
-backtick new_file_names { mktemp }
+backtick old_file_names { mktemp -p /tmp vmv-old.XXXXXXXXXX }
+backtick new_file_names { mktemp -p /tmp vmv-new.XXXXXXXXXX }
 multisubstitute {
     importas old_file_names old_file_names
     importas new_file_names new_file_names

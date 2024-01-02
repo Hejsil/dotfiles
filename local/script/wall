@@ -1,6 +1,6 @@
 #!/bin/execlineb -S1
 
-backtick screens { mktemp }
+backtick screens { mktemp -p /tmp wall.XXXXXXXXXX }
 multisubstitute {
     define folder $1
     define images "/tmp/wallpapers-on-screen"

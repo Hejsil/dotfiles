@@ -15,7 +15,7 @@ function draw_preview {
     }
 }
 
-ub_pid_file=$(mktemp)
+ub_pid_file=$(mktemp -p /tmp fzfimg-pid.XXXXXXXXXX)
 ueberzug layer -o x11 --no-stdin --pid-file "$ub_pid_file" --silent --use-escape-codes </dev/null >/dev/null
 ub_pid=$(cat "$ub_pid_file")
 

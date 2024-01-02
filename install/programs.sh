@@ -14,7 +14,7 @@ install_paru() {
         return
     fi
 
-    folder="$(mktemp -d)"
+    folder="$(mktemp -d -p /tmp install-programs-paru.XXXXXXXXXX)"
 
     sudo pacman -Syu
     sudo pacman -S --needed base-devel git

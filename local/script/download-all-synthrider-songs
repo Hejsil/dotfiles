@@ -3,8 +3,8 @@
 songs="$XDG_DATA_HOME/synthriderz"
 mkdir -p "$songs"
 
-names=$(mktemp)
-links=$(mktemp)
+names=$(mktemp -p /tmp synthrider-names.XXXXXXXXXX)
+links=$(mktemp -p /tmp synthrider-links.XXXXXXXXXX)
 
 i=1
 end=1
