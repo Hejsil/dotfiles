@@ -44,6 +44,7 @@ config/heroic/
 config/hotspotrc
 config/htop
 config/inkscape
+config/.isolated-storage/
 config/isync
 config/itch/
 config/JetBrains/
@@ -113,6 +114,7 @@ config/user-dirs.dirs
 config/user-dirs.locale
 config/VirtualBox
 config/vlc/
+config/VNote/
 config/VSCodium/
 config/WebCord/
 config/wireplumber/
@@ -123,6 +125,7 @@ config/xorg/resources
 config/yarn/
 config/yuzu/
 config/zathura
+config/Zettlr/
 local/bin/
 local/lib/
 local/opt/
@@ -196,6 +199,7 @@ local/share/rss/
 local/share/rustup/
 local/share/sfeed/
 local/share/SkullsOfTheShogun/
+local/share/SpeedRunners/
 local/share/Steam/
 local/share/syncthing/
 local/share/synthriderz/
@@ -214,6 +218,7 @@ local/share/Valve Corporation/
 local/share/virtualenv/
 local/share/vlc/
 local/share/vm-pool/
+local/share/VNote/
 local/share/vulkan/
 local/share/webkitgtk/
 local/share/webkitgtk-4.0/
