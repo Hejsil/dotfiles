@@ -7,5 +7,5 @@ rss-list unread | cut -f1,4,8 |
     sd 'https://www.dr.dk/lyd/p4/radioavisen/[a-zA-Z0-9-]*' '' |
     while IFS=$tab read -r file link enclosure; do
         printf '%s\t%s\t%s\t%s\n' "$(printf '%s\t\n' "$link" | opener)" "$file" "$link" "$enclosure"
-    done | grep "^$BROWSER" | cut -f2,3,4 | tr '\t' '\n' |
+    done | grep "^$BROWSER" | cut -f2,3,4 | head -n30 | tr '\t' '\n' |
     exec xargs -d'\n' xargs systemd-run --user rss-open-read.sh

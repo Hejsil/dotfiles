@@ -14,8 +14,14 @@ IFS=$(printf '\a')
 rss-download-feed "$url_config" | sfeed | tr '\t' '\a' |
     while read -r timestamp title link content content_type id author enclosure; do
         id=$(printf '%s-%s-%s' "$id" "$link" "$enclosure" | xxhsum | cut -d' ' -f1)
-        [ -e "$unread_dir/$id" ] && continue
-        [ -e "$read_dir/$id" ] && continue
+        [ -e "$unread_dir/$id" ] && {
+            touch "$unread_dir/$id"
+            continue
+        }
+        [ -e "$read_dir/$id" ] && {
+            touch "$read_dir/$id"
+            continue
+        }
 
         printf '%s\n%s\n%s\n%s\n%s\n%s\n%s\n' \
             "$timestamp" "$title" "$link" "$content" "$content_type" "$author" "$enclosure" \

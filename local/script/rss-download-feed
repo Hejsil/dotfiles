@@ -1,12 +1,13 @@
 #!/bin/execlineb -S1
 
-backtick -E output { mktemp -d "/tmp/curl.XXXXXXXX" }
+backtick -E output { mktemp -d "/tmp/rss-download-feed.XXXXXXXX" }
 
 pipeline { cut -f1 "$1" }
+pipeline { sort -R }
 pipeline { sed "/^$/d" }
 pipeline { nl -w1 }
 pipeline { sed "s/^/-o\t/" }
-foreground { xargs curl -Z --output-dir $output }
+foreground { xargs curl --rate "1/s" --retry 5 --retry-delay 10 --output-dir $output }
 
 pipeline { find $output -type f -print0 }
 foreground { xargs -0 cat }
