@@ -68,6 +68,7 @@ put-on-hold
 start-watching
 update
 remove
+watch
 torrent
 view
 ' | sed '/^$/d' | fzf | cut -f1)
@@ -78,6 +79,12 @@ view
                 cut -f1 "$picks" | jq -sRr @uri |
                     sed 's#%0A#\n#g' |
                     sed 's#^#https://nyaa.si/?q=#' |
+                    xargs -d '\n' systemd-run --user "$BROWSER"
+                ;;
+            watch)
+                cut -f1 "$picks" | jq -sRr @uri |
+                    sed 's#%0A#\n#g' |
+                    sed 's#^#https://aniwave.to/filter?keyword=#' |
                     xargs -d '\n' systemd-run --user "$BROWSER"
                 ;;
             complete | drop | plan-to-watch | put-on-hold | start-watching | update | remove | watch-episode)
