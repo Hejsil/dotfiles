@@ -1,2 +1,2 @@
 #!/bin/execlineb -P
-mangohud gamemoderun steam-runtime -no-browser -newbigpicture
+mangohud gamemoderun steam-runtime -newbigpicture
