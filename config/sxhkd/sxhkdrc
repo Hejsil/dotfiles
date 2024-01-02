@@ -31,6 +31,9 @@ super + B
 super + b
     browser
 
+super + p
+    pavucontrol
+
 super + shift + r
     rss-open-all-in-browser.sh
 
