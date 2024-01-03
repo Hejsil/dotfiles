@@ -27,6 +27,7 @@ dust
 entr
 exfat-utils
 factorio
+feh
 ffmpeg
 firefox
 flex
@@ -98,7 +99,6 @@ nix
 noto-fonts-cjk
 noto-fonts-emoji
 npm
-nsxiv
 ntfs-3g
 obsidian
 ocl-icd
