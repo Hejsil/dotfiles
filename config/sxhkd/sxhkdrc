@@ -5,31 +5,31 @@
 # rofi starts slow, and dmenu is slow on large inputs... *sign* I can do better.
 # Use st as a window for launch-program!
 super + @space
-    $WINDOW -e launch-program
+    st -c window -e launch-program
 
 super + r
-    $WINDOW -e rss-read.sh
+    st -c window -e rss-read.sh
 
 super + e
-    $WINDOW -e fzf-uni
+    st -c window -e fzf-uni
 
 super + k
-    $WINDOW -e fzf-kill
+    st -c window -e fzf-kill
 
 super + s
-    $WINDOW -e shutdown
+    st -c window -e shutdown
 
 super + c
-    $WINDOW -e icalc
+    st -c window -e icalc
 
 super + {_,shift +,alt +,ctrl +} a
-    $WINDOW -e aniz-ui {list '^[^\t]*\tc',list '^[^\t]*\t(p|w)',list '',database}
+    st -c window -e aniz-ui {list '^[^\t]*\tc',list '^[^\t]*\t(p|w)',list '',database}
 
 super + B
-    $WINDOW -e book
+    st -c window -e book
 
 super + b
-    browser
+    chromium
 
 super + p
     pavucontrol
@@ -41,16 +41,16 @@ super + n
     obsidian
 
 super + Return
-    $TERMINAL -e tmux
+    st -e tmux
 
 super + shift + Return
-    $TERMINAL -f $(xgetres big.font)
+    st -f $(xgetres big.font)
 
 super + o
     open "$(clippaste)"
 
 super + i
-    $WINDOW -e pick-image ~/Sync/images
+    st -c window -e pick-image ~/Sync/images
 #
 # bspwm
 #
@@ -109,5 +109,5 @@ shift + Print
     screenshot-slop "$HOME/Sync/images/screenshots"
 
 Pause
-    $TERMINAL -c fullscreen -f $(xgetres big.font) -e bash -c 'menu main'
+    st -c fullscreen -f $(xgetres big.font) -e bash -c 'menu main'
 

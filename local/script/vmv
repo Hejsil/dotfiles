@@ -4,14 +4,13 @@ backtick new_file_names { mktemp -p /tmp vmv-new.XXXXXXXXXX }
 multisubstitute {
     importas old_file_names old_file_names
     importas new_file_names new_file_names
-    importas editor EDITOR
 }
 
 # Save files comming from stdin into old and new_file_names
 foreground { redirfd -w 1 /dev/null tee $old_file_names $new_file_names }
 
 # Allow user to edit new_file_name
-foreground { redirfd -r 0 /dev/tty $editor $new_file_names }
+foreground { redirfd -r 0 /dev/tty kak $new_file_names }
 
 # Rename file names that the user edited
 pipeline { paste $old_file_names $new_file_names }
