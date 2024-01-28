@@ -11,11 +11,6 @@ __cd_alias() {
     timeout -k 0 0.1s eza
 }
 
-__ccd_alias() {
-    mkdir "$@" || return
-    __cd_alias "$@"
-}
-
 __paru_alias() {
     paru "$@" || return 1
     paru -Qqe >"$XDG_CONFIG_HOME/installed-programs"
@@ -53,12 +48,8 @@ __kak_alias() {
 
 alias ..='__cd_alias ..'
 alias ...='__cd_alias ../..'
-alias .3='__cd_alias ../../..'
-alias .4='__cd_alias ../../../..'
 
-alias ccd='__ccd_alias'
 alias cd='__cd_alias'
-alias c='__cd_alias'
 
 alias kak='__kak_alias'
 alias paru='__paru_alias'
@@ -67,9 +58,10 @@ alias df='duf'
 alias ll='eza -al'
 alias ls='eza -a'
 
-alias cp='xcp'
-alias man='fzf-man'
+alias cp='cp -i'
 alias mv='mv -i'
+alias rm='rm -I'
+
 alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
 
 alias map='xargs -d"\n"'

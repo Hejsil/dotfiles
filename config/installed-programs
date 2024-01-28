@@ -65,9 +65,6 @@ inotify-tools
 isync
 jpegoptim
 jq
-jre11-openjdk
-jre8-openjdk
-leagueoflegends-git
 lib32-libusb
 lib32-v4l-utils
 lib32-vkd3d
@@ -93,6 +90,7 @@ mkcert
 mpv
 mpv-sponsorblock-minimal-git
 msmtp
+multimc-bin
 net-tools
 nix
 noto-fonts-cjk
@@ -309,7 +307,6 @@ which
 wine
 winetricks
 wireshark-qt
-xcp
 xdg-desktop-portal
 xdg-desktop-portal-gtk
 xdg-ninja-git
