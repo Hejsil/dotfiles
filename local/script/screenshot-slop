@@ -1,9 +1,10 @@
 #!/bin/execlineb -S1
 cd $1
-backtick -E file { date "+%y-%m-%dT%H-%M-%S-%N.png" }
+backtick -E temp { mktemp "/tmp/screenshot.XXXXXXXX.png" }
+backtick -E file { date "+%y-%m-%dT%H-%M-%S-%N.jxl" }
 backtick -E selection { slop -f "%g" }
-foreground { import -window root -crop $selection $file }
-foreground { clipcopy -t image/png -i $file }
+foreground { import -window root -crop $selection $temp }
+foreground { clipcopy -t image/png -i $temp }
 foreground { notify-send Screenshot $file }
-foreground { optimize $file }
-clipcopy -t image/png -i $file
+cjxl $temp $file
+

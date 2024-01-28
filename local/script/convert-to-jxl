@@ -1,0 +1,20 @@
+#!/bin/execlineb -S1
+case -- $1
+{
+    ".*\.jxl" { echo $1 }
+    ".*" {
+        backtick -E converted { mktemp "/tmp/converted.XXXXXXXX.jxl" }
+        backtick -E output {
+            pipeline { echo $1 }
+            sed "s/\\.[a-zA-Z]*$/.jxl/"
+        }
+        foreground { cjxl $1 $converted -q 100 }
+        foreground {
+            ifelse { mv -n $converted $output }
+            { rm $1 }
+            rm $converted
+        }
+        echo $output
+    }
+}
+

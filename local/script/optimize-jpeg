@@ -1,3 +1,0 @@
-#!/bin/execlineb -S1
-foreground { cache -f $1 -- jpegoptim -s $1 }
-             cache -f $1 -- jpegoptim -s $1
