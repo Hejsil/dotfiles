@@ -89,6 +89,7 @@ config/qt5ct
 config/QtProject.conf
 config/retroarch/
 config/rncbc.org/
+config/rss/
 config/SideQuest/
 config/Slack/
 config/Soundux/
