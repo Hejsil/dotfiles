@@ -41,7 +41,7 @@ super + n
     obsidian
 
 super + Return
-    $TERMINAL
+    $TERMINAL -e tmux
 
 super + shift + Return
     $TERMINAL -f $(xgetres big.font)
