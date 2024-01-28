@@ -53,10 +53,10 @@ $NF ~ /^union(\(enum(\([^)]*\))?\))?$/ { printf "%s{ ¤ }", $0 ; next }
 /\.print $/     { printf "%s(\"¤\", .{  })", $0 ; next }
 /fmt\.format $/ { printf "%s(¤, \"\", .{  })", $0 ; next }
 
-/(^| )var  *gba $/ {
+/(^| )var  *gpa $/ {
     indent = $0
     sub("[^ ].*$", "", indent)
-    printf "%svar gba_state = heap.GeneralPurposeAllocator(.{}){};\n%sconst gba = gba_state.allocator();\n%sdefer _ = gba_state.deinit();\n\n%s¤",
+    printf "%svar gpa_state = heap.GeneralPurposeAllocator(.{}){};\n%sconst gpa = gpa_state.allocator();\n%sdefer _ = gpa_state.deinit();\n\n%s¤",
         indent, indent, indent, indent
     next
 }
