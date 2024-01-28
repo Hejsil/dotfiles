@@ -53,7 +53,7 @@ super + i
 #
 
 super + q
-    bspc node -c
+    bspc node -c; tmux-kill-detatched-sessions
 
 super + {Left,Down,Up,Right}
     bspc node -f {west,south,north,east} && \
