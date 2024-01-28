@@ -49,7 +49,7 @@ networkmanager
 ntp
 pacman
 pacman-contrib
-paru-bin
+paru
 patch
 pcsclite
 pipewire
