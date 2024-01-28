@@ -25,6 +25,7 @@ bspc rule -a 'window' state=floating center=on sticky=on focus=on rectangle=1600
 bspc rule -a 'fullscreen' state=fullscreen
 bspc rule -a 'thunderbird' desktop=0
 bspc rule -a 'discord' desktop=9
+bspc rule -a 'vesktop' desktop=9
 bspc rule -a 'Caprine' desktop=9
 bspc rule -a 'steam' desktop=8
 
