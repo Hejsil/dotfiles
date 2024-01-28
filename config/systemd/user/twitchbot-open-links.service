@@ -1,5 +1,0 @@
-[Service]
-ExecStart=/usr/bin/sh -c 'twitchbot-open-links.sh komarispaghetti "tor-browser --allow-remote" /tmp/twitch'
-Requires=twitchbot.service
-[Install]
-WantedBy=user-graphical-login.target

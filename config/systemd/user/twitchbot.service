@@ -1,5 +1,0 @@
-[Service]
-ExecStart=/usr/bin/sh -c 'TWITCH_TOKEN=$(pass show twitch-oath) twitchbot.sh -c komarispaghetti -n komarispaghetti'
-Requires=gpg-agent.service
-[Install]
-WantedBy=user-graphical-login.target
