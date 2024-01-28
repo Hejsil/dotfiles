@@ -103,6 +103,7 @@ config/Syncplay/
 config/syncplay.ini
 config/syncthing/
 config/task/
+config/Team17 Digital Limited/
 config/teamviewer/
 config/thorium
 config/tm35-randomizer
