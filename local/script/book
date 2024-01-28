@@ -1,8 +1,0 @@
-#!/bin/execlineb -P
-importas home HOME
-cd $home
-cd .config
-pipeline { cat bookmarks }
-pipeline { fzf -m -d "\t" --tabstop 12 }
-pipeline { hck -f 2 }
-xargs -d "\n" systemd-run --user open

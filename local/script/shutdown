@@ -1,3 +1,0 @@
-#!/bin/execlineb -P
-if { update }
-systemctl poweroff

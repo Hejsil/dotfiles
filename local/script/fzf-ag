@@ -1,5 +1,0 @@
-#!/bin/execlineb -P
-pipeline { echo }
-fzf --disabled --delimiter ":" --no-extended --ansi \
-    --bind "change:reload:ast-grep -p {q} || true" \
-    --preview "fzf-rg-bat {2} {1}"

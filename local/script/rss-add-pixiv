@@ -1,2 +1,0 @@
-#!/bin/sh
-rss-add "$(printf 'https://rsshub.app/pixiv/user/%s' "$1")"

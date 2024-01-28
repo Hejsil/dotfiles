@@ -25,9 +25,6 @@ super + c
 super + {_,shift +,alt +,ctrl +} a
     st -c window -e aniz-ui {list '^[^\t]*\tc',list '^[^\t]*\t(p|w)',list '',database}
 
-super + B
-    st -c window -e book
-
 super + b
     chromium
 

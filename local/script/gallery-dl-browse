@@ -1,5 +1,0 @@
-#!/bin/execlineb -S1
-importas cache XDG_CACHE_HOME
-pipeline { gallery-dl "$1" -D "${cache}/gallery-dl-browse" }
-pipeline { sed "s/^# //" }
-xargs -n48 "-d\n" nsxiv -a -f -o -p
