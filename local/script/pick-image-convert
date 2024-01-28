@@ -1,0 +1,10 @@
+#!/bin/execlineb -S1
+case -- $1
+{
+    ".*\.jxl" {
+        backtick -E output { mktemp "/tmp/converted.XXXXXXXX.png" }
+        foreground { djxl $1 $output }
+        echo $output
+    }
+    ".*" { echo $1 }
+}

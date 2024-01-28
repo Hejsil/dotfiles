@@ -1,0 +1,5 @@
+#!/bin/execlineb -S1
+cd $1
+pipeline { fzfimg.sh -m }
+pipeline { xargs "-d\n" -n1 pick-image-convert }
+dragon-drop --stdin --all --on-top --and-exit
