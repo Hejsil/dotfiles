@@ -1,14 +1,13 @@
 #!/bin/execlineb -P
 
+
 # Wait for whatever is needed for lemonbar to run
 # TODO: This should probably not sleep
 foreground { sleep 0.1s }
 
-backtick bar_height { bspc config top_padding }
 backtick font       { xgetres bar.font }
-
 multisubstitute {
-    importas bar_height bar_height
+    define   bar_height 26
     importas font       font
     importas color0     COLOR0
     importas color5     COLOR5
@@ -17,6 +16,7 @@ multisubstitute {
     importas color11    COLOR11
 }
 
+foreground { bspc config top_padding $bar_height }
 background {
     pipeline {
         lemonbar-maker

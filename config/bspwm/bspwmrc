@@ -18,7 +18,6 @@ bspc config border_width 1
 bspc config window_gap 0
 bspc config focus_follows_pointer true
 bspc config ignore_ewmh_focus true
-bspc config top_padding 26
 
 bspc rule -a 'Zathura' state=tiled
 bspc rule -a 'origin.exe' state=floating
