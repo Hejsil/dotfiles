@@ -1,6 +1,6 @@
 #!/bin/execlineb -S1
 pipeline { fd . $1 }
 pipeline { rg -v "/0-n?sfw,1-[^/]*$" }
-pipeline { xargs "-d\n" -n1 convert-to-jxl }
+pipeline { redirfd -w 2 /dev/null xargs "-d\n" -n1 convert-to-jxl }
 xargs "-d\n" -I% categorize-image % $1
 
