@@ -76,9 +76,9 @@ export FZF_DEFAULT_OPTS='--no-info --color=16'
 export GTK_THEME="Breeze:dark"
 export LESS='-R'
 export QT_QPA_PLATFORMTHEME='gtk2'
-export RUST_BACKTRACE=full
 export TERMINFO_DIRS="$TERMINFO:/usr/share/terminfo"
 export TRANSMISSION_REMOTE=192.168.0.119
+export WINE_FULLSCREEN_FSR=1
 
 export COLOR0=141414
 export COLOR1=282828
