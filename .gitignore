@@ -10,6 +10,7 @@ config/cava/
 config/cef_user_data/
 config/chromium
 config/coc
+config/com.dorion.dev/
 config/.conan/
 config/configstore/
 config/content_shell
@@ -24,9 +25,11 @@ config/discord
 config/discordcanary/
 config/discord-screenaudio/
 config/docker/
+config/dorion/
 config/dunst
 config/Electron/
 config/filezilla/
+config/gcloud/
 config/gh/
 config/GIMP
 config/git/credentials
@@ -147,6 +150,7 @@ local/share/delta/
 local/share/desktop-directories/
 local/share/direnv/
 local/share/discord-screenaudio/
+local/share/dorion/
 local/share/espanso/
 local/share/firenvim/
 local/share/flatpak/
