@@ -1,4 +1,13 @@
 #!/bin/execlineb -P
+importas home HOME
+foreground { paru -S --noconfirm zig-dev-bin }
+background { install-zig-project "${home}/repo/forks/poop/" }
+background { install-zig-project "${home}/repo/forks/zls/" }
+background { install-zig-project "${home}/repo/own/aniz/" }
+background { install-zig-project "${home}/repo/own/cache/" }
+background { install-zig-project "${home}/repo/own/lemonbar-maker/" }
+wait { }
 if { paru -Syu --noconfirm }
 if { paru -Sc --noconfirm }
-paru -c --noconfirm
+if { paru -c --noconfirm }
+true

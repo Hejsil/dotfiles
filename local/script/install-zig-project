@@ -1,0 +1,5 @@
+#!/bin/execlineb -S1
+importas home HOME
+cd "$1"
+foreground { git pull --recurse-submodules }
+zig build -Doptimize=ReleaseSafe --prefix "${home}/.local"
