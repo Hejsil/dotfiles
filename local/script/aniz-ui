@@ -5,11 +5,11 @@ fzf2() {
     percent=$((100 / ratio))
     fzfimg.sh -m -d '\t' --tiebreak begin --with-nth=1,2,3,4,5 \
         --preview-window="right:${percent}%,border-none" \
-        --preview 'draw_preview "$(aniz-ui get-image {6})"' \
+        --preview 'draw_preview "$(aniz-ui download-image {6})"' \
         "$@"
 }
 
-images_dir='/tmp/aniz-ui'
+images_dir="$HOME/.cache/aniz-ui-images"
 mkdir -p "$images_dir"
 
 command=$1
@@ -34,15 +34,11 @@ while true; do
             aniz list | cut -f6 | xargs -d'\n' aniz update
             exit 0
             ;;
-        get-image)
-            output="$images_dir/$(echo "$2" | xxhsum | cut -d' ' -f1)"
-            cache -o "$output" -- aniz-ui download-image "$search" "$output"
-            echo "$output"
-            exit 0
-            ;;
         download-image)
-            output=$3
-            aniz database "$search" | cut -f7 | xargs -d'\n' -I% curl -s -L % -o "$output"
+            link=$(aniz database "$search" | cut -f7)
+            output="$images_dir/$(echo "$link" | xxhsum | cut -d' ' -f1)"
+            cache -o "$output" -- curl -s -L "$link" -o "$output"
+            echo "$output"
             exit 0
             ;;
         *)
