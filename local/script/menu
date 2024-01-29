@@ -42,10 +42,11 @@ main() {
 }
 
 anime() {
-    cd "$HOME/torrents" || return
+    cd "$HOME/torrents"
+    cd "/media/stue/torrents"
     run_file_menu \
         'fd . --maxdepth 1 --strip-cwd-prefix' \
-        'fd . --type f -e mkv -e mp4 -X mpv --fs {} ;'
+        'mpv --fs'
 }
 
 music() {
@@ -58,9 +59,7 @@ music() {
 }
 
 case $1 in
-    main) main ;;
     anime) anime ;;
     music) music ;;
-    download-song) download_song "$2" "$3" ;;
-    *) ;;
+    *) main ;;
 esac
