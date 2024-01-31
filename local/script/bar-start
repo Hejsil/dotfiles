@@ -1,0 +1,8 @@
+#!/bin/execlineb -P
+pipeline { xrandr }
+pipeline { grep "\\bconnected\\b" }
+pipeline { cut -d " " -f1 }
+forstdin -E screen background {
+    eww open bar --id "bar-${screen}" --arg "screen=${screen}"
+}
+wait

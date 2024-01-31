@@ -24,6 +24,7 @@ duf
 dunst
 dust
 entr
+eww-git
 exfat-utils
 factorio
 feh
@@ -292,6 +293,7 @@ texlive-basic
 thunderbird
 tidy
 transmission-cli
+ttf-nerd-fonts-symbols-mono
 typescript-language-server
 ueberzugpp
 ungoogled-chromium

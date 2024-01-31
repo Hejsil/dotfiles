@@ -1,4 +1,5 @@
 [Service]
+Type=exec
 ExecStart=/usr/bin/vesktop
 [Install]
 WantedBy=user-graphical-login.target

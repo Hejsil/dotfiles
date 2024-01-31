@@ -1,6 +1,0 @@
-[Path]
-PathChanged=%h/.local/bin/lemonbar-maker
-PathChanged=%h/.local/script/bar
-PathChanged=%h/.config/xorg/resources
-[Install]
-WantedBy=user-graphical-login.target

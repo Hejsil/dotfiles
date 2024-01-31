@@ -1,4 +1,5 @@
 [Service]
+Type=exec
 ExecStart=/usr/bin/dunst
 [Install]
 WantedBy=user-graphical-login.target

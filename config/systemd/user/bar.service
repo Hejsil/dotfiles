@@ -1,4 +1,13 @@
+[Unit]
+After=eww.service
+PartOf=eww.service
+
 [Service]
-ExecStart=/home/hejsil/.local/script/bar
+ExecStartPre=/usr/bin/eww ping
+ExecStart=%h/.local/script/bar-start
+ExecStop=%h/.local/script/bar-stop
+Type=oneshot
+RemainAfterExit=true
+
 [Install]
 WantedBy=user-graphical-login.target

@@ -1,0 +1,8 @@
+[Service]
+Type=exec
+ExecStart=/usr/bin/eww daemon --no-daemonize
+# Ensure that eww can be pinged before considering the services started
+ExecStartPost=/usr/bin/sh -c 'while ! /usr/bin/eww ping; do :; done'
+
+[Install]
+WantedBy=user-graphical-login.target

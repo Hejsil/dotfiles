@@ -1,6 +1,0 @@
-[Service]
-Type=oneshot
-ExecStart=/usr/bin/systemctl --user restart bar.service
-
-[Install]
-WantedBy=user-graphical-login.target

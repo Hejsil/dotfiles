@@ -1,4 +1,5 @@
 [Service]
+Type=exec
 ExecStart=/usr/bin/unclutter --timeout 2
 [Install]
 WantedBy=user-graphical-login.target

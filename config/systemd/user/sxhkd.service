@@ -1,4 +1,5 @@
 [Service]
+Type=exec
 ExecStart=/usr/bin/sxhkd -r /tmp/sxhkd.log
 [Install]
 WantedBy=user-graphical-login.target

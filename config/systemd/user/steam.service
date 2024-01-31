@@ -1,4 +1,5 @@
 [Service]
+Type=exec
 ExecStart=%h/.local/script/steam
 [Install]
 WantedBy=user-graphical-login.target

@@ -1,0 +1,5 @@
+#!/bin/execlineb -P
+importas home HOME
+pipeline { find "${home}/.local/share/rss/unread/" -type f }
+pipeline { wc -l }
+awk "{ printf \"rss%3d\\n\", $1 }"
