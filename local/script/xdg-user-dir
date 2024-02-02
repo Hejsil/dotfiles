@@ -1,3 +1,0 @@
-#!/bin/execlineb -S1
-importas dir "XDG_${1}_DIR"
-echo $dir

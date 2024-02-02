@@ -5,16 +5,17 @@
 backtick date { date "+%y-%m-%dT%H-%M-%S" }
 backtick sink { pactl get-default-sink }
 backtick source { pactl get-default-source }
+backtick videos_dir { xdg-user-dir VIDEOS }
 
 multisubstitute {
-    importas date      date
-    importas sink      sink
-    importas source    source
-    importas home      HOME
-    define   container "mkv"
+    importas date       date
+    importas sink       sink
+    importas source     source
+    importas videos_dir videos_dir
+    define   container  "mkv"
 }
 
-define output "${home}/video/${date}.${container}"
+define output "${videos_dir}/${date}.${container}"
 foreground { echo "${output}" }
 gpu-screen-recorder -w DP-1 -q ultra -f 60 -c "${container}"
     -o "${output}" -a "${sink}.monitor" -a "${source}"

@@ -51,8 +51,7 @@ anime() {
 
 music() {
     playlist='https://youtube.com/playlist?list=PLQHmQm6ZbDZbb8szk0cg13FQBc2fNwPvS'
-    music_folder="$HOME/Sync/music"
-    cd "$music_folder"
+    cd "$(xdg-user-dir MUSIC)"
     yt-dlp --extract-audio --audio-format mp3 -f bestaudio/best --embed-metadata \
         -o '%(title)s.%(ext)s' --restrict-filename --download-archive archive.txt "$playlist"
     mpv --loop-playlist --quiet --force-window=no --shuffle --volume=30 .

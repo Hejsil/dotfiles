@@ -1,4 +1,4 @@
 [Service]
-ExecStart=%h/.local/script/wall '%h/Sync/images/wallpapers'
+ExecStart=%h/.local/script/wall '%h/Pictures/wallpapers'
 [Install]
 WantedBy=user-graphical-login.target
