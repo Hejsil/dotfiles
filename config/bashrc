@@ -54,7 +54,7 @@ alias cd='__cd_alias'
 alias kak='__kak_alias'
 alias paru='__paru_alias'
 
-alias df='duf'
+alias df='df -h'
 alias ll='eza -al'
 alias ls='eza -a'
 
