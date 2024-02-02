@@ -117,6 +117,7 @@ config/transmission-daemon/torrents
 config/tree-sitter/
 config/unity3d/
 config/user-dirs.locale
+config/vesktop/
 config/VirtualBox
 config/vlc/
 config/VNote/
