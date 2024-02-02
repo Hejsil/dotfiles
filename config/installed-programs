@@ -29,10 +29,12 @@ gst-plugins-bad
 gst-plugins-good
 gst-plugins-ugly
 htop
+imv
 lib32-libusb
 lib32-v4l-utils
 lib32-vkd3d
 libdvdcss
+libnotify
 libpulse
 librealsense
 libtool
@@ -230,6 +232,7 @@ thunderbird
 tidy
 transmission-cli
 ttf-nerd-fonts-symbols-mono
+ueberzugpp
 ungoogled-chromium
 uni
 unrar
