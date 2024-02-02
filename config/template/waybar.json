@@ -1,0 +1,55 @@
+{
+    "spacing": 10,
+    "modules-left": [
+        "hyprland/workspaces"
+    ],
+    "modules-center": [
+        "memory",
+        "cpu",
+        "disk"
+    ],
+    "modules-right": [
+        "custom/rss",
+        "clock"
+    ],
+    "disk": {
+        "format": "disk{percentage_used:3}%"
+    },
+    "clock": {
+        "format": "{:Week %V %b %d %a %H:%M}"
+    },
+    "cpu": {
+        "format": "cpu{usage:3}% {icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7}{icon8}{icon9}{icon10}{icon11}{icon12}{icon13}{icon14}{icon15}",
+        "format-icons": [
+            "<span color='#{{base0B-hex}}'> </span>",
+            "<span color='#{{base0B-hex}}'>▁</span>",
+            "<span color='#{{base0B-hex}}'>▂</span>",
+            "<span color='#{{base0A-hex}}'>▃</span>",
+            "<span color='#{{base0A-hex}}'>▄</span>",
+            "<span color='#{{base09-hex}}'>▅</span>",
+            "<span color='#{{base09-hex}}'>▆</span>",
+            "<span color='#{{base08-hex}}'>▇</span>",
+            "<span color='#{{base08-hex}}'>█</span>"
+        ],
+        "interval": 1
+    },
+    "memory": {
+        "format": "mem{:3}%"
+    },
+    "hyprland/workspaces": {
+        "format": "{icon}{id}</span>",
+        "format-icons": {
+            "active": "<span weight='heavy'>→",
+            "empty": "<span> ",
+            "default": "<span>*"
+        },
+        "persistent-workspaces": {
+            "*": 10
+        }
+    },
+    "custom/rss": {
+        "exec": "find ~/.local/share/rss/unread/ | wc -l",
+        "format": "rss{:>3}",
+        "interval": 60
+    }
+}

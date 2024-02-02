@@ -1,28 +1,24 @@
 * {
-    /* `otf-font-awesome` is required to be installed for icons */
     font-family: monospace;
     font-size: 16px;
-}
-
-window#waybar {
     background-color: #{{base00-hex}};
     color: #{{base05-hex}};
-    transition-property: background-color;
-    transition-duration: .5s;
 }
 
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
-#tags button:hover {
-    box-shadow: inset 0 -3px #{{base05-hex}};
+.modules-left  { padding: 0 10px; }
+.modules-right { padding: 0 10px; }
+
+button {
+    border-radius: 0;
 }
 
-#tags button.focused {
-    background-color: #{{base02-hex}};
-    box-shadow: inset 0 -3px #{{base05-hex}};
+#workspaces button {
+    padding: 4px;
 }
 
-#tags button.urgent {
-    background-color: #eb4d4b;
+#workspaces button.active {
+    background: inherit;
+    box-shadow: inset 0 -2px #{{base05-hex}};
 }
 
 #clock,
@@ -30,10 +26,10 @@ window#waybar {
 #memory,
 #pulseaudio,
 #workspaces,
+#disk,
 #custom-rss {
     border-top: 2px solid #{{base05-hex}};
     padding: 0 10px;
-    margin: 0 2px;
     color: #{{base05-hex}};
 }
 

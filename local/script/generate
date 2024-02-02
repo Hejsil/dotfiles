@@ -3,13 +3,10 @@
 . ~/.config/env
 template_dir="$HOME/.config/template"
 
-dunstrc="$XDG_CONFIG_HOME/dunst/dunstrc"
-foot="$XDG_CONFIG_HOME/foot/foot.ini"
-waybar="$XDG_CONFIG_HOME/waybar/style.css"
-
-mkdir -p "$(dirname "$dunstrc")"
-mkdir -p "$(dirname "$foot")"
-mkdir -p "$(dirname "$waybar")"
-base16 "$template_dir/foot.ini" >"$foot"
-base16 "$template_dir/dunstrc" >"$dunstrc"
-base16 "$template_dir/waybar.css" >"$waybar"
+mkdir -p "$XDG_CONFIG_HOME/dunst"
+mkdir -p "$XDG_CONFIG_HOME/foot"
+mkdir -p "$XDG_CONFIG_HOME/waybar"
+base16 "$template_dir/foot.ini" >"$XDG_CONFIG_HOME/foot/foot.ini"
+base16 "$template_dir/dunstrc" >"$XDG_CONFIG_HOME/dunst/dunstrc"
+base16 "$template_dir/waybar.css" >"$XDG_CONFIG_HOME/waybar/style.css"
+base16 "$template_dir/waybar.json" >"$XDG_CONFIG_HOME/waybar/config"

@@ -116,13 +116,12 @@ config/transmission-daemon/stats.json
 config/transmission-daemon/torrents
 config/tree-sitter/
 config/unity3d/
-config/user-dirs.dirs
 config/user-dirs.locale
 config/VirtualBox
 config/vlc/
 config/VNote/
 config/VSCodium/
-config/waybar/style.css
+config/waybar/
 config/WebCord/
 config/wireplumber/
 config/wireshark/
