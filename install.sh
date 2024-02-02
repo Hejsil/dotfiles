@@ -2,14 +2,15 @@
 
 cd "$(dirname "$0")" || exit 1
 
-sudo pacman-key --recv-key FBA220DFC880C036 --keyserver keyserver.ubuntu.com
-sudo pacman-key --lsign-key FBA220DFC880C036
-sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' \
-    'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
+sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
+sudo pacman-key --lsign-key 3056513887B78AEB
+sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
+sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
 
 install/linkup.sh
 install/system-files.sh
 install/programs.sh
-install/generate-themes.sh
+
+local/script/generate
 
 systemctl enable dbus-broker.service
