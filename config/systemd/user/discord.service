@@ -1,6 +1,6 @@
 [Service]
 Type=exec
-ExecStart=/usr/bin/vesktop
+ExecStart=/usr/bin/webcord
 [Install]
 WantedBy=user-graphical-login.target
 
