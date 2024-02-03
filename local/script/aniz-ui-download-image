@@ -1,0 +1,16 @@
+#!/bin/execlineb -S1
+importas cache XDG_CACHE_HOME
+backtick -E link {
+    pipeline { aniz database $1 }
+    cut -f7
+}
+backtick -E output_file {
+    pipeline { echo $link }
+    pipeline { xxhsum }
+    cut "-d " -f1
+}
+define output "${cache}/aniz-ui-images/${output_file}"
+foreground { mkdir -p "${cache}/aniz-ui-images" }
+foreground { cache -o $output -- curl -s -L $link -o $output }
+echo $output
+

@@ -5,7 +5,7 @@ fzf2() {
     percent=$((100 / ratio))
     fzfimg.sh -m -d '\t' --tiebreak begin --with-nth=1,2,3,4,5 \
         --preview-window="right:${percent}%,border-none" \
-        --preview 'draw_preview "$(aniz-ui download-image {6})"' \
+        --preview 'draw_preview "$(aniz-ui-download-image {6})"' \
         "$@"
 }
 
@@ -18,27 +18,14 @@ search=$2
 while true; do
     picks=$(mktemp -p /tmp aniz-ui-picks.XXXXXXXXXX)
     case $command in
-        database) aniz database | rg "$search" |
+        database) aniz database |
             fzf2 --disabled --bind 'change:reload:aniz database --search {q}' |
             cut -f5,6 >"$picks" ;;
-        list) aniz list | rg "$search" |
+        list) aniz list |
             fzf2 --tabstop 4 --disabled --bind 'change:reload:aniz list --search {q}' |
             cut -f5,6 >"$picks" ;;
-        copy)
-            aniz database | rg "$search" |
-                fzf2 --disabled --bind 'change:reload:aniz database --search {q}' |
-                clipcopy
-            exit 0
-            ;;
         update)
             aniz list | cut -f6 | xargs -d'\n' aniz update
-            exit 0
-            ;;
-        download-image)
-            link=$(aniz database "$search" | cut -f7)
-            output="$images_dir/$(echo "$link" | xxhsum | cut -d' ' -f1)"
-            cache -o "$output" -- curl -s -L "$link" -o "$output"
-            echo "$output"
             exit 0
             ;;
         *)
@@ -68,7 +55,6 @@ view
 ' | sed '/^$/d' | fzf | cut -f1)
         case $choice in
             view) cut -f2 "$picks" | xargs -d '\n' systemd-run --user open ;;
-
             torrent)
                 cut -f1 "$picks" | jq -sRr @uri |
                     sed 's#%0A#\n#g' |
