@@ -1,0 +1,4 @@
+#!/bin/execlineb -P
+pipeline { aniz list }
+pipeline { cut -f6 }
+xargs "-d\n" aniz update
