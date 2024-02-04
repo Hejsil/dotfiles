@@ -5,6 +5,7 @@ conan1
 dante
 difftastic
 direnv
+discord_arch_electron
 docker
 docker-compose
 dragon-drop
@@ -236,9 +237,7 @@ ueberzugpp
 ungoogled-chromium
 uni
 unrar
-vesktop
 w3m
-webcord
 wget
 which
 wlr-randr

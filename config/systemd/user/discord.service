@@ -1,6 +1,6 @@
 [Service]
 Type=exec
-ExecStart=/usr/bin/webcord
+ExecStart=/usr/bin/discord
 [Install]
 WantedBy=user-graphical-login.target
 
