@@ -48,8 +48,8 @@
         }
     },
     "custom/rss": {
-        "exec": "find ~/.local/share/rss/unread/ | wc -l",
+        "exec": "find ~/.local/share/rss/unread/ -type f | wc -l",
         "format": "rss{:>3}",
-        "interval": 60
+        "interval": 10
     }
 }
