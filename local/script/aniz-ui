@@ -7,30 +7,18 @@ fzf2() {
         "$@"
 }
 
-command=$1
+picks=$(mktemp -p /tmp aniz-ui-picks.XXXXXXXXXX)
+aniz "$1" |
+    fzf2 --disabled --bind "change:reload:aniz '$1' --search {q}" |
+    cut -f5,6 >"$picks"
+
+[ -s "$picks" ] || {
+    rm "$picks"
+    exit 0
+}
 
 while true; do
-    picks=$(mktemp -p /tmp aniz-ui-picks.XXXXXXXXXX)
-    case $command in
-        database) aniz database |
-            fzf2 --disabled --bind 'change:reload:aniz database --search {q}' |
-            cut -f5,6 >"$picks" ;;
-        list) aniz list |
-            fzf2 --disabled --bind 'change:reload:aniz list --search {q}' |
-            cut -f5,6 >"$picks" ;;
-        *)
-            wait
-            rm "$picks"
-            exit 0
-            ;;
-    esac
-    [ -s "$picks" ] || {
-        rm "$picks"
-        exit 0
-    }
-
-    while true; do
-        choice=$(printf '
+    choice=$(printf '
 watch-episode
 complete
 drop
@@ -42,27 +30,26 @@ remove
 watch
 torrent
 view
-' | sed '/^$/d' | fzf | cut -f1)
-        case $choice in
-            view) cut -f2 "$picks" | xargs -d '\n' systemd-run --user open ;;
-            torrent)
-                cut -f1 "$picks" | jq -sRr @uri |
-                    sed 's#%0A#\n#g' |
-                    sed 's#^#https://nyaa.si/?q=#' |
-                    xargs -d '\n' systemd-run --user open
-                ;;
-            watch)
-                cut -f1 "$picks" | jq -sRr @uri |
-                    sed 's#%0A#\n#g' |
-                    sed 's#^#https://aniwave.to/filter?keyword=#' |
-                    xargs -d '\n' systemd-run --user open
-                ;;
-            complete | drop | plan-to-watch | put-on-hold | start-watching | update | remove | watch-episode)
-                cut -f2 "$picks" | xargs -d'\n' aniz "$choice"
-                ;;
-            *) break ;;
-        esac
-    done
-
-    rm "$picks"
+' | sed '/^$/d' | fzf)
+    case $choice in
+        view) cut -f2 "$picks" | xargs '-d\n' systemd-run --user open ;;
+        torrent)
+            cut -f1 "$picks" | jq -sRr @uri |
+                sed 's#%0A#\n#g' |
+                sed 's#^#https://nyaa.si/?q=#' |
+                xargs '-d\n' systemd-run --user open
+            ;;
+        watch)
+            cut -f1 "$picks" | jq -sRr @uri |
+                sed 's#%0A#\n#g' |
+                sed 's#^#https://aniwave.to/filter?keyword=#' |
+                xargs '-d\n' systemd-run --user open
+            ;;
+        complete | drop | plan-to-watch | put-on-hold | start-watching | update | remove | watch-episode)
+            cut -f2 "$picks" | xargs '-d\n' aniz "$choice"
+            ;;
+        *) break ;;
+    esac
 done
+
+rm "$picks"
