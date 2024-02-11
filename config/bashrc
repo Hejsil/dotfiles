@@ -64,8 +64,6 @@ alias rm='rm -I'
 
 alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
 
-alias map='xargs -d"\n"'
-
 alias drag='dragon-drag-and-drop'
 alias gdb='gdb -nh -x "$XDG_CONFIG_HOME/gdb/init"'
 alias rg='rg --no-heading'
