@@ -12,5 +12,3 @@ install/system-files.sh
 install/programs.sh
 
 local/script/generate
-
-systemctl enable dbus-broker.service
