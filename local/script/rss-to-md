@@ -1,11 +1,8 @@
-#!/bin/execlineb -S1
-foreground {
-    pipeline { tail -n +2 "$1" }
-    head -n 1
-}
-foreground { echo }
-pipeline { tail -n +4 "$1" }
-pipeline { head -n 1 }
-pipeline { sd "\\\\n" "" }
-importas columns COLUMNS
-w3m -T text/html -cols $columns
+#!/bin/sh
+tail -n +2 "$1" | head -n 1
+echo
+
+tail -n +4 "$1" |
+    head -n 1 |
+    sed 's/\\n//g' |
+    exec w3m -T text/html -cols "$COLUMNS"

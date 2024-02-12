@@ -1,15 +1,15 @@
-#!/bin/execlineb -S1
+#!/bin/sh
 
-backtick -E output { mktemp -d "/tmp/rss-download-feed.XXXXXXXX" }
+output=$(mktemp -t -d 'rss-download-feed.XXXXXXXX')
 
-pipeline { cut -f1 "$1" }
-pipeline { sort -R }
-pipeline { sed "/^$/d" }
-pipeline { nl -w1 }
-pipeline { sed "s/^/-o\t/" }
-foreground { xargs curl --rate "1/s" --retry 5 --retry-delay 10 --output-dir $output }
+cut -f1 "$1" |
+    sort -R |
+    sed '/^$/d' |
+    nl -w1 |
+    sed 's/^/-o\t/' |
+    xargs curl --rate '1/s' --retry 5 --retry-delay 10 --output-dir "$output"
 
-pipeline { find $output -type f -print0 }
-foreground { xargs -0 cat }
+find "$output" -type f -print0 |
+    xargs -0 cat
 
-rm -r $output
+exec rm -r "$output"

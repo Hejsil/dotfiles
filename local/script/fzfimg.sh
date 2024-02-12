@@ -2,7 +2,7 @@
 BASH_BINARY="$(which bash)"
 PREVIEW_ID="fzfpreview"
 
-curr_preview_file=$(mktemp -p /tmp fzfimg-file.XXXXXXXXXX)
+curr_preview_file=$(mktemp -t fzfimg-file.XXXXXXXXXX)
 export curr_preview_file
 
 function draw_preview {
@@ -24,7 +24,7 @@ function draw_preview {
     }
 }
 
-ub_pid_file=$(mktemp -p /tmp fzfimg-pid.XXXXXXXXXX)
+ub_pid_file=$(mktemp -t fzfimg-pid.XXXXXXXXXX)
 ueberzug layer -o wayland --no-stdin --pid-file "$ub_pid_file" --silent --use-escape-codes </dev/null >/dev/null
 ub_pid=$(cat "$ub_pid_file")
 

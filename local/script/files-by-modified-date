@@ -1,4 +1,4 @@
-#!/bin/execlineb -S1
-pipeline { fd . $1 --exec stat --printf="%Y\t%n\n" }
-pipeline { sort -nr }
-cut -f2
+#!/bin/sh
+fd . "$1" --exec stat --printf='%Y\t%n\n' |
+    sort -nr |
+    exec cut -f2

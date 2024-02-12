@@ -1,24 +1,16 @@
-#!/bin/execlineb -S1
+#!/bin/sh
 
-define wallpapers_on_screen "/tmp/wallpapers-on-screen"
-backtick -E monitors { mktemp "/tmp/wall.monitors.XXXXXXXX" }
-backtick -E wallpapers { mktemp "/tmp/wall.wallpapers.XXXXXXXX" }
+wallpapers_on_screen="/tmp/wallpapers-on-screen"
+monitors=$(mktemp -t 'wall.monitors.XXXXXXXX')
+wallpapers=$(mktemp -t 'wall.wallpapers.XXXXXXXX')
 
-foreground { redirfd -w 1 $monitors monitors name }
-foreground {
-    pipeline { fd . $1 --type f }
-    redirfd -w 1 $wallpapers sort -R
-}
+monitors name >"$monitors"
+fd . "$1" --type f |
+    sort -R >"$wallpapers"
 
-foreground {
-    pipeline { paste $monitors $wallpapers }
-    redirfd -w 1 $wallpapers_on_screen grep -v "^\\s"
-}
+paste "$monitors" "$wallpapers" |
+    grep -v '^\s' >"$wallpapers_on_screen"
 
-foreground { rm $monitors $wallpapers }
-foreground {
-    pipeline { redirfd -r 0 $wallpapers_on_screen tr "\\t" "\\n" }
-    xargs "-d\n" -P 0 -n2 mpvpaper -p -o "--pause --force-window=no"
-}
-
-
+rm "$monitors" "$wallpapers"
+tr <"$wallpapers_on_screen" '\t' '\n' |
+    exec xargs '-d\n' -P0 -n2 mpvpaper -p -o '--pause'

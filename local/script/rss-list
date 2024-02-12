@@ -1,3 +1,2 @@
-#!/bin/execlineb -S1
-importas home HOME
-find "${home}/.local/share/rss/${1}/" -type f -exec rss-list.awk {} +
+#!/bin/sh
+exec find "${HOME}/.local/share/rss/${1}/" -type f -exec rss-list.awk {} +

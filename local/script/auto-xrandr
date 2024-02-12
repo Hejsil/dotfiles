@@ -1,9 +1,9 @@
 #!/bin/sh -e
 
-xrandr=$(mktemp -p /tmp auto-xrandr-xrandr.XXXXXXXXXX)
-output=$(mktemp -p /tmp auto-xrandr-output.XXXXXXXXXX)
-mode=$(mktemp -p /tmp auto-xrandr-mode.XXXXXXXXXX)
-rate=$(mktemp -p /tmp auto-xrandr-rate.XXXXXXXXXX)
+xrandr=$(mktemp -t auto-xrandr-xrandr.XXXXXXXXXX)
+output=$(mktemp -t auto-xrandr-output.XXXXXXXXXX)
+mode=$(mktemp -t auto-xrandr-mode.XXXXXXXXXX)
+rate=$(mktemp -t auto-xrandr-rate.XXXXXXXXXX)
 
 xrandr >"$xrandr"
 

@@ -1,2 +1,2 @@
-#!/bin/execlineb -s0
-wl-paste -n $@
+#!/bin/sh
+exec wl-paste -n "$@"

@@ -1,4 +1,0 @@
-#!/bin/execlineb -P
-pipeline { monitors model }
-forstdin -E screen background { eww close "bar-${screen}" }
-wait

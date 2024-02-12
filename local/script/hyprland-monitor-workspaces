@@ -1,4 +1,5 @@
-#!/bin/execlineb -P
-if -n { cat /tmp/hyprland-monitor-workspaces }
-pipeline { hyprland-monitor-workspaces-uncached }
-tee /tmp/hyprland-monitor-workspaces
+#!/bin/sh
+if ! cat '/tmp/hyprland-monitor-workspaces'; then
+    hyprland-monitor-workspaces-uncached |
+        tee /tmp/hyprland-monitor-workspaces
+fi

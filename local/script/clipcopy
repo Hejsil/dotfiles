@@ -1,2 +1,2 @@
-#!/bin/execlineb -s0
-wl-copy $@
+#!/bin/sh
+exec wl-copy "$@"

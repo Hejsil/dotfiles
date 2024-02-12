@@ -1,22 +1,19 @@
-#!/bin/execlineb -P
-backtick old_file_names { mktemp -p /tmp vmv-old.XXXXXXXXXX }
-backtick new_file_names { mktemp -p /tmp vmv-new.XXXXXXXXXX }
-multisubstitute {
-    importas old_file_names old_file_names
-    importas new_file_names new_file_names
-}
+#!/bin/sh
+
+old_file_names=$(mktemp -t 'vmv-old.XXXXXXXXXX')
+new_file_names=$(mktemp -t 'vmv-new.XXXXXXXXXX')
 
 # Save files comming from stdin into old and new_file_names
-foreground { redirfd -w 1 /dev/null tee $old_file_names $new_file_names }
+tee "$old_file_names" "$new_file_names" >/dev/null
 
 # Allow user to edit new_file_name
-foreground { redirfd -r 0 /dev/tty kak $new_file_names }
+kak "$new_file_names" </dev/tty
 
 # Rename file names that the user edited
-pipeline { paste $old_file_names $new_file_names }
-pipeline { nawk "$1 != $2" }
-pipeline { tr "\t" "\n" }
-foreground { xargs "-d\n" -n2 mv -n }
+paste "$old_file_names" "$new_file_names" |
+    nawk '$1 != $2' |
+    tr '\t' '\n' |
+    xargs '-d\n' -n2 mv -n
 
 # Clean up the mess
-rm $old_file_names $new_file_names
+exec rm "$old_file_names" "$new_file_names"

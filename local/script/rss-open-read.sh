@@ -1,6 +1,6 @@
 #!/bin/sh
 
-input=$(mktemp -p /tmp rss-open-read.XXXXXXXXXX)
+input=$(mktemp -t rss-open-read.XXXXXXXXXX)
 for arg in "$@"; do
     printf '%s\n' "$arg"
 done | paste - - - >"$input"

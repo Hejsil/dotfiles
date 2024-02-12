@@ -1,2 +1,2 @@
-#!/bin/execlineb -P
-fzf --preview "bat --color=always --line-range :$FZF_PREVIEW_LINES {}"
+#!/bin/sh
+exec fzf --preview 'bat --color=always --line-range :$FZF_PREVIEW_LINES {}'

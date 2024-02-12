@@ -1,7 +1,7 @@
-#!/bin/execlineb -P
-pipeline { pactl subscribe }
-pipeline { stdbuf -o L grep -F "'change' on sink " }
-pipeline { forstdin _ pulsemixer --get-volume }
-pipeline { stdbuf -o L cut -f1 "-d " }
-pipeline { stdbuf -o L uniq }
-wob
+#!/bin/sh
+pactl subscribe |
+    stdbuf -o L grep -F "'change' on sink " |
+    xargs '-d\n' -I{} pulsemixer --get-volume |
+    stdbuf -o L cut -f1 '-d ' |
+    stdbuf -o L uniq |
+    exec wob

@@ -19,7 +19,6 @@ dust
 ed
 efibootmgr
 entr
-execline
 eza
 fakeroot
 fd
@@ -56,6 +55,7 @@ moreutils
 nawk
 networkmanager
 ntp
+ouch
 pacman
 pacman-contrib
 paru

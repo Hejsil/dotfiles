@@ -1,2 +1,2 @@
-#!/bin/execlineb -P
-mangohud gamemoderun steam-runtime
+#!/bin/sh
+exec mangohud gamemoderun steam-runtime

@@ -1,5 +1,0 @@
-#!/bin/execlineb -P
-pipeline { monitors "name, .model" }
-pipeline { paste - - }
-pipeline { awk "-F\t" "{ printf \"--id\\nbar-%s\\n--arg\\nscreen_name=%s\\n--arg\\nscreen_model=%s\\n\", $1, $1, $2 }" }
-xargs "-d\n" -n6 eww open bar

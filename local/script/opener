@@ -3,25 +3,25 @@
 # $1 is the input we are trying to open
 # $2 is the mime if the input
 
-$1 ~ ".*\.dot"                   { print "open-dot"         ; next }
+$1 ~ ".*\.dot"                   { print "open-dot"                     ; next }
 
-$2 == "application/pdf"          { print "zatura"           ; next }
-$2 == "application/x-bittorrent" { print "tm-add"           ; next }
-$2 ~ "^image/"                   { print "feh"              ; next }
-$2 ~ "^video/"                   { print "mpv"              ; next }
-$2 ~ "^audio/"                   { print "mpv --vid=no"     ; next }
+$2 == "application/pdf"          { print "zatura"                       ; next }
+$2 == "application/x-bittorrent" { print "tm-add"                       ; next }
+$2 ~ "^image/"                   { print "feh"                          ; next }
+$2 ~ "^video/"                   { print "mpv --force-window=immediate" ; next }
+$2 ~ "^audio/"                   { print "mpv --vid=no"                 ; next }
 
-$1 ~ "youtube.*watch"            { print "mpv"              ; next }
-$1 ~ "youtube.*playlist"         { print "mpv"              ; next }
-$1 ~ "youtu\.be"                 { print "mpv"              ; next }
-$1 ~ "player\.odycdn\.com"       { print "mpv"              ; next }
-$1 ~ "odysee\.com"               { print "mpv"              ; next }
-$1 ~ "\.mp3$"                    { print "mpv"              ; next }
-$1 ~ "\.mp4$"                    { print "mpv"              ; next }
-$1 ~ "\.webm$"                   { print "mpv"              ; next }
-$1 ~ "^file:"                    { print "chromium"         ; next }
-$1 ~ "^http:"                    { print "chromium"         ; next }
-$1 ~ "^https:"                   { print "chromium"         ; next }
-$1 ~ "^www:"                     { print "chromium"         ; next }
-$1 ~ "^magnet:"                  { print "tm-add"           ; next }
-                                 { print ""                 ; next }
+$1 ~ "youtube.*watch"            { print "mpv --force-window=immediate" ; next }
+$1 ~ "youtube.*playlist"         { print "mpv --force-window=immediate" ; next }
+$1 ~ "youtu\.be"                 { print "mpv --force-window=immediate" ; next }
+$1 ~ "player\.odycdn\.com"       { print "mpv --force-window=immediate" ; next }
+$1 ~ "odysee\.com"               { print "mpv --force-window=immediate" ; next }
+$1 ~ "\.mp3$"                    { print "mpv --force-window=immediate" ; next }
+$1 ~ "\.mp4$"                    { print "mpv --force-window=immediate" ; next }
+$1 ~ "\.webm$"                   { print "mpv --force-window=immediate" ; next }
+$1 ~ "^file:"                    { print "chromium"                     ; next }
+$1 ~ "^http:"                    { print "chromium"                     ; next }
+$1 ~ "^https:"                   { print "chromium"                     ; next }
+$1 ~ "^www:"                     { print "chromium"                     ; next }
+$1 ~ "^magnet:"                  { print "tm-add"                       ; next }
+                                 { print ""                             ; next }

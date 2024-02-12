@@ -1,21 +1,15 @@
-#!/bin/execlineb -P
+#!/bin/sh
 
-# foreground { sudo setcap cap_sys_admin+ep "/usr/bin/gsr-kms-server" }
+# sudo setcap cap_sys_admin+ep '/usr/bin/gsr-kms-server'
 
-backtick date { date "+%y-%m-%dT%H-%M-%S" }
-backtick sink { pactl get-default-sink }
-backtick source { pactl get-default-source }
-backtick videos_dir { xdg-user-dir VIDEOS }
+date=$(date '+%y-%m-%dT%H-%M-%S')
+sink=$(pactl get-default-sink)
+src=$(pactl get-default-source)
+videos_dir=$(xdg-user-dir VIDEOS)
+container='mkv'
 
-multisubstitute {
-    importas date       date
-    importas sink       sink
-    importas source     source
-    importas videos_dir videos_dir
-    define   container  "mkv"
-}
+output="${videos_dir}/${date}.${container}"
+echo "$output"
 
-define output "${videos_dir}/${date}.${container}"
-foreground { echo "${output}" }
-gpu-screen-recorder -w DP-1 -q ultra -f 60 -c "${container}"
-    -o "${output}" -a "${sink}.monitor" -a "${source}"
+exec gpu-screen-recorder -w DP-1 -q ultra -f 60 -c "${container}" \
+    -o "${output}" -a "${sink}.monitor" -a "${src}"

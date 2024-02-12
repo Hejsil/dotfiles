@@ -1,3 +1,3 @@
-#!/bin/execlineb -P
-pipeline { fzf-ps }
-xargs "-d\n" kill --timeout 1000 TERM --timeout 1000 KILL --signal QUIT
+#!/bin/sh
+fzf-ps |
+    exec xargs '-d\n' kill --timeout 1000 TERM --timeout 1000 KILL --signal QUIT

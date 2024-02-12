@@ -1,6 +1,6 @@
-#!/bin/execlineb -P
-pipeline { tm -l }
-pipeline { fzf -m }
-pipeline { sed "s/^ *//" }
-pipeline { hck -f1 }
-tr -d '*'
+#!/bin/sh
+tm -l |
+    fzf -m |
+    sed 's/^ *//' |
+    hck -f1 |
+    exec tr -d '*'

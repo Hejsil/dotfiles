@@ -7,7 +7,7 @@ fzf2() {
         "$@"
 }
 
-picks=$(mktemp -p /tmp aniz-ui-picks.XXXXXXXXXX)
+picks=$(mktemp -t aniz-ui-picks.XXXXXXXXXX)
 aniz "$1" |
     fzf2 --disabled --bind "change:reload:aniz '$1' --search {q}" |
     cut -f5,6 >"$picks"

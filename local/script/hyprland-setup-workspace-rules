@@ -1,8 +1,8 @@
-#!/bin/execlineb -P
+#!/bin/sh
 # Setup rules to have 10 workspaces per monitor.
 # Monitor 1 will have 1-10, 2 will have 11-20 and repeat.
 # We then have other scripts that switches workspace based on the focused monitor.
 # This mimics how bspwm works.
-pipeline { hyprland-monitor-workspaces }
-pipeline { awk "{ printf \"keyword workspace %s,monitor:%s ; \", \$1, \$2 }" }
-xargs "-d\n" hyprctl --batch
+hyprland-monitor-workspaces |
+    awk '{ printf "keyword workspace %s,monitor:%s ; ", $1, $2 }' |
+    exec xargs '-d\n' hyprctl --batch

@@ -1,8 +1,0 @@
-#!/bin/execlineb -S1
-cd $1
-backtick -E temp { mktemp "/tmp/screenshot.XXXXXXXX.png" }
-backtick -E file { date "+%y-%m-%dT%H-%M-%S-%N.jxl" }
-foreground { import -window root $temp }
-foreground { clipcopy -t image/png -i $temp }
-foreground { notify-send Screenshot $file }
-cjxl $temp $file

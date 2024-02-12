@@ -1,12 +1,12 @@
-#!/bin/execlineb -P
-importas home HOME
-foreground { paru -S --noconfirm zig-dev-bin }
-background { install-zig-project "${home}/repo/forks/poop/" }
-background { install-zig-project "${home}/repo/forks/zls/" }
-background { install-zig-project "${home}/repo/own/aniz/" }
-background { install-zig-project "${home}/repo/own/cache/" }
-wait { }
-if { paru -Syu --noconfirm }
-if { paru -Sc --noconfirm }
-if { paru -c --noconfirm }
-true
+#!/bin/sh
+paru -S --noconfirm zig-dev-bin
+
+install-zig-project "$HOME/repo/forks/poop/" &
+install-zig-project "$HOME/repo/forks/zls/" &
+install-zig-project "$HOME/repo/own/aniz/" &
+install-zig-project "$HOME/repo/own/cache/" &
+wait
+
+paru -Syu --noconfirm || exit 1
+paru -Sc --noconfirm || exit 1
+paru -c --noconfirm || exit 1

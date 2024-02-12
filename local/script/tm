@@ -1,3 +1,2 @@
-#!/bin/execlineb -s0
-importas remote TRANSMISSION_REMOTE
-transmission-remote $remote $@
+#!/bin/sh
+exec transmission-remote "$TRANSMISSION_REMOTE" "$@"
