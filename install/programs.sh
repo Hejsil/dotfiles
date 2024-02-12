@@ -1,7 +1,8 @@
 #!/bin/sh -e
 
-cd "$(dirname "$0")" || exit 1
+cd "$(dirname "$0")/.." || exit 1
 
+sudo pacman -Syu
 sudo pacman -S paru --confirm --needed
 paru -S --confirm --needed - <"config/essential-programs"
 paru -S --confirm --needed - <"config/installed-programs" || true

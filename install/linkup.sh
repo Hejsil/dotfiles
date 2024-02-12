@@ -1,5 +1,7 @@
 #!/bin/sh -e
 
+cd "$(dirname "$0")/.." || exit 1
+
 link() {
     if ! [ -L "$2" ] && [ -e "$2" ]; then
         echo "Install script will remove '$2'. Are you sure?" >&2
@@ -10,7 +12,6 @@ link() {
     ln -snf "$1" "$2"
 }
 
-cd "$(dirname "$0")/.."
 link "$(pwd)/config" "$HOME/.config"
 link "$(pwd)/local" "$HOME/.local"
 link "$(pwd)/config/profile" "$HOME/.bash_profile"
