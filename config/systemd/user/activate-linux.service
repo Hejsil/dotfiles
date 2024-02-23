@@ -1,0 +1,6 @@
+[Service]
+Type=exec
+ExecStart=/usr/bin/activate-linux
+[Install]
+WantedBy=user-graphical-login.target
+
