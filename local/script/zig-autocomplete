@@ -41,10 +41,10 @@ $NF ~ /^(struct|suspend|error)$/       { printf "%s{ ¤ }", $0 ; next }
 $NF ~ /^(enum|union)(\([^)]*\))?$/     { printf "%s{ ¤ }", $0 ; next }
 $NF ~ /^union(\(enum(\([^)]*\))?\))?$/ { printf "%s{ ¤ }", $0 ; next }
 
-/(^| )fn *main $/                { printf "%s() !void {\n    ¤\n}", $0 ; next }
-/(^| )fn *format $/              { printf "%s( self: @This(), comptime fmt: []const u8, options: std.fmt.FormatOptions, writer: anytype,) @TypeOf(writer).Error!void {\n    _ = fmt; _ = options;\n    ¤\n}", $0 ; next }
-/(^| )fn *[A-Z][a-zA-Z0-9_]* $/  { printf "%s(comptime T: type) type {\n    return ¤;\n}", $0 ; next }
-/(^| )fn *[a-z_][a-zA-Z0-9_]* $/ { printf "%s( ¤ ) void {\n\n}", $0 ; next }
+/(^| )fn  *main $/                { printf "%s() !void {\n    ¤\n}", $0 ; next }
+/(^| )fn  *format $/              { printf "%s( self: @This(), comptime fmt: []const u8, options: std.fmt.FormatOptions, writer: anytype,) @TypeOf(writer).Error!void {\n    _ = fmt; _ = options;\n    ¤\n}", $0 ; next }
+/(^| )fn  *[A-Z][a-zA-Z0-9_]* $/  { printf "%s(comptime T: type) type {\n    return ¤;\n}", $0 ; next }
+/(^| )fn  *[a-z_][a-zA-Z0-9_]* $/ { printf "%s( ¤ ) void {\n\n}", $0 ; next }
 
 # fmt api autocomplete
 /log\.(emerg|alert|crit|err|warn|notice|info|debug) $/ {
