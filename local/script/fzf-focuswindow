@@ -1,0 +1,8 @@
+#!/bin/sh
+hyprctl clients -j |
+    jq -r '.[] | .title, .pid' |
+    paste - - |
+    sed '/-1$/d' |
+    fzf |
+    cut -f2 |
+    exec xargs '-d\n' -I{} hyprctl dispatch 'focuswindow pid:{}'

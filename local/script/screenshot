@@ -7,4 +7,4 @@ filename=$(date "+%y-%m-%dT%H-%M-%S-%N")
 temp="$filename.png"
 file="$filename.jxl"
 hyprshot -o /tmp -f "$temp" "$@"
-cjxl "/tmp/$temp" "$file"
+exec cjxl "/tmp/$temp" "$file"
