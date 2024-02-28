@@ -1,9 +1,7 @@
 #!/bin/sh
 
-source ~/.config/env
 source ~/.bashrc
 
 if [ -z "$DISPLAY" ] && [ "$(tty)" = /dev/tty1 ]; then
-    env | cut -d'=' -f1 | sed '/^_$/d' | xargs -d'\n' -n1 systemctl --user import-environment
     exec Hyprland >logs 2>logs
 fi
