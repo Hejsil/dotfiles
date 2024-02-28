@@ -2,4 +2,5 @@ set history filename ~/.local/share/gdb/history
 set history save on
 set pagination off
 set print pretty on
+set debuginfod enabled off
 
