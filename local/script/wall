@@ -9,8 +9,14 @@ fd . "$1" --type f |
     sort -R >"$wallpapers"
 
 paste "$monitors" "$wallpapers" |
-    grep -v '^\s' >"$wallpapers_on_screen"
+    grep -v '^\s' |
+    # Depending on the file type we pass different options to mpv
+    sed -E 's/\.(jxl|png|jpeg)$/.\1\t-o\t--quiet --pause --scale=oversample --panscan=1/' |
+    sed -E 's/\.(gif|mp4|webp)$/.\1\t-o\t--quiet --loop --scale=oversample --panscan=1/' |
+    cat >"$wallpapers_on_screen"
 
 rm "$monitors" "$wallpapers"
-tr <"$wallpapers_on_screen" '\t' '\n' |
-    exec xargs '-d\n' -P0 -n2 mpvpaper -p -o '--pause'
+
+cat "$wallpapers_on_screen" |
+    tr '\t' '\n' |
+    exec xargs '-d\n' -P0 -n4 mpvpaper -p -o '--pause --scale=oversample'
