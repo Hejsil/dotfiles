@@ -11,6 +11,7 @@ config/cef_user_data/
 config/chromium
 config/coc
 config/com.dorion.dev/
+config/com.modrinth.theseus/
 config/.conan/
 config/configstore/
 config/content_shell
@@ -103,6 +104,13 @@ config/subversion/
 config/Syncplay/
 config/syncplay.ini
 config/syncthing/
+config/systemd/user/git-maintenance@daily.timer
+config/systemd/user/git-maintenance@hourly.timer
+config/systemd/user/git-maintenance@.service
+config/systemd/user/git-maintenance@weekly.timer
+config/systemd/user/timers.target.wants/git-maintenance@daily.timer
+config/systemd/user/timers.target.wants/git-maintenance@hourly.timer
+config/systemd/user/timers.target.wants/git-maintenance@weekly.timer
 config/task/
 config/Team17 Digital Limited/
 config/teamviewer/
@@ -147,6 +155,7 @@ local/share/bash_history
 local/share/calc_history
 local/share/Celeste/
 local/share/cod/
+local/share/com.modrinth.theseus/
 local/share/Daedalic Entertainment GmbH/
 local/share/data/
 local/share/delta/
@@ -185,6 +194,7 @@ local/share/meld/
 local/share/mime/
 local/share/mimeapps.list
 local/share/mkcert/
+local/share/modrinth-app/
 local/share/multimc/
 local/share/nautilus/
 local/share/NecroDancer/
@@ -211,6 +221,7 @@ local/share/SpeedRunners/
 local/share/Steam/
 local/share/syncthing/
 local/share/synthriderz/
+local/share/systemd/
 local/share/Tabletop Simulator/
 local/share/task/
 local/share/teamviewer15/
