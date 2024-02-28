@@ -56,7 +56,7 @@ $NF ~ /^union(\(enum(\([^)]*\))?\))?$/ { printf "%s{ ¤ }", $0 ; next }
 /(^| )var  *gpa $/ {
     indent = $0
     sub("[^ ].*$", "", indent)
-    printf "%svar gpa_state = heap.GeneralPurposeAllocator(.{}){};\n%sconst gpa = gpa_state.allocator();\n%sdefer _ = gpa_state.deinit();\n\n%s¤",
+    printf "%svar gpa_state = std.heap.GeneralPurposeAllocator(.{}){};\n%sconst gpa = gpa_state.allocator();\n%sdefer _ = gpa_state.deinit();\n\n%s¤",
         indent, indent, indent, indent
     next
 }
@@ -64,7 +64,7 @@ $NF ~ /^union(\(enum(\([^)]*\))?\))?$/ { printf "%s{ ¤ }", $0 ; next }
 /(^| )var  *arena $/ {
     indent = $0
     sub("[^ ].*$", "", indent)
-    printf "%svar arena_state = heap.ArenaAllocator.init(¤);\n%sconst arena = arena_state.allocator();\n%sdefer arena_state.deinit();\n\n",
+    printf "%svar arena_state = std.heap.ArenaAllocator.init(¤);\n%sconst arena = arena_state.allocator();\n%sdefer arena_state.deinit();\n\n",
         indent, indent, indent
     next
 }
@@ -80,7 +80,7 @@ $NF ~ /^union(\(enum(\([^)]*\))?\))?$/ { printf "%s{ ¤ }", $0 ; next }
 /^[ ]*(pub [ ]*)?(const|var) [a-zA-Z][a-zA-Z0-9_]* $/ { printf "%s= ¤;", $0 ; next }
 /^[ ]*_ $/                                            { printf "%s= ¤;", $0 ; next }
 
-$NF ~ /^allocator:$/       { printf "%s mem.Allocator¤", $0 ; next }
+$NF ~ /^allocator:$/       { printf "%s std.mem.Allocator¤", $0 ; next }
 $NF ~ /^(str|string):$/    { printf "%s []const u8¤", $0 ; next }
 $NF ~ /^(reader|writer):$/ { printf "%s anytype¤", $0 ; next }
 $NF ~ /^len:$/             { printf "%s usize¤", $0 ; next }
