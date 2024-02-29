@@ -3,5 +3,5 @@
 source ~/.bashrc
 
 if [ -z "$DISPLAY" ] && [ "$(tty)" = /dev/tty1 ]; then
-    exec Hyprland >logs 2>logs
+    systemd-run --user Hyprland
 fi
