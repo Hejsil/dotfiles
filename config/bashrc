@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-source ~/.config/env
 source /usr/share/fzf/key-bindings.bash
 source <(starship init bash --print-full-init)
 eval "$(direnv hook bash)"
