@@ -1,0 +1,9 @@
+[Service]
+Type=exec
+ExecStart=%h/.local/script/replay-start
+KillSignal=SIGINT
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=user-graphical-login.target

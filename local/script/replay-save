@@ -1,0 +1,4 @@
+#!/bin/sh -e
+
+killall -SIGUSR1 gpu-screen-recorder
+exec notify-send -- "Replay saved" "$(files-by-modified-date ~/Videos/ | head -n1)"
