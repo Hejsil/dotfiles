@@ -4,6 +4,7 @@ set-option global ui_options ncurses_assistant=off ncurses_set_title=true
 
 eval %sh{kak-lsp --kakoune -s "$kak_session"}
 lsp-enable
+lsp-inlay-diagnostics-enable global
 # lsp-auto-hover-enable
 
 set-option global lsp_auto_highlight_references true
