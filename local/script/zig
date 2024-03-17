@@ -1,0 +1,27 @@
+#!/bin/sh -e
+
+download_dir="$HOME/.local/share/zig-versions"
+cache_dir="$HOME/.cache/zig-versions"
+
+mkdir -p "$download_dir" "$cache_dir"
+
+os=$(uname -s | tr '[:upper:]' '[:lower:]')
+arch=$(uname -m)
+
+master=$(zig-versions master)
+version=${ZIG_VERSION:-$master}
+
+full_name="zig-$os-$arch-$version"
+tar_file="$full_name.tar.xz"
+dir_path="$cache_dir/$full_name"
+tar_path="$download_dir/$tar_file"
+
+if ! [ -f "$tar_path" ]; then
+    curl "https://ziglang.org/builds/$tar_file" -o "$tar_path"
+fi
+
+if ! [ -d "$dir_path" ]; then
+    tar xf "$tar_path" --directory="$cache_dir"
+fi
+
+"$dir_path/zig" "$@"
