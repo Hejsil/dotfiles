@@ -1,6 +1,5 @@
 #!/bin/sh
 
-. ~/.config/env
 template_dir="$HOME/.config/template"
 
 mkdir -p "$XDG_CONFIG_HOME/dunst"
