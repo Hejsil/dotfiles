@@ -1,12 +1,12 @@
 [global]
-    geometry = "564x5-0+30"
+    offset = 0x0
     padding = 10
     horizontal_padding = 10
-    font = "JetBrains Mono 20"
+    font = "JetBrains Mono 12"
     follow = "keyboard"
     format = "<big><b>%s</b></big>\n%b"
     frame_width = 1
-    frame_color = "#{{base01-hex}}"
+    frame_color = "#{{base03-hex}}"
 
 [urgency_low]
     background = "#{{base00-hex}}"
