@@ -1,6 +1,6 @@
 [Service]
 Type=exec
-ExecStart=%h/.local/script/steam
+ExecStart=%h/.local/script/steamwrap
 [Install]
 WantedBy=user-graphical-login.target
 

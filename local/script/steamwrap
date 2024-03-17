@@ -1,0 +1,2 @@
+#!/bin/sh
+exec mangohud /usr/bin/steam -bigpicture
