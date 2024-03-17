@@ -2,5 +2,5 @@
 uni -q p all |
     fzf -m +x |
     cut "-d'" -f2 |
-    tr '-d\n' |
+    tr -d '\n' |
     exec clipcopy
