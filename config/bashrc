@@ -88,4 +88,10 @@ alias gs='git status'
 alias gsh='git stash'
 alias gsw='git switch'
 
-tldr -l | sort -R | head -n1 | xargs '-d\n' tldr
+while true; do
+    page=$(tldr -l | sort -R | head -n1)
+    if ! tldr "$page" | grep 'This command is an alias of' >/dev/null; then
+        tldr "$page"
+        break
+    fi
+done
