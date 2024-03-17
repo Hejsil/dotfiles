@@ -1,6 +1,0 @@
-[Service]
-Type=oneshot
-ExecStart=/usr/bin/systemctl --user restart dunst.service
-
-[Install]
-WantedBy=user-graphical-login.target
