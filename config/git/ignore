@@ -6,7 +6,7 @@
 *.sav
 .cache
 .vscode
-build_runner.zig
+.autosort
 compile_commands.json
 perf.data*
 tags
