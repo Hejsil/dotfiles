@@ -1,27 +1,63 @@
 #!/bin/sh -e
 
-download_dir="$HOME/.local/share/zig-versions"
-cache_dir="$HOME/.cache/zig-versions"
+cache_home=${XDG_CACHE_HOME:-~/.cache}
+state_home=${XDG_STATE_HOME-~/.local/share}
+download_dir="$state_home/zig-versions"
+cache_dir="$cache_home/zig-versions"
+git_dir="$cache_home/www_ziglang_org"
 
-mkdir -p "$download_dir" "$cache_dir"
+versions() {
+    if ! [ -d "$git_dir/.git" ]; then
+        git clone "https://github.com/ziglang/www.ziglang.org.git" "$git_dir" >/dev/null
+    fi
 
-os=$(uname -s | tr '[:upper:]' '[:lower:]')
-arch=$(uname -m)
+    cd "$git_dir"
 
-master=$(zig-versions master)
-version=${ZIG_VERSION:-$master}
+    date=$(date +%Y-%m-%d)
 
-full_name="zig-$os-$arch-$version"
-tar_file="$full_name.tar.xz"
-dir_path="$cache_dir/$full_name"
-tar_path="$download_dir/$tar_file"
+    if ! [ -f latest_pull ] || [ "$(cat latest_pull)" != "$date" ]; then
+        git pull >/dev/null
+        echo "$date" >latest_pull
+    fi
 
-if ! [ -f "$tar_path" ]; then
-    curl "https://ziglang.org/builds/$tar_file" -o "$tar_path"
-fi
+    case $1 in
+        master) jq -r '.master.version' data/releases.json ;;
+        *) git log -p data/releases.json |
+            grep '"version":' |
+            cut '-d"' -f 4 |
+            sort -uV ;;
+    esac
+}
 
-if ! [ -d "$dir_path" ]; then
-    tar xf "$tar_path" --directory="$cache_dir"
-fi
+zig() {
+    mkdir -p "$download_dir" "$cache_dir"
 
-"$dir_path/zig" "$@"
+    os=$(uname -s | tr '[:upper:]' '[:lower:]')
+    arch=$(uname -m)
+
+    master=$(versions master)
+    version=${ZIG_VERSION:-$master}
+
+    full_name="zig-$os-$arch-$version"
+    tar_file="$full_name.tar.xz"
+    dir_path="$cache_dir/$full_name"
+    tar_path="$download_dir/$tar_file"
+
+    if ! [ -f "$tar_path" ]; then
+        curl "https://ziglang.org/builds/$tar_file" -o "$tar_path"
+    fi
+
+    if ! [ -d "$dir_path" ]; then
+        tar xf "$tar_path" --directory="$cache_dir"
+        "$dir_path/zig" fmt --help >/dev/null
+    fi
+
+    "$dir_path/zig" "$@"
+}
+
+first=$1
+shift
+case $first in
+    versions) versions "$@" ;;
+    *) zig "$first" "$@" ;;
+esac
