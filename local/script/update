@@ -1,10 +1,11 @@
-#!/bin/sh
+#!/bin/sh -e
+paru -Syu --noconfirm
+paru -Sc --noconfirm
+paru -c --noconfirm
+
+zig version
 install-zig-project "$HOME/repo/forks/poop/" &
 install-zig-project "$HOME/repo/forks/zls/" &
 install-zig-project "$HOME/repo/own/aniz/" &
 install-zig-project "$HOME/repo/own/cache/" &
 wait
-
-paru -Syu --noconfirm || exit 1
-paru -Sc --noconfirm || exit 1
-paru -c --noconfirm || exit 1

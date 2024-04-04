@@ -1,4 +1,4 @@
-#!/bin/sh
-cd "$1" || exit 1
+#!/bin/sh -e
+cd "$1"
 git pull --recurse-submodules
 exec zig build -Doptimize=ReleaseSafe --prefix "$HOME/.local"
