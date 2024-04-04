@@ -1,17 +1,22 @@
 activate-linux
 aspell
+aspell-da
+aspell-en
 calc
 clang
 conan1
 dante
+debugedit
 difftastic
 direnv
 discord_arch_electron
 docker
 docker-compose
+downgrade
 dragon-drop
 exfat-utils
 ffmpeg
+firefox
 gallery-dl
 gamescope
 gcc
@@ -32,6 +37,7 @@ gst-plugins-ugly
 htop
 hyprshot
 imv
+lact
 lib32-libusb
 lib32-v4l-utils
 lib32-vkd3d
@@ -44,6 +50,7 @@ libusb-compat
 llvm
 lua-language-server
 mangohud
+modrinth-app-bin
 mpv
 mpv-sponsorblock-minimal-git
 mpvpaper
@@ -58,6 +65,7 @@ pamixer
 pandoc-cli
 pass
 pavucontrol
+perf
 perl-libwww
 perl-locale-gettext
 proton-ge-custom-bin
@@ -239,9 +247,12 @@ ueberzugpp
 ungoogled-chromium
 uni
 unrar
+unzip
+valgrind
 w3m
 wget
 which
+wine
 wlr-randr
 xdg-desktop-portal
 xdg-desktop-portal-hyprland-git
@@ -249,6 +260,7 @@ xdg-ninja-git
 xone-dkms-git
 xone-dongle-firmware
 xterm
+yarn
 youtube-dl
 yt-dlp
 zathura
