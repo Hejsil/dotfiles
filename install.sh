@@ -12,3 +12,5 @@ install/system-files.sh
 install/programs.sh
 
 local/script/generate
+
+git update-index --assume-unchanged config/hypr/monitor.conf

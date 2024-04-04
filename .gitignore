@@ -48,7 +48,6 @@ config/helix/
 config/heroic/
 config/hotspotrc
 config/htop
-config/hypr/monitor.conf
 config/inkscape
 config/.isolated-storage/
 config/isync
