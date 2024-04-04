@@ -108,9 +108,11 @@ config/systemd/user/git-maintenance@daily.timer
 config/systemd/user/git-maintenance@hourly.timer
 config/systemd/user/git-maintenance@.service
 config/systemd/user/git-maintenance@weekly.timer
+config/systemd/user/timers.target.wants
 config/systemd/user/timers.target.wants/git-maintenance@daily.timer
 config/systemd/user/timers.target.wants/git-maintenance@hourly.timer
 config/systemd/user/timers.target.wants/git-maintenance@weekly.timer
+config/systemd/user/user-graphical-login.target.wants
 config/task/
 config/Team17 Digital Limited/
 config/teamviewer/
