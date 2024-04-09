@@ -3,6 +3,7 @@ aspell
 aspell-da
 aspell-en
 calc
+chromium
 clang
 conan1
 dante
@@ -244,7 +245,6 @@ tidy
 transmission-cli
 ttf-nerd-fonts-symbols-mono
 ueberzugpp
-ungoogled-chromium
 uni
 unrar
 unzip

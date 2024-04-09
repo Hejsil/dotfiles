@@ -19,9 +19,9 @@ $1 ~ "odysee\.com"               { print "mpv --force-window=immediate" ; next }
 $1 ~ "\.mp3$"                    { print "mpv --force-window=immediate" ; next }
 $1 ~ "\.mp4$"                    { print "mpv --force-window=immediate" ; next }
 $1 ~ "\.webm$"                   { print "mpv --force-window=immediate" ; next }
-$1 ~ "^file:"                    { print "chromium"                     ; next }
-$1 ~ "^http:"                    { print "chromium"                     ; next }
-$1 ~ "^https:"                   { print "chromium"                     ; next }
-$1 ~ "^www:"                     { print "chromium"                     ; next }
+$1 ~ "^file:"                    { print "firefox"                      ; next }
+$1 ~ "^http:"                    { print "firefox"                      ; next }
+$1 ~ "^https:"                   { print "firefox"                      ; next }
+$1 ~ "^www:"                     { print "firefox"                      ; next }
 $1 ~ "^magnet:"                  { print "tm-add"                       ; next }
                                  { print ""                             ; next }
