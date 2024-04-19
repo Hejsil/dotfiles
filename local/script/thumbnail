@@ -1,0 +1,17 @@
+#!/bin/sh
+
+case $1 in
+    *.jxl | *.jpg | *.jpeg | *.png)
+        image=$(realpath "$1")
+        cache_home=${XDG_CACHE_HOME:-~/.cache}
+        thumbnail="$cache_home/thumbnail$image"
+        thumbnail_dir="$(dirname "$thumbnail")"
+
+        mkdir -p "$thumbnail_dir"
+        cache -f "$image" -o "$thumbnail" -- convert "$image" -resize '768x768>' "$thumbnail"
+        echo "$thumbnail"
+        ;;
+    *)
+        echo "$1"
+        ;;
+esac
