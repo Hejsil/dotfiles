@@ -3,7 +3,7 @@
 image=$1
 out=$2
 
-name=$(categorize-namer "fzfimg.sh" "draw_preview '$image'")
+name=$(categorize-namer "" "fzfimg.sh" "draw_preview '$image'")
 if [ -z "$name" ]; then
     exit 255
 fi

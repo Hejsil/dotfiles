@@ -1,0 +1,20 @@
+#!/bin/sh
+
+to_categorize=$(mktemp -t 'categorize-missing-bulk.XXXXXXXX')
+
+fd . "$1" |
+    rg -v '/0-n?sfw,1-[^/]*$' |
+    xargs '-d\n' -n1 convert-to-jxl 2>/dev/null |
+    fzfimg.sh -m >"$to_categorize"
+
+if [ -z "$to_categorize" ]; then
+    exit 1
+fi
+
+name=$(categorize-namer "" "fzfimg.sh" "draw_preview '$(head -n1 "$to_categorize")'")
+if [ -z "$name" ]; then
+    exit 1
+fi
+
+xargs '-d\n' -I% categorize-rename % "$1" "$name" <"$to_categorize"
+rm "$to_categorize"
