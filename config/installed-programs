@@ -5,7 +5,6 @@ aspell-en
 calc
 chromium
 clang
-conan1
 dante
 debugedit
 difftastic
@@ -45,7 +44,6 @@ lib32-vkd3d
 libdvdcss
 libnotify
 libpulse
-librealsense
 libtool
 libusb-compat
 llvm
