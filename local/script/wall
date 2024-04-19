@@ -8,15 +8,15 @@ monitors name >"$monitors"
 fd . "$1" --type f |
     sort -R >"$wallpapers"
 
+common_mpv_options='--quiet --vo=vulkan --scale=oversample --panscan=1'
 paste "$monitors" "$wallpapers" |
     grep -v '^\s' |
     # Depending on the file type we pass different options to mpv
-    sed -E 's/\.(jxl|png|jpeg)$/.\1\t-o\t--quiet --scale=oversample --panscan=1 --pause/' |
-    sed -E 's/\.(gif|mp4|webp)$/.\1\t-o\t--quiet --scale=oversample --panscan=1 --loop --aid=no/' |
+    sed -E "s/\.(jxl|png|jpeg)$/.\1\t-o\t$common_mpv_options --pause/" |
+    sed -E "s/\.(gif|mp4|webp)$/.\1\t-o\t$common_mpv_options --loop --aid=no/" |
     cat >"$wallpapers_on_screen"
 
 rm "$monitors" "$wallpapers"
 
-cat "$wallpapers_on_screen" |
-    tr '\t' '\n' |
+tr '\t' '\n' <"$wallpapers_on_screen" |
     exec xargs '-d\n' -P0 -n4 mpvpaper -p
