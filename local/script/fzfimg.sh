@@ -18,7 +18,7 @@ function draw_preview {
                 -a add -i "${PREVIEW_ID}" \
                 -x "$X" -y "$Y" \
                 --max-width "${COLUMNS}" --max-height "${LINES}" \
-                -f "${@}" >/dev/null
+                -f "$(thumbnail "${@}")" >/dev/null
             printf "%s" "$next_preview" >"$curr_preview_file"
         fi
     }
