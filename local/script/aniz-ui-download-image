@@ -1,6 +1,7 @@
 #!/bin/sh
-cache=$XDG_CACHE_HOME
-output_dir="${cache}/aniz-ui-images"
+
+cache_home=${XDG_CACHE_HOME:-~/.cache}
+output_dir="${cache_home}/aniz-ui-images"
 mkdir -p "$output_dir"
 
 link=$(aniz database "$1" | cut -f7)
