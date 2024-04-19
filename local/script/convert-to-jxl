@@ -1,9 +1,6 @@
 #!/bin/sh
 case $1 in
-    *.jxl)
-        echo "$1"
-        ;;
-    *)
+    *.jpg | *.jpeg | *.png)
         converted=$(mktemp -t 'converted.XXXXXXXX.jxl')
         output=$(echo "$1" | sed 's/\.[a-zA-Z]*$/.jxl/')
         cjxl "$1" "$converted" -q 100
@@ -12,6 +9,11 @@ case $1 in
         else
             rm "$converted"
         fi
+
+        thumbnail "$output" 2>/dev/null >/dev/null
         echo "$output"
+        ;;
+    *)
+        echo "$1"
         ;;
 esac
