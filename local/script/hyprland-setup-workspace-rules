@@ -4,5 +4,4 @@
 # We then have other scripts that switches workspace based on the focused monitor.
 # This mimics how bspwm works.
 hyprland-monitor-workspaces |
-    awk '{ printf "keyword workspace %s,monitor:%s ; ", $1, $2 }' |
-    exec xargs '-d\n' hyprctl --batch
+    exec awk '{ printf "workspace=%s,monitor:%s\n", $1, $2 }' >"$HOME/.config/hypr/workspace.conf"
