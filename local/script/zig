@@ -1,8 +1,8 @@
 #!/bin/sh -e
 
 cache_home=${XDG_CACHE_HOME:-~/.cache}
-state_home=${XDG_STATE_HOME-~/.local/share}
-download_dir="$state_home/zig-versions"
+data_home=${XDG_DATA_HOME-~/.local/share}
+download_dir="$data_home/zig-versions"
 cache_dir="$cache_home/zig-versions"
 git_dir="$cache_home/www_ziglang_org"
 
