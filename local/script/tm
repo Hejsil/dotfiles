@@ -1,2 +1,0 @@
-#!/bin/sh
-exec transmission-remote "$TRANSMISSION_REMOTE" "$@"
