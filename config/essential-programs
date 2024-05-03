@@ -6,7 +6,6 @@ archlinux-keyring
 base
 bat
 binutils
-breeze-gtk
 btop
 btrfs-progs
 caprine
@@ -51,6 +50,7 @@ m4
 make
 man-db
 man-pages
+materia-gtk-theme
 moreutils
 nawk
 networkmanager
