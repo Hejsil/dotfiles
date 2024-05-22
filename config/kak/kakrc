@@ -101,12 +101,6 @@ define-command -override autoalign -docstring '' %{
 
 
 # fzf
-define-command -override foot-terminal -params .. %{
-    nop %sh{
-        setsid footclient "$@" < /dev/null > /dev/null 2>&1 &
-    }
-}
-
 define-command open -params 1 %{
     tmux-terminal-window sh -c %sh{
         printf '%s | sed -E -e "s/^/evaluate-commands -client %s edit / ;
@@ -154,9 +148,8 @@ hook global BufWritePre .* %{
     try lint catch %{}
 }
 
-hook global WinSetOption filetype=html %{ set-option window lintcmd 'htmlhint -f unix' }
-hook global WinSetOption filetype=sh   %{ set-option window lintcmd 'shellcheck -f gcc' }
-hook global WinSetOption filetype=zig  %{ set-option window lintcmd 'zig-check' }
+hook global WinSetOption filetype=sh         %{ set-option window lintcmd 'shellcheck -f gcc' }
+hook global WinSetOption filetype=zig        %{ set-option window lintcmd 'zig-check' }
 
 hook global WinSetOption filetype=c          %{ set-option window formatcmd 'clang-format' }
 hook global WinSetOption filetype=git-commit %{ set-option window formatcmd 'pandoc --columns=72 --tab-stop 2 --from markdown_github --to markdown_github' }

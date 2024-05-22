@@ -53,15 +53,15 @@ roots = ["package.json", ".git", ".hg"]
 command = "vscode-css-languageserver"
 args = ["--stdio"]
 
-# [language_server.deno-lsp]
-# filetypes = ["javascript", "typescript"]
-# roots = ["package.json", "tsconfig.json", ".git", ".hg"]
-# command = "deno"
-# args = ["lsp"]
-# settings_section = "deno"
-# [language_server.deno-lsp.settings.deno]
-# enable = true
-# lint = true
+[language_server.deno-lsp]
+filetypes = ["javascript", "typescript"]
+roots = ["package.json", "tsconfig.json", ".git", ".hg"]
+command = "deno"
+args = ["lsp"]
+settings_section = "deno"
+[language_server.deno-lsp.settings.deno]
+enable = true
+lint = true
 
 [language_server.less-language-server]
 filetypes = ["less"]
@@ -410,13 +410,13 @@ forwardSearch.args = [
     """,
 ]
 
-[language_server.typescript-language-server]
-filetypes = ["javascript", "typescript"]
-roots = ["package.json", "tsconfig.json", "jsconfig.json", ".git", ".hg"]
-command = "typescript-language-server"
-args = ["--stdio"]
-settings_section = "_"
-[language_server.typescript-language-server.settings._]
+# [language_server.typescript-language-server]
+# filetypes = ["javascript", "typescript"]
+# roots = ["package.json", "tsconfig.json", "jsconfig.json", ".git", ".hg"]
+# command = "typescript-language-server"
+# args = ["--stdio"]
+# settings_section = "_"
+# [language_server.typescript-language-server.settings._]
 # quotePreference = "double"
 # typescript.format.semicolons = "insert"
 
