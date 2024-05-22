@@ -44,6 +44,7 @@ config/systemd/user/user-graphical-login.target.wants
 config/tm35-randomizer
 config/unity3d/
 config/user-dirs.locale
+config/vesktop/
 config/VirtualBox
 config/VSCodium/
 config/waybar/

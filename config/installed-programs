@@ -9,7 +9,6 @@ dante
 debugedit
 difftastic
 direnv
-discord_arch_electron
 docker
 docker-compose
 downgrade
@@ -99,6 +98,7 @@ qt5-webchannel
 qt5-webengine
 qt5-websockets
 qt5-x11extras
+qt6-wayland
 ripgrep
 rust
 rust-analyzer
@@ -246,13 +246,15 @@ uni
 unrar
 unzip
 valgrind
+vesktop-bin
 w3m
 wget
 which
 wine
 wlr-randr
 xdg-desktop-portal
-xdg-desktop-portal-hyprland-git
+xdg-desktop-portal-hyprland
+xdg-desktop-portal-wlr
 xdg-ninja-git
 xone-dkms-git
 xone-dongle-firmware
