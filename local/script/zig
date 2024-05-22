@@ -49,7 +49,10 @@ zig() {
 
     if ! [ -d "$dir_path" ]; then
         tar xf "$tar_path" --directory="$cache_dir"
-        "$dir_path/zig" fmt --help >/dev/null
+
+        tmp_zig_file=$(mktemp -t zig.XXXXXXXXXX.zig)
+        "$dir_path/zig" fmt "$tmp_zig_file"
+        rm "$tmp_zig_file"
     fi
 
     "$dir_path/zig" "$@"
