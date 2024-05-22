@@ -23,6 +23,7 @@ fakeroot
 fd
 file
 findutils
+firefox
 foot
 fzf
 gawk
@@ -67,6 +68,7 @@ pipewire-jack
 pipewire-pulse
 pipewire-v4l2
 reflector
+ripgrep
 rsync
 rtkit
 sad
@@ -81,6 +83,7 @@ ttf-jetbrains-mono
 ttf-sarasa-gothic
 ttf-symbola
 ttf-twemoji
+vesktop-bin
 vi
 vim
 vulkan-radeon
@@ -88,4 +91,6 @@ waybar
 wireplumber
 wl-clipboard
 wob
+xdg-desktop-portal
+xdg-desktop-portal-hyprland
 zoxide
