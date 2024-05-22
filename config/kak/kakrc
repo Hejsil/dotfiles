@@ -137,6 +137,14 @@ define-command autocomplete -params 1 -docstring "" %{
     execute-keys -save-regs '"' '<a-;><a-f>¤<a-;>;<a-;>d'
 }
 
+define-command ai -params 1 -docstring "" %{
+    execute-keys -draft "|ai-code %opt{filetype} %arg[1]<ret>"
+}
+
+define-command ai-complete -docstring "" %{
+    execute-keys -draft "|ai-code %opt{filetype} 'Complete the code'<ret>"
+}
+
 hook global -group autocomplete InsertChar '[^\w\n.]' %{
     try %{ autocomplete %opt{autocompletecmd} } catch %{}
     try %{ autocomplete %opt{autocompletecmd2} } catch %{}

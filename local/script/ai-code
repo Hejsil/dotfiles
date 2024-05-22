@@ -1,0 +1,21 @@
+#!/bin/sh
+
+stdin=$(cat -)
+lang=$1
+prompt=$2
+
+system="You are a code modifying program that takes an input and provides an output ONLY. \
+Give me only the output, without any additional labels (e.g., 'Output' or 'Result'). \
+The output should be usable as input to a compiler. \
+Avoid unnecessary chat. \
+No preamble, get straight to the point. \
+Generate a text response that is valid code for the specified language. \
+Do not change the content of the input unless specifically asked to. \
+Do not repeat back the input."
+
+printf "%s
+
+The programming language is %s. %s.
+
+%s
+" "$system" "$lang" "$prompt" "$stdin" | ollama run llama3

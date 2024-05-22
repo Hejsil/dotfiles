@@ -1,10 +1,12 @@
 activate-linux
+amdvlk
 aspell
 aspell-da
 aspell-en
 calc
 chromium
 clang
+clblast
 dante
 debugedit
 difftastic
@@ -59,6 +61,7 @@ noto-fonts-emoji
 ntfs-3g
 obsidian
 ocl-icd
+ollama-rocm
 pandoc-cli
 pass
 pavucontrol
@@ -98,6 +101,8 @@ qt5-websockets
 qt5-x11extras
 qt6-wayland
 ripgrep
+rocm-hip-sdk
+rocm-opencl-sdk
 rust
 rust-analyzer
 s3fs-fuse
