@@ -92,7 +92,10 @@ alias gsw='git switch'
 while true; do
     page=$(tldr -l | sort -R | head -n1)
     if ! tldr "$page" | grep 'This command is an alias of' >/dev/null; then
-        tldr "$page"
+        tldr "$page" --color always 2>/dev/null | head -n 12
         break
     fi
 done
+
+cache -s "$(date +%Y-%m-%d)" -- curl -s 'https://wttr.in?nFQ' 2>/dev/null |
+    tail -n 30
