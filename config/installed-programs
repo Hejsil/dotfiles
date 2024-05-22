@@ -59,7 +59,6 @@ noto-fonts-emoji
 ntfs-3g
 obsidian
 ocl-icd
-pamixer
 pandoc-cli
 pass
 pavucontrol
@@ -67,7 +66,6 @@ perf
 perl-libwww
 perl-locale-gettext
 proton-ge-custom-bin
-pulsemixer
 pyside2
 python-babel
 python-bcrypt
