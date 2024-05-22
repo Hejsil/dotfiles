@@ -1,4 +1,4 @@
 #!/bin/sh
 fd . "$HOME" --threads=1 \
-    -e jxl -e png -e jpeg -e jpg \
+    -e jxl -e png -e jpeg -e jpg -e gif \
     -x thumbnail >/dev/null

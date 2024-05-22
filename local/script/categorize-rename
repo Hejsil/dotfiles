@@ -4,6 +4,9 @@ in=$1
 out=$2
 name=$3
 ext=$(file "$in" --extension | rg -o '.*: (\w+)*' -r '$1')
+if [ -z "$ext" ]; then
+    ext=$(file "$in" --mime-type | rg -o '.*: \w+/(\w+)*' -r '$1')
+fi
 
 i=0
 file="$out/$name,$i.$ext"
