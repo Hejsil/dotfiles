@@ -30,6 +30,7 @@ config/melonDS/
 config/menus/
 config/mimeapps.list
 config/obsidian/
+config/obs-studio/
 config/pavucontrol.ini
 config/pulse
 config/QtProject.conf
