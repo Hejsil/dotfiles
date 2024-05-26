@@ -35,6 +35,7 @@ pandoc-cli
 pavucontrol
 perf
 pkgconf
+poweralertd-git
 proton-ge-custom-bin
 python-numpy
 qt5-wayland
