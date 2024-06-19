@@ -1,5 +1,4 @@
 #!/bin/sh
 fd . "$1" |
     rg -v '/0-n?sfw,1-[^/]*$' |
-    xargs '-d\n' -n1 convert-to-jxl 2>/dev/null |
     exec xargs '-d\n' -I% categorize-image % "$1"

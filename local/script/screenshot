@@ -4,7 +4,5 @@ mkdir -p "$HOME/Pictures/screenshots/"
 cd "$HOME/Pictures/screenshots/" || exit 1
 
 filename=$(date "+%y-%m-%dT%H-%M-%S-%N")
-temp="$filename.png"
-file="$filename.jxl"
-hyprshot -o /tmp -f "$temp" "$@"
-exec cjxl "/tmp/$temp" "$file"
+file="$filename.png"
+exec hyprshot -o /tmp -f "$file" "$@"
