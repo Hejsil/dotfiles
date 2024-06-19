@@ -8,7 +8,7 @@ case $1 in
         thumbnail_dir="$(dirname "$thumbnail")"
 
         mkdir -p "$thumbnail_dir"
-        cache -f "$image" -o "$thumbnail" -- convert "$image" -resize '768x768>' "$thumbnail"
+        cache -f "$image" -o "$thumbnail" -- magick "$image" -resize '768x768>' "$thumbnail"
         echo "$thumbnail"
         ;;
     *)
