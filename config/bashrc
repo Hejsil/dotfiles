@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-source /usr/share/fzf/key-bindings.bash
 source <(starship init bash --print-full-init)
+eval "$(fzf --bash)"
 eval "$(direnv hook bash)"
 eval "$(zoxide init bash)"
 
