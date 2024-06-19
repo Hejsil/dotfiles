@@ -19,4 +19,4 @@ paste "$monitors" "$wallpapers" |
 rm "$monitors" "$wallpapers"
 
 tr '\t' '\n' <"$wallpapers_on_screen" |
-    exec xargs '-d\n' -P0 -n4 mpvpaper -p
+    exec xargs '-d\n' -P0 -n4 mpvpaper
