@@ -3,8 +3,9 @@
 case $1 in
     *.jxl | *.jpg | *.jpeg | *.png | *.gif)
         image=$(realpath "$1")
+        image_path_hash=$(echo "$image" | xxhsum | cut '-d ' -f1)
         cache_home=${XDG_CACHE_HOME:-~/.cache}
-        thumbnail="$cache_home/thumbnail$image"
+        thumbnail="$cache_home/thumbnail/$image_path_hash"
         thumbnail_dir="$(dirname "$thumbnail")"
 
         mkdir -p "$thumbnail_dir"
