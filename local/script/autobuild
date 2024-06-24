@@ -1,9 +1,0 @@
-#!/bin/sh
-
-cmd=$*
-[ -z "$cmd" ] && [ -f 'Cargo.toml' ] &&
-    cmd='cargo clippy && cargo build'
-[ -z "$cmd" ] && [ -f 'build.zig' ] &&
-    cmd='zig build test install --summary all --prominent-compile-errors'
-
-fd | exec entr -crs "$cmd"
