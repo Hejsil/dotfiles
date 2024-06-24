@@ -8,12 +8,13 @@ if [ -z "$ext" ]; then
     ext=$(file "$in" --mime-type | rg -o '.*: \w+/(\w+)*' -r '$1')
 fi
 
-i=0
+i=$(fd "$name," "$out" |
+    rg -o '\,(\d+)\.[^.]*$' -r '$1' |
+    sort -n |
+    tail -n1)
+
+i=$((i + 1))
 file="$out/$name,$i.$ext"
-while [ -f "$file" ]; do
-    i=$((i + 1))
-    file="$out/$name,$i.$ext"
-done
 
 mv -i "$in" "$file"
 echo "$file"
