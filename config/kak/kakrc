@@ -1,6 +1,6 @@
 set-option global modelinefmt '%val{bufname} %val{cursor_line}:%val{cursor_char_column} {{context_info}} {{mode_info}} '
 set-option global tabstop 4
-set-option global ui_options ncurses_assistant=off ncurses_set_title=true
+set-option global ui_options terminal_assistant=none terminal_set_title=true
 
 eval %sh{kak-lsp --kakoune -s "$kak_session"}
 lsp-enable
