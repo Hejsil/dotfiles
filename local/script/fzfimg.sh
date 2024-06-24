@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-BASH_BINARY="$(which bash)"
+BASH_BINARY="$(command -v bash)"
 PREVIEW_ID="fzfpreview"
 
 curr_preview_file=$(mktemp -t fzfimg-file.XXXXXXXXXX)
