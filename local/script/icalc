@@ -1,3 +1,0 @@
-#!/bin/sh
-echo |
-    exec fzf --disabled '--preview=calc -- {q}' --preview-window=down:99%
