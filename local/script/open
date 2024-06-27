@@ -2,6 +2,11 @@
 
 opener=$(file -0 -F ' ' --mime-type -L "$@" | sed 's/\x0\s*/\t/' | opener | sort -u)
 
-[ -z "$opener" ] || [ "$(echo "$opener" | wc -l)" -ne 1 ] && exit 1
-echo $opener "$@" >>/tmp/open.log
-exec $opener "$@"
+if [ -z "$opener" ]; then
+    exit 1
+fi
+if [ "$(echo "$opener" | wc -l)" -ne 1 ]; then
+    exit 1
+fi
+
+systemd-run --user $opener "$@"
