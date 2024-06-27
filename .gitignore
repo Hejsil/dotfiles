@@ -59,10 +59,12 @@ local/share/calc_history
 local/share/Celeste/
 local/share/com.modrinth.theseus/
 local/share/Daedalic Entertainment GmbH/
+local/share/dipm
 local/share/direnv/
 local/share/flatpak/
 local/share/gdb/
 local/share/gnupg/
+local/share/gvfs-metadata
 local/share/icons/
 local/share/keyrings/
 local/share/lutris/
