@@ -1,5 +1,5 @@
 {
-    "build_runner_path": "/home/hejsil/repo/forks/zls/src/special/build_runner.zig",
+    "build_runner_path": "/home/hejsil/repo/forks/zls/src/build_runner/0.12.0.zig",
     "enable_argument_placeholders": false,
     "enable_autofix": false
 }
