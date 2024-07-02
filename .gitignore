@@ -24,6 +24,7 @@ config/git/credentials
 config/gnome-initial-setup-done
 config/GNOME-xdg-terminals.list
 config/gnupg
+config/.gsd-keyboard.settings-ported
 config/gtk-2.0
 config/gtk-3.0/
 config/htop
@@ -35,6 +36,7 @@ config/libreoffice/
 config/melonDS/
 config/menus/
 config/mimeapps.list
+config/monitors.xml
 config/obsidian/
 config/obs-studio/
 config/pavucontrol.ini
