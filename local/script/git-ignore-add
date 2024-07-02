@@ -1,4 +1,7 @@
 #!/bin/sh
 
-echo "$1" >>.gitignore
+for arg in "$@"; do
+    echo "$arg" >>.gitignore
+done
+
 sort -u .gitignore | exec sponge .gitignore
