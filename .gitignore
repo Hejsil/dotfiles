@@ -3,7 +3,38 @@ config/btop/
 config/Caprine
 config/cef_user_data/
 config/chromium
-config/Code/
+config/Code/.*
+config/Code/Cache/
+config/Code/CachedConfigurations/
+config/Code/CachedData/
+config/Code/CachedExtensionVSIXs/
+config/Code/CachedProfilesData/
+config/Code/Code Cache/
+config/Code/code.lock
+config/Code/Cookies
+config/Code/Cookies-journal
+config/Code/Crashpad/
+config/Code/databases/
+config/Code/DawnCache/
+config/Code/Dictionaries/
+config/Code/GPUCache/
+config/Code/languagepacks.json
+config/Code/Local Storage/
+config/Code/logs/
+config/Code/machineid
+config/Code/Network Persistent State
+config/Code/Preferences
+config/Code/Service Worker/
+config/Code/Session Storage/
+config/Code/Shared Dictionary/
+config/Code/SharedStorage
+config/Code/TransportSecurity
+config/Code/Trust Tokens
+config/Code/Trust Tokens-journal
+config/Code/User/globalStorage/
+config/Code/User/History/
+config/Code/User/workspaceStorage/
+config/Code/WebStorage/
 config/com.modrinth.theseus/
 config/content_shell
 config/CrossCode/
