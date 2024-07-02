@@ -1,0 +1,24 @@
+
+{
+    "python.createEnvironment.trigger": "off",
+    "editor.fontFamily": "JetBrains Mono",
+    "editor.fontLigatures": true,
+    "editor.rulers": [120],
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 250,
+    "files.trimTrailingWhitespace": true,
+    "workbench.enableExperiments": false,
+    "window.titleBarStyle": "custom",
+    "workbench.statusBar.visible": false,
+    "editor.minimap.enabled": false,
+    "terminal.integrated.scrollback": 10000,
+    "extensions.ignoreRecommendations": true,
+    "diffEditor.maxComputationTime": 0,
+    "window.menuBarVisibility": "visible",
+    "editor.renderWhitespace": "all",
+    "editor.inlayHints.enabled": "offUnlessPressed",
+    "zig.path": "/home/jich/.config/Code/User/globalStorage/ziglang.vscode-zig/zig_install/zig",
+    "zig.zls.path": "/home/jich/.config/Code/User/globalStorage/ziglang.vscode-zig/zls_install/zls",
+    "zig.initialSetupDone": true
+}
+
