@@ -5,9 +5,6 @@
     rebase = true
 [credential]
     helper = store
-[user]
-    email = git@hejsil.anonaddy.me
-    name = Jimmi Holst Christensen
 [diff]
     tool = difftastic
 [difftool]
