@@ -17,8 +17,8 @@
     "window.menuBarVisibility": "visible",
     "editor.renderWhitespace": "all",
     "editor.inlayHints.enabled": "offUnlessPressed",
-    "zig.path": "/home/jich/.config/Code/User/globalStorage/ziglang.vscode-zig/zig_install/zig",
-    "zig.zls.path": "/home/jich/.config/Code/User/globalStorage/ziglang.vscode-zig/zls_install/zls",
+    "zig.path": "~/.config/Code/User/globalStorage/ziglang.vscode-zig/zig_install/zig",
+    "zig.zls.path": "~/.config/Code/User/globalStorage/ziglang.vscode-zig/zls_install/zls",
     "zig.initialSetupDone": true
 }
 
