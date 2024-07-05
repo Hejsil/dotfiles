@@ -1,8 +1,5 @@
 #!/bin/sh
 
-mkdir -p "$HOME/Pictures/screenshots/"
-cd "$HOME/Pictures/screenshots/" || exit 1
-
 filename=$(date "+%y-%m-%dT%H-%M-%S-%N")
 file="$filename.png"
-exec hyprshot -o /tmp -f "$file" "$@"
+exec hyprshot -o "$HOME/Pictures/screenshots/" -f "$file" "$@"
