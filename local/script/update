@@ -5,7 +5,4 @@ paru -c --noconfirm
 dipm update
 
 zig version
-install-zig-project "$HOME/repo/forks/zls/" &
-install-zig-project "$HOME/repo/own/aniz/" &
-install-zig-project "$HOME/repo/own/cache/" &
 wait

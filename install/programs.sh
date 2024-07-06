@@ -18,10 +18,4 @@ curl -L https://github.com/Hejsil/dipm/releases/latest/download/dipm-x86_64-linu
 grep -v '^dipm$' .config/dipm-installed-programs |
     xargs -d'\n' dipm install
 
-mkdir -p "$HOME/repo/own"
-mkdir -p "$HOME/repo/forks"
-git clone --recursive "https://github.com/Hejsil/aniz.git" "$HOME/repo/own/aniz"
-git clone --recursive "https://github.com/Hejsil/cache.git" "$HOME/repo/own/cache"
-git clone --recursive "https://github.com/zigtools/zls.git" "$HOME/repo/forks/zls"
-
 local/script/update
