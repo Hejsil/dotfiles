@@ -40,6 +40,7 @@ alias ..='__cd_alias ..'
 alias ...='__cd_alias ../..'
 
 alias cd='__cd_alias'
+alias cdt='__cd_alias "$(mktemp -d)"'
 
 alias dipm='__dipm_alias'
 alias kak='__kak_alias'
