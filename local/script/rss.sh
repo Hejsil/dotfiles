@@ -27,3 +27,6 @@ rss-download-feed "$url_config" | sfeed | tr '\t' '\a' |
             "$timestamp" "$title" "$link" "$content" "$content_type" "$author" "$enclosure" \
             >"$unread_dir/$id"
     done
+
+# This read that are older than 10d will be deleted.
+fd . "$read_dir" --older 10d -x rm
