@@ -1,7 +1,5 @@
 #!/bin/sh -e
 
-cd "$(dirname "$0")/.." || exit 1
-
-sudo cp -ri 'config/pacman.conf' '/etc/pacman.conf'
-sudo cp -ri 'config/systemd-system/getty@tty1.service.d' '/etc/systemd/system/'
-sudo cp -ri config/sysctl.d/* '/etc/sysctl.d/'
+sudo cp -ri "$HOME/.config/pacman.conf" '/etc/pacman.conf'
+sudo cp -ri "$HOME/.config/systemd-system/getty@tty1.service.d" '/etc/systemd/system/'
+sudo cp -ri "$HOME"/config/sysctl.d/* '/etc/sysctl.d/'

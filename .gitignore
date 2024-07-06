@@ -59,6 +59,7 @@ config/.gsd-keyboard.settings-ported
 config/gtk-2.0
 config/gtk-3.0/
 config/htop
+config/hypr/monitor.conf
 config/hypr/workspace.conf
 config/ibus/
 config/.isolated-storage/
@@ -79,6 +80,7 @@ config/steamtinkerlaunch/
 config/Syncplay/
 config/syncplay.ini
 config/syncthing/
+config/systemd/user/default.target.wants/
 config/systemd/user/timers.target.wants
 config/systemd/user/user-graphical-login.target.wants
 config/teams-for-linux/

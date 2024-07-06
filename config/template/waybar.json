@@ -19,7 +19,7 @@
         "format": "Week {:%V %b %d %a %H:%M}"
     },
     "cpu": {
-        "format": "cpu{usage:3}% {icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7}{icon8}{icon9}{icon10}{icon11}{icon12}{icon13}{icon14}{icon15}",
+        "format": "cpu{usage:3}% {{waybar-cpus}}",
         "format-icons": [
             "<span color='#{{base0B-hex}}'> </span>",
             "<span color='#{{base0B-hex}}'>▁</span>",

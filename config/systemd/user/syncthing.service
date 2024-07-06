@@ -1,5 +1,0 @@
-[Service]
-Type=exec
-ExecStart=/usr/bin/syncthing -no-browser
-[Install]
-WantedBy=user-graphical-login.target

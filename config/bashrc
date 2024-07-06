@@ -23,18 +23,9 @@ __paru_alias() {
         sponge "$XDG_CONFIG_HOME/installed-programs"
 }
 
-__confirm() {
-    command=$1
-    shift
-    printf "Are you sure you want to %s these [y/N]:\n" "${command}"
-    for arg in "$@"; do
-        printf "%s\n" "$arg"
-    done
-
-    read -r answer
-    if [ "$answer" = "y" ]; then
-        $command "$@"
-    fi
+__dipm_alias() {
+    dipm "$@" || return 1
+    dipm installed | cut -f1 >"$XDG_CONFIG_HOME/dipm-installed-programs"
 }
 
 __kak_alias() {
@@ -50,6 +41,7 @@ alias ...='__cd_alias ../..'
 
 alias cd='__cd_alias'
 
+alias dipm='__dipm_alias'
 alias kak='__kak_alias'
 alias paru='__paru_alias'
 
@@ -82,8 +74,8 @@ alias gpf='git push --force-with-lease'
 alias gpl='git pull --prune'
 alias grbc='git rebase --continue'
 alias grb='git rebase'
-alias grs='__confirm "git restore"'
-alias grss='__confirm "git restore --staged"'
+alias grs='ask git restore'
+alias grss='ask git restore --staged'
 alias grsp='git restore --patch'
 alias gs='git status'
 alias gsh='git stash'

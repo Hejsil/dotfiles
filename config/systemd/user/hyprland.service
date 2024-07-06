@@ -1,0 +1,9 @@
+[Unit]
+BindsTo=graphical-session.target
+
+[Service]
+Type=notify
+ExecStart=/usr/bin/Hyprland
+
+[Install]
+WantedBy=default.target

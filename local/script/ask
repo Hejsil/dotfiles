@@ -1,0 +1,9 @@
+#!/bin/sh
+
+echo "$@"
+printf "Do you want to run the above command [y/N]: "
+
+answer=$(head -n1 </dev/tty)
+if [ "$answer" = 'y' ]; then
+    "$@"
+fi
