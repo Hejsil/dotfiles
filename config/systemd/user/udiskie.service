@@ -1,0 +1,6 @@
+[Service]
+Type=exec
+ExecStart=/usr/bin/udiskie
+[Install]
+WantedBy=user-graphical-login.target
+
