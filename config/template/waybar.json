@@ -48,7 +48,7 @@
         }
     },
     "custom/rss": {
-        "exec": "find ~/.local/share/rss/unread/ -type f | wc -l",
+        "exec": "find ~/.local/share/rss/unread/ -type f -printf . | wc -c",
         "format": "rss{:>3}",
         "interval": 10
     }
