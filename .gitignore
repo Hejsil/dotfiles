@@ -1,4 +1,5 @@
 config/autostart/
+config/blender-benchmark-launcher/
 config/btop/
 config/Caprine
 config/cef_user_data/
@@ -99,6 +100,7 @@ config/yarn/
 config/yuzu/
 local/bin/
 local/lib/
+local/share/aniz/.stfolder/
 local/share/applications/
 local/share/bash_history
 local/share/calc_history
