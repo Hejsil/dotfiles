@@ -20,6 +20,8 @@ systemctl enable bar --user
 systemctl enable foot --user
 systemctl enable hyprland --user
 systemctl enable syncthing --user
+systemctl enable udiskie --user
 
 systemctl enable haveged
 systemctl enable sshd
+systemctl enable udisks2
