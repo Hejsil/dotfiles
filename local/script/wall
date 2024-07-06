@@ -12,7 +12,7 @@ common_mpv_options='--quiet --vo=vulkan --scale=oversample --panscan=1'
 paste "$monitors" "$wallpapers" |
     grep -v '^\s' |
     # Depending on the file type we pass different options to mpv
-    sed -E "s/\.(jxl|png|jpeg)$/.\1\t-o\t$common_mpv_options --pause/" |
+    sed -E "s/\.(jxl|png|jpg|jpeg)$/.\1\t-o\t$common_mpv_options --pause/" |
     sed -E "s/\.(gif|mp4|webp)$/.\1\t-o\t$common_mpv_options --loop --aid=no/" |
     cat >"$wallpapers_on_screen"
 
