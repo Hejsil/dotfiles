@@ -1,4 +1,0 @@
-#!/bin/sh
-find "${HOME}/.local/share/rss/unread/" -type f |
-    wc -l |
-    exec awk '{ printf "rss%3d\n", $1 }'
