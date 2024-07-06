@@ -1,0 +1,15 @@
+#!/bin/sh
+
+for file in "$@"; do
+    file=$(realpath "$file")
+    case $(file --mime-type -b "$file") in
+        image/png)
+            cache -f "$file" --ignore-stdout --ignore-stderr -- \
+                oxipng -o max -s "$file"
+            ;;
+        image/jpeg)
+            cache -f "$file" --ignore-stdout --ignore-stderr -- \
+                jpegoptim "-w$(nproc)" "$file"
+            ;;
+    esac
+done
