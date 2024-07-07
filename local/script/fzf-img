@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+mpv_ipc=$(mktemp -t fzf-img.XXXXXXXXXX)
+mpv --no-terminal --force-window --idle --pause \
+    --wayland-app-id=nofocus \
+    --focus-on=never \
+    --input-ipc-server="$mpv_ipc" &
+mpv_pid=$!
+
+sleep 0.1 # Wait for mpv to start
+
+function draw {
+    mpv-ipc-command loadfile "$1" | socat - "$mpv_ipc"
+}
+
+export -f draw
+export mpv_ipc=$mpv_ipc
+
+fzf --preview "draw {}" --preview-window="right:0" "$@"
+
+kill "$mpv_pid"

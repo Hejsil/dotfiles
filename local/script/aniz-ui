@@ -1,9 +1,8 @@
 #!/bin/sh
 
 fzf2() {
-    fzfimg.sh -m -d '\t' --tiebreak begin --with-nth=1,2,3,4,5 \
-        --preview-window="right:20,border-none" \
-        --preview 'draw_preview "$(aniz-ui-download-image {6})"' \
+    fzf-img -m -d '\t' --tiebreak begin --with-nth=1,2,3,4,5 \
+        --preview 'draw "$(aniz-ui-download-image {6})"' \
         "$@"
 }
 

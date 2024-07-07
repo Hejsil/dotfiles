@@ -15,6 +15,7 @@ gimp
 gst-plugin-pipewire
 hyprshot
 imv
+jo
 jpegoptim
 lib32-giflib
 lib32-libxslt
@@ -44,6 +45,7 @@ raylib
 rocm-hip-sdk
 rocm-opencl-sdk
 sfeed
+socat
 steam
 syncplay
 thunderbird
@@ -52,7 +54,6 @@ tree
 ttf-nerd-fonts-symbols-mono
 udiskie
 udisks2
-ueberzugpp
 vkd3d
 vulkan-tools
 w3m

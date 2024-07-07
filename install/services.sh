@@ -10,7 +10,6 @@
 ~/.local/script/ask systemctl enable volume-bar --user
 ~/.local/script/ask systemctl enable wallpaper --user
 
-~/.local/script/ask systemctl enable generate-thumbnails.timer --user
 ~/.local/script/ask systemctl enable sync-aniz.timer --user
 ~/.local/script/ask systemctl enable sync-rss.timer --user
 

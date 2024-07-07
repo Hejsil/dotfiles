@@ -1,0 +1,3 @@
+#!/bin/sh
+
+jo "command=$(jo -a "$@")"
