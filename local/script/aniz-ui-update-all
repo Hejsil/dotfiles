@@ -1,4 +1,4 @@
 #!/bin/sh
 aniz list |
     cut -f6 |
-    exec xargs '-d\n' aniz update
+    exec xargs '-d\n' aniz list update

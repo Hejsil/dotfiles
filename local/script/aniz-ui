@@ -46,7 +46,7 @@ view
                 xargs '-d\n' systemd-run --user open
             ;;
         complete | drop | plan-to-watch | put-on-hold | start-watching | update | remove | watch-episode)
-            cut -f2 "$picks" | xargs '-d\n' aniz "$choice"
+            cut -f2 "$picks" | xargs '-d\n' aniz list "$choice"
             ;;
         *) break ;;
     esac
