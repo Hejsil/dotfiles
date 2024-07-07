@@ -1,0 +1,4 @@
+[Service]
+ExecStart=%h/.local/bin/aniz database download
+
+
