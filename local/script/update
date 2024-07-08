@@ -1,8 +1,9 @@
 #!/bin/sh -e
+dipm update
+
 paru -Syu --noconfirm
 paru -Sc --noconfirm
 paru -c --noconfirm
-dipm update
 
 zig version
 wait
