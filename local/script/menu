@@ -42,8 +42,7 @@ main() {
 }
 
 anime() {
-    cd "$HOME/torrents"
-    cd "/media/stue/torrents"
+    cd "$HOME/Downloads/anime"
     run_file_menu \
         'fd . --maxdepth 1 --strip-cwd-prefix' \
         'mpv --fs'
