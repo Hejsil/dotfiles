@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 mpv_ipc=$(mktemp -t fzf-img.XXXXXXXXXX)
-mpv --no-terminal --force-window --idle --pause \
+mpv --no-terminal --force-window --idle --loop \
+    --video-unscaled=downscale-big \
     --wayland-app-id=nofocus \
     --focus-on=never \
     --input-ipc-server="$mpv_ipc" &
