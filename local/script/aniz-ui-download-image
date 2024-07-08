@@ -10,8 +10,11 @@ output_file="$(echo "$link" | xxhsum | cut '-d ' -f1)$ext"
 output="${output_dir}/${output_file}"
 
 if [ ! -f "$output" ]; then
-    curl -s -L "$link" -o "$output"
-    waifu2x-ncnn-vulkan -s2 -n1 -i "$output" -o "$output"
+    tmp=$(mktemp -t "aniz-image.XXXXXXXX$ext")
+    curl -s -L "$link" -o "$tmp"
+
+    waifu2x-ncnn-vulkan -s2 -n1 -i "$tmp" -o "$tmp"
+    mv "$tmp" "$output"
 fi
 
 exec echo "$output"
