@@ -83,10 +83,9 @@ alias gs='git status'
 alias gsh='git stash'
 alias gsw='git switch'
 
-while true; do
-    page=$(tealdeer -l | sort -R | head -n1)
+tealdeer -l | sort -R | while read -r page; do
     if ! tealdeer "$page" | grep 'This command is an alias of' >/dev/null; then
-        tealdeer "$page" --color always 2>/dev/null | head -n 12
+        tealdeer "$page"
         break
     fi
 done
