@@ -25,7 +25,7 @@ __paru_alias() {
 
 __dipm_alias() {
     dipm "$@" || return 1
-    dipm installed | sort | cut -f1 >"$XDG_CONFIG_HOME/dipm-installed-programs"
+    dipm list installed | sort | cut -f1 >"$XDG_CONFIG_HOME/dipm-installed-programs"
 }
 
 __kak_alias() {
