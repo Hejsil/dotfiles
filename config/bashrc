@@ -89,6 +89,3 @@ tealdeer -l | sort -R | while read -r page; do
         break
     fi
 done
-
-cache -s "$(date +%Y-%m-%d)" -- curl -s 'https://wttr.in?nFQ' 2>/dev/null |
-    tail -n 30
