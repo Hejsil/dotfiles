@@ -24,7 +24,7 @@
 /^.*\\\\/ { printf "%s¤", $0; next }
 
 $NF ~ /^(if|while|switch)$/ { printf "%s(¤) {}", $0 ; next }
-$NF == "test"               { printf "%s\"¤\" {}", $0 ; next }
+$NF == "test"               { printf "%s { ¤ }", $0 ; next }
 $NF == "catcherr"           { sub($NF "[ ]*$", "catch");  printf "%s |err| ¤", $0 ; next }
 $NF == "switcherr"          { sub($NF "[ ]*$", "switch"); printf "%s (err) {\n    error.¤ => {},\n}", $0 ; next }
 $NF == "ifexpr"             { sub($NF "[ ]*$", "if");     printf "%s (¤) 0 else 0", $0 ; next }
@@ -53,6 +53,7 @@ $NF ~ /^union(\(enum(\([^)]*\))?\))?$/ { printf "%s{ ¤ }", $0 ; next }
 /\.print $/     { printf "%s(\"¤\", .{  })", $0 ; next }
 /fmt\.format $/ { printf "%s(¤, \"\", .{  })", $0 ; next }
 
+
 /(^| )var  *gpa $/ {
     indent = $0
     sub("[^ ].*$", "", indent)
@@ -76,6 +77,11 @@ $NF ~ /^union(\(enum(\([^)]*\))?\))?$/ { printf "%s{ ¤ }", $0 ; next }
         indent, indent
     next
 }
+
+/(^| )const  *cwd $/ { printf "%s= std.fs.cwd();¤", $0 ; next }
+/(^| )const  *stdout $/ { printf "%s= std.io.getStdOut();¤", $0 ; next }
+/(^| )const  *stderr $/ { printf "%s= std.io.getStdErr();¤", $0 ; next }
+/(^| )const  *stdin $/ { printf "%s= std.io.getStdIn();¤", $0 ; next }
 
 /^[ ]*(pub [ ]*)?(const|var) [a-zA-Z][a-zA-Z0-9_]* $/ { printf "%s= ¤;", $0 ; next }
 /^[ ]*_ $/                                            { printf "%s= ¤;", $0 ; next }
