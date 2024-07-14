@@ -5,7 +5,7 @@ picker=${2:-fzf}
 preview=$3
 
 pick() {
-    "$picker" --preview-window="right:75%,border-none" --preview "$preview" "$@"
+    "$picker" --preview "$preview" "$@"
 }
 
 done_it="<done>"
