@@ -18,8 +18,4 @@ file="$out/$name,$i.$ext"
 
 mv -i "$in" "$file"
 
-case $ext in
-    png) systemd-run --user oxipng -o max --strip safe "$(realpath "$file")" ;;
-esac
-
 echo "$file"
