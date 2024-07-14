@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+mpv_ipc=$1
+shift
+
+function draw {
+    mpv-ipc-command loadfile "$1" | socat - "$mpv_ipc"
+}
+
+export -f draw
+export mpv_ipc=$mpv_ipc
+
+fzf --preview "draw {}" --preview-window="right:0" "$@"

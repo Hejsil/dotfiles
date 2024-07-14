@@ -10,13 +10,6 @@ mpv_pid=$!
 
 sleep 0.1 # Wait for mpv to start
 
-function draw {
-    mpv-ipc-command loadfile "$1" | socat - "$mpv_ipc"
-}
-
-export -f draw
-export mpv_ipc=$mpv_ipc
-
-fzf --preview "draw {}" --preview-window="right:0" "$@"
+fzf-img-no-mpv "$mpv_ipc" "$@"
 
 kill "$mpv_pid"
