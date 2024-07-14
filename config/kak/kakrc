@@ -152,7 +152,9 @@ hook global -group autocomplete InsertChar '[^\w\n.]' %{
 
 hook global BufWritePre .* %{
     try autoalign catch %{}
-    try format catch %{}
+    try format catch %{
+        try lsp-formatting-sync catch %{}
+    }
     try lint catch %{}
 }
 
@@ -170,7 +172,9 @@ hook global WinSetOption filetype=python     %{ set-option window formatcmd 'bla
 hook global WinSetOption filetype=rust       %{ set-option window formatcmd 'rustfmt --edition 2018' }
 hook global WinSetOption filetype=sh         %{ set-option window formatcmd "shfmt -i %opt{tabstop} -s -ci" }
 hook global WinSetOption filetype=xml        %{ set-option window formatcmd 'xmllint --format -' }
-hook global WinSetOption filetype=zig        %{ set-option window formatcmd 'zig-fmt' }
+
+hook global WinSetOption filetype=kak        %{ set-option window formatcmd 'cat' }
+hook global WinSetOption filetype=ini        %{ set-option window formatcmd 'cat' }
 
 hook global WinSetOption filetype=html %{ set-option window autocompletecmd 'html-autocomplete' }
 hook global WinSetOption filetype=rust %{ set-option window autocompletecmd 'rust-autocomplete' }
