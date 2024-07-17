@@ -1,0 +1,17 @@
+#!/bin/sh
+
+curl 'https://hoyo-codes.seriaati.xyz/codes?game=nap' |
+    jq -r '.codes[].code' |
+    while read -r code; do
+        timestamp="1721149808"
+        title="$code - Zenless Zone Zero Code"
+        link="https://zenless.hoyoverse.com/redemption&code=$code"
+        content=""
+        content_type=""
+        id="$code"
+        author="Zenless Zone Zero"
+        enclosure=""
+        printf '%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n' \
+            "$timestamp" "$title" "$link" "$content" "$content_type" "$id" "$author" \
+            "$enclosure"
+    done

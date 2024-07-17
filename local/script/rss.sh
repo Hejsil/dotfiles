@@ -11,7 +11,11 @@ mkdir -p "$read_dir" "$unread_dir" "$config_dir"
 touch -a "$url_config"
 
 IFS=$(printf '\a')
-rss-download-feed "$url_config" | sfeed | tr '\t' '\a' |
+
+{
+    zzz-codes-to-sfeed
+    rss-download-feed "$url_config" | sfeed
+} | tr '\t' '\a' |
     while read -r timestamp title link content content_type id author enclosure; do
         id=$(printf '%s-%s-%s' "$id" "$link" "$enclosure" | xxhsum | cut -d' ' -f1)
         [ -e "$unread_dir/$id" ] && {
@@ -28,5 +32,5 @@ rss-download-feed "$url_config" | sfeed | tr '\t' '\a' |
             >"$unread_dir/$id"
     done
 
-# This read that are older than 10d will be deleted.
+# Older than 10d posts will be deleted
 fd . "$read_dir" --older 10d -x rm
