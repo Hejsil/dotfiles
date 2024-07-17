@@ -1,6 +1,6 @@
 #!/bin/sh
 config=$XDG_CONFIG_HOME
-paru -Q "$1" || exit 1
+yay -Q "$1" || exit 1
 
 sed -i "/^${1}$/d" "${config}/installed-programs"
 printf "%s\n" "$1" >>"${config}/essential-programs"

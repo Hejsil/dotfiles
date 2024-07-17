@@ -1,4 +1,4 @@
 #!/bin/sh
-paru -Qetq |
-    fzf -m --preview 'paru -Qi {}' |
-    exec xargs '-d\n' paru -Rsu --noconfirm
+yay -Qetq |
+    fzf -m --preview 'yay -Qi {}' |
+    exec xargs '-d\n' yay -Rsu --noconfirm

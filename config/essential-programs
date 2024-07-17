@@ -47,7 +47,6 @@ networkmanager
 ntp
 pacman
 pacman-contrib
-paru
 pipewire
 pipewire-alsa
 pipewire-jack
@@ -75,3 +74,4 @@ wl-clipboard
 wob
 xdg-desktop-portal
 xdg-desktop-portal-hyprland
+yay

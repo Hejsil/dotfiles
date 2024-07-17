@@ -10,9 +10,9 @@ __cd_alias() {
     timeout -k 0 0.1s eza
 }
 
-__paru_alias() {
-    paru "$@" || return 1
-    paru -Qqe >"$XDG_CONFIG_HOME/installed-programs"
+__yay_alias() {
+    yay "$@" || return 1
+    yay -Qqe >"$XDG_CONFIG_HOME/installed-programs"
     rg -xF -f \
         "$XDG_CONFIG_HOME/essential-programs" \
         "$XDG_CONFIG_HOME/installed-programs" |
@@ -44,7 +44,7 @@ alias cdt='__cd_alias "$(mktemp -d)"'
 
 alias dipm='__dipm_alias'
 alias kak='__kak_alias'
-alias paru='__paru_alias'
+alias yay='__yay_alias'
 
 alias df='df -h'
 alias ll='eza -al'

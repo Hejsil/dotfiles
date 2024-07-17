@@ -6,9 +6,21 @@ sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.ta
 sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
 
 sudo pacman -Syu
-sudo pacman -S paru --confirm --needed
-paru -S --noconfirm --asexplicit - <"$HOME/.config/essential-programs"
-paru -S --noconfirm --asexplicit - <"$HOME/.config/installed-programs" || true
+
+(
+    # Install yay
+    mkdir -p "$HOME/repo/forks"
+    cd "$HOME/repo/forks"
+
+    sudo pacman -S --needed git base-devel
+    git clone https://aur.archlinux.org/yay-bin.git
+    cd yay-bin
+
+    makepkg -si
+)
+
+yay -S --noconfirm --asexplicit - <"$HOME/.config/essential-programs"
+yay -S --noconfirm --asexplicit - <"$HOME/.config/installed-programs" || true
 
 curl -L https://github.com/Hejsil/dipm/releases/latest/download/dipm-x86_64-linux-musl >/tmp/dipm &&
     chmod +x /tmp/dipm &&
