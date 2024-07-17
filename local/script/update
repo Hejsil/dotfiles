@@ -3,7 +3,7 @@ dipm update
 
 yay -Syu --noconfirm
 yay -Sc --noconfirm
-yay -c --noconfirm
+yay -Yc --noconfirm
 
 zig version
 wait
