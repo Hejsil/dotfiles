@@ -27,7 +27,9 @@ button {
 #pulseaudio,
 #workspaces,
 #disk,
-#custom-rss {
+#custom-rss,
+#custom-weather,
+#wireplumber {
     border-top: 2px solid #{{base05-hex}};
     padding: 0 10px;
     color: #{{base05-hex}};

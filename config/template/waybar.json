@@ -9,14 +9,24 @@
         "disk"
     ],
     "modules-right": [
+        "wireplumber",
+        "custom/weather",
         "custom/rss",
         "clock"
     ],
-    "disk": {
-        "format": "disk{percentage_used:3}%"
+    "hyprland/workspaces": {
+        "format": "{icon}{id}</span>",
+        "format-icons": {
+            "active": "<span weight='heavy'>→",
+            "empty": "<span> ",
+            "default": "<span>*"
+        },
+        "persistent-workspaces": {
+            "*": 10
+        }
     },
-    "clock": {
-        "format": "Week {:%V %b %d %a %H:%M}"
+    "memory": {
+        "format": "mem{:3}%"
     },
     "cpu": {
         "format": "cpu{usage:3}% {{waybar-cpus}}",
@@ -33,23 +43,32 @@
         ],
         "interval": 1
     },
-    "memory": {
-        "format": "mem{:3}%"
+    "disk": {
+        "format": "disk{percentage_used:3}%"
     },
-    "hyprland/workspaces": {
-        "format": "{icon}{id}</span>",
-        "format-icons": {
-            "active": "<span weight='heavy'>→",
-            "empty": "<span> ",
-            "default": "<span>*"
-        },
-        "persistent-workspaces": {
-            "*": 10
-        }
+    "wireplumber": {
+        "format": "{icon}{volume:3}%",
+        "format-muted": "🔇",
+        "max-volume": 100,
+        "format-icons": [
+            "🔈",
+            "🔉",
+            "🔊"
+        ]
+    },
+    "custom/weather": {
+        "format": "{}°",
+        "tooltip": true,
+        "interval": 3600,
+        "exec": "wttrbar",
+        "return-type": "json"
     },
     "custom/rss": {
         "exec": "find ~/.local/share/rss/unread/ -type f -printf . | wc -c",
-        "format": "rss{:>3}",
+        "format": "📰{:>3}",
         "interval": 10
+    },
+    "clock": {
+        "format": "Week {:%V %b %d %a %H:%M}"
     }
 }
