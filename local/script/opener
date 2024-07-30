@@ -3,7 +3,7 @@
 # $1 is the input we are trying to open
 # $2 is the mime if the input
 
-$2 == "application/pdf"    { print "zathura"                      ; next }
+$2 == "application/pdf"    { print "firefox"                      ; next }
 $2 ~ "^image/"             { print "imv"                          ; next }
 $2 ~ "^video/"             { print "mpv"                          ; next }
 $2 ~ "^audio/"             { print "mpv"                          ; next }
