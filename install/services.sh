@@ -24,5 +24,6 @@ systemctl enable syncthing --user
 systemctl enable udiskie --user
 
 systemctl enable haveged
+systemctl enable reflector
 systemctl enable sshd
 systemctl enable udisks2
