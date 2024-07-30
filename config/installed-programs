@@ -2,6 +2,7 @@ activate-linux
 amdvlk
 base-devel
 blender-benchmark
+btop
 chromium
 clblast
 dante
