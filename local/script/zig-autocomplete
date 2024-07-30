@@ -83,6 +83,9 @@ $NF ~ /^union(\(enum(\([^)]*\))?\))?$/ { printf "%s{ ¤ }", $0 ; next }
 /(^| )const  *stderr $/ { printf "%s= std.io.getStdErr();¤", $0 ; next }
 /(^| )const  *stdin $/ { printf "%s= std.io.getStdIn();¤", $0 ; next }
 
+/(^| )var  *buffered_writer $/ { printf "%s= std.io.bufferedWriter(¤);", $0 ; next }
+/(^| )var  *buffered_reader $/ { printf "%s= std.io.bufferedReader(¤);", $0 ; next }
+
 /^[ ]*(pub [ ]*)?(const|var) [a-zA-Z][a-zA-Z0-9_]* $/ { printf "%s= ¤;", $0 ; next }
 /^[ ]*_ $/                                            { printf "%s= ¤;", $0 ; next }
 
