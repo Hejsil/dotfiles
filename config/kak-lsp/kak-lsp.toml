@@ -184,15 +184,21 @@ settings_section = "_"
 # See https://haskell-language-server.readthedocs.io/en/latest/configuration.html
 # haskell.formattingProvider = "ormolu"
 
-[language_server.html-language-server]
-filetypes = ["html"]
-roots = ["package.json"]
-command = "vscode-html-languageserver"
-args = ["--stdio"]
-settings_section = "_"
-[language_server.html-language-server.settings._]
+# [language_server.html-language-server]
+# filetypes = ["html"]
+# roots = ["package.json"]
+# command = "vscode-html-languageserver"
+# args = ["--stdio"]
+# settings_section = "_"
+# [language_server.html-language-server.settings._]
 # quotePreference = "single"
 # javascript.format.semicolons = "insert"
+
+[language_server.html]
+filetypes = ["html"]
+roots = [".git"]
+command = "superhtml"
+args = ["lsp"]
 
 [language_server.intelephense]
 filetypes = ["php"]

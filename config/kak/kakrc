@@ -162,7 +162,6 @@ hook global WinSetOption filetype=sh         %{ set-option window lintcmd 'shell
 
 hook global WinSetOption filetype=c          %{ set-option window formatcmd 'clang-format' }
 hook global WinSetOption filetype=git-commit %{ set-option window formatcmd 'pandoc --columns=72 --tab-stop 2 --from gfm --to gfm' }
-hook global WinSetOption filetype=html       %{ set-option window formatcmd "tidy --tidy-mark no -wrap 100 -i --indent-spaces %opt{tabstop}" }
 hook global WinSetOption filetype=javascript %{ set-option window formatcmd "deno fmt --options-indent-width %opt{tabstop} -" }
 hook global WinSetOption filetype=java       %{ set-option window formatcmd 'astyle --max-code-length=100 --mode=java' }
 hook global WinSetOption filetype=json       %{ set-option window formatcmd "jq --indent %opt{tabstop} ." }
@@ -173,8 +172,10 @@ hook global WinSetOption filetype=rust       %{ set-option window formatcmd 'rus
 hook global WinSetOption filetype=sh         %{ set-option window formatcmd "shfmt -i %opt{tabstop} -s -ci" }
 hook global WinSetOption filetype=xml        %{ set-option window formatcmd 'xmllint --format -' }
 
-hook global WinSetOption filetype=kak        %{ set-option window formatcmd 'cat' }
+hook global WinSetOption filetype=css        %{ set-option window formatcmd 'cat' }
 hook global WinSetOption filetype=ini        %{ set-option window formatcmd 'cat' }
+hook global WinSetOption filetype=kak        %{ set-option window formatcmd 'cat' }
+hook global WinSetOption filetype=toml       %{ set-option window formatcmd 'cat' }
 
 hook global WinSetOption filetype=html %{ set-option window autocompletecmd 'html-autocomplete' }
 hook global WinSetOption filetype=rust %{ set-option window autocompletecmd 'rust-autocomplete' }

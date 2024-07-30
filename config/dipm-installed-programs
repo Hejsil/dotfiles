@@ -21,6 +21,7 @@ sd
 shellcheck
 shfmt
 starship
+superhtml
 tealdeer
 uni
 watchexec
