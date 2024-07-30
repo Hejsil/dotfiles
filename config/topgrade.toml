@@ -1,0 +1,12 @@
+[misc]
+assume_yes = true
+no_retry = true
+cleanup = true
+skip_notify = true
+no_self_update = true
+disable = ["lensfun", "github_cli_extensions", "kakoune", "config_update", "containers"]
+
+
+[commands]
+"Dipm" = "dipm update"
+"Zig" = "zig fmt /dev/null"

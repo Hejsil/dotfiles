@@ -1,9 +1,0 @@
-#!/bin/sh -e
-dipm update
-
-yay -Syu --noconfirm
-yay -Sc --noconfirm
-yay -Yc --noconfirm
-
-zig version
-wait
