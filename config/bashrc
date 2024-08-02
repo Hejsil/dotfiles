@@ -47,7 +47,7 @@ alias kak='__kak_alias'
 alias yay='__yay_alias'
 
 alias df='df -h'
-alias ll='eza -al'
+alias ll='eza --all --long --group --header'
 alias ls='eza -a'
 
 alias cp='cp -i'
