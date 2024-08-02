@@ -11,9 +11,14 @@ set-option global lsp_auto_highlight_references true
 set-option global lsp_auto_show_code_actions true
 set-option global lsp_hover_anchor true
 
+# Relative line numbers
 add-highlighter global/ number-lines     -relative -separator ' '
+# Tab shown as ▸
 add-highlighter global/ show-whitespaces -tab '▸' -tabpad ' ' -lf ' ' -spc ' '
+# Trailing whitespace
 add-highlighter global/ regex            '\h+$' 0:default,red
+# Ruler at line 100
+add-highlighter global/ column 100       default,bright-black
 
 map global user c ':comment-line<ret>'      -docstring 'Comment out line'
 map global user y '<a-|>clipcopy<ret>'      -docstring 'Copy to system clipboard'
