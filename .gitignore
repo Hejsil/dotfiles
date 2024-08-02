@@ -1,5 +1,6 @@
 config/akregatorrc
 config/autostart/
+config/baloofileinformationrc
 config/baloofilerc
 config/blender-benchmark-launcher/
 config/bluedevilglobalrc
@@ -83,6 +84,7 @@ config/kateschemarc
 config/katevirc
 config/kcminputrc
 config/kconf_updaterc
+config/KDE/
 config/kdeconnect/
 config/kded5rc
 config/kdedefaults/
@@ -189,6 +191,7 @@ local/share/nautilus/
 local/share/pass/
 local/share/pipx/
 local/share/pki/
+local/share/plasma_icons/
 local/share/PolyMC/
 local/share/RecentDocuments/
 local/share/recently-used.xbel
