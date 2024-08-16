@@ -3,7 +3,9 @@
 cache_home=${XDG_CACHE_HOME:-~/.cache}
 data_home=${XDG_DATA_HOME-~/.local/share}
 download_dir="$data_home/zig-versions"
+download_tmp_dir="$download_dir/tmp"
 cache_dir="$cache_home/zig-versions"
+cache_tmp_dir="$cache_dir/tmp"
 git_dir="$cache_home/www_ziglang_org"
 
 versions() {
@@ -73,7 +75,8 @@ init() {
 }
 
 zig() {
-    mkdir -p "$download_dir" "$cache_dir"
+    rm -r "$download_tmp_dir" "$cache_tmp_dir" >/dev/null 2>/dev/null || true
+    mkdir -p "$download_tmp_dir" "$cache_tmp_dir"
 
     os=$(uname -s | tr '[:upper:]' '[:lower:]')
     arch=$(uname -m)
@@ -84,14 +87,19 @@ zig() {
     full_name="zig-$os-$arch-$version"
     tar_file="$full_name.tar.xz"
     dir_path="$cache_dir/$full_name"
+    dir_tmp_path="$cache_tmp_dir/$full_name"
     tar_path="$download_dir/$tar_file"
+    tar_tmp_path="$download_tmp_dir/$tar_file"
 
     if ! [ -f "$tar_path" ]; then
-        curl "https://ziglang.org/builds/$tar_file" -o "$tar_path"
+        tmp=$(mktemp "$tar_tmp_path.XXXXXXXXXX")
+        curl "https://ziglang.org/builds/$tar_file" -o "$tmp"
+        mv "$tmp" "$tar_path"
     fi
 
     if ! [ -d "$dir_path" ]; then
-        tar xf "$tar_path" --directory="$cache_dir"
+        tar xf "$tar_path" --directory="$cache_tmp_dir"
+        mv "$dir_tmp_path" "$dir_path"
 
         tmp_zig_file=$(mktemp -t zig.XXXXXXXXXX.zig)
         "$dir_path/zig" fmt "$tmp_zig_file"
