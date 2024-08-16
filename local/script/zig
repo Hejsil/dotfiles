@@ -29,6 +29,49 @@ versions() {
     esac
 }
 
+init() {
+    name=$(basename "$(pwd)")
+
+    git init
+    git-ignore-add .zig-cache
+    git-ignore-add zig-out
+
+    mkdir -p src
+    {
+        echo 'pub fn main() !void {}'
+        echo
+        echo 'pub const std = @import("std");'
+    } >src/main.zig
+
+    {
+        echo
+        echo 'pub fn build(b: *std.Build) void {'
+        echo '    const target = b.standardTargetOptions(.{});'
+        echo '    const optimize = b.standardOptimizeOption(.{});'
+        echo
+        echo '    const exe = b.addExecutable(.{'
+        echo "        .name = \"$name\","
+        echo '        .root_source_file = b.path("src/main.zig"),'
+        echo '        .target = target,'
+        echo '        .optimize = optimize,'
+        echo '    });'
+        echo '    b.installArtifact(exe);'
+        echo
+        echo '    const exe_unit_tests = b.addTest(.{'
+        echo '        .root_source_file = b.path("src/main.zig"),'
+        echo '        .target = target,'
+        echo '        .optimize = optimize,'
+        echo '    });'
+        echo '    const run_exe_unit_tests = b.addRunArtifact(exe_unit_tests);'
+        echo
+        echo '    const test_step = b.step("test", "Run unit tests");'
+        echo '    test_step.dependOn(&run_exe_unit_tests.step);'
+        echo '}'
+        echo
+        echo 'const std = @import("std");'
+    } >build.zig
+}
+
 zig() {
     mkdir -p "$download_dir" "$cache_dir"
 
@@ -62,5 +105,6 @@ first=$1
 shift
 case $first in
     versions) versions "$@" ;;
+    init) init "$@" ;;
     *) zig "$first" "$@" ;;
 esac
