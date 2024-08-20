@@ -1,4 +1,7 @@
 [Service]
 ExecStart=/usr/bin/foot --server
+Restart=on-failure
+RestartSec=5s
+
 [Install]
 WantedBy=user-graphical-login.target
