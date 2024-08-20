@@ -107,11 +107,13 @@ config/libaccounts-glib/
 config/libreoffice/
 config/melonDS/
 config/menus/
+config/Microsoft/
 config/mimeapps.list
 config/monitors.xml
 config/obsidian/
 config/obs-studio/
 config/okularpartrc
+config/OpenRGB/
 config/pavucontrol.ini
 config/plasma-localerc
 config/plasma-org.kde.plasma.desktop-appletsrc
@@ -122,6 +124,7 @@ config/plasmawindowedrc
 config/pulse
 config/QtProject.conf
 config/rss/
+config/rustdesk/
 config/session/
 config/SideQuest/
 config/spectaclerc
@@ -133,6 +136,7 @@ config/systemd/user/default.target.wants/
 config/systemd/user/timers.target.wants
 config/systemd/user/user-graphical-login.target.wants
 config/systemsettingsrc
+config/teams/
 config/teams-for-linux/
 config/tiling-assistant/
 config/tm35-randomizer
@@ -173,6 +177,7 @@ local/share/gnupg/
 local/share/gvfs-metadata/
 local/share/icc/
 local/share/icons/
+local/share/image-tagger/
 local/share/kactivitymanagerd/
 local/share/kate/
 local/share/kded5/
@@ -199,6 +204,7 @@ local/share/rss/
 local/share/sddm/
 local/share/sddm.log
 local/share/session_migration-ubuntu
+local/share/sleepy-launcher/
 local/share/SpeedRunners/
 local/share/Steam/
 local/share/steam_registry_oobe.vdf
@@ -208,6 +214,7 @@ local/share/systemd/
 local/share/Tabletop Simulator/
 local/share/task/
 local/share/Terraria/
+local/share/topgrade_keep
 local/share/Trash
 local/share/user-places.xbel
 local/share/user-places.xbel.bak
