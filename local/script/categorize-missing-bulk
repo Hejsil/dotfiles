@@ -10,10 +10,17 @@ if [ -z "$to_categorize" ]; then
     exit 1
 fi
 
-name=$(categorize-namer "" "fzf-img" "draw '$(head -n1 "$to_categorize")'")
+fzf-img-mpv-window "$(head -n1 "$to_categorize")" &
+mpv_pid=$!
+sleep 0.1
+
+name=$(categorize-namer "" "fzf-img-no-mpv" "")
 if [ -z "$name" ]; then
+    kill "$mpv_pid"
     exit 1
 fi
 
 xargs '-d\n' -I% categorize-rename % "$1" "$name" <"$to_categorize"
 rm "$to_categorize"
+
+kill "$mpv_pid"
