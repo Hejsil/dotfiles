@@ -4,9 +4,13 @@ image=$1
 out=$2
 
 escaped_image=$(echo "$image" | sed "s/'/'\"'\"'/g")
-name=$(categorize-namer "" "fzf-img" "draw '$escaped_image'")
+fzf-img-mpv-window "$escaped_image" &
+mpv_pid=$!
+
+name=$(categorize-namer "" "fzf-img-no-mpv" "")
 if [ -z "$name" ]; then
     exit 255
 fi
 
 categorize-rename "$image" "$out" "$name"
+kill "$mpv_pid"
