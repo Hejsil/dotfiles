@@ -16,7 +16,7 @@ tags_file="$XDG_CONFIG_HOME/categories"
 mkdir -p "$(dirname "$tags_file")"
 tags=$(cat "$tags_file")
 
-picked_tags_file=$(mktemp -t categorize-pick-tags.XXXXXXXXXX)
+picked_tags_file=$(mktemp -t tag-pick-tags.XXXXXXXXXX)
 echo "$picked_tags" >"$picked_tags_file"
 
 while true; do

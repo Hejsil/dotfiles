@@ -7,10 +7,10 @@ fzf-img-mpv-window "$image" &
 mpv_pid=$!
 sleep 0.1
 
-name=$(categorize-namer "" "fzf-img-no-mpv" "")
+name=$(tag-namer "" "fzf-img-no-mpv" "")
 if [ -z "$name" ]; then
     exit 255
 fi
 
-categorize-rename "$image" "$out" "$name"
+tag-rename "$image" "$out" "$name"
 kill "$mpv_pid"

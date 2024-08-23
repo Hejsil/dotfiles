@@ -4,7 +4,7 @@ picked_tags=$1
 picker=${2:-fzf}
 preview=$3
 
-picked_tags=$(categorize-pick-tags "$picked_tags" "$picker" "$preview")
+picked_tags=$(tag-pick-tags "$picked_tags" "$picker" "$preview")
 if [ -z "$picked_tags" ]; then
     exit 1
 fi
