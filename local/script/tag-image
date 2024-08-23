@@ -9,6 +9,7 @@ sleep 0.1
 
 name=$(tag-namer "" "fzf-img-no-mpv" "")
 if [ -z "$name" ]; then
+    kill "$mpv_pid"
     exit 255
 fi
 

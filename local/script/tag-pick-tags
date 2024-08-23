@@ -12,7 +12,7 @@ done_it="<done>"
 new_tag="<new tag>"
 exit_it="<exit>"
 
-tags_file="$XDG_CONFIG_HOME/categories"
+tags_file="$XDG_CONFIG_HOME/tag/tags"
 mkdir -p "$(dirname "$tags_file")"
 tags=$(cat "$tags_file")
 
