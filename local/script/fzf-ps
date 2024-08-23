@@ -1,4 +1,5 @@
 #!/bin/sh
 ps ax |
     fzf -m |
-    exec hck -f2
+    rg -o '^ *\d+' |
+    exec tr -d ' '
