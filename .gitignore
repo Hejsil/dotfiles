@@ -136,6 +136,7 @@ config/systemd/user/default.target.wants/
 config/systemd/user/timers.target.wants
 config/systemd/user/user-graphical-login.target.wants
 config/systemsettingsrc
+config/tag/
 config/teams/
 config/teams-for-linux/
 config/tiling-assistant/
