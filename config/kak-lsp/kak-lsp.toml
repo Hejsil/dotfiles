@@ -293,21 +293,11 @@ roots = ["spago.dhall", "spago.yaml", "package.json", ".git", ".hg"]
 command = "purescript-language-server"
 args = ["--stdio"]
 
-[language_server.pylsp]
+[language_server.pyright-langserver]
+command = "pyright-langserver"
 filetypes = ["python"]
-roots = ["requirements.txt", "setup.py", ".git", ".hg"]
-command = "pylsp"
-settings_section = "_"
-[language_server.pylsp.settings._]
-# See https://github.com/python-lsp/python-lsp-server#configuration
-# pylsp.configurationSources = ["flake8"]
-pylsp.plugins.jedi_completion.include_params = true
-
-# [language_server.pyright]
-# filetypes = ["python"]
-# roots = ["requirements.txt", "setup.py", "pyrightconfig.json", ".git", ".hg"]
-# command = "pyright-langserver"
-# args = ["--stdio"]
+roots = ["requirements.txt", "setup.py", "pyproject.toml", "pyrightconfig.json", ".git", ".hg"]
+args = ["--stdio"]
 
 [language_server.r-language-server]
 filetypes = ["r"]
