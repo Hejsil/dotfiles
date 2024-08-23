@@ -1,6 +1,0 @@
-#!/bin/sh
-tm -l |
-    fzf -m |
-    sed 's/^ *//' |
-    hck -f1 |
-    exec tr -d '*'
