@@ -9,7 +9,6 @@
         "disk"
     ],
     "modules-right": [
-        "wireplumber",
         "custom/weather",
         "custom/rss",
         "clock"
@@ -45,16 +44,6 @@
     },
     "disk": {
         "format": "disk{percentage_used:3}%"
-    },
-    "wireplumber": {
-        "format": "{icon}{volume:3}%",
-        "format-muted": "🔇",
-        "max-volume": 100,
-        "format-icons": [
-            "🔈",
-            "🔉",
-            "🔊"
-        ]
     },
     "custom/weather": {
         "format": "{}°",
