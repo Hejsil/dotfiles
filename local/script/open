@@ -9,4 +9,4 @@ if [ "$(echo "$opener" | wc -l)" -ne 1 ]; then
     exit 1
 fi
 
-systemd-run --user $opener "$@"
+systemd-run -d --user $opener "$@"
