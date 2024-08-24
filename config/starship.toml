@@ -66,16 +66,13 @@ vagrant.disabled = true
 vcsh.disabled = true
 vlang.disabled = true
 zig.disabled = true
+cmd_duration.disabled = true
 
 [character]
 error_symbol = '[\$](bold red)'
 format = '$symbol '
 success_symbol = '[\$](bold green)'
 vicmd_symbol = '[\$](bold green)'
-
-[cmd_duration]
-min_time = 0
-show_milliseconds = true
 
 [directory]
 read_only_style = 'bold red'
