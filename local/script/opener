@@ -5,23 +5,23 @@
 
 BEGIN{FS="\t"}
 
-$2 == "application/pdf"    { print "firefox"                      ; next }
-$2 ~ "^image/"             { print "mpv --pause"                  ; next }
-$2 ~ "^video/"             { print "mpv"                          ; next }
-$2 ~ "^audio/"             { print "mpv"                          ; next }
-$2 ~ "^text/"              { print "footclient -e kak"            ; next }
+$2 == "application/pdf"    { print "browser"                 ; next }
+$2 ~ "^image/"             { print "mpv --pause"             ; next }
+$2 ~ "^video/"             { print "mpv"                     ; next }
+$2 ~ "^audio/"             { print "mpv"                     ; next }
+$2 ~ "^text/"              { print "footclient -e kak"       ; next }
 
-$1 ~ ".*\.dot$"            { print "open-dot"                     ; next }
-$1 ~ "youtube.*watch"      { print "mpv --force-window=immediate" ; next }
-$1 ~ "youtube.*playlist"   { print "mpv --force-window=immediate" ; next }
-$1 ~ "youtu\.be"           { print "mpv --force-window=immediate" ; next }
-$1 ~ "player\.odycdn\.com" { print "mpv --force-window=immediate" ; next }
-$1 ~ "odysee\.com"         { print "mpv --force-window=immediate" ; next }
-$1 ~ "\.mp3$"              { print "mpv --force-window=immediate" ; next }
-$1 ~ "\.mp4$"              { print "mpv --force-window=immediate" ; next }
-$1 ~ "\.webm$"             { print "mpv --force-window=immediate" ; next }
-$1 ~ "^file:"              { print "firefox"                      ; next }
-$1 ~ "^http:"              { print "firefox"                      ; next }
-$1 ~ "^https:"             { print "firefox"                      ; next }
-$1 ~ "^www:"               { print "firefox"                      ; next }
-                           { print "notify-send Cannot-Open"      ; next }
+$1 ~ ".*\.dot$"            { print "open-dot"                ; next }
+$1 ~ "youtube.*watch"      { print "browser-video"           ; next }
+$1 ~ "youtube.*playlist"   { print "browser-video"           ; next }
+$1 ~ "youtu\.be"           { print "browser-video"           ; next }
+$1 ~ "player\.odycdn\.com" { print "browser-video"           ; next }
+$1 ~ "odysee\.com"         { print "browser-video"           ; next }
+$1 ~ "\.mp3$"              { print "browser-video"           ; next }
+$1 ~ "\.mp4$"              { print "browser-video"           ; next }
+$1 ~ "\.webm$"             { print "browser-video"           ; next }
+$1 ~ "^file:"              { print "browser"                 ; next }
+$1 ~ "^http:"              { print "browser"                 ; next }
+$1 ~ "^https:"             { print "browser"                 ; next }
+$1 ~ "^www:"               { print "browser"                 ; next }
+                           { print "notify-send Cannot-Open" ; next }
