@@ -56,7 +56,7 @@ alias rm='rm -I'
 
 alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
 
-alias drag='dragon-drag-and-drop'
+alias drag='dragon-drop'
 alias rg='rg --no-heading'
 
 alias ga='git add'
