@@ -9,6 +9,7 @@ $2 == "application/pdf"    { print "firefox"                      ; next }
 $2 ~ "^image/"             { print "mpv --pause"                  ; next }
 $2 ~ "^video/"             { print "mpv"                          ; next }
 $2 ~ "^audio/"             { print "mpv"                          ; next }
+$2 ~ "^text/"              { print "footclient -e kak"            ; next }
 
 $1 ~ ".*\.dot$"            { print "open-dot"                     ; next }
 $1 ~ "youtube.*watch"      { print "mpv --force-window=immediate" ; next }
