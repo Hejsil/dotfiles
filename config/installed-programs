@@ -20,6 +20,11 @@ imv
 jo
 jpegoptim
 lib32-giflib
+lib32-gnutls
+lib32-gtk3
+lib32-libpulse
+lib32-libxcomposite
+lib32-libxinerama
 lib32-libxslt
 lib32-ocl-icd
 lib32-v4l-utils
