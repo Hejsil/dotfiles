@@ -1,3 +1,0 @@
-#!/bin/sh
-
-rss-add "https://nyaa.si/?page=rss&q=$1"
