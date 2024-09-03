@@ -4,15 +4,17 @@
 eval "$(grep '^COLOR' "$HOME"/.config/environment.d/* |
     sed 's/^/export /')"
 
-template_dir="$HOME/.config/template"
+config_home="${XDG_CONFIG_HOME:-$HOME/.config}"
 
-mkdir -p "$XDG_CONFIG_HOME/dunst"
-mkdir -p "$XDG_CONFIG_HOME/foot"
-mkdir -p "$XDG_CONFIG_HOME/waybar"
-base16 "$template_dir/foot.ini" >"$XDG_CONFIG_HOME/foot/foot.ini"
-base16 "$template_dir/dunstrc" >"$XDG_CONFIG_HOME/dunst/dunstrc"
-base16 "$template_dir/waybar.css" >"$XDG_CONFIG_HOME/waybar/style.css"
-base16 "$template_dir/waybar.json" >"$XDG_CONFIG_HOME/waybar/config"
+template_dir="$config_home/template"
+
+mkdir -p "$config_home/dunst"
+mkdir -p "$config_home/foot"
+mkdir -p "$config_home/waybar"
+base16 "$template_dir/foot.ini" >"$config_home/foot/foot.ini"
+base16 "$template_dir/dunstrc" >"$config_home/dunst/dunstrc"
+base16 "$template_dir/waybar.css" >"$config_home/waybar/style.css"
+base16 "$template_dir/waybar.json" >"$config_home/waybar/config"
 
 waybar_cpus=$(lscpu |
     grep -F 'On-line CPU(s) list:' |
@@ -22,4 +24,4 @@ waybar_cpus=$(lscpu |
     sed -e 's/^/{icon/' -e 's/$/}/' |
     tr -d '\n')
 
-sed -i "s/{{waybar-cpus}}/$waybar_cpus/g" "$XDG_CONFIG_HOME/waybar/config"
+sed -i "s/{{waybar-cpus}}/$waybar_cpus/g" "$config_home/waybar/config"

@@ -1,9 +1,10 @@
 #!/bin/sh
-config=$XDG_CONFIG_HOME
+
+config_home="${XDG_CONFIG_HOME:-$HOME/.config}"
 yay -Q "$1" || exit 1
 
-sed -i "/^${1}$/d" "${config}/installed-programs"
-printf "%s\n" "$1" >>"${config}/essential-programs"
+sed -i "/^${1}$/d" "$config_home/installed-programs"
+printf "%s\n" "$1" >>"$config_home/essential-programs"
 
-sort -u "${config}/essential-programs" |
-    exec sponge "${config}/essential-programs"
+sort -u "$config_home/essential-programs" |
+    exec sponge "$config_home/essential-programs"

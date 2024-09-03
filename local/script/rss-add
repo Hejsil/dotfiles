@@ -1,4 +1,11 @@
 #!/bin/sh
 
-echo "$1" >>"$HOME/.config/rss/urls"
-sort -u "$HOME/.config/rss/urls" | exec sponge "$HOME/.config/rss/urls"
+config_home="${XDG_CONFIG_HOME:-$HOME/.config}"
+config_dir="$config_home/rss"
+urls_file="$config_dir/urls"
+
+for entry in "$@"; do
+    echo "$entry"
+done >>"$urls_file"
+
+sort -u "$urls_file" | exec sponge "$urls_file"

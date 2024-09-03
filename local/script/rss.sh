@@ -1,20 +1,23 @@
 #!/bin/sh
 
-# cache dirs
-cache_dir="$XDG_DATA_HOME/rss"
-config_dir="$XDG_CONFIG_HOME/rss"
-unread_dir="$cache_dir/unread"
-read_dir="$cache_dir/read"
-url_config="$config_dir/urls"
+config_home="${XDG_CONFIG_HOME:-$HOME/.config}"
+data_home="${XDG_DATA_HOME:-$HOME/.local/share}"
+
+data_dir="$data_home/rss"
+config_dir="$config_home/rss"
+unread_dir="$data_dir/unread"
+read_dir="$data_dir/read"
+
+urls_file="$config_dir/urls"
 
 mkdir -p "$read_dir" "$unread_dir" "$config_dir"
-touch -a "$url_config"
+touch -a "$urls_file"
 
 IFS=$(printf '\t')
 
 {
     zzz-codes-to-sfeed
-    rss-download-feed "$url_config" | sfeed
+    rss-download-feed "$urls_file" | sfeed
 } |
     while read -r timestamp title link content content_type id author enclosure; do
         id=$(printf '%s-%s-%s' "$id" "$link" "$enclosure" | xxhsum | cut -d' ' -f1)

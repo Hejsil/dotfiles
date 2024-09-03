@@ -12,8 +12,13 @@ done_it="<done>"
 new_tag="<new tag>"
 exit_it="<exit>"
 
-tags_file="$XDG_CONFIG_HOME/tag/tags"
-mkdir -p "$(dirname "$tags_file")"
+config_home="${XDG_CONFIG_HOME:-$HOME/.config}"
+
+tags_dir="$config_home/tag"
+tags_file="$tags_dir/tags"
+
+mkdir -p "$tags_dir"
+touch "$tags_file"
 tags=$(cat "$tags_file")
 
 picked_tags_file=$(mktemp -t tag-pick-tags.XXXXXXXXXX)
