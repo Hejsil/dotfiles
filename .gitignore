@@ -144,6 +144,7 @@ config/tm35-randomizer
 config/Trolltech.conf
 config/ubuntu-xdg-terminals.list
 config/unity3d/
+config/Upscayl/
 config/user-dirs.locale
 config/vesktop/
 config/VirtualBox
@@ -193,6 +194,7 @@ local/share/mime/
 local/share/mimeapps.list
 local/share/mkcert/
 local/share/modrinth-app/
+local/share/multimc/
 local/share/nautilus/
 local/share/pass/
 local/share/pipx/
