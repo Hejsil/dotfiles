@@ -10,12 +10,12 @@ url_config="$config_dir/urls"
 mkdir -p "$read_dir" "$unread_dir" "$config_dir"
 touch -a "$url_config"
 
-IFS=$(printf '\a')
+IFS=$(printf '\t')
 
 {
     zzz-codes-to-sfeed
     rss-download-feed "$url_config" | sfeed
-} | tr '\t' '\a' |
+} |
     while read -r timestamp title link content content_type id author enclosure; do
         id=$(printf '%s-%s-%s' "$id" "$link" "$enclosure" | xxhsum | cut -d' ' -f1)
         [ -e "$unread_dir/$id" ] && {
