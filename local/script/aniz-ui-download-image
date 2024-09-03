@@ -5,15 +5,16 @@ output_dir="${cache_home}/aniz-ui-images"
 mkdir -p "$output_dir"
 
 link=$(aniz database "$1" | cut -f7)
-ext=$(echo "$link" | grep -oE '\.\w+$')
-output_file="$(echo "$link" | xxhsum | cut '-d ' -f1)$ext"
+ext=$(echo "$link" | grep -oE '\.\w+$' | cut -d. -f2)
+output_file="$(echo "$link" | xxhsum | cut '-d ' -f1).$ext"
 output="${output_dir}/${output_file}"
 
 if [ ! -f "$output" ]; then
-    tmp=$(mktemp -t "aniz-image.XXXXXXXX$ext")
+    tmp=$(mktemp -t "aniz-image.XXXXXXXX.$ext")
     curl -s -L "$link" -o "$tmp"
 
-    waifu2x-ncnn-vulkan -s2 -n1 -i "$tmp" -o "$tmp"
+    /opt/upscayl/bin/upscayl-bin -n realesrgan-x4plus-anime -m /opt/upscayl/models \
+        -i "$tmp" -o "$tmp" -f "$ext" -s2
     mv "$tmp" "$output"
 fi
 
