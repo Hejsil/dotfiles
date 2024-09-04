@@ -14,4 +14,6 @@ done >>"$to_remove"
 } | sort -u | sponge "$urls_old_file"
 grep -vFf "$to_remove" "$urls_file" | sponge "$urls_file"
 
+git -C "$(dirname "$urls_file")" commit -a -m "Remove"
+
 rm "$to_remove"
