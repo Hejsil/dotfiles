@@ -1,5 +1,4 @@
 [core]
-    excludesfile = /home/hejsil/.config/git/ignore
     editor = kak
 [pull]
     rebase = true
