@@ -186,55 +186,6 @@ hook global WinSetOption filetype=html %{ set-option window autocompletecmd 'htm
 hook global WinSetOption filetype=rust %{ set-option window autocompletecmd 'rust-autocomplete' }
 hook global WinSetOption filetype=zig  %{ set-option window autocompletecmd 'zig-autocomplete' }
 
-# Colors
 
-# For Code
-face global keyword blue+b
-face global attribute blue+b
-face global type cyan+b
-face global value cyan+b
-face global string green+b
-face global function yellow+b
-face global operator white+b
-face global variable white
-face global meta cyan+b
-face global module yellow+b
-face global builtin yellow+b
-face global comment bright-black+i
-face global documentation comment
-face global InlayHint bright-black+i
-
-# For markup
-face global title blue
-face global header cyan
-face global mono green
-face global block magenta
-face global link cyan
-face global bullet cyan
-face global list yellow
-
-# builtin faces
-face global Default default,default
-face global PrimarySelection white,blue+fg
-face global SecondarySelection black,blue+fg
-face global PrimaryCursor black,white+fg
-face global SecondaryCursor black,white+fg
-face global PrimaryCursorEol black,cyan+fg
-face global SecondaryCursorEol black,cyan+fg
-face global LineNumbers default,default
-face global LineNumberCursor default,default+r
-face global MenuForeground white,bright-black
-face global MenuBackground white,black
-face global MenuInfo cyan
-face global Information black,yellow
-face global Error black,red
-face global StatusLine cyan,default
-face global StatusLineMode yellow,default
-face global StatusLineInfo blue,default
-face global StatusLineValue green,default
-face global StatusCursor black,cyan
-face global Prompt yellow,default
-face global MatchingChar default,default+bi
-face global Whitespace default,default+f
-face global BufferPadding blue,default
+colorscheme colors
 
