@@ -4,12 +4,13 @@ urls_file="$(rss-dirs urls)"
 read_dir="$(rss-dirs read)"
 unread_dir="$(rss-dirs unread)"
 
-IFS=$(printf '\t')
+# We need to use another IFS because using \t does not allow empty fields
+IFS=$(printf '\a')
 
 {
     zzz-codes-to-sfeed
     rss-download-feed "$urls_file" | sfeed
-} |
+} | tr '\t' '\a' |
     while read -r timestamp title link content content_type id author enclosure; do
         id=$(printf '%s-%s-%s' "$id" "$link" "$enclosure" | xxhsum | cut -d' ' -f1)
         [ -e "$unread_dir/$id" ] && {
