@@ -7,7 +7,7 @@ cut -f1 "$1" |
     sed '/^$/d' |
     nl -w1 |
     sed 's/^/-o\t/' |
-    xargs curl --rate '1/s' --retry 5 --retry-delay 10 --output-dir "$output"
+    xargs curl -v --rate '10/h' --retry 5 --retry-delay 10 --output-dir "$output"
 
 find "$output" -type f -print0 |
     xargs -0 cat
