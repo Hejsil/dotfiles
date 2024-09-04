@@ -1,17 +1,8 @@
 #!/bin/sh
 
-config_home="${XDG_CONFIG_HOME:-$HOME/.config}"
-data_home="${XDG_DATA_HOME:-$HOME/.local/share}"
-
-data_dir="$data_home/rss"
-config_dir="$config_home/rss"
-unread_dir="$data_dir/unread"
-read_dir="$data_dir/read"
-
-urls_file="$config_dir/urls"
-
-mkdir -p "$read_dir" "$unread_dir" "$config_dir"
-touch -a "$urls_file"
+urls_file="$(rss-dirs urls)"
+read_dir="$(rss-dirs read)"
+unread_dir="$(rss-dirs unread)"
 
 IFS=$(printf '\t')
 

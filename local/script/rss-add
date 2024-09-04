@@ -1,8 +1,6 @@
 #!/bin/sh
 
-config_home="${XDG_CONFIG_HOME:-$HOME/.config}"
-config_dir="$config_home/rss"
-urls_file="$config_dir/urls"
+urls_file="$(rss-dirs urls)"
 
 for entry in "$@"; do
     echo "$entry"

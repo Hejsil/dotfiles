@@ -1,0 +1,22 @@
+#!/bin/sh
+
+config_home="${XDG_CONFIG_HOME:-$HOME/.config}"
+data_home="${XDG_DATA_HOME:-$HOME/.local/share}"
+
+data_dir="$data_home/rss"
+config_dir="$config_home/rss"
+unread_dir="$data_dir/unread"
+read_dir="$data_dir/read"
+
+urls_file="$config_dir/urls"
+urls_old_file="$config_dir/urls.old"
+
+mkdir -p "$config_dir" "$unread_dir" "$read_dir"
+touch "$urls_file" "$urls_old_file"
+
+case $1 in
+    urls) echo "$urls_file" ;;
+    urls-old) echo "$urls_old_file" ;;
+    read) echo "$read_dir" ;;
+    unread) echo "$unread_dir" ;;
+esac

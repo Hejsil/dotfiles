@@ -1,12 +1,7 @@
 #!/bin/sh
 
-config_home="${XDG_CONFIG_HOME:-$HOME/.config}"
-config_dir="$config_home/rss"
-urls_file="$config_dir/urls"
-urls_old_file="$config_dir/urls.old"
-
-mkdir -p "$config_dir"
-touch "$urls_file" "$urls_old_file"
+urls_file="$(rss-dirs urls)"
+urls_old_file="$(rss-dirs urls-old)"
 
 to_remove=$(mktemp -t 'rss-remove.XXXXXXXX')
 for entry in "$@"; do
