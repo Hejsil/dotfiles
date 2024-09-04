@@ -1,0 +1,2 @@
+[Service]
+ExecStart=%h/.local/script/rss-sync
