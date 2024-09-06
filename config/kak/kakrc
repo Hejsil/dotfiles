@@ -1,11 +1,11 @@
-set-option global modelinefmt '%val{bufname}:%val{cursor_line}:%val{cursor_char_column} {{context_info}} {{mode_info}} '
-set-option global tabstop 4
-set-option global ui_options terminal_assistant=none terminal_set_title=true
-
 eval %sh{kak-lsp --kakoune -s "$kak_session"}
 lsp-enable
 lsp-inlay-diagnostics-enable global
 # lsp-auto-hover-enable
+
+set-option global modelinefmt '%val{bufname}:%val{cursor_line}:%val{cursor_char_column} {{context_info}} {{mode_info}} '
+set-option global tabstop 4
+set-option global ui_options terminal_assistant=none terminal_set_title=true
 
 set-option global lsp_auto_highlight_references true
 set-option global lsp_auto_show_code_actions true
@@ -20,139 +20,12 @@ add-highlighter global/ regex            '\h+$' 0:default,red
 # Ruler at line 100
 add-highlighter global/ column 100       default,bright-black
 
-map global user c ':comment-line<ret>'      -docstring 'Comment out line'
-map global user y '<a-|>clipcopy<ret>'      -docstring 'Copy to system clipboard'
-map global user p '!clippaste<ret>'         -docstring 'Paste from system clipboard'
-map global user f ':fzf-fd<ret>'            -docstring 'Fzf files'
-map global user s ':fzf-rg<ret>'            -docstring 'Fzf content of files'
-map global user S '|sort<ret>'              -docstring 'Sort'
-map global user r ':lsp-rename-prompt<ret>' -docstring 'Rename symbol'
-map global user a ':lsp-code-actions<ret>'  -docstring 'Perform code actions'
-
-map global user l ':enter-user-mode lsp<ret>' -docstring "LSP mode"
-
-map global insert <pageup>   '<a-;><c-b>'
-map global insert <pagedown> '<a-;><c-f>'
-
-map global normal "'"           '<a-i>w*/<ret>'
-map global normal 'z'           ':w<ret>'
-
-# I fumble to much and hit `u` when I want to press `i`. Rebind so that
-# <ret> goes to insert mode and <backspace> undoes
-map global normal '<ret>'       'i'
-map global normal '<backspace>' 'u'
-map global normal 'u'           '<ret>'
-map global normal 'i'           '<ret>'
-
-map global normal '<a-down>' ':move-lines-down<ret>'
-map global normal '<a-up>'   ':move-lines-up<ret>'
-map global insert '<a-down>' '<a-;>:move-lines-down<ret>'
-map global insert '<a-up>'   '<a-;>:move-lines-up<ret>'
-
-map global insert '<c-o>' '<a-;>o'
-
-# Revert some changes kakoune did to the bindings. My muscle memory is to strong for
-# me to adabt to these changes.
-map global normal ',' '<space>'
-map global normal '<space>' ','
-
-
-# Moving lines
-define-command -override move-lines-down -docstring 'move line down' %{
-    execute-keys -draft 'x<a-_><a-:>Z;ezjxdzP'
-}
-
-define-command -override move-lines-up -docstring 'move line up' %{
-    execute-keys -draft 'x<a-_><a-:><a-;>Z;bzkxdzp'
-}
-
-define-command -override autoalign -docstring '' %{
-    evaluate-commands -draft %{
-        # Find all 'autoalign begin' in the buffer
-        execute-keys '%sautoalign begin .<ret>;'
-
-        # For each selection ...
-        evaluate-commands -itersel %{
-            execute-keys 'Gl"py' # Select and copy pattern to register `p`
-            execute-keys 'jgh' # Goto beginning of next line
-            execute-keys '?autoalign end<ret>' # Select everything until `autoalign end`
-            execute-keys %sh{
-                # Construct a command that only selects all lines that containers the pattern.
-                # If we have the pattern `|||`, then we search for `[^\n]*\|[^\n]*\|[^\n]*\|`,
-                # however, we escape everything in the pattern to hex escape (`\x00`). This is the
-                # easiest way escape a string for regex.
-                # The final search string is therefor `[^\n]*\x7c[^\n]*\x7c[^\n]*\x7c`.
-                printf 's'
-                printf '%s' "$kak_reg_p" |
-                    xxd -ps |
-                    fold -w 2 |
-                    sed 's/^/[^\\n]*\\x/' |
-                    tr -d '\n'
-                printf '<ret>'
-            }
-
-            # autoalign takes over inserting whitespace for the selection, so we replace multiple
-            # whitespaces after eachother with just a single whitespace before aligning.
-            try %{ execute-keys -draft 'giGls\s\s+<ret>Hd' } catch %{}
-            execute-keys 'gh' # Finally, go to beginning of each line
-            execute-keys %sh{
-                # Construct keys that, for each character in the pattern, finds that character
-                # (`fc`) and use kakounes builtin aligner `&`.
-                printf "%s" "$kak_reg_p" | sed -E 's/(.)/f\1;\&/g'
-            }
-        }
-    }
-}
-
-
-# fzf
-define-command open -params 1 %{
-    tmux-terminal-window sh -c %sh{
-        printf '%s | sed -E -e "s/^/evaluate-commands -client %s edit / ;
-            s/:([0-9]+).*/\\nexecute-keys -client %s \\1g/" | kak -p "%s"' \
-            "$1" "$kak_client" "$kak_client" "$kak_session"
-    }
-}
-
-define-command fzf-fd %{ open fzf-fd }
-define-command fzf-ag %{ open fzf-ag }
-define-command fzf-rg %{ open fzf-rg }
-
-
-# Auto complete with tab
-hook global InsertCompletionShow .* %{ map window insert <tab> <c-n> }
-hook global InsertCompletionHide .* %{ map window insert <tab> <tab> }
-
-declare-option -docstring "Shell command to autocomplete as you type" \
-    str autocompletecmd
-
-declare-option -docstring "Same as autocompletecmd and is run after it" \
-    str autocompletecmd2
-
-define-command autocomplete -params 1 -docstring "" %{
-    evaluate-commands %sh{
-        if ! command -v "$1" >/dev/null; then
-            echo "fail 'No command called ''$1'' in PATH'"
-        fi
-        if [ "$(echo "$kak_selections_length" | grep -c ' ')" != 0 ]; then
-            echo "fail 'Cannot autocomplete while having multiple selections'"
-        fi
-    }
-    execute-keys -draft "<a-;>h<a-;>Gh<a-;>|%arg[1]<ret>"
-    execute-keys -save-regs '"' '<a-;><a-f>¤<a-;>;<a-;>d'
-}
-
 define-command ai -params 1 -docstring "" %{
     execute-keys -draft "|ai-code %opt{filetype} %arg[1]<ret>"
 }
 
 define-command ai-complete -docstring "" %{
     execute-keys -draft "|ai-code %opt{filetype} 'Complete the code'<ret>"
-}
-
-hook global -group autocomplete InsertChar '[^\w\n.]' %{
-    try %{ autocomplete %opt{autocompletecmd} } catch %{}
-    try %{ autocomplete %opt{autocompletecmd2} } catch %{}
 }
 
 hook global BufWritePre .* %{
@@ -162,30 +35,6 @@ hook global BufWritePre .* %{
     }
     try lint catch %{}
 }
-
-hook global WinSetOption filetype=sh         %{ set-option window lintcmd 'shellcheck -f gcc' }
-
-hook global WinSetOption filetype=c          %{ set-option window formatcmd 'clang-format' }
-hook global WinSetOption filetype=git-commit %{ set-option window formatcmd 'pandoc --columns=72 --tab-stop 2 --from gfm --to gfm' }
-hook global WinSetOption filetype=javascript %{ set-option window formatcmd "deno fmt --options-indent-width %opt{tabstop} -" }
-hook global WinSetOption filetype=java       %{ set-option window formatcmd 'astyle --max-code-length=100 --mode=java' }
-hook global WinSetOption filetype=json       %{ set-option window formatcmd "jq --indent %opt{tabstop} ." }
-hook global WinSetOption filetype=lua        %{ set-option window formatcmd "stylua - --indent-width %opt{tabstop} --indent-type Spaces --column-width 100 --quote-style AutoPreferDouble --call-parentheses Always" }
-hook global WinSetOption filetype=nix        %{ set-option window formatcmd 'nixpkgs-fmt' }
-hook global WinSetOption filetype=python     %{ set-option window formatcmd 'black - -l 100' }
-hook global WinSetOption filetype=rust       %{ set-option window formatcmd 'rustfmt --edition 2018' }
-hook global WinSetOption filetype=sh         %{ set-option window formatcmd "shfmt -i %opt{tabstop} -s -ci" }
-hook global WinSetOption filetype=xml        %{ set-option window formatcmd 'xmllint --format -' }
-
-hook global WinSetOption filetype=css        %{ set-option window formatcmd 'cat' }
-hook global WinSetOption filetype=ini        %{ set-option window formatcmd 'cat' }
-hook global WinSetOption filetype=kak        %{ set-option window formatcmd 'cat' }
-hook global WinSetOption filetype=toml       %{ set-option window formatcmd 'cat' }
-
-hook global WinSetOption filetype=html %{ set-option window autocompletecmd 'html-autocomplete' }
-hook global WinSetOption filetype=rust %{ set-option window autocompletecmd 'rust-autocomplete' }
-hook global WinSetOption filetype=zig  %{ set-option window autocompletecmd 'zig-autocomplete' }
-
 
 colorscheme colors
 
