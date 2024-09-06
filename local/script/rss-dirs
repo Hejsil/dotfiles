@@ -12,10 +12,6 @@ urls_old_file="$data_dir/urls.old"
 mkdir -p "$unread_dir" "$read_dir"
 touch "$urls_file" "$urls_old_file"
 
-if ! [ -d "$data_dir/.git" ]; then
-    git -C "$data_dir" init >/dev/null 2>/dev/null
-fi
-
 case $1 in
     urls) echo "$urls_file" ;;
     urls-old) echo "$urls_old_file" ;;
