@@ -1,0 +1,14 @@
+#!/bin/sh
+content=$(mktemp -t 'dismail-is-still-alive.XXXXXXXXXX')
+curl -s 'https://dismail.de/stillalive.html' >"$content"
+
+last_update=$(grep -oE 'Last update: [0-9]+-[0-9]+-[0-9]+' "$content" | cut -d' ' -f3)
+next_update=$(grep -oE 'Next update: [0-9]+-[0-9]+-[0-9]+' "$content" | cut -d' ' -f3)
+last_update_sec=$(date --date="$last_update" +%s)
+next_update_sec=$(date --date="$next_update" +%s)
+
+if [ "$last_update_sec" -ge "$next_update_sec" ]; then
+    echo "$last_update"
+    echo "$next_update"
+    notify-send -u critical 'Dismail might be dying'
+fi
