@@ -23,7 +23,7 @@ versions() {
     fi
 
     case $1 in
-        master) jq -r '.master.version' data/releases.json ;;
+        master) jq -r '.master.version' assets/download/index.json ;;
         *) git log -p data/releases.json |
             grep '"version":' |
             cut '-d"' -f 4 |
