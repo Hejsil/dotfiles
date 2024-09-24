@@ -6,7 +6,10 @@ content_type=""
 enclosure=""
 author="Zenless Zone Zero"
 
-curl 'https://hoyo-codes.seria.moe/codes?game=nap' |
+codes_url=$(curl -s 'https://raw.githubusercontent.com/seriaati/hoyo-codes/master/README.md' |
+    rg -o 'Zenless Zone Zero: <([^>]*)>' -r '$1')
+
+curl "$codes_url" |
     jq -r '.codes[].code' |
     while read -r code; do
         title="$code - Zenless Zone Zero Code"
