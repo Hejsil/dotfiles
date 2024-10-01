@@ -6,6 +6,7 @@
 BEGIN{FS="\t"}
 
 $2 == "application/pdf"    { print "browser"                 ; next }
+$2 == "inode/directory"    { print "thunar"                  ; next }
 $2 ~ "^image/"             { print "mpv --pause"             ; next }
 $2 ~ "^video/"             { print "mpv"                     ; next }
 $2 ~ "^audio/"             { print "mpv"                     ; next }

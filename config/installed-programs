@@ -15,6 +15,7 @@ gcc
 gdb
 gimp
 gst-plugin-pipewire
+gvfs
 hyprshot
 imv
 jo
@@ -66,9 +67,11 @@ strace
 syncplay
 teams
 tesseract
+thunar
 thunderbird
 tidy
 tree
+tumbler
 udiskie
 udisks2
 upscayl-bin
