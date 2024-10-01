@@ -7,6 +7,7 @@ config/bluedevilglobalrc
 config/btop/
 config/Caprine
 config/cef_user_data/
+config/Cemu/
 config/chromium
 config/Code/.*
 config/Code/Cache/
@@ -53,6 +54,7 @@ config/dolphinrc
 config/dorion/
 config/dunst
 config/Electron/
+config/EmuDeck/
 config/evolution/
 config/foot/
 config/gamescope/
@@ -115,6 +117,8 @@ config/obs-studio/
 config/okularpartrc
 config/OpenRGB/
 config/pavucontrol.ini
+config/PCSX2/
+config/pegasus-frontend/
 config/plasma-localerc
 config/plasma-org.kde.plasma.desktop-appletsrc
 config/plasmashellrc
@@ -123,11 +127,14 @@ config/plasmawindowed-appletsrc
 config/plasmawindowedrc
 config/pulse
 config/QtProject.conf
+config/rpcs3/
 config/rss/
 config/rustdesk/
+config/Ryujinx/
 config/session/
 config/SideQuest/
 config/spectaclerc
+config/steam-rom-manager/
 config/steamtinkerlaunch/
 config/Syncplay/
 config/syncplay.ini
@@ -148,10 +155,12 @@ config/Upscayl/
 config/user-dirs.locale
 config/vesktop/
 config/VirtualBox
+config/Vita3K/
 config/VSCodium/
 config/waybar/
 config/wireplumber/
 config/xdg-terminals.list
+config/xfce4/
 config/xsettingsd/
 config/yarn/
 config/yuzu/
@@ -219,10 +228,12 @@ local/share/task/
 local/share/Terraria/
 local/share/topgrade_keep
 local/share/Trash
+local/share/ULWGL/
 local/share/user-places.xbel
 local/share/user-places.xbel.bak
 local/share/user-places.xbel.tbcache
 local/share/vulkan/
+local/share/webui/
 local/share/wine/
 local/share/xorg/
 local/share/yuzu/
