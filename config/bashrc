@@ -49,6 +49,7 @@ alias yay='__yay_alias'
 alias df='df -h'
 alias ll='eza --all --long --group --header'
 alias ls='eza -a'
+alias man='kak-man'
 
 alias cp='cp -i'
 alias mv='mv -i'
