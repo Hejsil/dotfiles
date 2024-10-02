@@ -9,3 +9,6 @@ hook global WinSetOption filetype=python %{
     set-option window lintcmd 'pylint --msg-template="{path}:{line}:{column}: {category}: {msg}" -rn -sn'
 }
 
+hook global BufWritePre .* %{
+    try lint catch %{}
+}

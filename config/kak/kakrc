@@ -19,13 +19,5 @@ define-command ai-complete -docstring "" %{
     execute-keys -draft "|ai-code %opt{filetype} 'Complete the code'<ret>"
 }
 
-hook global BufWritePre .* %{
-    try autoalign catch %{}
-    try format catch %{
-        try lsp-formatting-sync catch %{}
-    }
-    try lint catch %{}
-}
-
 colorscheme colors
 

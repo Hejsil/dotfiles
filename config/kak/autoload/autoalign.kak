@@ -35,3 +35,7 @@ define-command -override autoalign -docstring '' %{
         }
     }
 }
+
+hook global BufWritePre .* %{
+    try autoalign catch %{}
+}
