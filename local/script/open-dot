@@ -1,5 +1,5 @@
 #!/bin/sh
 output=$(mktemp -t 'open-dot.XXXXXXXXXX.pdf')
 dot -Tpdf -o "$output" "$1"
-open "$output"
+xdg-open "$output"
 exec rm "$output"

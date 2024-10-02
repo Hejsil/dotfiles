@@ -31,18 +31,18 @@ torrent
 view
 ' | sed '/^$/d' | fzf)
     case $choice in
-        view) cut -f2 "$picks" | xargs '-d\n' systemd-run --user open ;;
+        view) cut -f2 "$picks" | xargs '-d\n' systemd-run --user xdg-open ;;
         torrent)
             cut -f1 "$picks" | jq -sRr @uri |
                 sed 's#%0A#\n#g' |
                 sed 's#^#https://nyaa.si/?q=#' |
-                xargs '-d\n' systemd-run --user open
+                xargs '-d\n' systemd-run --user xdg-open
             ;;
         watch)
             cut -f1 "$picks" | jq -sRr @uri |
                 sed 's#%0A#\n#g' |
                 sed 's#^#https://aniwave.to/filter?keyword=#' |
-                xargs '-d\n' systemd-run --user open
+                xargs '-d\n' systemd-run --user xdg-open
             ;;
         complete | drop | plan-to-watch | put-on-hold | start-watching | update | remove | watch-episode)
             cut -f2 "$picks" | xargs '-d\n' aniz list "$choice"
