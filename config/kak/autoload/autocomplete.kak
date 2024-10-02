@@ -22,6 +22,7 @@ hook global -group autocomplete InsertChar '[^\w\n.]' %{
     try %{ autocomplete %opt{autocompletecmd2} } catch %{}
 }
 
+hook global WinSetOption filetype=c    %{ set-option window autocompletecmd 'c-autocomplete' }
 hook global WinSetOption filetype=html %{ set-option window autocompletecmd 'html-autocomplete' }
 hook global WinSetOption filetype=rust %{ set-option window autocompletecmd 'rust-autocomplete' }
 hook global WinSetOption filetype=zig  %{ set-option window autocompletecmd 'zig-autocomplete' }

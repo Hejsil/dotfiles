@@ -1,0 +1,28 @@
+#!/bin/nawk -f
+
+# We are inside a comment. Don't autocomplete in here
+/^.*\/\// { printf "%s¤", $0; next }
+
+# We are inside a string. Don't autocomplete in here
+/^([^"]*"(\\"|[^"])*")*[^"]*"(\\"|[^"])+$/ { printf "%s¤", $0; next }
+
+# End of string '"'. Don't autocomplete
+/^([^"]*"(\\"|[^"])*")*$/                  { printf "%s¤", $0; next }
+
+# We are inside a char. Don't autocomplete in here
+/^([^']*'(\\'|[^'])*')*[^']*'(\\'|[^'])+$/ { printf "%s¤", $0; next }
+
+# End of string "'". Don't autocomplete
+/^([^']*'(\\'|[^'])*')*$/                  { printf "%s¤", $0; next }
+
+/\{$/  { printf "%s¤}",  $0 ; next }
+/\($/  { printf "%s¤)",  $0 ; next }
+/\[$/  { printf "%s¤]",  $0 ; next }
+/"$/   { printf "%s¤\"", $0 ; next }
+/'$/   { printf "%s¤'",  $0 ; next }
+
+$NF ~ /^(if|while|switch)$/ { printf "%s(¤) {}", $0 ; next }
+$NF == "for"                { sub($NF "[ ]*$", "for");    printf "%s (¤;;) {}", $0 ; next }
+$NF == "fori"               { sub($NF "[ ]*$", "for");    printf "%s (size_t i = 0; i < ¤; i++) {}", $0 ; next }
+
+{printf "%s¤", $0}
