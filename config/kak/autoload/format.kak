@@ -14,6 +14,7 @@ hook global WinSetOption filetype=css        %{ set-option window formatcmd 'cat
 hook global WinSetOption filetype=ini        %{ set-option window formatcmd 'cat' }
 hook global WinSetOption filetype=kak        %{ set-option window formatcmd 'cat' }
 hook global WinSetOption filetype=toml       %{ set-option window formatcmd 'cat' }
+hook global WinSetOption filetype=yml        %{ set-option window formatcmd 'cat' }
 
 hook global BufWritePre .* %{
     try format catch %{
