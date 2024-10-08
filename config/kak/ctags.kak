@@ -6,7 +6,7 @@ hook global WinSetOption filetype=.* %{
 hook global WinSetOption filetype=c %{
     ctags-enable-autocomplete
 
-    map buffer goto d '<esc>eb:ctags-search<ret>' -docstring 'definition'
+    map buffer goto d '<esc><a-i>w:ctags-search<ret>' -docstring 'definition'
 
     hook buffer BufWritePost .* %{ ctags-generate }
 }

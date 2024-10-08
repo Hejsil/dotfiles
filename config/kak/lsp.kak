@@ -10,4 +10,8 @@ set-option global lsp_hover_anchor true
 
 hook global WinSetOption filetype=(python|zig) %{
     lsp-enable-window
+
 }
+
+map global user r ':lsp-rename-prompt<ret>' -docstring 'Rename symbol'
+map global user a ':lsp-code-actions<ret>'  -docstring 'Perform code actions'

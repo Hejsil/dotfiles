@@ -10,13 +10,7 @@ define-command -override move-lines-up -docstring 'move line up' %{
 map global user c ':comment-line<ret>'      -docstring 'Comment out line'
 map global user y '<a-|>clipcopy<ret>'      -docstring 'Copy to system clipboard'
 map global user p '!clippaste<ret>'         -docstring 'Paste from system clipboard'
-map global user f ':fzf-fd<ret>'            -docstring 'Fzf files'
-map global user s ':fzf-rg<ret>'            -docstring 'Fzf content of files'
 map global user S '|sort<ret>'              -docstring 'Sort'
-map global user r ':lsp-rename-prompt<ret>' -docstring 'Rename symbol'
-map global user a ':lsp-code-actions<ret>'  -docstring 'Perform code actions'
-
-map global user l ':enter-user-mode lsp<ret>' -docstring "LSP mode"
 
 map global insert <pageup>   '<a-;><c-b>'
 map global insert <pagedown> '<a-;><c-f>'
