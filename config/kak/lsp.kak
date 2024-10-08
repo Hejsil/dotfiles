@@ -1,4 +1,4 @@
-eval %sh{kak-lsp --kakoune -s "$kak_session"}
+eval %sh{ kak-lsp --kakoune -s "$kak_session" }
 
 # These are not supported on older version of kakoune
 try %{ lsp-inlay-diagnostics-enable global }
