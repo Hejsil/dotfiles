@@ -1,3 +1,14 @@
+source "%val{config}/autoalign.kak"
+source "%val{config}/autocomplete.kak"
+source "%val{config}/ctags.kak"
+source "%val{config}/format.kak"
+source "%val{config}/fzf.kak"
+source "%val{config}/keys.kak"
+source "%val{config}/lint.kak"
+source "%val{config}/lsp.kak"
+
+colorscheme colors
+
 set-option global modelinefmt '%val{bufname}:%val{cursor_line}:%val{cursor_char_column} {{context_info}} {{mode_info}} '
 set-option global tabstop 4
 set-option global ui_options terminal_assistant=none terminal_set_title=true
@@ -19,5 +30,4 @@ define-command ai-complete -docstring "" %{
     execute-keys -draft "|ai-code %opt{filetype} 'Complete the code'<ret>"
 }
 
-colorscheme colors
 
