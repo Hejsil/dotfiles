@@ -1,0 +1,5 @@
+#!/bin/sh -e
+
+file=$1
+file_basename=$(basename "$file")
+echo "$file_basename" | grep -E '^([a-zA-Z0-9_:-]+,)*[0-9]+\.\w+$' >/dev/null

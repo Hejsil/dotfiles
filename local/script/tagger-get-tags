@@ -1,0 +1,11 @@
+#!/bin/sh -e
+
+file=$1
+
+if ! tagger-is-tagged "$file"; then
+    echo "File '$file' is not tagged. To prepare file for tagging, run:" >&2
+    echo "    tagger-prepare '$file'" >&2
+    exit 1
+fi
+
+echo "$file" | tr ',' '\n' | head -n -1

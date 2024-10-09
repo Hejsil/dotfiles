@@ -1,5 +1,0 @@
-#!/bin/sh
-fd . "$1" |
-    rg -v '/0-n?sfw,1-[^/]*$' |
-    sort |
-    exec xargs '-d\n' -I% tag-image % "$1"

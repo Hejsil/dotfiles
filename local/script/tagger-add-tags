@@ -1,0 +1,13 @@
+#!/bin/sh -e
+
+file=$1
+shift
+
+file_tags=$({
+    tagger-get-tags "$file"
+    for arg in "$@"; do
+        printf '%s\n' "$arg"
+    done
+} | sort -u | tr '\n' ',')
+
+tagger-rename "$file" "$file_tags"

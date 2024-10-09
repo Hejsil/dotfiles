@@ -1,0 +1,17 @@
+#!/bin/sh -e
+
+file=$1
+shift
+
+tags_to_remove=$(mktemp -t 'tagger.XXXXXXXX')
+
+for file in "$@"; do
+    printf '%s\n' "$file"
+done >"$tags_to_remove"
+
+file_tags=$(get_tags "$file" |
+    grep -v -F -f "$tags_to_remove" |
+    tr '\n' ',')
+
+rename "$file" "$file_tags"
+rm "$tags_to_remove"

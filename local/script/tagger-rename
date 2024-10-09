@@ -1,0 +1,20 @@
+#!/bin/sh -e
+
+file=$1
+file_tags=$2
+
+if ! [ -f "$file" ]; then
+    echo "File '$file' not found" >&2
+    exit 1
+fi
+
+file_dir=$(dirname "$file")
+file_basename=$(basename "$file")
+file_ext=$(echo "$file_basename" | grep -E -o '\.[^.]*$')
+
+i=0
+while ! mv --update=none-fail "$file" "${file_dir}/${file_tags}${i}${file_ext}" 2>/dev/null; do
+    i=$((i + 1))
+done
+
+echo "${file_dir}/${file_tags}${i}${file_ext}"

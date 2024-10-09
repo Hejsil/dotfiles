@@ -1,0 +1,8 @@
+#!/bin/sh
+
+config_home="${XDG_CONFIG_HOME:-$HOME/.config}"
+tags="$config_home/tag/tags"
+
+for arg in "$@"; do
+    printf '%s\n' "$arg"
+done | add-sorted-uniq "$tags"

@@ -1,0 +1,5 @@
+#!/bin/sh -e
+
+for file in "$@"; do
+    tagger-rename "$file" ""
+done

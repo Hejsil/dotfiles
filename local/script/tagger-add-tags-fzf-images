@@ -1,0 +1,25 @@
+#!/bin/sh
+
+tmp=$(mktemp -t tag-images.XXXXXXXXXX)
+
+fzf-img-mpv-window &
+mpv_pid=$!
+sleep 0.1 # Wait for mpv to start
+
+for image in "$@"; do
+    cp "$image" "$tmp"
+
+    tags_picked=$(tagger-get-taglist | fzf-img-no-mpv -m --preview "draw '$tmp'")
+    if [ -z "$tags_picked" ]; then
+        break
+    fi
+
+    if ! tagger-is-tagged "$image"; then
+        image=$(tagger-prepare "$image")
+    fi
+
+    echo "$tags_picked" | nargs tagger-add-tags "$image"
+done
+
+rm "$tmp"
+kill "$mpv_pid"

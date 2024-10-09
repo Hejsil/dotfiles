@@ -1,0 +1,6 @@
+#!/bin/sh
+
+config_home="${XDG_CONFIG_HOME:-$HOME/.config}"
+tags="$config_home/tag/tags"
+
+cat "$tags"

@@ -1,0 +1,6 @@
+#!/bin/sh
+
+fd . "$1" |
+    rg -v '/([a-zA-Z0-9_:-]+,)*[0-9]+\.\w+$' |
+    sort |
+    nargs tagger-add-tags-fzf-images
