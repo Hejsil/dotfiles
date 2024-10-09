@@ -8,7 +8,5 @@ install/system-files.sh
 install/programs.sh
 install/services.sh
 
-local/script/generate
-
 echo '# https://wiki.hyprland.org/Configuring/Monitors/' >"$HOME/.config/hypr/monitor.conf"
 touch "$HOME/.config/hypr/workspace.conf"

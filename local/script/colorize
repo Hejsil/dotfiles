@@ -1,0 +1,49 @@
+#!/bin/sh -e
+
+config_home="${XDG_CONFIG_HOME:-$HOME/.config}"
+
+sed -i "$config_home/foot/foot.ini" \
+    -e "s/background=[a-zA-Z0-9]*/background=$COLOR0/" \
+    -e "s/foreground=[a-zA-Z0-9]*/foreground=$COLOR5/" \
+    -e "s/regular0=[a-zA-Z0-9]*/regular0=$COLOR0/" \
+    -e "s/regular1=[a-zA-Z0-9]*/regular1=$COLOR8/" \
+    -e "s/regular2=[a-zA-Z0-9]*/regular2=$COLOR11/" \
+    -e "s/regular3=[a-zA-Z0-9]*/regular3=$COLOR10/" \
+    -e "s/regular4=[a-zA-Z0-9]*/regular4=$COLOR13/" \
+    -e "s/regular5=[a-zA-Z0-9]*/regular5=$COLOR14/" \
+    -e "s/regular6=[a-zA-Z0-9]*/regular6=$COLOR12/" \
+    -e "s/regular7=[a-zA-Z0-9]*/regular7=$COLOR5/" \
+    -e "s/bright0=[a-zA-Z0-9]*/bright0=$COLOR3/" \
+    -e "s/bright1=[a-zA-Z0-9]*/bright1=$COLOR8/" \
+    -e "s/bright2=[a-zA-Z0-9]*/bright2=$COLOR11/" \
+    -e "s/bright3=[a-zA-Z0-9]*/bright3=$COLOR10/" \
+    -e "s/bright4=[a-zA-Z0-9]*/bright4=$COLOR13/" \
+    -e "s/bright5=[a-zA-Z0-9]*/bright5=$COLOR14/" \
+    -e "s/bright6=[a-zA-Z0-9]*/bright6=$COLOR12/" \
+    -e "s/bright7=[a-zA-Z0-9]*/bright7=$COLOR7/"
+
+sed -i "$config_home/dunst/dunstrc" \
+    -e "s/frame_color = \"#[a-zA-Z0-9]*\"/frame_color = \"#$COLOR3\"/" \
+    -e "s/background = \"#[a-zA-Z0-9]*\" # urgency_low/background = \"#$COLOR0\" # urgency_low/" \
+    -e "s/foreground = \"#[a-zA-Z0-9]*\" # urgency_low/foreground = \"#$COLOR3\" # urgency_low/" \
+    -e "s/background = \"#[a-zA-Z0-9]*\" # urgency_normal/background = \"#$COLOR0\" # urgency_normal/" \
+    -e "s/foreground = \"#[a-zA-Z0-9]*\" # urgency_normal/foreground = \"#$COLOR5\" # urgency_normal/" \
+    -e "s/background = \"#[a-zA-Z0-9]*\" # urgency_critical/background = \"#$COLOR0\" # urgency_critical/" \
+    -e "s/foreground = \"#[a-zA-Z0-9]*\" # urgency_critical/foreground = \"#$COLOR8\" # urgency_critical/"
+
+sed -i "$config_home/waybar/config" \
+    -e "s/<span color='#[a-zA-Z0-9]*'> /<span color='#$COLOR11'> /" \
+    -e "s/<span color='#[a-zA-Z0-9]*'>▁/<span color='#$COLOR11'>▁/" \
+    -e "s/<span color='#[a-zA-Z0-9]*'>▂/<span color='#$COLOR11'>▂/" \
+    -e "s/<span color='#[a-zA-Z0-9]*'>▃/<span color='#$COLOR10'>▃/" \
+    -e "s/<span color='#[a-zA-Z0-9]*'>▄/<span color='#$COLOR10'>▄/" \
+    -e "s/<span color='#[a-zA-Z0-9]*'>▅/<span color='#$COLOR9'>▅/" \
+    -e "s/<span color='#[a-zA-Z0-9]*'>▆/<span color='#$COLOR9'>▆/" \
+    -e "s/<span color='#[a-zA-Z0-9]*'>▇/<span color='#$COLOR8'>▇/" \
+    -e "s/<span color='#[a-zA-Z0-9]*'>█/<span color='#$COLOR8'>█/"
+
+sed -i "$config_home/waybar/style.css" \
+    -e "s/ background-color: #[a-zA-Z0-9]*;/ background-color: #$COLOR0;/" \
+    -e "s/ color: #[a-zA-Z0-9]*;/ color: #$COLOR5;/" \
+    -e "s/ box-shadow: inset 0 -2px #[a-zA-Z0-9]*;/ box-shadow: inset 0 -2px #$COLOR5;/" \
+    -e "s/ border-top: 2px solid #[a-zA-Z0-9]*;/ border-top: 2px solid #$COLOR5;/"

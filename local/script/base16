@@ -1,6 +1,0 @@
-#!/bin/sh
-env |
-    rg '^COLOR(\d+=)' -r '$1' |
-    sed 's#=#\t#g' |
-    base16.awk |
-    exec xargs sed "$1"

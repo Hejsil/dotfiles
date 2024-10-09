@@ -1,8 +1,8 @@
 * {
     font-family: monospace;
     font-size: 16px;
-    background-color: #{{base00-hex}};
-    color: #{{base05-hex}};
+    background-color: #141414;
+    color: #dcdcdc;
 }
 
 .modules-left  { padding: 0 10px; }
@@ -18,7 +18,7 @@ button {
 
 #workspaces button.active {
     background: inherit;
-    box-shadow: inset 0 -2px #{{base05-hex}};
+    box-shadow: inset 0 -2px #dcdcdc;
 }
 
 #clock,
@@ -30,8 +30,7 @@ button {
 #custom-rss,
 #custom-weather,
 #wireplumber {
-    border-top: 2px solid #{{base05-hex}};
+    border-top: 2px solid #dcdcdc;
     padding: 0 10px;
-    color: #{{base05-hex}};
 }
 

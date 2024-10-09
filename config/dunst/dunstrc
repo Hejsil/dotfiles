@@ -1,0 +1,21 @@
+[global]
+    offset = 0x0
+    padding = 10
+    horizontal_padding = 10
+    font = "JetBrains Mono 12"
+    follow = "keyboard"
+    format = "<big><b>%s</b></big>\n%b"
+    frame_width = 1
+    frame_color = "#505050"
+
+[urgency_low]
+    background = "#141414" # urgency_low
+    foreground = "#505050" # urgency_low
+
+[urgency_normal]
+    background = "#141414" # urgency_normal
+    foreground = "#dcdcdc" # urgency_normal
+
+[urgency_critical]
+    background = "#141414" # urgency_critical
+    foreground = "#f03232" # urgency_critical

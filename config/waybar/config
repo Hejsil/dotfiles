@@ -28,17 +28,17 @@
         "format": "mem{:3}%"
     },
     "cpu": {
-        "format": "cpu{usage:3}% {{waybar-cpus}}",
+        "format": "cpu{usage:3}% {icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7}{icon8}{icon9}{icon10}{icon11}{icon12}{icon13}{icon14}{icon15}{icon16}{icon17}{icon18}{icon19}{icon20}{icon21}{icon22}{icon23}{icon24}{icon25}{icon26}{icon27}{icon28}{icon29}{icon30}{icon31}",
         "format-icons": [
-            "<span color='#{{base0B-hex}}'> </span>",
-            "<span color='#{{base0B-hex}}'>▁</span>",
-            "<span color='#{{base0B-hex}}'>▂</span>",
-            "<span color='#{{base0A-hex}}'>▃</span>",
-            "<span color='#{{base0A-hex}}'>▄</span>",
-            "<span color='#{{base09-hex}}'>▅</span>",
-            "<span color='#{{base09-hex}}'>▆</span>",
-            "<span color='#{{base08-hex}}'>▇</span>",
-            "<span color='#{{base08-hex}}'>█</span>"
+            "<span color='#78b496'> </span>",
+            "<span color='#78b496'>▁</span>",
+            "<span color='#78b496'>▂</span>",
+            "<span color='#c8821e'>▃</span>",
+            "<span color='#c8821e'>▄</span>",
+            "<span color='#dc501e'>▅</span>",
+            "<span color='#dc501e'>▆</span>",
+            "<span color='#f03232'>▇</span>",
+            "<span color='#f03232'>█</span>"
         ],
         "interval": 1
     },

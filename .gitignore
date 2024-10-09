@@ -52,11 +52,9 @@ config/discoverrc
 config/docker/
 config/dolphinrc
 config/dorion/
-config/dunst
 config/Electron/
 config/EmuDeck/
 config/evolution/
-config/foot/
 config/gamescope/
 config/gcloud/
 config/gh/
@@ -156,7 +154,6 @@ config/vesktop/
 config/VirtualBox
 config/Vita3K/
 config/VSCodium/
-config/waybar/
 config/wireplumber/
 config/xdg-terminals.list
 config/xfce4/
