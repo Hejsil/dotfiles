@@ -1,5 +1,4 @@
 activate-linux
-amdvlk
 base-devel
 blender-benchmark
 btop
@@ -42,7 +41,6 @@ noto-fonts-cjk
 noto-fonts-emoji
 obs-studio
 obsidian
-ollama-rocm
 openfortivpn
 pavucontrol
 perf
@@ -56,8 +54,6 @@ python-protobuf
 qt5-wayland
 qt6-wayland
 raylib
-rocm-hip-sdk
-rocm-opencl-sdk
 rustdesk-bin
 sfeed
 sleepy-launcher-bin

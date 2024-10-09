@@ -14,8 +14,6 @@
 ~/.local/script/ask systemctl enable sync-aniz.timer --user
 ~/.local/script/ask systemctl enable sync-rss.timer --user
 
-~/.local/script/ask systemctl enable ollama
-
 # Required services
 systemctl enable bar --user
 systemctl enable foot --user

@@ -21,13 +21,3 @@ add-highlighter global/ show-whitespaces -tab '▸' -tabpad ' ' -lf ' ' -spc ' '
 add-highlighter global/ regex            '\h+$' 0:default,red
 # Ruler at line 100
 add-highlighter global/ column 100       default,bright-black
-
-define-command ai -params 1 -docstring "" %{
-    execute-keys -draft "|ai-code %opt{filetype} %arg[1]<ret>"
-}
-
-define-command ai-complete -docstring "" %{
-    execute-keys -draft "|ai-code %opt{filetype} 'Complete the code'<ret>"
-}
-
-
