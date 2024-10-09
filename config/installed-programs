@@ -4,6 +4,7 @@ blender-benchmark
 btop
 chromium
 clblast
+cppcheck
 dante
 docker
 dragon-drop-git
