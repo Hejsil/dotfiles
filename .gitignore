@@ -143,6 +143,7 @@ config/systemsettingsrc
 config/tag/
 config/teams/
 config/teams-for-linux/
+config/Thunar/
 config/tiling-assistant/
 config/tm35-randomizer
 config/Trolltech.conf
