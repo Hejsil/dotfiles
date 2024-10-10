@@ -1,3 +1,0 @@
-#!/bin/sh
-git status --short |
-    exec sed -e '/^ *[^M ] */d' -e 's/^ *M *//'

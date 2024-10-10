@@ -1,2 +1,0 @@
-#!/bin/sh
-exec zig ast-check --color off $1 2>&1
