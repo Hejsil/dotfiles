@@ -54,6 +54,7 @@ config/dolphinrc
 config/dorion/
 config/Electron/
 config/EmuDeck/
+config/enchant/
 config/evolution/
 config/gamescope/
 config/gcloud/
@@ -160,6 +161,7 @@ config/xdg-terminals.list
 config/xfce4/
 config/xsettingsd/
 config/yarn/
+config/yelp/
 config/yuzu/
 local/bin/
 local/lib/
@@ -202,6 +204,7 @@ local/share/mkcert/
 local/share/modrinth-app/
 local/share/multimc/
 local/share/nautilus/
+local/share/org.gnome.TextEditor/
 local/share/pass/
 local/share/pipx/
 local/share/pki/
@@ -233,6 +236,7 @@ local/share/vulkan/
 local/share/webui/
 local/share/wine/
 local/share/xorg/
+local/share/yelp/
 local/share/yuzu/
 local/share/zathura/
 local/share/zig-versions/
