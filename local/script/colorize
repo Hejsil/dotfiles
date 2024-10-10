@@ -45,8 +45,20 @@ sed -i "$config_home/waybar/config" \
     -e "s/<span color='#[a-zA-Z0-9]*'>▇/<span color='#$COLOR8'>▇/" \
     -e "s/<span color='#[a-zA-Z0-9]*'>█/<span color='#$COLOR8'>█/"
 
-sed -i "$config_home/waybar/style.css" \
-    -e "s/ background-color: #[a-zA-Z0-9]*;/ background-color: #$COLOR0;/" \
-    -e "s/ color: #[a-zA-Z0-9]*;/ color: #$COLOR5;/" \
-    -e "s/ box-shadow: inset 0 -2px #[a-zA-Z0-9]*;/ box-shadow: inset 0 -2px #$COLOR5;/" \
-    -e "s/ border-top: 2px solid #[a-zA-Z0-9]*;/ border-top: 2px solid #$COLOR5;/"
+sed -i "$config_home/waybar/colors.css" \
+    -e "s/color0 #[a-zA-Z0-9]*;/color0 #$COLOR0;/" \
+    -e "s/color1 #[a-zA-Z0-9]*;/color1 #$COLOR1;/" \
+    -e "s/color2 #[a-zA-Z0-9]*;/color2 #$COLOR2;/" \
+    -e "s/color3 #[a-zA-Z0-9]*;/color3 #$COLOR3;/" \
+    -e "s/color4 #[a-zA-Z0-9]*;/color4 #$COLOR4;/" \
+    -e "s/color5 #[a-zA-Z0-9]*;/color5 #$COLOR5;/" \
+    -e "s/color6 #[a-zA-Z0-9]*;/color6 #$COLOR6;/" \
+    -e "s/color7 #[a-zA-Z0-9]*;/color7 #$COLOR7;/" \
+    -e "s/color8 #[a-zA-Z0-9]*;/color8 #$COLOR8;/" \
+    -e "s/color9 #[a-zA-Z0-9]*;/color9 #$COLOR9;/" \
+    -e "s/color10 #[a-zA-Z0-9]*;/color10 #$COLOR10;/" \
+    -e "s/color11 #[a-zA-Z0-9]*;/color11 #$COLOR11;/" \
+    -e "s/color12 #[a-zA-Z0-9]*;/color12 #$COLOR12;/" \
+    -e "s/color13 #[a-zA-Z0-9]*;/color13 #$COLOR13;/" \
+    -e "s/color14 #[a-zA-Z0-9]*;/color14 #$COLOR14;/" \
+    -e "s/color15 #[a-zA-Z0-9]*;/color15 #$COLOR15;/"
