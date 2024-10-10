@@ -96,16 +96,34 @@ zig() {
 
     full_name="zig-$os-$arch-$version"
     tar_file="$full_name.tar.xz"
-    dir_path="$cache_dir/$full_name"
-    dir_tmp_path="$cache_tmp_dir/$full_name"
     tar_path="$download_dir/$tar_file"
     tar_tmp_path="$download_tmp_dir/$tar_file"
 
     if ! [ -f "$tar_path" ]; then
         tmp=$(mktemp "$tar_tmp_path.XXXXXXXXXX")
-        curl "https://ziglang.org/builds/$tar_file" -o "$tmp"
+
+        # Try mirrors from mlugg/setup-zig. Order is randomized to avoid hammering a single mirror
+        curl https://raw.githubusercontent.com/mlugg/setup-zig/refs/heads/main/mirrors.json |
+            jq '.[][0]' -r |
+            sort -R |
+            while read -r mirror; do
+                if ! curl "$mirror/$tar_file" -o "$tmp"; then
+                    echo "Mirror failed: $mirror" >&2
+                    continue
+                fi
+                break
+            done
+
+        if ! [ -f "$tmp" ]; then
+            echo "Could not download zig" >&2
+            exit 1
+        fi
+
         mv "$tmp" "$tar_path"
     fi
+
+    dir_path="$cache_dir/$full_name"
+    dir_tmp_path="$cache_tmp_dir/$full_name"
 
     if ! [ -d "$dir_path" ]; then
         tar xf "$tar_path" --directory="$cache_tmp_dir"
