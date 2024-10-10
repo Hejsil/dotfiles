@@ -1,5 +1,8 @@
 #!/bin/sh -e
 
+# Replaces colors defined in themable config files with colors defined in COLOR0 to COLOR15
+# environment variables.
+
 config_home="${XDG_CONFIG_HOME:-$HOME/.config}"
 
 sed -i "$config_home/foot/foot.ini" \

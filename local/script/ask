@@ -1,5 +1,10 @@
 #!/bin/sh
 
+# Wraps a command in a prompt asking if the users wants to run the command.
+#   $ ask git restore *
+#   git restore file.a file.b file.c
+#   Do you want to run the above command [y/N]:
+
 echo "$@"
 printf "Do you want to run the above command [y/N]: "
 

@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Give each monitor a random wallpaper picked from the "$1" folder. Supports both image and
+# video wallpapers.
+
 wallpapers_on_screen="/tmp/wallpapers-on-screen"
 monitors=$(mktemp -t 'wall.monitors.XXXXXXXX')
 wallpapers=$(mktemp -t 'wall.wallpapers.XXXXXXXX')

@@ -1,13 +1,15 @@
 #!/bin/sh
 
+# Perform bulk rename of files using $EDITOR. The files are taken from stdin.
+
 old_file_names=$(mktemp -t 'vmv-old.XXXXXXXXXX')
 new_file_names=$(mktemp -t 'vmv-new.XXXXXXXXXX')
 
-# Save files comming from stdin into old and new_file_names
+# Save files coming from stdin into old and new_file_names
 tee "$old_file_names" "$new_file_names" >/dev/null
 
 # Allow user to edit new_file_name
-kak "$new_file_names" </dev/tty
+$EDITOR "$new_file_names" </dev/tty
 
 # Rename file names that the user edited
 paste "$old_file_names" "$new_file_names" |

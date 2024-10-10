@@ -1,12 +1,22 @@
 #!/bin/sh -e
 
+# A wrapper around the Zig compiler that downloads the Zig binary if not available. Defaults to
+# the latest build of master. The desired version can be specifed with the ZIG_VERSION environment
+# variable.
+#
+# Also provides some extra subcommands
+# * `zig versions`  List all available versions that can be specified in ZIG_VERSION
+# * `zig init`      Overrides the default `zig init` to something that suits my needs better
+
 cache_home=${XDG_CACHE_HOME:-~/.cache}
 data_home=${XDG_DATA_HOME-~/.local/share}
-download_dir="$data_home/zig-versions"
-download_tmp_dir="$download_dir/tmp"
+
 cache_dir="$cache_home/zig-versions"
-cache_tmp_dir="$cache_dir/tmp"
 git_dir="$cache_home/www_ziglang_org"
+download_dir="$data_home/zig-versions"
+
+cache_tmp_dir="$cache_dir/tmp"
+download_tmp_dir="$download_dir/tmp"
 
 versions() {
     if ! [ -d "$git_dir/.git" ]; then
@@ -24,7 +34,7 @@ versions() {
 
     case $1 in
         master) jq -r '.master.version' assets/download/index.json ;;
-        *) git log -p data/releases.json |
+        *) git log -p --follow assets/download/index.json |
             grep '"version":' |
             cut '-d"' -f 4 |
             sort -uV ;;
