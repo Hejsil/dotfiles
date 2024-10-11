@@ -6,8 +6,8 @@
 }
 
 window {
-    width:                       60%;
-    height:                      60%;
+    width:                       70%;
+    height:                      70%;
     border:                      2px solid;
     border-radius:               12px;
     border-color:                @color13;
@@ -40,15 +40,9 @@ entry {
 }
 
 listview {
-    columns:                     5;
-    lines:                       4;
-    cycle:                       true;
-    dynamic:                     true;
-    scrollbar:                   false;
+    columns:                     6;
     layout:                      vertical;
-    fixed-height:                true;
     fixed-columns:               true;
-
     background-color:            transparent;
 }
 
