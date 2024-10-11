@@ -1,0 +1,82 @@
+@import "colors.rasi"
+
+* {
+    font: "Jetbrains Mono Font 16";
+    text-color: @color6;
+}
+
+window {
+    width:                       750px;
+    border:                      2px solid;
+    border-radius:               12px;
+    border-color:                @color2;
+    background-color:            @color0;
+}
+
+mainbox {
+    spacing:                     20px;
+    padding:                     20px;
+    background-color:            transparent;
+    children:                    [ "inputbar", "listview" ];
+}
+
+inputbar {
+    spacing:                     10px;
+    padding:                     15px;
+    border-radius:               10px;
+    background-color:            @color1;
+    children:                    [ "prompt", "entry" ];
+}
+
+prompt {
+    enabled:                     true;
+    background-color:            transparent;
+}
+// textbox-prompt-colon {
+//     expand:                      false;
+//     str:                         "::";
+//     background-color:            transparent;
+// }
+entry {
+    background-color:            transparent;
+    cursor:                      text;
+    placeholder:                 "Search";
+    placeholder-color:           @color4;
+}
+
+listview {
+    columns:                     5;
+    lines:                       3;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    fixed-height:                true;
+    fixed-columns:               true;
+
+    background-color:            transparent;
+}
+
+element {
+    enabled:                     true;
+    spacing:                     15px;
+    padding:                     20px 10px;
+    border-radius:               10px;
+    background-color:            transparent;
+    orientation:                 vertical;
+    cursor:                      pointer;
+}
+element selected.normal {
+    background-color:            @color1;
+}
+element-icon {
+    background-color:            transparent;
+    size:                        64px;
+    cursor:                      inherit;
+}
+element-text {
+    background-color:            transparent;
+    cursor:                      inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.5;
+}
