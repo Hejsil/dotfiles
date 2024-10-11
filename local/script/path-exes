@@ -1,7 +1,0 @@
-#!/bin/sh
-echo "$PATH" |
-    tr ":" "\n" |
-    sort -u |
-    xargs '-d\n' fd . -L --type f 2>/dev/null |
-    xargs '-d\n' basename -a |
-    exec sort -u

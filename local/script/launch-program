@@ -1,4 +1,0 @@
-#!/bin/sh
-path-exes |
-    fzf -m |
-    exec xargs "-d\n" -n 1 systemd-run --user
