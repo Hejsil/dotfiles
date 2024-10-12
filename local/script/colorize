@@ -1,82 +1,99 @@
 #!/bin/sh -e
 
-# Replaces colors defined in themable config files with colors defined in COLOR0 to COLOR15
-# environment variables.
+# Replaces colors defined in themable config files with colors defined in a base16 theme file
+# https://github.com/chriskempson/base16
+
+base00=$(rg -o 'base00: *"([^"]*)"' "$1" -r '$1')
+base01=$(rg -o 'base01: *"([^"]*)"' "$1" -r '$1')
+base02=$(rg -o 'base02: *"([^"]*)"' "$1" -r '$1')
+base03=$(rg -o 'base03: *"([^"]*)"' "$1" -r '$1')
+base04=$(rg -o 'base04: *"([^"]*)"' "$1" -r '$1')
+base05=$(rg -o 'base05: *"([^"]*)"' "$1" -r '$1')
+base06=$(rg -o 'base06: *"([^"]*)"' "$1" -r '$1')
+base07=$(rg -o 'base07: *"([^"]*)"' "$1" -r '$1')
+base08=$(rg -o 'base08: *"([^"]*)"' "$1" -r '$1')
+base09=$(rg -o 'base09: *"([^"]*)"' "$1" -r '$1')
+base0A=$(rg -o 'base0A: *"([^"]*)"' "$1" -r '$1')
+base0B=$(rg -o 'base0B: *"([^"]*)"' "$1" -r '$1')
+base0C=$(rg -o 'base0C: *"([^"]*)"' "$1" -r '$1')
+base0D=$(rg -o 'base0D: *"([^"]*)"' "$1" -r '$1')
+base0E=$(rg -o 'base0E: *"([^"]*)"' "$1" -r '$1')
+base0F=$(rg -o 'base0F: *"([^"]*)"' "$1" -r '$1')
 
 config_home="${XDG_CONFIG_HOME:-$HOME/.config}"
 
 sed -i "$config_home/foot/foot.ini" \
-    -e "s/background=[a-zA-Z0-9]*/background=$COLOR0/" \
-    -e "s/foreground=[a-zA-Z0-9]*/foreground=$COLOR5/" \
-    -e "s/regular0=[a-zA-Z0-9]*/regular0=$COLOR0/" \
-    -e "s/regular1=[a-zA-Z0-9]*/regular1=$COLOR8/" \
-    -e "s/regular2=[a-zA-Z0-9]*/regular2=$COLOR11/" \
-    -e "s/regular3=[a-zA-Z0-9]*/regular3=$COLOR10/" \
-    -e "s/regular4=[a-zA-Z0-9]*/regular4=$COLOR13/" \
-    -e "s/regular5=[a-zA-Z0-9]*/regular5=$COLOR14/" \
-    -e "s/regular6=[a-zA-Z0-9]*/regular6=$COLOR12/" \
-    -e "s/regular7=[a-zA-Z0-9]*/regular7=$COLOR5/" \
-    -e "s/bright0=[a-zA-Z0-9]*/bright0=$COLOR3/" \
-    -e "s/bright1=[a-zA-Z0-9]*/bright1=$COLOR8/" \
-    -e "s/bright2=[a-zA-Z0-9]*/bright2=$COLOR11/" \
-    -e "s/bright3=[a-zA-Z0-9]*/bright3=$COLOR10/" \
-    -e "s/bright4=[a-zA-Z0-9]*/bright4=$COLOR13/" \
-    -e "s/bright5=[a-zA-Z0-9]*/bright5=$COLOR14/" \
-    -e "s/bright6=[a-zA-Z0-9]*/bright6=$COLOR12/" \
-    -e "s/bright7=[a-zA-Z0-9]*/bright7=$COLOR7/"
+    -e "s/background=[a-zA-Z0-9]*/background=$base00/" \
+    -e "s/foreground=[a-zA-Z0-9]*/foreground=$base05/" \
+    -e "s/regular0=[a-zA-Z0-9]*/regular0=$base00/" \
+    -e "s/regular1=[a-zA-Z0-9]*/regular1=$base08/" \
+    -e "s/regular2=[a-zA-Z0-9]*/regular2=$base0B/" \
+    -e "s/regular3=[a-zA-Z0-9]*/regular3=$base0A/" \
+    -e "s/regular4=[a-zA-Z0-9]*/regular4=$base0D/" \
+    -e "s/regular5=[a-zA-Z0-9]*/regular5=$base0E/" \
+    -e "s/regular6=[a-zA-Z0-9]*/regular6=$base0C/" \
+    -e "s/regular7=[a-zA-Z0-9]*/regular7=$base05/" \
+    -e "s/bright0=[a-zA-Z0-9]*/bright0=$base03/" \
+    -e "s/bright1=[a-zA-Z0-9]*/bright1=$base08/" \
+    -e "s/bright2=[a-zA-Z0-9]*/bright2=$base0B/" \
+    -e "s/bright3=[a-zA-Z0-9]*/bright3=$base0A/" \
+    -e "s/bright4=[a-zA-Z0-9]*/bright4=$base0D/" \
+    -e "s/bright5=[a-zA-Z0-9]*/bright5=$base0E/" \
+    -e "s/bright6=[a-zA-Z0-9]*/bright6=$base0C/" \
+    -e "s/bright7=[a-zA-Z0-9]*/bright7=$base07/"
 
 sed -i "$config_home/dunst/dunstrc" \
-    -e "s/frame_color = \"#[a-zA-Z0-9]*\"/frame_color = \"#$COLOR3\"/" \
-    -e "s/background = \"#[a-zA-Z0-9]*\" # urgency_low/background = \"#$COLOR0\" # urgency_low/" \
-    -e "s/foreground = \"#[a-zA-Z0-9]*\" # urgency_low/foreground = \"#$COLOR3\" # urgency_low/" \
-    -e "s/background = \"#[a-zA-Z0-9]*\" # urgency_normal/background = \"#$COLOR0\" # urgency_normal/" \
-    -e "s/foreground = \"#[a-zA-Z0-9]*\" # urgency_normal/foreground = \"#$COLOR5\" # urgency_normal/" \
-    -e "s/background = \"#[a-zA-Z0-9]*\" # urgency_critical/background = \"#$COLOR0\" # urgency_critical/" \
-    -e "s/foreground = \"#[a-zA-Z0-9]*\" # urgency_critical/foreground = \"#$COLOR8\" # urgency_critical/"
+    -e "s/frame_color = \"#[a-zA-Z0-9]*\"/frame_color = \"#$base03\"/" \
+    -e "s/background = \"#[a-zA-Z0-9]*\" # urgency_low/background = \"#$base00\" # urgency_low/" \
+    -e "s/foreground = \"#[a-zA-Z0-9]*\" # urgency_low/foreground = \"#$base03\" # urgency_low/" \
+    -e "s/background = \"#[a-zA-Z0-9]*\" # urgency_normal/background = \"#$base00\" # urgency_normal/" \
+    -e "s/foreground = \"#[a-zA-Z0-9]*\" # urgency_normal/foreground = \"#$base05\" # urgency_normal/" \
+    -e "s/background = \"#[a-zA-Z0-9]*\" # urgency_critical/background = \"#$base00\" # urgency_critical/" \
+    -e "s/foreground = \"#[a-zA-Z0-9]*\" # urgency_critical/foreground = \"#$base08\" # urgency_critical/"
 
 sed -i "$config_home/waybar/config" \
-    -e "s/<span color='#[a-zA-Z0-9]*'> /<span color='#$COLOR11'> /" \
-    -e "s/<span color='#[a-zA-Z0-9]*'>▁/<span color='#$COLOR11'>▁/" \
-    -e "s/<span color='#[a-zA-Z0-9]*'>▂/<span color='#$COLOR11'>▂/" \
-    -e "s/<span color='#[a-zA-Z0-9]*'>▃/<span color='#$COLOR10'>▃/" \
-    -e "s/<span color='#[a-zA-Z0-9]*'>▄/<span color='#$COLOR10'>▄/" \
-    -e "s/<span color='#[a-zA-Z0-9]*'>▅/<span color='#$COLOR9'>▅/" \
-    -e "s/<span color='#[a-zA-Z0-9]*'>▆/<span color='#$COLOR9'>▆/" \
-    -e "s/<span color='#[a-zA-Z0-9]*'>▇/<span color='#$COLOR8'>▇/" \
-    -e "s/<span color='#[a-zA-Z0-9]*'>█/<span color='#$COLOR8'>█/"
+    -e "s/<span color='#[a-zA-Z0-9]*'> /<span color='#$base0B'> /" \
+    -e "s/<span color='#[a-zA-Z0-9]*'>▁/<span color='#$base0B'>▁/" \
+    -e "s/<span color='#[a-zA-Z0-9]*'>▂/<span color='#$base0B'>▂/" \
+    -e "s/<span color='#[a-zA-Z0-9]*'>▃/<span color='#$base0A'>▃/" \
+    -e "s/<span color='#[a-zA-Z0-9]*'>▄/<span color='#$base0A'>▄/" \
+    -e "s/<span color='#[a-zA-Z0-9]*'>▅/<span color='#$base09'>▅/" \
+    -e "s/<span color='#[a-zA-Z0-9]*'>▆/<span color='#$base09'>▆/" \
+    -e "s/<span color='#[a-zA-Z0-9]*'>▇/<span color='#$base08'>▇/" \
+    -e "s/<span color='#[a-zA-Z0-9]*'>█/<span color='#$base08'>█/"
 
 sed -i "$config_home/waybar/colors.css" \
-    -e "s/color0 #[a-zA-Z0-9]*;/color0 #$COLOR0;/" \
-    -e "s/color1 #[a-zA-Z0-9]*;/color1 #$COLOR1;/" \
-    -e "s/color2 #[a-zA-Z0-9]*;/color2 #$COLOR2;/" \
-    -e "s/color3 #[a-zA-Z0-9]*;/color3 #$COLOR3;/" \
-    -e "s/color4 #[a-zA-Z0-9]*;/color4 #$COLOR4;/" \
-    -e "s/color5 #[a-zA-Z0-9]*;/color5 #$COLOR5;/" \
-    -e "s/color6 #[a-zA-Z0-9]*;/color6 #$COLOR6;/" \
-    -e "s/color7 #[a-zA-Z0-9]*;/color7 #$COLOR7;/" \
-    -e "s/color8 #[a-zA-Z0-9]*;/color8 #$COLOR8;/" \
-    -e "s/color9 #[a-zA-Z0-9]*;/color9 #$COLOR9;/" \
-    -e "s/color10 #[a-zA-Z0-9]*;/color10 #$COLOR10;/" \
-    -e "s/color11 #[a-zA-Z0-9]*;/color11 #$COLOR11;/" \
-    -e "s/color12 #[a-zA-Z0-9]*;/color12 #$COLOR12;/" \
-    -e "s/color13 #[a-zA-Z0-9]*;/color13 #$COLOR13;/" \
-    -e "s/color14 #[a-zA-Z0-9]*;/color14 #$COLOR14;/" \
-    -e "s/color15 #[a-zA-Z0-9]*;/color15 #$COLOR15;/"
+    -e "s/color0 #[a-zA-Z0-9]*;/color0 #$base00;/" \
+    -e "s/color1 #[a-zA-Z0-9]*;/color1 #$base01;/" \
+    -e "s/color2 #[a-zA-Z0-9]*;/color2 #$base02;/" \
+    -e "s/color3 #[a-zA-Z0-9]*;/color3 #$base03;/" \
+    -e "s/color4 #[a-zA-Z0-9]*;/color4 #$base04;/" \
+    -e "s/color5 #[a-zA-Z0-9]*;/color5 #$base05;/" \
+    -e "s/color6 #[a-zA-Z0-9]*;/color6 #$base06;/" \
+    -e "s/color7 #[a-zA-Z0-9]*;/color7 #$base07;/" \
+    -e "s/color8 #[a-zA-Z0-9]*;/color8 #$base08;/" \
+    -e "s/color9 #[a-zA-Z0-9]*;/color9 #$base09;/" \
+    -e "s/color10 #[a-zA-Z0-9]*;/color10 #$base0A;/" \
+    -e "s/color11 #[a-zA-Z0-9]*;/color11 #$base0B;/" \
+    -e "s/color12 #[a-zA-Z0-9]*;/color12 #$base0C;/" \
+    -e "s/color13 #[a-zA-Z0-9]*;/color13 #$base0D;/" \
+    -e "s/color14 #[a-zA-Z0-9]*;/color14 #$base0E;/" \
+    -e "s/color15 #[a-zA-Z0-9]*;/color15 #$base0F;/"
 
 sed -i "$config_home/rofi/colors.rasi" \
-    -e "s/color0: #[a-zA-Z0-9]*;/color0: #$COLOR0;/" \
-    -e "s/color1: #[a-zA-Z0-9]*;/color1: #$COLOR1;/" \
-    -e "s/color2: #[a-zA-Z0-9]*;/color2: #$COLOR2;/" \
-    -e "s/color3: #[a-zA-Z0-9]*;/color3: #$COLOR3;/" \
-    -e "s/color4: #[a-zA-Z0-9]*;/color4: #$COLOR4;/" \
-    -e "s/color5: #[a-zA-Z0-9]*;/color5: #$COLOR5;/" \
-    -e "s/color6: #[a-zA-Z0-9]*;/color6: #$COLOR6;/" \
-    -e "s/color7: #[a-zA-Z0-9]*;/color7: #$COLOR7;/" \
-    -e "s/color8: #[a-zA-Z0-9]*;/color8: #$COLOR8;/" \
-    -e "s/color9: #[a-zA-Z0-9]*;/color9: #$COLOR9;/" \
-    -e "s/color10: #[a-zA-Z0-9]*;/color10: #$COLOR10;/" \
-    -e "s/color11: #[a-zA-Z0-9]*;/color11: #$COLOR11;/" \
-    -e "s/color12: #[a-zA-Z0-9]*;/color12: #$COLOR12;/" \
-    -e "s/color13: #[a-zA-Z0-9]*;/color13: #$COLOR13;/" \
-    -e "s/color14: #[a-zA-Z0-9]*;/color14: #$COLOR14;/" \
-    -e "s/color15: #[a-zA-Z0-9]*;/color15: #$COLOR15;/"
+    -e "s/color0: #[a-zA-Z0-9]*;/color0: #$base00;/" \
+    -e "s/color1: #[a-zA-Z0-9]*;/color1: #$base01;/" \
+    -e "s/color2: #[a-zA-Z0-9]*;/color2: #$base02;/" \
+    -e "s/color3: #[a-zA-Z0-9]*;/color3: #$base03;/" \
+    -e "s/color4: #[a-zA-Z0-9]*;/color4: #$base04;/" \
+    -e "s/color5: #[a-zA-Z0-9]*;/color5: #$base05;/" \
+    -e "s/color6: #[a-zA-Z0-9]*;/color6: #$base06;/" \
+    -e "s/color7: #[a-zA-Z0-9]*;/color7: #$base07;/" \
+    -e "s/color8: #[a-zA-Z0-9]*;/color8: #$base08;/" \
+    -e "s/color9: #[a-zA-Z0-9]*;/color9: #$base09;/" \
+    -e "s/color10: #[a-zA-Z0-9]*;/color10: #$base0A;/" \
+    -e "s/color11: #[a-zA-Z0-9]*;/color11: #$base0B;/" \
+    -e "s/color12: #[a-zA-Z0-9]*;/color12: #$base0C;/" \
+    -e "s/color13: #[a-zA-Z0-9]*;/color13: #$base0D;/" \
+    -e "s/color14: #[a-zA-Z0-9]*;/color14: #$base0E;/" \
+    -e "s/color15: #[a-zA-Z0-9]*;/color15: #$base0F;/"
