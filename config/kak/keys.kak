@@ -11,6 +11,7 @@ map global user c ':comment-line<ret>'      -docstring 'Comment out line'
 map global user y '<a-|>clipcopy<ret>'      -docstring 'Copy to system clipboard'
 map global user p '!clippaste<ret>'         -docstring 'Paste from system clipboard'
 map global user S '|sort<ret>'              -docstring 'Sort'
+map global user R '|sort -r<ret>'           -docstring 'Sort reverse'
 
 map global insert <pageup>   '<a-;><c-b>'
 map global insert <pagedown> '<a-;><c-f>'
