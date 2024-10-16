@@ -22,5 +22,5 @@ curl -L https://github.com/Hejsil/dipm/releases/latest/download/dipm-x86_64-linu
     /tmp/dipm install dipm &&
     rm /tmp/dipm
 
-grep -v '^dipm$' .config/dipm-installed-programs |
+grep -v '^dipm$' "$HOME/.config/dipm-installed-programs" |
     xargs -d'\n' dipm install
