@@ -13,19 +13,7 @@ if ! grep '\[chaotic-aur\]' /etc/pacman.conf; then
 fi
 
 sudo pacman -Syu
-
-(
-    # Install yay
-    mkdir -p "$HOME/repo/forks"
-    cd "$HOME/repo/forks"
-
-    sudo pacman -S --needed git base-devel
-    git clone https://aur.archlinux.org/yay-bin.git
-    cd yay-bin
-
-    makepkg -si
-)
-
+sudo pacman -S yay
 yay -S --noconfirm --asexplicit - <"$HOME/.config/essential-programs"
 yay -S --noconfirm --asexplicit - <"$HOME/.config/installed-programs" || true
 
