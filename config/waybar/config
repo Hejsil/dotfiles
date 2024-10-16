@@ -9,6 +9,7 @@
         "disk"
     ],
     "modules-right": [
+        "battery",
         "custom/weather",
         "custom/rss",
         "clock"
@@ -44,6 +45,14 @@
     },
     "disk": {
         "format": "disk{percentage_used:3}%"
+    },
+    "battery": {
+        "interval": 60,
+        "format": "{icon} {capacity}%",
+        "format-icons": [
+            "🪫",
+            "🔋"
+        ],
     },
     "custom/weather": {
         "format": "{}°",
