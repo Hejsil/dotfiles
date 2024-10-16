@@ -12,7 +12,7 @@
 
 ~/.local/script/ask systemctl enable optimize.timer --user
 ~/.local/script/ask systemctl enable sync-aniz.timer --user
-~/.local/script/ask systemctl enable sync-rss.timer --user
+~/.local/script/ask systemctl enable rss-sync.timer --user
 
 # Required services
 systemctl enable bar --user
