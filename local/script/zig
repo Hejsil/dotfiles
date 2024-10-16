@@ -52,7 +52,7 @@ init() {
     {
         echo 'pub fn main() !void {}'
         echo
-        echo 'pub const std = @import("std");'
+        echo 'const std = @import("std");'
     } >src/main.zig
 
     {
