@@ -13,7 +13,7 @@ if ! grep '\[chaotic-aur\]' /etc/pacman.conf; then
 fi
 
 sudo pacman -Syu
-sudo pacman -S yay
+sudo pacman -S --noconfirm yay
 yay -S --noconfirm --asexplicit - <"$HOME/.config/essential-programs"
 yay -S --noconfirm --asexplicit - <"$HOME/.config/installed-programs" || true
 
