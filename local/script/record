@@ -11,5 +11,5 @@ container='mp4'
 output="${videos_dir}/${date}.${container}"
 echo "$output"
 
-exec gpu-screen-recorder -w DP-1 -q ultra -ac opus -f 60 -c "${container}" \
+exec gpu-screen-recorder -w DP-1 -k av1 -q ultra -ac opus -f 60 -c "${container}" \
     -o "${output}" -a "${sink}.monitor" -a "${src}"
