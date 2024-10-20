@@ -1,0 +1,4 @@
+#!/bin/sh
+brightnessctl -l -c backlight |
+    rg -o "Device '([^']*)'" -r '$1' |
+    exec nargs -I @ brightnessctl -d @ s "$@"
