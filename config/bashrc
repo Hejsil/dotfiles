@@ -32,8 +32,7 @@ __kak_alias() {
     cwd=$(pwd)
     session_id=$(echo "$cwd" | sha1sum | cut -d' ' -f1)
 
-    KAK_LSP_FORCE_PROJECT_ROOT="$cwd" kak -c "$session_id" "$@" ||
-        KAK_LSP_FORCE_PROJECT_ROOT="$cwd" kak -s "$session_id" "$@"
+    tmux new-session sh -c "kak -c '$session_id' $* || kak -s '$session_id' $*"
 }
 
 alias ..='__cd_alias ..'
