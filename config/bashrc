@@ -29,10 +29,7 @@ __dipm_alias() {
 }
 
 __kak_alias() {
-    cwd=$(pwd)
-    session_id=$(echo "$cwd" | sha1sum | cut -d' ' -f1)
-
-    tmux new-session sh -c "kak -c '$session_id' $* || kak -s '$session_id' $*"
+    tmux new-session kakoune "$@"
 }
 
 alias ..='__cd_alias ..'

@@ -1,0 +1,5 @@
+#!/bin/sh
+cwd=$(pwd)
+session_id=$(echo "$cwd" | sha1sum | cut -d' ' -f1)
+
+kak -c "$session_id" "$@" || kak -s "$session_id" "$@"
