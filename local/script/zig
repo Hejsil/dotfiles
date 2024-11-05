@@ -82,6 +82,23 @@ init() {
         echo
         echo 'const std = @import("std");'
     } >build.zig
+
+    {
+        echo '.{'
+        echo "    .name = \"$name\","
+        echo '    .version = "0.0.0",'
+        echo '    .paths = .{"."},'
+        echo '}'
+    } >build.zig.zon
+
+    {
+        echo '*.zig text eol=lf'
+    } >.gitattributes
+
+    {
+        echo '.zig-cache'
+        echo 'zig-out'
+    } >.gitignore
 }
 
 zig() {
