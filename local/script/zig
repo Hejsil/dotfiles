@@ -143,12 +143,12 @@ zig() {
     dir_tmp_path="$cache_tmp_dir/$full_name"
 
     if ! [ -d "$dir_path" ]; then
-        tar xf "$tar_path" --directory="$cache_tmp_dir"
-        mv "$dir_tmp_path" "$dir_path"
+        if ! tar xf "$tar_path" --directory="$cache_tmp_dir"; then
+            rm "$tar_path"
+            exit 1
+        fi
 
-        tmp_zig_file=$(mktemp -t zig.XXXXXXXXXX.zig)
-        "$dir_path/zig" fmt "$tmp_zig_file"
-        rm "$tmp_zig_file"
+        mv "$dir_tmp_path" "$dir_path"
     fi
 
     "$dir_path/zig" "$@"
