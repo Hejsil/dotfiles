@@ -21,8 +21,12 @@
 /"$/   { printf "%s¤\"", $0 ; next }
 /'$/   { printf "%s¤'",  $0 ; next }
 
-$NF ~ /^(if|while|switch)$/ { printf "%s(¤) {}", $0 ; next }
-$NF == "for"                { sub($NF "[ ]*$", "for");    printf "%s (¤;;) {}", $0 ; next }
-$NF == "fori"               { sub($NF "[ ]*$", "for");    printf "%s (size_t i = 0; i < ¤; i++) {}", $0 ; next }
+$NF ~ /^(if|while|switch)$/   { printf "%s(¤) {}", $0 ; next }
+$NF ~ /^(struct|union|enum)$/ { printf "%s{¤}",    $0 ; next }
+$NF == "structt"              { printf "typedef struct {\n\n} ¤;" ; next }
+$NF == "uniont"               { printf "typedef union {\n\n} ¤;"  ; next }
+$NF == "enumt"                { printf "typedef enum {\n\n} ¤;"   ; next }
+$NF == "for"                  { sub($NF "[ ]*$", "for");    printf "%s (¤;;) {}", $0 ; next }
+$NF == "fori"                 { sub($NF "[ ]*$", "for");    printf "%s (size_t i = 0; i < ¤; i++) {}", $0 ; next }
 
 {printf "%s¤", $0}
