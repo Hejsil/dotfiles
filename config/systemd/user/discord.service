@@ -1,6 +1,5 @@
 [Service]
 Type=exec
-ExecStart=/usr/bin/vesktop
+ExecStart=/usr/bin/sh -c 'sleep 10s && /usr/bin/vesktop'
 [Install]
 WantedBy=user-graphical-login.target
-
