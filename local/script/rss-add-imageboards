@@ -4,7 +4,7 @@ check_and_add() {
     link=$1
     rss=$2
 
-    open "$link" >/dev/null 2>/dev/null
+    browser "$link" >/dev/null 2>/dev/null &
 
     printf "Do you want to add '%s' [y/N]\n" "$rss"
     read -r answer
@@ -19,5 +19,8 @@ check_and_add "https://konachan.com/post?tags=$1" \
 check_and_add "https://safebooru.org/index.php?page=post&s=list&tags=$1" \
     "https://safebooru.org/index.php?page=cooliris&tags=$1"
 
-check_and_add "https://yande.re/post?tags=$1" \
-    "https://yande.re/post/atom?tags=$1"
+check_and_add "https://danbooru.donmai.us?tags=$1" \
+    "https://danbooru.donmai.us/posts.atom?tags=$1"
+
+check_and_add "https://www.zerochan.net/$1" \
+    "https://www.zerochan.net/$1?s=fav&xml"
