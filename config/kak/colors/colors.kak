@@ -26,10 +26,6 @@ set-face global list yellow
 # builtin faces
 set-face global Default default,default
 set-face global PrimarySelection white,blue+fg
-set-face global SecondarySelection black,blue+fg
-set-face global PrimaryCursor black,white+fg
-set-face global SecondaryCursor black,white+fg
-set-face global PrimaryCursorEol black,cyan+fg
 set-face global SecondaryCursorEol black,cyan+fg
 set-face global LineNumbers default,default
 set-face global LineNumberCursor default,default+r
@@ -48,3 +44,20 @@ set-face global MatchingChar default,default+bi
 set-face global Whitespace default,default+f
 set-face global BufferPadding blue,default
 
+set-face global PrimaryCursor      black,cyan+fg
+set-face global SecondaryCursor    black,cyan+fg
+set-face global PrimaryCursorEol   black,cyan+fg
+set-face global SecondarySelection black,blue+fg
+
+# https://discuss.kakoune.com/t/changing-the-cursor-colour-in-insert-mode/394/4
+# Change cursor color based on mode
+hook global ModeChange .*:insert  %{
+    set-face global PrimaryCursor    black,white+fg
+    set-face global SecondaryCursor  black,white+fg
+    set-face global PrimaryCursorEol black,white+fg
+}
+hook global ModeChange .*:normal  %{
+    set-face global PrimaryCursor    black,cyan+fg
+    set-face global SecondaryCursor  black,cyan+fg
+    set-face global PrimaryCursorEol black,cyan+fg
+}
