@@ -1,4 +1,4 @@
-#!/bin/sh -e
+#!/bin/bash -e
 
 file=$1
 file_tags=$2
@@ -16,7 +16,6 @@ i=0
 while ! mv --update=none-fail "$file" "${file_dir}/${file_tags}${i}${file_ext}" 2>/dev/null; do
     i=$(paste <(seq 0 inf) <(fd -F "${file_tags}" "${file_dir}" | rg -o '\d+' | sort -nu) |
         nawk '$1 != $2 { print; exit }' | cut -f1)
-    echo "$i"
 done
 
 echo "${file_dir}/${file_tags}${i}${file_ext}"
