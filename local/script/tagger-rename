@@ -12,14 +12,11 @@ file_dir=$(dirname "$file")
 file_basename=$(basename "$file")
 file_ext=$(echo "$file_basename" | grep -E -o '\.[^.]*$')
 
-i=$(fd "^${file_tags}\d+${file_ext}$" "${file_dir}" |
-    rev | cut -d, -f1 | cut -d. -f2 | rev |
-    rg '^\d+$' | sort -n | tail -n1)
-
-i=${i:-0}
-
+i=0
 while ! mv --update=none-fail "$file" "${file_dir}/${file_tags}${i}${file_ext}" 2>/dev/null; do
-    i=$((i + 1))
+    i=$(paste <(seq 0 inf) <(fd "${file_tags}" "${file_dir}" | rg -o '\d+' | sort -nu) |
+        nawk '$1 != $2 { print; exit }' | cut -f1)
+    echo "$i"
 done
 
 echo "${file_dir}/${file_tags}${i}${file_ext}"
