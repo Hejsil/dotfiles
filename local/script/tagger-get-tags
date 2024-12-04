@@ -8,4 +8,4 @@ if ! tagger-is-tagged "$file"; then
     exit 1
 fi
 
-echo "$file" | tr ',' '\n' | head -n -1
+basename "$file" | tr ',' '\n' | head -n -1

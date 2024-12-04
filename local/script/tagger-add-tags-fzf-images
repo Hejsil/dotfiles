@@ -6,7 +6,6 @@ sleep 0.1 # Wait for mpv to start
 
 for image in "$@"; do
     image_escaped=$(echo "$image" | escape-sh-str-quote)
-
     tags_picked=$(tagger-get-taglist | fzf-img-no-mpv -m --preview "draw '$image_escaped'")
     if [ -z "$tags_picked" ]; then
         break
