@@ -1,5 +1,5 @@
 [Service]
 Type=exec
-ExecStart=/usr/bin/sh -c 'sleep 10s && /usr/bin/vesktop'
+ExecStart=/usr/bin/discord
 [Install]
 WantedBy=user-graphical-login.target
