@@ -10,5 +10,4 @@ file_tags=$({
     done
 } | sort -u | tr '\n' ',')
 
-echo "$file" "$file_tags"
 tagger-rename "$file" "$file_tags"
