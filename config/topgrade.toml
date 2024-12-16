@@ -9,4 +9,3 @@ disable = ["lensfun", "github_cli_extensions", "kakoune", "config_update", "cont
 
 [commands]
 "Dipm" = "dipm update"
-"Zig" = "zig fmt /dev/null"
