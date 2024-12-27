@@ -1,7 +1,7 @@
 #!/bin/sh -e
 
 # A wrapper around the Zig compiler that downloads the Zig binary if not available. Defaults to
-# the latest build of master. The desired version can be specifed with the ZIG_VERSION environment
+# the latest build of master. The desired version can be specified with the ZIG_VERSION environment
 # variable.
 #
 # Also provides some extra subcommands
@@ -34,9 +34,14 @@ versions() {
 
     case $1 in
         master) jq -r '.master.version' assets/download/index.json ;;
+        latest) jq -r 'keys_unsorted | .[]' assets/download/index.json |
+            rg -vF 'master' |
+            sort -n |
+            tail -n1 ;;
         *) git log -p --follow assets/download/index.json |
-            grep '"version":' |
+            rg '"version":' |
             cut '-d"' -f 4 |
+            rg '^\d+\.\d+\.\d+' |
             sort -uV ;;
     esac
 }
@@ -108,8 +113,12 @@ zig() {
     os=$(uname -s | tr '[:upper:]' '[:lower:]')
     arch=$(uname -m)
 
-    master=$(versions master)
-    version=${ZIG_VERSION:-$master}
+    ZIG_VERSION=${ZIG_VERSION:-latest}
+    case $ZIG_VERSION in
+        master) version=$(versions master) ;;
+        latest) version=$(versions latest) ;;
+        *) version=$ZIG_VERSION ;;
+    esac
 
     full_name="zig-$os-$arch-$version"
     tar_file="$full_name.tar.xz"
