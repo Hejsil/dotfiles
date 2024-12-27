@@ -1,0 +1,9 @@
+#!/bin/sh
+
+folder=$1
+num=$2
+
+fd . "$folder" |
+    rg -v "/([a-zA-Z0-9_:-]+,){$num,999}" |
+    sort |
+    nargs tagger-add-tags-fzf-images
