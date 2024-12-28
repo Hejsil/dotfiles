@@ -22,4 +22,3 @@ NoNewPrivileges=true
 
 [Install]
 WantedBy=default.target
-
