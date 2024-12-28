@@ -48,6 +48,7 @@ config/dconf
 config/deepcore-daemon/
 config/deep-server/
 config/discord
+config/discordcanary/
 config/discoverrc
 config/docker/
 config/dolphinrc
@@ -185,6 +186,7 @@ local/share/gnome-settings-daemon/
 local/share/gnome-shell/
 local/share/gnupg/
 local/share/gvfs-metadata/
+local/share/hyprland/
 local/share/icc/
 local/share/icons/
 local/share/image-tagger/
