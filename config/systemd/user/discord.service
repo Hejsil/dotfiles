@@ -1,5 +1,5 @@
 [Service]
 Type=exec
-ExecStart=/usr/bin/discord
+ExecStart=/usr/bin/discord-canary
 [Install]
 WantedBy=user-graphical-login.target
