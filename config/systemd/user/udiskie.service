@@ -4,7 +4,5 @@ ExecStart=/usr/bin/udiskie
 Restart=on-failure
 RestartSec=5s
 
-
 [Install]
-WantedBy=user-graphical-login.target
-
+WantedBy=default.target
