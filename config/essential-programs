@@ -6,12 +6,13 @@ base
 binutils
 brightnessctl
 btrfs-progs
-caprine
+caprine-bin
 chaotic-keyring
 chaotic-mirrorlist
 dbus-broker
 debugedit
 difftastic
+discord-canary
 dunst
 efibootmgr
 fakeroot
@@ -23,7 +24,7 @@ gawk
 gcr
 git
 git-extras
-gpu-screen-recorder-git
+gpu-screen-recorder
 grep
 gzip
 haveged
@@ -32,8 +33,6 @@ hyprland
 imagemagick
 jq
 kakoune
-libva-mesa-driver
-libva-vdpau-driver
 linux-firmware
 linux-zen
 linux-zen-headers
