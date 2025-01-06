@@ -6,8 +6,6 @@
     },
     "bootloader": "Systemd-boot",
     "config_version": "3.0.1",
-    "disk_config": null,
-    "disk_encryption": null,
     "hostname": "archlinux",
     "kernels": [
         "linux"
@@ -17,7 +15,6 @@
         "sys_enc": "UTF-8",
         "sys_lang": "en_DK.UTF-8"
     },
-    "mirror_config": null,
     "network_config": {
         "type": "nm"
     },
@@ -26,22 +23,6 @@
         "git"
     ],
     "parallel downloads": 0,
-    "profile_config": {
-        "gfx_driver": "All open-source",
-        "greeter": "sddm",
-        "profile": {
-            "custom_settings": {
-                "Hyprland": {
-                    "seat_access": "polkit"
-                }
-            },
-            "details": [
-                "Hyprland"
-            ],
-            "main": "Desktop"
-        }
-    },
-    "save_config": null,
     "swap": true,
     "timezone": "Europe/Copenhagen",
     "uki": false,
