@@ -1,5 +1,15 @@
 #!/usr/bin/env bash
 
+eval "$(
+    sed \
+        -e '/^ *$/d' \
+        -e '/^ *#/d' \
+        -e "s/\"/\"'\"'\"/g" \
+        -e 's/^/export /' \
+        -e 's/=/="/' \
+        -e 's/$/"/' ~/.config/environment.d/env.conf
+)"
+
 source <(starship init bash --print-full-init)
 eval "$(fzf --bash)"
 eval "$(direnv hook bash)"
