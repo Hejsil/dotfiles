@@ -1,0 +1,49 @@
+{
+    "additional-repositories": [],
+    "archinstall-language": "English",
+    "audio_config": {
+        "audio": "pipewire"
+    },
+    "bootloader": "Systemd-boot",
+    "config_version": "3.0.1",
+    "disk_config": null,
+    "disk_encryption": null,
+    "hostname": "archlinux",
+    "kernels": [
+        "linux"
+    ],
+    "locale_config": {
+        "kb_layout": "dk",
+        "sys_enc": "UTF-8",
+        "sys_lang": "en_DK.UTF-8"
+    },
+    "mirror_config": null,
+    "network_config": {
+        "type": "nm"
+    },
+    "ntp": true,
+    "packages": [
+        "git"
+    ],
+    "parallel downloads": 0,
+    "profile_config": {
+        "gfx_driver": "All open-source",
+        "greeter": "sddm",
+        "profile": {
+            "custom_settings": {
+                "Hyprland": {
+                    "seat_access": "polkit"
+                }
+            },
+            "details": [
+                "Hyprland"
+            ],
+            "main": "Desktop"
+        }
+    },
+    "save_config": null,
+    "swap": true,
+    "timezone": "Europe/Copenhagen",
+    "uki": false,
+    "version": "3.0.1"
+}
