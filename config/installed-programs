@@ -3,6 +3,7 @@ base-devel
 btop
 chromium
 cppcheck
+dkms
 docker
 gdb
 gimp
@@ -33,4 +34,6 @@ udiskie
 upscayl-bin
 w3m
 wget
+xone-dlundqvist-dkms-git
+xone-dongle-firmware
 yt-dlp

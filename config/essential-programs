@@ -25,6 +25,7 @@ jq
 kakoune
 linux
 linux-firmware
+linux-headers
 man-db
 man-pages
 materia-gtk-theme
