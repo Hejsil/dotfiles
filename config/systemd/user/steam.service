@@ -1,6 +1,7 @@
 [Service]
 Type=exec
 ExecStart=/usr/bin/steam -bigpicture
+ExecStop=/usr/bin/pkill -F %h/.steampid
 
 [Install]
 WantedBy=user-graphical-login.target
