@@ -19,7 +19,6 @@ systemctl enable bar --user
 systemctl enable foot --user
 systemctl enable hyprland --user
 systemctl enable syncthing --user
-systemctl enable tumblerd --user
 systemctl enable udiskie --user
 
 systemctl enable haveged
