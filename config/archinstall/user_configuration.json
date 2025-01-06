@@ -1,5 +1,7 @@
 {
-    "additional-repositories": [],
+    "additional-repositories": [
+        "multilib"
+    ],
     "archinstall-language": "English",
     "audio_config": {
         "audio": "pipewire"
