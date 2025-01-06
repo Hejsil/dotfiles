@@ -2,11 +2,9 @@ activate-linux
 base-devel
 btop
 chromium
-clblast
 cppcheck
 dante
 docker
-dragon-drop-git
 elfkickers
 exfat-utils
 ffmpeg
@@ -21,7 +19,7 @@ hyprshot
 imv
 jo
 jpegoptim
-lact
+lact-bin
 lib32-giflib
 lib32-gnutls
 lib32-gtk3
@@ -60,10 +58,7 @@ tumbler
 udiskie
 udisks2
 upscayl-bin
-vkd3d
-vulkan-tools
 w3m
 wget
 wine
-winetricks
 yt-dlp

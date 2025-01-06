@@ -7,8 +7,6 @@ binutils
 brightnessctl
 btrfs-progs
 caprine-bin
-chaotic-keyring
-chaotic-mirrorlist
 dbus-broker
 debugedit
 difftastic
@@ -23,7 +21,6 @@ foot
 gawk
 gcr
 git
-git-extras
 gpu-screen-recorder
 grep
 gzip
