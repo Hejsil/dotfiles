@@ -92,7 +92,7 @@ alias gsh='git stash'
 alias gsw='git switch'
 
 tealdeer -l | sort -R | while read -r page; do
-    if ! tealdeer "$page" | grep 'This command is an alias of' >/dev/null; then
+    if ! tealdeer "$page" | grep -E 'This command is an alias of|This command has been superseded by' >/dev/null; then
         tealdeer "$page"
         break
     fi
