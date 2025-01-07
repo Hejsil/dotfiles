@@ -1,1 +1,11 @@
 #!/bin/sh
+
+eval "$(
+    sed \
+        -e '/^ *$/d' \
+        -e '/^ *#/d' \
+        -e "s/\"/\"'\"'\"/g" \
+        -e 's/^/export /' \
+        -e 's/=/="/' \
+        -e 's/$/"/' ~/.config/environment.d/env.conf
+)"
