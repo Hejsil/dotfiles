@@ -4,7 +4,6 @@ cd "$(dirname "$0")" || exit 1
 
 install/linkup.sh
 install/home-dirs.sh
-install/system-files.sh
 install/programs.sh
 install/services.sh
 
