@@ -36,8 +36,7 @@ versions() {
         master) jq -r '.master.version' assets/download/index.json ;;
         latest) jq -r 'keys_unsorted | .[]' assets/download/index.json |
             rg -vF 'master' |
-            sort -n |
-            tail -n1 ;;
+            head -n1 ;;
         *) git log -p --follow assets/download/index.json |
             rg '"version":' |
             cut '-d"' -f 4 |
@@ -113,7 +112,7 @@ zig() {
     os=$(uname -s | tr '[:upper:]' '[:lower:]')
     arch=$(uname -m)
 
-    ZIG_VERSION=${ZIG_VERSION:-latest}
+    ZIG_VERSION=${ZIG_VERSION:-master}
     case $ZIG_VERSION in
         master) version=$(versions master) ;;
         latest) version=$(versions latest) ;;
