@@ -10,12 +10,7 @@ output_file="$(echo "$link" | xxhsum | cut '-d ' -f1).$ext"
 output="${output_dir}/${output_file}"
 
 if [ ! -f "$output" ]; then
-    tmp=$(mktemp -t "aniz-image.XXXXXXXX.$ext")
-    curl -s -L "$link" -o "$tmp"
-
-    /opt/upscayl/bin/upscayl-bin -n realesrgan-x4plus-anime -m /opt/upscayl/models \
-        -i "$tmp" -o "$tmp" -f "$ext" -s2
-    mv "$tmp" "$output"
+    curl -s -L "$link" -o "$output"
 fi
 
 exec echo "$output"
