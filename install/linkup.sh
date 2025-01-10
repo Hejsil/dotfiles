@@ -14,7 +14,7 @@ link() {
 
 link "$(pwd)/config" "$HOME/.config"
 link "$(pwd)/local" "$HOME/.local"
-link "$(pwd)/config/profile" "$HOME/.bash_profile"
-link "$(pwd)/config/profile" "$HOME/.profile"
-link "$(pwd)/config/bashrc" "$HOME/.bashrc"
+link "$(pwd)/config/bash/profile" "$HOME/.bash_profile"
+link "$(pwd)/config/bash/profile" "$HOME/.profile"
+link "$(pwd)/config/bash/rc" "$HOME/.bashrc"
 link "$(pwd)/config/perfconfig" "$HOME/.perfconfig"
