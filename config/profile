@@ -9,3 +9,5 @@ eval "$(
         -e 's/=/="/' \
         -e 's/$/"/' ~/.config/environment.d/env.conf
 )"
+
+. ~/.bashrc
