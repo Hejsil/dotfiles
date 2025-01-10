@@ -1,4 +1,9 @@
 [Service]
 ExecStart=%h/.local/script/wall '%h/Pictures/wallpapers'
+
+[Unit]
+PartOf=graphical-session.target
+
 [Install]
-WantedBy=user-graphical-login.target
+WantedBy=graphical-session.target
+

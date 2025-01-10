@@ -3,6 +3,9 @@ Type=exec
 ExecStart=/usr/bin/steam -bigpicture
 ExecStop=/usr/bin/pkill -F %h/.steampid
 
+[Unit]
+PartOf=graphical-session.target
+
 [Install]
-WantedBy=user-graphical-login.target
+WantedBy=graphical-session.target
 

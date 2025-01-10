@@ -1,8 +1,0 @@
-[Service]
-Type=exec
-ExecStart=/usr/bin/poweralertd
-Restart=on-failure
-RestartSec=5s
-
-[Install]
-WantedBy=user-graphical-login.target

@@ -1,0 +1,4 @@
+[Unit]
+After=default.target
+Requires=default.target
+BindsTo=graphical-session.target

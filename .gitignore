@@ -139,8 +139,9 @@ config/Syncplay/
 config/syncplay.ini
 config/syncthing/
 config/systemd/user/default.target.wants/
+config/systemd/user/graphical-session.target.wants/
+config/systemd/user/sockets.target.wants/
 config/systemd/user/timers.target.wants
-config/systemd/user/user-graphical-login.target.wants
 config/systemsettingsrc
 config/tag/
 config/teams/

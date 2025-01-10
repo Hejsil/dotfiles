@@ -1,8 +1,0 @@
-#!/bin/sh
-pactl subscribe |
-    stdbuf -o L grep -F "'change' on sink " |
-    xargs '-d\n' -I{} wpctl get-volume @DEFAULT_AUDIO_SINK@ |
-    stdbuf -o L cut -f2 '-d ' |
-    stdbuf -o L tr -d '.' |
-    stdbuf -o L uniq |
-    exec wob

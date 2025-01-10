@@ -4,7 +4,9 @@ ExecStart=/usr/bin/activate-linux
 Restart=on-failure
 RestartSec=5s
 
+[Unit]
+PartOf=graphical-session.target
 
 [Install]
-WantedBy=user-graphical-login.target
+WantedBy=graphical-session.target
 

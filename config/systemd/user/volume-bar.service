@@ -1,5 +1,0 @@
-[Service]
-Type=exec
-ExecStart=%h/.local/script/volume-bar
-[Install]
-WantedBy=user-graphical-login.target
