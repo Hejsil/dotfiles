@@ -13,14 +13,14 @@ check_and_add() {
     fi
 }
 
-check_and_add "https://konachan.com/post?tags=$1" \
-    "https://konachan.com/post?tags=$1"
+# check_and_add "https://konachan.com/post?tags=$1" \
+#     "https://konachan.com/post?tags=$1"
 
-check_and_add "https://safebooru.org/index.php?page=post&s=list&tags=$1" \
-    "https://safebooru.org/index.php?page=cooliris&tags=$1"
+# check_and_add "https://safebooru.org/index.php?page=post&s=list&tags=$1" \
+#     "https://safebooru.org/index.php?page=cooliris&tags=$1"
 
 check_and_add "https://danbooru.donmai.us?tags=$1" \
     "https://danbooru.donmai.us/posts.atom?tags=$1"
 
-check_and_add "https://www.zerochan.net/$1" \
-    "https://www.zerochan.net/$1?s=fav&xml"
+# check_and_add "https://www.zerochan.net/$1" \
+#     "https://www.zerochan.net/$1?s=fav&xml"
