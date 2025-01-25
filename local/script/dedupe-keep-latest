@@ -1,0 +1,2 @@
+#!/bin/sh
+tac "$@" | awk '!seen[$0]++' | tac
