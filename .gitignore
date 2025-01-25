@@ -168,6 +168,8 @@ config/yuzu/
 local/bin/
 local/lib/
 local/share/aniz/.stfolder/
+local/share/Anki2/
+local/share/anki-jlab/
 local/share/applications/
 local/share/baloo/
 local/share/bash
@@ -196,12 +198,14 @@ local/share/kactivitymanagerd/
 local/share/kate/
 local/share/kded5/
 local/share/keyrings/
+local/share/kiwix/
 local/share/klipper/
 local/share/krunnerstaterc
 local/share/kscreen/
 local/share/logs/
 local/share/lutris/
 local/share/man/
+local/share/meld/
 local/share/mime/
 local/share/mimeapps.list
 local/share/mkcert/
