@@ -31,7 +31,7 @@ torrent
 view
 ' | sed '/^$/d' | fzf)
     case $choice in
-        view) cut -f2 "$picks" | xargs '-d\n' systemd-run --user xdg-open ;;
+        view) cut -f2 "$picks" | xargs '-d\n' systemd-run --user browser ;;
         torrent)
             cut -f1 "$picks" | jq -sRr @uri |
                 sed 's#%0A#\n#g' |
