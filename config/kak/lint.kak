@@ -38,6 +38,7 @@ hook global WinSetOption filetype=cpp %{
 }
 hook global WinSetOption filetype=python %{
     set-option window lintcmd2 'pylint --msg-template="{path}:{line}:{column}: {category}: {msg}" -rn -sn'
+    set-option window lintcmd2 'pycodestyle --max-line-length=100'
 }
 
 hook global BufWritePre .* %{
