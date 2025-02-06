@@ -20,6 +20,7 @@ libpulse
 mpv
 mpvpaper
 obsidian
+ollama-rocm
 opencl-headers-git
 openfortivpn
 polkit-kde-agent

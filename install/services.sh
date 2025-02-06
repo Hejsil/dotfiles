@@ -13,6 +13,8 @@
 ~/.local/script/ask systemctl enable sync-aniz.timer --user
 ~/.local/script/ask systemctl enable rss-sync.timer --user
 
+~/.local/script/ask systemctl enable ollama
+
 # Required services
 systemctl enable foot-server --user
 systemctl enable poweralertd --user
