@@ -1,7 +1,8 @@
 #!/bin/sh
 
 songs="$XDG_DATA_HOME/synthriderz"
-mkdir -p "$songs"
+new_songs="$songs/new"
+mkdir -p "$new_songs"
 
 names=$(mktemp -t synthrider-names.XXXXXXXXXX)
 links=$(mktemp -t synthrider-links.XXXXXXXXXX)
@@ -20,7 +21,8 @@ while true; do
             continue
         fi
 
-        curl -sL --output "$songs/$file" "$link"
+        curl -sL --output "$new_songs/$file" "$link"
+        cp "$new_songs/$file" "$songs/$file"
         echo "$file"
     done
 
