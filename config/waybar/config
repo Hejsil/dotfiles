@@ -6,11 +6,11 @@
     "modules-center": [
         "memory",
         "cpu",
-        "disk"
+        "disk",
+        "battery",
+        "custom/rss"
     ],
     "modules-right": [
-        "battery",
-        "custom/rss",
         "clock"
     ],
     "hyprland/workspaces": {
@@ -28,34 +28,19 @@
         "format": "mem{:3}%"
     },
     "cpu": {
-        "format": "cpu{usage:3}% {icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7}{icon8}{icon9}{icon10}{icon11}{icon12}{icon13}{icon14}{icon15}{icon16}{icon17}{icon18}{icon19}{icon20}{icon21}{icon22}{icon23}{icon24}{icon25}{icon26}{icon27}{icon28}{icon29}{icon30}{icon31}",
-        "format-icons": [
-            "<span color='#78b496'> </span>",
-            "<span color='#78b496'>▁</span>",
-            "<span color='#78b496'>▂</span>",
-            "<span color='#c8821e'>▃</span>",
-            "<span color='#c8821e'>▄</span>",
-            "<span color='#dc501e'>▅</span>",
-            "<span color='#dc501e'>▆</span>",
-            "<span color='#f03232'>▇</span>",
-            "<span color='#f03232'>█</span>"
-        ],
+        "format": "cpu{usage:3}%",
         "interval": 1
     },
     "disk": {
-        "format": "disk{percentage_used:3}%"
+        "format": "dsk{percentage_used:3}%"
     },
     "battery": {
         "interval": 60,
-        "format": "{icon}{capacity:3}%",
-        "format-icons": [
-            "🪫",
-            "🔋"
-        ],
+        "format": "bat{capacity:3}%"
     },
     "custom/rss": {
         "exec": "find ~/.local/share/rss/unread/ -type f -printf . | wc -c",
-        "format": "📰{:>3}",
+        "format": "rss{:>3}",
         "interval": 10
     },
     "clock": {
