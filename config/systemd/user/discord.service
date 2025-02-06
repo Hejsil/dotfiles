@@ -1,6 +1,6 @@
 [Service]
 Type=exec
-ExecStart=/usr/bin/discord
+ExecStart=/usr/bin/discord-canary
 
 [Unit]
 PartOf=graphical-session.target
