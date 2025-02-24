@@ -23,16 +23,18 @@ button {
     box-shadow: inset 0 -2px @color5;
 }
 
+#battery,
 #clock,
 #cpu,
-#memory,
-#pulseaudio,
-#workspaces,
-#disk,
-#battery,
 #custom-rss,
 #custom-weather,
-#wireplumber {
+#disk,
+#memory,
+#pulseaudio,
+#systemd-failed-units,
+#wireplumber,
+#workspaces
+{
     border-top: 2px solid @color5;
     padding: 0 10px;
 }

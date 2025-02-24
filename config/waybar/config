@@ -6,11 +6,12 @@
     "modules-center": [
         "memory",
         "cpu",
-        "disk",
         "battery",
-        "custom/rss"
+        "disk"
     ],
     "modules-right": [
+        "custom/rss",
+        "systemd-failed-units",
         "clock"
     ],
     "hyprland/workspaces": {
@@ -31,17 +32,24 @@
         "format": "cpu{usage:3}%",
         "interval": 1
     },
-    "disk": {
-        "format": "dsk{percentage_used:3}%"
-    },
     "battery": {
         "interval": 60,
         "format": "bat{capacity:3}%"
+    },
+    "disk": {
+        "format": "dsk{percentage_used:3}%"
     },
     "custom/rss": {
         "exec": "find ~/.local/share/rss/unread/ -type f -printf . | wc -c",
         "format": "rss{:>3}",
         "interval": 10
+    },
+    "systemd-failed-units": {
+        "hide-on-ok": false,
+        "format": "sys{nr_failed:3}",
+        "format-ok": "sys{nr_failed:3}",
+        "system": true,
+        "user": true
     },
     "clock": {
         "format": "Week {:%V %b %d %a %H:%M}"
