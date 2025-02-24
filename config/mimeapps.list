@@ -13,6 +13,7 @@ image/png=imv.desktop
 image/jpeg=imv.desktop
 image/x-xcf=gimp.desktop
 application/pdf=firefox.desktop
+x-scheme-handler/sidequest=SideQuest.desktop
 
 [Added Associations]
 x-scheme-handler/http=firefox.desktop;
@@ -26,6 +27,6 @@ application/xhtml+xml=firefox.desktop;
 application/x-extension-xhtml=firefox.desktop;
 application/x-extension-xht=firefox.desktop;
 image/png=imv.desktop;
-image/jpeg=imv.desktop;
+image/jpeg=gimp.desktop;imv.desktop;
 image/x-xcf=gimp.desktop;
 application/pdf=firefox.desktop;
