@@ -1,22 +1,50 @@
 [core]
     editor = kak
+
 [pull]
+    # https://blog.gitbutler.com/how-git-core-devs-configure-git/
     rebase = true
+
 [credential]
     helper = store
+
 [diff]
     tool = difftastic
+
+    # https://blog.gitbutler.com/how-git-core-devs-configure-git/
+    algorithm = histogram
+    colorMoved = plain
+    mnemonicPrefix = true
+    renames = true
+
 [difftool]
     prompt = false
+
 [difftool "difftastic"]
     cmd = difft "$LOCAL" "$REMOTE"
+
 [pager]
     difftool = true
-[filter "lfs"]
-    clean = git-lfs clean -- %f
-    smudge = git-lfs smudge -- %f
-    process = git-lfs filter-process
-    required = true
+
 [fetch]
     writeCommitGraph = true
 
+    # https://blog.gitbutler.com/how-git-core-devs-configure-git/
+    all = true
+    pruneTags = true
+    prune = true
+
+[rerere]
+    # https://blog.gitbutler.com/how-git-core-devs-configure-git/
+    enabled = true
+    autoupdate = true
+
+[rebase]
+    # https://blog.gitbutler.com/how-git-core-devs-configure-git/
+    autoSquash = true
+    autoStash = true
+    updateRefs = true
+
+[merge]
+    # https://blog.gitbutler.com/how-git-core-devs-configure-git/
+    conflictstyle = zdiff3
