@@ -1,2 +1,2 @@
 #!/bin/sh
-exec rss-add "https://old.reddit.com/r/$1/.rss?t=month"
+exec rss-add "https://old.reddit.com/r/$1/.rss?t=month&limit=5"
