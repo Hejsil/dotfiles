@@ -1,0 +1,8 @@
+#!/bin/sh
+version=$1
+
+sed -i "s/\.version *= *\"[^\"]*\"/.version = \"$version\"/" build.zig.zon
+git add build.zig.zon
+git commit -m "Release $version"
+git push
+gh release create "$version" --draft
