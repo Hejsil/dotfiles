@@ -170,6 +170,7 @@ local/lib/
 local/share/aniz/.stfolder/
 local/share/Anki2/
 local/share/anki-jlab/
+local/share/anyzig/
 local/share/applications/
 local/share/baloo/
 local/share/bash
@@ -247,6 +248,7 @@ local/share/xorg/
 local/share/yelp/
 local/share/yuzu/
 local/share/zathura/
+local/share/zig/
 local/share/zig-versions/
 local/share/zoxide/
 local/state/
