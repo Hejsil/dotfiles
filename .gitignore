@@ -172,6 +172,7 @@ local/share/Anki2/
 local/share/anki-jlab/
 local/share/anyzig/
 local/share/applications/
+local/share/atuin/
 local/share/baloo/
 local/share/bash
 local/share/bash_history
@@ -183,6 +184,7 @@ local/share/dipm/
 local/share/direnv/
 local/share/dolphin/
 local/share/evolution/
+local/share/fish/
 local/share/flatpak/
 local/share/FNA3D/
 local/share/fonts/
