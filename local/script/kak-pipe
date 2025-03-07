@@ -1,0 +1,8 @@
+#!/bin/sh
+tmp=$(mktemp)
+cat - >"$tmp"
+
+kak "$tmp"
+
+cat "$tmp"
+rm "$tmp"
