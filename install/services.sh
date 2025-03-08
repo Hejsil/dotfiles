@@ -26,4 +26,5 @@ systemctl enable wob --user
 systemctl enable haveged
 systemctl enable reflector
 systemctl enable sshd
+systemctl enable systemd-resolved
 systemctl enable udisks2
