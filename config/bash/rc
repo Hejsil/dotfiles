@@ -1,2 +1,6 @@
 #!/usr/bin/env bash
+
+[[ $- != *i* ]] && return
+
+# Use fish as interactive shell
 exec fish
