@@ -1,9 +1,0 @@
-[Service]
-Type=exec
-ExecStart=/usr/bin/caprine
-
-[Unit]
-PartOf=graphical-session.target
-
-[Install]
-WantedBy=graphical-session.target

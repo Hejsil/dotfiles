@@ -2,7 +2,6 @@
 
 ~/.local/script/ask systemctl enable activate-linux --user
 ~/.local/script/ask systemctl enable anki --user
-~/.local/script/ask systemctl enable caprine --user
 ~/.local/script/ask systemctl enable discord --user
 ~/.local/script/ask systemctl enable mail --user
 ~/.local/script/ask systemctl enable replay --user
