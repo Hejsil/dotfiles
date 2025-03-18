@@ -17,7 +17,7 @@ map global insert <pageup>   '<a-;><c-b>'
 map global insert <pagedown> '<a-;><c-f>'
 
 map global normal "'"           '<a-i>w*/<ret>'
-map global normal 'z'           ':wa<ret>'
+map global normal 'z'           ':w<ret>'
 
 # Default to case insensitive search
 map global normal '/'           '/(?i)'
