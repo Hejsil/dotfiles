@@ -85,6 +85,7 @@ config/katemetainfos
 config/katerc
 config/kateschemarc
 config/katevirc
+config/kcachegrindrc
 config/kcminputrc
 config/kconf_updaterc
 config/KDE/
@@ -155,6 +156,7 @@ config/ubuntu-xdg-terminals.list
 config/unity3d/
 config/Upscayl/
 config/user-dirs.locale
+config/Vampire_Survivors*
 config/vesktop/
 config/VirtualBox
 config/Vita3K/
@@ -225,6 +227,7 @@ local/share/plasma_icons/
 local/share/PolyMC/
 local/share/RecentDocuments/
 local/share/recently-used.xbel
+local/share/rr/
 local/share/rss/
 local/share/sddm/
 local/share/sddm.log
