@@ -1,5 +1,5 @@
 hook global WinSetOption filetype=c          %{ set-option window formatcmd 'clang-format' }
-hook global WinSetOption filetype=git-commit %{ set-option window formatcmd 'pandoc --columns=72 --tab-stop 2 --from gfm --to gfm' }
+hook global WinSetOption filetype=git-commit %{ set-option window formatcmd 'dprint --config ~/.config/dprint/git-commit.json fmt --stdin md' }
 hook global WinSetOption filetype=javascript %{ set-option window formatcmd "deno fmt --options-indent-width %opt{tabstop} -" }
 hook global WinSetOption filetype=java       %{ set-option window formatcmd 'astyle --max-code-length=100 --mode=java' }
 hook global WinSetOption filetype=json       %{ set-option window formatcmd "jq --indent %opt{tabstop} ." }
