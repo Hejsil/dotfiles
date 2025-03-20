@@ -22,5 +22,5 @@ yay -S --noconfirm --asexplicit - <"$HOME/.config/installed-programs" || true
 
 curl -L https://github.com/Hejsil/dipm/releases/latest/download/dipm-x86_64-linux-musl >/tmp/dipm &&
     chmod +x /tmp/dipm &&
-    xargs '-d\n' /tmp/dipm install <"$HOME/.config/dipm-installed-programs" &&
+    /tmp/dipm list all | cut -f1 | xargs '-d\n' /tmp/dipm install &&
     rm /tmp/dipm
