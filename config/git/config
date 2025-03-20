@@ -21,7 +21,7 @@
     prompt = false
 
 [difftool "difftastic"]
-    cmd = difft "$LOCAL" "$REMOTE"
+    cmd = difft --display=inline "$LOCAL" "$REMOTE"
 
 [pager]
     difftool = true
