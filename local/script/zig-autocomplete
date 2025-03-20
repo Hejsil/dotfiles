@@ -89,7 +89,10 @@ $NF ~ /^union(\(enum(\([^)]*\))?\))?$/ { printf "%s{ ¤ }", $0 ; next }
 /^[ ]*(pub [ ]*)?(const|var) [a-zA-Z][a-zA-Z0-9_]* $/ { printf "%s= ¤;", $0 ; next }
 /^[ ]*_ $/                                            { printf "%s= ¤;", $0 ; next }
 
-$NF ~ /^allocator:$/       { printf "%s std.mem.Allocator¤", $0 ; next }
+$NF ~ /^allocator:$/ { printf "%s std.mem.Allocator¤", $0 ; next }
+$NF ~ /^gpa:$/       { printf "%s std.mem.Allocator¤", $0 ; next }
+$NF ~ /^arena:$/     { printf "%s std.mem.Allocator¤", $0 ; next }
+
 $NF ~ /^(str|string):$/    { printf "%s []const u8¤", $0 ; next }
 $NF ~ /^(reader|writer):$/ { printf "%s anytype¤", $0 ; next }
 $NF ~ /^len:$/             { printf "%s usize¤", $0 ; next }
