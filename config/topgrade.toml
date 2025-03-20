@@ -4,8 +4,21 @@ no_retry = true
 cleanup = true
 skip_notify = true
 no_self_update = true
-disable = ["lensfun", "github_cli_extensions", "kakoune", "config_update", "containers"]
-
+disable = [
+    "containers",
+    "github_cli_extensions",
+    "git_repos",
+    "kakoune",
+    "lensfun",
+    "micro",
+    "mise",
+    "pixi",
+    "rye",
+    "stack",
+    "stew",
+    "uv",
+    "zvm",
+]
 
 [commands]
 "Dipm" = "dipm update"
