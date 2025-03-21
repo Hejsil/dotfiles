@@ -1,4 +1,4 @@
 #!/bin/sh
 echo | exec fzf --disabled --delimiter ':' --no-extended --ansi \
-    --bind 'change:reload:rg --color=always -L --hidden --line-number -- {q} || true' \
+    --bind 'change:reload:rg --color=always -L --hidden --line-number -- {q} . lib || true' \
     --preview 'fzf-rg-bat {2} {1}'
