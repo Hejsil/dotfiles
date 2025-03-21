@@ -3,7 +3,7 @@ hook global WinSetOption filetype=.* %{
     ctags-disable-autocomplete
 }
 
-hook global WinSetOption filetype=(c|cpp) %{
+hook global WinSetOption filetype=(python|c|cpp) %{
     ctags-enable-autocomplete
 
     map buffer goto d '<esc><a-i>w:ctags-search<ret>' -docstring 'definition'
