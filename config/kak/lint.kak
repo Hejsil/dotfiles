@@ -3,6 +3,7 @@
 declare-option str lintcmd1
 declare-option str lintcmd2
 declare-option str lintcmd3
+declare-option str lintcmd4
 
 define-command set-lintcmd-window %{
     set-option window lintcmd %sh{
@@ -13,6 +14,8 @@ define-command set-lintcmd-window %{
         printf '%s' "${kak_opt_lintcmd2:-true}"
         printf '%s' ' "$1"; '
         printf '%s' "${kak_opt_lintcmd3:-true}"
+        printf '%s' ' "$1"; '
+        printf '%s' "${kak_opt_lintcmd4:-true}"
         printf '%s' ' "$1"; '
         printf '%s' '} && run'
     }
@@ -38,7 +41,8 @@ hook global WinSetOption filetype=cpp %{
 }
 hook global WinSetOption filetype=python %{
     set-option window lintcmd2 'pylint --msg-template="{path}:{line}:{column}: {category}: {msg}" -rn -sn'
-    set-option window lintcmd2 'pycodestyle --max-line-length=100'
+    set-option window lintcmd3 'run2() { ruff check "$1" | rg "(^[^:]*:\d+:\d+:) F\d+( \[\*\])?" -r "\$1 warning:" ; } && run2'
+    set-option window lintcmd4 'pycodestyle --max-line-length=100'
 }
 
 hook global BufWritePre .* %{
