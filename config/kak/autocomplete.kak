@@ -13,8 +13,7 @@ define-command autocomplete -params 1 -docstring "" %{
             echo "fail 'Cannot autocomplete while having multiple selections'"
         fi
     }
-    execute-keys -draft "<a-;>h<a-;>Gh<a-;>|%arg[1]<ret>"
-    execute-keys -save-regs '"' '<a-;><a-f>¤<a-;>;<a-;>d'
+    execute-keys -save-regs '"' "<a-;>h<a-;>Gh<a-;>|%arg[1]<ret><a-;>s¤<ret><a-;>d"
 }
 
 hook global -group autocomplete InsertChar '[^\w\n.]' %{

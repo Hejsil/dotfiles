@@ -23,7 +23,7 @@
 
 $NF ~ /^(if|while|switch)$/   { printf "%s(¤) {}", $0 ; next }
 $NF ~ /^(struct|union|enum)$/ { printf "%s{¤}",    $0 ; next }
-$NF == "structt"              { printf "typedef struct {\n\n} ¤;" ; next }
+$NF == "structt"              { printf "typedef struct ¤_s {\n\n} ¤_t;" ; next }
 $NF == "uniont"               { printf "typedef union {\n\n} ¤;"  ; next }
 $NF == "enumt"                { printf "typedef enum {\n\n} ¤;"   ; next }
 $NF == "for"                  { sub($NF "[ ]*$", "for");    printf "%s (¤;;) {}", $0 ; next }
