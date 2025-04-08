@@ -1,4 +1,3 @@
-function gds --wraps='git difftool --staged' --description 'alias gds=git difftool --staged'
-  git difftool --staged $argv
-        
+function gds --wraps='git diff --staged' --description 'alias gds=git diff --staged'
+  git diff --staged $argv
 end
