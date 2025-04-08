@@ -9,22 +9,11 @@
     helper = store
 
 [diff]
-    tool = difftastic
-
     # https://blog.gitbutler.com/how-git-core-devs-configure-git/
     algorithm = histogram
     colorMoved = plain
     mnemonicPrefix = true
     renames = true
-
-[difftool]
-    prompt = false
-
-[difftool "difftastic"]
-    cmd = difft --display=inline "$LOCAL" "$REMOTE"
-
-[pager]
-    difftool = true
 
 [fetch]
     writeCommitGraph = true
