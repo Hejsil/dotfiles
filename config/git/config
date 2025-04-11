@@ -37,3 +37,10 @@
 [merge]
     # https://blog.gitbutler.com/how-git-core-devs-configure-git/
     conflictstyle = zdiff3
+
+[includeIf "gitdir:~/repo/forks/"]
+    path = ~/repo/forks/.gitconfig
+[includeIf "gitdir:~/repo/own/"]
+    path = ~/repo/own/.gitconfig
+[includeIf "gitdir:~/repo/work/"]
+    path = ~/repo/work/.gitconfig
