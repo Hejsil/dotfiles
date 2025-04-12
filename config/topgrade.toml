@@ -17,6 +17,7 @@ disable = [
     "stack",
     "stew",
     "uv",
+    "zigup",
     "zvm",
 ]
 
