@@ -22,6 +22,7 @@ systemctl enable udiskie --user
 systemctl enable waybar --user
 systemctl enable wob.socket --user
 systemctl enable wob --user
+systemctl enable ydotool --user
 
 systemctl enable haveged
 systemctl enable sshd
