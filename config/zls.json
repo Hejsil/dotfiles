@@ -1,6 +1,5 @@
 {
     "enable_snippets": false,
     "enable_argument_placeholders": false,
-    "enable_autofix": true,
     "warn_style": true
 }
