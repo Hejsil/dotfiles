@@ -1,11 +1,9 @@
 #!/bin/sh
 
-sink=$(pactl get-default-sink)
-src=$(pactl get-default-source)
 videos_dir=$(xdg-user-dir VIDEOS)
 container='mp4'
 
 mkdir -p "$videos_dir"
 
-exec gpu-screen-recorder -v no -w DP-1 -k av1 -q ultra -ac opus -f 30 -r 600 -c "${container}" \
-    -o "${videos_dir}" -a "${sink}.monitor" -a "${src}"
+exec gpu-screen-recorder -v no -w DP-1 -k av1 -q ultra -ac opus -f 60 -r 1200 -c "${container}" \
+    -o "${videos_dir}" -a "default_output" -a "default_input"
