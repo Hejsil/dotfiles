@@ -1,6 +1,7 @@
 #!/bin/sh
 version=$1
 
+git pull
 sed -i "s/\.version *= *\"[^\"]*\"/.version = \"$version\"/" build.zig.zon
 git add build.zig.zon
 git commit --allow-empty -m "Release $version"
