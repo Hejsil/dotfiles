@@ -3,4 +3,4 @@
 file=$1
 
 cat - >>"$file"
-sort -u "$file" | exec sponge "$file"
+sort -u "$file" | sed '/^$/d' | exec sponge "$file"
