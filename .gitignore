@@ -57,6 +57,7 @@ config/Electron/
 config/EmuDeck/
 config/enchant/
 config/evolution/
+config/g/
 config/gamescope/
 config/gcloud/
 config/gh/
@@ -158,6 +159,7 @@ config/Upscayl/
 config/user-dirs.locale
 config/Vampire_Survivors*
 config/vesktop/
+config/VintagestoryData/
 config/VirtualBox
 config/Vita3K/
 config/VSCodium/
@@ -170,6 +172,7 @@ config/yelp/
 config/yuzu/
 local/bin/
 local/lib/
+local/share/anime-game-launcher/
 local/share/aniz/.stfolder/
 local/share/Anki2/
 local/share/anki-jlab/
@@ -198,6 +201,7 @@ local/share/gnome-shell/
 local/share/gnupg/
 local/share/godot/
 local/share/gvfs-metadata/
+local/share/honkers-railway-launcher/
 local/share/hyprland/
 local/share/icc/
 local/share/icons/
