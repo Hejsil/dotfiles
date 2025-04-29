@@ -23,7 +23,7 @@
 # timezone = "local"
 
 ## enable or disable automatic sync
-auto_sync = false
+auto_sync = true
 
 ## enable or disable automatic update checks
 update_check = false
