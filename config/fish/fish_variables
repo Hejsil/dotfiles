@@ -1,5 +1,6 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
+SETUVAR --export CARAPACE_BRIDGES:zsh\x2cfish\x2cbash\x2cinshellisense
 SETUVAR __fish_initialized:3800
 SETUVAR fish_color_autosuggestion:brblack
 SETUVAR fish_color_cancel:\x2dr
