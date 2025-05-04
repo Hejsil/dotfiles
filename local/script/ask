@@ -5,10 +5,6 @@
 #   git restore file.a file.b file.c
 #   Do you want to run the above command [y/N]:
 
-echo "$@"
-printf "Do you want to run the above command [y/N]: "
-
-answer=$(head -n1 </dev/tty)
-if [ "$answer" = 'y' ]; then
+if gum confirm "$*"; then
     "$@"
 fi
