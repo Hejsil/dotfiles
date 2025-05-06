@@ -5,4 +5,4 @@ rss-list unread |
     sort -k1 |
     fzf -m -d '\t' --with-nth=1,2 --preview 'COLUMNS=$FZF_PREVIEW_COLUMNS rss-to-md {3}' |
     cut -f3,4 | tr '\t' '\n' |
-    exec nargs rss-open-read.sh
+    exec nargs rss-open-read
