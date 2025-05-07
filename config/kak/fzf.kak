@@ -7,9 +7,10 @@ define-command open -params 1 %{
     }
 }
 
+define-command fzf-fb %{ open fzf-fb }
 define-command fzf-fd %{ open fzf-fd }
-define-command fzf-ag %{ open fzf-ag }
 define-command fzf-rg %{ open fzf-rg }
 
+map global user b ':fzf-fb<ret>' -docstring 'Fzf file brower'
 map global user f ':fzf-fd<ret>' -docstring 'Fzf files'
 map global user s ':fzf-rg<ret>' -docstring 'Fzf content of files'

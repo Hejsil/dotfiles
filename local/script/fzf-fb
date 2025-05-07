@@ -1,0 +1,16 @@
+#!/bin/sh
+
+fd_cmd='fd . --maxdepth 1 --base-directory'
+cwd=$(mktemp -t 'fzf-fm.XXXXXXXX')
+res=$(mktemp -t 'fzf-fm.XXXXXXXX')
+echo "$PWD/" > "$cwd"
+
+export cwd
+export fd_cmd
+
+$fd_cmd "$(cat "$cwd")" | fzf "$@"  \
+    '--bind=right:clear-query+reload:echo "$(cat "$cwd")"{1}           > "$cwd" && $fd_cmd "$(cat "$cwd")"' \
+    '--bind=left:clear-query+reload:echo "$(dirname "$(cat "$cwd")")/" > "$cwd" && $fd_cmd "$(cat "$cwd")"' > "$res"
+
+rg '^' -r "$(cat "$cwd")" "$res" | cat
+rm "$cwd" "$res"
