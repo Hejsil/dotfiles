@@ -1,2 +1,0 @@
-#!/bin/sh
-exec bat --color=always --line-range ":$FZF_PREVIEW_LINES" "$1"

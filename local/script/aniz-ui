@@ -2,7 +2,7 @@
 
 fzf2() {
     fzf -m -d '\t' --tiebreak begin --with-nth=1,2,3,4,5 \
-        --preview 'img2sixel "$(aniz-ui-download-image {6})"' \
+        --preview 'fzf-preview "$(aniz-ui-download-image {6})"' \
         "$@"
 }
 

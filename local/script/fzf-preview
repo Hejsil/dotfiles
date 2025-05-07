@@ -1,0 +1,12 @@
+#!/bin/sh
+
+if [ -d "$1" ]; then
+    fd . --base-directory "$1" --maxdepth 1
+    exit 0
+fi
+
+mime=$(file --mime-type "$1" | sd '([^:]*:)* ' '')
+case $mime in
+    image/png) chafa -s "${FZF_PREVIEW_COLUMNS}x${FZF_PREVIEW_LINES}" "$1" ;;
+    *) bat --color=always --line-range ":$FZF_PREVIEW_LINES" "$1" ;;
+esac

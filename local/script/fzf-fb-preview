@@ -1,7 +1,0 @@
-#!/bin/sh
-
-if [ -d "$1" ]; then
-    fd . --base-directory "$1" --maxdepth 1
-else
-    fzf-fd-preview "$1"
-fi

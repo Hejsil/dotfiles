@@ -3,15 +3,15 @@
 fd_cmd='fd . --maxdepth 1 --base-directory'
 cwd=$(mktemp -t 'fzf-fm.XXXXXXXX')
 res=$(mktemp -t 'fzf-fm.XXXXXXXX')
-echo "$PWD/" > "$cwd"
+echo "$PWD/" >"$cwd"
 
 export cwd
 export fd_cmd
 
-$fd_cmd "$(cat "$cwd")" | fzf "$@"  \
+$fd_cmd "$(cat "$cwd")" | fzf "$@" \
     '--bind=right:clear-query+reload:echo "$(cat "$cwd")"{}            > "$cwd" && $fd_cmd "$(cat "$cwd")"' \
     '--bind=left:clear-query+reload:echo "$(dirname "$(cat "$cwd")")/" > "$cwd" && $fd_cmd "$(cat "$cwd")"' \
-    --preview 'fzf-fb-preview "$(echo "$(cat "$cwd")"{})"' > "$res"
+    --preview 'fzf-preview "$(echo "$(cat "$cwd")"{})"' >"$res"
 
 rg '^' -r "$(cat "$cwd")" "$res" | cat
 rm "$cwd" "$res"

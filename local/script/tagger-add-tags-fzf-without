@@ -6,4 +6,4 @@ regex=$2
 fd . "$folder" |
     rg -v "$regex" |
     sort |
-    nargs tagger-add-tags-fzf-images
+    nargs tagger-add-tags-fzf
