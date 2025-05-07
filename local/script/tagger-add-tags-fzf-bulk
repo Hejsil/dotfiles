@@ -1,0 +1,15 @@
+#!/bin/sh
+
+image_escaped=$(echo "$1" | escape-sh-str-quote)
+tags_picked=$(tagger-get-taglist | fzf -m --preview "fzf-preview '$image_escaped'")
+if [ -z "$tags_picked" ]; then
+    exit
+fi
+
+for image in "$@"; do
+    if ! tagger-is-tagged "$image"; then
+        image=$(tagger-prepare "$image")
+    fi
+
+    echo "$tags_picked" | nargs tagger-add-tags "$image"
+done
