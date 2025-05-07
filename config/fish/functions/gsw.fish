@@ -1,4 +1,3 @@
 function gsw --wraps='git switch' --description 'alias gsw=git switch'
-  git switch $argv
-        
+    git switch $argv
 end

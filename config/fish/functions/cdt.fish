@@ -1,3 +1,3 @@
 function cdt --wraps=cd --description 'alias cdt=cd'
-  cd "$(mktemp -d)"
+    cd "$(mktemp -d)"
 end

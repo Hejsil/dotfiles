@@ -1,4 +1,3 @@
 function .. --description 'alias ..=z ..'
-  z .. $argv
-        
+    z .. $argv
 end

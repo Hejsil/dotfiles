@@ -1,4 +1,3 @@
 function ... --wraps='z ../..' --description 'alias ...=z ../..'
-  z ../.. $argv
-        
+    z ../.. $argv
 end
