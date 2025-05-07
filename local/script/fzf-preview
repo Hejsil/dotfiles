@@ -5,7 +5,7 @@ if [ -d "$1" ]; then
     exit 0
 fi
 
-mime=$(file --mime-type "$1" | sd '([^:]*:)* ' '')
+mime=$(file --brief --dereference --mime -- "$1" | cut '-d;' -f1)
 case $mime in
     image/png) chafa -s "${FZF_PREVIEW_COLUMNS}x${FZF_PREVIEW_LINES}" "$1" ;;
     *) bat --color=always --line-range ":$FZF_PREVIEW_LINES" "$1" ;;
