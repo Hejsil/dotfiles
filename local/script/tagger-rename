@@ -12,10 +12,9 @@ file_dir=$(dirname "$file")
 file_basename=$(basename "$file")
 file_ext=$(echo "$file_basename" | grep -E -o '\.[^.]*$')
 
-i=0
+i=$RANDOM
 while ! mv --update=none-fail "$file" "${file_dir}/${file_tags}${i}${file_ext}" 2>/dev/null; do
-    i=$(paste <(seq 0 inf) <(find "${file_dir}" | rg -F "${file_tags}" | rg -o '\d+' | sort -nu) |
-        nawk '$1 != $2 { print $1; exit }')
+    i=$RANDOM
 done
 
 echo "${file_dir}/${file_tags}${i}${file_ext}"
