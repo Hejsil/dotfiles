@@ -7,6 +7,6 @@ fi
 
 mime=$(file --brief --dereference --mime -- "$1" | cut '-d;' -f1)
 case $mime in
-    image/png) chafa -s "${FZF_PREVIEW_COLUMNS}x${FZF_PREVIEW_LINES}" "$1" ;;
+    image/png | image/jpeg) chafa -s "${FZF_PREVIEW_COLUMNS}x${FZF_PREVIEW_LINES}" "$1" ;;
     *) bat --color=always --line-range ":$FZF_PREVIEW_LINES" "$1" ;;
 esac
