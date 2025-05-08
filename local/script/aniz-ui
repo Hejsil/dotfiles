@@ -9,7 +9,7 @@ fzf2() {
 picks=$(mktemp -t aniz-ui-picks.XXXXXXXXXX)
 aniz "$1" |
     fzf2 --disabled --bind "change:reload:aniz '$1' --search {q}" |
-    cut -f5,6 >"$picks"
+    cut -f6 >"$picks"
 
 [ -s "$picks" ] || {
     rm "$picks"
@@ -27,9 +27,9 @@ update
 remove
 view' | fzf)
     case $choice in
-        view) cut -f2 "$picks" | xargs '-d\n' systemd-run --user browser ;;
+        view) <"$picks" xargs '-d\n' systemd-run --user browser ;;
         complete | drop | plan-to-watch | put-on-hold | start-watching | update | remove | watch-episode)
-            cut -f2 "$picks" | xargs '-d\n' aniz list "$choice"
+            <"$picks" xargs '-d\n' aniz list "$choice"
             ;;
         *) break ;;
     esac
