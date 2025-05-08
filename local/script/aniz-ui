@@ -17,8 +17,7 @@ aniz "$1" |
 }
 
 while true; do
-    choice=$(printf '
-watch-episode
+    choice=$(printf 'watch-episode
 complete
 drop
 plan-to-watch
@@ -26,24 +25,9 @@ put-on-hold
 start-watching
 update
 remove
-watch
-torrent
-view
-' | sed '/^$/d' | fzf)
+view' | fzf)
     case $choice in
         view) cut -f2 "$picks" | xargs '-d\n' systemd-run --user browser ;;
-        torrent)
-            cut -f1 "$picks" | jq -sRr @uri |
-                sed 's#%0A#\n#g' |
-                sed 's#^#https://nyaa.si/?q=#' |
-                xargs '-d\n' systemd-run --user xdg-open
-            ;;
-        watch)
-            cut -f1 "$picks" | jq -sRr @uri |
-                sed 's#%0A#\n#g' |
-                sed 's#^#https://aniwave.to/filter?keyword=#' |
-                xargs '-d\n' systemd-run --user xdg-open
-            ;;
         complete | drop | plan-to-watch | put-on-hold | start-watching | update | remove | watch-episode)
             cut -f2 "$picks" | xargs '-d\n' aniz list "$choice"
             ;;
