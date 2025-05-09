@@ -1,0 +1,3 @@
+#!/bin/sh
+fzf-fd-tree-prompt | fzf  --no-sort --disabled \
+    --bind 'change:reload:fzf-fd-tree-prompt {q}'
