@@ -1,20 +1,6 @@
 #!/bin/sh
-files=$(mktemp -t 'fzf-fd-tree.XXXXXXXX')
-tree=$(mktemp -t 'fzf-fd-tree.XXXXXXXX')
-
 fd -H --type f --type d --type l -L |
-    fzf -f "$1" --no-sort >"$files"
-
-sed 's#/#%%#g' "$files" |
-    paste "$files" - |
-    tree --fromfile . -U -a --noreport . |
-    sd '\\011' '\t'
-# tree --fromfile . -U -a --noreport <"$files" >"$tree"
-
-# {
-#     # tree print an initial `.` which is not include in `files`
-#     echo '.'
-#     cat "$files"
-# } | paste "$tree" -
-
-rm "$files" "$tree"
+    fzf -f "$1" --no-sort |
+    tree --fromfile . -f -a --noreport |
+    tail -n+2 |
+    sd '─ (\.(/[^/\n]*)*/([^/\n]*))$' '─ $3\t$1'

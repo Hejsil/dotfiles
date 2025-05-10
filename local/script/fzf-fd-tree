@@ -1,3 +1,5 @@
 #!/bin/sh
-fzf-fd-tree-prompt | fzf  --no-sort --disabled \
-    --bind 'change:reload:fzf-fd-tree-prompt {q}'
+fzf-fd-tree-prompt |
+    fzf '-d\t' --with-nth 1 --accept-nth 2 --no-sort --disabled \
+        --preview 'fzf-preview {2}' \
+        --bind 'change:reload:fzf-fd-tree-prompt {q}'
