@@ -1,6 +1,6 @@
 #!/bin/sh
 fd -H --type f --type d --type l -L |
     fzf -f "$1" --no-sort |
-    tree --fromfile . -f -a --noreport |
+    tree --fromfile . -f -a --noreport -U |
     tail -n+2 |
     sd '─ (\.(/[^/\n]*)*/([^/\n]*))$' '─ $3\t$1'
