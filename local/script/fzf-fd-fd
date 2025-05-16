@@ -1,0 +1,3 @@
+#!/bin/sh
+# The fd command with arguments used for `fzf-fd` and `fzf-fd-tree`
+exec fd --no-ignore-vcs --hidden --follow "$@"

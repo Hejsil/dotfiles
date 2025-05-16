@@ -1,3 +1,6 @@
 .cache
 .git
-*.lock
+.zig-cache
+
+tags
+zig-out
