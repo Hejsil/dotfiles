@@ -2,5 +2,6 @@
 .git
 .zig-cache
 
+db-export
 tags
 zig-out
