@@ -2,9 +2,10 @@
 
 hightlight_line=$1
 file=$2
-line_range_start=$((hightlight_line - (FZF_PREVIEW_LINES / 4)))
+line_range_start=$((hightlight_line - (FZF_PREVIEW_LINES / 3)))
 [ "$line_range_start" -lt 0 ] && line_range_start=0
 
-exec bat --color=always \
-    --line-range="${line_range_start}:$((line_range_start + FZF_PREVIEW_LINES))" \
-    --highlight-line="$hightlight_line" "$file"
+exec bat --color always \
+    --style 'changes,grid,numbers,snip' \
+    --line-range "${line_range_start}:$((line_range_start + FZF_PREVIEW_LINES))" \
+    --highlight-line "$hightlight_line" "$file"
