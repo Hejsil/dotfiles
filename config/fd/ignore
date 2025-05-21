@@ -1,10 +1,1 @@
-.cache
 .git
-.zig-cache
-
-artifacts
-build
-db-export
-output
-tags
-zig-out
