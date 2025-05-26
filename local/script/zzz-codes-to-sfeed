@@ -6,12 +6,14 @@ content_type=""
 enclosure=""
 author="Zenless Zone Zero"
 
-codes_url=$(curl -s 'https://raw.githubusercontent.com/seriaati/hoyo-codes/master/README.md' |
+hoyo_codes_url=$(curl -s 'https://raw.githubusercontent.com/seriaati/hoyo-codes/master/README.md' |
     rg -o 'Zenless Zone Zero: <([^>]*)>' -r '$1')
+wiki_url='https://zenless-zone-zero.fandom.com/wiki/Redemption_Code'
 
-curl "$codes_url" |
-    jq -r '.codes[].code' |
-    while read -r code; do
+{
+    curl "$hoyo_codes_url" | jq -r '.codes[].code'
+    curl "$wiki_url" | rg -o 'https://zenless.hoyoverse.com/redemption\?code=([^"]*)' -r '$1'
+} | while read -r code; do
         title="$code - Zenless Zone Zero Code"
         link="https://zenless.hoyoverse.com/redemption&code=$code"
         id="$code"
