@@ -8,7 +8,7 @@ unread_dir="$(rss-dirs unread)"
 IFS=$(printf '\a')
 
 {
-    zzz-codes-to-sfeed
+    rss-download-extra-feeds
     rss-download-feed "$urls_file" | sfeed
 } | tr '\t' '\a' |
     while read -r timestamp title link content content_type id author enclosure; do
