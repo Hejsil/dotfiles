@@ -1,20 +1,17 @@
 #!/bin/sh
 
-tab=$(printf '\t')
-timestamp="$(date +%s)"
-content=""
-content_type=""
-enclosure=""
+t=$(printf '\t')
+ts="$(date +%s)"
 
 curl "https://zenless-zone-zero.fandom.com/wiki/Redemption_Code" |
     rg -o 'https://zenless.hoyoverse.com/redemption\?code=([^"]*)' \
-    -r "$timestamp$tab\$1 - Zenless Zone Zero Code$tab\$0$tab$content$tab$content_type$tab\$1${tab}Zenless Zone Zero$tab$enclosure"
+    -r "$ts$t\$1 - Zenless Zone Zero Code$t\$0$t$t$t\$1${t}Zenless Zone Zero$t"
 
 curl "https://genshin-impact.fandom.com/wiki/Promotional_Code" |
     rg -o 'https://genshin.hoyoverse.com/gift\?code=([^"]*)' \
-    -r "$timestamp$tab\$1 - Genshin Impact Code$tab\$0$tab$content$tab$content_type$tab\$1${tab}Genshin Impact$tab$enclosure"
+    -r "$ts$t\$1 - Genshin Impact Code$t\$0$t$t$t\$1${t}Genshin Impact$t"
 
 curl "https://honkai-star-rail.fandom.com/wiki/Redemption_Code" |
     rg -o 'https://hsr.hoyoverse.com/gift\?code=([^"]*)' \
-    -r "$timestamp$tab\$1 - Honkai Star Rail Code$tab\$0$tab$content$tab$content_type$tab\$1${tab}Honkai Star Rail$tab$enclosure"
+    -r "$ts$t\$1 - Honkai Star Rail Code$t\$0$t$t$t\$1${t}Honkai Star Rail$t"
 
