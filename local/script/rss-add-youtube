@@ -1,8 +1,12 @@
 #!/bin/sh
 
 channel_link=$1
-channel_details=$(yt-dlp -j "$channel_link" -I 1:1)
-channel_id=$(echo "$channel_details" | jq .channel_id -r)
-channel_name=$(echo "$channel_details" | jq .channel -r)
-template='https://www.youtube.com/feeds/videos.xml?channel_id=%s\t%s'
-rss-add "$(printf "$template" "$channel_id" "$channel_name")"
+channel_details=$(mktemp -t 'rss-youtube-add.XXXXXXXX')
+yt-dlp -j "$channel_link" -I 1:1 >"$channel_details"
+
+channel_id=$(jq .channel_id -r "$channel_details")
+channel_name=$(jq .channel -r "$channel_details")
+rm "$channel_details"
+
+rss-add "$(printf 'https://www.youtube.com/feeds/videos.xml?channel_id=%s\t%s' \
+    "$channel_id" "$channel_name")"
