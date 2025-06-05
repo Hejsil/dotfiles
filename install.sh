@@ -8,6 +8,7 @@ install/programs.sh
 install/services.sh
 
 sudo usermod -aG docker "$USER"
+sudo usermod -aG games "$USER"
 sudo usermod -aG input "$USER"
 
 echo '# https://wiki.hyprland.org/Configuring/Monitors/' >"$HOME/.config/hypr/monitor.conf"
