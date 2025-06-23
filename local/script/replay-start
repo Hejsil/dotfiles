@@ -5,5 +5,5 @@ container='mp4'
 
 mkdir -p "$videos_dir"
 
-exec gpu-screen-recorder -v no -w DP-1 -k av1 -q ultra -ac opus -f 60 -r 1200 -c "${container}" \
+exec gpu-screen-recorder -v no -w DP-1 -k av1 -q ultra -ac opus -f 60 -r 600 -c "${container}" \
     -o "${videos_dir}" -a "default_output" -a "default_input"
