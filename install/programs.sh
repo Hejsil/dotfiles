@@ -17,10 +17,9 @@ fi
 sudo pacman -Syu
 sudo pacman -S --noconfirm yay
 
-yay -S --noconfirm --asexplicit - <"$HOME/.config/essential-programs"
-yay -S --noconfirm --asexplicit - <"$HOME/.config/installed-programs" || true
+yay -S --noconfirm --asexplicit - <"$HOME/.config/installed-programs"
 
 curl -L https://github.com/Hejsil/dipm/releases/latest/download/dipm-x86_64-linux-musl >/tmp/dipm &&
     chmod +x /tmp/dipm &&
-    /tmp/dipm list all | cut -f1 | xargs '-d\n' /tmp/dipm install &&
+    <"$HOME/.config/dipm-installed-programs" xargs '-d\n' /tmp/dipm install &&
     rm /tmp/dipm
