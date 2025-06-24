@@ -3,4 +3,4 @@ fzf-fd-fd |
     fzf -f "$1" |
     tree --fromfile . -f -a --noreport -U |
     tail -n+2 |
-    sd '─ (\.(/[^/\n]*)*/([^/\n]*))$' '─ $3\t$1'
+    sed -E 's#─ (\.(/[^/\n]*)*/([^/\n]*))$#─ \3\t\1#'
