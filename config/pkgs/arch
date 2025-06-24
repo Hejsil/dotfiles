@@ -1,6 +1,4 @@
-activate-linux
 adobe-source-sans-fonts
-alsa-firmware
 amd-ucode
 atuin
 base
@@ -24,7 +22,6 @@ docker
 duf
 dunst
 dust
-efibootmgr
 eza
 fd
 firefox
@@ -32,17 +29,12 @@ fish
 foot
 fzf
 gamescope
-gcr
 gdb
 gimp
 git
 github-cli
-glfw
-gopls
 gpu-screen-recorder
-gst-plugin-pipewire
 gum
-haskell-language-server
 haveged
 hdparm
 hyperfine
@@ -60,7 +52,6 @@ libpulse
 linux
 linux-firmware
 linux-headers
-lua-language-server
 ly
 man-db
 man-pages
@@ -87,14 +78,11 @@ pipewire-alsa
 pipewire-jack
 pipewire-pulse
 pipewire-v4l2
-pkgfile
 polkit-kde-agent
-poweralertd
 python-lsp-server
 python-pip
 python-pycodestyle
 python-pylint
-qt5-wayland
 reflector
 ripgrep
 rofi-wayland
@@ -103,7 +91,6 @@ rtkit
 rust-analyzer
 sad
 samba
-sfeed
 shellcheck
 shfmt
 socat
@@ -127,7 +114,6 @@ udisks2
 valgrind
 vi
 vim
-vintagestory
 vulkan-radeon
 w3m
 watchexec

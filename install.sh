@@ -5,6 +5,7 @@ cd "$(dirname "$0")" || exit 1
 install/linkup.sh
 install/home-dirs.sh
 install/programs.sh
+install/packages.sh
 install/services.sh
 
 sudo usermod -aG docker "$USER"
