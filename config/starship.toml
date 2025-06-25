@@ -1,87 +1,24 @@
-aws.disabled = true
-azure.disabled = true
-battery.disabled = true
-buf.disabled = true
-bun.disabled = true
-c.disabled = true
-cmake.disabled = true
-cmd_duration.disabled = true
-cobol.disabled = true
-conda.disabled = true
-container.disabled = true
-crystal.disabled = true
-daml.disabled = true
-dart.disabled = true
-deno.disabled = true
-docker_context.disabled = true
-dotnet.disabled = true
-elixir.disabled = true
-elm.disabled = true
-erlang.disabled = true
-fill.disabled = true
-gcloud.disabled = true
-gleam.disabled = true
-golang.disabled = true
-gradle.disabled = true
-guix_shell.disabled = true
-haskell.disabled = true
-haxe.disabled = true
-helm.disabled = true
-hg_branch.disabled = true
-hostname.disabled = true
-java.disabled = true
-jobs.disabled = true
-julia.disabled = true
-kotlin.disabled = true
-kubernetes.disabled = true
-localip.disabled = true
-lua.disabled = true
-memory_usage.disabled = true
-meson.disabled = true
-mojo.disabled = true
-netns.disabled = true
-nim.disabled = true
-nix_shell.disabled = true
-nodejs.disabled = true
-ocaml.disabled = true
-odin.disabled = true
-opa.disabled = true
-openstack.disabled = true
-package.disabled = true
-perl.disabled = true
-php.disabled = true
-pixi.disabled = true
-pulumi.disabled = true
-purescript.disabled = true
-python.disabled = true
-quarto.disabled = true
-raku.disabled = true
-red.disabled = true
-rlang.disabled = true
-ruby.disabled = true
-rust.disabled = true
-scala.disabled = true
-shell.disabled = true
-shlvl.disabled = true
-singularity.disabled = true
-solidity.disabled = true
-spack.disabled = true
-status.disabled = true
-swift.disabled = true
-terraform.disabled = true
-time.disabled = true
-typst.disabled = true
-username.disabled = true
-vagrant.disabled = true
-vcsh.disabled = true
-vlang.disabled = true
-zig.disabled = true
+format = """
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$memory_usage\
+$cmd_duration\
+$time\
+$line_break\
+$character"""
 
 [character]
 error_symbol = '[\$](bold red)'
 format = '$symbol '
 success_symbol = '[\$](bold green)'
 vicmd_symbol = '[\$](bold green)'
+
+[cmd_duration]
+disabled = false
 
 [directory]
 read_only_style = 'bold red'
@@ -96,3 +33,6 @@ truncation_length = 20
 ahead = '>'
 behind = '<'
 modified = '*'
+
+[time]
+disabled = false
