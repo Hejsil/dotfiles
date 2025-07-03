@@ -1,4 +1,5 @@
 format = """
+$hostname\
 $directory\
 $git_branch\
 $git_commit\
