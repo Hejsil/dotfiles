@@ -24,7 +24,7 @@ define-command set-lintcmd-window %{
 hook global WinSetOption 'lintcmd\d+=.*' %{ set-lintcmd-window }
 
 # Always check for typos
-set-option global lintcmd1 'typos --format brief'
+# set-option global lintcmd1 'typos --format brief'
 
 hook global WinSetOption filetype=sh %{
     set-option window lintcmd2 'shellcheck -f gcc'
@@ -46,5 +46,10 @@ hook global WinSetOption filetype=python %{
 }
 
 hook global BufWritePre .* %{
-    try lint catch %{}
+    try %sh{
+        if [ -z "$kak_opt_lintcmd1" ] &&  [ -z "$kak_opt_lintcmd2" ] && [ -z "$kak_opt_lintcmd3" ]; then
+            echo nop
+        else
+            echo lint
+    } catch %{}
 }

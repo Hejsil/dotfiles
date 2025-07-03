@@ -8,6 +8,7 @@ define-command -override move-lines-up -docstring 'move line up' %{
 }
 
 map global user c ':comment-line<ret>'      -docstring 'Comment out line'
+map global user e ':lsp-find-error<ret>'    -docstring 'Find next error'
 map global user y '<a-|>clipcopy<ret>'      -docstring 'Copy to system clipboard'
 map global user p '!clippaste<ret>'         -docstring 'Paste from system clipboard'
 map global user S '|sort<ret>'              -docstring 'Sort'
