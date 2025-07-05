@@ -43,6 +43,14 @@ map global insert '<c-o>' '<a-;>o'
 map global normal ',' '<space>'
 map global normal '<space>' ','
 
+# Go to definition that tries lsp and then ctags as a backup
+define-command -override go-to-definition -docstring 'move line up' %{
+    try %{ lsp-definition }
+        %{ execute-keys '<a-i>w:ctags-search<ret>' }
+}
+
+map global goto d '<esc>:go-to-definition<ret>' -docstring 'definition'
+
 # Auto complete with tab
 hook global InsertCompletionShow .* %{ map window insert <tab> <c-n> }
 hook global InsertCompletionHide .* %{ map window insert <tab> <tab> }
