@@ -1,5 +1,6 @@
 source "%val{config}/autoalign.kak"
 source "%val{config}/autocomplete.kak"
+source "%val{config}/ctags.kak"
 source "%val{config}/filetype.kak"
 source "%val{config}/format.kak"
 source "%val{config}/fzf.kak"
