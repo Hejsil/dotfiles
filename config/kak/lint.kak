@@ -39,11 +39,6 @@ hook global WinSetOption filetype=cpp %{
     set-option window lintcmd3 'rg -HU --column "^ *\w+(( *\*)+ *| +)\w+ *\( *\)[ \n]*\{" -r " warning: empty parameter list"'
     # } To balance the brackets. In the rg pattern there is the opening bracket
 }
-hook global WinSetOption filetype=python %{
-    set-option window lintcmd2 'pylint --msg-template="{path}:{line}:{column}: {category}: {msg}" -rn -sn'
-    set-option window lintcmd3 'run2() { ruff check "$1" | rg "(^[^:]*:\d+:\d+:) F\d+( \[\*\])?" -r "\$1 warning:" ; } && run2'
-    set-option window lintcmd4 'pycodestyle --max-line-length=100'
-}
 
 hook global BufWritePre .* %{
     try %sh{
