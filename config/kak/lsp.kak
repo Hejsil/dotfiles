@@ -25,31 +25,35 @@ declare-option -hidden str lsp_server_zls %{
     root_globs = [ "build.zig" ]
 }
 
+declare-option -hidden str lsp_server_spellcheck %exp{
+    %opt{lsp_server_typos}
+}
+
 hook -group lsp-filetype-c-family global BufSetOption filetype=(?:c|cpp|objc) %{
     set-option buffer lsp_servers %exp{
         %opt{lsp_server_c}
-        %opt{lsp_server_typos}
+        %opt{lsp_server_spellcheck}
     }
 }
 hook -group lsp-filetype-markdown global BufSetOption filetype=markdown %{
     set-option buffer lsp_servers %exp{
-        %opt{lsp_server_typos}
+        %opt{lsp_server_spellcheck}
     }
 }
 hook -group lsp-filetype-markdown global BufSetOption filetype=git-commit %{
     set-option buffer lsp_servers %exp{
-        %opt{lsp_server_typos}
+        %opt{lsp_server_spellcheck}
     }
 }
 hook -group lsp-filetype-python global BufSetOption filetype=python %{
     set-option buffer lsp_servers %exp{
         %opt{lsp_server_python}
-        %opt{lsp_server_typos}
+        %opt{lsp_server_spellcheck}
     }
 }
 hook -group lsp-filetype-zig global BufSetOption filetype=zig %{
     set-option buffer lsp_servers %exp{
-        %opt{lsp_server_typos}
+        %opt{lsp_server_spellcheck}
         %opt{lsp_server_zls}
     }
 }
