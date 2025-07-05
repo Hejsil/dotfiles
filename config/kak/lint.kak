@@ -51,5 +51,6 @@ hook global BufWritePre .* %{
             echo nop
         else
             echo lint
+        fi
     } catch %{}
 }

@@ -9,23 +9,20 @@ set-option global lsp_auto_show_code_actions true
 # https://github.com/kakoune-lsp/kakoune-lsp/blob/master/rc/servers.kak
 declare-option -hidden str lsp_server_c %{
     [clangd]
-    args = ["--log=error"]
-    root_globs = ["compile_commands.json", ".clangd", ".git", ".hg"]
+    args = [ "--log=error", "--clang-tidy" ]
+    root_globs = [ "compile_commands.json", ".clangd", ".git", ".hg" ]
 }
 declare-option -hidden str lsp_server_python %{
     [pylsp]
-    root_globs = ["requirements.txt", "setup.py", "pyproject.toml", ".git", ".hg"]
-    settings_section = "_"
-    [pylsp.settings._]
-    pylsp.plugins.jedi_completion.include_params = true
+    root_globs = [ "requirements.txt", "setup.py", "pyproject.toml", ".git", ".hg" ]
 }
 declare-option -hidden str lsp_server_typos %{
     [typos-lsp]
-    root_globs = [".git", ".hg"]
+    root_globs = [ ".git", ".hg" ]
 }
 declare-option -hidden str lsp_server_zls %{
     [zls]
-    root_globs = ["build.zig"]
+    root_globs = [ "build.zig" ]
 }
 
 hook -group lsp-filetype-c-family global BufSetOption filetype=(?:c|cpp|objc) %{
@@ -45,7 +42,7 @@ hook -group lsp-filetype-markdown global BufSetOption filetype=git-commit %{
     }
 }
 hook -group lsp-filetype-python global BufSetOption filetype=python %{
-    set-option buffer lsp_servers %{
+    set-option buffer lsp_servers %exp{
         %opt{lsp_server_python}
         %opt{lsp_server_typos}
     }
