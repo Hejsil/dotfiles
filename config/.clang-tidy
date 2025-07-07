@@ -1,0 +1,3 @@
+---
+Checks: '*,-llvmlibc-implementation-in-namespace,-modernize-use-trailing-return-type'
+FormatStyle: none

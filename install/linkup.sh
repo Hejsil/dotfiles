@@ -12,9 +12,12 @@ link() {
     ln -snf "$1" "$2"
 }
 
+mkdir -p "$HOME/repo"
+
 link "$(pwd)/config" "$HOME/.config"
 link "$(pwd)/local" "$HOME/.local"
 link "$(pwd)/config/bash/profile" "$HOME/.bash_profile"
 link "$(pwd)/config/bash/profile" "$HOME/.profile"
 link "$(pwd)/config/bash/rc" "$HOME/.bashrc"
+link "$(pwd)/config/.clang-tidy" "$HOME/repo/.clang-tidy"
 link "$(pwd)/config/perfconfig" "$HOME/.perfconfig"
