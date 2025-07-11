@@ -1,3 +1,3 @@
 ---
-Checks: '*,-llvmlibc-implementation-in-namespace,-modernize-use-trailing-return-type'
+Checks: '*,-llvmlibc-implementation-in-namespace,-modernize-use-trailing-return-type,-cppcoreguidelines-avoid-non-const-global-variables,-altera-unroll-loops,-*-braces-around-statements,-readability-identifier-length,-llvmlibc-restrict-system-libc-headers,-bugprone-assignment-in-if-condition'
 FormatStyle: none
