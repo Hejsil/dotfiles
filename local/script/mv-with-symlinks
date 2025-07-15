@@ -1,0 +1,17 @@
+#!/bin/sh -e
+
+from=$(realpath "$1")
+to=$2
+
+mv "$from" "$to"
+
+tab=$(printf '\t')
+# Find list of all symlinks and what they point to
+fd --type l -x sh -c 'printf "%s\t" {} ; realpath {}' |
+    # Exclude everything but what file we renamed
+    rg -F "$tab$from" |
+    while read -r link _; do
+        # Relink to the new location (relative)
+        ln -srf "$to" "$link"
+    done
+
