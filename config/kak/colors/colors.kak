@@ -32,7 +32,7 @@ set-face global LineNumberCursor default,default+r
 set-face global MenuForeground white,bright-black
 set-face global MenuBackground white,black
 set-face global MenuInfo cyan
-set-face global Information black,yellow
+set-face global Information bright-black,black+b
 set-face global Error black,red
 set-face global StatusLine cyan,default
 set-face global StatusLineMode yellow,default
