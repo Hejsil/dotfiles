@@ -8,7 +8,6 @@ define-command -override move-lines-up -docstring 'move line up' %{
 }
 
 map global user c ':comment-line<ret>'      -docstring 'Comment out line'
-map global user e ':lsp-find-error<ret>'    -docstring 'Find next error'
 map global user y '<a-|>clipcopy<ret>'      -docstring 'Copy to system clipboard'
 map global user p '!clippaste<ret>'         -docstring 'Paste from system clipboard'
 map global user S '|sort<ret>'              -docstring 'Sort'
@@ -16,6 +15,8 @@ map global user R '|sort -r<ret>'           -docstring 'Sort reverse'
 
 map global insert <pageup>   '<a-;><c-b>'
 map global insert <pagedown> '<a-;><c-f>'
+
+map global insert <c-n> '<a-;>:lsp-snippets-select-next-placeholders<ret>'
 
 map global normal "'"           '<a-i>w*/<ret>'
 map global normal 'z'           ':w<ret>'
