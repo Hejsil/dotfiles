@@ -21,3 +21,5 @@ add-highlighter global/ show-whitespaces -tab '▸' -tabpad ' ' -lf ' ' -spc ' '
 add-highlighter global/ regex            '\h+$' 0:default,red
 # Ruler at line 100
 add-highlighter global/ column 100       default,bright-black
+# Highlight matches
+add-highlighter global/ show-matching    -previous
