@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-fzf-img-mpv-window &
-mpv_pid=$!
-
-sleep 0.1 # Wait for mpv to start
-fzf-img-no-mpv "$@"
-
-kill "$mpv_pid"

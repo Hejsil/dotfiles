@@ -1,4 +1,0 @@
-#!/bin/sh
-cd "$1" || exit 1
-fzf-img -m |
-    exec dragon-drop --stdin --all --on-top --and-exit

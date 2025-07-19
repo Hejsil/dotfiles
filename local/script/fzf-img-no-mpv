@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-function draw {
-    mpv-ipc-command loadfile "$1" | socat - /tmp/fzf-img-mpv-ipc
-}
-
-export -f draw
-
-fzf --preview "draw {}" --preview-window="right:0" "$@"

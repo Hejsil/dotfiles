@@ -1,8 +1,0 @@
-#!/bin/sh
-
-mpv_ipc=/tmp/fzf-img-mpv-ipc
-exec mpv --no-terminal --force-window --idle --loop \
-    --video-unscaled=downscale-big \
-    --wayland-app-id=noinitialfocus \
-    --focus-on=never \
-    --input-ipc-server="$mpv_ipc" "$@" >/dev/null 2>/dev/null
