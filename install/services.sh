@@ -27,6 +27,7 @@ systemctl enable ydotool --user
 systemctl enable haveged
 systemctl enable sshd
 systemctl enable systemd-resolved
+systemctl enable timeshift-boot.timer
 systemctl enable udisks2
 
 systemctl enable reflector.timer

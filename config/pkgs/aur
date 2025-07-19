@@ -1,4 +1,5 @@
 activate-linux
 poweralertd
 sfeed
+timeshift-systemd-timer
 vintagestory
