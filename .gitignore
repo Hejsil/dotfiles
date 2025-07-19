@@ -29,6 +29,7 @@ config/Code/Local Storage/
 config/Code/logs/
 config/Code/machineid
 config/Code/Network Persistent State
+config/Code - OSS/
 config/Code/Preferences
 config/Code/Service Worker/
 config/Code/Session Storage/
@@ -44,6 +45,7 @@ config/Code/WebStorage/
 config/com.modrinth.theseus/
 config/content_shell
 config/CrossCode/
+config/dbin/
 config/dconf
 config/deepcore-daemon/
 config/deep-server/
@@ -108,6 +110,7 @@ config/ktimezonedrc
 config/kwinrc
 config/kwinrulesrc
 config/kxkbrc
+config/lact/
 config/libaccounts-glib/
 config/libreoffice/
 config/melonDS/
