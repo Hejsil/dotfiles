@@ -2,7 +2,9 @@
 
 for image in "$@"; do
     image_escaped=$(echo "$image" | escape-sh-str-quote)
-    tags_picked=$(tagger-get-taglist | fzf -m --preview "fzf-preview '$image_escaped'")
+    tags_picked=$(tagger-get-taglist | fzf -m \
+        --bind "start:preview:fzf-preview '$image_escaped'" \
+        --bind "resize:preview:fzf-preview '$image_escaped'")
     if [ -z "$tags_picked" ]; then
         break
     fi
