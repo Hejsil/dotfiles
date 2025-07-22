@@ -14,4 +14,7 @@ if status is-interactive
     if type -q dasel
         dasel completion fish | source
     end
+    if type -q direnv
+        direnv hook fish | source
+    end
 end
