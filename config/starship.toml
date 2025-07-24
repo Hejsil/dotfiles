@@ -8,7 +8,6 @@ $git_metrics\
 $git_status\
 $memory_usage\
 $cmd_duration\
-$time\
 $line_break\
 $character"""
 
@@ -35,5 +34,3 @@ ahead = '>'
 behind = '<'
 modified = '*'
 
-[time]
-disabled = false
