@@ -4,76 +4,73 @@ define-command define-auto-replace -params 4 -docstring "Sets up hooks that will
         scope=$2
         find=$3
         replace=$4
+        redefine="$name-redefine"
 
-        c0=$(expr substr "$find" 1 1)
-        echo "hook -group '$name' $scope InsertChar '$c0' %{"
-        echo "remove-hooks $scope '$name'"
+        hook="hook -group '$name' $scope"
+        remove_hooks="remove-hooks $scope '$name'"
 
-        seq 2 "${#find}" | while read i; do
-            c="$(expr substr "$find" $i 1)"
-            echo "hook -group '$name' $scope InsertChar '[^$c]' %{"
-            echo "remove-hooks $scope '$name'"
-            echo "define-auto-replace '$name' '$scope' '$find' '$replace'"
-            echo "}"
-            echo "hook -group '$name' $scope InsertDelete '.*' %{"
-            echo "remove-hooks $scope '$name'"
-            echo "define-auto-replace '$name' '$scope' '$find' '$replace'"
-            echo "}"
-            echo "hook -group '$name' $scope InsertMove '.*' %{"
-            echo "remove-hooks $scope '$name'"
-            echo "define-auto-replace '$name' '$scope' '$find' '$replace'"
-            echo "}"
-            echo "hook -group '$name' $scope ModeChange '.*' %{"
-            echo "remove-hooks $scope '$name'"
-            echo "define-auto-replace '$name' '$scope' '$find' '$replace'"
-            echo "}"
+        sed_expr="${sed_expr}$hook InsertChar '\\1' %{\n"
+        sed_expr="${sed_expr}remove-hooks $scope '$name'\n"
+        sed_expr="${sed_expr}$hook InsertChar '[^\\1]' %{\n"
+        sed_expr="${sed_expr}$remove_hooks\n"
+        sed_expr="${sed_expr}$redefine\n"
+        sed_expr="${sed_expr}}\n"
+        sed_expr="${sed_expr}$hook InsertDelete '.*' %{\n"
+        sed_expr="${sed_expr}$remove_hooks\n"
+        sed_expr="${sed_expr}$redefine\n"
+        sed_expr="${sed_expr}}\n"
+        sed_expr="${sed_expr}$hook InsertMove '.*' %{\n"
+        sed_expr="${sed_expr}$remove_hooks\n"
+        sed_expr="${sed_expr}$redefine\n"
+        sed_expr="${sed_expr}}\n"
+        sed_expr="${sed_expr}$hook ModeChange '.*' %{\n"
+        sed_expr="${sed_expr}$remove_hooks\n"
+        sed_expr="${sed_expr}$redefine\n"
+        sed_expr="${sed_expr}}\n"
+        # }
 
-            echo "hook -group '$name' $scope InsertChar '$c' %{"
-            echo "remove-hooks $scope '$name'"
-        done
+        echo "define-command $redefine -override -hidden %{"
+        echo "define-auto-replace '$name' '$scope' '$find' '$replace'"
+        echo "}"
+        printf "%s" "$find" | sed -E 's/(.)/\1\n/g' | escape-regex | sed -E "s#^(.*)\$#${sed_expr}#g"
 
-        find_count=$(printf '%s' "$find" | wc -c)
         echo "set-register 'l' '$replace'"
         echo "execute-keys '<a-;>h'"
 
+        find_count=${#find}
         if [ "$find_count" -gt 1 ]; then
             echo "execute-keys '<a-;>$((find_count - 1))H'"
         fi
 
         echo "execute-keys '<a-;>\"lR'"
+        echo "try %{"
+        echo "    execute-keys '<a-;>s¤<ret><a-;>d'"
+        echo "} catch %{"
+        echo "    execute-keys '<a-;><a-:><a-;>l'"
+        echo "}"
 
-        cursor_symbol='¤'
-        if printf '%s' "$replace" | grep "$cursor_symbol" >/dev/null; then
-            echo "execute-keys '<a-;>s$cursor_symbol<ret><a-;>d'"
-        else
-            echo "execute-keys '<a-;><a-:><a-;>l'"
-        fi
-        echo "define-auto-replace '$name' '$scope' '$find' '$replace'"
-
-        seq 1 "${#find}" | while read i; do
-            echo "}"
-        done
-        # }
+        # {
+        echo "$remove_hooks"
+        echo "$redefine"
+        printf "%s" "$find" | sed 's/./}/g'
     }
 }
 
 hook -group filetype-zig-auto-replace global BufSetOption filetype=zig %{
-    define-auto-replace zig-for buffer ':for' 'for (¤) |item| {}'
-    define-auto-replace zig-it buffer ':it' 'var it = ¤; while (it.next()) |item| {}'
-    define-auto-replace zig-while buffer ':while' 'while (¤) {}'
+    define-auto-replace zig-gpa buffer 'gpa:' 'gpa: std.mem.Allocator'
+    define-auto-replace zig-str buffer 'str:' 'str: []const u8'
+    define-auto-replace zig-writer buffer 'writer:' 'writer: *std.io.Writer'
 
-    define-auto-replace zig-arena buffer ':arena' 'var arena_state = std.heap.ArenaAllocator.init(¤);
+    define-auto-replace zig-for1 buffer 'for(' 'for (¤) |item| {}'
+    define-auto-replace zig-for2 buffer 'for (' 'for (¤) |item| {}'
+    define-auto-replace zig-while1 buffer 'while(' 'while (¤) {}'
+    define-auto-replace zig-while2 buffer 'while (' 'while (¤) {}'
+    define-auto-replace zig-if1 buffer 'if(' 'if (¤) {}'
+    define-auto-replace zig-if2 buffer 'if (' 'if (¤) {}'
+    define-auto-replace zig-whileit1 buffer 'whileit(' 'var it = ¤; while (it.next()) |item| {}'
+    define-auto-replace zig-whileit2 buffer 'whileit (' 'var it = ¤; while (it.next()) |item| {}'
+
+    define-auto-replace zig-arena buffer 'var arena' 'var arena_state = std.heap.ArenaAllocator.init(¤);
 const arena = arena_state.allocator();
 defer arena_state.deinit();'
-}
-
-hook -group filetype-c-auto-replace global BufSetOption filetype=(c|cpp) %{
-    define-auto-replace c-for buffer ':for' 'for (size_t i = 0; i < ¤; i++) {}'
-    define-auto-replace c-while buffer ':while' 'while (¤) {}'
-}
-
-hook -group filetype-python-auto-replapythone global BufSetOption filetype=python %{
-    define-auto-replace python-def buffer ':def' 'def ¤():'
-    define-auto-replace python-for buffer ':for' 'for item in ¤:'
-    define-auto-replace python-init buffer ':init' 'def __init__(self):'
 }
