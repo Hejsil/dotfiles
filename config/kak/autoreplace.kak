@@ -41,7 +41,13 @@ define-command define-auto-replace -params 4 -docstring "Sets up hooks that will
         fi
 
         echo "execute-keys '<a-;>\"lR'"
-        echo "execute-keys '<a-;><a-:><a-;>l'"
+
+        cursor_symbol='¤'
+        if printf '%s' "$replace" | grep "$cursor_symbol" >/dev/null; then
+            echo "execute-keys '<a-;>s$cursor_symbol<ret><a-;>d'"
+        else
+            echo "execute-keys '<a-;><a-:><a-;>l'"
+        fi
         echo "define-auto-replace '$name' '$scope' '$find' '$replace'"
 
         printf '%s' "$find" | grep -o . | while read c; do
