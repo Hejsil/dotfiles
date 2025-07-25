@@ -1,3 +1,4 @@
+source "%val{config}/autoreplace.kak"
 source "%val{config}/ctags.kak"
 source "%val{config}/filetype.kak"
 source "%val{config}/format.kak"
