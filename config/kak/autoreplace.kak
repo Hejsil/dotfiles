@@ -5,12 +5,12 @@ define-command define-auto-replace -params 4 -docstring "Sets up hooks that will
         find=$3
         replace=$4
 
-        printf '%s' "$find" | grep -o . | head -n1 | while read c; do
-            echo "hook -group '$name' $scope InsertChar '$c' %{"
-            echo "remove-hooks $scope '$name'"
-        done
+        c0=$(expr substr "$find" 1 1)
+        echo "hook -group '$name' $scope InsertChar '$c0' %{"
+        echo "remove-hooks $scope '$name'"
 
-        printf '%s' "$find" | grep -o . | tail -n+2 | while read c; do
+        seq 2 "${#find}" | while read i; do
+            c="$(expr substr "$find" $i 1)"
             echo "hook -group '$name' $scope InsertChar '[^$c]' %{"
             echo "remove-hooks $scope '$name'"
             echo "define-auto-replace '$name' '$scope' '$find' '$replace'"
@@ -50,7 +50,7 @@ define-command define-auto-replace -params 4 -docstring "Sets up hooks that will
         fi
         echo "define-auto-replace '$name' '$scope' '$find' '$replace'"
 
-        printf '%s' "$find" | grep -o . | while read c; do
+        seq 1 "${#find}" | while read i; do
             echo "}"
         done
         # }
