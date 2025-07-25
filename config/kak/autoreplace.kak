@@ -56,3 +56,24 @@ define-command define-auto-replace -params 4 -docstring "Sets up hooks that will
         # }
     }
 }
+
+hook -group filetype-zig-auto-replace global BufSetOption filetype=zig %{
+    define-auto-replace zig-for buffer ':for' 'for (¤) |item| {}'
+    define-auto-replace zig-it buffer ':it' 'var it = ¤; while (it.next()) |item| {}'
+    define-auto-replace zig-while buffer ':while' 'while (¤) {}'
+
+    define-auto-replace zig-arena buffer ':arena' 'var arena_state = std.heap.ArenaAllocator.init(¤);
+const arena = arena_state.allocator();
+defer arena_state.deinit();'
+}
+
+hook -group filetype-c-auto-replace global BufSetOption filetype=(c|cpp) %{
+    define-auto-replace c-for buffer ':for' 'for (size_t i = 0; i < ¤; i++) {}'
+    define-auto-replace c-while buffer ':while' 'while (¤) {}'
+}
+
+hook -group filetype-python-auto-replapythone global BufSetOption filetype=python %{
+    define-auto-replace python-def buffer ':def' 'def ¤():'
+    define-auto-replace python-for buffer ':for' 'for item in ¤:'
+    define-auto-replace python-init buffer ':init' 'def __init__(self):'
+}
