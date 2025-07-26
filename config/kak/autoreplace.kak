@@ -101,7 +101,6 @@ hook -group filetype-zig-auto-replace global BufSetOption filetype=zig %{
     define-auto-replace zig-gpa 'gpa:' 'gpa: std.mem.Allocator'
     define-auto-replace zig-str 'str:' 'str: []const u8'
     define-auto-replace zig-writer 'writer:' 'writer: *std.io.Writer'
-    define-auto-replace zig-test '()' 'writer: *std.io.Writer'
 
     define-auto-replace zig-for1 'for(' 'for (¤) |item| {}'
     define-auto-replace zig-for2 'for (' 'for (¤) |item| {}'
@@ -112,7 +111,11 @@ hook -group filetype-zig-auto-replace global BufSetOption filetype=zig %{
     define-auto-replace zig-whileit1 'whileit(' 'var it = ¤; while (it.next()) |item| {}'
     define-auto-replace zig-whileit2 'whileit (' 'var it = ¤; while (it.next()) |item| {}'
 
+    define-auto-replace zig-import1 ':imp:' 'const ¤ = @import("¤.zig");'
+    define-auto-replace zig-import2 ':import:' 'const ¤ = @import("¤.zig");'
+
     define-auto-replace zig-arena 'var arena' 'var arena_state = std.heap.ArenaAllocator.init(¤);
 const arena = arena_state.allocator();
 defer arena_state.deinit();'
+
 }
