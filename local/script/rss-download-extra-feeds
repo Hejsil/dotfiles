@@ -1,17 +1,19 @@
 #!/bin/sh
 
 t=$(printf '\t')
-ts="$(date +%s)"
 
 curl "https://zenless-zone-zero.fandom.com/wiki/Redemption_Code" |
     rg -o 'https://zenless.hoyoverse.com/redemption\?code=([^"]*)' \
-    -r "$ts$t\$1 - Zenless Zone Zero Code$t\$0$t$t$t\$1${t}Zenless Zone Zero$t"
+        -r "$t\$1 - Zenless Zone Zero Code$t\$0$t$t$t\$1${t}Zenless Zone Zero$t"
 
 curl "https://genshin-impact.fandom.com/wiki/Promotional_Code" |
     rg -o 'https://genshin.hoyoverse.com/gift\?code=([^"]*)' \
-    -r "$ts$t\$1 - Genshin Impact Code$t\$0$t$t$t\$1${t}Genshin Impact$t"
+        -r "$t\$1 - Genshin Impact Code$t\$0$t$t$t\$1${t}Genshin Impact$t"
 
 curl "https://honkai-star-rail.fandom.com/wiki/Redemption_Code" |
     rg -o 'https://hsr.hoyoverse.com/gift\?code=([^"]*)' \
-    -r "$ts$t\$1 - Honkai Star Rail Code$t\$0$t$t$t\$1${t}Honkai Star Rail$t"
+        -r "$t\$1 - Honkai Star Rail Code$t\$0$t$t$t\$1${t}Honkai Star Rail$t"
 
+curl 'https://wallhaven.cc/api/v1/search?sorting=toplist' |
+    jq -r '.data[] | "", .id + " - Wallhaven", .path, "", "", .id, "Wallhaven", ""' |
+    paste - - - - - - - -
