@@ -14,6 +14,6 @@ curl "https://honkai-star-rail.fandom.com/wiki/Redemption_Code" |
     rg -o 'https://hsr.hoyoverse.com/gift\?code=([^"]*)' \
         -r "$t\$1 - Honkai Star Rail Code$t\$0$t$t$t\$1${t}Honkai Star Rail$t"
 
-curl 'https://wallhaven.cc/api/v1/search?sorting=toplist' |
+curl 'https://wallhaven.cc/api/v1/search?sorting=toplist&topRange=1w?page=[1-30]' |
     jq -r '.data[] | "", .id + " - Wallhaven", .path, "", "", .id, "Wallhaven", ""' |
     paste - - - - - - - -
