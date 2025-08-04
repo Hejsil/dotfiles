@@ -1,16 +1,8 @@
 {
     "spacing": 10,
-    "modules-left": ["clock"],
-    "modules-center": ["hyprland/workspaces"],
-    "modules-right": [
-        "custom/rss",
-        "pulseaudio",
-        "systemd-failed-units",
-        "cpu",
-        "memory",
-        "battery",
-        "disk"
-    ],
+    "modules-left": ["hyprland/workspaces"],
+    "modules-center": ["custom/rss", "pulseaudio", "cpu", "memory", "battery", "disk"],
+    "modules-right": ["systemd-failed-units", "clock"],
     "hyprland/workspaces": {
         "format": "{icon}{id}</span>",
         "format-icons": {
