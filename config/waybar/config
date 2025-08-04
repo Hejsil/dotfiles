@@ -1,18 +1,15 @@
 {
     "spacing": 10,
-    "modules-left": [
-        "hyprland/workspaces"
-    ],
-    "modules-center": [
-        "memory",
-        "cpu",
-        "battery",
-        "disk"
-    ],
+    "modules-left": ["clock"],
+    "modules-center": ["hyprland/workspaces"],
     "modules-right": [
         "custom/rss",
+        "pulseaudio",
         "systemd-failed-units",
-        "clock"
+        "cpu",
+        "memory",
+        "battery",
+        "disk"
     ],
     "hyprland/workspaces": {
         "format": "{icon}{id}</span>",
@@ -25,33 +22,53 @@
             "*": 10
         }
     },
-    "memory": {
-        "format": "mem{:3}%"
-    },
     "cpu": {
-        "format": "cpu{usage:3}%",
-        "interval": 1
+        "format": "{usage:3}%",
+        "interval": 1,
+        "on-click": "footclient -a float -e btop"
+    },
+    "memory": {
+        "format": "{:3}%",
+        "on-click": "footclient -a float -e btop"
     },
     "battery": {
         "interval": 60,
-        "format": "bat{capacity:3}%"
+        "format": "󰁹{capacity:3}%"
     },
     "disk": {
-        "format": "dsk{percentage_used:3}%"
+        "format": "󰋊{percentage_used:3}%",
+        "on-click": "footclient -a float -e dua interactive"
+    },
+    "pulseaudio": {
+        "max-volume": 150,
+        "scroll-step": 10,
+        "format": "{icon}{volume:3}%",
+        "tooltip-format": "{volume}%",
+        "format-muted": " ",
+        "format-icons": {
+            "default": [" ", " ", " ", " ", " ", " "]
+        },
+        "on-click": "pavucontrol"
     },
     "custom/rss": {
         "exec": "find ~/.local/share/rss/unread/ -type f -printf . | wc -c",
-        "format": "rss{:>3}",
-        "interval": 10
+        "format": "{:>3}",
+        "interval": 10,
+        "on-click": "footclient -a float -e rss-read"
     },
     "systemd-failed-units": {
-        "hide-on-ok": false,
-        "format": "sys{nr_failed:3}",
-        "format-ok": "sys{nr_failed:3}",
+        "hide-on-ok": true,
+        "format": "{nr_failed:2}  ",
         "system": true,
         "user": true
     },
     "clock": {
-        "format": "Week {:%V %b %d %a %H:%M}"
+        "format": "Week {:%V %b %d %a %H:%M}",
+        "tooltip-format": "{calendar}",
+        "calendar": {
+            "format": {
+                "today": "<b><u>{}</u></b>"
+            }
+        }
     }
 }

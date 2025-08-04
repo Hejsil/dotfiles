@@ -51,17 +51,6 @@ sed -i "$config_home/dunst/dunstrc" \
     -e "s/background = \"#[a-zA-Z0-9]*\" # urgency_critical/background = \"#$base00\" # urgency_critical/" \
     -e "s/foreground = \"#[a-zA-Z0-9]*\" # urgency_critical/foreground = \"#$base08\" # urgency_critical/"
 
-sed -i "$config_home/waybar/config" \
-    -e "s/<span color='#[a-zA-Z0-9]*'> /<span color='#$base0B'> /" \
-    -e "s/<span color='#[a-zA-Z0-9]*'>▁/<span color='#$base0B'>▁/" \
-    -e "s/<span color='#[a-zA-Z0-9]*'>▂/<span color='#$base0B'>▂/" \
-    -e "s/<span color='#[a-zA-Z0-9]*'>▃/<span color='#$base0A'>▃/" \
-    -e "s/<span color='#[a-zA-Z0-9]*'>▄/<span color='#$base0A'>▄/" \
-    -e "s/<span color='#[a-zA-Z0-9]*'>▅/<span color='#$base09'>▅/" \
-    -e "s/<span color='#[a-zA-Z0-9]*'>▆/<span color='#$base09'>▆/" \
-    -e "s/<span color='#[a-zA-Z0-9]*'>▇/<span color='#$base08'>▇/" \
-    -e "s/<span color='#[a-zA-Z0-9]*'>█/<span color='#$base08'>█/"
-
 sed -i "$config_home/waybar/colors.css" \
     -e "s/color0 #[a-zA-Z0-9]*;/color0 #$base00;/" \
     -e "s/color1 #[a-zA-Z0-9]*;/color1 #$base01;/" \
@@ -97,3 +86,7 @@ sed -i "$config_home/rofi/colors.rasi" \
     -e "s/color13: #[a-zA-Z0-9]*;/color13: #$base0D;/" \
     -e "s/color14: #[a-zA-Z0-9]*;/color14: #$base0E;/" \
     -e "s/color15: #[a-zA-Z0-9]*;/color15: #$base0F;/"
+
+sed -i "$config_home/hypr/hyprland.conf" \
+    -e "s/col.active_border *= *rgb([a-zA-Z0-9]*)/col.active_border = rgb($base0D)/" \
+    -e "s/col.inactive_border *= *rgb([a-zA-Z0-9]*)/col.inactive_border = rgb($base03)/"

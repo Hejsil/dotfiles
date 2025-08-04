@@ -19,6 +19,7 @@ direnv
 discord
 dkms
 docker
+dua-cli
 duf
 dunst
 dust
@@ -104,6 +105,7 @@ topgrade
 torzu-qt6-avx-git
 tree
 ttf-jetbrains-mono
+ttf-jetbrains-mono-nerd
 ttf-sarasa-gothic
 ttf-symbola
 ttf-twemoji
