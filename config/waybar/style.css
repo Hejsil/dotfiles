@@ -16,19 +16,23 @@ tooltip {
 }
 
 .modules-left  {
-    padding: 0 14px;
+    padding: 0 12px;
     box-shadow: inset 0 2px @color5;
 }
 .modules-center {
-    padding: 0 14px;
+    padding: 0 12px;
     box-shadow: inset 0 2px @color5;
 }
 .modules-right {
-    padding: 0 14px;
+    padding: 0 12px;
     box-shadow: inset 0 2px @color5;
 }
 
 #workspaces button {
     padding: 6px 4px;
     border-radius: 0;
+}
+
+#custom-poweroff {
+    padding: 6px;
 }

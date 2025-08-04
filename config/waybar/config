@@ -15,19 +15,20 @@
         }
     },
     "custom/poweroff": {
-        "format": " ",
-        "on-click": "footclient -a float -e update-and-shutdown"
+        "format": "",
+        "on-click": "footclient -a float -e update-and-shutdown",
+        "tooltip": false
     },
     "custom/rss": {
         "exec": "find ~/.local/share/rss/unread/ -type f -printf . | wc -c",
-        "format": " {:>3}  ",
+        "format": "{:>3}  ",
         "interval": 10,
         "on-click": "footclient -a float -e rss-read"
     },
     "pulseaudio": {
         "max-volume": 150,
         "scroll-step": 10,
-        "format": "{icon} {volume:3}% ",
+        "format": "{volume:3}% {icon} ",
         "tooltip-format": "{volume}%",
         "format-muted": "",
         "format-icons": {
@@ -36,20 +37,20 @@
         "on-click": "pavucontrol"
     },
     "cpu": {
-        "format": " {usage:3}% ",
+        "format": "{usage:3}%  ",
         "interval": 1,
         "on-click": "footclient -a float -e btop"
     },
     "memory": {
-        "format": " {:3}% ",
+        "format": "{:3}%  ",
         "on-click": "footclient -a float -e btop"
     },
     "battery": {
         "interval": 60,
-        "format": "󰁹 {capacity:3}% "
+        "format": "{capacity:3}% 󰁹 "
     },
     "disk": {
-        "format": "󰋊 {percentage_used:3}%",
+        "format": "{percentage_used:3}% 󰋊 ",
         "on-click": "footclient -a float -e dua interactive"
     },
     "systemd-failed-units": {
