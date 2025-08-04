@@ -1,6 +1,6 @@
 {
     "spacing": 10,
-    "modules-left": ["custom/poweroff", "hyprland/workspaces"],
+    "modules-left": ["custom/menu", "hyprland/workspaces"],
     "modules-center": ["custom/rss", "pulseaudio", "cpu", "memory", "battery", "disk"],
     "modules-right": ["systemd-failed-units", "clock"],
     "hyprland/workspaces": {
@@ -14,10 +14,17 @@
             "*": 10
         }
     },
-    "custom/poweroff": {
-        "format": "",
-        "on-click": "footclient -a float -e update-and-shutdown",
-        "tooltip": false
+    "custom/menu": {
+        "format": "󱗼",
+        "on-click": "",
+        "tooltip": false,
+        "menu": "on-click",
+        "menu-file": "~/.config/waybar/menu.xml",
+        "menu-actions": {
+            "launch": "rofi -show drun",
+            "shutdown": "footclient -a float -e update-and-shutdown now",
+            "reboot": "footclient -a float -e update-and-shutdown -r now"
+        }
     },
     "custom/rss": {
         "exec": "find ~/.local/share/rss/unread/ -type f -printf . | wc -c",

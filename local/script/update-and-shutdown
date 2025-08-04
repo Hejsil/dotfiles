@@ -1,4 +1,4 @@
 #!/bin/sh
 topgrade
 sleep 5s
-shutdown now
+shutdown "$@"

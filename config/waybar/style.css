@@ -2,13 +2,20 @@
 
 * {
     font-family: monospace;
-    font-size: 16px;
+    font-size: 18px;
     color: @color5;
 }
 
 window#waybar {
     background: @color0;
 }
+
+menu {
+    background: @color0;
+    border: 1px solid @color5;
+    border-radius: 0;
+}
+
 tooltip {
     background: @color0;
     border: 1px solid @color5;
@@ -33,6 +40,6 @@ tooltip {
     border-radius: 0;
 }
 
-#custom-poweroff {
+#custom-menu {
     padding: 6px;
 }
