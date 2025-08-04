@@ -1,10 +1,10 @@
 {
     "spacing": 10,
-    "modules-left": ["hyprland/workspaces"],
+    "modules-left": ["custom/poweroff", "hyprland/workspaces"],
     "modules-center": ["custom/rss", "pulseaudio", "cpu", "memory", "battery", "disk"],
     "modules-right": ["systemd-failed-units", "clock"],
     "hyprland/workspaces": {
-        "format": "{icon}{id}</span>",
+        "format": "{icon}{id:0>2}</span>",
         "format-icons": {
             "active": "<span weight='heavy'>→",
             "empty": "<span> ",
@@ -14,27 +14,20 @@
             "*": 10
         }
     },
-    "cpu": {
-        "format": "{usage:3}%",
-        "interval": 1,
-        "on-click": "footclient -a float -e btop"
+    "custom/poweroff": {
+        "format": " ",
+        "on-click": "footclient -a float -e update-and-shutdown"
     },
-    "memory": {
-        "format": "{:3}%",
-        "on-click": "footclient -a float -e btop"
-    },
-    "battery": {
-        "interval": 60,
-        "format": "󰁹{capacity:3}%"
-    },
-    "disk": {
-        "format": "󰋊{percentage_used:3}%",
-        "on-click": "footclient -a float -e dua interactive"
+    "custom/rss": {
+        "exec": "find ~/.local/share/rss/unread/ -type f -printf . | wc -c",
+        "format": " {:>3}  ",
+        "interval": 10,
+        "on-click": "footclient -a float -e rss-read"
     },
     "pulseaudio": {
         "max-volume": 150,
         "scroll-step": 10,
-        "format": "{icon}{volume:3}%",
+        "format": "{icon} {volume:3}% ",
         "tooltip-format": "{volume}%",
         "format-muted": "",
         "format-icons": {
@@ -42,11 +35,22 @@
         },
         "on-click": "pavucontrol"
     },
-    "custom/rss": {
-        "exec": "find ~/.local/share/rss/unread/ -type f -printf . | wc -c",
-        "format": "{:>3}",
-        "interval": 10,
-        "on-click": "footclient -a float -e rss-read"
+    "cpu": {
+        "format": " {usage:3}% ",
+        "interval": 1,
+        "on-click": "footclient -a float -e btop"
+    },
+    "memory": {
+        "format": " {:3}% ",
+        "on-click": "footclient -a float -e btop"
+    },
+    "battery": {
+        "interval": 60,
+        "format": "󰁹 {capacity:3}% "
+    },
+    "disk": {
+        "format": "󰋊 {percentage_used:3}%",
+        "on-click": "footclient -a float -e dua interactive"
     },
     "systemd-failed-units": {
         "hide-on-ok": true,
