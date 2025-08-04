@@ -1,7 +1,0 @@
-#!/bin/sh
-
-# This might be run in footclient -e, so way a small amount of time to allow
-# foot to launch
-sleep 0.1
-hyprctl dispatch movetoworkspace special
-"$@"
