@@ -1,0 +1,6 @@
+#!/bin/sh
+
+jo text=0
+
+updates=$(checkupdates)
+jo "text=$(echo "$updates" | wc -l)" "tooltip=$updates"
