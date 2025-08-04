@@ -12,13 +12,11 @@ chafa
 chaotic-keyring
 chaotic-mirrorlist
 chromium
-cppcheck
+code
 ctags
 dashbinsh
 direnv
 discord
-dkms
-docker
 dua-cli
 duf
 dunst
@@ -34,7 +32,7 @@ gdb
 gimp
 git
 github-cli
-gpu-screen-recorder
+gpu-screen-recorder-git
 gum
 haveged
 hdparm
@@ -42,7 +40,7 @@ hyperfine
 hyprland
 hyprshot
 imagemagick
-imv
+jdk-openjdk
 jo
 jpegoptim
 jq
@@ -79,6 +77,7 @@ pipewire-jack
 pipewire-pulse
 pipewire-v4l2
 polkit-kde-agent
+proton-ge-custom-bin
 python-lsp-server
 python-pip
 python-pycodestyle
@@ -88,6 +87,7 @@ ripgrep
 rofi-wayland
 rsync
 rtkit
+ruff
 rust-analyzer
 sad
 samba
@@ -96,13 +96,14 @@ shfmt
 socat
 starship
 steam
+strace
+stress
 syncthing
 thunar
 thunderbird
 timeshift
 tmux
 topgrade
-torzu-qt6-avx-git
 tree
 ttf-jetbrains-mono
 ttf-jetbrains-mono-nerd
