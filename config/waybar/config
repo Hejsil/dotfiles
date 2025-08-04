@@ -36,9 +36,9 @@
         "scroll-step": 10,
         "format": "{icon}{volume:3}%",
         "tooltip-format": "{volume}%",
-        "format-muted": " ",
+        "format-muted": "",
         "format-icons": {
-            "default": [" ", " ", " ", " ", " ", " "]
+            "default": ["", "", "", "", "", ""]
         },
         "on-click": "pavucontrol"
     },
