@@ -1,16 +1,17 @@
 #!/bin/sh -e
 
-~/.local/script/ask systemctl enable activate-linux --user
-~/.local/script/ask systemctl enable anki --user
-~/.local/script/ask systemctl enable discord --user
-~/.local/script/ask systemctl enable mail --user
-~/.local/script/ask systemctl enable replay --user
-~/.local/script/ask systemctl enable steam --user
-~/.local/script/ask systemctl enable wallpaper --user
+~/.local/script/ask systemctl enable --user activate-linux
+~/.local/script/ask systemctl enable --user anki
+~/.local/script/ask systemctl enable --user dipm-pkgs-update
+~/.local/script/ask systemctl enable --user discord
+~/.local/script/ask systemctl enable --user mail
+~/.local/script/ask systemctl enable --user replay
+~/.local/script/ask systemctl enable --user steam
+~/.local/script/ask systemctl enable --user wallpaper
 
-~/.local/script/ask systemctl enable optimize.timer --user
-~/.local/script/ask systemctl enable sync-aniz.timer --user
-~/.local/script/ask systemctl enable rss-sync.timer --user
+~/.local/script/ask systemctl enable --user optimize.timer
+~/.local/script/ask systemctl enable --user sync-aniz.timer
+~/.local/script/ask systemctl enable --user rss-sync.timer
 
 ~/.local/script/ask systemctl enable ollama
 
