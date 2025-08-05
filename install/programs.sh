@@ -1,7 +1,11 @@
 #!/bin/sh -e
 
 if ! grep '^Color' /etc/pacman.conf >/dev/null; then
-    sudo sed -i 's/^#Color$/Color/' /etc/pacman.conf
+    sudo sed -i 's/^#Color/Color/' /etc/pacman.conf
+fi
+
+if ! grep '^ParallelDownloads' /etc/pacman.conf >/dev/null; then
+    sudo sed -i 's/^#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
 fi
 
 if ! grep '\[chaotic-aur\]' /etc/pacman.conf >/dev/null; then
