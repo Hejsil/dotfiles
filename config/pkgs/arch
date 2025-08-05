@@ -123,6 +123,7 @@ vulkan-radeon
 w3m
 watchexec
 waybar
+waybar-module-pacman-updates-git
 wget
 wine
 wireplumber
