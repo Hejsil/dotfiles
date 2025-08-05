@@ -1,6 +1,12 @@
 #!/bin/sh
 
+cache_file="/tmp/waybar-updates-pkgs"
+
 jo text=0
 
-updates=$(checkupdates)
+if ! [ -f "$cache_file" ]; then
+    checkupdates >"$cache_file"
+fi
+
+updates=$(cat "$cache_file")
 jo "text=$(echo "$updates" | wc -l)" "tooltip=$updates"

@@ -58,8 +58,9 @@
         "on-click": "pavucontrol"
     },
     "cpu": {
-        "format": "{usage:3}%  ",
+        "format": "{usage:3}% {icon} ",
         "interval": 1,
+        "format-icons": ["󰾆", "󰾅", "󰓅"],
         "on-click": "footclient -a float -e btop"
     },
     "memory": {
@@ -71,7 +72,7 @@
         "format": "{capacity:3}% 󰁹 "
     },
     "disk": {
-        "format": "{percentage_used:3}% 󰋊 ",
+        "format": "{percentage_used:3}%  ",
         "on-click": "footclient -a float -e dua interactive"
     },
     "systemd-failed-units": {
