@@ -1,0 +1,8 @@
+[Service]
+Type=exec
+WorkingDirectory=%h/repo/own/dipm-pkgs
+ExecStart=%h/.local/bin/dipm pkgs update --delay 5m --commit
+Restart=always
+
+[Install]
+WantedBy=default.target
