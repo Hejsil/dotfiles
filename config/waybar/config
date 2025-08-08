@@ -39,7 +39,7 @@
         "return-type": "json",
         "exec-if": "which waybar-module-pacman-updates",
         "exec": "waybar-module-pacman-updates --interval-seconds 5 --network-interval-seconds 14400",
-        "on-click": "footclient -a float -e topgrade"
+        "on-click": "footclient -a float -e sh -c 'topgrade; read line'"
     },
     "custom/rss": {
         "exec": "find ~/.local/share/rss/unread/ -type f -printf . | wc -c",
