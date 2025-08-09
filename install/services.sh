@@ -14,6 +14,7 @@
 ~/.local/script/ask systemctl enable --user rss-sync.timer
 
 ~/.local/script/ask systemctl enable ollama
+~/.local/script/ask systemctl enable rustdesk
 
 # Required services
 systemctl enable foot-server --user

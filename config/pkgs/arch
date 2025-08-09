@@ -90,6 +90,7 @@ rsync
 rtkit
 ruff
 rust-analyzer
+rustdesk-bin
 sad
 samba
 shellcheck
