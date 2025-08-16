@@ -15,8 +15,8 @@ curl "https://honkai-star-rail.fandom.com/wiki/Redemption_Code" |
         -r "$t\$1 - Honkai Star Rail Code$t\$0$t$t$t\$1${t}Honkai Star Rail$t"
 
 {
-    curl 'https://wallhaven.cc/api/v1/search?sorting=toplist&topRange=1w&page=[1]'
-    curl 'https://wallhaven.cc/api/v1/search?sorting=toplist&topRange=1M&page=[1]'
-    curl 'https://wallhaven.cc/api/v1/search?sorting=toplist&topRange=1y&page=[1]'
+    curl 'https://wallhaven.cc/api/v1/search?sorting=toplist&topRange=1w'
+    curl 'https://wallhaven.cc/api/v1/search?sorting=toplist&topRange=1M'
+    curl 'https://wallhaven.cc/api/v1/search?sorting=toplist&topRange=1y'
 } | jq -r '.data[] | "", .id + " - Wallhaven", .path, "", "", .id, "Wallhaven", ""' |
     paste - - - - - - - -
