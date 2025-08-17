@@ -10,7 +10,6 @@
 ~/.local/script/ask systemctl enable --user wallpaper
 
 ~/.local/script/ask systemctl enable --user optimize.timer
-~/.local/script/ask systemctl enable --user sync-aniz.timer
 ~/.local/script/ask systemctl enable --user rss-sync.timer
 
 ~/.local/script/ask systemctl enable ollama

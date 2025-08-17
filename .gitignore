@@ -176,7 +176,6 @@ config/yuzu/
 local/bin/
 local/lib/
 local/share/anime-game-launcher/
-local/share/aniz/.stfolder/
 local/share/Anki2/
 local/share/anki-jlab/
 local/share/anyzig/
