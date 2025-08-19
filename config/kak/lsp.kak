@@ -12,6 +12,11 @@ declare-option -hidden str lsp_server_c %{
     args = [ "--log=error", "--clang-tidy" ]
     root_globs = [ "compile_commands.json", ".clangd", ".git", ".hg" ]
 }
+declare-option -hidden str lsp_server_html %{
+    [superhtml]
+    args = [ "lsp" ]
+    root_globs = [ ".git", ".hg" ]
+}
 declare-option -hidden str lsp_server_python %{
     [pylsp]
     root_globs = [ "requirements.txt", "setup.py", "pyproject.toml", ".git", ".hg" ]
@@ -43,6 +48,12 @@ hook -group lsp-filetype-markdown global BufSetOption filetype=markdown %{
 hook -group lsp-filetype-markdown global BufSetOption filetype=git-commit %{
     set-option buffer lsp_servers %exp{
         %opt{lsp_server_spellcheck}
+    }
+}
+hook -group lsp-filetype-html global BufSetOption filetype=html %{
+    set-option buffer lsp_servers %exp{
+        %opt{lsp_server_spellcheck}
+        %opt{lsp_server_html}
     }
 }
 hook -group lsp-filetype-python global BufSetOption filetype=python %{

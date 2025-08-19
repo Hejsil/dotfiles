@@ -1,7 +1,5 @@
 hook global WinSetOption filetype=git-commit %{ set-option window formatcmd 'dprint --config ~/.config/dprint/git-commit.json fmt --stdin md' }
 hook global WinSetOption filetype=css        %{ set-option window formatcmd 'dprint --config ~/.config/dprint/config.json fmt --stdin css' }
-hook global WinSetOption filetype=html       %{ set-option window formatcmd 'dprint --config ~/.config/dprint/config.json fmt --stdin html' }
-hook global WinSetOption filetype=html       %{ set-option window formatcmd 'dprint --config ~/.config/dprint/config.json fmt --stdin html' }
 hook global WinSetOption filetype=javascript %{ set-option window formatcmd 'dprint --config ~/.config/dprint/config.json fmt --stdin js' }
 hook global WinSetOption filetype=json       %{ set-option window formatcmd 'dprint --config ~/.config/dprint/config.json fmt --stdin json' }
 hook global WinSetOption filetype=markdown   %{ set-option window formatcmd 'dprint --config ~/.config/dprint/config.json fmt --stdin md' }
