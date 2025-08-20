@@ -4,6 +4,8 @@ cache_home="${XDG_CACHE_HOME:-$HOME/.cache}/anilist"
 
 cache_image() {
     cache_dir="$cache_home/images"
+    mkdir -p "$cache_dir"
+
     link=$1
     file="$cache_dir/$(echo "$link" | sed 's#/#-#g')"
 
