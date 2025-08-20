@@ -1,0 +1,58 @@
+#!/bin/sh
+
+cache_home="${XDG_CACHE_HOME:-$HOME/.cache}/anilist"
+
+cache_image() {
+    cache_dir="$cache_home/images"
+    link=$1
+    file="$cache_dir/$(echo "$link" | sed 's#/#-#g')"
+
+    if ! [ -f "$file" ]; then
+        tmp="$cache_dir/tmp"
+        curl "$link" >"$tmp"
+        mv "$tmp" "$file"
+    fi
+
+    echo "$file"
+}
+
+fzf_browse() {
+    year_month=$(date +%Y-%m)
+    cache_dir="$cache_home/$year_month"
+
+    compressed_database="$cache_dir/anime-offline-database-minified.json.zst"
+    if ! [ -e "$compressed_database" ]; then
+        rm -r "$cache_dir" 2>/dev/null
+        mkdir -p "$cache_dir"
+
+        gh release download latest -O "$compressed_database" \
+            -p 'anime-offline-database-minified.json.zst' \
+            -R manami-project/anime-offline-database
+    fi
+
+    database="$cache_dir/anime-offline-database-minified.json"
+    if ! [ -e "$database" ]; then
+        ouch d -d "$cache_dir" "$compressed_database"
+    fi
+
+    name_pic_link="$cache_dir/name_pic_link.tsv"
+    if ! [ -e "$name_pic_link" ]; then
+        jq -r '.data[] | ([.title] + .synonyms | join(", ")), .picture, (.sources | join("\t"))' "$database" |
+            paste - - - |
+            rg -o '([^\t]*)(\t)([^\t]*)(\t[^\t]*)*(https://anilist.co/[^\t]*)' -r '$1$2$3$2$5' >"$name_pic_link"
+    fi
+
+    fzf -m -d '\t' --preview 'fzf-preview "$(anilist cache-image {2})"' <"$name_pic_link" |
+        cut -f3 | sed 's/^/--new-tab\n/' | nargs -r systemd-run --user browser
+}
+
+command=$1
+if [ -z "$command" ]; then
+    exit 1
+fi
+
+shift
+case $command in
+    cache-image) cache_image "$@" ;;
+    fzf) fzf_browse "$@" ;;
+esac
