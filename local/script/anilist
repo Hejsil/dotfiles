@@ -20,11 +20,12 @@ cache_image() {
 
 fzf_browse() {
     year_month=$(date +%Y-%m)
-    cache_dir="$cache_home/$year_month"
+    cache_dir_root="$cache_home/database/$year_month"
+    cache_dir="$cache_dir_root/$year_month"
 
     compressed_database="$cache_dir/anime-offline-database-minified.json.zst"
     if ! [ -e "$compressed_database" ]; then
-        rm -r "$cache_dir" 2>/dev/null
+        rm -r "$cache_dir_root" 2>/dev/null
         mkdir -p "$cache_dir"
 
         gh release download latest -O "$compressed_database" \
