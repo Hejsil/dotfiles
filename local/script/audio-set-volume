@@ -1,0 +1,3 @@
+#!/bin/sh
+wpctl set-volume -l 2 @DEFAULT_AUDIO_SINK@ "$1"
+wpctl get-volume @DEFAULT_AUDIO_SINK@ | cut -d. -f2 > /run/user/1000/wob.sock
