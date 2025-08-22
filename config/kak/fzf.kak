@@ -1,9 +1,12 @@
 # fzf
 define-command open -params 1 %{
     tmux-terminal-window sh -c %sh{
-        printf '%s | sed -E -e "s/^/evaluate-commands -client %s edit / ;
-            s/:([0-9]+).*/\\nexecute-keys -client %s \\1g/" | kak -p "%s"' \
-            "$1" "$kak_client" "$kak_client" "$kak_session"
+        printf '%s | sed -E' "$1"
+        printf " -e \"s/'/''''/g\" "
+        printf " -e \"s/^/evaluate-commands -client '%s' 'edit ''/\" " "$kak_client"
+        printf " -e \"s/\$/'''/\" "
+        printf " -e \"s/:([0-9]+).*/'''\\\\nexecute-keys -client '%s' \\\\1g/\" |" "$kak_client"
+        printf " kak -p '%s'" "$kak_session"
     }
 }
 
