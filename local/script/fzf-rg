@@ -1,4 +1,4 @@
 #!/bin/sh
-echo | exec fzf --disabled --delimiter ':' --no-extended --ansi -q '(?i)' \
+echo | exec fzf --disabled --delimiter ':' --no-extended --ansi \
     --bind 'change:reload:fzf-fd-fd -X rg --color=always --line-number -- {q} || true' \
     --preview 'fzf-rg-bat {2} {1}'

@@ -21,10 +21,6 @@ map global insert <c-n> '<a-;>:lsp-snippets-select-next-placeholders<ret>'
 map global normal "'"           '<a-i>w*/<ret>'
 map global normal 'z'           ':w<ret>'
 
-# Default to case insensitive search
-map global normal '/'           '/(?i)'
-map global normal '?'           '?(?i)'
-
 # I fumble to much and hit `u` when I want to press `i`. Rebind so that
 # <ret> goes to insert mode and <backspace> undoes
 map global normal '<ret>'       'i'
