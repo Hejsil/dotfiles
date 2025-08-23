@@ -1,0 +1,17 @@
+#!/bin/sh
+
+seedbox=$1
+endpoint=$2
+
+printf '
+get_config_value() {
+    key=$1
+    grep -o "<$key>[^<]*" ~/.config/Prowlarr/config.xml | sed "s/<$key>//"
+}
+
+api_key="$(get_config_value ApiKey)"
+addr="$(get_config_value BindAddress)"
+port="$(get_config_value Port)"
+base="$(get_config_value UrlBase)"
+curl -s -H "X-Api-Key: $api_key" "$addr:$port/$base%s"
+' "$endpoint" | ssh "$seedbox" sh -s

@@ -1,0 +1,19 @@
+#!/bin/sh
+
+seedbox=$1
+shift
+
+args=""
+for arg in "$@"; do
+    args="$args '$(echo "$arg" | sed "s/'/'\"'\"'/")'"
+done
+
+printf '
+get_config_value() {
+    key=$1
+    grep -o "\"$key\": [0-9]*" ~/.config/deluge/core.conf | sed "s/\"$key\": //"
+}
+
+port="$(get_config_value daemon_port)"
+deluge-console -p "$port" %s
+' "$args" | ssh "$seedbox" sh -s

@@ -1,0 +1,8 @@
+#!/bin/sh
+
+seedbox=$1
+query=$(echo "$2" | jq -sRr @uri)
+
+seedbox-prowlarr "$seedbox" "/api/v1/search?query=$query" |
+    jq -r '.[] | ([.seeders, .leechers] | join("/")), .size, .title, .guid' |
+    paste - - - - | sort -k2 -rn | fzf -m | cut -f4 | nargs -r seedbox-deluge "$seedbox" add
