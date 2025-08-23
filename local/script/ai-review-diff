@@ -1,0 +1,2 @@
+#!/bin/sh
+ai-review-diff-prompt | ollama run llama3.1 | mdcat
