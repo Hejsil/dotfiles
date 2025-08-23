@@ -51,8 +51,8 @@
         "max-volume": 150,
         "scroll-step": 10,
         "format": "{volume:3}% {icon} ",
+        "format-muted": " --%  ",
         "tooltip-format": "{volume}%",
-        "format-muted": "",
         "format-icons": {
             "default": ["", "", "", "", "", ""]
         },
