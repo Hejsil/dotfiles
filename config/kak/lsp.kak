@@ -9,7 +9,7 @@ set-option global lsp_auto_show_code_actions true
 # https://github.com/kakoune-lsp/kakoune-lsp/blob/master/rc/servers.kak
 declare-option -hidden str lsp_server_c %{
     [clangd]
-    args = [ "--log=error", "--clang-tidy" ]
+    args = [ "--log=error", "--clang-tidy", "--header-insertion=never" ]
     root_globs = [ "compile_commands.json", ".clangd", ".git", ".hg" ]
 }
 declare-option -hidden str lsp_server_html %{
