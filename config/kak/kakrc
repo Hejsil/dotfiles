@@ -2,9 +2,10 @@ source "%val{config}/ctags.kak"
 source "%val{config}/filetype.kak"
 source "%val{config}/format.kak"
 source "%val{config}/fzf.kak"
-source "%val{config}/keys.kak"
 source "%val{config}/lint.kak"
 source "%val{config}/lsp.kak"
+
+source "%val{config}/map.kak"
 
 colorscheme colors
 

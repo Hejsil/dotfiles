@@ -15,7 +15,3 @@ define-command fzf-fd      %{ open fzf-fd }
 define-command fzf-fd-tree %{ open fzf-fd-tree }
 define-command fzf-rg      %{ open fzf-rg }
 
-map global user b ':fzf-fb<ret>'      -docstring 'Fzf file browser'
-map global user t ':fzf-fd-tree<ret>' -docstring 'Fzf files tree'
-map global user f ':fzf-fd<ret>'      -docstring 'Fzf files'
-map global user s ':fzf-rg<ret>'      -docstring 'Fzf content of files'

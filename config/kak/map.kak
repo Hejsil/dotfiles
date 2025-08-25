@@ -13,6 +13,11 @@ map global user p '!clippaste<ret>'         -docstring 'Paste from system clipbo
 map global user S '|sort<ret>'              -docstring 'Sort'
 map global user R '|sort -r<ret>'           -docstring 'Sort reverse'
 
+map global user b ':fzf-fb<ret>'            -docstring 'Fzf file browser'
+map global user t ':fzf-fd-tree<ret>'       -docstring 'Fzf files tree'
+map global user f ':fzf-fd<ret>'            -docstring 'Fzf files'
+map global user s ':fzf-rg<ret>'            -docstring 'Fzf content of files'
+
 map global insert <pageup>   '<a-;><c-b>'
 map global insert <pagedown> '<a-;><c-f>'
 
