@@ -47,6 +47,8 @@ jq
 kakoune
 kakoune-lsp
 lact
+libreoffice-fresh
+libreoffice-fresh-da
 linux
 linux-firmware
 linux-headers
@@ -55,6 +57,7 @@ man-db
 man-pages
 mangohud
 materia-gtk-theme
+mdcat
 meld
 moreutils
 mpv
@@ -125,6 +128,7 @@ w3m
 watchexec
 waybar
 waybar-module-pacman-updates-git
+wev
 wget
 wine
 wireplumber
@@ -135,6 +139,7 @@ xdg-desktop-portal-hyprland
 yay
 ydotool
 yt-dlp
+zip
 zls
 zoxide
 zram-generator
