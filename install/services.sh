@@ -1,6 +1,5 @@
 #!/bin/sh -e
 
-~/.local/script/ask systemctl enable --user activate-linux
 ~/.local/script/ask systemctl enable --user dipm-pkgs-update
 ~/.local/script/ask systemctl enable --user discord
 ~/.local/script/ask systemctl enable --user mail
