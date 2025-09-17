@@ -34,12 +34,15 @@ declare-option -hidden str lsp_server_spellcheck %exp{
     %opt{lsp_server_typos}
 }
 
+remove-hooks global lsp-filetype-c-family
 hook -group lsp-filetype-c-family global BufSetOption filetype=(?:c|cpp|objc) %{
     set-option buffer lsp_servers %exp{
         %opt{lsp_server_c}
         %opt{lsp_server_spellcheck}
     }
 }
+
+remove-hooks global lsp-filetype-markdown
 hook -group lsp-filetype-markdown global BufSetOption filetype=markdown %{
     set-option buffer lsp_servers %exp{
         %opt{lsp_server_spellcheck}
@@ -50,18 +53,24 @@ hook -group lsp-filetype-markdown global BufSetOption filetype=git-commit %{
         %opt{lsp_server_spellcheck}
     }
 }
+
+remove-hooks global lsp-filetype-html
 hook -group lsp-filetype-html global BufSetOption filetype=html %{
     set-option buffer lsp_servers %exp{
         %opt{lsp_server_spellcheck}
         %opt{lsp_server_html}
     }
 }
+
+remove-hooks global lsp-filetype-python
 hook -group lsp-filetype-python global BufSetOption filetype=python %{
     set-option buffer lsp_servers %exp{
         %opt{lsp_server_python}
         %opt{lsp_server_spellcheck}
     }
 }
+
+remove-hooks global lsp-filetype-zig
 hook -group lsp-filetype-zig global BufSetOption filetype=zig %{
     set-option buffer lsp_servers %exp{
         %opt{lsp_server_spellcheck}
