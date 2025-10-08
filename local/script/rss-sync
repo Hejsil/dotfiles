@@ -29,3 +29,8 @@ IFS=$(printf '\a')
 
 # Older than 10d posts will be deleted
 fd . "$read_dir" --older 10d -x rm
+
+# Auto read youtube shorts
+rss-list read | cut -f1,4 |
+    rg 'https://www.youtube.com/shorts/' | cut -f1 |
+    nargs -I% mv % "$read_dir"
