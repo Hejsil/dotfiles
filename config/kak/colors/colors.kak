@@ -43,6 +43,7 @@ set-face global Prompt yellow,default
 set-face global MatchingChar default,default+bi
 set-face global Whitespace default,default+f
 set-face global BufferPadding blue,default
+set-face global WhitespaceIndent bright-black,default
 
 set-face global PrimaryCursor      black,cyan+fg
 set-face global SecondaryCursor    black,cyan+fg
