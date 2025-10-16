@@ -2,6 +2,7 @@
 
 # Perform bulk rename of files using $EDITOR. The files are taken from stdin.
 
+command=${*:-mv -n}
 old_file_names=$(mktemp -t 'vmv-old.XXXXXXXXXX')
 new_file_names=$(mktemp -t 'vmv-new.XXXXXXXXXX')
 
@@ -15,7 +16,7 @@ $EDITOR "$new_file_names" </dev/tty
 paste "$old_file_names" "$new_file_names" |
     nawk '$1 != $2' |
     tr '\t' '\n' |
-    xargs '-d\n' -n2 mv -n
+    xargs '-d\n' -n2 $command
 
 # Clean up the mess
 exec rm "$old_file_names" "$new_file_names"
