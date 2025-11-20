@@ -12,7 +12,6 @@ chafa
 chaotic-keyring
 chaotic-mirrorlist
 chromium
-code
 ctags
 dashbinsh
 direnv
@@ -32,10 +31,12 @@ gdb
 gimp
 git
 github-cli
+gnome-keyring
 gpu-screen-recorder-git
 gum
 haveged
 hdparm
+heroic-games-launcher-bin
 hyperfine
 hyprland
 hyprshot
@@ -52,6 +53,7 @@ libreoffice-fresh-da
 linux
 linux-firmware
 linux-headers
+lutris
 ly
 man-db
 man-pages
@@ -88,7 +90,7 @@ python-pycodestyle
 python-pylint
 reflector
 ripgrep
-rofi-wayland
+rofi
 rsync
 rtkit
 ruff
@@ -96,7 +98,6 @@ rust-analyzer
 rustdesk-bin
 sad
 samba
-shellcheck
 shfmt
 socat
 starship
