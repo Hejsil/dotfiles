@@ -1,4 +1,5 @@
 config/akregatorrc
+config/Alabaster Dawn/
 config/autostart/
 config/baloofileinformationrc
 config/baloofilerc
@@ -22,7 +23,10 @@ config/Code/Cookies-journal
 config/Code/Crashpad/
 config/Code/databases/
 config/Code/DawnCache/
+config/Code/DawnGraphiteCache/
+config/Code/DawnWebGPUCache/
 config/Code/Dictionaries/
+config/Code/DIPS
 config/Code/GPUCache/
 config/Code/languagepacks.json
 config/Code/Local Storage/
@@ -76,6 +80,7 @@ config/gtk-4.0/
 config/gtkrc
 config/gtkrc-2.0
 config/gwenviewrc
+config/heroic/
 config/htop
 config/hypr/monitor.conf
 config/hypr/workspace.conf
@@ -96,6 +101,8 @@ config/kdeconnect/
 config/kded5rc
 config/kdedefaults/
 config/kdeglobals
+config/kdenlive-layoutsrc
+config/kdenliverc
 config/kde.org/
 config/kglobalshortcutsrc
 config/khotkeysrc
@@ -130,6 +137,7 @@ config/plasmashellrc
 config/plasma-welcomerc
 config/plasmawindowed-appletsrc
 config/plasmawindowedrc
+config/protonfixes/
 config/pulse
 config/QtProject.conf
 config/rpcs3/
