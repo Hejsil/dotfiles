@@ -183,6 +183,7 @@ config/yelp/
 config/yuzu/
 local/bin/
 local/lib/
+local/share/android/
 local/share/anime-game-launcher/
 local/share/Anki2/
 local/share/anki-jlab/
