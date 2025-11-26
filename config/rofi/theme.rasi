@@ -6,8 +6,8 @@
 }
 
 window {
-    width:                       70%;
-    height:                      70%;
+    width:                       600px;
+    height:                      640px;
     border:                      2px solid;
     border-radius:               12px;
     border-color:                @color13;
@@ -40,7 +40,7 @@ entry {
 }
 
 listview {
-    columns:                     6;
+    columns:                     1;
     layout:                      vertical;
     fixed-columns:               true;
     background-color:            transparent;
@@ -49,10 +49,10 @@ listview {
 element {
     enabled:                     true;
     spacing:                     15px;
-    padding:                     20px 10px;
+    padding:                     10px 10px;
     border-radius:               10px;
     background-color:            transparent;
-    orientation:                 vertical;
+    orientation:                 horizontal;
     cursor:                      pointer;
 }
 element selected.normal {
@@ -67,5 +67,5 @@ element-text {
     background-color:            transparent;
     cursor:                      inherit;
     vertical-align:              0.5;
-    horizontal-align:            0.5;
+    horizontal-align:            0.0;
 }
