@@ -38,6 +38,10 @@
     # https://blog.gitbutler.com/how-git-core-devs-configure-git/
     conflictstyle = zdiff3
 
+[push]
+    # https://blog.gitbutler.com/how-git-core-devs-configure-git/
+    autoSetupRemote = true
+
 [includeIf "gitdir:~/repo/forks/"]
     path = ~/repo/forks/.gitconfig
 [includeIf "gitdir:~/repo/own/"]
