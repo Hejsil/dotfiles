@@ -5,6 +5,6 @@ box_dir=$2
 copy_to=$3
 
 mkdir -p "$copy_to"
-ssh "$seedbox" find "$box_dir" -mindepth 1 -maxdepth 1 |
+ssh "$seedbox" find "$box_dir" -mindepth 1 -maxdepth 1 2>/dev/null |
     fzf -m |
     nargs -I% rsync -P -r "$seedbox:~/%" "$copy_to"
