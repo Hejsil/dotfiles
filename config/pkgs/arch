@@ -1,6 +1,7 @@
 adobe-source-sans-fonts
 amd-ucode
 atuin
+audacity
 base
 base-devel
 bash-language-server
@@ -12,6 +13,7 @@ chafa
 chaotic-keyring
 chaotic-mirrorlist
 chromium
+cpio
 ctags
 dashbinsh
 direnv
@@ -68,7 +70,6 @@ networkmanager
 ntfs-3g
 ntp
 obsidian
-ollama-rocm
 openfortivpn
 openssh
 ouch
@@ -81,8 +82,8 @@ pipewire-alsa
 pipewire-jack
 pipewire-pulse
 pipewire-v4l2
+pkgstats
 polkit-kde-agent
-proton-ge-custom-bin
 python-lsp-server
 python-pip
 python-pycodestyle
@@ -94,7 +95,6 @@ rsync
 rtkit
 ruff
 rust-analyzer
-rustdesk-bin
 sad
 samba
 shfmt
@@ -109,6 +109,7 @@ thunderbird
 timeshift
 tmux
 topgrade
+transmission-cli
 tree
 ttf-jetbrains-mono
 ttf-jetbrains-mono-nerd
@@ -139,6 +140,7 @@ xdg-desktop-portal-hyprland
 yay
 ydotool
 yt-dlp
+yt-dlp-ejs
 zip
 zls
 zoxide
