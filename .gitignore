@@ -1,5 +1,6 @@
 config/akregatorrc
 config/Alabaster Dawn/
+config/audacity/
 config/autostart/
 config/baloofileinformationrc
 config/baloofilerc
@@ -73,6 +74,7 @@ config/gnome-initial-setup-done
 config/GNOME-xdg-terminals.list
 config/gnupg
 config/go/
+config/godot/
 config/.gsd-keyboard.settings-ported
 config/gtk-2.0
 config/gtk-3.0/
@@ -190,6 +192,7 @@ local/share/anki-jlab/
 local/share/anyzig/
 local/share/applications/
 local/share/atuin/
+local/share/audacity/
 local/share/baloo/
 local/share/bash
 local/share/bash_history
