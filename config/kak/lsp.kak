@@ -78,5 +78,9 @@ hook -group lsp-filetype-zig global BufSetOption filetype=zig %{
     }
 }
 
-map global user r ':lsp-rename-prompt<ret>' -docstring 'Rename symbol'
-map global user a ':lsp-code-actions<ret>'  -docstring 'Perform code actions'
+map global user r ':lsp-rename-prompt<ret>'        -docstring 'Rename symbol'
+map global user a ':lsp-code-actions<ret>'         -docstring 'Perform code actions'
+
+map global goto d '<esc>:lsp-definition<ret>'      -docstring 'LSP definition'
+map global goto r '<esc>:lsp-references<ret>'      -docstring 'LSP references'
+map global goto y '<esc>:lsp-type-definition<ret>' -docstring 'LSP type definition'
