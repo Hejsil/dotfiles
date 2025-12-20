@@ -2,11 +2,9 @@
 
 output=$(mktemp -t -d 'rss-download-feed.XXXXXXXX')
 
-cut -f1 "$1" |
-    sort -R |
-    sed '/^$/d' |
+sort -R "$1" |
+    sed -e '/^\s*#/d' -e '/^$/d' |
     nl -w1 |
-    sed 's/^/-o\t/' |
     xargs curl -v --rate '10/m' --retry 5 --retry-delay 10 --output-dir "$output"
 
 find "$output" -type f -print0 |
