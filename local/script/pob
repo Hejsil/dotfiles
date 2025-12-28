@@ -3,10 +3,12 @@
 # Downloads and runs PathOfBuilding with wine
 
 repo='PathOfBuildingCommunity/PathOfBuilding'
-pob_dir="$HOME/Sync/pob"
+pob_dir="$HOME/.local/share/pob"
+pob_build_dir="$HOME/Sync/pob"
 
 if ! [ -f "$pob_dir/Path of Building.exe" ]; then
     mkdir -p "$pob_dir"
+    ln -s "$pob_build_dir" "$pob_dir/Builds"
 
     latest_release=$(gh release list -L 1 -R "$repo" | cut -f3)
     gh release download "$latest_release" -R "$repo" -p '*Portable*' -D "$pob_dir"
