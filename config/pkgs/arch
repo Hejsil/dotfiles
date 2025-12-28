@@ -18,6 +18,7 @@ ctags
 dashbinsh
 direnv
 discord
+downgrade
 dua-cli
 duf
 dunst
@@ -83,6 +84,7 @@ pipewire-pulse
 pipewire-v4l2
 pkgstats
 polkit-kde-agent
+prismlauncher
 python-lsp-server
 python-pip
 python-pycodestyle
@@ -122,6 +124,7 @@ udisks2
 valgrind
 vi
 vim
+visual-studio-code-bin
 vulkan-radeon
 w3m
 watchexec
