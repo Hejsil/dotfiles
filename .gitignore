@@ -245,9 +245,12 @@ local/share/pass/
 local/share/pipx/
 local/share/pki/
 local/share/plasma_icons/
+local/share/pob/
 local/share/PolyMC/
+local/share/PrismLauncher/
 local/share/RecentDocuments/
 local/share/recently-used.xbel
+local/share/resourcefullib/
 local/share/rr/
 local/share/rss/
 local/share/sddm/
