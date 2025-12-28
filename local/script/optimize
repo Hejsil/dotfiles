@@ -1,8 +1,0 @@
-#!/bin/sh
-
-fd . "$@" -j 1 --type f \
-    -e png \
-    -x cache -f {} --ignore-stdout --ignore-stderr -- oxipng -o max -s {}
-fd . "$@" -j 1 --type f \
-    -e jpg -e jpeg \
-    -x cache -f {} --ignore-stdout --ignore-stderr -- jpegoptim "-w$(nproc)" {}

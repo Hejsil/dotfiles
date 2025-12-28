@@ -7,7 +7,6 @@
 ~/.local/script/ask systemctl enable --user steam
 ~/.local/script/ask systemctl enable --user wallpaper
 
-~/.local/script/ask systemctl enable --user optimize.timer
 ~/.local/script/ask systemctl enable --user rss-sync.timer
 
 ~/.local/script/ask systemctl enable ollama
