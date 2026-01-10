@@ -13,11 +13,11 @@ hook global WinSetOption filetype=java       %{ set-option window formatcmd 'ast
 hook global WinSetOption filetype=lua        %{ set-option window formatcmd "stylua - --indent-width %opt{tabstop} --indent-type Spaces --column-width 100 --quote-style AutoPreferDouble --call-parentheses Always" }
 hook global WinSetOption filetype=nix        %{ set-option window formatcmd 'nixpkgs-fmt' }
 hook global WinSetOption filetype=rust       %{ set-option window formatcmd 'rustfmt --edition 2018' }
-hook global WinSetOption filetype=sh         %{ set-option window formatcmd "shfmt -i %opt{tabstop} -s -ci" }
 hook global WinSetOption filetype=xml        %{ set-option window formatcmd 'xmllint --format -' }
 
 hook global WinSetOption filetype=ini        %{ set-option window formatcmd 'cat' }
 hook global WinSetOption filetype=kak        %{ set-option window formatcmd 'cat' }
+hook global WinSetOption filetype=sh         %{ set-option window formatcmd 'cat' }
 
 hook global BufWritePre .* %{
     try format catch %{
