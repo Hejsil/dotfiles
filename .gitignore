@@ -4,6 +4,7 @@ config/audacity/
 config/autostart/
 config/baloofileinformationrc
 config/baloofilerc
+config/blender/
 config/blender-benchmark-launcher/
 config/bluedevilglobalrc
 config/btop/
@@ -123,6 +124,7 @@ config/lact/
 config/libaccounts-glib/
 config/libreoffice/
 config/melonDS/
+config/Meltytech/
 config/menus/
 config/Microsoft/
 config/monitors.xml
@@ -139,6 +141,7 @@ config/plasmashellrc
 config/plasma-welcomerc
 config/plasmawindowed-appletsrc
 config/plasmawindowedrc
+config/playit_gg/
 config/protonfixes/
 config/pulse
 config/QtProject.conf
@@ -225,6 +228,7 @@ local/share/kactivitymanagerd/
 local/share/kak/
 local/share/kate/
 local/share/kded5/
+local/share/kdenlive/
 local/share/keyrings/
 local/share/kiwix/
 local/share/klipper/
@@ -234,6 +238,7 @@ local/share/logs/
 local/share/lutris/
 local/share/man/
 local/share/meld/
+local/share/Meltytech/
 local/share/mime/
 local/share/mimeapps.list
 local/share/mkcert/
@@ -257,6 +262,7 @@ local/share/sddm/
 local/share/sddm.log
 local/share/session_migration-ubuntu
 local/share/sleepy-launcher/
+local/share/soar/
 local/share/SpeedRunners/
 local/share/stack/
 local/share/Steam/
