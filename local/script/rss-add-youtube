@@ -8,5 +8,5 @@ channel_id=$(jq .channel_id -r "$channel_details")
 channel_name=$(jq .channel -r "$channel_details")
 rm "$channel_details"
 
-rss-add "$(printf 'https://www.youtube.com/feeds/videos.xml?channel_id=%s\t%s' \
-    "$channel_id" "$channel_name")"
+rss-add "# $channel_name"
+rss-add "$(printf 'https://www.youtube.com/feeds/videos.xml?channel_id=%s' "$channel_id")"

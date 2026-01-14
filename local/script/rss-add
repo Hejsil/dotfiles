@@ -4,4 +4,4 @@ urls_file="$(rss-dirs urls)"
 
 for entry in "$@"; do
     echo "$entry"
-done | exec add-sorted-uniq "$urls_file"
+done >>"$urls_file"
