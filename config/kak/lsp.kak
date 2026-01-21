@@ -12,9 +12,12 @@ declare-option -hidden str lsp_server_c %{
     args = [ "--log=error", "--clang-tidy", "--header-insertion=never" ]
     root_globs = [ "compile_commands.json", ".clangd", ".git", ".hg" ]
 }
-declare-option -hidden str lsp_server_html %{
-    [superhtml]
-    args = [ "lsp" ]
+declare-option -hidden str lsp_server_typos %{
+    [typos-lsp]
+    root_globs = [ ".git", ".hg" ]
+}
+declare-option -hidden str lsp_server_ctags %{
+    [ctags-lsp]
     root_globs = [ ".git", ".hg" ]
 }
 declare-option -hidden str lsp_server_python %{
