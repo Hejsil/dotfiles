@@ -1,17 +1,29 @@
 {
-    "additional-repositories": ["multilib"],
-    "archinstall-language": "English",
-    "audio_config": {
-        "audio": "pipewire"
+    "app_config": {
+        "audio_config": {
+            "audio": "pipewire"
+        }
     },
-    "bootloader": "Systemd-boot",
-    "config_version": "3.0.1",
+    "archinstall-language": "English",
+    "auth_config": null,
+    "bootloader_config": {
+        "bootloader": "Systemd-boot",
+        "removable": true,
+        "uki": false
+    },
+    "custom_commands": [],
     "hostname": "archlinux",
-    "kernels": ["linux"],
+    "kernels": ["linux", "linux-lts"],
     "locale_config": {
         "kb_layout": "dk",
         "sys_enc": "UTF-8",
         "sys_lang": "en_DK.UTF-8"
+    },
+    "mirror_config": {
+        "custom_repositories": [],
+        "custom_servers": [],
+        "mirror_regions": {},
+        "optional_repositories": ["multilib"]
     },
     "network_config": {
         "type": "nm"
@@ -122,7 +134,7 @@
         "zls",
         "zoxide"
     ],
-    "parallel downloads": 0,
+    "parallel_downloads": 0,
     "profile_config": {
         "gfx_driver": "All open-source",
         "greeter": "ly",
@@ -136,8 +148,12 @@
             "main": "Desktop"
         }
     },
-    "swap": true,
+    "script": null,
+    "services": [],
+    "swap": {
+        "algorithm": "zstd",
+        "enabled": true
+    },
     "timezone": "Europe/Copenhagen",
-    "uki": false,
-    "version": "3.0.1"
+    "version": "3.0.15"
 }
