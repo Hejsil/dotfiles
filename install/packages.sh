@@ -1,5 +1,5 @@
 #!/bin/sh -e
 
-<"$HOME/.config/pkgs/arch" xargs -d'\n' sudo pacman -S --noconfirm --needed
-<"$HOME/.config/pkgs/aur" xargs -d'\n' yay -S --noconfirm --needed
-<"$HOME/.config/pkgs/dipm" xargs -d'\n' dipm install
+< ~/.config/pkgs/arch xargs -d'\n' sudo pacman -S --noconfirm --needed
+< ~/.config/pkgs/aur  xargs -d'\n' yay -S --noconfirm --needed
+< ~/.config/pkgs/dipm xargs -d'\n' ~/.local/bin/dipm install
