@@ -8,6 +8,7 @@ disable = [
     "containers",
     "github_cli_extensions",
     "git_repos",
+    "hyprpm",
     "kakoune",
 ]
 
