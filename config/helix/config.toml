@@ -7,6 +7,14 @@ theme = "my"
 "i" = "no_op"
 "u" = "no_op"
 
+"W" = "extend_next_word_start"
+"space" = "keep_primary_selection"
+
+"S-left" = "extend_char_left"
+"S-right" = "extend_char_right"
+"S-up" = "extend_visual_line_up"
+"S-down" = "extend_visual_line_down"
+
 [keys.normal.","]
 "f" = "file_picker"
 "F" = "file_picker_in_current_directory"
