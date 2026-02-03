@@ -9,6 +9,7 @@ config/blender-benchmark-launcher/
 config/bluedevilglobalrc
 config/btop/
 config/Caprine
+config/carapace/
 config/cef_user_data/
 config/Cemu/
 config/chromium
@@ -64,6 +65,7 @@ config/dorion/
 config/Electron/
 config/EmuDeck/
 config/enchant/
+config/eog/
 config/evolution/
 config/g/
 config/gamescope/
@@ -83,6 +85,7 @@ config/gtk-4.0/
 config/gtkrc
 config/gtkrc-2.0
 config/gwenviewrc
+config/helix/runtime/
 config/heroic/
 config/htop
 config/hypr/monitor.conf
@@ -125,6 +128,7 @@ config/libaccounts-glib/
 config/libreoffice/
 config/melonDS/
 config/Meltytech/
+config/memestra/
 config/menus/
 config/Microsoft/
 config/monitors.xml
@@ -214,6 +218,7 @@ local/share/flatpak/
 local/share/FNA3D/
 local/share/fonts/
 local/share/gdb/
+local/share/gh/
 local/share/gnome-settings-daemon/
 local/share/gnome-shell/
 local/share/gnupg/
@@ -279,6 +284,8 @@ local/share/ULWGL/
 local/share/user-places.xbel
 local/share/user-places.xbel.bak
 local/share/user-places.xbel.tbcache
+local/share/virtualenv/
+local/share/vscode/
 local/share/vulkan/
 local/share/webui/
 local/share/wine/
