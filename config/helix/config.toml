@@ -1,5 +1,26 @@
 theme = "my"
 
+[editor]
+rulers = [100]
+line-number = "relative"
+popup-border = "all"
+
+trim-final-newlines = true
+trim-trailing-whitespace = true
+
+[editor.lsp]
+display-progress-messages = true
+
+[editor.whitespace.render]
+space = "all"
+tab = "all"
+nbsp = "all"
+nnbsp = "all"
+
+[editor.inline-diagnostics]
+cursor-line = "info"
+other-lines = "info"
+
 [keys.normal]
 "ret" = "insert_mode"
 "backspace" = "undo"
