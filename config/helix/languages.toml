@@ -1,3 +1,23 @@
+[language-server]
+typos-lsp = {command = "typos-lsp"}
+
+[[language]]
+name = "c"
+language-servers = ["clangd", "typos-lsp"]
+
+[[language]]
+name = "cpp"
+language-servers = ["clangd", "typos-lsp"]
+
+[[language]]
+name = "git-commit"
+language-servers = ["typos-lsp"]
+
+[[language]]
+name = "python"
+language-servers = ["pylsp", "typos-lsp"]
+
 [[language]]
 name = "zig"
+language-servers = ["zls", "typos-lsp"]
 auto-format = true
