@@ -39,7 +39,7 @@
 "ui.virtual.jump-label" = { fg = "blue", modifiers = ["bold", "underlined"] }
 
 # "variable" = "light-red"
-"constant.numeric" = "yellow"
+# "constant.numeric" = "yellow"
 "constant" = { fg = "light-cyan", modifiers = ["bold"] }
 "attribute" = "yellow"
 "type" = { fg = "light-cyan", modifiers = ["bold"] }
@@ -47,11 +47,11 @@
 # "variable.other.member" = "green"
 "constant.character.escape" = "light-cyan"
 # "function" = "light-blue"
-"constructor" = "light-blue"
+# "constructor" = "light-blue"
 "special" = "light-blue"
-"keyword" = "light-blue"
+"keyword" = { fg = "light-blue", modifiers = ["bold"] }
 "label" = "light-magenta"
-"namespace" = "light-magenta"
+"namespace" = "yellow"
 
 "markup.heading" = "light-blue"
 "markup.list" = "light-red"
