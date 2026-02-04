@@ -36,3 +36,6 @@ theme = "my"
 "R" = "replace_selections_with_clipboard"
 "/" = "global_search"
 "?" = "command_palette"
+
+[keys.normal."G"]
+"e" = "extend_to_last_line"
