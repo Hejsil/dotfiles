@@ -13,7 +13,8 @@
 "ui.popup" = { fg = "white" }
 "ui.window" = { fg = "gray" }
 "ui.selection" = { bg = "gray" }
-"comment" = "light-gray"
+# "comment" = "light-gray"
+"comment" = "gray"
 "ui.statusline" = { fg = "white" }
 "ui.statusline.inactive" = { fg = "gray" }
 "ui.statusline.normal" = { fg = "black", bg = "blue" }
