@@ -12,7 +12,7 @@ trim-trailing-whitespace = true
 display-progress-messages = true
 
 [editor.whitespace.render]
-space = "all"
+space = "none"
 tab = "all"
 nbsp = "all"
 nnbsp = "all"
@@ -20,6 +20,11 @@ nnbsp = "all"
 [editor.inline-diagnostics]
 cursor-line = "info"
 other-lines = "info"
+
+[editor.indent-guides]
+render = true
+character = "┊" # Some characters that work well: "▏", "┆", "┊", "⸽"
+skip-levels = 1
 
 [keys.normal]
 "ret" = "insert_mode"
@@ -57,6 +62,7 @@ other-lines = "info"
 "R" = "replace_selections_with_clipboard"
 "/" = "global_search"
 "?" = "command_palette"
+"æ" = ":config-reload"
 
 [keys.normal."G"]
 "e" = "extend_to_last_line"
