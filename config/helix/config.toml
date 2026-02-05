@@ -41,6 +41,13 @@ skip-levels = 1
 "S-up" = "extend_visual_line_up"
 "S-down" = "extend_visual_line_down"
 
+"'" = [
+  "move_prev_word_start",
+  "move_next_word_end",
+  "search_selection",
+  "search_next",
+]
+
 [keys.normal.","]
 "f" = "file_picker"
 "F" = "file_picker_in_current_directory"
