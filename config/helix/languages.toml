@@ -15,7 +15,7 @@ language-servers = ["typos-lsp"]
 
 [[language]]
 name = "python"
-language-servers = ["pylsp", "typos-lsp"]
+language-servers = ["ruff", "typos-lsp"]
 
 [[language]]
 name = "zig"
