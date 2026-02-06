@@ -41,6 +41,19 @@ skip-levels = 1
 "S-up" = "extend_visual_line_up"
 "S-down" = "extend_visual_line_down"
 
+"A-up" = [
+  "extend_to_line_bounds",
+  "delete_selection",
+  "move_visual_line_up",
+  "paste_before",
+]
+"A-down" = [
+  "extend_to_line_bounds",
+  "delete_selection",
+  "move_visual_line_down",
+  "paste_before",
+]
+
 "'" = [
   "move_prev_word_start",
   "move_next_word_end",
