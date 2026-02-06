@@ -86,3 +86,7 @@ skip-levels = 1
 
 [keys.normal."G"]
 "e" = "extend_to_last_line"
+"E" = [
+  "extend_to_last_line",
+  "extend_to_line_bounds",
+]
