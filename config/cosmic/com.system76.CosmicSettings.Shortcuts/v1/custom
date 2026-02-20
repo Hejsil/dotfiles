@@ -1,0 +1,26 @@
+{
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "f",
+    ): Fullscreen,
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "Return",
+        description: Some("Terminal"),
+    ): Spawn("foot"),
+    (
+        modifiers: [
+            Super,
+        ],
+    ): Disable,
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "space",
+    ): System(Launcher),
+}

@@ -1,0 +1,9 @@
+(
+    rules: "",
+    model: "pc105",
+    layout: "dk,dk",
+    variant: ",winkeys",
+    options: Some("terminate:ctrl_alt_bksp,caps:super,altwin:menu_win"),
+    repeat_delay: 200,
+    repeat_rate: 45,
+)
