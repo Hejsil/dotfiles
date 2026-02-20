@@ -7,7 +7,7 @@ wallpapers_on_screen="/tmp/wallpapers-on-screen"
 monitors=$(mktemp -t 'wall.monitors.XXXXXXXX')
 wallpapers=$(mktemp -t 'wall.wallpapers.XXXXXXXX')
 
-monitors name >"$monitors"
+wlr-randr --json | jq '.[].name' -r >"$monitors"
 fd . "$1" --type f |
     sort -R >"$wallpapers"
 

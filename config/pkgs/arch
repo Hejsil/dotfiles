@@ -137,6 +137,7 @@ wget
 wine
 wireplumber
 wl-clipboard
+wlr-randr
 wob
 xdg-desktop-portal
 xdg-desktop-portal-hyprland
