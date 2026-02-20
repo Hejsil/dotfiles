@@ -40,6 +40,8 @@ skip-levels = 1
 "S-right" = "extend_char_right"
 "S-up" = "extend_visual_line_up"
 "S-down" = "extend_visual_line_down"
+"S-home" = "extend_to_line_start"
+"S-end" = "extend_to_line_end"
 
 "A-up" = [
   "extend_to_line_bounds",
