@@ -51,7 +51,6 @@ firefox
 fish
 foot
 fzf
-gamescope
 gdb
 gimp
 git
@@ -83,7 +82,6 @@ lutris
 ly
 man-db
 man-pages
-mdcat
 meld
 moreutils
 mpv
@@ -112,6 +110,7 @@ python-lsp-server
 python-pip
 python-pycodestyle
 python-pylint
+rdfind
 reflector
 ripgrep
 rofi
@@ -121,14 +120,15 @@ ruff
 rust-analyzer
 sad
 samba
+screen
 shfmt
 socat
 starship
 steam
 strace
 stress
+symlinks
 syncthing
-thunar
 thunderbird
 timeshift
 tmux
@@ -145,7 +145,6 @@ typos-lsp
 udiskie
 udisks2
 valgrind
-vi
 vim
 visual-studio-code-bin
 vulkan-radeon
