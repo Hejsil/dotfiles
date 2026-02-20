@@ -73,6 +73,7 @@ config/gcloud/
 config/gh/
 config/GIMP
 config/git/credentials
+config/github-copilot/
 config/gnome-initial-setup-done
 config/GNOME-xdg-terminals.list
 config/gnupg
@@ -226,6 +227,8 @@ local/share/godot/
 local/share/gvfs-metadata/
 local/share/honkers-railway-launcher/
 local/share/hyprland/
+local/share/Hytale/
+local/share/hytale-launcher/
 local/share/icc/
 local/share/icons/
 local/share/image-tagger/
@@ -239,6 +242,7 @@ local/share/kiwix/
 local/share/klipper/
 local/share/krunnerstaterc
 local/share/kscreen/
+local/share/lensfun/
 local/share/logs/
 local/share/lutris/
 local/share/man/
@@ -246,6 +250,7 @@ local/share/meld/
 local/share/Meltytech/
 local/share/mime/
 local/share/mimeapps.list
+local/share/Mindustry/
 local/share/mkcert/
 local/share/modrinth-app/
 local/share/multimc/
