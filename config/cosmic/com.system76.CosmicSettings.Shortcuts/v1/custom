@@ -3,15 +3,20 @@
         modifiers: [
             Super,
         ],
+        key: "minus",
+    ): Disable,
+    (
+        modifiers: [
+            Super,
+        ],
         key: "f",
     ): Fullscreen,
     (
         modifiers: [
             Super,
         ],
-        key: "Return",
-        description: Some("Terminal"),
-    ): Spawn("foot"),
+        key: "period",
+    ): Disable,
     (
         modifiers: [
             Super,
@@ -21,6 +26,25 @@
         modifiers: [
             Super,
         ],
+        key: "equal",
+    ): Disable,
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "comma",
+    ): Disable,
+    (
+        modifiers: [
+            Super,
+        ],
         key: "space",
     ): System(Launcher),
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "Return",
+        description: Some("Terminal"),
+    ): Spawn("foot"),
 }
