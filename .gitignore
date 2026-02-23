@@ -51,6 +51,7 @@ config/Code/User/workspaceStorage/
 config/Code/WebStorage/
 config/com.modrinth.theseus/
 config/content_shell
+config/cosmic/com.system76.CosmicPortal/v1/screenshot
 config/CrossCode/
 config/dbin/
 config/dconf
