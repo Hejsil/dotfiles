@@ -1,4 +1,4 @@
 #!/bin/sh
-fd . "$1" --exec stat --printf='%Y\t%n\n' |
+fd . "$@" --exec stat --printf='%Y\t%n\n' |
     sort -nr |
     exec cut -f2
