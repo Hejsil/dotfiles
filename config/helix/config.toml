@@ -43,6 +43,9 @@ skip-levels = 1
 "S-home" = "extend_to_line_start"
 "S-end" = "extend_to_line_end"
 
+"n" = ["save_selection","search_next"]
+"N" = ["save_selection","search_prev"]
+
 "A-up" = [
   "extend_to_line_bounds",
   "delete_selection",
@@ -57,6 +60,7 @@ skip-levels = 1
 ]
 
 "'" = [
+  "save_selection",
   "move_prev_word_start",
   "move_next_word_end",
   "search_selection_detect_word_boundaries",
