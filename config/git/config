@@ -1,6 +1,9 @@
 [core]
     editor = editor
 
+[commit]
+    verbose = true
+
 [pull]
     # https://blog.gitbutler.com/how-git-core-devs-configure-git/
     rebase = true
