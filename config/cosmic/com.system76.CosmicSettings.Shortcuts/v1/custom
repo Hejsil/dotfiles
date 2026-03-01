@@ -3,7 +3,37 @@
         modifiers: [
             Super,
         ],
-        key: "minus",
+        key: "space",
+    ): System(Launcher),
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "equal",
+    ): Disable,
+    (
+        modifiers: [
+            Super,
+        ],
+    ): Disable,
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "period",
+    ): Disable,
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "Return",
+        description: Some("Terminal"),
+    ): Spawn("foot"),
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "comma",
     ): Disable,
     (
         modifiers: [
@@ -15,36 +45,11 @@
         modifiers: [
             Super,
         ],
-        key: "period",
+        key: "minus",
     ): Disable,
     (
-        modifiers: [
-            Super,
-        ],
-    ): Disable,
-    (
-        modifiers: [
-            Super,
-        ],
-        key: "equal",
-    ): Disable,
-    (
-        modifiers: [
-            Super,
-        ],
-        key: "comma",
-    ): Disable,
-    (
-        modifiers: [
-            Super,
-        ],
-        key: "space",
-    ): System(Launcher),
-    (
-        modifiers: [
-            Super,
-        ],
-        key: "Return",
-        description: Some("Terminal"),
-    ): Spawn("foot"),
+        modifiers: [],
+        key: "XF86AudioPlay",
+        description: Some("Replay"),
+    ): Spawn("replay-save"),
 }
