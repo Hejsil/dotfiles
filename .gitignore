@@ -68,6 +68,8 @@ config/EmuDeck/
 config/enchant/
 config/eog/
 config/evolution/
+config/fcitx/
+config/fcitx5/
 config/g/
 config/gamescope/
 config/gcloud/
@@ -150,6 +152,9 @@ config/plasmawindowedrc
 config/playit_gg/
 config/protonfixes/
 config/pulse
+config/qalculate/
+config/qt5ct/
+config/qt6ct/
 config/QtProject.conf
 config/rpcs3/
 config/rss/
@@ -207,6 +212,7 @@ local/share/bash
 local/share/bash_history
 local/share/calc_history
 local/share/Celeste/
+local/share/color-schemes/
 local/share/com.modrinth.theseus/
 local/share/Daedalic Entertainment GmbH/
 local/share/dipm/
@@ -287,6 +293,7 @@ local/share/Terraria/
 local/share/topgrade_keep
 local/share/Trash
 local/share/ULWGL/
+local/share/umu/
 local/share/user-places.xbel
 local/share/user-places.xbel.bak
 local/share/user-places.xbel.tbcache

@@ -1,5 +1,0 @@
-(
-    clip_floating_windows: true,
-    clip_tiled_windows: false,
-    shadow_tiled_windows: false,
-)
