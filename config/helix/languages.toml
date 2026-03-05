@@ -1,23 +1,52 @@
 [language-server]
-typos-lsp = {command = "typos-lsp"}
+fs_watcher_lsp = {command = "fs_watcher_lsp"}
+
+[language-server.typos]
+command = "typos-lsp"
+config.config = "~/.config/typos/typos.toml"
+
+[language-server.copilot]
+command = "copilot-language-server"
+args = ["--stdio"]
+
+[language-server.copilot.config]
+editorInfo = { name = "Helix", version = "25.01" }
+editorPluginInfo = { name = "helix-copilot", version = "0.1.0" }
+
+[[language]]
+name = "bash"
+language-servers = ["bash-language-server", "fs_watcher_lsp", "copilot", "typos-lsp"]
 
 [[language]]
 name = "c"
-language-servers = ["clangd", "typos-lsp"]
+language-servers = ["clangd", "fs_watcher_lsp", "copilot", "typos-lsp"]
 
 [[language]]
 name = "cpp"
-language-servers = ["clangd", "typos-lsp"]
+language-servers = ["clangd", "fs_watcher_lsp", "copilot", "typos-lsp"]
 
 [[language]]
 name = "git-commit"
-language-servers = ["typos-lsp"]
+language-servers = ["fs_watcher_lsp", "copilot", "typos-lsp"]
+
+[[language]]
+name = "json"
+language-servers = ["vscode-json-language-server", "fs_watcher_lsp", "copilot", "typos-lsp"]
+auto-format = false
+
+[[language]]
+name = "markdown"
+language-servers = ["fs_watcher_lsp", "copilot", "typos-lsp"]
 
 [[language]]
 name = "python"
-language-servers = ["ruff", "typos-lsp"]
+language-servers = ["pylsp", "ruff", "fs_watcher_lsp", "copilot", "typos-lsp"]
+
+[[language]]
+name = "yaml"
+language-servers = ["fs_watcher_lsp", "copilot", "typos-lsp"]
 
 [[language]]
 name = "zig"
-language-servers = ["zls", "typos-lsp"]
+language-servers = ["zls", "fs_watcher_lsp", "copilot", "typos-lsp"]
 auto-format = true
