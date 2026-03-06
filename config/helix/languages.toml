@@ -40,15 +40,15 @@ auto-format = false
 
 [[language]]
 name = "markdown"
-language-servers = ["fs_watcher_lsp", "copilot", "typos-lsp"]
+language-servers = ["marksman", "markdown-oxide", "rumdl", "fs_watcher_lsp", "copilot", "typos-lsp"]
 
 [[language]]
 name = "python"
-language-servers = ["pylsp", "ruff", "fs_watcher_lsp", "copilot", "typos-lsp"]
+language-servers = ["ty", "ruff", "jedi", "pylsp", "fs_watcher_lsp", "copilot", "typos-lsp"]
 
 [[language]]
 name = "yaml"
-language-servers = ["fs_watcher_lsp", "copilot", "typos-lsp"]
+language-servers = ["yaml-language-server", "ansible-language-server", "fs_watcher_lsp", "copilot", "typos-lsp"]
 
 [[language]]
 name = "zig"
