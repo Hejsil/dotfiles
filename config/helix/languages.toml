@@ -26,6 +26,10 @@ name = "cpp"
 language-servers = ["clangd", "fs_watcher_lsp", "copilot", "typos-lsp"]
 
 [[language]]
+name = "cmake"
+language-servers = ["neocmakelsp", "cmake-language-server", "fs_watcher_lsp", "copilot", "typos-lsp"]
+
+[[language]]
 name = "git-commit"
 language-servers = ["fs_watcher_lsp", "copilot", "typos-lsp"]
 
