@@ -2,9 +2,9 @@
 
 t=$(printf '\t')
 
-curl "https://zenless-zone-zero.fandom.com/wiki/Redemption_Code" |
-    rg -o 'https://zenless.hoyoverse.com/redemption\?code=([^"]*)' \
-        -r "$t\$1 - Zenless Zone Zero Code$t\$0$t$t$t\$1${t}Zenless Zone Zero$t"
+curl 'https://db.hashblen.com/codes' |
+    jq '.zzz[].code' -r |
+    rg '^.*$' -r "$t\$0 - Zenless Zone Zero Code${t}https://zenless.hoyoverse.com/redemption\?code=\$0$t$t$t\$0${t}Zenless Zone Zero$t"
 
 {
     curl 'https://wallhaven.cc/api/v1/search?sorting=toplist&topRange=1w'
