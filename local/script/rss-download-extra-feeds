@@ -12,3 +12,8 @@ curl 'https://db.hashblen.com/codes' |
     curl 'https://wallhaven.cc/api/v1/search?sorting=toplist&topRange=1y'
 } | jq -r '.data[] | "", .id + " - Wallhaven", .path, "", "", .id, "Wallhaven", ""' |
     paste - - - - - - - -
+
+curl -s 'https://riftbound.leagueoflegends.com/en-us/news/' |
+    rg '<script[^>]*type="application/json">(.*)</script>' -r '$1' -o |
+    jq '.props.pageProps.page.blades[2].items[] | .publishedAt, .title, "https://riftbound.leagueoflegends.com" + .action.payload.url, .description.body, .description.type, .analytics.contentId, "Riftbound", null, null' |
+    tr -d '"' | sed 's/^null$//' | paste - - - - - - - - -
