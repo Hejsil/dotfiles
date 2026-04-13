@@ -17,3 +17,7 @@ curl -s 'https://riftbound.leagueoflegends.com/en-us/news/' |
     rg '<script[^>]*type="application/json">(.*)</script>' -r '$1' -o |
     jq '.props.pageProps.page.blades[2].items[] | .publishedAt, .title, "https://riftbound.leagueoflegends.com" + .action.payload.url, .description.body, .description.type, .analytics.contentId, "Riftbound", null, null' |
     tr -d '"' | sed 's/^null$//' | paste - - - - - - - - -
+
+curl -s 'https://sg-public-api-static.hoyoverse.com/content_v2_user/app/3e9196a4b9274bd7/getContentList?iPageSize=10&iPage=1&iChanId=295&sLangKey=en-us' |
+      jq -r '.data.list[] | .dtCreateTime, .sTitle, "https://zenless.hoyoverse.com/en-us/news/" + (.iInfoId | tostring), .sContent, "html", .iInfoId, "Zenless Zone Zero", null, null' |
+      sed 's/^null$//' | paste - - - - - - - - -
