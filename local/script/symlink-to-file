@@ -1,0 +1,9 @@
+#!/bin/sh
+
+symlink=$1
+if ! [ -L "$symlink" ]; then
+    echo "Error: $symlink is not a symbolic link." >&2
+    exit 1
+fi
+
+cp --remove-destination "$(realpath "$symlink")" "$symlink"
