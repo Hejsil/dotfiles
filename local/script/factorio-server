@@ -1,0 +1,90 @@
+#!/bin/sh -e
+
+server_name="$1"
+command=$2
+
+if [ -z "$server_name" ] || [ -z "$command" ]; then
+  echo "Usage: $0 <server_name> <start|stop|logs>" >&2
+  exit 1
+fi
+
+data_dir="${XDG_LOCAL_DATA:-$HOME/.local/share}/factorio-server"
+
+save_file="$data_dir/$server_name.zip"
+config="$data_dir/${server_name}-config.ini"
+mod_directory="$data_dir/${server_name}-mods"
+server_settings="$data_dir/${server_name}-settings.json"
+map_settings_file="$data_dir/${server_name}-map-settings.json"
+map_gen_settings_file="$data_dir/${server_name}-map-gen-settings.json"
+
+server_unit_name="factorio-server-$server_name.service"
+
+command -v factorio >/dev/null 2>&1 || {
+  echo >&2 "Factorio is not installed. Please install it first."
+  exit 1
+}
+
+mkdir -p "$data_dir"
+mkdir -p "$mod_directory"
+
+if [ ! -f "$server_settings" ]; then
+  cp /usr/share/factorio/server-settings.example.json "$server_settings"
+
+  # Set the server name in the settings
+  jq --arg name "$server_name" '.name = $name' "$server_settings" | sponge "$server_settings"
+
+  # Disable visibility.public
+  jq '.visibility.public = false' "$server_settings" | sponge "$server_settings"
+fi
+
+if [ ! -f "$config" ]; then
+  echo 'non-blocking-saving=true' >"$config"
+fi
+
+if [ ! -f "$map_settings_file" ]; then
+  cp /usr/share/factorio/map-settings.example.json "$map_settings_file"
+fi
+
+if [ ! -f "$map_gen_settings_file" ]; then
+  cp /usr/share/factorio/map-gen-settings.example.json "$map_gen_settings_file"
+fi
+
+if [ ! -f "$save_file" ]; then
+  factorio --create "$save_file" \
+    --config "$config" \
+    --preset "rail-world" \
+    --mod-directory "$mod_directory" \
+    --map-settings "$map_settings_file" \
+    --map-gen-settings "$map_gen_settings_file"
+fi
+
+if ! systemctl is-active --quiet playit; then
+  echo "The playit service is not active. Please start it first." >&2
+  exit 1
+fi
+
+if [ ! -f /etc/playit/playit.toml ]; then
+  echo "The playit configuration file is missing. Please create it first." >&2
+  exit 1
+fi
+
+case "$command" in
+start)
+  systemd-run --user --service-type=simple --unit="$server_unit_name" \
+    factorio --start-server "$save_file" \
+    --config "$config" \
+    --mod-directory "$mod_directory" \
+    --map-settings "$map_settings_file" \
+    --map-gen-settings "$map_gen_settings_file"
+  ;;
+stop)
+  echo "Stopping server '$server_name'..." >&2
+  systemctl --user stop "$server_unit_name" || true
+  ;;
+status)
+  systemctl --user status "$server_unit_name" || true
+  ;;
+logs)
+  journalctl --user -u "$server_unit_name" -f
+  ;;
+esac
