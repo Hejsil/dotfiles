@@ -73,9 +73,12 @@ start)
   systemd-run --user --service-type=simple --unit="$server_unit_name" \
     factorio --start-server "$save_file" \
     --config "$config" \
-    --mod-directory "$mod_directory" \
-    --map-settings "$map_settings_file" \
-    --map-gen-settings "$map_gen_settings_file"
+    --mod-directory "$mod_directory"
+  ;;
+start-foreground)
+  factorio --start-server "$save_file" \
+    --config "$config" \
+    --mod-directory "$mod_directory"
   ;;
 stop)
   echo "Stopping server '$server_name'..." >&2
