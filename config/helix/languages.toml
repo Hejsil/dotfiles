@@ -34,6 +34,10 @@ name = "git-commit"
 language-servers = ["fs_watcher_lsp", "copilot", "typos-lsp"]
 
 [[language]]
+name = "html"
+language-servers = [ "vscode-html-language-server", "superhtml", "fs_watcher_lsp", "copilot", "typos-lsp"]
+
+[[language]]
 name = "json"
 language-servers = ["vscode-json-language-server", "fs_watcher_lsp", "copilot", "typos-lsp"]
 auto-format = false
