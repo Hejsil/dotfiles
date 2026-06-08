@@ -58,16 +58,6 @@ if [ ! -f "$save_file" ]; then
     --map-gen-settings "$map_gen_settings_file"
 fi
 
-if ! systemctl is-active --quiet playit; then
-  echo "The playit service is not active. Please start it first." >&2
-  exit 1
-fi
-
-if [ ! -f /etc/playit/playit.toml ]; then
-  echo "The playit configuration file is missing. Please create it first." >&2
-  exit 1
-fi
-
 case "$command" in
 start)
   systemd-run --user --service-type=simple --unit="$server_unit_name" \
