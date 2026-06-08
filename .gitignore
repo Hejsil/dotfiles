@@ -30,8 +30,10 @@ config/Code/DawnGraphiteCache/
 config/Code/DawnWebGPUCache/
 config/Code/Dictionaries/
 config/Code/DIPS
+config/Code/DIPS-wal
 config/Code/GPUCache/
 config/Code/languagepacks.json
+config/Code/Local State
 config/Code/Local Storage/
 config/Code/logs/
 config/Code/machineid
@@ -42,11 +44,15 @@ config/Code/Service Worker/
 config/Code/Session Storage/
 config/Code/Shared Dictionary/
 config/Code/SharedStorage
+config/Code/SharedStorage-wal
 config/Code/TransportSecurity
 config/Code/Trust Tokens
 config/Code/Trust Tokens-journal
+config/Code/User/agent-sessions.code-workspace
+config/Code/User/chatLanguageModels.json
 config/Code/User/globalStorage/
 config/Code/User/History/
+config/Code/User/profiles/
 config/Code/User/workspaceStorage/
 config/Code/WebStorage/
 config/com.modrinth.theseus/
@@ -63,6 +69,8 @@ config/discoverrc
 config/docker/
 config/dolphinrc
 config/dorion/
+config/easyeffects/
+config/easyeffectsrc
 config/Electron/
 config/EmuDeck/
 config/enchant/
@@ -231,6 +239,7 @@ local/share/gnome-settings-daemon/
 local/share/gnome-shell/
 local/share/gnupg/
 local/share/godot/
+local/share/gstreamer-1.0/
 local/share/gvfs-metadata/
 local/share/honkers-railway-launcher/
 local/share/hyprland/
@@ -251,6 +260,7 @@ local/share/krunnerstaterc
 local/share/kscreen/
 local/share/lensfun/
 local/share/logs/
+local/share/love/
 local/share/lutris/
 local/share/man/
 local/share/meld/
@@ -268,6 +278,7 @@ local/share/pipx/
 local/share/pki/
 local/share/plasma_icons/
 local/share/pob/
+local/share/pobfrontend/
 local/share/PolyMC/
 local/share/PrismLauncher/
 local/share/RecentDocuments/
