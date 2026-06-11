@@ -46,13 +46,15 @@ def main():
     # Format: (name, [command])
     commands: List[Tuple[str, List[str]]] = [
         # System package managers
-        ("Dipm", ["dipm", "update"]),
         ("APT Update", ["sudo", "apt", "update"]),
         ("APT Upgrade", ["sudo", "apt", "upgrade", "-y"]),
         ("APT Autoremove", ["sudo", "apt", "autoremove", "-y"]),
-        ("Pacman", ["sudo", "pacman", "-Syu", "--noconfirm"]),
         ("Snap", ["sudo", "snap", "refresh"]),
+        ("Pacman", ["sudo", "pacman", "-Syu", "--noconfirm"]),
+        ("Yay", ["yay", "-Syu", "--noconfirm"]),
+        ("Paru", ["paru", "-Syu", "--noconfirm"]),
         ("Firmware (fwupd)", ["sudo", "fwupdmgr", "update"]),
+        ("Dipm", ["dipm", "update"]),
 
         # Language/tool managers
         ("Cargo", ["cargo", "install-update", "-a"]),
@@ -80,9 +82,9 @@ def main():
 
     # Print summary
     print(file=sys.stderr)
-    print("=" * 60, file=sys.stderr)
-    print("=== Summary ===", file=sys.stderr)
-    print("=" * 60, file=sys.stderr)
+    print(f"{'─' * 60}", file=sys.stderr)
+    print("▶ Summary", file=sys.stderr)
+    print(f"{'─' * 60}", file=sys.stderr)
 
     if results["succeeded"]:
         print(f"\n{GREEN}✓ Succeeded ({len(results['succeeded'])}){NC}:", file=sys.stderr)
