@@ -12,5 +12,5 @@ sudo usermod -aG docker "$USER"
 sudo usermod -aG games "$USER"
 sudo usermod -aG input "$USER"
 
-echo '# https://wiki.hyprland.org/Configuring/Monitors/' >"$HOME/.config/hypr/monitor.conf"
-touch "$HOME/.config/hypr/workspace.conf"
+echo '-- https://wiki.hypr.land/Configuring/Basics/Monitors/' >"$HOME/.config/hypr/monitor.lua"
+touch "$HOME/.config/hypr/workspace.lua"
