@@ -1,9 +1,15 @@
-exec-once = systemctl --user start hyprland-session.target
-exec-once = systemctl --user start plasma-polkit-agent
+-- https://wiki.hypr.land/Configuring/Basics/Autostart/
 
-exec-once = hyprland-setup-workspace-rules
-exec-once = steam
-exec-once = discord
-exec-once = thunderbird
+hl.on("hyprland.start", function()
+    hl.exec_cmd("systemctl --user start hyprland-session.target")
+    hl.exec_cmd("systemctl --user start plasma-polkit-agent")
 
-exec-shutdown = systemctl --user stop hyprland-session.target
+    hl.exec_cmd("hyprland-setup-workspace-rules")
+    hl.exec_cmd("steam")
+    hl.exec_cmd("discord")
+    hl.exec_cmd("thunderbird")
+end)
+
+hl.on("hyprland.shutdown", function()
+    hl.exec_cmd("systemctl --user stop hyprland-session.target")
+end)

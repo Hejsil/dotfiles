@@ -100,8 +100,8 @@ config/gwenviewrc
 config/helix/runtime/
 config/heroic/
 config/htop
-config/hypr/monitor.conf
-config/hypr/workspace.conf
+config/hypr/monitor.lua
+config/hypr/workspace.lua
 config/ibus/
 config/.isolated-storage/
 config/itch/

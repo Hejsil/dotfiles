@@ -1,5 +1,5 @@
 #!/bin/sh
 # This command works the same as `hyprctl dispatch movetoworkspace $1`, but it switches to a workspace
 # on the same monitor.
-hyprland-to-real-workspace "$1" |
-    exec xargs hyprctl dispatch movetoworkspace
+workspace=$(hyprland-to-real-workspace "$1")
+exec hyprctl dispatch "hl.dsp.window.move({ workspace = $workspace })"

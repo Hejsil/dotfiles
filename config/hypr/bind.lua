@@ -1,80 +1,63 @@
-# https://wiki.hyprland.org/Configuring/Binds/
-# https://wiki.hyprland.org/Configuring/Dispatchers/#list-of-dispatchers
+-- https://wiki.hypr.land/Configuring/Basics/Binds/
+-- https://wiki.hypr.land/Configuring/Basics/Dispatchers/
 
-# Launch programs in the terminal
-bind = SUPER      , Return, exec, footclient
-bind = SUPER      , A     , exec, footclient -a float -e anilist fzf
-bind = SUPER      , C     , exec, footclient -a float -e fend
-bind = SUPER      , E     , exec, footclient -a float -e fzf-uni
-bind = SUPER      , G     , exec, footclient -a float -e fzf-focuswindow
-bind = SUPER      , K     , exec, footclient -a float -e fzf-kill
-bind = SUPER      , R     , exec, footclient -a float -e rss-read
-bind = SUPER      , T     , exec, footclient -a fullscreen -e btop
+-- Launch programs in the terminal
+hl.bind("SUPER + Return", hl.dsp.exec_cmd("footclient"))
+hl.bind("SUPER + A", hl.dsp.exec_cmd("footclient -a float -e anilist fzf"))
+hl.bind("SUPER + C", hl.dsp.exec_cmd("footclient -a float -e fend"))
+hl.bind("SUPER + E", hl.dsp.exec_cmd("footclient -a float -e fzf-uni"))
+hl.bind("SUPER + G", hl.dsp.exec_cmd("footclient -a float -e fzf-focuswindow"))
+hl.bind("SUPER + K", hl.dsp.exec_cmd("footclient -a float -e fzf-kill"))
+hl.bind("SUPER + R", hl.dsp.exec_cmd("footclient -a float -e rss-read"))
+hl.bind("SUPER + T", hl.dsp.exec_cmd("footclient -a fullscreen -e btop"))
 
-# Launch other programs
-bind = SUPER      , B     , exec, browser
-bind = SUPER      , N     , exec, obsidian
-bind = SUPER      , O     , exec, open-clipboard
-bind = SUPER      , P     , exec, pavucontrol
-bind = SUPER SHIFT, B     , exec, browser-private
-bind = SUPER SHIFT, R     , exec, rss-open-all-in-browser
-bind = SUPER      , Space , exec, rofi -show drun
+-- Launch other programs
+hl.bind("SUPER + B", hl.dsp.exec_cmd("browser"))
+hl.bind("SUPER + N", hl.dsp.exec_cmd("obsidian"))
+hl.bind("SUPER + O", hl.dsp.exec_cmd("open-clipboard"))
+hl.bind("SUPER + P", hl.dsp.exec_cmd("pavucontrol"))
+hl.bind("SUPER + SHIFT + B", hl.dsp.exec_cmd("browser-private"))
+hl.bind("SUPER + SHIFT + R", hl.dsp.exec_cmd("rss-open-all-in-browser"))
+hl.bind("SUPER + Space", hl.dsp.exec_cmd("rofi -show drun"))
 
-# Screenshot
-bind =      , Print, exec, screenshot -m window -m active
-bind = SHIFT, Print, exec, screenshot -m output
-bind = CTRL , Print, exec, screenshot -m region
+-- Screenshot
+hl.bind("Print", hl.dsp.exec_cmd("screenshot -m window -m active"))
+hl.bind("SHIFT + Print", hl.dsp.exec_cmd("screenshot -m output"))
+hl.bind("CTRL + Print", hl.dsp.exec_cmd("screenshot -m region"))
 
-# Window manipulation
-bind = SUPER      , Q, killactive    ,
-bind = SUPER      , F, fullscreen    , 0
-bind = SUPER SHIFT, F, togglefloating,
-bind = SUPER      , J, layoutmsg     , togglesplit
+-- Window manipulation
+hl.bind("SUPER + Q", hl.dsp.window.close())
+hl.bind("SUPER + F", hl.dsp.window.fullscreen({ mode = "fullscreen" }))
+hl.bind("SUPER + SHIFT + F", hl.dsp.window.float({ action = "toggle" }))
+hl.bind("SUPER + J", hl.dsp.layout("togglesplit"))
 
-# Move focus with SUPER + arrow keys
-bind = SUPER, left , movefocus, l
-bind = SUPER, right, movefocus, r
-bind = SUPER, up   , movefocus, u
-bind = SUPER, down , movefocus, d
+-- Move focus with SUPER + arrow keys
+hl.bind("SUPER + left", hl.dsp.focus({ direction = "l" }))
+hl.bind("SUPER + right", hl.dsp.focus({ direction = "r" }))
+hl.bind("SUPER + up", hl.dsp.focus({ direction = "u" }))
+hl.bind("SUPER + down", hl.dsp.focus({ direction = "d" }))
 
-# Move window with SUPER + SHIFT + arrow keys
-bind = SUPER SHIFT, left , movewindow, l
-bind = SUPER SHIFT, right, movewindow, r
-bind = SUPER SHIFT, up   , movewindow, u
-bind = SUPER SHIFT, down , movewindow, d
+-- Move window with SUPER + SHIFT + arrow keys
+hl.bind("SUPER + SHIFT + left", hl.dsp.window.move({ direction = "l" }))
+hl.bind("SUPER + SHIFT + right", hl.dsp.window.move({ direction = "r" }))
+hl.bind("SUPER + SHIFT + up", hl.dsp.window.move({ direction = "u" }))
+hl.bind("SUPER + SHIFT + down", hl.dsp.window.move({ direction = "d" }))
 
-# Change workspace with SUPER + [0-9]
-bind = SUPER, 1, exec, hyprland-change-workspace 1
-bind = SUPER, 2, exec, hyprland-change-workspace 2
-bind = SUPER, 3, exec, hyprland-change-workspace 3
-bind = SUPER, 4, exec, hyprland-change-workspace 4
-bind = SUPER, 5, exec, hyprland-change-workspace 5
-bind = SUPER, 6, exec, hyprland-change-workspace 6
-bind = SUPER, 7, exec, hyprland-change-workspace 7
-bind = SUPER, 8, exec, hyprland-change-workspace 8
-bind = SUPER, 9, exec, hyprland-change-workspace 9
-bind = SUPER, 0, exec, hyprland-change-workspace 10
+-- Change workspace with SUPER + [0-9]
+for i = 1, 10 do
+    local key = i % 10 -- 10 maps to key 0
+    hl.bind("SUPER + " .. key, hl.dsp.exec_cmd("hyprland-change-workspace " .. i))
+    hl.bind("SUPER + SHIFT + " .. key, hl.dsp.exec_cmd("hyprland-move-window-to-workspace " .. i))
+end
 
-# Move active window to a workspace with SUPER + SHIFT + [0-9]
-bind = SUPER SHIFT, 1, exec, hyprland-move-window-to-workspace 1
-bind = SUPER SHIFT, 2, exec, hyprland-move-window-to-workspace 2
-bind = SUPER SHIFT, 3, exec, hyprland-move-window-to-workspace 3
-bind = SUPER SHIFT, 4, exec, hyprland-move-window-to-workspace 4
-bind = SUPER SHIFT, 5, exec, hyprland-move-window-to-workspace 5
-bind = SUPER SHIFT, 6, exec, hyprland-move-window-to-workspace 6
-bind = SUPER SHIFT, 7, exec, hyprland-move-window-to-workspace 7
-bind = SUPER SHIFT, 8, exec, hyprland-move-window-to-workspace 8
-bind = SUPER SHIFT, 9, exec, hyprland-move-window-to-workspace 9
-bind = SUPER SHIFT, 0, exec, hyprland-move-window-to-workspace 10
+-- Move/resize windows with SUPER + LMB/RMB and dragging
+hl.bind("SUPER + mouse:272", hl.dsp.window.drag(), { mouse = true })
+hl.bind("SUPER + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
-# Move/resize windows with SUPER + LMB/RMB and dragging
-bindm = SUPER, mouse:272, movewindow
-bindm = SUPER, mouse:273, resizewindow
-
-# Volume control
-bind = , XF86AudioRaiseVolume , exec, audio-set-volume 2%+
-bind = , XF86AudioLowerVolume , exec, audio-set-volume 2%-
-bind = , XF86AudioMute        , exec, audio-toggle-mute
-bind = , XF86MonBrightnessUp  , exec, brightness +5%
-bind = , XF86MonBrightnessDown, exec, brightness 5%-
-bind = , XF86AudioPlay        , exec, replay-save
+-- Volume control
+hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("audio-set-volume 2%+"))
+hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("audio-set-volume 2%-"))
+hl.bind("XF86AudioMute", hl.dsp.exec_cmd("audio-toggle-mute"))
+hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightness +5%"))
+hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightness 5%-"))
+hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("replay-save"))

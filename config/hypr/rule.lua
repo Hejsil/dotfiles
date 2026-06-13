@@ -1,14 +1,15 @@
-# https://wiki.hyprland.org/Configuring/Window-Rules/
-windowrule = match:class steam,                   workspace 9 silent
-windowrule = match:class org.mozilla.Thunderbird, workspace 10 silent
-windowrule = match:class discord,                 workspace 11 silent
+-- https://wiki.hypr.land/Configuring/Basics/Window-Rules/
 
-windowrule = match:class fullscreen, fullscreen on
-windowrule = match:class float,      float on
-windowrule = match:class float,      center on
-windowrule = match:class float,      size monitor_w*0.7 monitor_h*0.7
+hl.window_rule({ match = { class = "steam" }, workspace = "9 silent" })
+hl.window_rule({ match = { class = "org.mozilla.Thunderbird" }, workspace = "10 silent" })
+hl.window_rule({ match = { class = "discord" }, workspace = "11 silent" })
 
-windowrule = match:class explorer.exe, opacity 0.0
+hl.window_rule({ match = { class = "fullscreen" }, fullscreen = true })
+hl.window_rule({ match = { class = "float" }, float = true })
+hl.window_rule({ match = { class = "float" }, center = true })
+hl.window_rule({ match = { class = "float" }, size = { "monitor_w*0.7", "monitor_h*0.7" } })
 
-# Workaround for GIMP popups not being floating
-windowrule = match:title Export Image as.*, float on
+hl.window_rule({ match = { class = "explorer.exe" }, opacity = "0.0" })
+
+-- Workaround for GIMP popups not being floating
+hl.window_rule({ match = { title = "Export Image as.*" }, float = true })
