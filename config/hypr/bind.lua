@@ -14,6 +14,7 @@ hl.bind("SUPER + T", hl.dsp.exec_cmd("footclient -a fullscreen -e btop"))
 -- Launch other programs
 hl.bind("SUPER + B", hl.dsp.exec_cmd("browser"))
 hl.bind("SUPER + N", hl.dsp.exec_cmd("obsidian"))
+hl.bind("SUPER + L", hl.dsp.exec_cmd("hyprlock"))
 hl.bind("SUPER + O", hl.dsp.exec_cmd("open-clipboard"))
 hl.bind("SUPER + P", hl.dsp.exec_cmd("pavucontrol"))
 hl.bind("SUPER + SHIFT + B", hl.dsp.exec_cmd("browser-private"))
