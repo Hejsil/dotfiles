@@ -58,7 +58,6 @@ def main():
         ("Dipm", ["dipm", "update"]),
 
         # Language/tool managers
-        ("Cargo", ["cargo", "install-update", "-a"]),
         ("Pipx", ["pipx", "upgrade-all"]),
 
         # Export package lists back to dotfiles
