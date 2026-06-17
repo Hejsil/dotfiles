@@ -55,6 +55,10 @@ def main():
         ("Paru", ["paru", "-Syu", "--noconfirm"]),
         ("Firmware (fwupd)", ["sudo", "fwupdmgr", "update"]),
         ("Dipm", ["dipm", "update"]),
+
+        # Language/tool managers
+        ("Cargo", ["cargo", "install-update", "-a"]),
+        ("Pipx", ["pipx", "upgrade-all"]),
     ]
 
     # Run all commands
