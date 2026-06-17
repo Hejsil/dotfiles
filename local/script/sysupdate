@@ -8,6 +8,7 @@ import sys
 import subprocess
 from pathlib import Path
 from typing import List, Tuple
+import os
 
 # ANSI color codes
 RED = "\033[0;31m"
@@ -59,6 +60,9 @@ def main():
         # Language/tool managers
         ("Cargo", ["cargo", "install-update", "-a"]),
         ("Pipx", ["pipx", "upgrade-all"]),
+
+        # Export package lists back to dotfiles
+        ("Export Packages", ["export-packages.sh"]),
     ]
 
     # Run all commands
