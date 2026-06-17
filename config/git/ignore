@@ -1,13 +1,6 @@
-.autosort
 .cache
 .ccls-cache
 compile_commands.json
-*.gba
-*.ml1
-*.modified
-*.nds
-*.output
 perf.data*
-*.sav
-tags
 .vscode
+.helix
