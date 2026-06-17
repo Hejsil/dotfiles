@@ -3,6 +3,44 @@
 # Replaces colors defined in themable config files with colors defined in a base16 theme file
 # https://github.com/chriskempson/base16
 
+# Helper functions
+hex_to_rgb() {
+    local hex=$1
+    local r_hex=$(echo "$hex" | cut -c1-2)
+    local g_hex=$(echo "$hex" | cut -c3-4)
+    local b_hex=$(echo "$hex" | cut -c5-6)
+    local r=$(printf "%d" 0x$r_hex)
+    local g=$(printf "%d" 0x$g_hex)
+    local b=$(printf "%d" 0x$b_hex)
+    echo "$r, $g, $b"
+}
+
+update_config() {
+    local file=$1
+    local label=$2
+    shift 2
+
+    if [ -f "$file" ]; then
+        sed -i "$file" "$@"
+        printf "✓ Updated %s\n" "$label" >&2
+    else
+        printf "⊘ Skipped %s (not found)\n" "$label" >&2
+    fi
+}
+
+# Validate input
+if [ -z "$1" ]; then
+    printf "Error: No theme file specified\n" >&2
+    printf "Usage: colorize <theme-file>\n" >&2
+    exit 1
+fi
+
+if [ ! -f "$1" ]; then
+    printf "Error: Theme file not found: %s\n" "$1" >&2
+    exit 1
+fi
+
+# Extract colors from theme file (single pass optimization)
 base00=$(rg -o 'base00: *"([^"]*)"' "$1" -r '$1')
 base01=$(rg -o 'base01: *"([^"]*)"' "$1" -r '$1')
 base02=$(rg -o 'base02: *"([^"]*)"' "$1" -r '$1')
@@ -21,8 +59,9 @@ base0E=$(rg -o 'base0E: *"([^"]*)"' "$1" -r '$1')
 base0F=$(rg -o 'base0F: *"([^"]*)"' "$1" -r '$1')
 
 config_home="${XDG_CONFIG_HOME:-$HOME/.config}"
+printf "Applying theme from: %s\n" "$1" >&2
 
-sed -i "$config_home/foot/foot.ini" \
+update_config "$config_home/foot/foot.ini" "foot" \
     -e "s/background=[a-zA-Z0-9]*/background=$base00/" \
     -e "s/foreground=[a-zA-Z0-9]*/foreground=$base05/" \
     -e "s/regular0=[a-zA-Z0-9]*/regular0=$base00/" \
@@ -42,7 +81,7 @@ sed -i "$config_home/foot/foot.ini" \
     -e "s/bright6=[a-zA-Z0-9]*/bright6=$base0C/" \
     -e "s/bright7=[a-zA-Z0-9]*/bright7=$base07/"
 
-sed -i "$config_home/dunst/dunstrc" \
+update_config "$config_home/dunst/dunstrc" "dunst" \
     -e "s/frame_color = \"#[a-zA-Z0-9]*\"/frame_color = \"#$base03\"/" \
     -e "s/background = \"#[a-zA-Z0-9]*\" # urgency_low/background = \"#$base00\" # urgency_low/" \
     -e "s/foreground = \"#[a-zA-Z0-9]*\" # urgency_low/foreground = \"#$base03\" # urgency_low/" \
@@ -51,7 +90,7 @@ sed -i "$config_home/dunst/dunstrc" \
     -e "s/background = \"#[a-zA-Z0-9]*\" # urgency_critical/background = \"#$base00\" # urgency_critical/" \
     -e "s/foreground = \"#[a-zA-Z0-9]*\" # urgency_critical/foreground = \"#$base08\" # urgency_critical/"
 
-sed -i "$config_home/waybar/colors.css" \
+update_config "$config_home/waybar/colors.css" "waybar" \
     -e "s/color0 #[a-zA-Z0-9]*;/color0 #$base00;/" \
     -e "s/color1 #[a-zA-Z0-9]*;/color1 #$base01;/" \
     -e "s/color2 #[a-zA-Z0-9]*;/color2 #$base02;/" \
@@ -69,7 +108,7 @@ sed -i "$config_home/waybar/colors.css" \
     -e "s/color14 #[a-zA-Z0-9]*;/color14 #$base0E;/" \
     -e "s/color15 #[a-zA-Z0-9]*;/color15 #$base0F;/"
 
-sed -i "$config_home/rofi/colors.rasi" \
+update_config "$config_home/rofi/colors.rasi" "rofi" \
     -e "s/color0: #[a-zA-Z0-9]*;/color0: #$base00;/" \
     -e "s/color1: #[a-zA-Z0-9]*;/color1: #$base01;/" \
     -e "s/color2: #[a-zA-Z0-9]*;/color2: #$base02;/" \
@@ -87,6 +126,22 @@ sed -i "$config_home/rofi/colors.rasi" \
     -e "s/color14: #[a-zA-Z0-9]*;/color14: #$base0E;/" \
     -e "s/color15: #[a-zA-Z0-9]*;/color15: #$base0F;/"
 
-sed -i "$config_home/hypr/hyprland.conf" \
-    -e "s/col.active_border *= *rgb([a-zA-Z0-9]*)/col.active_border = rgb($base0D)/" \
-    -e "s/col.inactive_border *= *rgb([a-zA-Z0-9]*)/col.inactive_border = rgb($base03)/"
+update_config "$config_home/hypr/hyprland.lua" "hyprland" \
+    -e "s/active_border = \"rgb([a-zA-Z0-9]*)\"/active_border = \"rgb($base0D)\"/" \
+    -e "s/inactive_border = \"rgb([a-zA-Z0-9]*)\"/inactive_border = \"rgb($base03)\"/"
+
+# Convert base16 hex colors to rgb format for hyprlock
+outer_color_rgb=$(hex_to_rgb "$base03")
+inner_color_rgb=$(hex_to_rgb "$base00")
+font_color_rgb=$(hex_to_rgb "$base05")
+check_color_rgb=$(hex_to_rgb "$base0D")
+fail_color_rgb=$(hex_to_rgb "$base08")
+capslock_color_rgb=$(hex_to_rgb "$base0A")
+
+update_config "$config_home/hypr/hyprlock.conf" "hyprlock" \
+    -e "s/outer_color = rgb([^)]*)/outer_color = rgb($outer_color_rgb)/" \
+    -e "s/inner_color = rgb([^)]*)/inner_color = rgb($inner_color_rgb)/" \
+    -e "s/font_color = rgb([^)]*)/font_color = rgb($font_color_rgb)/" \
+    -e "s/check_color = rgb([^)]*)/check_color = rgb($check_color_rgb)/" \
+    -e "s/fail_color = rgb([^)]*)/fail_color = rgb($fail_color_rgb)/" \
+    -e "s/capslock_color = rgb([^)]*)/capslock_color = rgb($capslock_color_rgb)/"
