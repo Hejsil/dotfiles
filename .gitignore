@@ -57,6 +57,7 @@ config/Code/User/workspaceStorage/
 config/Code/WebStorage/
 config/com.modrinth.theseus/
 config/content_shell
+config/.copilot/
 config/cosmic/com.system76.CosmicPortal/v1/screenshot
 config/CrossCode/
 config/dbin/
@@ -105,6 +106,7 @@ config/hypr/workspace.lua
 config/ibus/
 config/.isolated-storage/
 config/itch/
+config/jiratui/
 config/kactivitymanagerdrc
 config/kactivitymanagerd-statsrc
 config/katemetainfos
@@ -136,6 +138,7 @@ config/kwinrc
 config/kwinrulesrc
 config/kxkbrc
 config/lact/
+config/lazyjira/
 config/libaccounts-glib/
 config/libreoffice/
 config/melonDS/
