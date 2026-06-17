@@ -139,6 +139,8 @@ fail_color_rgb=$(hex_to_rgb "$base08")
 capslock_color_rgb=$(hex_to_rgb "$base0A")
 
 update_config "$config_home/hypr/hyprlock.conf" "hyprlock" \
+    -e "s/color = rgb([^)]*) # background/color = rgb($inner_color_rgb) # background/" \
+    -e "s/color = rgb([^)]*) # text/color = rgb($font_color_rgb) # text/" \
     -e "s/outer_color = rgb([^)]*)/outer_color = rgb($outer_color_rgb)/" \
     -e "s/inner_color = rgb([^)]*)/inner_color = rgb($inner_color_rgb)/" \
     -e "s/font_color = rgb([^)]*)/font_color = rgb($font_color_rgb)/" \
