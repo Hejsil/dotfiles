@@ -1,0 +1,9 @@
+{
+  "providers": {
+    "ollama": {
+      "name": "Lemonade",
+      "base_url": "http://home-office:13305/api/v1",
+      "type": "openai"
+    }
+  }
+}
