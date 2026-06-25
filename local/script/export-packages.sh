@@ -2,6 +2,6 @@
 # Export currently installed packages back to dotfiles
 # This allows for imperative package management with periodic syncing to git
 
-pacman -Qq > "$HOME/.config/pkgs/arch"
-yay -Qq --foreign > "$HOME/.config/pkgs/aur"
-~/.local/bin/dipm list > "$HOME/.config/pkgs/dipm"
+type -q pacman && pacman -Qq > "$HOME/.config/pkgs/arch"
+type -q yay && yay -Qq --foreign > "$HOME/.config/pkgs/aur"
+type -q dipm && dipm list > "$HOME/.config/pkgs/dipm"
