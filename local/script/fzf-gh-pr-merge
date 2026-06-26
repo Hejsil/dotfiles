@@ -1,0 +1,5 @@
+#!/bin/sh
+
+gh pr list | fzf -m --preview "gh pr diff {1} --color always" |
+  cut -f1 |
+  nargs -r -n1 gh pr merge -r -d
