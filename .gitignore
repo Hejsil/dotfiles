@@ -186,6 +186,7 @@ config/systemd/user/sockets.target.wants/
 config/systemd/user/timers.target.wants
 config/systemsettingsrc
 config/tag/
+config/tailscale/
 config/teams/
 config/teams-for-linux/
 config/Thunar/
@@ -226,6 +227,7 @@ local/share/calc_history
 local/share/Celeste/
 local/share/color-schemes/
 local/share/com.modrinth.theseus/
+local/share/crush/
 local/share/Daedalic Entertainment GmbH/
 local/share/dipm/
 local/share/direnv/
@@ -276,6 +278,7 @@ local/share/mkcert/
 local/share/modrinth-app/
 local/share/multimc/
 local/share/nautilus/
+local/share/opencode/
 local/share/org.gnome.TextEditor/
 local/share/pass/
 local/share/pipx/
