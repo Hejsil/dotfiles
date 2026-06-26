@@ -61,7 +61,7 @@ def main():
         ("Pipx", ["pipx", "upgrade-all"]),
 
         # Export package lists back to dotfiles
-        ("Export Packages", ["export-packages.sh"]),
+        ("Export Packages", ["export-packages"]),
     ]
 
     # Run all commands

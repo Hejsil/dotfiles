@@ -3,10 +3,9 @@
 # This allows for imperative package management with periodic syncing to git
 
 command -v pacman >/dev/null &&
-  pacman -Qq >"$HOME/.config/pkgs/arch"
-
-command -v yay >/dev/null &&
-  yay -Qq --foreign >"$HOME/.config/pkgs/aur"
+  pacman -Qnqe >"$HOME/.config/pkgs/arch"
+command -v pacman >/dev/null &&
+  pacman -Qmqe >"$HOME/.config/pkgs/aur"
 
 command -v dipm >/dev/null &&
-  dipm list installed >"$HOME/.config/pkgs/dipm"
+  dipm list installed | cut -f1 | sort >"$HOME/.config/pkgs/dipm"
