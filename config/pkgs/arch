@@ -18,6 +18,7 @@ cpio
 direnv
 discord
 docker
+docker-compose
 downgrade
 dua-cli
 duf
@@ -25,6 +26,7 @@ dunst
 dust
 easyeffects
 eza
+fastfetch
 fd
 firefox
 fish
@@ -42,6 +44,7 @@ hdparm
 helix
 heroic-games-launcher-bin
 hyperfine
+hypridle
 hyprland
 hyprpolkitagent
 hyprshot
@@ -72,6 +75,7 @@ networkmanager
 ntfs-3g
 ntp
 obsidian
+opencode
 openfortivpn
 openssh
 ouch
@@ -95,6 +99,7 @@ quickemu-git
 rdfind
 reflector
 ripgrep
+rocminfo
 rofi
 rsync
 rtkit
@@ -105,7 +110,6 @@ samba
 screen
 sdl2_ttf
 shfmt
-shotcut
 socat
 starship
 steam
@@ -113,6 +117,7 @@ strace
 stress
 symlinks
 syncthing
+tailscale
 thunar
 thunderbird
 timeshift
