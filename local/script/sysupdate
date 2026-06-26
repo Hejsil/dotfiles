@@ -8,7 +8,6 @@ import sys
 import subprocess
 from pathlib import Path
 from typing import List, Tuple
-import os
 
 # ANSI color codes
 RED = "\033[0;31m"
@@ -16,6 +15,7 @@ GREEN = "\033[0;32m"
 YELLOW = "\033[1;33m"
 BLUE = "\033[0;34m"
 NC = "\033[0m"  # No Color
+
 
 def command_exists(cmd: str) -> bool:
     """Check if a command exists in PATH"""
@@ -52,8 +52,8 @@ def main():
         ("APT Autoremove", ["sudo", "apt", "autoremove", "-y"]),
         ("Snap", ["sudo", "snap", "refresh"]),
         ("Pacman", ["sudo", "pacman", "-Syu", "--noconfirm"]),
-        ("Yay", ["yay", "-Syu", "--noconfirm"]),
-        ("Paru", ["paru", "-Syu", "--noconfirm"]),
+        ("Yay", ["aur-scan-wrap", "yay", "-Syu", "--noconfirm"]),
+        ("Paru", ["aur-scan-wrap", "paru", "-Syu", "--noconfirm"]),
         ("Firmware (fwupd)", ["sudo", "fwupdmgr", "update"]),
         ("Dipm", ["dipm", "update"]),
 
@@ -66,9 +66,20 @@ def main():
 
     # Run all commands
     for name, cmd in commands:
-        # Check if the actual command exists (skip sudo)
-        check_cmd = cmd[1] if cmd[0] == "sudo" else cmd[0]
-        if not command_exists(check_cmd):
+        # A command is either:
+        # * <cmd> <args...>
+        # * sudo <cmd> <args...>
+        # * aur-scan-wrap <cmd> <args...>
+        #
+        # We need to check both the wrapper and the actual command for
+        # existence
+        if not command_exists(cmd[0]):
+            results["skipped"].append(name)
+            continue
+
+        wrappers = ["sudo", "aur-scan-wrap"]
+        check_second_cmd = len(cmd) > 1 and cmd[0] in wrappers
+        if check_second_cmd and not command_exists(cmd[1]):
             results["skipped"].append(name)
             continue
 

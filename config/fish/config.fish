@@ -17,4 +17,7 @@ if status is-interactive
     if type -q direnv
         direnv hook fish | source
     end
+    if type -q aur-scanner
+        source /usr/share/aur-scan/integration.fish
+    end
 end
