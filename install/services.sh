@@ -1,8 +1,12 @@
 #!/bin/sh -e
 
-~/.local/script/ask systemctl enable --user dipm-pkgs-update
-~/.local/script/ask systemctl enable --user replay
-~/.local/script/ask systemctl enable --user wallpaper
+~/.local/script/ask systemctl enable --user dipm-pkgs-update.service
+~/.local/script/ask systemctl enable --user discord.service
+~/.local/script/ask systemctl enable --user easyeffects.service
+~/.local/script/ask systemctl enable --user replay.service
+~/.local/script/ask systemctl enable --user steam.service
+~/.local/script/ask systemctl enable --user thunderbird.service
+~/.local/script/ask systemctl enable --user wallpaper.service
 
 ~/.local/script/ask systemctl enable --user rss-sync.timer
 

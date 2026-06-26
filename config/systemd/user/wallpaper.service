@@ -1,9 +1,12 @@
+[Unit]
+Description=Wallpaper
+PartOf=graphical-session.target
+After=graphical-session.target
+Requisite=graphical-session.target
+
 [Service]
 ExecStart=%h/.local/script/wall '%h/Pictures/wallpapers'
-
-[Unit]
-PartOf=graphical-session.target
+Restart=on-failure
 
 [Install]
 WantedBy=graphical-session.target
-

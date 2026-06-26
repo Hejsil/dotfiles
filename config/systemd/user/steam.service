@@ -1,15 +1,12 @@
 [Unit]
-Description=Replay
+Description=Steam
 PartOf=graphical-session.target
 After=graphical-session.target
 Requisite=graphical-session.target
 
 [Service]
-Type=exec
-ExecStart=%h/.local/script/replay-start
-KillSignal=SIGINT
+ExecStart=/usr/bin/steam
 Restart=on-failure
-RestartSec=5s
 
 [Install]
 WantedBy=graphical-session.target
