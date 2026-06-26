@@ -6,8 +6,6 @@
 }
 
 window {
-    width:                       600px;
-    height:                      640px;
     border:                      2px solid;
     border-radius:               12px;
     border-color:                @color13;
@@ -18,7 +16,6 @@ mainbox {
     spacing:                     20px;
     padding:                     20px;
     background-color:            transparent;
-    children:                    [ "inputbar", "listview" ];
 }
 
 inputbar {
@@ -26,7 +23,6 @@ inputbar {
     padding:                     15px;
     border-radius:               10px;
     background-color:            @color1;
-    children:                    [ "entry" ];
 }
 
 entry {
@@ -36,7 +32,6 @@ entry {
     placeholder-color:           @color4;
     vertical-align:              0.5;
     horizontal-align:            0.5;
-
 }
 
 listview {
@@ -55,14 +50,17 @@ element {
     orientation:                 horizontal;
     cursor:                      pointer;
 }
+
 element selected.normal {
     background-color:            @color1;
 }
+
 element-icon {
     background-color:            transparent;
     size:                        64px;
     cursor:                      inherit;
 }
+
 element-text {
     background-color:            transparent;
     cursor:                      inherit;

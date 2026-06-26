@@ -19,7 +19,7 @@ hl.bind("SUPER + O", hl.dsp.exec_cmd("open-clipboard"))
 hl.bind("SUPER + P", hl.dsp.exec_cmd("pavucontrol"))
 hl.bind("SUPER + SHIFT + B", hl.dsp.exec_cmd("browser-private"))
 hl.bind("SUPER + SHIFT + R", hl.dsp.exec_cmd("rss-open-all-in-browser"))
-hl.bind("SUPER + Space", hl.dsp.exec_cmd("rofi -show drun"))
+hl.bind("SUPER + Space", hl.dsp.exec_cmd("rofi-launcher"))
 
 -- Screenshot
 hl.bind("Print", hl.dsp.exec_cmd("screenshot -m window -m active"))

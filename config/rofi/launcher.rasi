@@ -1,0 +1,21 @@
+@import "colors.rasi"
+@import "common.rasi"
+
+configuration {
+    modi:                       "drun";
+    show-icons:                 true;
+    drun-display-format:        "{name}";
+}
+
+window {
+    width:                       600px;
+    height:                      640px;
+}
+
+mainbox {
+    children:                    [ "inputbar", "listview" ];
+}
+
+inputbar {
+    children:                    [ "entry" ];
+}
