@@ -9,5 +9,7 @@ hl.on("hyprland.start", function()
 end)
 
 hl.on("hyprland.shutdown", function()
+    hl.exec_cmd("systemctl --user stop xdg-desktop-portal-hyprland.service")
     hl.exec_cmd("systemctl --user stop hyprland-session.target")
+    hl.exec_cmd("systemctl --user stop graphical-session.target")
 end)

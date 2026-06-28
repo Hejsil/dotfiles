@@ -5,6 +5,18 @@
     text-color: @color6;
 }
 
+configuration {
+    /* Close on outside click */
+    /* https://github.com/davatorium/rofi/issues/2158#issuecomment-3906554314 */
+    kb-cancel: "Escape,MousePrimary";
+    hover-select: true;
+
+    /* Single click accept */
+    /* https://www.reddit.com/r/i3wm/comments/ebf9t8/comment/hmzd9p0/ */
+    me-select-entry: "";
+    me-accept-entry: [ MousePrimary, MouseSecondary, MouseDPrimary ];
+}
+
 window {
     border:                      2px solid;
     border-radius:               12px;

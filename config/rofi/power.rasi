@@ -1,0 +1,16 @@
+@import "colors.rasi"
+@import "common.rasi"
+
+window {
+    location: north west;
+    width: 180px;
+    height: 200px;
+}
+
+mainbox {
+    children: [ "listview" ];
+}
+
+element-text {
+    horizontal-align: 0.5;
+}

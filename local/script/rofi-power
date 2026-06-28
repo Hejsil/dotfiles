@@ -1,0 +1,19 @@
+#!/bin/sh
+
+shutdown='Shutdown'
+reboot='Reboot'
+logout='Logout'
+
+run_rofi() {
+    printf '%s\n%s\n%s\n' "$shutdown" "$reboot" "$logout" |
+         rofi -dmenu -theme "$HOME/.config/rofi/power.rasi"
+}
+
+answer=$(run_rofi)
+if [ "$answer" = "$shutdown" ]; then
+    systemctl poweroff
+elif [ "$answer" = "$reboot" ]; then
+    systemctl reboot
+elif [ "$answer" = "$logout" ]; then
+    hyprctl dispatch 'hl.dsp.exit()'
+fi
