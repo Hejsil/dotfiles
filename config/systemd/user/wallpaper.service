@@ -5,7 +5,7 @@ After=graphical-session.target
 Requisite=graphical-session.target
 
 [Service]
-ExecStart=%h/.local/script/wall '%h/Pictures/wallpapers'
+ExecStart=%h/.local/script/wall hyprpaper '%h/Pictures/wallpapers'
 Restart=on-failure
 
 [Install]
