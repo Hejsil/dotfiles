@@ -1,0 +1,39 @@
+#!/bin/sh
+
+self_exe=$0
+
+case $1 in
+    stop)
+      systemctl start --user discord.service &
+      systemctl start --user easyeffects.service &
+      systemctl start --user hyprpaper.service &
+      systemctl start --user replay.service &
+      systemctl start --user steam.service &
+      systemctl start --user thunderbird.service &
+      systemctl start --user wallpaper.service &
+      systemctl start --user waybar.service &
+      wait
+      ;;
+    start)
+      systemctl stop --user discord.service &
+      systemctl stop --user easyeffects.service &
+      systemctl stop --user hyprpaper.service &
+      systemctl stop --user replay.service &
+      systemctl stop --user steam.service &
+      systemctl stop --user thunderbird.service &
+      systemctl stop --user wallpaper.service &
+      systemctl stop --user waybar.service &
+      wait
+      ;;
+    toggle)
+      if systemctl is-active --quiet --user waybar.service; then
+        "$self_exe" start
+      else
+        "$self_exe" stop
+      fi
+      ;;
+    *)
+      echo "Usage: $0 {start|stop}"
+      exit 1
+      ;;
+esac

@@ -26,6 +26,9 @@ hl.bind("Print", hl.dsp.exec_cmd("screenshot -m window -m active"))
 hl.bind("SHIFT + Print", hl.dsp.exec_cmd("screenshot -m output"))
 hl.bind("CTRL + Print", hl.dsp.exec_cmd("screenshot -m region"))
 
+-- Minimal mode
+hl.bind("SUPER + M", hl.dsp.exec_cmd("minimal-mode toggle"))
+
 -- Window manipulation
 hl.bind("SUPER + Q", hl.dsp.window.close())
 hl.bind("SUPER + F", hl.dsp.window.fullscreen({ mode = "fullscreen" }))
