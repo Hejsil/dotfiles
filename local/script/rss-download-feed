@@ -1,13 +1,5 @@
 #!/bin/sh
 
-output=$(mktemp -t -d 'rss-download-feed.XXXXXXXX')
-
 sort -R "$1" |
     sed -e '/^\s*#/d' -e '/^$/d' |
-    nl -w1 |
-    xargs curl -v --rate '10/m' --retry 5 --retry-delay 10 --output-dir "$output"
-
-find "$output" -type f -print0 |
-    xargs -0 cat
-
-exec rm -r "$output"
+    xargs curl --retry 5 --retry-delay 10
