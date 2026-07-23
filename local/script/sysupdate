@@ -40,6 +40,33 @@ def run_cmd(cmd: List[str]) -> bool:
         return False
 
 
+def get_docker_images() -> List[str]:
+    """Return the list of locally available image references (repo:tag).
+
+    Skips dangling images whose repository or tag is '<none>'.
+    Returns an empty list if docker is missing or the query fails.
+    """
+    if not command_exists("docker"):
+        return []
+    try:
+        result = subprocess.run(
+            ["docker", "images", "--format", "{{.Repository}}:{{.Tag}}"],
+            capture_output=True,
+            text=True,
+        )
+    except Exception:
+        return []
+    if result.returncode != 0:
+        return []
+    images = []
+    for line in result.stdout.splitlines():
+        line = line.strip()
+        if not line or "<none>" in line:
+            continue
+        images.append(line)
+    return images
+
+
 def main():
     # Track results
     results = {"succeeded": [], "failed": [], "skipped": []}
@@ -64,12 +91,18 @@ def main():
         ("Export Packages", ["export-packages"]),
     ]
 
+    # Add a `docker pull` for each locally available image so existing/skipped
+    # package-manager handling applies uniformly (missing docker skips them).
+    for img in get_docker_images():
+        commands.append((f"Docker Image {img}", ["docker", "pull", img]))
+
     # Run all commands
     for name, cmd in commands:
         # A command is either:
         # * <cmd> <args...>
         # * sudo <cmd> <args...>
         # * aur-scan-wrap <cmd> <args...>
+        # * docker pull <image>        (one per locally available image)
         #
         # We need to check both the wrapper and the actual command for
         # existence
