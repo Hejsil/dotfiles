@@ -11,7 +11,7 @@ wallpaper {
     path = $WALLPAPERS_DIR
     recursive = true
     order = random
-    timeout = 0
+    timeout = 2147483647
     fit_mode = cover
 }"
 
