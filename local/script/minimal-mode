@@ -10,7 +10,6 @@ case $1 in
       systemctl start --user replay.service &
       systemctl start --user steam.service &
       systemctl start --user thunderbird.service &
-      systemctl start --user wallpaper.service &
       systemctl start --user waybar.service &
       wait
       ;;
@@ -21,7 +20,6 @@ case $1 in
       systemctl stop --user replay.service &
       systemctl stop --user steam.service &
       systemctl stop --user thunderbird.service &
-      systemctl stop --user wallpaper.service &
       systemctl stop --user waybar.service &
       wait
       ;;

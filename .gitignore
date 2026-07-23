@@ -101,6 +101,7 @@ config/gwenviewrc
 config/helix/runtime/
 config/heroic/
 config/htop
+config/hypr/hyprpaper.conf
 config/hypr/monitor.lua
 config/hypr/workspace.lua
 config/ibus/

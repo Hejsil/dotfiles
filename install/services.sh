@@ -7,7 +7,6 @@
 ~/.local/script/ask systemctl enable --user replay.service
 ~/.local/script/ask systemctl enable --user steam.service
 ~/.local/script/ask systemctl enable --user thunderbird.service
-~/.local/script/ask systemctl enable --user wallpaper.service
 
 ~/.local/script/ask systemctl enable --user rss-sync.timer
 
