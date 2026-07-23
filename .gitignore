@@ -2,6 +2,7 @@ config/akregatorrc
 config/Alabaster Dawn/
 config/audacity/
 config/autostart/
+config/Balatro/
 config/baloofileinformationrc
 config/baloofilerc
 config/blender/
@@ -43,6 +44,7 @@ config/Code/Preferences
 config/Code/Service Worker/
 config/Code/Session Storage/
 config/Code/Shared Dictionary/
+config/Code/shared_proto_db/
 config/Code/SharedStorage
 config/Code/SharedStorage-wal
 config/Code/TransportSecurity
@@ -54,8 +56,11 @@ config/Code/User/globalStorage/
 config/Code/User/History/
 config/Code/User/profiles/
 config/Code/User/workspaceStorage/
+config/Code/VideoDecodeStats/
 config/Code/WebStorage/
+config/com.balatro-mod-manager.app/
 config/com.modrinth.theseus/
+config/configstore/
 config/content_shell
 config/.copilot/
 config/cosmic/com.system76.CosmicPortal/v1/screenshot
@@ -99,6 +104,7 @@ config/gtkrc
 config/gtkrc-2.0
 config/gwenviewrc
 config/helix/runtime/
+config/Hermes/
 config/heroic/
 config/htop
 config/hypr/hyprpaper.conf
@@ -221,12 +227,14 @@ local/share/anyzig/
 local/share/applications/
 local/share/atuin/
 local/share/audacity/
+local/share/balatro-mod-manager/
 local/share/baloo/
 local/share/bash
 local/share/bash_history
 local/share/calc_history
 local/share/Celeste/
 local/share/color-schemes/
+local/share/com.balatro-mod-manager.app/
 local/share/com.modrinth.theseus/
 local/share/crush/
 local/share/Daedalic Entertainment GmbH/
@@ -280,6 +288,7 @@ local/share/modrinth-app/
 local/share/multimc/
 local/share/nautilus/
 local/share/opencode/
+local/share/opentui/
 local/share/org.gnome.TextEditor/
 local/share/pass/
 local/share/pipx/
@@ -294,6 +303,7 @@ local/share/recently-used.xbel
 local/share/resourcefullib/
 local/share/rr/
 local/share/rss/
+local/share/RustyPathOfBuilding1/
 local/share/sddm/
 local/share/sddm.log
 local/share/session_migration-ubuntu
@@ -309,6 +319,7 @@ local/share/systemd/
 local/share/Tabletop Simulator/
 local/share/task/
 local/share/Terraria/
+local/share/tirith/
 local/share/topgrade_keep
 local/share/Trash
 local/share/ULWGL/
@@ -319,6 +330,7 @@ local/share/user-places.xbel.tbcache
 local/share/virtualenv/
 local/share/vscode/
 local/share/vulkan/
+local/share/w3m/
 local/share/webui/
 local/share/wine/
 local/share/xorg/
