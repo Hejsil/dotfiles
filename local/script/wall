@@ -31,6 +31,7 @@ mpvpaper)
     exec xargs '-d\n' -P0 -n4 mpvpaper
   ;;
 hyprpaper)
+  cp "$wallpapers" "$wallpapers_on_screen"
   paste -d ',' "$monitors" "$wallpapers" |
     nargs -n1 hyprctl hyprpaper wallpaper
   ;;
