@@ -6,7 +6,12 @@ Requisite=graphical-session.target
 
 [Service]
 ExecStart=/usr/bin/discord
-Restart=on-failure
+# Electron/Chromium ignores SIGTERM; SIGINT triggers a graceful quit and lets
+# the main process tear down its own children (zygote/GPU/renderer). Killing
+# the whole group with SIGTERM instead makes Chromium trip a SIGTRAP on the
+# way out (status=5/TRAP, core-dump) which Restart=on-failure then relaunches.
+KillMode=process
+KillSignal=SIGINT
 
 [Install]
 WantedBy=graphical-session.target
