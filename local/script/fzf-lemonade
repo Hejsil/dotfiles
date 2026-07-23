@@ -1,0 +1,8 @@
+#!/bin/sh
+lemonade list --downloaded |
+  tail -n +3 |
+  head -n -1 |
+  rg -o '^[^\s]+' |
+  sed 's/Yes$//' |
+  fzf -m |
+  nargs -n1 lemonade delete
