@@ -13,3 +13,11 @@ hl.window_rule({ match = { class = "explorer.exe" }, opacity = "0.0" })
 
 -- Workaround for GIMP popups not being floating
 hl.window_rule({ match = { title = "Export Image as.*" }, float = true })
+
+-- Steam windows
+hl.window_rule({ match = { initial_class = "steam", initial_title = "Friends List" },   float = true, center = true, size = { "monitor_w*0.6", "monitor_h*0.6" } })
+hl.window_rule({ match = { initial_class = "steam", initial_title = "Steam Settings" }, float = true, center = true, size = { "monitor_w*0.6", "monitor_h*0.6" } })
+
+-- Blender windows
+hl.window_rule({ match = { initial_class = "blender", initial_title = "File Browser" }, float = true, center = true, size = { "monitor_w*0.6", "monitor_h*0.6" } })
+hl.window_rule({ match = { initial_class = "blender", initial_title = "Preferences" },  float = true, center = true, size = { "monitor_w*0.6", "monitor_h*0.6" } })
