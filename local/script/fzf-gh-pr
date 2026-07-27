@@ -1,0 +1,17 @@
+#!/bin/sh
+
+command=$1
+
+gh_pr_fzf() {
+  gh pr list | fzf -m --preview "gh pr diff {1} --color always" |
+    cut -f1
+}
+
+  case $command in
+    merge) gh_pr_fzf | nargs -r -n1 gh pr merge -r -d ;;
+    close) gh_pr_fzf | nargs -r -n1 gh pr close -d ;;
+    *)
+      echo "Unknown command: $command"
+      exit 1
+      ;;
+esac
