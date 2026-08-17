@@ -1,0 +1,216 @@
+#!/usr/bin/env bash
+
+# Go up one directory via zoxide
+.. () {
+    z .. "$@"
+}
+
+# Go up two directories via zoxide
+... () {
+    z ../.. "$@"
+}
+
+# Directory navigation with zoxide + eza listing
+cd () {
+    z "$@"
+    timeout -k 0 0.1s eza 2>/dev/null || true
+}
+
+# Change to temporary directory
+cdt () {
+    cd "$(mktemp -d)"
+}
+
+# Copy with interactive confirmation
+cp () {
+    command cp -i "$@"
+}
+
+# Move with interactive confirmation
+mv () {
+    command mv -i "$@"
+}
+
+# Remove with interactive confirmation (on larger deletions)
+rm () {
+    command rm -I "$@"
+}
+
+# Disk free space in human-readable format
+df () {
+    command df -h "$@"
+}
+
+# List files using eza (modern ls replacement)
+ls () {
+    eza -a "$@"
+}
+
+# Long listing using eza
+ll () {
+    eza --all --long --group --header "$@"
+}
+
+# Open file/directory with default application
+o () {
+    command xdg-open "$@"
+}
+
+# Open with configured editor
+e () {
+    command editor "$@"
+}
+
+# Helix editor (with fallback)
+hx () {
+    if command -v helix &>/dev/null; then
+        command helix "$@"
+    else
+        command hx "$@"
+    fi
+}
+
+# Kakoune editor in tmux session
+kak () {
+    tmux new-session kakoune "$@"
+}
+
+# Man pages with Kakoune
+man () {
+    kak-man "$@"
+}
+
+# Sudoedit with EDITOR preference
+sudoedit () {
+    local editor="${EDITOR:-vi}"
+    EDITOR="$editor" command sudoedit "$@"
+}
+
+# Git Add
+ga () {
+    git add "$@"
+}
+
+# Git Add --patch (interactive)
+gap () {
+    git add --patch "$@"
+}
+
+# Git Branch --all
+gb () {
+    git branch --all "$@"
+}
+
+# Git Commit
+gc () {
+    git commit "$@"
+}
+
+# Git Commit --amend
+gca () {
+    git commit --amend "$@"
+}
+
+# Git Commit --no-verify
+gcn () {
+    git commit --no-verify "$@"
+}
+
+# Git Commit --fixup (interactive - select commit to fixup)
+gcf () {
+    local commit
+    commit=$(git log --oneline | fzf | cut -f1 -d ' ')
+    if [[ -n "$commit" ]]; then
+        git commit --fixup="$commit" "$@"
+    fi
+}
+
+# Git Clone --recursive
+gcl () {
+    git clone --recursive "$@"
+}
+
+# Git Diff
+gd () {
+    git diff "$@"
+}
+
+# Git Diff --staged
+gds () {
+    git diff --staged "$@"
+}
+
+# Git Fetch
+gf () {
+    git fetch "$@"
+}
+
+# Git Log (graph view, one line)
+gl () {
+    git log --graph --oneline "$@"
+}
+
+# Git Log -p (patch view)
+glp () {
+    git log -p "$@"
+}
+
+# Git Push
+gp () {
+    git push "$@"
+}
+
+# Git Push --force-with-lease (safer force push)
+gpf () {
+    git push --force-with-lease "$@"
+}
+
+# Git Pull --prune
+gpl () {
+    git pull --prune "$@"
+}
+
+# Git Rebase
+grb () {
+    git rebase "$@"
+}
+
+# Git Rebase --continue
+grbc () {
+    git rebase --continue "$@"
+}
+
+# Git Restore (with confirmation prompt via 'ask')
+grs () {
+    ask git restore "$@"
+}
+
+# Git Restore --patch
+grsp () {
+    git restore --patch "$@"
+}
+
+# Git Restore --staged (with confirmation prompt via 'ask')
+grss () {
+    ask git restore --staged "$@"
+}
+
+# Git Restore --staged --patch
+grssp () {
+    git restore --staged --patch "$@"
+}
+
+# Git Status
+gs () {
+    git status "$@"
+}
+
+# Git Stash
+gsh () {
+    git stash "$@"
+}
+
+# Git Switch
+gsw () {
+    git switch "$@"
+}

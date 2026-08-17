@@ -2,5 +2,38 @@
 
 [[ $- != *i* ]] && return
 
-# Use fish as interactive shell
-exec fish
+# exec fish
+
+if [[ -f "$XDG_CONFIG_HOME/bash/aliases" ]]; then
+    source "$XDG_CONFIG_HOME/bash/aliases"
+elif [[ -f ~/.config/bash/aliases ]]; then
+    source ~/.config/bash/aliases
+fi
+
+if command -v atuin &>/dev/null; then
+    eval "$(atuin init bash)"
+fi
+
+if command -v starship &>/dev/null; then
+    eval "$(starship init bash)"
+fi
+
+if command -v carapace &>/dev/null; then
+    source <(carapace _carapace bash)
+fi
+
+if command -v zoxide &>/dev/null; then
+    eval "$(zoxide init bash)"
+fi
+
+if command -v dasel &>/dev/null; then
+    eval "$(dasel completion bash)"
+fi
+
+if command -v direnv &>/dev/null; then
+    eval "$(direnv hook bash)"
+fi
+
+if [[ -f /usr/share/aur-scan/integration.bash ]]; then
+    source /usr/share/aur-scan/integration.bash
+fi
