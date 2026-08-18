@@ -69,17 +69,6 @@ hx () {
         command hx "$@"
     fi
 }
-
-# Kakoune editor in tmux session
-kak () {
-    tmux new-session kakoune "$@"
-}
-
-# Man pages with Kakoune
-man () {
-    kak-man "$@"
-}
-
 # Sudoedit with EDITOR preference
 sudoedit () {
     local editor="${EDITOR:-vi}"
