@@ -2,8 +2,6 @@
 
 [[ $- != *i* ]] && return
 
-# exec fish
-
 if [[ -f "$XDG_CONFIG_HOME/bash/aliases" ]]; then
     source "$XDG_CONFIG_HOME/bash/aliases"
 elif [[ -f ~/.config/bash/aliases ]]; then

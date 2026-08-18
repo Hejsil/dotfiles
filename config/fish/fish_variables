@@ -1,5 +1,0 @@
-# This file contains fish universal variable definitions.
-# VERSION: 3.0
-SETUVAR --export CARAPACE_BRIDGES:zsh\x2cfish\x2cbash\x2cinshellisense
-SETUVAR __fish_initialized:4300
-SETUVAR fish_greeting:\x1d
