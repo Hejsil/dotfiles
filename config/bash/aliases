@@ -13,7 +13,6 @@
 # Directory navigation with zoxide + eza listing
 cd () {
     z "$@"
-    timeout -k 0 0.1s eza 2>/dev/null || true
 }
 
 # Change to temporary directory
