@@ -21,6 +21,7 @@ systemctl enable wob.socket --user
 systemctl enable wob --user
 systemctl enable ydotool --user
 
+systemctl enable earlyoom
 systemctl enable haveged
 systemctl enable sshd
 systemctl enable systemd-oomd
