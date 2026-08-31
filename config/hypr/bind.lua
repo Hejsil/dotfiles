@@ -2,14 +2,14 @@
 -- https://wiki.hypr.land/Configuring/Basics/Dispatchers/
 
 -- Launch programs in the terminal
-hl.bind("SUPER + Return", hl.dsp.exec_cmd("footclient"))
-hl.bind("SUPER + A", hl.dsp.exec_cmd("footclient -a float -e anilist fzf"))
-hl.bind("SUPER + C", hl.dsp.exec_cmd("footclient -a float -e fend"))
-hl.bind("SUPER + E", hl.dsp.exec_cmd("footclient -a float -e fzf-uni"))
-hl.bind("SUPER + G", hl.dsp.exec_cmd("footclient -a float -e fzf-focuswindow"))
-hl.bind("SUPER + K", hl.dsp.exec_cmd("footclient -a float -e fzf-kill"))
-hl.bind("SUPER + R", hl.dsp.exec_cmd("footclient -a float -e rss-read"))
-hl.bind("SUPER + T", hl.dsp.exec_cmd("footclient -a fullscreen -e btop"))
+hl.bind("SUPER + Return", hl.dsp.exec_cmd("ghostty"))
+hl.bind("SUPER + A", hl.dsp.exec_cmd("ghostty --class=com.mitchellh.ghostty.float -e anilist fzf"))
+hl.bind("SUPER + C", hl.dsp.exec_cmd("ghostty --class=com.mitchellh.ghostty.float -e fend"))
+hl.bind("SUPER + E", hl.dsp.exec_cmd("ghostty --class=com.mitchellh.ghostty.float -e fzf-uni"))
+hl.bind("SUPER + G", hl.dsp.exec_cmd("ghostty --class=com.mitchellh.ghostty.float -e fzf-focuswindow"))
+hl.bind("SUPER + K", hl.dsp.exec_cmd("ghostty --class=com.mitchellh.ghostty.float -e fzf-kill"))
+hl.bind("SUPER + R", hl.dsp.exec_cmd("ghostty --class=com.mitchellh.ghostty.float -e rss-read"))
+hl.bind("SUPER + T", hl.dsp.exec_cmd("ghostty --class=com.mitchellh.ghostty.fullscreen -e btop"))
 
 -- Launch other programs
 hl.bind("SUPER + B", hl.dsp.exec_cmd("browser"))

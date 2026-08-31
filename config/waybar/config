@@ -32,13 +32,13 @@
         "return-type": "json",
         "exec-if": "which waybar-module-pacman-updates",
         "exec": "waybar-module-pacman-updates --interval-seconds 5 --network-interval-seconds 14400",
-        "on-click": "footclient -a float -e sh -c 'sysupdate; read line'"
+        "on-click": "ghostty --class=com.mitchellh.ghostty.float -e sh -c 'sysupdate; read line'"
     },
     "custom/rss": {
         "exec": "find ~/.local/share/rss/unread/ -type f -printf . | wc -c",
         "format": "{:>3}  ",
         "interval": 10,
-        "on-click": "footclient -a float -e rss-read"
+        "on-click": "ghostty --class=com.mitchellh.ghostty.float -e rss-read"
     },
     "pulseaudio": {
         "max-volume": 150,
@@ -55,11 +55,11 @@
         "format": "{usage:3}% {icon} ",
         "interval": 1,
         "format-icons": ["󰾆", "󰾅", "󰓅"],
-        "on-click": "footclient -a float -e btop"
+        "on-click": "ghostty --class=com.mitchellh.ghostty.float -e btop"
     },
     "memory": {
         "format": "{:3}%  ",
-        "on-click": "footclient -a float -e btop"
+        "on-click": "ghostty --class=com.mitchellh.ghostty.float -e btop"
     },
     "battery": {
         "interval": 60,
@@ -67,7 +67,7 @@
     },
     "disk": {
         "format": "{percentage_used:3}%  ",
-        "on-click": "footclient -a float -e dua interactive"
+        "on-click": "ghostty --class=com.mitchellh.ghostty.float -e dua interactive"
     },
     "systemd-failed-units": {
         "hide-on-ok": true,

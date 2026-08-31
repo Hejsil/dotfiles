@@ -81,6 +81,29 @@ update_config "$config_home/foot/foot.ini" "foot" \
     -e "s/bright6=[a-zA-Z0-9]*/bright6=$base0C/" \
     -e "s/bright7=[a-zA-Z0-9]*/bright7=$base07/"
 
+update_config "$config_home/ghostty/config" "ghostty" \
+    -e "s/background = #[a-zA-Z0-9]*/background = #$base00/" \
+    -e "s/foreground = #[a-zA-Z0-9]*/foreground = #$base05/" \
+    -e "s/palette = 0=#[a-zA-Z0-9]*/palette = 0=#$base00/" \
+    -e "s/palette = 1=#[a-zA-Z0-9]*/palette = 1=#$base08/" \
+    -e "s/palette = 2=#[a-zA-Z0-9]*/palette = 2=#$base0B/" \
+    -e "s/palette = 3=#[a-zA-Z0-9]*/palette = 3=#$base0A/" \
+    -e "s/palette = 4=#[a-zA-Z0-9]*/palette = 4=#$base0D/" \
+    -e "s/palette = 5=#[a-zA-Z0-9]*/palette = 5=#$base0E/" \
+    -e "s/palette = 6=#[a-zA-Z0-9]*/palette = 6=#$base0C/" \
+    -e "s/palette = 7=#[a-zA-Z0-9]*/palette = 7=#$base05/" \
+    -e "s/palette = 8=#[a-zA-Z0-9]*/palette = 8=#$base03/" \
+    -e "s/palette = 9=#[a-zA-Z0-9]*/palette = 9=#$base08/" \
+    -e "s/palette = 10=#[a-zA-Z0-9]*/palette = 10=#$base0B/" \
+    -e "s/palette = 11=#[a-zA-Z0-9]*/palette = 11=#$base0A/" \
+    -e "s/palette = 12=#[a-zA-Z0-9]*/palette = 12=#$base0D/" \
+    -e "s/palette = 13=#[a-zA-Z0-9]*/palette = 13=#$base0E/" \
+    -e "s/palette = 14=#[a-zA-Z0-9]*/palette = 14=#$base0C/" \
+    -e "s/palette = 15=#[a-zA-Z0-9]*/palette = 15=#$base07/"
+
+update_config "$config_home/ghostty/style.css" "ghostty style" \
+    -e "s/background-color: #[a-zA-Z0-9]*/background-color: #$base00/"
+
 update_config "$config_home/dunst/dunstrc" "dunst" \
     -e "s/frame_color = \"#[a-zA-Z0-9]*\"/frame_color = \"#$base03\"/" \
     -e "s/background = \"#[a-zA-Z0-9]*\" # urgency_low/background = \"#$base00\" # urgency_low/" \

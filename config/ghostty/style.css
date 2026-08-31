@@ -1,0 +1,8 @@
+/* Window background before the terminal surface renders its first frame.
+ * The GL surface paints the terminal background (config `background`), but
+ * for a few frames at window creation the GTK window background shows
+ * through. Match it to the terminal background to avoid a flash.
+ */
+window {
+  background-color: #141414;
+}

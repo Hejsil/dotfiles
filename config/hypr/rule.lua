@@ -5,10 +5,10 @@ hl.window_rule({ match = { class = "org.mozilla.Thunderbird" }, workspace = "10 
 hl.window_rule({ match = { class = "Proton Mail" }, workspace = "10 silent" })
 hl.window_rule({ match = { class = "discord" }, workspace = "11 silent" })
 
-hl.window_rule({ match = { class = "fullscreen" }, fullscreen = true })
-hl.window_rule({ match = { class = "float" }, float = true })
-hl.window_rule({ match = { class = "float" }, center = true })
-hl.window_rule({ match = { class = "float" }, size = { "monitor_w*0.7", "monitor_h*0.7" } })
+hl.window_rule({ match = { class = "com.mitchellh.ghostty.fullscreen" }, fullscreen = true })
+hl.window_rule({ match = { class = "com.mitchellh.ghostty.float" }, float = true })
+hl.window_rule({ match = { class = "com.mitchellh.ghostty.float" }, center = true })
+hl.window_rule({ match = { class = "com.mitchellh.ghostty.float" }, size = { "monitor_w*0.7", "monitor_h*0.7" } })
 
 hl.window_rule({ match = { class = "explorer.exe" }, opacity = "0.0" })
 

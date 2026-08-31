@@ -1,0 +1,29 @@
+font-family = monospace
+font-size = 14
+
+mouse-hide-while-typing = true
+
+gtk-titlebar = false
+gtk-custom-css = style.css
+
+keybind = shift+up=scroll_page_lines:-1
+keybind = shift+down=scroll_page_lines:1
+
+background = #141414
+foreground = #dcdcdc
+palette = 0=#141414
+palette = 1=#f03232
+palette = 2=#78b496
+palette = 3=#c8821e
+palette = 4=#3c78e6
+palette = 5=#6464e6
+palette = 6=#3c96b4
+palette = 7=#dcdcdc
+palette = 8=#505050
+palette = 9=#f03232
+palette = 10=#78b496
+palette = 11=#c8821e
+palette = 12=#3c78e6
+palette = 13=#6464e6
+palette = 14=#3c96b4
+palette = 15=#dcdcdc

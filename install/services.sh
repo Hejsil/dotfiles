@@ -13,6 +13,7 @@
 
 # Required services
 systemctl enable foot-server --user
+systemctl enable app-com.mitchellh.ghostty.service --user
 systemctl enable poweralertd --user
 systemctl enable syncthing --user
 systemctl enable udiskie --user
