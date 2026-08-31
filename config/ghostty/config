@@ -6,6 +6,9 @@ mouse-hide-while-typing = true
 gtk-titlebar = false
 gtk-custom-css = style.css
 
+cursor-style-blink = false
+link-previews = false
+
 keybind = shift+up=scroll_page_lines:-1
 keybind = shift+down=scroll_page_lines:1
 
