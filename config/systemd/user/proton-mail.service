@@ -1,0 +1,17 @@
+[Unit]
+Description=Proton Mail
+PartOf=graphical-session.target
+After=graphical-session.target
+Requisite=graphical-session.target
+
+[Service]
+ExecStart=/usr/sbin/proton-mail
+# Proton Mail's Electron main process hangs on every graceful signal
+# (SIGINT/SIGTERM/SIGHUP/SIGQUIT all leave it running); only SIGKILL stops it.
+KillMode=control-group
+KillSignal=SIGKILL
+
+Restart=on-failure
+
+[Install]
+WantedBy=graphical-session.target

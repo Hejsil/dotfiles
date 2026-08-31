@@ -169,6 +169,7 @@ config/plasmawindowed-appletsrc
 config/plasmawindowedrc
 config/playit_gg/
 config/protonfixes/
+config/Proton Mail/
 config/pulse
 config/pypoetry/
 config/qalculate/
