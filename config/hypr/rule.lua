@@ -2,6 +2,7 @@
 
 hl.window_rule({ match = { class = "steam" }, workspace = "9 silent" })
 hl.window_rule({ match = { class = "org.mozilla.Thunderbird" }, workspace = "10 silent" })
+hl.window_rule({ match = { class = "Proton Mail" }, workspace = "10 silent" })
 hl.window_rule({ match = { class = "discord" }, workspace = "11 silent" })
 
 hl.window_rule({ match = { class = "fullscreen" }, fullscreen = true })
