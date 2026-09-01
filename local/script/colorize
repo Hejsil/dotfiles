@@ -61,6 +61,26 @@ base0F=$(rg -o 'base0F: *"([^"]*)"' "$1" -r '$1')
 config_home="${XDG_CONFIG_HOME:-$HOME/.config}"
 printf "Applying theme from: %s\n" "$1" >&2
 
+update_config "$config_home/foot/foot.ini" "foot" \
+    -e "s/background=[a-zA-Z0-9]*/background=$base00/" \
+    -e "s/foreground=[a-zA-Z0-9]*/foreground=$base05/" \
+    -e "s/regular0=[a-zA-Z0-9]*/regular0=$base00/" \
+    -e "s/regular1=[a-zA-Z0-9]*/regular1=$base08/" \
+    -e "s/regular2=[a-zA-Z0-9]*/regular2=$base0B/" \
+    -e "s/regular3=[a-zA-Z0-9]*/regular3=$base0A/" \
+    -e "s/regular4=[a-zA-Z0-9]*/regular4=$base0D/" \
+    -e "s/regular5=[a-zA-Z0-9]*/regular5=$base0E/" \
+    -e "s/regular6=[a-zA-Z0-9]*/regular6=$base0C/" \
+    -e "s/regular7=[a-zA-Z0-9]*/regular7=$base05/" \
+    -e "s/bright0=[a-zA-Z0-9]*/bright0=$base03/" \
+    -e "s/bright1=[a-zA-Z0-9]*/bright1=$base08/" \
+    -e "s/bright2=[a-zA-Z0-9]*/bright2=$base0B/" \
+    -e "s/bright3=[a-zA-Z0-9]*/bright3=$base0A/" \
+    -e "s/bright4=[a-zA-Z0-9]*/bright4=$base0D/" \
+    -e "s/bright5=[a-zA-Z0-9]*/bright5=$base0E/" \
+    -e "s/bright6=[a-zA-Z0-9]*/bright6=$base0C/" \
+    -e "s/bright7=[a-zA-Z0-9]*/bright7=$base07/"
+
 update_config "$config_home/ghostty/config" "ghostty" \
     -e "s/background = #[a-zA-Z0-9]*/background = #$base00/" \
     -e "s/foreground = #[a-zA-Z0-9]*/foreground = #$base05/" \

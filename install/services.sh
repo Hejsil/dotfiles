@@ -12,6 +12,7 @@
 ~/.local/script/ask systemctl enable --user rss-sync.timer
 
 # Required services
+systemctl enable foot-server --user
 systemctl enable app-com.mitchellh.ghostty.service --user
 systemctl enable poweralertd --user
 systemctl enable syncthing --user
