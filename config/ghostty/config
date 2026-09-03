@@ -30,6 +30,7 @@ palette = 15=#dcdcdc
 
 keybind = ctrl+shift+arrow_up=scroll_page_lines:-1
 keybind = ctrl+shift+arrow_down=scroll_page_lines:1
+keybind = ctrl+shift+r=start_search
 
 keybind = ctrl+enter=unbind
 keybind = ctrl+shift+tab=unbind
