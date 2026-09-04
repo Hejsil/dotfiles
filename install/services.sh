@@ -23,6 +23,7 @@ systemctl enable ydotool --user
 
 systemctl enable earlyoom
 systemctl enable haveged
+systemctl enable paccache.timer
 systemctl enable sshd
 systemctl enable systemd-oomd
 systemctl enable systemd-resolved
