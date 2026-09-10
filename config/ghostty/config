@@ -8,6 +8,7 @@ gtk-custom-css = style.css
 
 cursor-style-blink = false
 link-previews = false
+resize-overlay = never
 
 background = #141414
 foreground = #dcdcdc
