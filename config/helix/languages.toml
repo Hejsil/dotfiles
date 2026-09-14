@@ -1,6 +1,3 @@
-[language-server]
-fs_watcher_lsp = {command = "fs_watcher_lsp"}
-
 [language-server.typos]
 command = "typos-lsp"
 config.config = "~/.config/typos/typos.toml"
@@ -14,47 +11,1310 @@ editorInfo = { name = "Helix", version = "25.01" }
 editorPluginInfo = { name = "helix-copilot", version = "0.1.0" }
 
 [[language]]
-name = "bash"
-language-servers = ["bash-language-server", "fs_watcher_lsp", "copilot", "typos-lsp"]
+name = "rust"
+language-servers = ["rust-analyzer", "copilot", "typos-lsp"]
 
 [[language]]
-name = "c"
-language-servers = ["clangd", "fs_watcher_lsp", "copilot", "typos-lsp"]
+name = "toml"
+language-servers = ["taplo", "tombi", "copilot", "typos-lsp"]
 
 [[language]]
-name = "cpp"
-language-servers = ["clangd", "fs_watcher_lsp", "copilot", "typos-lsp"]
+name = "awk"
+language-servers = ["awk-language-server", "copilot", "typos-lsp"]
 
 [[language]]
-name = "cmake"
-language-servers = ["neocmakelsp", "cmake-language-server", "fs_watcher_lsp", "copilot", "typos-lsp"]
+name = "protobuf"
+language-servers = ["buf", "pbkit", "protols", "copilot", "typos-lsp"]
 
 [[language]]
-name = "git-commit"
-language-servers = ["fs_watcher_lsp", "copilot", "typos-lsp"]
+name = "eiffel"
+language-servers = ["eiffel-language-server", "copilot", "typos-lsp"]
 
 [[language]]
-name = "html"
-language-servers = [ "vscode-html-language-server", "superhtml", "fs_watcher_lsp", "copilot", "typos-lsp"]
+name = "elixir"
+language-servers = ["elixir-ls", "expert", "copilot", "typos-lsp"]
+
+[[language]]
+name = "fennel"
+language-servers = ["fennel-ls", "copilot", "typos-lsp"]
+
+[[language]]
+name = "fish"
+language-servers = ["fish-lsp", "copilot", "typos-lsp"]
+
+[[language]]
+name = "mint"
+language-servers = ["mint", "copilot", "typos-lsp"]
+
+[[language]]
+name = "mojo"
+language-servers = ["mojo-lsp-server", "copilot", "typos-lsp"]
 
 [[language]]
 name = "json"
-language-servers = ["vscode-json-language-server", "fs_watcher_lsp", "copilot", "typos-lsp"]
-auto-format = false
+language-servers = ["vscode-json-language-server", "copilot", "typos-lsp"]
 
 [[language]]
-name = "markdown"
-language-servers = ["marksman", "markdown-oxide", "rumdl", "fs_watcher_lsp", "copilot", "typos-lsp"]
+name = "jsonc"
+language-servers = ["vscode-json-language-server", "copilot", "typos-lsp"]
+
+[[language]]
+name = "json-ld"
+language-servers = ["vscode-json-language-server", "copilot", "typos-lsp"]
+
+[[language]]
+name = "c"
+language-servers = ["clangd", "copilot", "typos-lsp"]
+
+[[language]]
+name = "cpp"
+language-servers = ["clangd", "copilot", "typos-lsp"]
+
+[[language]]
+name = "crystal"
+language-servers = ["crystalline", "ameba-ls", "copilot", "typos-lsp"]
+
+[[language]]
+name = "c-sharp"
+language-servers = ["roslyn-language-server", "omnisharp", "csharp-ls", "copilot", "typos-lsp"]
+
+[[language]]
+name = "c3"
+language-servers = ["c3-lsp", "copilot", "typos-lsp"]
+
+[[language]]
+name = "cel"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "spicedb"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "go"
+language-servers = ["gopls", "golangci-lint-lsp", "copilot", "typos-lsp"]
+
+[[language]]
+name = "gomod"
+language-servers = ["gopls", "copilot", "typos-lsp"]
+
+[[language]]
+name = "gowork"
+language-servers = ["gopls", "copilot", "typos-lsp"]
+
+[[language]]
+name = "javascript"
+language-servers = ["typescript-language-server", "copilot", "typos-lsp"]
+
+[[language]]
+name = "jsx"
+language-servers = ["typescript-language-server", "copilot", "typos-lsp"]
+
+[[language]]
+name = "typescript"
+language-servers = ["typescript-language-server", "copilot", "typos-lsp"]
+
+[[language]]
+name = "typespec"
+language-servers = ["typespec", "copilot", "typos-lsp"]
+
+[[language]]
+name = "tsx"
+language-servers = ["typescript-language-server", "copilot", "typos-lsp"]
+
+[[language]]
+name = "css"
+language-servers = ["vscode-css-language-server", "copilot", "typos-lsp"]
+
+[[language]]
+name = "scss"
+language-servers = ["vscode-css-language-server", "copilot", "typos-lsp"]
+
+[[language]]
+name = "less"
+language-servers = ["vscode-css-language-server", "copilot", "typos-lsp"]
+
+[[language]]
+name = "html"
+language-servers = ["vscode-html-language-server", "superhtml", "copilot", "typos-lsp"]
+
+[[language]]
+name = "htmldjango"
+language-servers = ["djlsp", "vscode-html-language-server", "superhtml", "copilot", "typos-lsp"]
 
 [[language]]
 name = "python"
-language-servers = ["ty", "ruff", "jedi", "pylsp", "fs_watcher_lsp", "copilot", "typos-lsp"]
+language-servers = ["ty", "ruff", "jedi", "pylsp", "copilot", "typos-lsp"]
+
+[[language]]
+name = "nickel"
+language-servers = ["nls", "copilot", "typos-lsp"]
+
+[[language]]
+name = "nix"
+language-servers = ["nil", "nixd", "copilot", "typos-lsp"]
+
+[[language]]
+name = "ruby"
+language-servers = ["ruby-lsp", "solargraph", "copilot", "typos-lsp"]
+
+[[language]]
+name = "rshtml"
+language-servers = ["rshtml-analyzer", "vscode-html-language-server", "superhtml", "copilot", "typos-lsp"]
+
+[[language]]
+name = "bash"
+language-servers = ["bash-language-server", "copilot", "typos-lsp"]
+
+[[language]]
+name = "php"
+language-servers = ["intelephense", "copilot", "typos-lsp"]
+
+[[language]]
+name = "blade"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "twig"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "latex"
+language-servers = ["texlab", "copilot", "typos-lsp"]
+
+[[language]]
+name = "bibtex"
+language-servers = ["texlab", "copilot", "typos-lsp"]
+
+[[language]]
+name = "lean"
+language-servers = ["lean", "copilot", "typos-lsp"]
+
+[[language]]
+name = "lpf"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "julia"
+language-servers = ["julia", "copilot", "typos-lsp"]
+
+[[language]]
+name = "java"
+language-servers = ["jdtls", "copilot", "typos-lsp"]
+
+[[language]]
+name = "smali"
+language-servers = ["smalisp", "copilot", "typos-lsp"]
+
+[[language]]
+name = "ledger"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "beancount"
+language-servers = ["beancount-language-server", "copilot", "typos-lsp"]
+
+[[language]]
+name = "ocaml"
+language-servers = ["ocamllsp", "copilot", "typos-lsp"]
+
+[[language]]
+name = "ocaml-interface"
+language-servers = ["ocamllsp", "copilot", "typos-lsp"]
+
+[[language]]
+name = "dune"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "lua"
+language-servers = ["lua-language-server", "copilot", "typos-lsp"]
+
+[[language]]
+name = "luap"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "lua-format-string"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "teal"
+language-servers = ["teal-language-server", "copilot", "typos-lsp"]
+
+[[language]]
+name = "svelte"
+language-servers = ["svelteserver", "copilot", "typos-lsp"]
+
+[[language]]
+name = "vue"
+language-servers = ["vuels", "copilot", "typos-lsp"]
 
 [[language]]
 name = "yaml"
-language-servers = ["yaml-language-server", "ansible-language-server", "fs_watcher_lsp", "copilot", "typos-lsp"]
+language-servers = ["yaml-language-server", "ansible-language-server", "copilot", "typos-lsp"]
+
+[[language]]
+name = "nestedtext"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "haskell"
+language-servers = ["haskell-language-server", "copilot", "typos-lsp"]
+
+[[language]]
+name = "haskell-persistent"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "haskell-literate"
+language-servers = ["haskell-language-server", "copilot", "typos-lsp"]
+
+[[language]]
+name = "purescript"
+language-servers = ["purescript-language-server", "copilot", "typos-lsp"]
 
 [[language]]
 name = "zig"
-language-servers = ["zls", "fs_watcher_lsp", "copilot", "typos-lsp"]
+language-servers = ["zls", "copilot", "typos-lsp"]
 auto-format = true
+
+[[language]]
+name = "picat"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "prolog"
+language-servers = ["swipl", "copilot", "typos-lsp"]
+
+[[language]]
+name = "tsq"
+language-servers = ["ts_query_ls", "copilot", "typos-lsp"]
+
+[[language]]
+name = "cmake"
+language-servers = ["neocmakelsp", "cmake-language-server", "copilot", "typos-lsp"]
+
+[[language]]
+name = "make"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "glsl"
+language-servers = ["glsl_analyzer", "glsld", "copilot", "typos-lsp"]
+
+[[language]]
+name = "penrose"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "perl"
+language-servers = ["perlnavigator", "copilot", "typos-lsp"]
+
+[[language]]
+name = "embedded-perl"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "pod"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "racket"
+language-servers = ["racket", "copilot", "typos-lsp"]
+
+[[language]]
+name = "common-lisp"
+language-servers = ["cl-lsp", "copilot", "typos-lsp"]
+
+[[language]]
+name = "comment"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "wesl"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "wgsl"
+language-servers = ["wgsl-analyzer", "copilot", "typos-lsp"]
+
+[[language]]
+name = "llvm"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "llvm-mir"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "llvm-mir-yaml"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "tablegen"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "mail"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "markdown"
+language-servers = ["marksman", "markdown-oxide", "rumdl", "copilot", "typos-lsp"]
+
+[[language]]
+name = "djot"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "dart"
+language-servers = ["dart", "copilot", "typos-lsp"]
+
+[[language]]
+name = "scala"
+language-servers = ["metals", "copilot", "typos-lsp"]
+
+[[language]]
+name = "dockerfile"
+language-servers = ["docker-langserver", "docker-language-server", "copilot", "typos-lsp"]
+
+[[language]]
+name = "docker-compose"
+language-servers = ["docker-compose-langserver", "yaml-language-server", "docker-language-server", "copilot", "typos-lsp"]
+
+[[language]]
+name = "git-commit"
+language-servers = ["commit-lsp", "copilot", "typos-lsp"]
+
+[[language]]
+name = "git-notes"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "github-action"
+language-servers = ["actions-language-server", "yaml-language-server", "zizmor", "copilot", "typos-lsp"]
+
+[[language]]
+name = "diff"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "git-rebase"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "regex"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "git-config"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "git-attributes"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "git-ignore"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "graphql"
+language-servers = ["graphql-language-service", "copilot", "typos-lsp"]
+
+[[language]]
+name = "elm"
+language-servers = ["elm-language-server", "copilot", "typos-lsp"]
+
+[[language]]
+name = "iex"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "rescript"
+language-servers = ["rescript-language-server", "copilot", "typos-lsp"]
+
+[[language]]
+name = "erlang"
+language-servers = [{ name = "erlang-ls", except-features = ["document-symbols", "workspace-symbols"] }, { name = "elp", except-features = ["document-symbols", "workspace-symbols"] }, "copilot", "typos-lsp"]
+
+[[language]]
+name = "kotlin"
+language-servers = ["kotlin-language-server", "copilot", "typos-lsp"]
+
+[[language]]
+name = "hcl"
+language-servers = ["terraform-ls", "copilot", "typos-lsp"]
+
+[[language]]
+name = "tfvars"
+language-servers = ["terraform-ls", "copilot", "typos-lsp"]
+
+[[language]]
+name = "org"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "solidity"
+language-servers = ["solc", "copilot", "typos-lsp"]
+
+[[language]]
+name = "gleam"
+language-servers = ["gleam", "copilot", "typos-lsp"]
+
+[[language]]
+name = "quarto"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "ron"
+language-servers = ["ron-lsp", "copilot", "typos-lsp"]
+
+[[language]]
+name = "robot"
+language-servers = ["robotcode", "robotframework_ls", "copilot", "typos-lsp"]
+
+[[language]]
+name = "r"
+language-servers = ["r", "copilot", "typos-lsp"]
+
+[[language]]
+name = "rmarkdown"
+language-servers = ["r", "copilot", "typos-lsp"]
+
+[[language]]
+name = "swift"
+language-servers = ["sourcekit-lsp", "copilot", "typos-lsp"]
+
+[[language]]
+name = "eex"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "heex"
+language-servers = ["elixir-ls", "expert", "copilot", "typos-lsp"]
+
+[[language]]
+name = "sql"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "gdscript"
+language-servers = ["godot", "copilot", "typos-lsp"]
+
+[[language]]
+name = "nu"
+language-servers = ["nu-lsp", "copilot", "typos-lsp"]
+
+[[language]]
+name = "vala"
+language-servers = ["vala-language-server", "copilot", "typos-lsp"]
+
+[[language]]
+name = "hare"
+language-servers = [{ except-features = ["code-action", "completion", "format", "inlay-hints", "rename-symbol", "workspace-symbols"], name = "hare-lsp" }, "copilot", "typos-lsp"]
+
+[[language]]
+name = "devicetree"
+language-servers = ["dts-lsp", "copilot", "typos-lsp"]
+
+[[language]]
+name = "cairo"
+language-servers = ["cairo-language-server", "copilot", "typos-lsp"]
+
+[[language]]
+name = "cpon"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "odin"
+language-servers = ["ols", "copilot", "typos-lsp"]
+
+[[language]]
+name = "meson"
+language-servers = ["mesonlsp", "copilot", "typos-lsp"]
+
+[[language]]
+name = "ssh_client_config"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "scheme"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "v"
+language-servers = ["vlang-language-server", "copilot", "typos-lsp"]
+
+[[language]]
+name = "verilog"
+language-servers = ["verible-verilog-ls", "copilot", "typos-lsp"]
+
+[[language]]
+name = "systemverilog"
+language-servers = ["svlangserver", "verible-verilog-ls", "copilot", "typos-lsp"]
+
+[[language]]
+name = "edoc"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "jsdoc"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "openscad"
+language-servers = ["openscad-lsp", "copilot", "typos-lsp"]
+
+[[language]]
+name = "prisma"
+language-servers = ["prisma-language-server", "copilot", "typos-lsp"]
+
+[[language]]
+name = "clojure"
+language-servers = ["clojure-lsp", "copilot", "typos-lsp"]
+
+[[language]]
+name = "starlark"
+language-servers = ["starpls", "buck2", "copilot", "typos-lsp"]
+
+[[language]]
+name = "elvish"
+language-servers = ["elvish", "copilot", "typos-lsp"]
+
+[[language]]
+name = "idris"
+language-servers = ["idris2-lsp", "copilot", "typos-lsp"]
+
+[[language]]
+name = "fortran"
+language-servers = ["fortls", "copilot", "typos-lsp"]
+
+[[language]]
+name = "ungrammar"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "dot"
+language-servers = ["dot-language-server", "copilot", "typos-lsp"]
+
+[[language]]
+name = "cue"
+language-servers = ["cuelsp", "copilot", "typos-lsp"]
+
+[[language]]
+name = "slang"
+language-servers = ["slangd", "copilot", "typos-lsp"]
+
+[[language]]
+name = "slint"
+language-servers = ["slint-lsp", "copilot", "typos-lsp"]
+
+[[language]]
+name = "task"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "xit"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "esdl"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "pascal"
+language-servers = ["pasls", "copilot", "typos-lsp"]
+
+[[language]]
+name = "sml"
+language-servers = ["millet", "copilot", "typos-lsp"]
+
+[[language]]
+name = "jsonnet"
+language-servers = ["jsonnet-language-server", "copilot", "typos-lsp"]
+
+[[language]]
+name = "ada"
+language-servers = ["ada-language-server", "copilot", "typos-lsp"]
+
+[[language]]
+name = "astro"
+language-servers = ["astro-ls", "copilot", "typos-lsp"]
+
+[[language]]
+name = "bass"
+language-servers = ["bass", "copilot", "typos-lsp"]
+
+[[language]]
+name = "wat"
+language-servers = ["wasm-language-tools", "copilot", "typos-lsp"]
+
+[[language]]
+name = "wast"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "d"
+language-servers = ["serve-d", "copilot", "typos-lsp"]
+
+[[language]]
+name = "vhs"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "kdl"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "xml"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "env"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "systemd"
+language-servers = ["systemd-lsp", "copilot", "typos-lsp"]
+
+[[language]]
+name = "ini"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "inko"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "bicep"
+language-servers = ["bicep-langserver", "copilot", "typos-lsp"]
+
+[[language]]
+name = "qml"
+language-servers = ["qmlls", "copilot", "typos-lsp"]
+
+[[language]]
+name = "mermaid"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "matlab"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "ponylang"
+language-servers = ["pony-lsp", "copilot", "typos-lsp"]
+
+[[language]]
+name = "dhall"
+language-servers = ["dhall-lsp-server", "copilot", "typos-lsp"]
+
+[[language]]
+name = "sage"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "msbuild"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "pem"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "passwd"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "hosts"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "uxntal"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "yuck"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "prql"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "po"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "nasm"
+language-servers = ["asm-lsp", "copilot", "typos-lsp"]
+
+[[language]]
+name = "gas"
+language-servers = ["asm-lsp", "copilot", "typos-lsp"]
+
+[[language]]
+name = "rst"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "capnp"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "smithy"
+language-servers = ["cs", "copilot", "typos-lsp"]
+
+[[language]]
+name = "hdl"
+language-servers = ["hdls", "copilot", "typos-lsp"]
+
+[[language]]
+name = "vhdl"
+language-servers = ["vhdl_ls", "copilot", "typos-lsp"]
+
+[[language]]
+name = "rego"
+language-servers = ["regols", "copilot", "typos-lsp"]
+
+[[language]]
+name = "nim"
+language-servers = ["nimlangserver", "copilot", "typos-lsp"]
+
+[[language]]
+name = "cabal"
+language-servers = ["haskell-language-server", "copilot", "typos-lsp"]
+
+[[language]]
+name = "hurl"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "markdoc"
+language-servers = ["markdoc-ls", "copilot", "typos-lsp"]
+
+[[language]]
+name = "opencl"
+language-servers = ["clangd", "copilot", "typos-lsp"]
+
+[[language]]
+name = "just"
+language-servers = ["just-lsp", "copilot", "typos-lsp"]
+
+[[language]]
+name = "gn"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "blueprint"
+language-servers = ["blueprint-compiler", "copilot", "typos-lsp"]
+
+[[language]]
+name = "forth"
+language-servers = ["forth-lsp", "copilot", "typos-lsp"]
+
+[[language]]
+name = "fsharp"
+language-servers = ["fsharp-ls", "copilot", "typos-lsp"]
+
+[[language]]
+name = "t32"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "webc"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "typst"
+language-servers = ["tinymist", "copilot", "typos-lsp"]
+
+[[language]]
+name = "nunjucks"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "jinja"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "jjconfig"
+language-servers = ["taplo", "tombi", "copilot", "typos-lsp"]
+
+[[language]]
+name = "jjdescription"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "jjrevset"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "jjtemplate"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "miseconfig"
+language-servers = ["taplo", "tombi", "copilot", "typos-lsp"]
+
+[[language]]
+name = "jq"
+language-servers = ["jq-lsp", "copilot", "typos-lsp"]
+
+[[language]]
+name = "wren"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "unison"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "todotxt"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "strace"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "gemini"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "agda"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "templ"
+language-servers = ["templ", "copilot", "typos-lsp"]
+
+[[language]]
+name = "dbml"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "bitbake"
+language-servers = ["bitbake-language-server", "copilot", "typos-lsp"]
+
+[[language]]
+name = "log"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "hoon"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "hocon"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "koka"
+language-servers = ["koka", "copilot", "typos-lsp"]
+
+[[language]]
+name = "tolk"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "tact"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "pkl"
+language-servers = ["pkl-lsp", "copilot", "typos-lsp"]
+
+[[language]]
+name = "groovy"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "fidl"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "powershell"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "ld"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "hy"
+language-servers = ["hyuga", "copilot", "typos-lsp"]
+
+[[language]]
+name = "hyprlang"
+language-servers = ["hyprls", "copilot", "typos-lsp"]
+
+[[language]]
+name = "tcl"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "supercollider"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "rpmspec"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "pkgbuild"
+language-servers = ["termux-language-server", "bash-language-server", "copilot", "typos-lsp"]
+
+[[language]]
+name = "helm"
+language-servers = ["helm_ls", "copilot", "typos-lsp"]
+
+[[language]]
+name = "glimmer"
+language-servers = ["ember-language-server", "copilot", "typos-lsp"]
+
+[[language]]
+name = "ohm"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "earthfile"
+language-servers = ["earthlyls", "copilot", "typos-lsp"]
+
+[[language]]
+name = "adl"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "ldif"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "xtc"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "move"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "pest"
+language-servers = ["pest-language-server", "copilot", "typos-lsp"]
+
+[[language]]
+name = "elisp"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "gjs"
+language-servers = ["typescript-language-server", "vscode-eslint-language-server", "ember-language-server", "copilot", "typos-lsp"]
+
+[[language]]
+name = "gts"
+language-servers = ["typescript-language-server", "vscode-eslint-language-server", "ember-language-server", "copilot", "typos-lsp"]
+
+[[language]]
+name = "gherkin"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "thrift"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "circom"
+language-servers = ["circom-lsp", "copilot", "typos-lsp"]
+
+[[language]]
+name = "snakemake"
+language-servers = ["pylsp", "copilot", "typos-lsp"]
+
+[[language]]
+name = "cylc"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "quint"
+language-servers = ["quint-language-server", "copilot", "typos-lsp"]
+
+[[language]]
+name = "spade"
+language-servers = ["spade-language-server", "copilot", "typos-lsp"]
+
+[[language]]
+name = "amber"
+language-servers = ["amber-lsp", "copilot", "typos-lsp"]
+
+[[language]]
+name = "koto"
+language-servers = ["koto-ls", "copilot", "typos-lsp"]
+
+[[language]]
+name = "gpr"
+language-servers = ["ada-gpr-language-server", "copilot", "typos-lsp"]
+
+[[language]]
+name = "vento"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "nginx"
+language-servers = ["nginx-language-server", "copilot", "typos-lsp"]
+
+[[language]]
+name = "codeql"
+language-servers = ["codeql", "copilot", "typos-lsp"]
+
+[[language]]
+name = "gren"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "ghostty"
+language-servers = ["ghostty-ls", "copilot", "typos-lsp"]
+
+[[language]]
+name = "tera"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "fga"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "csv"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "yara"
+language-servers = ["yls", "copilot", "typos-lsp"]
+
+[[language]]
+name = "ink"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "sourcepawn"
+language-servers = ["sourcepawn-studio", "copilot", "typos-lsp"]
+
+[[language]]
+name = "vim"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "tlaplus"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "werk"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "debian"
+language-servers = ["debian-lsp", "copilot", "typos-lsp"]
+
+[[language]]
+name = "pug"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "dunstrc"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "rust-format-args"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "rust-format-args-macro"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "clarity"
+language-servers = ["clarinet", "copilot", "typos-lsp"]
+
+[[language]]
+name = "alloy"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "luau"
+language-servers = ["luau", "copilot", "typos-lsp"]
+
+[[language]]
+name = "caddyfile"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "properties"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "robots.txt"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "pip-requirements"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "kconfig"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "doxyfile"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "cross-config"
+language-servers = ["taplo", "tombi", "copilot", "typos-lsp"]
+
+[[language]]
+name = "git-cliff-config"
+language-servers = ["taplo", "tombi", "copilot", "typos-lsp"]
+
+[[language]]
+name = "cython"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "shellcheckrc"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "strictdoc"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "docker-bake"
+language-servers = ["docker-language-server", "copilot", "typos-lsp"]
+
+[[language]]
+name = "gitlab-ci"
+language-servers = ["yaml-language-server", "gitlab-ci-ls", "copilot", "typos-lsp"]
+
+[[language]]
+name = "wikitext"
+language-servers = ["wikitext-lsp", "copilot", "typos-lsp"]
+
+[[language]]
+name = "slisp"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "nearley"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "kcl"
+language-servers = ["kcl-lsp", "copilot", "typos-lsp"]
+
+[[language]]
+name = "bovex"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "haxe"
+language-servers = ["haxe-language-server", "copilot", "typos-lsp"]
+
+[[language]]
+name = "basic"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "freebasic"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "scfg"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "sgf"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "ripple"
+language-servers = ["ripple-lsp", "copilot", "typos-lsp"]
+
+[[language]]
+name = "woodpecker-ci"
+language-servers = ["yaml-language-server", "copilot", "typos-lsp"]
+
+[[language]]
+name = "chuck"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "qmv"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "klog"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "styx"
+language-servers = ["styx", "copilot", "typos-lsp"]
+
+[[language]]
+name = "tilt"
+language-servers = ["tilt", "copilot", "typos-lsp"]
+
+[[language]]
+name = "gnuplot"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "ebnf"
+language-servers = ["ebnfer", "copilot", "typos-lsp"]
+
+[[language]]
+name = "drools"
+language-servers = ["drools-lsp", "copilot", "typos-lsp"]
+
+[[language]]
+name = "proverif"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "ptx"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "tql"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "moonbit"
+language-servers = ["moonbit-lsp", "copilot", "typos-lsp"]
+
+[[language]]
+name = "concerto"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "puppet"
+language-servers = ["puppet-languageserver", "copilot", "typos-lsp"]
+
+[[language]]
+name = "p"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "xwiki"
+language-servers = ["copilot", "typos-lsp"]
+
+[[language]]
+name = "varlink"
+language-servers = ["varlink-language-server", "copilot", "typos-lsp"]
+
+[[language]]
+name = "metamath"
+language-servers = ["mm-lsp-server", "copilot", "typos-lsp"]
+
+[[language]]
+name = "batch"
+language-servers = ["copilot", "typos-lsp"]
