@@ -536,10 +536,6 @@ name = "meson"
 language-servers = ["mesonlsp", "copilot", "typos-lsp"]
 
 [[language]]
-name = "ssh_client_config"
-language-servers = ["copilot", "typos-lsp"]
-
-[[language]]
 name = "scheme"
 language-servers = ["copilot", "typos-lsp"]
 
@@ -916,10 +912,6 @@ name = "koka"
 language-servers = ["koka", "copilot", "typos-lsp"]
 
 [[language]]
-name = "tolk"
-language-servers = ["copilot", "typos-lsp"]
-
-[[language]]
 name = "tact"
 language-servers = ["copilot", "typos-lsp"]
 
@@ -1232,10 +1224,6 @@ name = "scfg"
 language-servers = ["copilot", "typos-lsp"]
 
 [[language]]
-name = "sgf"
-language-servers = ["copilot", "typos-lsp"]
-
-[[language]]
 name = "ripple"
 language-servers = ["ripple-lsp", "copilot", "typos-lsp"]
 
@@ -1268,10 +1256,6 @@ name = "gnuplot"
 language-servers = ["copilot", "typos-lsp"]
 
 [[language]]
-name = "ebnf"
-language-servers = ["ebnfer", "copilot", "typos-lsp"]
-
-[[language]]
 name = "drools"
 language-servers = ["drools-lsp", "copilot", "typos-lsp"]
 
@@ -1285,36 +1269,4 @@ language-servers = ["copilot", "typos-lsp"]
 
 [[language]]
 name = "tql"
-language-servers = ["copilot", "typos-lsp"]
-
-[[language]]
-name = "moonbit"
-language-servers = ["moonbit-lsp", "copilot", "typos-lsp"]
-
-[[language]]
-name = "concerto"
-language-servers = ["copilot", "typos-lsp"]
-
-[[language]]
-name = "puppet"
-language-servers = ["puppet-languageserver", "copilot", "typos-lsp"]
-
-[[language]]
-name = "p"
-language-servers = ["copilot", "typos-lsp"]
-
-[[language]]
-name = "xwiki"
-language-servers = ["copilot", "typos-lsp"]
-
-[[language]]
-name = "varlink"
-language-servers = ["varlink-language-server", "copilot", "typos-lsp"]
-
-[[language]]
-name = "metamath"
-language-servers = ["mm-lsp-server", "copilot", "typos-lsp"]
-
-[[language]]
-name = "batch"
 language-servers = ["copilot", "typos-lsp"]
