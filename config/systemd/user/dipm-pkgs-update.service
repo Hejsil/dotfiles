@@ -1,7 +1,7 @@
 [Service]
 Type=exec
 WorkingDirectory=%h/repo/own/dipm-pkgs
-ExecStart=%h/.local/bin/dipm pkgs update --delay 5m --commit
+ExecStart=%h/.local/bin/dipm pkgs update --delay 5m --pull-request
 Restart=always
 RestartSec=10min
 
