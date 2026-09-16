@@ -157,6 +157,16 @@ config/monitors.xml
 config/obsidian/
 config/obs-studio/
 config/okularpartrc
+config/omp/agent/cache/
+config/omp/agent/*.db*
+config/omp/agent/last-changelog-version
+config/omp/agent/sessions/
+config/omp/agent/terminal-sessions/
+config/omp/gpu_cache.json
+config/omp/logs/
+config/omp/natives/
+config/omp/puppeteer/
+config/omp/run/
 config/OpenRGB/
 config/pavucontrol.ini
 config/PCSX2/

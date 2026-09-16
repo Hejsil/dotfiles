@@ -1,0 +1,10 @@
+modelRoles:
+  default: deepseek/deepseek-v4-flash
+symbolPreset: unicode
+composer:
+  shape: band
+theme:
+  dark: titanium
+  light: light
+setupVersion: 2
+hideThinkingBlock: true
