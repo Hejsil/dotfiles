@@ -10,6 +10,9 @@ cursor-style-blink = false
 link-previews = false
 resize-overlay = never
 
+window-inherit-working-directory = false
+working-directory = home
+
 background = #141414
 foreground = #dcdcdc
 palette = 0=#141414
