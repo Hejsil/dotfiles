@@ -1,0 +1,3 @@
+- Keep AGENTS.md files up to date: when a repo's conventions, layout, or workflow change materially, update its AGENTS.md in the same change rather than leaving it stale.
+- Never commit without human review: present the diff (or a clear summary of what changed and why) and wait for explicit review approval before committing.
+- Every git commit message MUST follow Conventional Commits: `<type>(<scope>)?: <subject>`, where type is one of `feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert`. Never use `git commit --no-verify` — a non-compliant message must never land in history.

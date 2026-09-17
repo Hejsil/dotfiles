@@ -1,10 +1,26 @@
-modelRoles:
-  default: deepseek/deepseek-v4-flash
 symbolPreset: unicode
-composer:
-  shape: band
 theme:
   dark: titanium
-  light: light
 setupVersion: 2
+modelRoles:
+  default: deepseek/deepseek-v4-flash
 hideThinkingBlock: true
+browser:
+  enabled: false
+topP: 0.95
+recap:
+  enabled: false
+startup:
+  quiet: true
+  checkUpdate: false
+terminal:
+  showProgress: true
+tui:
+  tight: false
+display:
+  cacheMissMarker: true
+personality: pragmatic
+lsp:
+  formatOnWrite: true
+astGrep:
+  enabled: true

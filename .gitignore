@@ -160,9 +160,14 @@ config/okularpartrc
 config/omp/agent/cache/
 config/omp/agent/*.db*
 config/omp/agent/last-changelog-version
+config/omp/agent/secret-placeholder.key
+config/omp/agent/secrets.yml
 config/omp/agent/sessions/
 config/omp/agent/terminal-sessions/
+config/omp/auth-broker.token
+config/omp/cache/
 config/omp/gpu_cache.json
+config/omp/install-id
 config/omp/logs/
 config/omp/natives/
 config/omp/puppeteer/
