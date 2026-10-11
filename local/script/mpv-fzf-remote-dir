@@ -1,0 +1,10 @@
+#!/bin/sh
+# mpv-fzf-remote-dir — pick a folder in a remote share and play it
+
+base=${1%/}
+sel=$(curl -s "$base/" |
+  jq -r '.[] | select(.type=="directory") | .name' |
+  fzf --prompt='folder> ')
+
+[ -n "$sel" ] &&
+  exec mpv-remote-dir "$base/$(printf '%s' "$sel" | jq -sRr '@uri')/"
