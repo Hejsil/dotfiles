@@ -4,7 +4,7 @@
 base=${1%/}
 sel=$(curl -s "$base/" |
   jq -r '.[] | select(.type=="directory") | .name' |
-  fzf --prompt='folder> ')
+  fzf)
 
 [ -n "$sel" ] &&
   exec mpv-remote-dir "$base/$(printf '%s' "$sel" | jq -sRr '@uri')/"
