@@ -1,0 +1,2 @@
+#!/bin/sh
+man "$@" | bat -l man -p

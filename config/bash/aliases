@@ -202,3 +202,8 @@ gsh () {
 gsw () {
     git switch "$@"
 }
+
+# Man page viewer using bat
+man () {
+    bat-man "$@"
+}
