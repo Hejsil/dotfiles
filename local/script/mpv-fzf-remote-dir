@@ -1,10 +1,35 @@
 #!/bin/sh
-# mpv-fzf-remote-dir — pick a folder in a remote share and play it
+# mpv-fzf-remote-dir — pick folders and/or files in a remote share and play them
 
 base=${1%/}
 sel=$(curl -s "$base/" |
-  jq -r '.[] | select(.type=="directory") | .name' |
-  fzf)
+  jq -r '.[] | select(.type=="directory" or .type=="file") |
+    .name + (if .type=="directory" then "/" else "" end)' |
+  fzf --multi)
 
-[ -n "$sel" ] &&
-  exec mpv-remote-dir "$base/$(printf '%s' "$sel" | jq -sRr '@uri')/"
+[ -n "$sel" ] || exit 0
+
+encode() {
+  printf '%s' "$1" | jq -sRr '@uri'
+}
+
+# Expand each selection into playlist entries, in the order they were picked.
+# A folder contributes all of its files; a file is added as-is.
+playlist() {
+  printf '%s\n' "$sel" |
+    while IFS= read -r entry; do
+      if [ "${entry%/}" != "$entry" ]; then
+        dir=$(encode "${entry%/}")
+        curl -s "$base/$dir/" |
+          jq -r '.[] | select(.type=="file") | .name' |
+          sort -V |
+          while IFS= read -r file; do
+            printf '%s/%s/%s\n' "$base" "$dir" "$(encode "$file")"
+          done
+      else
+        printf '%s/%s\n' "$base" "$(encode "$entry")"
+      fi
+    done
+}
+
+playlist | mpv --playlist=-
