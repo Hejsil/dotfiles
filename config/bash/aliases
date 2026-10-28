@@ -207,3 +207,7 @@ gsw () {
 man () {
     bat-man "$@"
 }
+
+ssh () {
+    command ghostty +ssh -- "$@"
+}
