@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "opencode-go/deepseek-v4.1-flash",
+  "max_turns": 400,
+  "tools": {
+    "web_search": {
+      "providers": ["tavily","exa"]
+    },
+    "web_fetch": {
+      "providers": ["tavily","exa","raw"]
+    }
+  }
+}
