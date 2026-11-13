@@ -35,3 +35,5 @@ fi
 if [[ -f /usr/share/aur-scan/integration.bash ]]; then
     source /usr/share/aur-scan/integration.bash
 fi
+
+todo list

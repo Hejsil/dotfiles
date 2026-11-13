@@ -1,0 +1,25 @@
+#!/bin/sh
+
+# One todo per line, in the order they were added. A todo's number is its line
+# number, so finishing one renumbers the todos after it.
+todos_dir="${XDG_DATA_HOME:-$HOME/.local/share}/todo"
+todos_file="$todos_dir/todos"
+
+mkdir -p "$todos_dir"
+touch "$todos_file"
+
+case "${1:-}" in
+add)
+    shift
+    echo "$*" >>"$todos_file"
+    ;;
+list)
+    nl -ba -w1 -s' ' "$todos_file"
+    ;;
+done)
+    chosen=$(nl -ba -w1 -s' ' "$todos_file" | fzf)
+    [ -n "$chosen" ] || exit
+    # The chosen line starts with the todo number; delete that line.
+    sed -i "${chosen%% *}d" "$todos_file"
+    ;;
+esac
